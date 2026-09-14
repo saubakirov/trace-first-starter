@@ -1,0 +1,6 @@
+The bundle contains these 2 refs:
+56de4b23c5c8edbbf87426f578701bdb02b3a770 refs/heads/codex/tkl-native-executor
+7d036298eb416b5cf5061c990874b44202a264f3 refs/heads/codex/tkl-native-coordinator
+The bundle requires this ref:
+27cdb701b91c5b45b9f54b3e98c9ad67635b3e30 
+The bundle uses this hash algorithm: sha1

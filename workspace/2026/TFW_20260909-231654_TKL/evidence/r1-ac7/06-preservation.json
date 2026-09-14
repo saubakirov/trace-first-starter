@@ -1,0 +1,1553 @@
+{
+  "kind": "AC7 R1 actual physical preservation before affected writes",
+  "observed_at": "2026-09-13T18:22:31.867521+00:00",
+  "baseline": "ec91c56007c20cda79f740fec15c85e4af74d17c",
+  "candidate": "65c3c94b2347c69f6d21ac2e2664a39ef46b3ae2",
+  "authority": [
+    {
+      "role": "owner_approval",
+      "commit": "2794cbdb40f6c4f3a7d4bce1f8d4eb949d9e6913",
+      "path": "workspace/2026/TFW_20260909-231654_TKL/TS__TFW_20260909-231654_TKL.md",
+      "archive_path": "authority/owner_approval/workspace/2026/TFW_20260909-231654_TKL/TS__TFW_20260909-231654_TKL.md",
+      "blob": "f69fd4099a21a07ae2d17e6b5108b04ac94f107e",
+      "bytes": 55220,
+      "sha256": "6929b45c6ec0908933a2d7e9088707dd317c56a1089895cac9fc31a1b3f8c48c",
+      "eol": {
+        "CRLF": 0,
+        "LF": 377,
+        "CR": 0
+      }
+    },
+    {
+      "role": "owner_approval_event",
+      "commit": "2794cbdb40f6c4f3a7d4bce1f8d4eb949d9e6913",
+      "path": "workspace/2026/TFW_20260909-231654_TKL/journal/20260913-141400__handoff__8c2a.md",
+      "archive_path": "authority/owner_approval_event/workspace/2026/TFW_20260909-231654_TKL/journal/20260913-141400__handoff__8c2a.md",
+      "blob": "8f0e29189af9983f3a1dffe2efb2b7daaf0686cd",
+      "bytes": 1716,
+      "sha256": "acc3de13384fec670614eeaa8758d9997f97f5396c796a2f88ddc46fa8f87102",
+      "eol": {
+        "CRLF": 0,
+        "LF": 19,
+        "CR": 0
+      }
+    },
+    {
+      "role": "lead_conditional_bound",
+      "commit": "9336fc882719e1aacdefca0f7e6ab1fc3d5b6da7",
+      "path": "workspace/2026/TFW_20260909-231654_TKL/journal/20260913-222750__dispatch__a7a8.md",
+      "archive_path": "authority/lead_conditional_bound/workspace/2026/TFW_20260909-231654_TKL/journal/20260913-222750__dispatch__a7a8.md",
+      "blob": "856203c5af4c4707ebf3cfc5fb22e0bd92da8a16",
+      "bytes": 5342,
+      "sha256": "0c91116ea0b5372eba7b4562dd2768d8d14f4dd6cd208b51d5395fb020dc8e6a",
+      "eol": {
+        "CRLF": 0,
+        "LF": 29,
+        "CR": 0
+      }
+    },
+    {
+      "role": "coordinator_checkpoint_dispatch",
+      "commit": "5d189778d2e2ca9168d3487d1d838bf17d74756b",
+      "path": "workspace/2026/TFW_20260909-231654_TKL/journal/20260913-223311__dispatch__8019.md",
+      "archive_path": "authority/coordinator_checkpoint_dispatch/workspace/2026/TFW_20260909-231654_TKL/journal/20260913-223311__dispatch__8019.md",
+      "blob": "1d669821b2bcb9ec4b153a6ad35e9f7d8f8600d7",
+      "bytes": 2436,
+      "sha256": "b441199318b15198b65b8f3bbd52f06e8a6fdb08db7a30d155818fbc940c3dbc",
+      "eol": {
+        "CRLF": 0,
+        "LF": 21,
+        "CR": 0
+      }
+    },
+    {
+      "role": "ruled_review",
+      "commit": "5d189778d2e2ca9168d3487d1d838bf17d74756b",
+      "path": "workspace/2026/TFW_20260909-231654_TKL/REVIEW__TFW_20260909-231654_TKL.md",
+      "archive_path": "authority/ruled_review/workspace/2026/TFW_20260909-231654_TKL/REVIEW__TFW_20260909-231654_TKL.md",
+      "blob": "61eea27d0c10f8c76dccaf5c39972b733b6c3d5b",
+      "bytes": 18132,
+      "sha256": "3be376c8edc3fa28369034b65adc669a446fe98276ef7fa37a043327d841857a",
+      "eol": {
+        "CRLF": 0,
+        "LF": 137,
+        "CR": 0
+      }
+    },
+    {
+      "role": "reviewer_clarification",
+      "commit": "a644c996e67bd01f677709140f51563bd17f5334",
+      "path": "workspace/2026/TFW_20260909-231654_TKL/review/evidence-clarification-20260913.md",
+      "archive_path": "authority/reviewer_clarification/workspace/2026/TFW_20260909-231654_TKL/review/evidence-clarification-20260913.md",
+      "blob": "6942f2a96e53fa505761f18a44b52d5f09507c13",
+      "bytes": 14742,
+      "sha256": "37c717c05e8f68ad7a2c0541c8f22a3e817b3cb98bb8c5a50efe3b43cf8fa4fe",
+      "eol": {
+        "CRLF": 0,
+        "LF": 185,
+        "CR": 0
+      }
+    },
+    {
+      "role": "slc_accepted_review",
+      "commit": "99198f133c0047568c1e8411bfae849239b352b1",
+      "path": "workspace/2026/TFW_20260907-020729_SLC/REVIEW__TFW_20260907-020729_SLC.md",
+      "archive_path": "authority/slc_accepted_review/workspace/2026/TFW_20260907-020729_SLC/REVIEW__TFW_20260907-020729_SLC.md",
+      "blob": "8c119df9349c80d42a6ea52f8dd9a773b7ee39f8",
+      "bytes": 47859,
+      "sha256": "5e24416d70866cf1372e56bf7ae0e8be2ad129b54d6054c4408ef0a15d7dbdce",
+      "eol": {
+        "CRLF": 0,
+        "LF": 205,
+        "CR": 0
+      }
+    },
+    {
+      "role": "slc_completed_status",
+      "commit": "c51ee0c0d7891fd165d105f3565e0e54512c1040",
+      "path": "workspace/2026/TFW_20260907-020729_SLC/status.md",
+      "archive_path": "authority/slc_completed_status/workspace/2026/TFW_20260907-020729_SLC/status.md",
+      "blob": "87488f50931e9284e382fc41ec7abc1d94a6e0c2",
+      "bytes": 792,
+      "sha256": "c4bc55418a480f6fc7bb4277c656abe149ca6a262c5903a80296aa3f0b8e7875",
+      "eol": {
+        "CRLF": 0,
+        "LF": 14,
+        "CR": 0
+      }
+    },
+    {
+      "role": "coordinator_current_dispatch",
+      "commit": "e419cf2b61cfe53a1a8bcc6e056783f7f6e3ea15",
+      "path": "workspace/2026/TFW_20260909-231654_TKL/journal/20260913-231110__dispatch__1c7b.md",
+      "bytes": 4605,
+      "sha256": "c2aa677ee85e3e553f65d58fab315cd399c8f5c3ec08450d39ec43a0d847971f",
+      "raw_git_blob": "a435667a630c80912420d535b7e82354923b9486",
+      "eol": {
+        "CRLF": 0,
+        "LF": 29,
+        "CR": 0
+      }
+    },
+    {
+      "role": "coordinator_pin",
+      "commit": "e419cf2b61cfe53a1a8bcc6e056783f7f6e3ea15",
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/coordinator-r1-pin/admission.json",
+      "bytes": 2713,
+      "sha256": "f71169a18bc864e1d9b0ed95ff3528cadd494e0d71fb89a512d2d3204a114dbc",
+      "raw_git_blob": "5673f1b2bc45385f57454b5f5c5133cc1d3cffdb",
+      "eol": {
+        "CRLF": 0,
+        "LF": 52,
+        "CR": 0
+      }
+    }
+  ],
+  "guides": [
+    ".tfw/migrations/knowledge-lifecycle.md",
+    ".tfw/workflows/update.md",
+    ".tfw/migrations/3.3.0.md",
+    ".tfw/adapters/manifest.yaml"
+  ],
+  "selected_providers": [
+    "codex",
+    "claude-code",
+    "antigravity"
+  ],
+  "files": {
+    ".agents/skills/tfw-docs/SKILL.md": {
+      "group": "compatible-reader-adapter-tool-or-form",
+      "old": {
+        "bytes": 918,
+        "sha256": "989d1cad59fd3309f60d761df8854a2bbf6251f12dd02239353f56a41e1079cf",
+        "raw_git_blob": "d6fb8ac69842dec34b77dc0391864dee34995004",
+        "eol": {
+          "CRLF": 0,
+          "LF": 18,
+          "CR": 0
+        }
+      },
+      "intended": {
+        "bytes": 992,
+        "sha256": "8fbe734b43a4acf2e8b1b61a623a497322a11b2c6c35b2a16abedb26e2e566f5",
+        "raw_git_blob": "788f49cb721ca0c095ef757154f1b7c37d859214",
+        "eol": {
+          "CRLF": 0,
+          "LF": 18,
+          "CR": 0
+        }
+      },
+      "source_git_object": "65c3c94b2347c69f6d21ac2e2664a39ef46b3ae2:.agents/skills/tfw-docs/SKILL.md"
+    },
+    ".agents/skills/tfw-knowledge/SKILL.md": {
+      "group": "compatible-reader-adapter-tool-or-form",
+      "old": {
+        "bytes": 1119,
+        "sha256": "484e5ef9732f1a494ff6390669fc9099266fea20ca93bb173ba93215225172a8",
+        "raw_git_blob": "db83c018241e6385adcfec5da1adcc1ff31fb2b8",
+        "eol": {
+          "CRLF": 0,
+          "LF": 19,
+          "CR": 0
+        }
+      },
+      "intended": {
+        "bytes": 1264,
+        "sha256": "f5bea3e0deea8a8fa9b3d28b5979778fa869d62537d8c41d0ffe9b1a220f88b0",
+        "raw_git_blob": "b6884efab82ca8118a633066dc2cccfae49d379d",
+        "eol": {
+          "CRLF": 0,
+          "LF": 19,
+          "CR": 0
+        }
+      },
+      "source_git_object": "65c3c94b2347c69f6d21ac2e2664a39ef46b3ae2:.agents/skills/tfw-knowledge/SKILL.md"
+    },
+    ".agents/workflows/tfw-config.md": {
+      "group": "compatible-reader-adapter-tool-or-form",
+      "old": {
+        "bytes": 4966,
+        "sha256": "8f0b9e9b499ea90f91b8bb5643f4848c024ede83c7a289dea0260de2d5daece6",
+        "raw_git_blob": "c9d2f65c9022e6261c73c462caf4df36eedd9c6a",
+        "eol": {
+          "CRLF": 0,
+          "LF": 101,
+          "CR": 0
+        }
+      },
+      "intended": {
+        "bytes": 5149,
+        "sha256": "5aa4d56d0ad801c499aeac2d20a9a41b5dd66c0f027dea300b5d3a008879b190",
+        "raw_git_blob": "1ff72982150befcc100cf9dba575e284fbcb51fe",
+        "eol": {
+          "CRLF": 0,
+          "LF": 103,
+          "CR": 0
+        }
+      },
+      "source_git_object": "65c3c94b2347c69f6d21ac2e2664a39ef46b3ae2:.agents/workflows/tfw-config.md"
+    },
+    ".agents/workflows/tfw-docs.md": {
+      "group": "compatible-reader-adapter-tool-or-form",
+      "old": {
+        "bytes": 3202,
+        "sha256": "c3d72162e7084fcdda327b456edcc8a4cd50a0af50dcc578597e2519a75475b6",
+        "raw_git_blob": "367befc86f16fe3a255663c3b174ef887e0e2903",
+        "eol": {
+          "CRLF": 0,
+          "LF": 76,
+          "CR": 0
+        }
+      },
+      "intended": {
+        "bytes": 4917,
+        "sha256": "46fb7316afdb4c8ceb7e7c5986332781f44d678fbd224baa4846a4e38c133271",
+        "raw_git_blob": "26b80dbb58c2f1406afef90ea5639f9dced246b7",
+        "eol": {
+          "CRLF": 0,
+          "LF": 75,
+          "CR": 0
+        }
+      },
+      "source_git_object": "65c3c94b2347c69f6d21ac2e2664a39ef46b3ae2:.agents/workflows/tfw-docs.md"
+    },
+    ".agents/workflows/tfw-handoff.md": {
+      "group": "compatible-reader-adapter-tool-or-form",
+      "old": {
+        "bytes": 15030,
+        "sha256": "9837227aab58ab190519a33eee278a7e1d6d53c407b289f9154338de3d29213a",
+        "raw_git_blob": "62d0e89fb28f20ff5fa104a2ba6177c1fba05068",
+        "eol": {
+          "CRLF": 0,
+          "LF": 234,
+          "CR": 0
+        }
+      },
+      "intended": {
+        "bytes": 16144,
+        "sha256": "0950b8bdd25bcaf43691c92c5ae00904311abf58637e80d4bb03c12c649aaf4c",
+        "raw_git_blob": "299d5215dd0f957ca4efcc2e89837872fdeff525",
+        "eol": {
+          "CRLF": 0,
+          "LF": 248,
+          "CR": 0
+        }
+      },
+      "source_git_object": "65c3c94b2347c69f6d21ac2e2664a39ef46b3ae2:.agents/workflows/tfw-handoff.md"
+    },
+    ".agents/workflows/tfw-init.md": {
+      "group": "compatible-reader-adapter-tool-or-form",
+      "old": {
+        "bytes": 8128,
+        "sha256": "7ec919af5ec2c905f81d9b697bdfca41bc531d09d72dd37e3259e2852c134ef4",
+        "raw_git_blob": "80f541614311aa006e630d951df50c570f58b451",
+        "eol": {
+          "CRLF": 0,
+          "LF": 140,
+          "CR": 0
+        }
+      },
+      "intended": {
+        "bytes": 8677,
+        "sha256": "6fcbad17fb5a7bc52f5fcb36edf8f2fd5802a593dfa7cd02c9fa874f38a1e2cc",
+        "raw_git_blob": "bedc73b1fa13eb698ac3c7b3d6325ef4c66a9113",
+        "eol": {
+          "CRLF": 0,
+          "LF": 145,
+          "CR": 0
+        }
+      },
+      "source_git_object": "65c3c94b2347c69f6d21ac2e2664a39ef46b3ae2:.agents/workflows/tfw-init.md"
+    },
+    ".agents/workflows/tfw-knowledge.md": {
+      "group": "compatible-reader-adapter-tool-or-form",
+      "old": {
+        "bytes": 11616,
+        "sha256": "119a419db124e45fded4722b38d46ac5f7aa46cf928431df0585421336b608ef",
+        "raw_git_blob": "b3910e0823d59eefba14d7178ed921c3da8b8f85",
+        "eol": {
+          "CRLF": 0,
+          "LF": 174,
+          "CR": 0
+        }
+      },
+      "intended": {
+        "bytes": 7524,
+        "sha256": "7af2fe71f1ad2fc15475fb425c64687c4cc6b64a50ff7bb5249e755774973a71",
+        "raw_git_blob": "86a7bd094264b37b5c49e5377d08aa18bb914e9f",
+        "eol": {
+          "CRLF": 0,
+          "LF": 111,
+          "CR": 0
+        }
+      },
+      "source_git_object": "65c3c94b2347c69f6d21ac2e2664a39ef46b3ae2:.agents/workflows/tfw-knowledge.md"
+    },
+    ".agents/workflows/tfw-plan.md": {
+      "group": "compatible-reader-adapter-tool-or-form",
+      "old": {
+        "bytes": 14416,
+        "sha256": "775e53088428f1ee117ae2b1adcb79d79bfc01b74401c89ee497365e52abd0e1",
+        "raw_git_blob": "81f7d78bd7f270871bc4ee325789a3f457059812",
+        "eol": {
+          "CRLF": 0,
+          "LF": 219,
+          "CR": 0
+        }
+      },
+      "intended": {
+        "bytes": 14839,
+        "sha256": "8967783329c291602639aca02a7d387e23dfc98a808497724c08d6a845fc1720",
+        "raw_git_blob": "4bac62104137d722f3d971a2c4ea425adbdd6fcd",
+        "eol": {
+          "CRLF": 0,
+          "LF": 224,
+          "CR": 0
+        }
+      },
+      "source_git_object": "65c3c94b2347c69f6d21ac2e2664a39ef46b3ae2:.agents/workflows/tfw-plan.md"
+    },
+    ".agents/workflows/tfw-research.md": {
+      "group": "compatible-reader-adapter-tool-or-form",
+      "old": {
+        "bytes": 7905,
+        "sha256": "f1d62fbb0d8de05942c1f70ba6a9efb74045a73b1443040379742d025ffaf8b9",
+        "raw_git_blob": "7c65caeea35e70284ceb145b4758c89d295c08d6",
+        "eol": {
+          "CRLF": 0,
+          "LF": 147,
+          "CR": 0
+        }
+      },
+      "intended": {
+        "bytes": 9021,
+        "sha256": "b5bdeb054182e3981bd2cdc034c27d6a512245a0922b96700e4342da1a520d5d",
+        "raw_git_blob": "197514a9a193930e785ee08b89212c511d0f4c5e",
+        "eol": {
+          "CRLF": 0,
+          "LF": 161,
+          "CR": 0
+        }
+      },
+      "source_git_object": "65c3c94b2347c69f6d21ac2e2664a39ef46b3ae2:.agents/workflows/tfw-research.md"
+    },
+    ".agents/workflows/tfw-resume.md": {
+      "group": "compatible-reader-adapter-tool-or-form",
+      "old": {
+        "bytes": 5093,
+        "sha256": "1ce3b2e1ee30f1f5be9cfd62af3cd400022a34ba106295978c426e26e46be5e3",
+        "raw_git_blob": "31f31594e0b2146c1df71132c4481a3b711ea508",
+        "eol": {
+          "CRLF": 0,
+          "LF": 83,
+          "CR": 0
+        }
+      },
+      "intended": {
+        "bytes": 5740,
+        "sha256": "86e84db9dc66139579e80881b591f4e7f9fd970b56ec0b058f2b0576631e08fa",
+        "raw_git_blob": "5bc68ab5d3f9de4a52b1bb06b671a50c60a2d044",
+        "eol": {
+          "CRLF": 0,
+          "LF": 90,
+          "CR": 0
+        }
+      },
+      "source_git_object": "65c3c94b2347c69f6d21ac2e2664a39ef46b3ae2:.agents/workflows/tfw-resume.md"
+    },
+    ".agents/workflows/tfw-review.md": {
+      "group": "compatible-reader-adapter-tool-or-form",
+      "old": {
+        "bytes": 15244,
+        "sha256": "951d3053baf1efdcb40409bac970f4daeea4977d4bb82e20a1f01340879d089d",
+        "raw_git_blob": "f324292d57cf593587e2162bdee8c14320ffa6b9",
+        "eol": {
+          "CRLF": 0,
+          "LF": 233,
+          "CR": 0
+        }
+      },
+      "intended": {
+        "bytes": 16479,
+        "sha256": "6ba0bd35cece81760270e23de42cf14c030ac9450e6eac12c15123527a4ca2f6",
+        "raw_git_blob": "a389ae6f619d28d5a2a18745fd2eb73531208f5d",
+        "eol": {
+          "CRLF": 0,
+          "LF": 248,
+          "CR": 0
+        }
+      },
+      "source_git_object": "65c3c94b2347c69f6d21ac2e2664a39ef46b3ae2:.agents/workflows/tfw-review.md"
+    },
+    ".agents/workflows/tfw-update.md": {
+      "group": "compatible-reader-adapter-tool-or-form",
+      "old": {
+        "bytes": 17645,
+        "sha256": "677f98c2ba61dcec1f59a5847ec12c782bf85132437194d291dcab3061707b1d",
+        "raw_git_blob": "fc081bdef381bd96556ed26afa3b00e6d4235eec",
+        "eol": {
+          "CRLF": 0,
+          "LF": 262,
+          "CR": 0
+        }
+      },
+      "intended": {
+        "bytes": 18922,
+        "sha256": "4df00bea1d0eb8e229e830e974b9de5c72e2c9bd41bc808cdb0d348a6ea1379a",
+        "raw_git_blob": "a4187ba20b1ad36576a552fd3cb85730769eddb4",
+        "eol": {
+          "CRLF": 0,
+          "LF": 279,
+          "CR": 0
+        }
+      },
+      "source_git_object": "65c3c94b2347c69f6d21ac2e2664a39ef46b3ae2:.agents/workflows/tfw-update.md"
+    },
+    ".claude/commands/tfw-config.md": {
+      "group": "compatible-reader-adapter-tool-or-form",
+      "old": {
+        "bytes": 4966,
+        "sha256": "8f0b9e9b499ea90f91b8bb5643f4848c024ede83c7a289dea0260de2d5daece6",
+        "raw_git_blob": "c9d2f65c9022e6261c73c462caf4df36eedd9c6a",
+        "eol": {
+          "CRLF": 0,
+          "LF": 101,
+          "CR": 0
+        }
+      },
+      "intended": {
+        "bytes": 5149,
+        "sha256": "5aa4d56d0ad801c499aeac2d20a9a41b5dd66c0f027dea300b5d3a008879b190",
+        "raw_git_blob": "1ff72982150befcc100cf9dba575e284fbcb51fe",
+        "eol": {
+          "CRLF": 0,
+          "LF": 103,
+          "CR": 0
+        }
+      },
+      "source_git_object": "65c3c94b2347c69f6d21ac2e2664a39ef46b3ae2:.claude/commands/tfw-config.md"
+    },
+    ".claude/commands/tfw-docs.md": {
+      "group": "compatible-reader-adapter-tool-or-form",
+      "old": {
+        "bytes": 3202,
+        "sha256": "c3d72162e7084fcdda327b456edcc8a4cd50a0af50dcc578597e2519a75475b6",
+        "raw_git_blob": "367befc86f16fe3a255663c3b174ef887e0e2903",
+        "eol": {
+          "CRLF": 0,
+          "LF": 76,
+          "CR": 0
+        }
+      },
+      "intended": {
+        "bytes": 4917,
+        "sha256": "46fb7316afdb4c8ceb7e7c5986332781f44d678fbd224baa4846a4e38c133271",
+        "raw_git_blob": "26b80dbb58c2f1406afef90ea5639f9dced246b7",
+        "eol": {
+          "CRLF": 0,
+          "LF": 75,
+          "CR": 0
+        }
+      },
+      "source_git_object": "65c3c94b2347c69f6d21ac2e2664a39ef46b3ae2:.claude/commands/tfw-docs.md"
+    },
+    ".claude/commands/tfw-handoff.md": {
+      "group": "compatible-reader-adapter-tool-or-form",
+      "old": {
+        "bytes": 15030,
+        "sha256": "9837227aab58ab190519a33eee278a7e1d6d53c407b289f9154338de3d29213a",
+        "raw_git_blob": "62d0e89fb28f20ff5fa104a2ba6177c1fba05068",
+        "eol": {
+          "CRLF": 0,
+          "LF": 234,
+          "CR": 0
+        }
+      },
+      "intended": {
+        "bytes": 16144,
+        "sha256": "0950b8bdd25bcaf43691c92c5ae00904311abf58637e80d4bb03c12c649aaf4c",
+        "raw_git_blob": "299d5215dd0f957ca4efcc2e89837872fdeff525",
+        "eol": {
+          "CRLF": 0,
+          "LF": 248,
+          "CR": 0
+        }
+      },
+      "source_git_object": "65c3c94b2347c69f6d21ac2e2664a39ef46b3ae2:.claude/commands/tfw-handoff.md"
+    },
+    ".claude/commands/tfw-init.md": {
+      "group": "compatible-reader-adapter-tool-or-form",
+      "old": {
+        "bytes": 8128,
+        "sha256": "7ec919af5ec2c905f81d9b697bdfca41bc531d09d72dd37e3259e2852c134ef4",
+        "raw_git_blob": "80f541614311aa006e630d951df50c570f58b451",
+        "eol": {
+          "CRLF": 0,
+          "LF": 140,
+          "CR": 0
+        }
+      },
+      "intended": {
+        "bytes": 8677,
+        "sha256": "6fcbad17fb5a7bc52f5fcb36edf8f2fd5802a593dfa7cd02c9fa874f38a1e2cc",
+        "raw_git_blob": "bedc73b1fa13eb698ac3c7b3d6325ef4c66a9113",
+        "eol": {
+          "CRLF": 0,
+          "LF": 145,
+          "CR": 0
+        }
+      },
+      "source_git_object": "65c3c94b2347c69f6d21ac2e2664a39ef46b3ae2:.claude/commands/tfw-init.md"
+    },
+    ".claude/commands/tfw-knowledge.md": {
+      "group": "compatible-reader-adapter-tool-or-form",
+      "old": {
+        "bytes": 11616,
+        "sha256": "119a419db124e45fded4722b38d46ac5f7aa46cf928431df0585421336b608ef",
+        "raw_git_blob": "b3910e0823d59eefba14d7178ed921c3da8b8f85",
+        "eol": {
+          "CRLF": 0,
+          "LF": 174,
+          "CR": 0
+        }
+      },
+      "intended": {
+        "bytes": 7524,
+        "sha256": "7af2fe71f1ad2fc15475fb425c64687c4cc6b64a50ff7bb5249e755774973a71",
+        "raw_git_blob": "86a7bd094264b37b5c49e5377d08aa18bb914e9f",
+        "eol": {
+          "CRLF": 0,
+          "LF": 111,
+          "CR": 0
+        }
+      },
+      "source_git_object": "65c3c94b2347c69f6d21ac2e2664a39ef46b3ae2:.claude/commands/tfw-knowledge.md"
+    },
+    ".claude/commands/tfw-plan.md": {
+      "group": "compatible-reader-adapter-tool-or-form",
+      "old": {
+        "bytes": 14416,
+        "sha256": "775e53088428f1ee117ae2b1adcb79d79bfc01b74401c89ee497365e52abd0e1",
+        "raw_git_blob": "81f7d78bd7f270871bc4ee325789a3f457059812",
+        "eol": {
+          "CRLF": 0,
+          "LF": 219,
+          "CR": 0
+        }
+      },
+      "intended": {
+        "bytes": 14839,
+        "sha256": "8967783329c291602639aca02a7d387e23dfc98a808497724c08d6a845fc1720",
+        "raw_git_blob": "4bac62104137d722f3d971a2c4ea425adbdd6fcd",
+        "eol": {
+          "CRLF": 0,
+          "LF": 224,
+          "CR": 0
+        }
+      },
+      "source_git_object": "65c3c94b2347c69f6d21ac2e2664a39ef46b3ae2:.claude/commands/tfw-plan.md"
+    },
+    ".claude/commands/tfw-research.md": {
+      "group": "compatible-reader-adapter-tool-or-form",
+      "old": {
+        "bytes": 7905,
+        "sha256": "f1d62fbb0d8de05942c1f70ba6a9efb74045a73b1443040379742d025ffaf8b9",
+        "raw_git_blob": "7c65caeea35e70284ceb145b4758c89d295c08d6",
+        "eol": {
+          "CRLF": 0,
+          "LF": 147,
+          "CR": 0
+        }
+      },
+      "intended": {
+        "bytes": 9021,
+        "sha256": "b5bdeb054182e3981bd2cdc034c27d6a512245a0922b96700e4342da1a520d5d",
+        "raw_git_blob": "197514a9a193930e785ee08b89212c511d0f4c5e",
+        "eol": {
+          "CRLF": 0,
+          "LF": 161,
+          "CR": 0
+        }
+      },
+      "source_git_object": "65c3c94b2347c69f6d21ac2e2664a39ef46b3ae2:.claude/commands/tfw-research.md"
+    },
+    ".claude/commands/tfw-resume.md": {
+      "group": "compatible-reader-adapter-tool-or-form",
+      "old": {
+        "bytes": 5093,
+        "sha256": "1ce3b2e1ee30f1f5be9cfd62af3cd400022a34ba106295978c426e26e46be5e3",
+        "raw_git_blob": "31f31594e0b2146c1df71132c4481a3b711ea508",
+        "eol": {
+          "CRLF": 0,
+          "LF": 83,
+          "CR": 0
+        }
+      },
+      "intended": {
+        "bytes": 5740,
+        "sha256": "86e84db9dc66139579e80881b591f4e7f9fd970b56ec0b058f2b0576631e08fa",
+        "raw_git_blob": "5bc68ab5d3f9de4a52b1bb06b671a50c60a2d044",
+        "eol": {
+          "CRLF": 0,
+          "LF": 90,
+          "CR": 0
+        }
+      },
+      "source_git_object": "65c3c94b2347c69f6d21ac2e2664a39ef46b3ae2:.claude/commands/tfw-resume.md"
+    },
+    ".claude/commands/tfw-review.md": {
+      "group": "compatible-reader-adapter-tool-or-form",
+      "old": {
+        "bytes": 15244,
+        "sha256": "951d3053baf1efdcb40409bac970f4daeea4977d4bb82e20a1f01340879d089d",
+        "raw_git_blob": "f324292d57cf593587e2162bdee8c14320ffa6b9",
+        "eol": {
+          "CRLF": 0,
+          "LF": 233,
+          "CR": 0
+        }
+      },
+      "intended": {
+        "bytes": 16479,
+        "sha256": "6ba0bd35cece81760270e23de42cf14c030ac9450e6eac12c15123527a4ca2f6",
+        "raw_git_blob": "a389ae6f619d28d5a2a18745fd2eb73531208f5d",
+        "eol": {
+          "CRLF": 0,
+          "LF": 248,
+          "CR": 0
+        }
+      },
+      "source_git_object": "65c3c94b2347c69f6d21ac2e2664a39ef46b3ae2:.claude/commands/tfw-review.md"
+    },
+    ".claude/commands/tfw-update.md": {
+      "group": "compatible-reader-adapter-tool-or-form",
+      "old": {
+        "bytes": 17645,
+        "sha256": "677f98c2ba61dcec1f59a5847ec12c782bf85132437194d291dcab3061707b1d",
+        "raw_git_blob": "fc081bdef381bd96556ed26afa3b00e6d4235eec",
+        "eol": {
+          "CRLF": 0,
+          "LF": 262,
+          "CR": 0
+        }
+      },
+      "intended": {
+        "bytes": 18922,
+        "sha256": "4df00bea1d0eb8e229e830e974b9de5c72e2c9bd41bc808cdb0d348a6ea1379a",
+        "raw_git_blob": "a4187ba20b1ad36576a552fd3cb85730769eddb4",
+        "eol": {
+          "CRLF": 0,
+          "LF": 279,
+          "CR": 0
+        }
+      },
+      "source_git_object": "65c3c94b2347c69f6d21ac2e2664a39ef46b3ae2:.claude/commands/tfw-update.md"
+    },
+    ".tfw/adapters/codex/skills/tfw-docs/SKILL.md": {
+      "group": "compatible-reader-adapter-tool-or-form",
+      "old": {
+        "bytes": 918,
+        "sha256": "989d1cad59fd3309f60d761df8854a2bbf6251f12dd02239353f56a41e1079cf",
+        "raw_git_blob": "d6fb8ac69842dec34b77dc0391864dee34995004",
+        "eol": {
+          "CRLF": 0,
+          "LF": 18,
+          "CR": 0
+        }
+      },
+      "intended": {
+        "bytes": 992,
+        "sha256": "8fbe734b43a4acf2e8b1b61a623a497322a11b2c6c35b2a16abedb26e2e566f5",
+        "raw_git_blob": "788f49cb721ca0c095ef757154f1b7c37d859214",
+        "eol": {
+          "CRLF": 0,
+          "LF": 18,
+          "CR": 0
+        }
+      },
+      "source_git_object": "65c3c94b2347c69f6d21ac2e2664a39ef46b3ae2:.tfw/adapters/codex/skills/tfw-docs/SKILL.md"
+    },
+    ".tfw/adapters/codex/skills/tfw-knowledge/SKILL.md": {
+      "group": "compatible-reader-adapter-tool-or-form",
+      "old": {
+        "bytes": 1119,
+        "sha256": "484e5ef9732f1a494ff6390669fc9099266fea20ca93bb173ba93215225172a8",
+        "raw_git_blob": "db83c018241e6385adcfec5da1adcc1ff31fb2b8",
+        "eol": {
+          "CRLF": 0,
+          "LF": 19,
+          "CR": 0
+        }
+      },
+      "intended": {
+        "bytes": 1264,
+        "sha256": "f5bea3e0deea8a8fa9b3d28b5979778fa869d62537d8c41d0ffe9b1a220f88b0",
+        "raw_git_blob": "b6884efab82ca8118a633066dc2cccfae49d379d",
+        "eol": {
+          "CRLF": 0,
+          "LF": 19,
+          "CR": 0
+        }
+      },
+      "source_git_object": "65c3c94b2347c69f6d21ac2e2664a39ef46b3ae2:.tfw/adapters/codex/skills/tfw-knowledge/SKILL.md"
+    },
+    ".tfw/compilable_contract.md": {
+      "group": "compatible-reader-adapter-tool-or-form",
+      "old": {
+        "bytes": 7382,
+        "sha256": "b7e464e5500ef5fca56a3b320adfaef98179f644c35a325f17d14af46a3523bf",
+        "raw_git_blob": "52e7657ac265102de6bd50292aa00fdc70d57f11",
+        "eol": {
+          "CRLF": 0,
+          "LF": 125,
+          "CR": 0
+        }
+      },
+      "intended": {
+        "bytes": 8292,
+        "sha256": "7eeee2c32fd39fd19e2831a0387f9c4c46cabeeed8b6b698eb5783d00b85ac34",
+        "raw_git_blob": "32dd370071d9ad9edfd24cd91af34a992427cfa5",
+        "eol": {
+          "CRLF": 0,
+          "LF": 137,
+          "CR": 0
+        }
+      },
+      "source_git_object": "65c3c94b2347c69f6d21ac2e2664a39ef46b3ae2:.tfw/compilable_contract.md"
+    },
+    ".tfw/conventions.md": {
+      "group": "compatible-reader-adapter-tool-or-form",
+      "old": {
+        "bytes": 91812,
+        "sha256": "09d248e997cf19bae1cef53f64423af343c8640d3b270a804e7986ffb874f9d2",
+        "raw_git_blob": "dd9f547b0048dbedaa6368e40bece2b9bbdf7cca",
+        "eol": {
+          "CRLF": 0,
+          "LF": 1354,
+          "CR": 0
+        }
+      },
+      "intended": {
+        "bytes": 98870,
+        "sha256": "fb05c43570cf65b512e620c97633d0115daa8b733e9649e4a3c426e566b8cf21",
+        "raw_git_blob": "ab5504f898e972fc02d3827665070cbede9cf60c",
+        "eol": {
+          "CRLF": 0,
+          "LF": 1436,
+          "CR": 0
+        }
+      },
+      "source_git_object": "65c3c94b2347c69f6d21ac2e2664a39ef46b3ae2:.tfw/conventions.md"
+    },
+    ".tfw/glossary.md": {
+      "group": "compatible-reader-adapter-tool-or-form",
+      "old": {
+        "bytes": 23811,
+        "sha256": "bb72f99c8ce76497bdb70b566be92bab8613f611b5e1b0f092576edf31365ac8",
+        "raw_git_blob": "0d98f16c6266a91f1909279f3865013ef4c8c938",
+        "eol": {
+          "CRLF": 0,
+          "LF": 397,
+          "CR": 0
+        }
+      },
+      "intended": {
+        "bytes": 25096,
+        "sha256": "ea581d4889d4f1ff6f5932033e0d57e4fb4ba88aee26b03fe45a43bb63ad2852",
+        "raw_git_blob": "4d85446b53e43d88dc98eb483698a4e9f3b45285",
+        "eol": {
+          "CRLF": 0,
+          "LF": 419,
+          "CR": 0
+        }
+      },
+      "source_git_object": "65c3c94b2347c69f6d21ac2e2664a39ef46b3ae2:.tfw/glossary.md"
+    },
+    ".tfw/migrations/knowledge-lifecycle.md": {
+      "group": "compatible-reader-adapter-tool-or-form",
+      "old": {
+        "absent": true
+      },
+      "intended": {
+        "bytes": 8858,
+        "sha256": "2ce771e0415aab0c63b011d44d613304566fdeb41dfd97954f45dc34da3c8da3",
+        "raw_git_blob": "03a5ba4e6cd08cd0c25e7cb7b09bcbd724fe43d8",
+        "eol": {
+          "CRLF": 0,
+          "LF": 111,
+          "CR": 0
+        }
+      },
+      "source_git_object": "65c3c94b2347c69f6d21ac2e2664a39ef46b3ae2:.tfw/migrations/knowledge-lifecycle.md"
+    },
+    ".tfw/quickstart.md": {
+      "group": "compatible-reader-adapter-tool-or-form",
+      "old": {
+        "bytes": 4201,
+        "sha256": "ad66adac58fc7d5b2da907caeae9982188313155cdd2776cb0ab031ff4e6dd40",
+        "raw_git_blob": "65b43451f3b2c2763deb365443eab6c530d46aa4",
+        "eol": {
+          "CRLF": 0,
+          "LF": 87,
+          "CR": 0
+        }
+      },
+      "intended": {
+        "bytes": 4634,
+        "sha256": "031c5fcbecccb6f17705c4ba494d2b72f8940450635d5190cf3c0abd07f72cf6",
+        "raw_git_blob": "6b71012a76a7648b32febfdb37d0827bd8dadbd1",
+        "eol": {
+          "CRLF": 0,
+          "LF": 92,
+          "CR": 0
+        }
+      },
+      "source_git_object": "65c3c94b2347c69f6d21ac2e2664a39ef46b3ae2:.tfw/quickstart.md"
+    },
+    ".tfw/templates/HL.md": {
+      "group": "compatible-reader-adapter-tool-or-form",
+      "old": {
+        "bytes": 15133,
+        "sha256": "62d0ba2d0f4ebca89ea8be8dacb2ba7ecb9ca4a790bbe5398eea8ba32d595d2b",
+        "raw_git_blob": "6b27518058f8d39af79df366eaa177b6d8567a40",
+        "eol": {
+          "CRLF": 0,
+          "LF": 309,
+          "CR": 0
+        }
+      },
+      "intended": {
+        "bytes": 15759,
+        "sha256": "bf52f991cb21c06d6675a058e5616560be30365e124fd2e21acf96bfa06721cd",
+        "raw_git_blob": "c1555f631aef910ef4aae8fb3c46a4750197380c",
+        "eol": {
+          "CRLF": 0,
+          "LF": 318,
+          "CR": 0
+        }
+      },
+      "source_git_object": "65c3c94b2347c69f6d21ac2e2664a39ef46b3ae2:.tfw/templates/HL.md"
+    },
+    ".tfw/templates/KNOWLEDGE.md": {
+      "group": "compatible-reader-adapter-tool-or-form",
+      "old": {
+        "bytes": 1856,
+        "sha256": "812799df2d202d30cedea4666be055cbfd3ab40dc3b987bff421f2fa4bb6cab5",
+        "raw_git_blob": "a38f7722afb494435f3dc80ecd7600bb4605282d",
+        "eol": {
+          "CRLF": 0,
+          "LF": 69,
+          "CR": 0
+        }
+      },
+      "intended": {
+        "bytes": 2208,
+        "sha256": "fe8cdc199c8b314548198b3104c47755df7f9f17c8a12869b604b97614a01541",
+        "raw_git_blob": "938f8524436e2e39cd3c47c506424ba0d627ae2d",
+        "eol": {
+          "CRLF": 0,
+          "LF": 42,
+          "CR": 0
+        }
+      },
+      "source_git_object": "65c3c94b2347c69f6d21ac2e2664a39ef46b3ae2:.tfw/templates/KNOWLEDGE.md"
+    },
+    ".tfw/templates/ONB.md": {
+      "group": "compatible-reader-adapter-tool-or-form",
+      "old": {
+        "bytes": 1568,
+        "sha256": "99f3c3185f389ce8b956fd760bc3288467497cda6833513584a835867c8e7a12",
+        "raw_git_blob": "c4b492b1e29846b60548a47461715cfc9c9fd7fb",
+        "eol": {
+          "CRLF": 0,
+          "LF": 49,
+          "CR": 0
+        }
+      },
+      "intended": {
+        "bytes": 2194,
+        "sha256": "825ad460c2e411427e0c1c13b3c8638e8df9a089eaa686520bfc2334adfbb507",
+        "raw_git_blob": "24f599b584a1491151b0d20180bdfb2c77a10c9b",
+        "eol": {
+          "CRLF": 0,
+          "LF": 58,
+          "CR": 0
+        }
+      },
+      "source_git_object": "65c3c94b2347c69f6d21ac2e2664a39ef46b3ae2:.tfw/templates/ONB.md"
+    },
+    ".tfw/templates/RES.md": {
+      "group": "compatible-reader-adapter-tool-or-form",
+      "old": {
+        "bytes": 5452,
+        "sha256": "f5da77cf7054b4a2a20d0471ec321fdd851ae5cff214fd23a4bab24f71f0ab90",
+        "raw_git_blob": "7b83ce16267454f0c9d2e2dcf00f4680856a3c52",
+        "eol": {
+          "CRLF": 0,
+          "LF": 134,
+          "CR": 0
+        }
+      },
+      "intended": {
+        "bytes": 6078,
+        "sha256": "ae742e4465c2f54c77f98ca3f2eb1232a0343c5605d264dd4bbfe34e7feb5a6e",
+        "raw_git_blob": "dd6cf70f1f141a6f9f8a39fd9bd6b1d9e4b0096e",
+        "eol": {
+          "CRLF": 0,
+          "LF": 143,
+          "CR": 0
+        }
+      },
+      "source_git_object": "65c3c94b2347c69f6d21ac2e2664a39ef46b3ae2:.tfw/templates/RES.md"
+    },
+    ".tfw/templates/REVIEW.md": {
+      "group": "compatible-reader-adapter-tool-or-form",
+      "old": {
+        "bytes": 4680,
+        "sha256": "c2ac9c15d456a1a5a3f0cf813091e633995f7a4e2277ffd0739e7147157ede1e",
+        "raw_git_blob": "95e9da25f9b9af46f2302a342ce2b4354d61ff1b",
+        "eol": {
+          "CRLF": 0,
+          "LF": 113,
+          "CR": 0
+        }
+      },
+      "intended": {
+        "bytes": 5306,
+        "sha256": "bfe71d82233174ae8c4f0fa846593a5abdcd93b75824a1024a015b3b5de0407e",
+        "raw_git_blob": "4b9752f88671469107789f0813ce2c080677563c",
+        "eol": {
+          "CRLF": 0,
+          "LF": 122,
+          "CR": 0
+        }
+      },
+      "source_git_object": "65c3c94b2347c69f6d21ac2e2664a39ef46b3ae2:.tfw/templates/REVIEW.md"
+    },
+    ".tfw/templates/RF.md": {
+      "group": "compatible-reader-adapter-tool-or-form",
+      "old": {
+        "bytes": 2499,
+        "sha256": "d2e50b8238ece45c1090928a8b08de0f1512bafa156aa01108fce33496b897ce",
+        "raw_git_blob": "775e5c06594b9810dd3343863e38807f59091064",
+        "eol": {
+          "CRLF": 0,
+          "LF": 94,
+          "CR": 0
+        }
+      },
+      "intended": {
+        "bytes": 3125,
+        "sha256": "d514940a78912e02ad2fb4884fb8a3596b0d6126c8bb98adb57b42a67e80153e",
+        "raw_git_blob": "fe1d6585d98aefce662f1fefdae399d805e7f628",
+        "eol": {
+          "CRLF": 0,
+          "LF": 103,
+          "CR": 0
+        }
+      },
+      "source_git_object": "65c3c94b2347c69f6d21ac2e2664a39ef46b3ae2:.tfw/templates/RF.md"
+    },
+    ".tfw/templates/knowledge/handover.md": {
+      "group": "compatible-reader-adapter-tool-or-form",
+      "old": {
+        "absent": true
+      },
+      "intended": {
+        "bytes": 1358,
+        "sha256": "8fc00b42a7b4b7587b0c2d39b38584bea4d205379cadfa57aa74ed63b450d62b",
+        "raw_git_blob": "8a0d684b96c0aa24dd02b9fa9452ec88b9564bb6",
+        "eol": {
+          "CRLF": 0,
+          "LF": 20,
+          "CR": 0
+        }
+      },
+      "source_git_object": "65c3c94b2347c69f6d21ac2e2664a39ef46b3ae2:.tfw/templates/knowledge/handover.md"
+    },
+    ".tfw/templates/knowledge/record.md": {
+      "group": "compatible-reader-adapter-tool-or-form",
+      "old": {
+        "absent": true
+      },
+      "intended": {
+        "bytes": 2548,
+        "sha256": "d0615f7582e15280f4c69ef0350294daf9e1b32b5de0d2fba964dc9a4db0d6b0",
+        "raw_git_blob": "2f879c27b40e469ff71188de9798d18884df6d95",
+        "eol": {
+          "CRLF": 0,
+          "LF": 41,
+          "CR": 0
+        }
+      },
+      "source_git_object": "65c3c94b2347c69f6d21ac2e2664a39ef46b3ae2:.tfw/templates/knowledge/record.md"
+    },
+    ".tfw/templates/knowledge/topic.md": {
+      "group": "compatible-reader-adapter-tool-or-form",
+      "old": {
+        "bytes": 389,
+        "sha256": "0b529ed50c0c0dc794b9506395d522d76309095780f2c9de5cc78d61d673b2f2",
+        "raw_git_blob": "524caef69f9b13748dc693ab0037c35bf33dbff1",
+        "eol": {
+          "CRLF": 0,
+          "LF": 10,
+          "CR": 0
+        }
+      },
+      "intended": {
+        "bytes": 675,
+        "sha256": "8a2531fbe8e596d34e33d09bf713746f97cefbe1f6f1054fa49124bf67680221",
+        "raw_git_blob": "2dc67828ac5afefdffefb55e1bd5378d634ff7df",
+        "eol": {
+          "CRLF": 0,
+          "LF": 14,
+          "CR": 0
+        }
+      },
+      "source_git_object": "65c3c94b2347c69f6d21ac2e2664a39ef46b3ae2:.tfw/templates/knowledge/topic.md"
+    },
+    ".tfw/templates/knowledge_state.yaml": {
+      "group": "compatible-reader-adapter-tool-or-form",
+      "old": {
+        "bytes": 436,
+        "sha256": "87dc168186d7f781f55301519d73aece1a3f5dd2d082df04d68ccf808c38a113",
+        "raw_git_blob": "c542b7d7f79de078f4ed92aec5e486bcf64d9b63",
+        "eol": {
+          "CRLF": 0,
+          "LF": 13,
+          "CR": 0
+        }
+      },
+      "intended": {
+        "absent": true
+      },
+      "source_git_object": "65c3c94b2347c69f6d21ac2e2664a39ef46b3ae2:.tfw/templates/knowledge_state.yaml"
+    },
+    ".tfw/templates/project_config.yaml": {
+      "group": "compatible-reader-adapter-tool-or-form",
+      "old": {
+        "bytes": 5955,
+        "sha256": "b7587c459c91003a5487f99a4c138385644ec791a4ef8eeb8406f735b057ec4c",
+        "raw_git_blob": "6a913a2619dfd300e097f932bc9cdac15191a5db",
+        "eol": {
+          "CRLF": 0,
+          "LF": 145,
+          "CR": 0
+        }
+      },
+      "intended": {
+        "bytes": 5790,
+        "sha256": "a0284513c177a2b3ff149fcc3a74027178b81b97f5154d1e4ce2910f043e3ea4",
+        "raw_git_blob": "1bfd5edf4051a9c3ed5bcb7f759d500fd7bd1b90",
+        "eol": {
+          "CRLF": 0,
+          "LF": 139,
+          "CR": 0
+        }
+      },
+      "source_git_object": "65c3c94b2347c69f6d21ac2e2664a39ef46b3ae2:.tfw/templates/project_config.yaml"
+    },
+    ".tfw/templates/review/verify.md": {
+      "group": "compatible-reader-adapter-tool-or-form",
+      "old": {
+        "bytes": 5115,
+        "sha256": "2ab66c7d1ba71195da123df496cb36664da7ae5ddb770d8438a572c3073b3082",
+        "raw_git_blob": "de5605d78272fbdd58df2498d4dceed1b2eb61fe",
+        "eol": {
+          "CRLF": 0,
+          "LF": 92,
+          "CR": 0
+        }
+      },
+      "intended": {
+        "bytes": 5642,
+        "sha256": "06875d2b31341f55e5c15ebc61a582d83d9da25bb2d1803b0a74b86b5389e232",
+        "raw_git_blob": "b576a9d89990a40a6b197f647e6ed1adaa595b7d",
+        "eol": {
+          "CRLF": 0,
+          "LF": 100,
+          "CR": 0
+        }
+      },
+      "source_git_object": "65c3c94b2347c69f6d21ac2e2664a39ef46b3ae2:.tfw/templates/review/verify.md"
+    },
+    ".tfw/workflows/config.md": {
+      "group": "compatible-reader-adapter-tool-or-form",
+      "old": {
+        "bytes": 4966,
+        "sha256": "8f0b9e9b499ea90f91b8bb5643f4848c024ede83c7a289dea0260de2d5daece6",
+        "raw_git_blob": "c9d2f65c9022e6261c73c462caf4df36eedd9c6a",
+        "eol": {
+          "CRLF": 0,
+          "LF": 101,
+          "CR": 0
+        }
+      },
+      "intended": {
+        "bytes": 5149,
+        "sha256": "5aa4d56d0ad801c499aeac2d20a9a41b5dd66c0f027dea300b5d3a008879b190",
+        "raw_git_blob": "1ff72982150befcc100cf9dba575e284fbcb51fe",
+        "eol": {
+          "CRLF": 0,
+          "LF": 103,
+          "CR": 0
+        }
+      },
+      "source_git_object": "65c3c94b2347c69f6d21ac2e2664a39ef46b3ae2:.tfw/workflows/config.md"
+    },
+    ".tfw/workflows/docs.md": {
+      "group": "compatible-reader-adapter-tool-or-form",
+      "old": {
+        "bytes": 3202,
+        "sha256": "c3d72162e7084fcdda327b456edcc8a4cd50a0af50dcc578597e2519a75475b6",
+        "raw_git_blob": "367befc86f16fe3a255663c3b174ef887e0e2903",
+        "eol": {
+          "CRLF": 0,
+          "LF": 76,
+          "CR": 0
+        }
+      },
+      "intended": {
+        "bytes": 4917,
+        "sha256": "46fb7316afdb4c8ceb7e7c5986332781f44d678fbd224baa4846a4e38c133271",
+        "raw_git_blob": "26b80dbb58c2f1406afef90ea5639f9dced246b7",
+        "eol": {
+          "CRLF": 0,
+          "LF": 75,
+          "CR": 0
+        }
+      },
+      "source_git_object": "65c3c94b2347c69f6d21ac2e2664a39ef46b3ae2:.tfw/workflows/docs.md"
+    },
+    ".tfw/workflows/handoff.md": {
+      "group": "compatible-reader-adapter-tool-or-form",
+      "old": {
+        "bytes": 15030,
+        "sha256": "9837227aab58ab190519a33eee278a7e1d6d53c407b289f9154338de3d29213a",
+        "raw_git_blob": "62d0e89fb28f20ff5fa104a2ba6177c1fba05068",
+        "eol": {
+          "CRLF": 0,
+          "LF": 234,
+          "CR": 0
+        }
+      },
+      "intended": {
+        "bytes": 16144,
+        "sha256": "0950b8bdd25bcaf43691c92c5ae00904311abf58637e80d4bb03c12c649aaf4c",
+        "raw_git_blob": "299d5215dd0f957ca4efcc2e89837872fdeff525",
+        "eol": {
+          "CRLF": 0,
+          "LF": 248,
+          "CR": 0
+        }
+      },
+      "source_git_object": "65c3c94b2347c69f6d21ac2e2664a39ef46b3ae2:.tfw/workflows/handoff.md"
+    },
+    ".tfw/workflows/init.md": {
+      "group": "compatible-reader-adapter-tool-or-form",
+      "old": {
+        "bytes": 8128,
+        "sha256": "7ec919af5ec2c905f81d9b697bdfca41bc531d09d72dd37e3259e2852c134ef4",
+        "raw_git_blob": "80f541614311aa006e630d951df50c570f58b451",
+        "eol": {
+          "CRLF": 0,
+          "LF": 140,
+          "CR": 0
+        }
+      },
+      "intended": {
+        "bytes": 8677,
+        "sha256": "6fcbad17fb5a7bc52f5fcb36edf8f2fd5802a593dfa7cd02c9fa874f38a1e2cc",
+        "raw_git_blob": "bedc73b1fa13eb698ac3c7b3d6325ef4c66a9113",
+        "eol": {
+          "CRLF": 0,
+          "LF": 145,
+          "CR": 0
+        }
+      },
+      "source_git_object": "65c3c94b2347c69f6d21ac2e2664a39ef46b3ae2:.tfw/workflows/init.md"
+    },
+    ".tfw/workflows/knowledge.md": {
+      "group": "compatible-reader-adapter-tool-or-form",
+      "old": {
+        "bytes": 11616,
+        "sha256": "119a419db124e45fded4722b38d46ac5f7aa46cf928431df0585421336b608ef",
+        "raw_git_blob": "b3910e0823d59eefba14d7178ed921c3da8b8f85",
+        "eol": {
+          "CRLF": 0,
+          "LF": 174,
+          "CR": 0
+        }
+      },
+      "intended": {
+        "bytes": 7524,
+        "sha256": "7af2fe71f1ad2fc15475fb425c64687c4cc6b64a50ff7bb5249e755774973a71",
+        "raw_git_blob": "86a7bd094264b37b5c49e5377d08aa18bb914e9f",
+        "eol": {
+          "CRLF": 0,
+          "LF": 111,
+          "CR": 0
+        }
+      },
+      "source_git_object": "65c3c94b2347c69f6d21ac2e2664a39ef46b3ae2:.tfw/workflows/knowledge.md"
+    },
+    ".tfw/workflows/plan.md": {
+      "group": "compatible-reader-adapter-tool-or-form",
+      "old": {
+        "bytes": 14416,
+        "sha256": "775e53088428f1ee117ae2b1adcb79d79bfc01b74401c89ee497365e52abd0e1",
+        "raw_git_blob": "81f7d78bd7f270871bc4ee325789a3f457059812",
+        "eol": {
+          "CRLF": 0,
+          "LF": 219,
+          "CR": 0
+        }
+      },
+      "intended": {
+        "bytes": 14839,
+        "sha256": "8967783329c291602639aca02a7d387e23dfc98a808497724c08d6a845fc1720",
+        "raw_git_blob": "4bac62104137d722f3d971a2c4ea425adbdd6fcd",
+        "eol": {
+          "CRLF": 0,
+          "LF": 224,
+          "CR": 0
+        }
+      },
+      "source_git_object": "65c3c94b2347c69f6d21ac2e2664a39ef46b3ae2:.tfw/workflows/plan.md"
+    },
+    ".tfw/workflows/research/base.md": {
+      "group": "compatible-reader-adapter-tool-or-form",
+      "old": {
+        "bytes": 7905,
+        "sha256": "f1d62fbb0d8de05942c1f70ba6a9efb74045a73b1443040379742d025ffaf8b9",
+        "raw_git_blob": "7c65caeea35e70284ceb145b4758c89d295c08d6",
+        "eol": {
+          "CRLF": 0,
+          "LF": 147,
+          "CR": 0
+        }
+      },
+      "intended": {
+        "bytes": 9021,
+        "sha256": "b5bdeb054182e3981bd2cdc034c27d6a512245a0922b96700e4342da1a520d5d",
+        "raw_git_blob": "197514a9a193930e785ee08b89212c511d0f4c5e",
+        "eol": {
+          "CRLF": 0,
+          "LF": 161,
+          "CR": 0
+        }
+      },
+      "source_git_object": "65c3c94b2347c69f6d21ac2e2664a39ef46b3ae2:.tfw/workflows/research/base.md"
+    },
+    ".tfw/workflows/resume.md": {
+      "group": "compatible-reader-adapter-tool-or-form",
+      "old": {
+        "bytes": 5093,
+        "sha256": "1ce3b2e1ee30f1f5be9cfd62af3cd400022a34ba106295978c426e26e46be5e3",
+        "raw_git_blob": "31f31594e0b2146c1df71132c4481a3b711ea508",
+        "eol": {
+          "CRLF": 0,
+          "LF": 83,
+          "CR": 0
+        }
+      },
+      "intended": {
+        "bytes": 5740,
+        "sha256": "86e84db9dc66139579e80881b591f4e7f9fd970b56ec0b058f2b0576631e08fa",
+        "raw_git_blob": "5bc68ab5d3f9de4a52b1bb06b671a50c60a2d044",
+        "eol": {
+          "CRLF": 0,
+          "LF": 90,
+          "CR": 0
+        }
+      },
+      "source_git_object": "65c3c94b2347c69f6d21ac2e2664a39ef46b3ae2:.tfw/workflows/resume.md"
+    },
+    ".tfw/workflows/review.md": {
+      "group": "compatible-reader-adapter-tool-or-form",
+      "old": {
+        "bytes": 15244,
+        "sha256": "951d3053baf1efdcb40409bac970f4daeea4977d4bb82e20a1f01340879d089d",
+        "raw_git_blob": "f324292d57cf593587e2162bdee8c14320ffa6b9",
+        "eol": {
+          "CRLF": 0,
+          "LF": 233,
+          "CR": 0
+        }
+      },
+      "intended": {
+        "bytes": 16479,
+        "sha256": "6ba0bd35cece81760270e23de42cf14c030ac9450e6eac12c15123527a4ca2f6",
+        "raw_git_blob": "a389ae6f619d28d5a2a18745fd2eb73531208f5d",
+        "eol": {
+          "CRLF": 0,
+          "LF": 248,
+          "CR": 0
+        }
+      },
+      "source_git_object": "65c3c94b2347c69f6d21ac2e2664a39ef46b3ae2:.tfw/workflows/review.md"
+    },
+    ".tfw/workflows/update.md": {
+      "group": "compatible-reader-adapter-tool-or-form",
+      "old": {
+        "bytes": 17645,
+        "sha256": "677f98c2ba61dcec1f59a5847ec12c782bf85132437194d291dcab3061707b1d",
+        "raw_git_blob": "fc081bdef381bd96556ed26afa3b00e6d4235eec",
+        "eol": {
+          "CRLF": 0,
+          "LF": 262,
+          "CR": 0
+        }
+      },
+      "intended": {
+        "bytes": 18922,
+        "sha256": "4df00bea1d0eb8e229e830e974b9de5c72e2c9bd41bc808cdb0d348a6ea1379a",
+        "raw_git_blob": "a4187ba20b1ad36576a552fd3cb85730769eddb4",
+        "eol": {
+          "CRLF": 0,
+          "LF": 279,
+          "CR": 0
+        }
+      },
+      "source_git_object": "65c3c94b2347c69f6d21ac2e2664a39ef46b3ae2:.tfw/workflows/update.md"
+    },
+    "docs/scripts/gen_docs.py": {
+      "group": "compatible-reader-adapter-tool-or-form",
+      "old": {
+        "bytes": 33471,
+        "sha256": "475d88e709f0fa8c63a65d27d339cbba850e50ab9cb964d6fe4e64f5f88c5af2",
+        "raw_git_blob": "72d1c9c42cce297c2e0f568c359f93ee4a6e1dd9",
+        "eol": {
+          "CRLF": 0,
+          "LF": 804,
+          "CR": 0
+        }
+      },
+      "intended": {
+        "bytes": 35546,
+        "sha256": "e123b0f72ea618948915fa63fda7367a3f8ca4816a181f83f4d97f94ffc2b037",
+        "raw_git_blob": "7294707db5722c206dd1031bea48d8adfcd2f179",
+        "eol": {
+          "CRLF": 0,
+          "LF": 844,
+          "CR": 0
+        }
+      },
+      "source_git_object": "65c3c94b2347c69f6d21ac2e2664a39ef46b3ae2:docs/scripts/gen_docs.py"
+    },
+    "tools/README.md": {
+      "group": "compatible-reader-adapter-tool-or-form",
+      "old": {
+        "bytes": 6671,
+        "sha256": "b6aaf60d939cd91c6bfd9d6980e50fbeced97992f27a3d6c62d7a51db411631f",
+        "raw_git_blob": "2fdf930de8d974d47961b7fbd0708afe51520dd5",
+        "eol": {
+          "CRLF": 0,
+          "LF": 90,
+          "CR": 0
+        }
+      },
+      "intended": {
+        "bytes": 6859,
+        "sha256": "e422216c97a16b122c8038372d54bc292193c4bc0a932baba78b4c3ea338bc2b",
+        "raw_git_blob": "b59d62b761a2d65971a588de3536600ddd357a9a",
+        "eol": {
+          "CRLF": 0,
+          "LF": 92,
+          "CR": 0
+        }
+      },
+      "source_git_object": "65c3c94b2347c69f6d21ac2e2664a39ef46b3ae2:tools/README.md"
+    },
+    "tools/tfw_doctor.py": {
+      "group": "compatible-reader-adapter-tool-or-form",
+      "old": {
+        "bytes": 12686,
+        "sha256": "05a6bc358d868605b83b4b8c7fe74f4560e1c2ead5d53d9dfbc21742ba1e005d",
+        "raw_git_blob": "888d2b519e5fe03076297a0098f7322e16d388f2",
+        "eol": {
+          "CRLF": 0,
+          "LF": 326,
+          "CR": 0
+        }
+      },
+      "intended": {
+        "bytes": 12313,
+        "sha256": "f1ca05812b2b83ba2fdc41d281b977e96ac5ef0c26c04614ceda961b046b41c3",
+        "raw_git_blob": "d486cc9653e1861f6f5bfea33d85c9052285bf4e",
+        "eol": {
+          "CRLF": 0,
+          "LF": 315,
+          "CR": 0
+        }
+      },
+      "source_git_object": "65c3c94b2347c69f6d21ac2e2664a39ef46b3ae2:tools/tfw_doctor.py"
+    },
+    "tools/tfw_state.py": {
+      "group": "compatible-reader-adapter-tool-or-form",
+      "old": {
+        "bytes": 51016,
+        "sha256": "7b32ef4d6af70aaaa6ddee690072debd82cf513f1a119267075c736e6293682b",
+        "raw_git_blob": "32612f9bf977dff74362dff3b228944913990872",
+        "eol": {
+          "CRLF": 0,
+          "LF": 1107,
+          "CR": 0
+        }
+      },
+      "intended": {
+        "bytes": 42782,
+        "sha256": "ca4f93b188d139a1115855d4c500edfe4db7bbd8afbef10465bd9eab50dec3d4",
+        "raw_git_blob": "2ce2f2bd9cb510bc1467a29ae8ffdd22354cabc6",
+        "eol": {
+          "CRLF": 0,
+          "LF": 913,
+          "CR": 0
+        }
+      },
+      "source_git_object": "65c3c94b2347c69f6d21ac2e2664a39ef46b3ae2:tools/tfw_state.py"
+    },
+    ".tfw/project_config.yaml": {
+      "group": "semantic-config-provenance",
+      "old": {
+        "bytes": 4531,
+        "sha256": "2a36ce8ed4514b7e552438082bb8ea1f12c889b1c7d0817753acb9d95785c4c2",
+        "raw_git_blob": "08eb4f39dbedc7beb86d1ea7e7c498b46ea7d257",
+        "eol": {
+          "CRLF": 0,
+          "LF": 129,
+          "CR": 0
+        }
+      },
+      "intended": {
+        "bytes": 4420,
+        "sha256": "65a41337829a5c8f9612a83db58510c16c21157493f4515d4b6d6d54f88628b1",
+        "raw_git_blob": "fb7b9098e2b5acff57172d90a69e87339c473b19",
+        "eol": {
+          "CRLF": 0,
+          "LF": 123,
+          "CR": 0
+        }
+      },
+      "source_git_object": "65c3c94b2347c69f6d21ac2e2664a39ef46b3ae2:.tfw/project_config.yaml",
+      "intermediate_retired": {
+        "bytes": 4334,
+        "sha256": "c6e86611751ad123c4139e1203098fa0f7635b54b33c2a6c0b9040cb25753f7c",
+        "raw_git_blob": "d821fe17a0f2fc9aba03b3f87ebab27b241743e3",
+        "eol": {
+          "CRLF": 0,
+          "LF": 123,
+          "CR": 0
+        }
+      }
+    },
+    "KNOWLEDGE.md": {
+      "group": "semantic-entry",
+      "old": {
+        "bytes": 134291,
+        "sha256": "a2d82e20092a361319d80f5f7db63360957a84a8eb36415461567323fc0b797f",
+        "raw_git_blob": "4f3a90aea1280981edadbd09d24f2e9c72bbe5ba",
+        "eol": {
+          "CRLF": 0,
+          "LF": 290,
+          "CR": 0
+        }
+      },
+      "intended": {
+        "bytes": 135267,
+        "sha256": "3fa4a662613e9c4409cc87a92237eeaf5cbf36291067badd2630f8d933609b21",
+        "raw_git_blob": "f39123f6c4842f0d5a49151c9318849d26a3881e",
+        "eol": {
+          "CRLF": 0,
+          "LF": 303,
+          "CR": 0
+        }
+      },
+      "source_git_object": "65c3c94b2347c69f6d21ac2e2664a39ef46b3ae2:KNOWLEDGE.md"
+    }
+  },
+  "old_fields": {
+    "tfw.knowledge": {
+      "interval": 5,
+      "gate_mode": "hard",
+      "max_facts_per_topic": 100,
+      "max_topic_files": 13
+    },
+    "tfw.installed_from": "self"
+  },
+  "intended_fields": {
+    "tfw.knowledge": {
+      "absent": true
+    },
+    "tfw.installed_from": "https://github.com/saubakirov/trace-first-starter@65c3c94b2347c69f6d21ac2e2664a39ef46b3ae2"
+  },
+  "state": {
+    "bytes": 1825,
+    "sha256": "668da37c5c42afe2dd5e8d67f2894f4252e842745afc05f37b9e365e7c56569d",
+    "raw_git_blob": "a127d845907521e03f2bea7d7aff5f57e0e1c6f4",
+    "eol": {
+      "CRLF": 0,
+      "LF": 25,
+      "CR": 0
+    }
+  },
+  "whole_physical_before_manifest_sha256": "29c7ced7d1f376b0759af2c62f77a161cf39ae2aaf3638afd3639c86ff13f187",
+  "whole_physical_before_archive_sha256": "190e529b77a030182a5804c6d2bf477eb73b9b76f80e1a67432ccb519f7d4652",
+  "slc_prerequisite_sha256": "f9b4a8a1ef032a63e6b5eecb1f9bec7fd58d6688efbb547e20abe336f15588cb",
+  "prepared_cut": "after 55 compatible reader/adapter/tool/form effects, before live config/entry retirement",
+  "exclusions": [
+    "No project knowledge record is copied or published.",
+    "Existing baseline ASSURANCE tests remain untouched: TS AC11 calls configured pytest commands upstream assurance, not native receiver prerequisites; apply no replacement test oracle.",
+    "Task/history/topic/state/profile/root purpose/foreign adapter content and unrelated tracked bytes remain preserved.",
+    "Source staging is retained separately and never treated as installed payload."
+  ],
+  "receiver_checks": [
+    "exact reader and selected copy identities",
+    "duplicate-safe YAML retirement/provenance and unrelated config preservation",
+    "legacy D ranges and Markdown source link targets retained",
+    "full unrelated physical map equality",
+    "retired optional knowledge-pending behavior",
+    "current receiver documentation build and actual source/HTML routes"
+  ],
+  "source_assurance_reuse": "Pinned Candidate current AC8 checks and original full-suite at unchanged claim boundaries; no native result inferred from them."
+}

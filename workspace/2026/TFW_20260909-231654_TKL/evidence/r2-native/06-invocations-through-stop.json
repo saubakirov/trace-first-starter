@@ -1,0 +1,63 @@
+[
+  {
+    "seq": 1,
+    "tool": "clock__curr_time",
+    "result": {
+      "current_time": "2026-09-13 20:28:59 UTC"
+    },
+    "start": "2026-09-13T20:28:59Z",
+    "deadline": "2026-09-13T20:58:59Z"
+  },
+  {
+    "seq": 2,
+    "tool": "send_message_to_thread",
+    "result": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"threadId\":\"01a09974-6716-7cc0-9916-fd6d04c91481\"}"
+        }
+      ],
+      "isError": false
+    }
+  },
+  {
+    "seq": 3,
+    "tool": "exec_command",
+    "planned": "03",
+    "command": "$OutputEncoding=[Text.UTF8Encoding]::new($false)\n$env:PYTHONIOENCODING='utf-8'\n@'\nimport pathlib, json, hashlib, subprocess, datetime, zipfile, tarfile, io, os, sys, re, ast, traceback, secrets\nimport yaml\nROOT=pathlib.Path(r'C:/Users/c0rpa/.codex/worktrees/f3f3/steps-framework')\nTR='workspace/2026/TFW_20260909-231654_TKL'\nTASK=ROOT/TR\nOUT=TASK/'evidence/r2-native'\nR=pathlib.Path(r'C:/Users/c0rpa/AppData/Local/Temp/TFW_TKL_NATIVE_01a09a0c/self-adoption-r2')\nPIN='98a250d28679f43741e97c48556eb1804d812411'\nCAND='a99ba6cd756a7db444f217aef4e5a0eb83faee51'\nBASE='ec91c56007c20cda79f740fec15c85e4af74d17c'\nPYTHON=r'E:/TEMP/pttc-phase-a-b9b5/venv/Scripts/python.exe'\nSTART='2026-09-13T20:28:59Z'\nDEADLINE='2026-09-13T20:58:59Z'\ndef now(): return datetime.datetime.now(datetime.timezone.utc)\ndef stamp(): return now().isoformat()\ndef sh(b): return hashlib.sha256(b).hexdigest()\ndef ident(b):\n return {'bytes':len(b),'sha256':sh(b),'raw_git_blob':hashlib.sha1(b'blob '+str(len(b)).encode()+b'\\0'+b).hexdigest(),'eol':{'CRLF':b.count(b'\\r\\n'),'LF':b.count(b'\\n'),'CR':b.count(b'\\r')-b.count(b'\\r\\n')}}\ndef dump(p,d):\n p.parent.mkdir(parents=True,exist_ok=True)\n p.write_bytes((json.dumps(d,ensure_ascii=False,indent=2)+'\\n').encode('utf-8'))\ndef js(p):return json.loads(p.read_text(encoding='utf-8'))\ndef time_guard():\n assert now()<datetime.datetime.fromisoformat(DEADLINE.replace('Z','+00:00')),'Elapsed native bound exhausted'\ndef git(*a):\n p=subprocess.run(['git','-c','core.longpaths=true','-c','core.autocrlf=false',*a],cwd=ROOT,capture_output=True)\n assert p.returncode==0,(a,p.returncode,p.stderr.decode('utf-8',errors='replace'))\n return p.stdout\ndef source_guard(staged=False):\n time_guard();p=js(TASK/'evidence/r2-checkpoint/09-source-pin-proposal.json')\n for row in p['sources']+p['authority_sources']:\n  b=git('show',row['commit']+':'+row['path'])\n  assert len(b)==row['bytes'] and sh(b)==row['sha256'],row['path']\n  if staged and row in p['sources']:\n   actual=(R/'.tfw/.upstream'/row['path']).read_bytes();assert actual==b,row['path']\n extra={}\n for rel in ['journal/20260914-012203__dispatch__37e0.md','evidence/coordinator-r2-pin/admission.json']:\n  b=git('show',PIN+':'+TR+'/'+rel);assert b==(TASK/rel).read_bytes();extra[rel]=ident(b)\n return {'source_rows':15,'authority_rows':7,'pin_commit':PIN,'dispatch_and_admission':extra}\ndef filemap(root):\n result={}\n for base,dirs,files in os.walk(root):\n  if pathlib.Path(base)==root:dirs[:]=[d for d in dirs if d!='.git']\n  for f in sorted(files):\n   p=pathlib.Path(base)/f;result[p.relative_to(root).as_posix()]=ident(p.read_bytes())\n return dict(sorted(result.items()))\ndef bounded_run(name,argv,env=None):\n started=stamp();cwd=R if R.is_dir() else ROOT;p=subprocess.run(argv,cwd=cwd,capture_output=True,env=env)\n (OUT/(name+'.stdout.raw')).write_bytes(p.stdout);(OUT/(name+'.stderr.raw')).write_bytes(p.stderr)\n d={'argv':argv,'cwd':str(cwd),'started_at':started,'finished_at':stamp(),'exit':p.returncode,'stdout_sha256':sh(p.stdout),'stderr_sha256':sh(p.stderr)}\n dump(OUT/(name+'.json'),d)\n assert p.returncode==0,(name,p.returncode,p.stderr[-1500:].decode('utf-8',errors='replace'))\n return d,p.stdout\ndef guard(expected):\n authority=source_guard(True);pres=js(OUT/'05-preservation.json')\n attachment=R/js(OUT/'05-placement.json')['attachment']\n assert (attachment/'preservation.json').read_bytes()==(OUT/'05-preservation.json').read_bytes()\n assert (attachment/'old-intended.zip').read_bytes()==(OUT/'05-old-intended.zip').read_bytes()\n before=js(OUT/'03-positive-map.json');states={}\n for path,row in before.items():\n  b=(R/path).read_bytes()\n  if path in pres['effects']:\n   pair=pres['effects'][path];h=sh(b)\n   assert h in [pair['old']['sha256'],pair['intended']['sha256']],('third value',path)\n   states[path]='intended' if h==pair['intended']['sha256'] else 'old'\n  else:assert ident(b)==row,('unrelated drift',path)\n for path,state in expected.items():assert states[path]==state,(path,state,states[path])\n return {'observed_at':stamp(),'source_authority':authority,'states':states,'unrelated_original_files':len(before)-4,'all_unrelated_exact':True,'preservation_sha256':sh((OUT/'05-preservation.json').read_bytes())}\ndef perform(seq,label,body):\n started=stamp();time_guard();OUT.mkdir(parents=True,exist_ok=True)\n dump(OUT/(f'op-{seq:02d}-start.json'),{'seq':seq,'tool':'exec_command','label':label,'started_at':started,'start_utc':START,'deadline_utc':DEADLINE})\n try:\n  value=body()\n  time_guard()\n  dump(OUT/(f'op-{seq:02d}.json'),{'seq':seq,'tool':'exec_command','label':label,'started_at':started,'finished_at':stamp(),'result':'completed','details':value})\n  print(json.dumps({'op':seq,'label':label,'completed_at':stamp(),'result':value},ensure_ascii=False),flush=True)\n except BaseException as exc:\n  dump(OUT/(f'op-{seq:02d}-failure.json'),{'seq':seq,'label':label,'failed_at':stamp(),'exception':type(exc).__name__,'message':str(exc),'traceback':traceback.format_exc(),'required_action':'STOP; no retry or further native effects; preserve and return'})\n  print(traceback.format_exc(),flush=True)\n  raise\n\nSEQ=3\n\ndef body():\n authority=source_guard()\n assert not R.exists(),'Selected native root already exists'\n admission=js(TASK/'evidence/coordinator-r2-pin/admission.json')\n fpath=TASK/'evidence/r2-checkpoint/06-native-feasibility.json'\n assert sh(fpath.read_bytes())==admission['prospective_positive_receiver']['feasibility_sha256']\n feasibility=js(fpath);rows=feasibility['positive_repository_files'];assert len(rows)==2317\n common=git('rev-parse','--path-format=absolute','--git-common-dir').decode().strip()\n commands=[]\n d,_=bounded_run('03-clone',['git','-c','core.longpaths=true','-c','core.autocrlf=false','clone','--no-checkout','--shared',common,str(R)]);commands.append(d)\n d,_=bounded_run('03-checkout',['git','-c','core.longpaths=true','-c','core.autocrlf=false','-C',str(R),'checkout','--detach',BASE]);commands.append(d)\n expected_paths={r['path'] for r in rows}\n prepared=filemap(R);extra=set(prepared)-expected_paths\n assert extra=={'.tfw/templates/knowledge_state.yaml'},extra\n for path in extra:\n  target=(R/path).resolve();assert target.is_relative_to(R.resolve());target.unlink()\n archives={}\n try:\n  for row in rows:\n   source=(TASK/'evidence/r2-checkpoint'/row['archive']).resolve()\n   if str(source) not in archives:archives[str(source)]=zipfile.ZipFile(source)\n   b=archives[str(source)].read(row['member'])\n   assert len(b)==row['bytes'] and sh(b)==row['sha256'],row['path']\n   target=(R/row['path']).resolve();assert target.is_relative_to(R.resolve())\n   target.parent.mkdir(parents=True,exist_ok=True);target.write_bytes(b)\n finally:\n  for z in archives.values():z.close()\n actual=filemap(R);assert set(actual)==expected_paths\n for row in rows:\n  assert actual[row['path']]['sha256']==row['sha256'] and actual[row['path']]['raw_git_blob']==row['raw_git_blob'] and actual[row['path']]['bytes']==row['bytes'] and actual[row['path']]['eol']==row['eol'],row['path']\n assert git('-C',str(R),'rev-parse','HEAD').decode().strip()==BASE\n dump(OUT/'03-positive-map.json',actual)\n dump(OUT/'01-clock.json',{'start_utc':START,'deadline_utc':DEADLINE,'deductions_seconds':0,'operation_ceiling':24,'planned':18,'first_tool':'clock__curr_time','second_tool':'send_message_to_thread','parent':'01a09974-6716-7cc0-9916-fd6d04c91481'})\n return {'source_authority':authority,'receiver':str(R),'positive_epoch':'6b0d5c748d51c55c7c22147799cdb70131c22049','repository_files':len(actual),'checkout_files':len(prepared),'hydration_file_writes':len(rows),'prepared_absence_deletions':sorted(extra),'excluded_prior_diagnostics':4718,'map_sha256':sh((OUT/'03-positive-map.json').read_bytes()),'commands':commands,'actual_R1_Z_receiver_untouched':True}\nperform(SEQ,'03 prepare exact positive repository',body)\n\n'@ | & 'E:/TEMP/pttc-phase-a-b9b5/venv/Scripts/python.exe' -",
+    "result": {
+      "chunk_id": "dbdf6c",
+      "wall_time_seconds": 10.0136507,
+      "session_id": 73913,
+      "original_token_count": 0,
+      "output": ""
+    }
+  },
+  {
+    "seq": 4,
+    "tool": "write_stdin",
+    "parent_operation": 3,
+    "result": {
+      "chunk_id": "5a5d9a",
+      "wall_time_seconds": 13.4055442,
+      "exit_code": 1,
+      "original_token_count": 137,
+      "output": "Traceback (most recent call last):\r\n  File \"<stdin>\", line 73, in perform\r\n  File \"<stdin>\", line 113, in body\r\nAssertionError: .tfw/update_receipts/knowledge-lifecycle/c3b0580ad155738e2db99b38577df3477fddafa0078fb5f4d256ce94d87b41cb/old-intended.zip\r\n\r\nTraceback (most recent call last):\r\n  File \"<stdin>\", line 118, in <module>\r\n  File \"<stdin>\", line 73, in perform\r\n  File \"<stdin>\", line 113, in body\r\nAssertionError: .tfw/update_receipts/knowledge-lifecycle/c3b0580ad155738e2db99b38577df3477fddafa0078fb5f4d256ce94d87b41cb/old-intended.zip\r\n"
+    }
+  },
+  {
+    "seq": 5,
+    "tool": "send_message_to_thread",
+    "result": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"threadId\":\"01a09974-6716-7cc0-9916-fd6d04c91481\"}"
+        }
+      ],
+      "isError": false
+    },
+    "kind": "stop_notification"
+  }
+]

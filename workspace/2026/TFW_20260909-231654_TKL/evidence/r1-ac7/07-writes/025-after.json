@@ -1,0 +1,22 @@
+{
+  "observed_at": "2026-09-13T18:24:56.159602+00:00",
+  "sequence": 25,
+  "path": ".tfw/compilable_contract.md",
+  "actual": {
+    "bytes": 8292,
+    "sha256": "7eeee2c32fd39fd19e2831a0387f9c4c46cabeeed8b6b698eb5783d00b85ac34",
+    "raw_git_blob": "32dd370071d9ad9edfd24cd91af34a992427cfa5",
+    "eol": {
+      "CRLF": 0,
+      "LF": 137,
+      "CR": 0
+    }
+  },
+  "equals_intended": true,
+  "immediate_source_authority": {
+    "source_identities": 122,
+    "authority_identities": 10,
+    "authority_batch_sha256": "0b47d6e18c8d425ce491f75f3d12311875fb9a88f9eca636e1d35fa2c050609e",
+    "attachment_sha256": "c3b0580ad155738e2db99b38577df3477fddafa0078fb5f4d256ce94d87b41cb"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "observed_at": "2026-09-13T18:25:53.486683+00:00",
+  "sequence": 53,
+  "path": "tools/README.md",
+  "actual": {
+    "bytes": 6859,
+    "sha256": "e422216c97a16b122c8038372d54bc292193c4bc0a932baba78b4c3ea338bc2b",
+    "raw_git_blob": "b59d62b761a2d65971a588de3536600ddd357a9a",
+    "eol": {
+      "CRLF": 0,
+      "LF": 92,
+      "CR": 0
+    }
+  },
+  "equals_intended": true,
+  "immediate_source_authority": {
+    "source_identities": 122,
+    "authority_identities": 10,
+    "authority_batch_sha256": "0b47d6e18c8d425ce491f75f3d12311875fb9a88f9eca636e1d35fa2c050609e",
+    "attachment_sha256": "c3b0580ad155738e2db99b38577df3477fddafa0078fb5f4d256ce94d87b41cb"
+  }
+}

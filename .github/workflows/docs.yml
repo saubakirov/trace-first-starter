@@ -25,10 +25,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
 
       - uses: actions/setup-python@v5
         with:
           python-version: '3.13'
+
+      - name: Check Git blob sizes across release history
+        run: python tools/check_git_blob_sizes.py release --candidate HEAD
 
       - name: Install dependencies
         run: pip install -r docs/requirements.txt

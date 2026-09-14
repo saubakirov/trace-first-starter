@@ -1,0 +1,89 @@
+{
+  "calls": [
+    {
+      "seq": 1,
+      "tool": "clock__curr_time",
+      "result": {
+        "current_time": "2026-09-13 20:28:59 UTC"
+      },
+      "start": "2026-09-13T20:28:59Z",
+      "deadline": "2026-09-13T20:58:59Z"
+    },
+    {
+      "seq": 2,
+      "tool": "send_message_to_thread",
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"threadId\":\"01a09974-6716-7cc0-9916-fd6d04c91481\"}"
+          }
+        ],
+        "isError": false
+      }
+    },
+    {
+      "seq": 3,
+      "tool": "exec_command",
+      "planned": "03",
+      "result": {
+        "chunk_id": "dbdf6c",
+        "wall_time_seconds": 10.0136507,
+        "session_id": 73913,
+        "original_token_count": 0,
+        "output": ""
+      }
+    },
+    {
+      "seq": 4,
+      "tool": "write_stdin",
+      "parent_operation": 3,
+      "result": {
+        "chunk_id": "5a5d9a",
+        "wall_time_seconds": 13.4055442,
+        "exit_code": 1,
+        "original_token_count": 137,
+        "output": "Traceback (most recent call last):\r\n  File \"<stdin>\", line 73, in perform\r\n  File \"<stdin>\", line 113, in body\r\nAssertionError: .tfw/update_receipts/knowledge-lifecycle/c3b0580ad155738e2db99b38577df3477fddafa0078fb5f4d256ce94d87b41cb/old-intended.zip\r\n\r\nTraceback (most recent call last):\r\n  File \"<stdin>\", line 118, in <module>\r\n  File \"<stdin>\", line 73, in perform\r\n  File \"<stdin>\", line 113, in body\r\nAssertionError: .tfw/update_receipts/knowledge-lifecycle/c3b0580ad155738e2db99b38577df3477fddafa0078fb5f4d256ce94d87b41cb/old-intended.zip\r\n"
+      }
+    },
+    {
+      "seq": 5,
+      "tool": "send_message_to_thread",
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"threadId\":\"01a09974-6716-7cc0-9916-fd6d04c91481\"}"
+          }
+        ],
+        "isError": false
+      },
+      "kind": "stop_notification"
+    },
+    {
+      "seq": 6,
+      "tool": "exec_command",
+      "kind": "stop_custody",
+      "result": {
+        "chunk_id": "8ca7c0",
+        "wall_time_seconds": 3.370155,
+        "exit_code": 0,
+        "original_token_count": 80,
+        "output": "{\r\n  \"seq\": 6,\r\n  \"sealed_at\": \"2026-09-13T20:31:31.471583+00:00\",\r\n  \"native_outcome\": \"STOPPED\",\r\n  \"partial_files\": 2317,\r\n  \"byte_Git_mismatches\": 0,\r\n  \"EOL_counter_differences\": 40,\r\n  \"no_target_effects\": true,\r\n  \"partial_archive_sha256\": \"7ac460d99dbf9c39ca51d969ae03292d6652d2b6584c227fe2e8d45d795b2f42\"\r\n}\r\n"
+      }
+    },
+    {
+      "seq": 7,
+      "tool": "exec_command",
+      "kind": "stopped_raw_commit_transport_failure",
+      "result": {
+        "error": "CreateProcess rejected: Failed to create unified exec process: The filename or extension is too long. (os error 206)",
+        "process_created": false
+      },
+      "effect": "No script execution; stopped native result unchanged. Remaining calls only preserve and close stopped custody."
+    }
+  ],
+  "current_invocation": 8,
+  "current_kind": "Minimal stopped task-custody seal and commit only",
+  "scope": "No receiver access/write, no native retry. Operation7 was rejected before process creation. Preparation command is fully retained in06-invocations-through-stop.json; compact metadata avoids recursive command embedding."
+}

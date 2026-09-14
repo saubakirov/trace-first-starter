@@ -1,0 +1,20 @@
+{
+  "init-clean": {
+    "entries": 168,
+    "hash_mismatches": [],
+    "missing": [],
+    "extra": [],
+    "bundle_verify_exit": 0,
+    "bundle_verify_stdout": "The bundle contains these 6 refs:\nb3987f86d41285ea810daf92a6de9e17db08d78f refs/heads/codex/tkl-init-coordinator\n94c6046aada9116a2f93529c0b88c57a955db279 refs/heads/codex/tkl-init-researcher\n0dfcd394b5ff18cc1d7729065a1f0fda9a49c47c refs/heads/codex/tkl-init-reviewer\nb3987f86d41285ea810daf92a6de9e17db08d78f HEAD\n94c6046aada9116a2f93529c0b88c57a955db279 worktrees/researcher/HEAD\n0dfcd394b5ff18cc1d7729065a1f0fda9a49c47c worktrees/reviewer/HEAD\nThe bundle records a complete history.\nThe bundle uses this hash algorithm: sha1\n",
+    "bundle_verify_stderr": "C:/Users/c0rpa/.codex/worktrees/f3f3/steps-framework/workspace/2026/TFW_20260909-231654_TKL/evidence/final-inputs/ac7/init-clean.bundle is okay\n"
+  },
+  "adoption-established": {
+    "entries": 366,
+    "hash_mismatches": [],
+    "missing": [],
+    "extra": [],
+    "bundle_verify_exit": 0,
+    "bundle_verify_stdout": "The bundle contains these 2 refs:\n7eb171c457d1f15d64f698d0f163969a11b5ff38 refs/heads/codex/tkl-adoption-established\n7eb171c457d1f15d64f698d0f163969a11b5ff38 HEAD\nThe bundle records a complete history.\nThe bundle uses this hash algorithm: sha1\n",
+    "bundle_verify_stderr": "C:/Users/c0rpa/.codex/worktrees/f3f3/steps-framework/workspace/2026/TFW_20260909-231654_TKL/evidence/final-inputs/ac7/adoption-established.bundle is okay\n"
+  }
+}

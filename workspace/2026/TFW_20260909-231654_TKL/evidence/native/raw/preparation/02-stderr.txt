@@ -1,0 +1,2 @@
+From C:\Users\c0rpa\.codex\worktrees\f3f3\steps-framework
+ * branch            27cdb701b91c5b45b9f54b3e98c9ad67635b3e30 -> FETCH_HEAD

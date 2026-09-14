@@ -1,0 +1,30 @@
+{
+  "clock": "2026-09-13T22:39:30+05:00",
+  "from": "RF",
+  "to": "ONB",
+  "event": "journal/20260913-223930__handoff__ed64.md",
+  "event_kind": "handoff per canonical handoff Phase1; no forbidden state-pair fields on nontransition event",
+  "permitted_transition_pair_validated_separately": true,
+  "complete_status_errors": [],
+  "complete_event_errors": [],
+  "principal": "robert",
+  "accountable_human": "saubakirov",
+  "authority": "HL-TFW_20260909-231654_TKL.md",
+  "authority_sha256": "cb1e21259e6fa8263aa21d3f56facf73a0f5c932cbc8faf8ae692de63157e6f8",
+  "refs_before_write": {
+    "status.md": "f4c514f6d42cdd08a1e8d304e882308ae142e41dd852430dd28620181c51012c",
+    "ONB__TFW_20260909-231654_TKL.md": "6d631d9e6b35aba81aeb9f8f11456d6e42ad403b26169f7891e02d61c3e87a83",
+    "TS__TFW_20260909-231654_TKL.md": "6929b45c6ec0908933a2d7e9088707dd317c56a1089895cac9fc31a1b3f8c48c",
+    "REVIEW__TFW_20260909-231654_TKL.md": "3be376c8edc3fa28369034b65adc669a446fe98276ef7fa37a043327d841857a",
+    "journal/20260913-223311__dispatch__8019.md": "b441199318b15198b65b8f3bbd52f06e8a6fdb08db7a30d155818fbc940c3dbc",
+    "journal/20260913-222750__dispatch__a7a8.md": "0c91116ea0b5372eba7b4562dd2768d8d14f4dd6cd208b51d5395fb020dc8e6a",
+    "review/evidence-clarification-20260913.md": "37c717c05e8f68ad7a2c0541c8f22a3e817b3cb98bb8c5a50efe3b43cf8fa4fe"
+  },
+  "status_written_at": "2026-09-13T17:39:30.273132+00:00",
+  "event_written_at": "2026-09-13T17:39:30.281179+00:00",
+  "status_sha256": "0554a74d01f7593cd33485b5ef4b0c8c41ef81614e36768909da4609345a7127",
+  "event_sha256": "cf1dbbb84257e7710612a139e4ba82c043f75310ebc0a5508adfb9ecd7d5a3f9",
+  "no_terminal_outcome": true,
+  "old_events_untouched": true,
+  "bound": "8019 R1 AC8 only through checkpoint; no self-adoption-r1 preparation or clock"
+}

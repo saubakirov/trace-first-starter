@@ -1,0 +1,33 @@
+{
+  "producer": "robert",
+  "unit": "01a09a0c-c9e2-7d01-af4e-64931af967ed",
+  "parent": "01a09974-6716-7cc0-9916-fd6d04c91481",
+  "operation": "Attributed no-ff capture composition before checks, RF and EV, per dispatch 6e83",
+  "prior_head": "3971b80cb6422e358c613a52dde3a2d0cca257ab",
+  "capture_checkpoint": "0a775eb3999d0a194c12045f61c282842c7f3b86",
+  "started": "2026-09-14T00:02:27.742768+00:00",
+  "argv": [
+    "git",
+    "-c",
+    "core.longpaths=true",
+    "-c",
+    "core.autocrlf=false",
+    "merge",
+    "--no-ff",
+    "--no-edit",
+    "0a775eb3999d0a194c12045f61c282842c7f3b86",
+    "-m",
+    "[codex/TFW_20260909-231654_TKL/phase-a/executor] Compose Coordinator capture before final-effect checks"
+  ],
+  "exit_code": 0,
+  "stdout": "Merge made by the 'ort' strategy.\n KNOWLEDGE.md                                       |   2 +\n .../REVIEW__TFW_20260909-231654_TKL__rev4.md       | 246 ++++++++++++++++++++\n .../evidence/coordinator-r3-return/admission.json  | 168 ++++++++++++++\n .../journal/20260914-040632__dispatch__c92b.md     |  43 ++++\n .../journal/20260914-043622__transition__3029.md   |  30 +++\n .../journal/20260914-045719__dispatch__6e83.md     |  24 ++\n .../TFW_20260909-231654_TKL/review/rev4/judge.md   |  91 ++++++++\n .../TFW_20260909-231654_TKL/review/rev4/map.md     |  69 ++++++\n .../TFW_20260909-231654_TKL/review/rev4/verify.md  | 252 +++++++++++++++++++++\n workspace/2026/TFW_20260909-231654_TKL/status.md   |   4 +-\n 10 files changed, 927 insertions(+), 2 deletions(-)\n create mode 100644 workspace/2026/TFW_20260909-231654_TKL/REVIEW__TFW_20260909-231654_TKL__rev4.md\n create mode 100644 workspace/2026/TFW_20260909-231654_TKL/evidence/coordinator-r3-return/admission.json\n create mode 100644 workspace/2026/TFW_20260909-231654_TKL/journal/20260914-040632__dispatch__c92b.md\n create mode 100644 workspace/2026/TFW_20260909-231654_TKL/journal/20260914-043622__transition__3029.md\n create mode 100644 workspace/2026/TFW_20260909-231654_TKL/journal/20260914-045719__dispatch__6e83.md\n create mode 100644 workspace/2026/TFW_20260909-231654_TKL/review/rev4/judge.md\n create mode 100644 workspace/2026/TFW_20260909-231654_TKL/review/rev4/map.md\n create mode 100644 workspace/2026/TFW_20260909-231654_TKL/review/rev4/verify.md\n",
+  "stderr": "",
+  "finished": "2026-09-14T00:02:28.083932+00:00",
+  "candidate": "a6c48949c2cec3443c914fb57a74be6dcd66d274",
+  "parents": [
+    "3971b80cb6422e358c613a52dde3a2d0cca257ab",
+    "0a775eb3999d0a194c12045f61c282842c7f3b86"
+  ],
+  "status_after": "",
+  "tool_chunk": "9e5ff3"
+}

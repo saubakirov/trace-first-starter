@@ -1,0 +1,147 @@
+{
+  "started_at": "2026-09-13T12:01:38.460337+00:00",
+  "authored_at": "2026-09-13T12:03:03.669453+00:00",
+  "sealed_at": "2026-09-13T12:03:04.044224+00:00",
+  "commit": "0b7772bbd19ee1ddb2f8987651eace5ab31b66a2",
+  "original_blobs": {
+    "workspace/2026/TFW_20260909-231654_TKL/evidence/coordinator-source-2.md": {
+      "blob": "e83310c9c28e4a750f6a1d0e21164118845accc3",
+      "sha256": "ddaf4cf96f7c7df01b62f8c1219fe84f8785c90b146dd240645677f31ac961b2",
+      "bytes": 3703
+    },
+    "knowledge/records/TKL-NATIVE-COORD-2.md": {
+      "blob": "328e00ae548b144d986ce2c8ea92e67d0a827586",
+      "sha256": "c56557cbb06cf1acbf5d5f99b430f69f9723084aea8f257d446b1c933c0f7b6b",
+      "bytes": 3418
+    }
+  },
+  "no_sibling_source_or_record_read": true,
+  "commands": [
+    {
+      "argv": [
+        "rg",
+        "-n",
+        "-F",
+        "TKL-NATIVE-COORD-2",
+        "knowledge/records"
+      ],
+      "started_at": "2026-09-13T12:03:03.559123+00:00",
+      "finished_at": "2026-09-13T12:03:03.669108+00:00",
+      "exit": 1,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "-c",
+        "core.longpaths=true",
+        "hash-object",
+        "-w",
+        "--",
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/coordinator-source-2.md"
+      ],
+      "started_at": "2026-09-13T12:03:03.670259+00:00",
+      "finished_at": "2026-09-13T12:03:03.710204+00:00",
+      "exit": 0,
+      "stdout": "e83310c9c28e4a750f6a1d0e21164118845accc3\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "-c",
+        "core.longpaths=true",
+        "diff",
+        "--check"
+      ],
+      "started_at": "2026-09-13T12:03:03.710833+00:00",
+      "finished_at": "2026-09-13T12:03:03.779173+00:00",
+      "exit": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "-c",
+        "core.longpaths=true",
+        "add",
+        "--",
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/coordinator-source-2.md",
+        "knowledge/records/TKL-NATIVE-COORD-2.md"
+      ],
+      "started_at": "2026-09-13T12:03:03.779190+00:00",
+      "finished_at": "2026-09-13T12:03:03.830686+00:00",
+      "exit": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "-c",
+        "core.longpaths=true",
+        "commit",
+        "-m",
+        "[robert] Seal second native Coordinator observation"
+      ],
+      "started_at": "2026-09-13T12:03:03.830701+00:00",
+      "finished_at": "2026-09-13T12:03:04.008821+00:00",
+      "exit": 0,
+      "stdout": "[codex/tkl-native-coordinator-2 0b7772b] [robert] Seal second native Coordinator observation\n 2 files changed, 88 insertions(+)\n create mode 100644 knowledge/records/TKL-NATIVE-COORD-2.md\n create mode 100644 workspace/2026/TFW_20260909-231654_TKL/evidence/coordinator-source-2.md\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "rev-parse",
+        "HEAD"
+      ],
+      "started_at": "2026-09-13T12:03:04.008839+00:00",
+      "finished_at": "2026-09-13T12:03:04.044206+00:00",
+      "exit": 0,
+      "stdout": "0b7772bbd19ee1ddb2f8987651eace5ab31b66a2\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "rev-parse",
+        "0b7772bbd19ee1ddb2f8987651eace5ab31b66a2:workspace/2026/TFW_20260909-231654_TKL/evidence/coordinator-source-2.md"
+      ],
+      "started_at": "2026-09-13T12:03:04.044229+00:00",
+      "finished_at": "2026-09-13T12:03:04.082590+00:00",
+      "exit": 0,
+      "stdout": "e83310c9c28e4a750f6a1d0e21164118845accc3\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "rev-parse",
+        "0b7772bbd19ee1ddb2f8987651eace5ab31b66a2:knowledge/records/TKL-NATIVE-COORD-2.md"
+      ],
+      "started_at": "2026-09-13T12:03:04.089563+00:00",
+      "finished_at": "2026-09-13T12:03:04.131167+00:00",
+      "exit": 0,
+      "stdout": "328e00ae548b144d986ce2c8ea92e67d0a827586\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "-c",
+        "core.longpaths=true",
+        "status",
+        "--porcelain"
+      ],
+      "started_at": "2026-09-13T12:03:04.138676+00:00",
+      "finished_at": "2026-09-13T12:03:04.225953+00:00",
+      "exit": 0,
+      "stdout": "",
+      "stderr": ""
+    }
+  ],
+  "bound": "second and final attempt; actual work interval only; no artificial wait; same shared input origin; no acceptance"
+}

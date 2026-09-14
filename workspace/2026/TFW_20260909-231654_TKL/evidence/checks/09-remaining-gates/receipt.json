@@ -1,0 +1,31 @@
+{
+  "argv": [
+    "E:/TEMP/pttc-phase-a-b9b5/venv/Scripts/python.exe",
+    "-m",
+    "pytest",
+    "docs/scripts/test_runtime_context.py",
+    "-q",
+    "-k",
+    "tkl_current_use_held or tkl_replay_and_independence"
+  ],
+  "cwd": "C:/Users/c0rpa/.codex/worktrees/f3f3/steps-framework",
+  "started": "2026-09-13T10:53:05.634696+00:00",
+  "finished": "2026-09-13T10:53:06.779027+00:00",
+  "seconds": 1.1443499000015436,
+  "exit_code": 0,
+  "start_head": "9543ad3b9504a691c457dc721e606cc1017e483d",
+  "capture_script_sha256": "4bc8ca93f21ec0e99048b7d4d693fd5ff5ed61be49cbc5782e870e6fda3e5221",
+  "head": "9543ad3b9504a691c457dc721e606cc1017e483d",
+  "source_unchanged": true,
+  "source_archive_sha256": "0844fed4af116b41080a448ecea04e211f872c71abf6803b4c14f0052130e758",
+  "streams": {
+    "stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "stdout.txt": {
+      "bytes": 117,
+      "sha256": "7aa30614f05d7e6796142505e9e8eb879c51b699065a3a7c10f83cc86ea59f7d"
+    }
+  }
+}

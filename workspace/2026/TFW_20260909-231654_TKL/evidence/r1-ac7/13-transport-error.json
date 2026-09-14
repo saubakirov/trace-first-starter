@@ -1,0 +1,5 @@
+{
+  "observed_at": "2026-09-13T18:36:35.665579+00:00",
+  "raw_error": "functions.exec Script error: SyntaxError: Unexpected token '{'",
+  "effect": "JavaScript orchestration parse error before any tool/code execution; no receiver effect. The corrected call executed this one positive completion only."
+}

@@ -1,0 +1,363 @@
+{
+  "observed_at": "2026-09-13T16:02:05.127974+00:00",
+  "producer": "Executor 01a09a0c-c9e2-7d01-af4e-64931af967ed",
+  "scope": "Final documentary evidence validation only; no native rerun, suite/build or independent acceptance",
+  "baseline": "ec91c56007c20cda79f740fec15c85e4af74d17c",
+  "candidate": "27cdb701b91c5b45b9f54b3e98c9ad67635b3e30",
+  "pre_final_head": "2a09956cffac6979dd90f63c6435c521d1fb38bc",
+  "product_and_assurance_equal_candidate": true,
+  "identity_checks": {
+    "workspace/2026/TFW_20260909-231654_TKL/TS__TFW_20260909-231654_TKL.md": {
+      "raw_sha256": "6929b45c6ec0908933a2d7e9088707dd317c56a1089895cac9fc31a1b3f8c48c",
+      "git_blob": "f69fd4099a21a07ae2d17e6b5108b04ac94f107e",
+      "unchanged": true
+    },
+    "workspace/2026/TFW_20260909-231654_TKL/HL-TFW_20260909-231654_TKL.md": {
+      "raw_sha256": "cb1e21259e6fa8263aa21d3f56facf73a0f5c932cbc8faf8ae692de63157e6f8",
+      "git_blob": "c2e14bfebaac53495eb32772d381bfdc93f51e41",
+      "unchanged": true
+    },
+    "workspace/2026/TFW_20260909-231654_TKL/status.md": {
+      "raw_sha256": "f4c514f6d42cdd08a1e8d304e882308ae142e41dd852430dd28620181c51012c",
+      "git_blob": "ee7a4ed0c983d215ee3f120fd190003884a0c267",
+      "unchanged": true
+    },
+    "workspace/2026/TFW_20260909-231654_TKL/journal/20260913-165524__transition__7108.md": {
+      "raw_sha256": "a03c1a75fe63903055c0c7153f9cc8aea6a179549bb3c0cd7c306b85fd87a627",
+      "git_blob": "1c07a29fe1e3a2aceab921666eb6c54759d53678",
+      "unchanged": true
+    }
+  },
+  "accounting_commands_reproduced": [
+    {
+      "name": "value-name-status",
+      "argv": [
+        "git",
+        "diff",
+        "--name-status",
+        "--find-renames=50%",
+        "-z",
+        "ec91c56007c20cda79f740fec15c85e4af74d17c",
+        "27cdb701b91c5b45b9f54b3e98c9ad67635b3e30",
+        "--",
+        ".tfw/conventions.md",
+        ".tfw/glossary.md",
+        ".tfw/compilable_contract.md",
+        ".tfw/project_config.yaml",
+        ".tfw/templates/project_config.yaml",
+        ".tfw/quickstart.md",
+        ".tfw/templates/KNOWLEDGE.md",
+        ".tfw/templates/knowledge/topic.md",
+        ".tfw/templates/knowledge_state.yaml",
+        ".tfw/templates/knowledge/record.md",
+        ".tfw/templates/knowledge/handover.md",
+        ".tfw/templates/HL.md",
+        ".tfw/templates/ONB.md",
+        ".tfw/templates/RF.md",
+        ".tfw/templates/RES.md",
+        ".tfw/templates/REVIEW.md",
+        ".tfw/templates/review/verify.md",
+        ".tfw/workflows/plan.md",
+        ".tfw/workflows/research/base.md",
+        ".tfw/workflows/handoff.md",
+        ".tfw/workflows/review.md",
+        ".tfw/workflows/resume.md",
+        ".tfw/workflows/docs.md",
+        ".tfw/workflows/knowledge.md",
+        ".tfw/workflows/init.md",
+        ".tfw/workflows/update.md",
+        ".tfw/workflows/config.md",
+        ".agents/workflows/tfw-plan.md",
+        ".claude/commands/tfw-plan.md",
+        ".agents/workflows/tfw-research.md",
+        ".claude/commands/tfw-research.md",
+        ".agents/workflows/tfw-handoff.md",
+        ".claude/commands/tfw-handoff.md",
+        ".agents/workflows/tfw-review.md",
+        ".claude/commands/tfw-review.md",
+        ".agents/workflows/tfw-resume.md",
+        ".claude/commands/tfw-resume.md",
+        ".agents/workflows/tfw-docs.md",
+        ".claude/commands/tfw-docs.md",
+        ".agents/workflows/tfw-knowledge.md",
+        ".claude/commands/tfw-knowledge.md",
+        ".agents/workflows/tfw-init.md",
+        ".claude/commands/tfw-init.md",
+        ".agents/workflows/tfw-update.md",
+        ".claude/commands/tfw-update.md",
+        ".agents/workflows/tfw-config.md",
+        ".claude/commands/tfw-config.md",
+        ".tfw/adapters/codex/skills/tfw-docs/SKILL.md",
+        ".agents/skills/tfw-docs/SKILL.md",
+        ".tfw/adapters/codex/skills/tfw-knowledge/SKILL.md",
+        ".agents/skills/tfw-knowledge/SKILL.md",
+        ".tfw/migrations/knowledge-lifecycle.md",
+        "KNOWLEDGE.md",
+        "knowledge/records/TKL-20260913-01.md",
+        "tools/tfw_state.py",
+        "tools/tfw_doctor.py",
+        "tools/README.md",
+        "docs/scripts/gen_docs.py"
+      ],
+      "exit": 0,
+      "bytes": 1793,
+      "sha256": "b0f9d3f781caa5717a017a2b92838fd78b8108bf88f1883ba4a89daa3b1a8f3a"
+    },
+    {
+      "name": "value-numstat",
+      "argv": [
+        "git",
+        "diff",
+        "--numstat",
+        "--find-renames=50%",
+        "-z",
+        "ec91c56007c20cda79f740fec15c85e4af74d17c",
+        "27cdb701b91c5b45b9f54b3e98c9ad67635b3e30",
+        "--",
+        ".tfw/conventions.md",
+        ".tfw/glossary.md",
+        ".tfw/compilable_contract.md",
+        ".tfw/project_config.yaml",
+        ".tfw/templates/project_config.yaml",
+        ".tfw/quickstart.md",
+        ".tfw/templates/KNOWLEDGE.md",
+        ".tfw/templates/knowledge/topic.md",
+        ".tfw/templates/knowledge_state.yaml",
+        ".tfw/templates/knowledge/record.md",
+        ".tfw/templates/knowledge/handover.md",
+        ".tfw/templates/HL.md",
+        ".tfw/templates/ONB.md",
+        ".tfw/templates/RF.md",
+        ".tfw/templates/RES.md",
+        ".tfw/templates/REVIEW.md",
+        ".tfw/templates/review/verify.md",
+        ".tfw/workflows/plan.md",
+        ".tfw/workflows/research/base.md",
+        ".tfw/workflows/handoff.md",
+        ".tfw/workflows/review.md",
+        ".tfw/workflows/resume.md",
+        ".tfw/workflows/docs.md",
+        ".tfw/workflows/knowledge.md",
+        ".tfw/workflows/init.md",
+        ".tfw/workflows/update.md",
+        ".tfw/workflows/config.md",
+        ".agents/workflows/tfw-plan.md",
+        ".claude/commands/tfw-plan.md",
+        ".agents/workflows/tfw-research.md",
+        ".claude/commands/tfw-research.md",
+        ".agents/workflows/tfw-handoff.md",
+        ".claude/commands/tfw-handoff.md",
+        ".agents/workflows/tfw-review.md",
+        ".claude/commands/tfw-review.md",
+        ".agents/workflows/tfw-resume.md",
+        ".claude/commands/tfw-resume.md",
+        ".agents/workflows/tfw-docs.md",
+        ".claude/commands/tfw-docs.md",
+        ".agents/workflows/tfw-knowledge.md",
+        ".claude/commands/tfw-knowledge.md",
+        ".agents/workflows/tfw-init.md",
+        ".claude/commands/tfw-init.md",
+        ".agents/workflows/tfw-update.md",
+        ".claude/commands/tfw-update.md",
+        ".agents/workflows/tfw-config.md",
+        ".claude/commands/tfw-config.md",
+        ".tfw/adapters/codex/skills/tfw-docs/SKILL.md",
+        ".agents/skills/tfw-docs/SKILL.md",
+        ".tfw/adapters/codex/skills/tfw-knowledge/SKILL.md",
+        ".agents/skills/tfw-knowledge/SKILL.md",
+        ".tfw/migrations/knowledge-lifecycle.md",
+        "KNOWLEDGE.md",
+        "knowledge/records/TKL-20260913-01.md",
+        "tools/tfw_state.py",
+        "tools/tfw_doctor.py",
+        "tools/README.md",
+        "docs/scripts/gen_docs.py"
+      ],
+      "exit": 0,
+      "bytes": 1958,
+      "sha256": "375872084a1dcf0c1211e20962b968acd3dafe7243724c963e2623380bfd5031"
+    },
+    {
+      "name": "all-name-status",
+      "argv": [
+        "git",
+        "diff",
+        "--name-status",
+        "--find-renames=50%",
+        "-z",
+        "ec91c56007c20cda79f740fec15c85e4af74d17c",
+        "27cdb701b91c5b45b9f54b3e98c9ad67635b3e30",
+        "--"
+      ],
+      "exit": 0,
+      "bytes": 3770,
+      "sha256": "f16282b773e2cc679a211cae4dcc82d24f6beba9cc28b5efa270adb069054956"
+    }
+  ],
+  "accounting_and_original_q3_and_ac10_preparation_unchanged": true,
+  "original_adoption_report_prefix_retained": true,
+  "exact_imported_source_blobs": [
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/final-inputs/ac7/adoption-established-raw.zip",
+      "sha256": "fcc5013db14befe91757d88d336bbd4f90f02699642dbfa6551ccae3f60031b3",
+      "matches_original_blob": true
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/final-inputs/ac7/adoption-established.bundle",
+      "sha256": "005384a0c27116de712d397465386744442c8329a4de71c026f0ca9c50b9af35",
+      "matches_original_blob": true
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/final-inputs/ac7/custody.json",
+      "sha256": "8ef3a9f986dd08167384b5f1f92e5b77d9494b15582ae49ba724018173e6fc04",
+      "matches_original_blob": true
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/final-inputs/ac7/init-clean-raw.zip",
+      "sha256": "ed8960a4699160d994d86c2ff11666d5d6d9c4430db9234e01279a87dcf998c8",
+      "matches_original_blob": true
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/final-inputs/ac7/init-clean.bundle",
+      "sha256": "cffa6152bf849ca1cfabde64fb5549db0861ceb2005d431309bbe1bfa8968e8a",
+      "matches_original_blob": true
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/final-inputs/ac10-original/00-admission-observer.json",
+      "sha256": "227b42d6d80591f9042b778e7e9549af9ff7d8114ad029599cf612e510f708ed",
+      "matches_original_blob": true
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/final-inputs/ac10-original/01-predispatch.json",
+      "sha256": "247bf9225af14bc0f5062e8163074c9e422b6dfe11d1b07ea76e8e5ec59e8bc2",
+      "matches_original_blob": true
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/final-inputs/ac10-original/02-first-answer.txt",
+      "sha256": "1fd3dd800a6c79e3842f8a47da7937ee236d673437b4d0c50fba1bb34af67cff",
+      "matches_original_blob": true
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/final-inputs/ac10-original/03-visible-tool-trail.json",
+      "sha256": "8b46267e30f33ada283c3bacbbdf0fda02cbe6410dfca0c0cb158d1454d609c6",
+      "matches_original_blob": true
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/final-inputs/ac10-original/04-original-turn-clock.json",
+      "sha256": "23c4794e770dc103aafd4af7640d1e6364868969e84336c0bd6391c01e279827",
+      "matches_original_blob": true
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/final-inputs/ac10-original/05-original-custody.json",
+      "sha256": "bbf92f70cfefab9821bd0bd8dc1aecf3c8e609abfe7245443abcec8c6c5c26aa",
+      "matches_original_blob": true
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/final-inputs/ac10-original/capture-first.py",
+      "sha256": "3fa7addd02fd45913af591224e5722b85fb00ace9e02cdd913aa878e7bc7fc4d",
+      "matches_original_blob": true
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/final-inputs/ac10-later/06-operation-and-preservation-check.json",
+      "sha256": "dde7ef42167c57ec83a6409fc9dd3afd5388f3d352bbdf2e63d383b77b25a731",
+      "matches_original_blob": true
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/final-inputs/authority/20260913-204259__dispatch__5ebc.md",
+      "sha256": "ed62802e42d1b0713ebc7a5866c1cf9c1e0510c7b95f9b5941e819608c49a4a7",
+      "matches_original_blob": true
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/final-inputs/authority/20260913-192247__dispatch__e5a1.md",
+      "sha256": "4322b23ffe0dfa670c26168e2eeca4183e3b7f64f0f42079f5c370d932daa336",
+      "matches_original_blob": true
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/final-inputs/authority/20260913-154545__dispatch__0173.md",
+      "sha256": "b56471d27bf2b1c45b73d6116446607a9f19df4e5662aa4ffa057227b4a863fe",
+      "matches_original_blob": true
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/final-inputs/ac10-earlier-normalized/00-admission-observer.json",
+      "sha256": "a04ba3c0357dc467e83277321b674d0a6b213805de27646502003b8fdd49f30b",
+      "matches_original_blob": true
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/final-inputs/ac10-earlier-normalized/01-predispatch.json",
+      "sha256": "4804eac33bd1a1ef1d32684adb5695afe80ed05718379475ab0325b6ddc14166",
+      "matches_original_blob": true
+    }
+  ],
+  "archive_check": "archive-verification.json",
+  "AC10_mechanical_check": "ac10-executor-intake.json",
+  "AC9_scope_check": "ac9-supplied-context-search.json",
+  "report_sections_1_to_9": true,
+  "evidence_rows": 12,
+  "accounting_rows": 1,
+  "status_counts": {
+    "VERIFIED": 6,
+    "BLOCKED": 6
+  },
+  "local_doc_links_checked": 83,
+  "unresolved_links": [],
+  "inventory_counts": {
+    "VALUE": 58,
+    "TRACE": 391,
+    "ASSURANCE": 7
+  },
+  "status": "RF unchanged; original transition preserved; no new event or outcome",
+  "authority": "ec5506d3f89bafc8de5337d0af22fd7975410448 / 5ebc",
+  "limits": [
+    "No independent AC10 scoring.",
+    "Q3 missing original reader map not repaired or declared sufficient.",
+    "Actual ordinary planning entry remains absent from supplied evidence.",
+    "Earlier actual build does not include final EV/RF/control prose; independent affected-output judgment remains.",
+    "Coordinator proposed new AC9 bound; proposal is not executed or authorized here."
+  ],
+  "changed_doc_sha256": {
+    "workspace/2026/TFW_20260909-231654_TKL/RF__TFW_20260909-231654_TKL.md": "6e25f547725c94c62eef8d486c6d75c88d0f97da38a9a581d03547f81c8aeae2",
+    "workspace/2026/TFW_20260909-231654_TKL/evidence/EV__TFW_20260909-231654_TKL.md": "ed8f14da89513dba07b6e559476a8fbe19148c79c758bce38f5c7f5cae7da465",
+    "workspace/2026/TFW_20260909-231654_TKL/evidence/adoption.md": "4aeedd07120c9e9317b16c73ec3620ef85aa7b9e99f9634d05777c36ef1aa09b",
+    "workspace/2026/TFW_20260909-231654_TKL/evidence/fresh-consumer.md": "c383800ddda5c21ee402f82c36e1baf43e294fd9be3c551b2a4bd310158a9f31"
+  },
+  "inventory_sha256": "1d748645b1e561246fe062a3f0f47e5e23675aacd43072897098a4c9afed2fba",
+  "staged_path_set_equals_inventory": true,
+  "staged_whitespace_checks": [
+    {
+      "name": "raw-evidence-aware",
+      "argv": [
+        "git",
+        "-c",
+        "core.longpaths=true",
+        "-c",
+        "core.whitespace=cr-at-eol",
+        "diff",
+        "--cached",
+        "--check"
+      ],
+      "exit": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "name": "authored-prose",
+      "argv": [
+        "git",
+        "-c",
+        "core.longpaths=true",
+        "diff",
+        "--cached",
+        "--check",
+        "--",
+        "workspace/2026/TFW_20260909-231654_TKL/RF__TFW_20260909-231654_TKL.md",
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/EV__TFW_20260909-231654_TKL.md",
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/adoption.md",
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/fresh-consumer.md"
+      ],
+      "exit": 0,
+      "stdout": "",
+      "stderr": ""
+    }
+  ],
+  "raw_preservation_policy": "Exact imported raw bytes retained; CR-at-EOL explicitly allowed for archival evidence, authored prose separately checked."
+}

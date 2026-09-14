@@ -1,0 +1,203 @@
+{
+  "started": "2026-09-13T12:01:17.745315+00:00",
+  "finished": "2026-09-13T12:03:21.566429+00:00",
+  "unit": "01a09a0c-c9e2-7d01-af4e-64931af967ed",
+  "base": "e00ca51d05f4e451441cb9fc267579a7f9e4d4ce",
+  "commit": "48df07bde3cb924e4f6357c002113f2a7b54c0aa",
+  "files": {
+    "workspace/2026/TFW_20260909-231654_TKL/evidence/executor-handover-2.md": {
+      "git_blob": "dc598d9671beb4028080fd97e93f8a09be252e24",
+      "sha256": "86a03d1620b8640ecc918c43e63d99e148e41bebdad02fcf8a7207159e35724c",
+      "bytes": 3409
+    },
+    "knowledge/records/TKL-NATIVE-EXEC-2.md": {
+      "git_blob": "2f72dd6972b1ae8e786e05f3fd9e53a8d06036c0",
+      "sha256": "5c58124f61ebba2c425927f01e199ea7afdf34c2b508812394613b1c7d21c9f9",
+      "bytes": 3465
+    }
+  },
+  "sibling_current_output_read_before_seal": false,
+  "prior_first_epoch_exposure_disclosed": true,
+  "acceptance": "absent",
+  "commands": [
+    {
+      "argv": [
+        "git",
+        "-c",
+        "core.longpaths=true",
+        "rev-parse",
+        "HEAD"
+      ],
+      "started": "2026-09-13T12:03:20.841215+00:00",
+      "finished": "2026-09-13T12:03:20.880856+00:00",
+      "exit_code": 0,
+      "stdout": "e00ca51d05f4e451441cb9fc267579a7f9e4d4ce\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "-c",
+        "core.longpaths=true",
+        "status",
+        "--porcelain"
+      ],
+      "started": "2026-09-13T12:03:20.880877+00:00",
+      "finished": "2026-09-13T12:03:20.960542+00:00",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "-c",
+        "core.longpaths=true",
+        "hash-object",
+        "--path=workspace/2026/TFW_20260909-231654_TKL/evidence/executor-handover-2.md",
+        "C:\\Users\\c0rpa\\AppData\\Local\\Temp\\TFW_TKL_NATIVE_01a09a0c\\overlap-2\\executor\\workspace\\2026\\TFW_20260909-231654_TKL\\evidence\\executor-handover-2.md"
+      ],
+      "started": "2026-09-13T12:03:20.961459+00:00",
+      "finished": "2026-09-13T12:03:20.997302+00:00",
+      "exit_code": 0,
+      "stdout": "dc598d9671beb4028080fd97e93f8a09be252e24\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "-c",
+        "core.longpaths=true",
+        "add",
+        "--",
+        "C:\\Users\\c0rpa\\AppData\\Local\\Temp\\TFW_TKL_NATIVE_01a09a0c\\overlap-2\\executor\\workspace\\2026\\TFW_20260909-231654_TKL\\evidence\\executor-handover-2.md",
+        "C:\\Users\\c0rpa\\AppData\\Local\\Temp\\TFW_TKL_NATIVE_01a09a0c\\overlap-2\\executor\\knowledge\\records\\TKL-NATIVE-EXEC-2.md"
+      ],
+      "started": "2026-09-13T12:03:20.998314+00:00",
+      "finished": "2026-09-13T12:03:21.055520+00:00",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "-c",
+        "core.longpaths=true",
+        "diff",
+        "--cached",
+        "--name-only",
+        "-z"
+      ],
+      "started": "2026-09-13T12:03:21.055538+00:00",
+      "finished": "2026-09-13T12:03:21.096687+00:00",
+      "exit_code": 0,
+      "stdout": "knowledge/records/TKL-NATIVE-EXEC-2.md\u0000workspace/2026/TFW_20260909-231654_TKL/evidence/executor-handover-2.md\u0000",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "-c",
+        "core.longpaths=true",
+        "diff",
+        "--cached",
+        "--check"
+      ],
+      "started": "2026-09-13T12:03:21.096713+00:00",
+      "finished": "2026-09-13T12:03:21.141986+00:00",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "-c",
+        "core.longpaths=true",
+        "commit",
+        "--only",
+        "-m",
+        "[codex/TFW_20260909-231654_TKL/assurance/executor] seal second independent Q1 source",
+        "--",
+        "C:\\Users\\c0rpa\\AppData\\Local\\Temp\\TFW_TKL_NATIVE_01a09a0c\\overlap-2\\executor\\workspace\\2026\\TFW_20260909-231654_TKL\\evidence\\executor-handover-2.md",
+        "C:\\Users\\c0rpa\\AppData\\Local\\Temp\\TFW_TKL_NATIVE_01a09a0c\\overlap-2\\executor\\knowledge\\records\\TKL-NATIVE-EXEC-2.md"
+      ],
+      "started": "2026-09-13T12:03:21.142007+00:00",
+      "finished": "2026-09-13T12:03:21.356676+00:00",
+      "exit_code": 0,
+      "stdout": "[codex/tkl-native-executor-2 48df07b] [codex/TFW_20260909-231654_TKL/assurance/executor] seal second independent Q1 source\n 2 files changed, 84 insertions(+)\n create mode 100644 knowledge/records/TKL-NATIVE-EXEC-2.md\n create mode 100644 workspace/2026/TFW_20260909-231654_TKL/evidence/executor-handover-2.md\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "-c",
+        "core.longpaths=true",
+        "rev-parse",
+        "HEAD"
+      ],
+      "started": "2026-09-13T12:03:21.356693+00:00",
+      "finished": "2026-09-13T12:03:21.389469+00:00",
+      "exit_code": 0,
+      "stdout": "48df07bde3cb924e4f6357c002113f2a7b54c0aa\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "-c",
+        "core.longpaths=true",
+        "rev-parse",
+        "48df07bde3cb924e4f6357c002113f2a7b54c0aa:workspace/2026/TFW_20260909-231654_TKL/evidence/executor-handover-2.md"
+      ],
+      "started": "2026-09-13T12:03:21.395474+00:00",
+      "finished": "2026-09-13T12:03:21.432678+00:00",
+      "exit_code": 0,
+      "stdout": "dc598d9671beb4028080fd97e93f8a09be252e24\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "-c",
+        "core.longpaths=true",
+        "show",
+        "dc598d9671beb4028080fd97e93f8a09be252e24"
+      ],
+      "started": "2026-09-13T12:03:21.432694+00:00",
+      "finished": "2026-09-13T12:03:21.475802+00:00",
+      "exit_code": 0,
+      "stdout": "# Actual Executor handover \u2014 Q1 overlap-2\n\nProducer: robert, Executor `01a09a0c-c9e2-7d01-af4e-64931af967ed`, for saubakirov.\nOwning task/checkpoint: TFW_20260909-231654_TKL, same-holder second bounded native attempt.\nActual operation began `2026-09-13T12:01:17.745315+00:00`; this source is authored `2026-09-13T12:03:20.841199+00:00`.\nBase: `e00ca51d05f4e451441cb9fc267579a7f9e4d4ce`; Candidate `27cdb701b91c5b45b9f54b3e98c9ad67635b3e30`.\nWorktree: overlap-2/executor; branch codex/tkl-native-executor-2.\n\n## Inspected material and source boundary\n\nI read the exact common and Executor prepared inputs, Candidate record form, and conventions\nKnowledge handover / Knowledge qualification in this fresh worktree. Actual read hashes/times and\nincoming lookup are preserved in my 02-own-reads capture. The 22-file input package is the unchanged\ne00 base. Current assignment explicitly places my source and record at their -2 names; it does not\nsilently rewrite the original input documents or change their substantive claims.\n\nMy observed technical finding is that a producer's available source and its completed disposition\nare separate obligations. The inspected rule requires a real source, scope and acceptance authority\nfor promotion; recording an observation alone supplies none. Distinct files preserve separate\nproducer context, while their actual semantic overlap still needs inspection after integration.\nThis return captures my own present reading and work; it does not attest the Coordinator's new output.\n\n## Actual role context and limitations\n\nThis same Executor prepared the fresh separate worktrees and verified exact inputs and absence of\nall four future outputs before the explicit barrier. I sent my actual start clock immediately and\ncontinued bounded read/authorship; no sibling result was read and no wait was inserted to stretch\nthis writing interval. Actual finish/commit will be recorded after sealing, not predicted here.\n\nI participated in the first sequential Q1 and later read both first originals. That prior exposure\nis disclosed: this is not a globally unprimed first trial. Those first source/record bytes and the\nzero-overlap result remain unchanged. Current sibling source/record is still unseen by me.\nThe underlying Candidate rule is shared input, so an equivalent reading is not independent\ncorroboration of a real-world fact. No human preference or acceptance is manufactured.\n\nFor only the prepared scope `Q1 sample decision / review mode`, my unchanged own input proposes\n`mode-alpha`. This unsupported assertion has no accepted human origin. Its possible conflict remains\nfor actual post-seal comparison and the existing authorized resolver, not a winner chosen by time.\n\n## Continuation and authority\n\nLEAD `f70037d94c975fe889eaab9bf17ee18e26608137` and the direct Coordinator explicit barrier authorize\nonly this second attempt under the same grant. Direct recipient remains Coordinator\n`01a09974-6716-7cc0-9916-fd6d04c91481`. This isolated checkpoint has no new native ONB/RF carrier;\nthis source is its minimal fallback, leaving the real initial RF and first source intact.\nSeal this original and observed record, return metadata only until both seals exist, then Coordinator\nowns integration and measured-overlap assessment. No new accepted record, third attempt, global\nstate write, recovery operation, AC7/AC10 result or implementation acceptance is claimed.\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "-c",
+        "core.longpaths=true",
+        "rev-parse",
+        "48df07bde3cb924e4f6357c002113f2a7b54c0aa:knowledge/records/TKL-NATIVE-EXEC-2.md"
+      ],
+      "started": "2026-09-13T12:03:21.483197+00:00",
+      "finished": "2026-09-13T12:03:21.523124+00:00",
+      "exit_code": 0,
+      "stdout": "2f72dd6972b1ae8e786e05f3fd9e53a8d06036c0\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "-c",
+        "core.longpaths=true",
+        "show",
+        "2f72dd6972b1ae8e786e05f3fd9e53a8d06036c0"
+      ],
+      "started": "2026-09-13T12:03:21.523143+00:00",
+      "finished": "2026-09-13T12:03:21.565602+00:00",
+      "exit_code": 0,
+      "stdout": "# Knowledge record \u2014 TKL-NATIVE-EXEC-2: source and disposition in the second bounded observation\n\n**Observed ASSURANCE only. Neither this record nor its prepared assertion is accepted project knowledge.**\n\n| Field | Value |\n|---|---|\n| Record identity | TKL-NATIVE-EXEC-2, locally allocated solely for the permitted second attempt |\n| Publication intent | Preserve this actual second Executor checkpoint and its source/disposition finding without replacing the first source or accepting new knowledge |\n| Kind | technical-reference observation |\n| Statement | The inspected rule separates preserving available source from completing its authority-bound disposition; separate contribution files still require semantic assessment after integration. |\n| Applicability | Only this actual Executor reading and authorship on Candidate 27cdb701b91c5b45b9f54b3e98c9ad67635b3e30 and base e00ca51d05f4e451441cb9fc267579a7f9e4d4ce in overlap-2 |\n| Grounds and uncertainty | Own source blob `dc598d9671beb4028080fd97e93f8a09be252e24`, exact Candidate form/conventions and own read capture; current sibling output unread and actual overlap unknown until both measured intervals exist |\n| Disposition | observed, not accepted |\n| Source | `workspace/2026/TFW_20260909-231654_TKL/evidence/executor-handover-2.md`, Git blob `dc598d9671beb4028080fd97e93f8a09be252e24`, Inspected material / Actual role context; bounded source epoch `2026-09-13T12:03:20.841199+00:00` |\n| Originating task and unit | TFW_20260909-231654_TKL, Q1 overlap-2; actual Executor 01a09a0c-c9e2-7d01-af4e-64931af967ed |\n| Producer | robert, same actual Executor unit, independently authoring this own return |\n| Qualifier | No acceptance qualifier has acted; existing Coordinator later assesses the bounded evidence and relation context only |\n| Acceptance authority | Explicitly absent for new project knowledge; LEAD f70037d94c975fe889eaab9bf17ee18e26608137 permits observed assurance writes, not acceptance |\n| Completed effect or missing decision | Own source and record authored for sealing; exact current commit/finish and later integrated overlap remain measured subsequent acts |\n| Relations | Incoming search for this exact new ID / mode-alpha in fresh knowledge/records returned no matches before creation. Current sibling source is unread. First Q1 originals remain preserved history, not overwritten or silently superseded. |\n\n## Source context and independence\n\nPrior first-epoch exposure is explicitly disclosed in my source. This is an independently authored\nsecond actual return from the same holder, not another independent origin for the shared Candidate\nrule and not fresh-to-design evidence. The prepared mode-alpha assertion applies only to the same\nQ1 sample review-mode scope, lacks grounds/acceptance and remains unresolved if another claim overlaps.\nNo current sibling claim is guessed or accepted. Presence and publication time carry no authority.\n\n## Current use, retry and return\n\nInspect exact scope/source/disposition and incoming relations before dependent use. The source's\nactual context is preserved at its Git object; accepted effect P from the separate historical SLC\ncase is not this observation. A changed intent must not silently replace it or manufacture another\naccepted identity. Return only sealed metadata to the actual Coordinator; after both originals exist,\nit owns integrated comparison and the real overlap calculation. Neither holder accepts either record.\n",
+      "stderr": ""
+    }
+  ]
+}

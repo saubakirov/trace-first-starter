@@ -1,0 +1,99 @@
+{
+  "admitted_at": "2026-09-13T15:37:15.522474+00:00",
+  "deadline": "2026-09-13T15:57:15.522474+00:00",
+  "source_unit": "01a09974-6716-7cc0-9916-fd6d04c91481",
+  "parent_lead": "01a08161-79d3-7472-a01e-8cdc957ee951",
+  "destination_unit": "01a0995f-6132-7c92-86d3-c5388827a8cd",
+  "host": "local",
+  "channel": "native send_message_to_thread",
+  "prep_commit": "2a09956cffac6979dd90f63c6435c521d1fb38bc",
+  "manifest_sha256": "6edb07da4ed72cd710a12a60b487e8b9becf9cc79b73ed9eb26b0e5515690be1",
+  "oracle_sha256": "cd02c756695e0cd251980a02c32e2b97ca277fbff2cd55c34417c027545a69eb",
+  "question_sha256": "30c3e54ac9e50d24ed8aefc2a7b4b514bc6ecfa4fdf7ed8e81d2c041466ad7e4",
+  "input_files": {
+    "KNOWLEDGE.md": {
+      "bytes": 2938,
+      "sha256": "09c6cfba5e259652613f897a00bc650bdeda010ea654715875a29cc84112cdbe"
+    },
+    "incoming/message-033.md": {
+      "bytes": 796,
+      "sha256": "739c189ad1254837e98957c12a9cc1d3910077859a2ddc4381a3acffe3e5e80c"
+    },
+    "knowledge/presentation.md": {
+      "bytes": 795,
+      "sha256": "d5045c9375b153cd960bcef3d8ff77ce9a56a5ce76e0a6a0a43102b22cf64bb9"
+    },
+    "knowledge/records/CEDAR-17.md": {
+      "bytes": 2498,
+      "sha256": "4ecf36dc1790e907e7aac44b9df6658cb8ba1741dff1b70328d768478970fcbc"
+    },
+    "knowledge/records/CEDAR-21.md": {
+      "bytes": 2429,
+      "sha256": "bb1affe7aa96006e5cb51a0fa1a0dbbd0c87b7321bb0f4a41aba05f714a68b5e"
+    },
+    "knowledge/records/CEDAR-28.md": {
+      "bytes": 2214,
+      "sha256": "74a35ef7482b45d0c194aa2683b6fb3f3b417b84d962003afaa0f5384bc22fe7"
+    },
+    "knowledge/records/CEDAR-29.md": {
+      "bytes": 2193,
+      "sha256": "8d6fb7c3a409cfda67fb7c1a20f20e9d4d8bc786f16cad7553534c96c291b8fb"
+    },
+    "legacy/decisions.md": {
+      "bytes": 868,
+      "sha256": "631e10deb4f50597daa353053c73dc2bc9f99bc28ba5a548c8fb556aac211b7b"
+    },
+    "sources/charter.md": {
+      "bytes": 1287,
+      "sha256": "7866f5afa5d49b06e3f284413b4812b7f013ae94f41cbd1e9adb1610bb5f2f14"
+    },
+    "sources/session-014.md": {
+      "bytes": 974,
+      "sha256": "409f2b844214da79956e15ebe390c5685f668918687cc82bd5869cc3daf72606"
+    },
+    "sources/session-027.md": {
+      "bytes": 849,
+      "sha256": "5874277795f712a336f5d89389bde31d6f2aea80c39abd631d426f0598ccad8a"
+    },
+    "sources/session-032.md": {
+      "bytes": 1050,
+      "sha256": "17628ef20c544c18b44b9b5ee807bd76c9a29b475bfb881a1339d7872c1f15c0"
+    }
+  },
+  "source": {
+    "commit": "27cdb701b91c5b45b9f54b3e98c9ad67635b3e30",
+    "path": ".tfw/conventions.md",
+    "git_blob": "ab5504f898e972fc02d3827665070cbede9cf60c",
+    "git_bytes_sha256": "fb05c43570cf65b512e620c97633d0115daa8b733e9649e4a3c426e566b8cf21",
+    "heading": "Current knowledge use",
+    "quoted_excerpt_sha256": "dbb71aff6ef14ca734e1d15555fcb043f6b0c674bed29b5fc14db8cfc554f03b",
+    "quote_verbatim": true
+  },
+  "consumer_root": "C:\\Users\\c0rpa\\AppData\\Local\\Temp\\TFW_TKL_NATIVE_01a09a0c\\ac10\\consumer",
+  "entry": "KNOWLEDGE.md",
+  "question": "Using the current knowledge in this fixture, prepare a decision note for two Cedar work items as of 2026-09-13: an Orion motion preview and an Orion static catalogue proof. What export format and filename convention should each use, which motion-preview background is settled, and is the publication step mentioned in the received material authorized? Cite the relevant records and underlying sources, and name any specific decision still needed. Return only the note; perform no action.",
+  "limits": {
+    "elapsed_seconds": 1200,
+    "read_list_search_calls": 24,
+    "attempts": 1,
+    "no": [
+      "web",
+      "index service",
+      "helper",
+      "install",
+      "write",
+      "external action",
+      "second answer",
+      "repair trial"
+    ]
+  },
+  "prior_exposure": "Same Researcher has C3, FC-2A and actual init research exposure; no fixture/oracle/question/answer-path exposure supplied before this dispatch. Exact preexisting task log probes also found no exact question/root/CEDAR17 path/oracle hash; bounded check, not universal memory proof.",
+  "session_prefix": {
+    "path": "C:\\Users\\c0rpa\\.codex\\sessions\\2026\\09\\13\\rollout-2026-09-13T11-06-00-01a0995f-6132-7c92-86d3-c5388827a8cd.jsonl",
+    "bytes": 9840028,
+    "sha256": "575163d408d78227e4b07f6a7db077d54c33a796bcd2802846dd2edad88f269c",
+    "next_ordinal": 1523
+  },
+  "containment_limit": "Instruction scope, not demonstrated OS/network containment; actual tool/output audit and no broader reliability claim.",
+  "custody_rule": "Seal unchanged first native answer/tool trail/times and input hashes before independent scoring; no hidden reasoning or unrelated prior history."
+}

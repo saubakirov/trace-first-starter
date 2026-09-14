@@ -1,0 +1,11 @@
+{
+  "observed_at": "2026-09-13T11:54:56.885211+00:00",
+  "original_error": "AssertionError at stdin line25, acceptance marker test, after physical full carrier/event/ref and product assertions; no cut or repair had started",
+  "diagnostic_error": "First read-only diagnostic mistyped acceptance SHA (omitted one character), git exit128; no files written",
+  "exact_source_restored_from_existing_cases": "99198f133c0047568c1e8411bfae849239b352b1",
+  "unicode_marker_using_codepoint_present": true,
+  "ascii_C2_heading_present": true,
+  "preflight_receipt_exists": false,
+  "cut_exists": false,
+  "status": "Preserved inspection failures; diagnosis only; physical carrier repair has not started"
+}

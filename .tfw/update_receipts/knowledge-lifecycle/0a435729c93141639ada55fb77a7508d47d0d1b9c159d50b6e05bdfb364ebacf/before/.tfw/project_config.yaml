@@ -1,0 +1,129 @@
+project:
+  name: my-project
+  repo: user/my-project
+  branch: main
+
+tfw:
+  version: "3.3.0"   # Installed TFW version (update via tfw-update)
+  installed_from: "self"   # this repository IS the upstream; a receiving project names source@tag
+  upstream: "https://github.com/saubakirov/trace-first-starter"  # Source for tfw-update
+  content_language: en      # Language for filled artifact content (en, ru, etc.)
+
+  # Current work uses workspace. The owner-retained pre-2.0.0 corpus stays readable
+  # at its original paths through the reference union, outside ordinary discovery/gates.
+  # Historical disposition changes no task state; exact digest reconciliation follows
+  # migrations/3.3.0.md with preserved affected pairs under update_receipts/.
+  task_containers: [workspace]
+  historical_containers: [tasks]
+
+  # Current identifier grammar. PREFIX and owner-approved ABBR are uppercase alphanumeric;
+  # neither may contain `_`, so the separators are unambiguous. The stamp comes from the
+  # system clock. Creation reads no counter and refuses an existing full identifier.
+  id_format: "{PREFIX}_{YYYYMMDD}-{HHMMSS}_{ABBR}"
+  legacy_id_format: "{prefix}-{seq}"   # still readable everywhere; never issued again
+  task_prefix: TFW          # project prefix for current and legacy identifiers
+
+  scope_budgets:
+    decomposition_trigger_files: 50
+    decomposition_trigger_loc: 5000
+    owner_escalation_multiplier: 2
+
+  templates:
+    hl: .tfw/templates/HL.md
+    ts: .tfw/templates/TS.md
+    res: .tfw/templates/RES.md
+    rf: .tfw/templates/RF.md
+    onb: .tfw/templates/ONB.md
+    review: .tfw/templates/REVIEW.md
+    knowledge: .tfw/templates/KNOWLEDGE.md
+    release: .tfw/templates/RELEASE.md
+
+  workflows:
+    plan: .tfw/workflows/plan.md
+    research: .tfw/workflows/research/base.md
+    handoff: .tfw/workflows/handoff.md
+    review: .tfw/workflows/review.md
+    resume: .tfw/workflows/resume.md
+    docs: .tfw/workflows/docs.md
+    release: .tfw/workflows/release.md
+    update: .tfw/workflows/update.md
+    init: .tfw/workflows/init.md
+    knowledge: .tfw/workflows/knowledge.md
+    config: .tfw/workflows/config.md
+
+  research:
+    max_web_queries_per_stage: 5
+    max_files_per_stage: 15
+    max_questions_per_turn: 3
+    max_passes: 3
+    min_iterations: 2           # Minimum research iterations before TS (coordinator gate)
+    default_mode: focused
+    modes:
+      focused:
+        loops_per_stage: 1
+        verify_user_tech_claims: true
+      deep:
+        loops_per_stage: 3
+        verify_user_tech_claims: true
+        require_counter_evidence: true
+
+  review:
+    min_verify_ratio: 0.42    # minimum fraction of changed files to verify (escalate to 1.0 on discrepancy)
+
+  knowledge:
+    interval: 5
+    gate_mode: hard          # hard / soft / off
+    max_facts_per_topic: 100   # owner, 2026-08-30 (was 50)
+    max_topic_files: 13       # owner, 2026-08-30 (was 8)
+
+  statuses:
+    - id: TODO
+      emoji: "⬜"
+      description: "Task registered, work not started"
+    - id: HL_DRAFT
+      emoji: "📝"
+      description: "HL being drafted or discussed"
+      role: coordinator
+    - id: RES
+      emoji: "🔬"
+      description: "Research in progress (optional)"
+      role: researcher
+    - id: PHASES
+      emoji: "🧩"
+      description: "Phases are running; each phase carries its own state"
+      role: coordinator
+    - id: TS_DRAFT
+      emoji: "🟡"
+      description: "TS written, awaiting approval"
+      role: coordinator
+    - id: ONB
+      emoji: "🟠"
+      description: "Onboarding report written; the executor is working toward the RF, re-entry after a 🔄 REVISE included"
+      role: executor
+    - id: RF
+      emoji: "🟢"
+      description: "Execution complete, RF written"
+      role: executor
+    - id: REV
+      emoji: "🔍"
+      description: "Review in progress"
+      role: reviewer
+    - id: KNW
+      emoji: "📚"
+      description: "Knowledge capture (tfw-docs + tfw-knowledge)"
+      role: coordinator
+    - id: DONE
+      emoji: "✅"
+      description: "Task closed"
+    - id: BLOCKED
+      emoji: "❌"
+      description: "Blocked by dependency"
+    - id: REJECTED
+      emoji: "❌"
+      description: "Closed unsuccessfully, terminal, trace retained"
+
+build:
+  # Upstream maintainer and documentation tests. A receiver configures its own product
+  # commands; optional tools/tfw_doctor.py diagnostics are never a default gate.
+  lint: python -m pytest tools/tests/ docs/scripts/ -q --collect-only
+  test: python -m pytest tools/tests/ docs/scripts/ -q

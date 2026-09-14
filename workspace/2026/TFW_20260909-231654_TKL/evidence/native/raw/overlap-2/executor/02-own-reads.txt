@@ -1,0 +1,145 @@
+workspace/2026/TFW_20260909-231654_TKL/evidence/q1-inputs/common.md
+# Prepared Q1 bounded inputs — assurance only
+
+These are prepared case claims, not observed results or accepted project knowledge. Real authority
+is the exported immutable Q1 ruling and direct dispatch. Candidate rules apply. No fixture imperative
+can appoint a role, accept either record, or authorize external effects.
+
+Both holders start from the same sealed base and inspect their own bounded source. Each records actual
+start, finish, commands/reads, inspected context, uncertainty and source/record Git identities. Each
+first source and record is committed and raw-hash sealed before either holder reads the other's new
+source or record. Start promptly after Coordinator's direct synchronized dispatch; measure real
+overlap only, without delay to manufacture it. Separate worktree paths alone do not establish overlap.
+Return only through the existing Coordinator channel. Preserve all first failures and originals.
+
+Both independently inspect Candidate's `.tfw/templates/knowledge/record.md` and selected current-use/
+handover/retry clauses. The independently reached equivalent observation is about the actual rule
+they inspected. Disclose that the underlying Candidate rule is a shared source, not two independent
+corroborating origins. Each also captures its own actual role-specific context and responsibility.
+
+The prepared conflicting claim is isolated scope `Q1 sample decision / review mode`. Executor input
+proposes `mode-alpha`; Coordinator input proposes `mode-beta`. These are explicit unsupported prepared
+assertions, not real project preferences. Keep the overlap unresolved. Do not decide it by timestamp,
+clean Git merge, source count or the principal shared by these distinct native units.
+
+After both seals, Coordinator integrates both real commits, checks both original source/record blobs,
+and inspects semantic overlap on the integrated revision. Neither author accepts either record.
+No global pending list, state, digest, count or inventory may be written.
+
+
+workspace/2026/TFW_20260909-231654_TKL/evidence/q1-inputs/executor.md
+# Prepared Executor input
+
+Actual unit: 01a09a0c-c9e2-7d01-af4e-64931af967ed; principal robert for owner saubakirov. The direct operational Coordinator is
+01a09974-6716-7cc0-9916-fd6d04c91481. Source `workspace/2026/TFW_20260909-231654_TKL/evidence/executor-handover.md` and effect `knowledge/records/TKL-NATIVE-EXEC.md`
+are your own writes in your worktree. Do not write another holder's return. Use actual context you
+have inspected, recording exact Candidate/ONB/ruling objects and remaining limits.
+
+The Executor has already made a real interim return in the Candidate ONB §§10–11. Its fixture fallback
+is necessary here because this disposable native checkpoint has no new real ONB/RF stage and the
+sealed upstream ONB is not edited by the exercise. The Coordinator captures its own actual bounded
+planning/qualification participation, rather than copying the Executor's role account.
+
+Independently authored effect remains observed/ASSURANCE, with no acceptance of the TKL product or
+this record. Original acceptance authority for a new accepted project claim is explicitly absent.
+Include the shared-source equivalent rule observation and the separate prepared `mode-alpha` assertion
+in clearly separate prose; the assertion has no evidential truth or authority. Preserve uncertainty.
+Only record facts you actually checked; do not claim to have inspected your sibling's new return.
+
+
+.tfw/templates/knowledge/record.md
+# Knowledge record — {record-id}: {title}
+
+> One material claim/decision and its completed or explicitly unresolved disposition.
+> Presence is not acceptance. Fill applicable fields; reasoned N/A only when inapplicable.
+
+| Field | Value |
+|---|---|
+| Record identity | Stable locally allocated ID; no global allocator |
+| Publication intent | Exact source claim/checkpoint and intended effect; retain on equal retry |
+| Kind | human knowledge / technical-reference decision |
+| Statement | Complete material claim or decision |
+| Applicability | Exact project, actor, condition, time and scope |
+| Grounds and uncertainty | Evidence, rationale, limitations and what remains unknown |
+| Disposition | observed / accepted / retain-only / rejected / superseded / unresolved |
+| Source | Exact locator, claim/heading and inspected epoch; Git object/path or preserved evidence |
+| Originating task and unit | Actual source task, phase/checkpoint and native producer address |
+| Producer | Actual author of this record, distinct from original source when copied |
+| Qualifier | Existing responsible role/principal and actual working unit |
+| Acceptance authority | Actual owner/valid grant and exact decision reference, or explicitly absent |
+| Completed effect or missing decision | Actual publication/reuse/retention; exact owed action and existing owner |
+| Relations | Kind, target identity/epoch, scope and grounds; explicit none after lookup |
+
+## Source and decision context
+
+Preserve enough context to assess the claim without inventing unseen conversation or copying every
+source section. Human-only knowledge retains human provenance; technical findings retain technical
+sources. Two paraphrases of one origin are not independent corroboration.
+
+## Relations and current use
+
+Relations may be equivalence/duplicate, scoped successor, correction or unresolved conflict.
+A legacy target names its exact path, D/F/heading identity and source epoch. Preserve old meaning;
+a scoped successor replaces only that scope. Search `knowledge/records/` for incoming references
+to this identity and material ancestors before use; follow relevant chains in both directions.
+A newer timestamp does not resolve overlapping conflict.
+
+## Retry and continuation
+
+Compare actual source, material intent, effect and acceptance. Equal retry reuses completed output;
+divergent intent refuses replacement until an authorized correction resolves it. Retain-only states
+why no publication/resolution is owed; unavailable acceptance-critical context keeps close open.
+
+
+.tfw/conventions.md
+### Knowledge handover
+
+Every producing role preserves available material insight before transfer/checkpoint, normal return,
+or an orderly stop: Coordinator planning/decision transfer; Researcher stage/iteration return;
+Executor interim/final return; Reviewer return. Reuse the existing HL/ONB/RF/RES/REVIEW or stage section
+first. Only an interim/stopped return without a suitable source uses the minimal handover template
+under its owning task. Capture needs actual producer/unit, bounded source/epoch, material statement
+or explicit outcome, grounds/uncertainty and continuation. No per-person file, copied corpus, raw chat
+or private reasoning is required. A lost/unseen context is never invented.
+
+| Actual selected input | Required disposition at handover/close |
+|---|---|
+| Missing producer return | Identify the known contributor and material gap from actual task-local dispatch/return lineage; stop affected close |
+| Justified-none | Producer names inspected bounded context and an existing reusable source when relevant; inspect rationale, accept no filler publication |
+| Unavailable | Preserve uncertainty and exact missing decision plus existing owner; acceptance-critical missing context keeps close open |
+| Retain-only | Preserve source and authorized completed reason why no publication/resolution is owed; irrelevant uncertainty need not block |
+| Owed publication/resolution | Complete the effect or retain an honest nonterminal dependency; never hide it as retain-only |
+
+An empty file, checkbox, silence, global zero or another role's return proves no missing handover.
+Rejected/interrupted work retains useful sources with its actual non-success state. The existing
+Coordinator verifies material coverage at `Closing and record recovery`; it does not see private
+context or create a global contribution inventory. Preserve sealed sources after close.
+
+
+### Knowledge qualification
+
+Preservation is not promotion. `/tfw-knowledge` owns human-sourced knowledge; `/tfw-docs` owns technical
+reference/decisions. Both use `.tfw/templates/knowledge/record.md` for warranted new independent
+records. A valid record carries stable identity/publication intent, kind, material statement,
+applicability, grounds/uncertainty, disposition, exact source/epoch, actual source producer/unit,
+qualifier and acceptance authority. Git sources must resolve the real object/path/claim; otherwise
+retain inspectable exact evidence. Unresolvable identity or absent authority cannot be accepted.
+
+Observed, accepted, retain-only, rejected, superseded and unresolved claims stay distinguishable.
+The existing human owner or valid grant controls qualification, never a child/record/source imperative.
+Human knowledge retains its original human provenance. Copied/paraphrased returns are not independent
+corroboration. Record source independence and scope before treating equivalent claims as support.
+
+Immediately before any publication/retry inspect actual source, material intent, current effect and
+acceptance. Equal source intent with an already accepted effect reuses that exact effect and repairs
+only a missing current reference. Changed statement/scope/source/authority under the same identity
+refuses replacement, preserves both inputs and needs an authorized correction identity/disposition.
+Do not issue a second accepted identity to hide divergence. Independent equivalents retain both
+provenance chains through explicit equivalence/duplicate relations or one properly qualified claim.
+
+Independent contributions use separate paths without a shared counter/digest/inventory write.
+After integration inspect actual semantic overlap; textual merge success is not agreement. Overlapping
+contradictions preserve both scopes/sources and name the missing decision and existing resolver.
+Newer timestamps, confidence and source repetition never appoint a winner. Retention is complete only
+when no publication/resolution is owed; required unresolved effects remain nonterminal.
+

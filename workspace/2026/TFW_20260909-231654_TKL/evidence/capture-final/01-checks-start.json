@@ -1,0 +1,22 @@
+{
+  "candidate": "a6c48949c2cec3443c914fb57a74be6dcd66d274",
+  "source_tree": "cfd168b4637aa7640ae24b4d5c532d33b1b4bd31",
+  "cwd": "C:\\Users\\c0rpa\\.codex\\worktrees\\f3f3\\steps-framework",
+  "argv": [
+    "E:\\TEMP\\pttc-phase-a-b9b5\\venv\\Scripts\\python.exe",
+    "-m",
+    "pytest",
+    "docs/scripts/test_gen_docs.py",
+    "docs/scripts/test_integration.py",
+    "-q",
+    "-rA"
+  ],
+  "site_dir": "E:\\TEMP\\TFW_TKL_CAPTURE_a6c48949_cfzs4axh\\site",
+  "env_overrides": {
+    "TFW_ASSURANCE_SITE_DIR": "E:\\TEMP\\TFW_TKL_CAPTURE_a6c48949_cfzs4axh\\site",
+    "TFW_ASSURANCE_BUILD_CAPTURE": "C:\\Users\\c0rpa\\.codex\\worktrees\\f3f3\\steps-framework\\workspace\\2026\\TFW_20260909-231654_TKL\\evidence\\capture-final\\02-build",
+    "PYTHONIOENCODING": "utf-8"
+  },
+  "started": "2026-09-14T00:03:06.290794+00:00",
+  "boundary": "Existing integration fixture is the sole MkDocs build; source at immutable Candidate; pending evidence JSON does not compile as a docs page."
+}

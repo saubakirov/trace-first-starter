@@ -1,0 +1,24 @@
+{
+  "clock_tool_value": "2026-09-13 19:57:56 UTC",
+  "event_time": "2026-09-14T00:57:56+05:00",
+  "status_written_at": "2026-09-13T19:58:53.214995+00:00",
+  "event_written_at": "2026-09-13T19:58:53.215362+00:00",
+  "event": "journal/20260914-005756__handoff__2383.md",
+  "from": "RF",
+  "to": "ONB",
+  "actual_kind": "handoff",
+  "status_before_sha256": "e3789fbf10ee0d929e55fa743b509250ae266b03395844ac51179964b49c5cf4",
+  "status_sha256": "8259d7b908a7b11550c3f882427de3afcca4c10a4e3382552d33b251e07bec17",
+  "event_sha256": "d35a7da1691cace5a4c21d4056dc347deca1a44e1e1a1bb283638b4495c159d6",
+  "schema_errors": [],
+  "refs_all_read": [
+    "status.md",
+    "ONB__TFW_20260909-231654_TKL.md",
+    "HL-TFW_20260909-231654_TKL.md",
+    "TS__TFW_20260909-231654_TKL.md",
+    "REVIEW__TFW_20260909-231654_TKL__rev2.md",
+    "journal/20260914-005021__dispatch__4491.md",
+    "evidence/r2-checkpoint/00-intake.json"
+  ],
+  "no_native_clock_or_preparation": true
+}

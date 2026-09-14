@@ -1,0 +1,24 @@
+{
+  "priorPath": "C:/Users/c0rpa/.codex/worktrees/b8ba/tkl-checked-landing",
+  "path": "C:/Users/c0rpa/AppData/Local/Temp/TFW_TKL_COORD_01a09974/checked-landing-r1",
+  "branch": "codex/tkl-checked-landing-r1",
+  "head": "e419cf2b61cfe53a1a8bcc6e056783f7f6e3ea15",
+  "observation": "Original clean integration directory disappeared and git worktree registration absent; cause unknown, not removed by this Coordinator. Branch and commits preserved; no uncommitted edits existed. Recreated same branch in new isolated Coordinator integration worktree. Not a native replay or master mutation. Executor final92a and original source b8 preserved; self-adoption-r1 still present.",
+  "reportedToLead": true,
+  "recorded_at": "2026-09-13T19:05:01.823028+00:00",
+  "representation": "Bounded observations transcribed from actual tool results; no raw filesystem event log or deletion cause is available.",
+  "first_error": "CreateProcess Rejected: Failed to create unified exec process: The directory name is invalid. (os error 267)",
+  "prior_absence_evidence_chunks": [
+    "c504d2",
+    "981ab9",
+    "7c2a6f"
+  ],
+  "restoration_evidence_chunk": "fb1699",
+  "restored_from_clean_unchanged_pin": true,
+  "preservation_basis": "Last Coordinator authoring commit e419cf2 was checked clean and its two raw files matched Git; subsequent Coordinator commands were read-only. No uncommitted Coordinator edit existed or was reconstructed. External unsaved state immediately before disappearance is not inferred.",
+  "lead_reply": "Same selected LEAD independently confirmed missing registration and retained e419cf2 ref, had no deletion source, and explicitly confirmed ordinary same-mandate recovery and immediate same-Reviewer routing. Source: direct native task message in this Coordinator task.",
+  "post_recovery_fast_forward": "92a78deee082521b1056ef38aa14d51d36a3b649",
+  "receiver_still_present_observed": true,
+  "native_clock_or_case_changed": false,
+  "dispatch_construction_error": "First JavaScript construction failed to parse before any tool/command/file write. This corrected construction creates the same single dispatch; no native case or product change."
+}

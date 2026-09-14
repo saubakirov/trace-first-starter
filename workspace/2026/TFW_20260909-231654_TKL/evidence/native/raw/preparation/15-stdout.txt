@@ -1,0 +1,287 @@
+# ONB — TFW_20260909-231654_TKL: Complete team knowledge lifecycle
+
+> **Date**: 2026-09-13
+> **Author**: robert, Executor native task `01a09a0c-c9e2-7d01-af4e-64931af967ed`, via codex, for saubakirov
+> **Status**: Pre-execution onboarding — Q1 evidence routing unresolved; task lifecycle remains TS_DRAFT
+> **Parent HL**: [Team Knowledge Lifecycle](HL-TFW_20260909-231654_TKL.md)
+> **TS**: [Exact approved single-phase TS](TS__TFW_20260909-231654_TKL.md)
+
+---
+
+## 1. Understanding
+
+Deliver the approved mixed C3 architecture: material producing-role handovers use existing sources or a necessary minimal fallback; authorized qualification preserves source identity, intent, scope and explicit dispositions; ordinary-file current use checks incoming relations across retained legacy knowledge and independent records; the existing PTTC Coordinator closes only after required handovers and accepted effects. Retire global knowledge counts, digest reconciliation, maintained inventories and source-marker authority without rewriting history. Preserve accepted SLC active/history and complete-link behavior, old meaning and source destinations. This is one task-root phase, with no new lifecycle, receiver runtime, service, retrospective or release work by this Executor.
+
+**Authority and identity.** Selected LEAD principal is `robert`, accountable human owner is `saubakirov`. LEAD native task is `01a08161-79d3-7472-a01e-8cdc957ee951`. My actual Executor address is `01a09a0c-c9e2-7d01-af4e-64931af967ed`; my sole direct operational Coordinator and routine return address is `01a09974-6716-7cc0-9916-fd6d04c91481`. A2 at re-freeze `e7cae39b9efd7d10a9e760cd77fc6a85ecd0e3cb` supersedes the earlier direct-root edge, preserving holders and scope. Governing post-A2 dispatch is `c04ab666df44920645964ba8871696e1b48502ac` / [b52d](journal/20260913-144357__dispatch__b52d.md), following [owner A2](journal/20260913-143811__amendment_escalated__bd51.md) and [Coordinator dispatch](journal/20260913-143956__dispatch__210b.md). Shared principal attribution grants no child amendment or acceptance authority. I accept only Executor authorship: ONB, approved implementation/ASSURANCE, Candidate, evidence/EV and RF. No sibling/helper contact, task creation, HL/TS/RES/REVIEW authorship, scope ruling, release/tag/push/publication or external receiver mutation.
+
+**Exact implementation order.** Owner approval `2794cbdb40f6c4f3a7d4bce1f8d4eb949d9e6913` / [approval event](journal/20260913-141400__handoff__8c2a.md) binds unchanged TS blob `f69fd4099a21a07ae2d17e6b5108b04ac94f107e`, Baseline `ec91c56007c20cda79f740fec15c85e4af74d17c`, 58 literal VALUE paths, +1,375/-1,199 = 2,574 touched text LOC. The 50-file soft prompt's one-phase disposition is owner-approved. The denominator never ratchets. Return before any new VALUE path, protected/frozen change, applicable planned-zero growth, forecast at or above 116 files or 5,148 LOC, material evidence/authority conflict, holder conflict or unavailable accepted dependency. Approved TS draft-era topology and pending-approval prose are historical; the actual approval and A2 control lineage govern, without an Executor TS edit.
+
+**Origin.** Architecture recommendation: `{principal: robert, unit: 01a0995f-6132-7c92-86d3-c5388827a8cd}`. Exact TS proposal: `{principal: robert, unit: 01a09974-6716-7cc0-9916-fd6d04c91481}`. A2: `{principal: saubakirov, unit: direct human owner channel}`. This ONB's Q1: `{principal: robert, unit: 01a09a0c-c9e2-7d01-af4e-64931af967ed}`. Forwarding changes none of these origins.
+
+**Checkout and entry.** Separate worktree `C:/Users/c0rpa/.codex/worktrees/f3f3/steps-framework`; Git common directory `D:/projects/research/steps-framework/.git`. Bootstrap was clean at `2794cbd`; the first dispatch was fast-forwarded to `694de983fd177c9294647848262cdb6062cfae9b`. The owner-routing pause occurred before ONB or implementation. On A2 continuation, clean status and empty staged names preceded non-destructive fast-forward to `c04ab666df44920645964ba8871696e1b48502ac`; the exact TS blob matched. All producer history remains reachable. No private preference file exists in this worktree. Native navigation title is `EXEC · TKL`.
+
+Autonomous implementation starts after the onboarding bound resolves. A blocker-free ONB consumes the existing explicit grant without another generic permission. Required targeted/full checks precede the first immutable Candidate; EV/RF follow Candidate. AC-10 preparation has its own measured ten-minute bound, exactly twelve Markdown payload files, a separate sealed oracle, neutral entry question, and Coordinator-only dispatch. Its first unmodified consumer answer remains a dependency; independent scoring belongs to Reviewer.
+
+## 2. Entry Points
+
+| Surface | Inspected facts and planned role |
+|---|---|
+| `.tfw/conventions.md`, glossary and role/stage templates | Existing task-local state/events, role locks, P0–P7, human-only knowledge purpose and finite PTTC close remain the owners; add proportionate handover/current-use requirements at their actual checkpoints. |
+| Ten canonical workflows and their installed whole copies; four thin docs/knowledge skill paths | Current plan invokes the global gate; docs writes shared D rows; knowledge scans digests and writes source markers. Replace those live responsibilities coherently and retain exact installed-copy parity. |
+| `tools/tfw_state.py`, `tools/tfw_doctor.py` | State's isolated Knowledge Gate section computes selected-section SHA digests and pending sets; doctor calls it. Retire that operation while preserving task/reference/container/status/event APIs. The old CLI invocation must report retirement without reading the corpus. |
+| `KNOWLEDGE.md`, new record/handover templates, `knowledge/records/TKL-20260913-01.md` | Preserve D rows, accepted topic meaning and useful reference/legacy links. The new architecture record attests the actual owner decision, never implementation or release acceptance. |
+| `docs/scripts/gen_docs.py`, compilable contract | `BASE_GLOB_SOURCES` currently selects `knowledge/*.md`; include nested records through ordinary source/path mapping. Preserve the accepted complete-span resolver, its precedence, reference union and collision behavior. |
+| Config/template, init/update, new pinned migration guide | Preserve actual project choices and inert state; enable readers/adapters before retiring live settings. Existing SLC incomplete connected groups retain their original exact-pair recovery route. Self-adoption uses immutable before-images and actual payload identities. |
+| Seven exact ASSURANCE homes in TS §4 | Add meaningful current-contract, replay, migration and navigation checks while retaining historical vectors and accepted SLC tests. Configured commands are `python -m pytest tools/tests/ docs/scripts/ -q --collect-only` and `python -m pytest tools/tests/ docs/scripts/ -q`; production MkDocs output must be opened for actual destination evidence. |
+
+SLC corrected RF C2 and independent terminal acceptance were read, including retained original native ordering/source deviations and site-only historical/raw-attachment limitations. Accepted SLC close `c51ee0c0d7891fd165d105f3565e0e54512c1040`, Candidate `433d9db62905e16786113af9bfe126a89c21b9a5`, and independent APPROVE `99198f133c0047568c1e8411bfae849239b352b1` are inherited through the exact Baseline. PTTC Phase B RF/native limitations and independent verdict confirm one existing close/recovery owner; those prior trials are dependency context, not new TKL evidence.
+
+## 3. Questions (blocking — cannot proceed without answers)
+
+| # | Question | Answer |
+|---|---|---|
+| Q1 | What recorded operational route supplies TS AC-1/2 actual distinct producer returns in an isolated receiver, AC-4 actual independent concurrent publication/integration, and AC-6 an actually independently accepted effect for carrier repair? This Executor cannot contact siblings/helpers or fabricate producer identity/acceptance; the current dispatch explicitly schedules only the Researcher's read-only AC-10 exercise. | Pending operational Coordinator. Direct native report sent on 2026-09-13 before product writes. Resolve through existing in-mandate holders with explicit bounded effects and preserve AC-10 fixture/oracle isolation; otherwise retain the exact evidence blocker. Modeled scenarios and inherited PTTC/FC-2A evidence cannot substitute for the required new native observations. |
+
+No architecture or VALUE amendment is proposed. The missing fact is an executable evidence-routing bound, not another generic start approval. No implementation, lifecycle transition, EV/RF or Candidate is asserted while Q1 is unresolved.
+
+## 4. Recommendations (suggestions, not blocking)
+
+1. Keep one compact record form and use exact path/heading links; avoid a new shorthand resolver or maintained record list. Qualifier and source identity must remain separately inspectable.
+2. Seal self-adoption's old config/entry/state bytes before affected changes; keep source-pinned clean receiver attempts and prepared cuts separate from any observed interruption.
+3. Preserve the first failed check and raw consumer answer unchanged. Batch independent local checks, then repeat only affected verification after a correction.
+
+## 5. Risks Found (edge cases, potential issues not in TS)
+
+1. No additional out-of-contract product risk found. The material native-evidence routing issue is Q1, not evidence of a product defect.
+2. Carrier identity needs byte-level disclosure on Windows: Git newline normalization can differ from captured raw SHA-256 bytes. Preserve raw streams/fixtures and identify which object each seal describes.
+3. New migration-guide source reachability does not imply a published guide page. Retain SLC's site-only limitation unless an authorized constituent changes that route; validate the TS's required five output families directly.
+
+## 6. Inconsistencies with Code (spec vs reality)
+
+1. Expected pre-implementation differences are present: live `tfw.knowledge` configuration, global digest/pending tooling, source-marker writes, and top-level-only knowledge compilation. They are the approved work, not unexpected scope growth.
+2. TS topology/pending-approval text predates owner approval and A2. Current committed control lineage resolves it; the immutable TS is not edited for this administrative change.
+3. The TS's native evidence requirements need the Q1 operational bound. A passing source/model suite alone cannot establish actual independent producer behavior or acceptance.
+
+## 7. Knowledge Citations
+
+| # | HL §7.2 ref | Read? | Applied / N/A | Notes |
+|---|---|---|---|---|
+| 1 | [North Star NS1](../../../.tfw/README.md#ns1) | Yes | Preserve purposeful continuation and inspectable grounds at handover and use. | No lossless-memory claim. |
+| 2 | [NS2/NS3](../../../.tfw/README.md#ns2), selected Trace and simplest complete form | Yes | Reuse existing sources, avoid raw chat/private reasoning, counters and compulsory services. | Fewer entities must preserve complete function. |
+| 3 | [Methodology values and success criteria](../../../.tfw/README.md#methodology-values) | Yes | Observable material checks and ordinary-file portability; later application is evidence beyond file existence. | No universal behavioral guarantee. |
+| 4 | [Philosophy](../../../knowledge/philosophy.md) F21/F32/F42/F43/F45 | Yes | Justified-none is explicit, semantic preservation governs simplification, checks name material gaps, every new artifact has a necessary job. | No filler facts or numeric gate replacement. |
+| 5 | [Architecture Decisions](../../../KNOWLEDGE.md#architecture-decisions) D37/D68/D82 | Yes | Preserve knowledge/reference purposes, task-local authority and no receiver runtime/cache obligation. | Old D meaning stays readable. |
+| 6 | D85/D86 in the same source | Yes | Source-pinned preservation and receipt stages; one existing Coordinator owns finite close/record recovery. | Independent final-effect acceptance stays separate. |
+| 7 | [HL Contract, Design Rules and Anti-patterns](../../../.tfw/conventions.md#hl-contract) | Yes | Exact scope before writes, bounded reads, real citations, existing role locks and independent verdict. | A2 supplies routing, no child grant. |
+| 8 | [Convention F23](../../../knowledge/convention.md) | Yes | English artifact semantics; Russian operational conversation. | Source quotations keep their language. |
+| 9 | [Process](../../../knowledge/process.md) F30/F37/F38/F49 | Yes | Put obligations at handover/use/close, avoid movable inventory counts, enforce authority prospectively; architecture research is already completed. | Only dated measurements enter evidence. |
+| 10 | [Constraint F16](../../../knowledge/constraint.md), [Stakeholder F6](../../../knowledge/stakeholder.md) | Yes | Upstream assurance can use tools; receivers need ordinary files. Existing autonomy removes repeated permission, not boundaries. | Q1 is a material evidence dependency. |
+| 11 | [Nygard ADRs](https://cognitect.com/blog/2011/11/15/documenting-architecture-decisions), [Microsoft event sourcing](https://learn.microsoft.com/en-us/azure/architecture/patterns/event-sourcing), [Git merge](https://git-scm.com/docs/git-merge) | Yes, cited primary pages accessed | Contextual decisions and retained sources inform records; textual merge does not select semantic truth. | Design context only; no event platform or global allocator. |
+| 12 | [Memory overview](https://docs.langchain.com/oss/python/concepts/memory), [Lost in the Middle](https://aclanthology.org/2024.tacl-1.9/) | Yes, cited primary pages accessed | Keep retrieval/currentness testing separate from storage claims and generalization. | No vendor dependency or imported performance claim. |
+| 13 | [SLC RF C2](../TFW_20260907-020729_SLC/RF__TFW_20260907-020729_SLC.md#11-correction-round-c2--exact-link-preservation), [independent REVIEW](../TFW_20260907-020729_SLC/REVIEW__TFW_20260907-020729_SLC.md#independent-c2-return-and-closure-boundary--2026-09-10), [3.3.0 guide](../../../.tfw/migrations/3.3.0.md) | Yes | Preserve accepted reference union, complete-link spans, historical bytes and expected-cut/later-state refusal. | Native source/ordering deviations and site-only limitations retained. |
+| 14 | [Iteration 2 RES](research/iter2/RES.md#native-evidence-and-applicability), [custody](journal/20260913-115102__handoff__a64e.md) | Yes | Prior first answer supports only its bounded eleven-file application. New AC-10 requires a fresh-to-fixture run and unchanged first output. | No broader unprimed/G8 claim. |
+| 15 | [RES D11–D12](research/iter2/RES.md#decisions), [PROV-DM](https://www.w3.org/TR/prov-dm/), [intent-bearing retries](https://aws.amazon.com/builders-library/making-retries-safe-with-idempotent-APIs/) | Yes, RES argument and primary pages accessed | Keep producer/source/qualifier distinct; compare real material intent and accepted effects on retry; preserve independent provenance and conflicts. | References confer no project authority. |
+
+No additional uncited Project Value item was needed. Conversation and available source context contain no new human-sourced Fact Candidate beyond the owner's preserved approval/A2 decisions in HL; this ONB preserves the actual evidence-routing question and continuation boundary without promoting it as project knowledge.
+
+## 8. Q1 prospective native evidence route
+
+**Preparation only, 2026-09-13.** The operational Coordinator accepted the dependency and requested this concrete plan. No receiver, branch, fixture, oracle or native act below has been created. The proposed root `C:/Users/c0rpa/AppData/Local/Temp/TFW_TKL_NATIVE_01a09a0c` was checked absent. Product and native mutation remain stopped until a recorded bounded dispatch resolves Q1. This plan supplies no PASS or new role permission.
+
+### 8.1 Exact proposed surfaces and holders
+
+| Target relative to the proposed absolute root | Purpose and mutation owner |
+|---|---|
+| `concurrent-repo/` | Disposable standalone Git receiver, prepared from the actual tested TKL Candidate after it exists; Executor prepares declared fixture inputs and immutable base, never claims a future Candidate SHA now. |
+| `executor/`, branch `codex/tkl-native-executor` | Separate worktree of that receiver. Only actual Executor `01a09a0c-c9e2-7d01-af4e-64931af967ed` writes its bounded source/effect evidence. |
+| `coordinator/`, branch `codex/tkl-native-coordinator` | Separate worktree of the same receiver. Only operational Coordinator `01a09974-6716-7cc0-9916-fd6d04c91481` writes its own planning/qualification/ruling/control effects. |
+| `recovery/` | Separate disposable receiver for accepted-output reference repair and later-value refusal; Coordinator owns the actual repair/decision, Executor preserves before/after evidence. |
+| `capture/` | Raw independent returns, command/time streams, snapshots and hashes. Each holder has only its own `coordinator/` or `executor/` subdirectory. Originals are never overwritten. |
+
+The concurrent receiver's selected task directory is `workspace/2026/TFW_20260909-231654_TKL/`. Fixture metadata explicitly identifies it as an isolated TKL exercise, not another real project or a reopened SLC task. Governing owner/TS/dispatch objects are preserved as exact read-only evidence. The receiver uses compatible TKL ordinary-file rules copied from a pinned clean Candidate; it receives no mandatory helper runtime. The existing two holders retain their actual roles, parent edges and direct channel. No synthetic role label establishes an actual producer.
+
+Durable returned copies are limited to this task's authorized `evidence/native/` tree: `plan-and-authority.md`, `handover/`, `publication/`, `recovery/` and `raw/`. Actual allocated receipts, log names and hashes are indexed after observation. These are finite assurance/evidence attachments, not delivered receiver products or a maintained inventory. No live SLC/PTTC source, status, event, legacy topic or prior record is changed.
+
+### 8.2 Actual actions for AC-1/2
+
+1. Executor prepares the finite receiver inputs and records the actual Candidate/base objects, expected fields and separate worktree heads. Each holder inspects its own authorized bounded input. Coordinator independently writes a planning/qualification return in `workspace/2026/TFW_20260909-231654_TKL/evidence/coordinator-source.md`; Executor first returns an interim source through the existing real ONB, then exercises the necessary fallback in the receiver at `workspace/2026/TFW_20260909-231654_TKL/evidence/executor-handover.md`. Both return their exact source commit/path and inspected-context statement directly through the authorized Coordinator channel. Neither writes the other's source or attests unseen context.
+2. Coordinator makes the actual selected receiver decisions for four predeclared inputs: complete material return; justified-none with inspected source; acceptance-critical unavailable context with the exact missing decision/owner; and retain-only where resolution/publication is explicitly not owed. Add the owed-publication countercase, which must remain nonterminal. Decisions use the actual owner/approved TS for the exercise; fixture text supplies no authority to publish real project knowledge.
+3. To test the TS's literal Researcher A / Executor B missing-return condition, the prepared case cites the actual preserved Researcher return `research/iter2/RES.md` at its immutable source object and omits B's required return in the case view. Coordinator identifies B and the protected closing action. This is a prepared missing-return input with a historical A source, not a new Researcher invocation, new A handover, observed crash or lost private context. The separate Coordinator/Executor returns in step 1 supply the new actual distinct-producer observation required by AC-1. Reviewer decides the applicability of this explicitly bounded combination.
+4. Preserve first outcomes, actual times, source versions and unchanged originals. Missing/none/unavailable/retain-only are material decisions, not fabricated lifecycle histories. Any request to state a new human fact, appoint a resolver, close the real TKL task or label the Coordinator as Researcher returns before action.
+
+### 8.3 Independent publication, integration and retry for AC-3/4
+
+Both worktrees begin at the same sealed base. Coordinator prepares and commits its own independently authored technical/reference qualification in `knowledge/records/TKL-NATIVE-COORD.md`; Executor prepares and commits its own source/effect record in `knowledge/records/TKL-NATIVE-EXEC.md`, **only if the next dispatch explicitly authorizes these isolated evidence writes**. Each record binds its actual author, input, scope and existing acceptance basis; being a record or an Executor output does not make it accepted. The contents are finite exercise observations and source-bound dispositions, not additions to the live project's accepted knowledge.
+
+Neither holder reads the other's authored return before its first own source is sealed. During the actual overlapping work interval they write separate paths, record start/end times and base/commit identities, and return only to the Coordinator. Coordinator integrates the two real branches with exact-path staging and verifies both original blobs survived. If execution did not overlap, report sequential independent writes and retain the concurrency evidence gap; do not describe them as concurrent. No common pending/digest/inventory write is permitted.
+
+Coordinator then inspects semantic overlap on the actual merged revision. The equivalent-source case preserves both independently authored provenance chains; shared/copied governing inputs are disclosed and do not count as independent corroboration. A predeclared conflicting statement pair remains unresolved until its actual authorized ruler supplies a decision. Later time or a clean merge cannot decide it. These case claims never become live project policy.
+
+For replay, bind `T/A/7` to one actually completed receiver publication P and its actual acceptance source. Repeat the exact source/intent against actual P: reuse P and repair only the omitted reference in the current receiver return. Preserve before/after P bytes. Submit a separately preserved changed-intent input for the same key; Coordinator refuses replacement before writing P, names the missing correction decision and retains both input versions. A new acceptance or owner verdict may not be invented for either case. If the available grant supplies no applicable completed disposition, that particular case remains blocked rather than accepted by Executor assertion.
+
+**Role boundary requiring explicit resolution:** Coordinator-owned qualification/reference/control writes fit the proposed operational route; Executor may write its own authorized source/effect evidence but may not accept either record. The next dispatch must identify the concrete owner-approved decision reused for any accepted fixture publication. If it would instead require a new human/project decision, acceptance of a novel product claim, an independently reviewed new output, Researcher mutation or a pre-RF Reviewer, escalate that exact operation to LEAD. Merely authorizing the test does not manufacture its acceptance precondition.
+
+### 8.4 Actual accepted effect usable for AC-6
+
+Use SLC's unchanged accepted documentation effect in `KNOWLEDGE.md`, specifically the D87 statement and its actual RF/independent-REVIEW source relation. Verified now: both accepted SLC close `c51ee0c0d7891fd165d105f3565e0e54512c1040:KNOWLEDGE.md` and this checkout's `HEAD:KNOWLEDGE.md` resolve to **blob `4f3a90aea1280981edadbd09d24f2e9c72bbe5ba`**. Actual independent acceptance is in SLC REVIEW's `Independent C2 return and closure boundary` and `Root terminal closure` sections at that accepted epoch, with same Reviewer APPROVE `99198f133c0047568c1e8411bfae849239b352b1`. This is available existing acceptance, not a new verdict by either TKL holder.
+
+In `recovery/`, preserve the complete accepted original and its source/acceptance objects under `evidence/accepted-slc/`, read-only. Prepare a current documentation carrier copy `KNOWLEDGE.md` with only D87's closing/source reference omitted; preserve the exact original X and intended restored Y before the actual repair. Keep the complete accepted D87 claim, oracle, authority and dependencies unchanged and independently resolvable. The omitted reference is a **prepared cut**, not a crash or a previously observed SLC failure.
+
+The Coordinator first checks actual output equality outside that omitted reference, original independent acceptance and the unchanged meaning/source/authority. Under the explicit isolated-receiver repair dispatch, restore only that current reference to its already accepted bytes. Leave original SLC artifacts/events and the real TKL lifecycle untouched. Record the actual current repair in the receiver's owning evidence; do not fabricate a missing past transition, new Candidate, new acceptance or completed TKL task. Validate the selected receiver control carriers against the canonical status/event schemas; no same-state transition or false DONE is created. Stop when the carrier repair is complete.
+
+For later-state refusal, prepare a separate declared case copy with affected reference Z different from both preserved X and intended Y, plus an unrelated later edit. Coordinator must refuse that field, preserve Z and the unrelated edit, and name the exact conflict and next authorized decision. Also present missing-acceptance and changed-output/authority countercases; neither qualifies for record-only repair. Preserve actual input/output hashes and first decisions separately.
+
+This route can demonstrate actual restoration of an existing independently accepted reference in an isolated receiver; it does **not** independently accept new TKL implementation, amend SLC authority, repair the live SLC task or replace future TKL review. If the existing grant does not permit the specified Coordinator documentation-carrier repair, LEAD must resolve that bounded role operation before it runs.
+
+### 8.5 Sequencing, cost and decision requested
+
+Proposed sequence after a recorded Q1 resolution: finish ONB transition; implement and pass the required local checks; pin first Candidate; seal the native base/input/expected-disposition contract; perform the two-holder handover/publication/replay and accepted-effect repair observations; return raw results; then prepare and seal the separate twelve-file AC-10 payload/oracle and ask Coordinator to dispatch the existing read-only Researcher. AC-10 payload/oracle paths are not created by this plan and are never part of the Researcher's earlier context.
+
+Proposed finite native envelope: one shared receiver with two worktrees and one separate recovery receiver; one initial authored return/publication per holder; one exact retry, one divergent retry refusal, the four handover dispositions plus owed-publication countercase, one accepted-effect repair and its three refusal countercases. Preparation at most 20 minutes and actual two-holder operations at most 30 minutes, excluding scheduler/authority wait; record measured costs and preserve partial output if that proposed envelope is exhausted. These are prospective exercise limits, not new VALUE denominators or claims of observed cost. AC-10 retains its separately approved ten-minute preparation, twenty-minute consumption and twenty-four read/list/search-call bounds.
+
+**Requested executable decision:** identify the allowed Coordinator and Executor fixture paths/actions above, acceptance basis for P, and SLC D87 repair authority; confirm whether the proposed inherited Researcher-A source plus two actual current-role returns satisfies the intended evidence routing, or route the precise unmet native requirement. The independent Reviewer will later assess all criterion evidence and its limitations. Until that dispatch exists, Q1 is unresolved and no product/native mutation starts.
+
+---
+
+## 9. Q1 resolved; executable onboarding acceptance
+
+The original unresolved report and prospective §8 remain preserved above. On 2026-09-13, this same Executor received and read LEAD ruling `dedf8527ff110fa160358239bbf45ebb498838dd` / [3328](journal/20260913-145904__dispatch__3328.md) through operational Coordinator dispatch `e6f1c2ef8d90941c3020bd4f0bd85cacce7cd6d0` / [5df5](journal/20260913-150051__dispatch__5df5.md). Clean non-destructive fast-forward preserved ONB producer `c8c0cdc92aa6eafcf85b58eef6b537c10f3505ca`; the exact approved TS blob remains `f69fd4099a21a07ae2d17e6b5108b04ac94f107e`.
+
+**Q1 answer: resolved as bounded in-scope assurance, no amendment or new owner act.** Only the ruled disposable root, two existing holders/worktrees and exact separate source/effect paths may be used. Originals are independently sealed before sibling visibility; actual overlap must be measured. Neither holder accepts either isolated record. The replay key is only an alias for real accepted SLC D87, retaining its original effect/acceptance identities. The historical Researcher-A plus prepared missing-B view is explicitly historical/prepared; separate new Coordinator/Executor returns supply the current producer observation. Independent evidence sufficiency remains for the later Reviewer.
+
+The ruling **replaces §8.4's documentation-reference repair proposal**: use only a disposable copy of accepted SLC `status.md`, preserve the complete original and terminal event `journal/20260910-132537__transition__803f.md`, and prepare only missing required `outcome`. Coordinator restores the exact accepted outcome after applicable-output, oracle, authority, dependency and acceptance checks, validates the whole carrier, then stops. Preserve the separate Z outcome plus unrelated later edit and refuse it; also refuse missing acceptance or changed output/authority. No new fake event and no live SLC/PTTC/TKL/KNOWLEDGE/REVIEW mutation arises from that exercise.
+
+No onboarding blocker remains. The original owner-approved implementation grant now governs autonomous execution without another generic permission. Actual task state enters ONB only with the separately validated current status/event pair. The unchanged 58-path / 2,574-LOC denominator, owner-return boundaries and all Role Locks remain binding. Before two-holder operations, return tested Candidate/base, actual prepared inputs and separate worktrees directly to Coordinator; preparation ≤20 minutes and operations ≤30 minutes exclude scheduler/authority wait and retain failures/partial output. AC-10 is a later separate sealed twelve-file read-only check, with its oracle outside the consumer directory. RF follows actual evidence and Candidate; no review or completion is claimed by this acceptance.
+
+*ONB — TFW_20260909-231654_TKL: Complete team knowledge lifecycle | 2026-09-13*
+
+
+## 10. Q2/Q3 required evidence return — 2026-09-13
+
+This is the actual Executor interim return, requested by operational Coordinator
+`01a09974-6716-7cc0-9916-fd6d04c91481`. It preserves the earlier blocker-free Q1 epoch; these two
+newly identified questions do not revise that decision. No Candidate, EV, RF or native receiver
+exists at this return. Q1 authorization remains; the dependent operations below await their recorded
+bound. Full tests and independent read-only checks continue.
+
+### Q2 — full init evidence requires the existing research/review route
+
+**Missing evidence/authority:** TS AC-7 requires actual isolated clean Full initialization.
+Current canonical init §§3–5 requires research stages/RES, setup/RF, independent review and close.
+Executor cannot author RES/REVIEW or impersonate those holders. Mini-Setup, copied forms, adapter
+models and an unclosed receiver do not establish the full result. No additional native holder is
+proposed.
+
+**One prospective route for LEAD:** after a tested Candidate, complete the available Q1/source/gate
+checks. Run the sealed first AC-10 through the existing Researcher before giving it init material
+only if AC-10's prerequisite Gates actually pass; record missing native evidence separately. Then
+return the initial TKL EV/RF with AC-7 honestly BLOCKED, not successful completion. After that real
+RF allows the one independent Reviewer to exist, use that same Reviewer, existing Researcher and
+operational Coordinator for the isolated init. Supplement the real TKL evidence/RF and return to
+the same Reviewer. No early Reviewer, new native task or second consumer answer is implied.
+
+Proposed exact clean root:
+`C:/Users/c0rpa/AppData/Local/Temp/TFW_TKL_NATIVE_01a09a0c/init-clean`.
+Proposed established-update root:
+`C:/Users/c0rpa/AppData/Local/Temp/TFW_TKL_NATIVE_01a09a0c/adoption-established`.
+Both and their common parent were observed absent at **2026-09-13T10:37:57.178931+00:00**.
+They are proposed extensions of the finite disposable evidence surface, not already granted Q1 paths.
+
+Defaults submitted for that bounded decision: project **TKL isolated receiver assurance**; English
+content; no tutorial; no external receiver, publication or release; Codex adapter only; active
+`[workspace]`, no historical key; task prefix `TFW`; first task title **TKL receiver initialization**,
+abbreviation **INIT**. The actual task ID/time is allocated once from the execution clock only after
+those values are authorized. This is a local fixture task carrier, not another Codex task. The actual
+owner remains saubakirov; any minimal human profile is written from the resolved exercise authority,
+never copied from upstream team memory. No optional private preferences or invented release policy.
+
+Coordinator owns actual discovery/default resolution, clean setup, profile/config/state/event,
+managed adapter installation, init RF and final bounded close. Researcher owns actual required
+research stages and RES after its sealed AC-10 return; it follows its canonical research gates and
+records any missing input instead of synthesizing completed research. The existing independent
+Reviewer judges the actual init RF/output. Executor prepares pinned clean payload and raw snapshots,
+performs only its own checks/evidence, and records the real actions/limits. Receiver checks cover
+config/carrier validity, exact adapter routes/copies, no upstream memory/state scaffold, and unchanged
+repeat; no shipped Python service is introduced. Final effect is the honestly completed isolated
+Full init, with real research, independent review, applicable knowledge dispositions and filled DONE
+outcome, or its exact remaining nonterminal dependency. Established adoption follows the pinned guide
+with a prospective complete before-image, one repeat and one later-field refusal. No operation starts
+on this proposal alone.
+
+### Q3 — self-adoption before-image omitted reader identities
+
+Original attachment, unchanged:
+`.tfw/update_receipts/knowledge-lifecycle/0a435729c93141639ada55fb77a7508d47d0d1b9c159d50b6e05bdfb364ebacf/preservation.json`.
+Its actual SHA-256 equals its directory name. Guide SHA-256 remains
+`2ce771e0415aab0c63b011d44d613304566fdeb41dfd97954f45dc34da3c8da3`.
+The attachment binds actual Baseline `ec91c56007c20cda79f740fec15c85e4af74d17c`, approval
+`2794cbdb40f6c4f3a7d4bce1f8d4eb949d9e6913` and unchanged TS blob
+`f69fd4099a21a07ae2d17e6b5108b04ac94f107e`.
+
+It preserved complete original config/entry/state bytes, their hashes, nine retained-topic hashes,
+active/history choices, known retired fields and intended config/entry hashes. Application then
+removed the six-line known knowledge config block and changed only entry/current-use/count prose;
+legacy D/reference/topic/state meaning and bytes were retained. Reader/adapter changes were already
+present in the working tree. **The required separate old/intended reader/adapter identity map was
+omitted.** Later residual-reader corrections are separate observed generations.
+
+Observed filesystem metadata places originals/JSON at **2026-09-13 10:16:18.331723–.332950 UTC**;
+this is a present metadata observation, not a contemporaneous sealed timestamp. The original JSON
+contains no timestamp. First collection began at `10:16:50.674936 UTC`. The actual initial source
+snapshot was taken during the first affected run at `10:20:40.956326 UTC`, with archive hash
+`7139ae8343766970aa595a84f4f60ae8ba6ad9bd766440735e43f59bb14cdb25` in
+`evidence/checks/01-02-source-before-corrections.{json,zip}`. It explicitly discloses that timing.
+Checks 03–06 each preserve their own `source-before.json`/zip; 06 is the current full-suite epoch.
+These preserve the successive actual reader/adapter inputs, not a pre-application promise.
+
+Available reconstruction: the old canonical/adapter/role/form objects resolve from the immutable
+Baseline; the exact approved TS selects the 58 VALUE paths; the initial and later observed snapshots
+retain actual proposed/current bytes, and the future tested Candidate will identify final objects.
+The original config/entry/state attachment remains inspectable in this Executor checkout while the
+product/receipt dirt is uncommitted. Unknown from the attachment: exact pre-application checkout
+reader bytes (including working-tree line-ending details), a contemporaneous reader-map seal and the
+per-reader installation times. Baseline Git objects establish source identity, not those absent facts.
+
+**Proposed bounded recovery:** retain every original; add a clearly dated supplemental observation
+mapping reconstructable Baseline objects and actual snapshot/Candidate identities, explicitly leave
+unrecoverable timing/checkout facts unknown, and record the deviation in the existing receipt/EV for
+independent sufficiency judgment. No original rewrite, rollback, retrospective seal, new acceptance
+or adoption/provenance-completion claim. Coordinator/LEAD must rule the allowed continuation before
+those dependent effects; this Executor does not accept its reconstruction.
+
+
+## 11. Q2/Q3 executable resolution
+
+Read completely from immutable Git objects on 2026-09-13: LEAD ruling
+`144e3e651382330afba4d7131a562d05e7f515f9` at
+`journal/20260913-154545__dispatch__0173.md` and direct Coordinator continuation
+`bb3c2803e610bd5fe1cc6eed040b73a6cb2a40aa` at
+`journal/20260913-154924__dispatch__580a.md`. Their full parent tips were not merged into this
+Executor checkout because they also contain unselected RWNR task traces. Those exact Git objects
+supply authority without adding unrelated work to this Candidate.
+
+Q2 is resolved as an executable staged evidence order, not completed evidence: checks → Candidate →
+available Q1/source checks → initial EV/RF with AC-7, AC-10 and unsupported dependent claims BLOCKED →
+the single Reviewer is created after actual RF → real Full init with existing Researcher,
+Coordinator and Reviewer → established adoption/repeat/refusal → only after actual AC-7 gates,
+sealed AC-10 first answer → supplemental final EV/RF → same Reviewer starts outer TKL review.
+The proposal to run AC-10 first is expressly rejected. Do not prepare/disclose that fixture, oracle,
+question or answer-specific paths before Coordinator's explicit AC-7 completion dispatch.
+
+The exact init/adoption roots and §10 defaults are authorized. One Full-init attempt, one established
+adoption, one unchanged repeat and one later-field refusal have a combined 120-minute preparation
+plus active-role bound excluding scheduler/authority waits. Their actual starts remain future;
+Q1's 20/30-minute and AC-10's 10/20-minute/24-call bounds remain separate. Coordinator records
+individual receiver-role dispatches. Executor authors neither init RF/RES/REVIEW nor sibling returns.
+Researcher's later init exposure must be disclosed without exposing the still-uncreated AC-10 inputs.
+
+Q3 is resolved only as permission for one dated supplemental CURRENT observation after Candidate,
+using exact reconstructable Baseline objects and observed snapshot/Candidate hashes. The original
+attachment stays unchanged. Unknown pre-write bytes, line endings, contemporaneous map and per-reader
+times stay unknown. Missing original map is a procedural deviation, never repaired, retrospectively
+sealed, accepted or sufficient by this Executor/Coordinator act. Independent Reviewer decides the
+remaining acceptance defect; prospective established adoption proves only its own procedure.
+
+Implementation and available checks continue under the unchanged TS/selector/denominator and Q1.
+No generic new permission is needed, and no acceptance, outer review or successful task completion
+is supplied by this resolution.

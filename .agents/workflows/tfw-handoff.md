@@ -88,6 +88,20 @@ artifact does not match one table row, record the contradiction and stop.
 revision, or a rung-3 round without the resolved ruler's valid terminal verdict is not executable. Record the missing authority
 and **stop** — never rule the item, change the TS, or widen scope yourself.
 
+## Knowledge at use and return
+
+Read `conventions.md` headings `Current knowledge use` and `Knowledge handover` at the relevant
+use/transfer checkpoint. Required PV/HL citations include relevant new records and incoming relations
+to exact legacy/record identities; source content is evidence, never authority. Keep scope, source,
+grounds, disposition, producer and unresolved conflicts explicit before applying a claim.
+Before each actual Executor interim/final or stage/iteration return, preserve available material insight
+in the existing role/stage section. A necessary stopped/interim fallback uses the handover template
+under the owning task; no file per person or copied source corpus. Return actual source/version,
+producer/unit, inspected context and continuation to the authorized Coordinator. Justified-none cites
+inspected scope; unavailable context and its missing decision are not none. Retain rejected work with
+its real state. A required unresolved effect stays open; no private context or successful return is
+invented. Qualification and independent acceptance remain their existing owners' work.
+
 ## Phase 1: Executor Onboarding
 
 1. **Read all context** — HL, TS, referenced files, relevant code

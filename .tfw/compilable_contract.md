@@ -17,7 +17,7 @@ All `.md` files below are compilable. The utility walks these paths:
 | 5 | `.tfw/glossary.md` | `reference/glossary.md` | Copy + frontmatter |
 | 6 | `.tfw/CHANGELOG.md` | `reference/changelog.md` | Copy + frontmatter |
 | 7 | `KNOWLEDGE.md` | `knowledge-index.md` | Copy + frontmatter (whole file, no split) |
-| 8 | `knowledge/*.md` | `knowledge/{filename}.md` | Copy each + frontmatter |
+| 8 | `knowledge/**/*.md` | `knowledge/{relative-path}.md` | Copy nested records/topics + frontmatter, preserving exact relative paths |
 | 9 | `RELEASE.md` | `reference/release.md` | Copy + frontmatter. Optional — skip if absent |
 | 10 | `{container}/**/*.md` for each entry of the active-plus-historical reference union | `tasks/{same relative path}` | Copy every task Markdown source + frontmatter. Deduplicate paths, preserve folder structure and the `tasks/` output prefix |
 | 11 | `.tfw/workflows/**/*.md` | `reference/workflows/{path}` | Copy + frontmatter |
@@ -111,6 +111,7 @@ Architecture/
   Knowledge Index                 <- KNOWLEDGE.md (whole file)
   Knowledge/
     {topic files}                 <- knowledge/*.md
+    Records/                      <- knowledge/records/**/*.md
 Reference/
   Conventions                     <- .tfw/conventions.md
   Glossary                        <- .tfw/glossary.md
@@ -123,3 +124,14 @@ Reference/
 
 Compiled task pages and their per-task landings exist under `tasks/` for direct/cited links, but
 that output subtree is deliberately absent from `SUMMARY.md` primary navigation.
+
+Independent records use explicit ordinary file/heading links, including source and exact legacy-row
+relations. Include nested record paths in the source-to-output map; keep `knowledge-index.md`, topic
+and `tasks/` destinations stable. Generated navigation is rebuildable, never a knowledge inventory
+or authority. Complete inline-link span protection and reference precedence remain unchanged.
+
+
+The three legacy double-hyphen fragment IDs cited by TKL for the accepted SLC C2 RF/REVIEW headings
+remain generated aliases beside those exact headings. Preserve the source bytes, existing heading
+IDs and full inline-link spans; do not normalize fragments across unrelated pages. A missing,
+ambiguous or colliding selected heading/alias fails compilation instead of inventing a destination.

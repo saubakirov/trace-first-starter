@@ -1,0 +1,82 @@
+{
+  "observed_at": "2026-09-13T11:45:59.892829+00:00",
+  "unit": "01a09974-6716-7cc0-9916-fd6d04c91481",
+  "positive_first_decision": "BLOCKED before write: prepared missing-outcome is exact accepted status minus outcome, but its actual directory missing-outcome is not owning task identifier and relative HL authority target does not exist. Full-carrier/reference preconditions fail. No prepared path may silently be treated as its immutable source directory. No repair, synthetic event or directory/preparation correction attempted. Existing Coordinator routes concrete preparation gap to LEAD.",
+  "positive_source_checks": {
+    "original_matches_immutable_status": true,
+    "missing_is_only_outcome_cut": true,
+    "accepted_output_equal": true,
+    "historical_independent_acceptance_inspected": true,
+    "fixed_body_valid": true
+  },
+  "negative_decisions": {
+    "later-z": "REFUSE: outcome Z differs from old/intended and later body sentence is unrelated work. Preserve both. Owner must resolve actual conflicting field through existing authority; no rollback.",
+    "missing-acceptance": "REFUSE: this countercase expressly has no presented acceptance. Positive-case receipt cannot be borrowed. Need actual independent acceptance applicable to selected result.",
+    "changed-output": "REFUSE: presented third-value output is not accepted result; old acceptance cannot apply. Existing owner must route changed output and affected independent checks.",
+    "changed-authority": "REFUSE: changed unapproved scope lacks applicable authority and acceptance. Existing LEAD/owner must resolve before execution; no record-only recovery."
+  },
+  "observations": [
+    {
+      "case": "missing-outcome",
+      "sha256_before": "6c3cd6e16dfe37eb90660e6c597eda85cb1349013a70cdd139f197c182d50ac8",
+      "sha256_after": "6c3cd6e16dfe37eb90660e6c597eda85cb1349013a70cdd139f197c182d50ac8",
+      "schema_errors_in_actual_case_directory": [
+        "lifecycle is terminal (DONE) but outcome is absent",
+        "directory name 'missing-outcome' is not a task identifier"
+      ],
+      "authority_target": "C:\\Users\\c0rpa\\AppData\\Local\\Temp\\TFW_TKL_NATIVE_01a09a0c\\recovery\\missing-outcome\\HL-TFW_20260907-020729_SLC.md",
+      "authority_target_exists": false,
+      "write": false
+    },
+    {
+      "case": "later-z",
+      "sha256_before": "0a4acd6b03710bbb8680f8f6391d038b46131eb10e933691f554cfb94ac87f99",
+      "sha256_after": "0a4acd6b03710bbb8680f8f6391d038b46131eb10e933691f554cfb94ac87f99",
+      "schema_errors_in_actual_case_directory": [
+        "directory name 'later-z' is not a task identifier"
+      ],
+      "authority_target": "C:\\Users\\c0rpa\\AppData\\Local\\Temp\\TFW_TKL_NATIVE_01a09a0c\\recovery\\later-z\\HL-TFW_20260907-020729_SLC.md",
+      "authority_target_exists": false,
+      "write": false
+    },
+    {
+      "case": "missing-acceptance",
+      "sha256_before": "6c3cd6e16dfe37eb90660e6c597eda85cb1349013a70cdd139f197c182d50ac8",
+      "sha256_after": "6c3cd6e16dfe37eb90660e6c597eda85cb1349013a70cdd139f197c182d50ac8",
+      "schema_errors_in_actual_case_directory": [
+        "lifecycle is terminal (DONE) but outcome is absent",
+        "directory name 'missing-acceptance' is not a task identifier"
+      ],
+      "authority_target": "C:\\Users\\c0rpa\\AppData\\Local\\Temp\\TFW_TKL_NATIVE_01a09a0c\\recovery\\missing-acceptance\\HL-TFW_20260907-020729_SLC.md",
+      "authority_target_exists": false,
+      "write": false
+    },
+    {
+      "case": "changed-output",
+      "sha256_before": "6c3cd6e16dfe37eb90660e6c597eda85cb1349013a70cdd139f197c182d50ac8",
+      "sha256_after": "6c3cd6e16dfe37eb90660e6c597eda85cb1349013a70cdd139f197c182d50ac8",
+      "schema_errors_in_actual_case_directory": [
+        "lifecycle is terminal (DONE) but outcome is absent",
+        "directory name 'changed-output' is not a task identifier"
+      ],
+      "authority_target": "C:\\Users\\c0rpa\\AppData\\Local\\Temp\\TFW_TKL_NATIVE_01a09a0c\\recovery\\changed-output\\HL-TFW_20260907-020729_SLC.md",
+      "authority_target_exists": false,
+      "write": false
+    },
+    {
+      "case": "changed-authority",
+      "sha256_before": "6c3cd6e16dfe37eb90660e6c597eda85cb1349013a70cdd139f197c182d50ac8",
+      "sha256_after": "6c3cd6e16dfe37eb90660e6c597eda85cb1349013a70cdd139f197c182d50ac8",
+      "schema_errors_in_actual_case_directory": [
+        "lifecycle is terminal (DONE) but outcome is absent",
+        "directory name 'changed-authority' is not a task identifier"
+      ],
+      "authority_target": "C:\\Users\\c0rpa\\AppData\\Local\\Temp\\TFW_TKL_NATIVE_01a09a0c\\recovery\\changed-authority\\HL-TFW_20260907-020729_SLC.md",
+      "authority_target_exists": false,
+      "write": false
+    }
+  ],
+  "original_status_sha256": "c4bc55418a480f6fc7bb4277c656abe149ca6a262c5903a80296aa3f0b8e7875",
+  "original_event_sha256": "ae1e10e71d9d6249244dc52c873fc743cb3f96807db2e341c4e85f4c1f08181b",
+  "limits": "Prepared cuts and third values, not actual interruption or real accepted later edit. Schema helper alone does not prove body, authority or acceptance. Additional missing physical context disclosed for every case."
+}

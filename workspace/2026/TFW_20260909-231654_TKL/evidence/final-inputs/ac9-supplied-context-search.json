@@ -1,0 +1,23 @@
+{
+  "observed_at": "2026-09-13T15:54:06.553181+00:00",
+  "scope": "Supplied actual init task Markdown in sealed archive; no unrelated task history or global state scanned. Exact search is documentary inspection, not an ordinary planning invocation.",
+  "hits": [
+    {
+      "member": "coordinator/workspace/2026/TFW_20260913-172107_INIT/REVIEW__TFW_20260913-172107_INIT.md",
+      "line": 110,
+      "text": "The complete proposed DONE carrier, actual accepted outcome, declared lifecycle, human owner, fixed body, root authority, monotonic clock and 12 task-local references passed preflight; helper status/event errors were empty for KNW-to-DONE. Actual status write: 2026-09-13T15:06:49.811316+00:00; immutable event write: 2026-09-13T15:06:49.819075+00:00; event: `journal/20260913-200649__transition__0d50.md`. Readback matched proposed status/event. Actual outcome: Initialized the pinned clean Codex receiver with two research iterations, independently approved setup and completed capture dispositions; bounded limitations preserved. Existing sources and the external-original versus normalized-copy distinction remain preserved. This final control recording changes no accepted setup or material knowledge output and invokes no additional independent acceptance cycle. The completed init is locally integrated; no outer TKL landing, adoption, release/publication, provider reliability or AC10 completion is inferred. The next canonical ordinary route is `/tfw-plan`; the already authorized outer assurance mandate separately permits the established-adoption sequence after this close."
+    },
+    {
+      "member": "coordinator/workspace/2026/TFW_20260913-172107_INIT/evidence/outer-accounting/value-membership.md",
+      "line": 37,
+      "text": "| `.agents/workflows/tfw-plan.md` | M (MODIFY) | VALUE | 19 | 14 | Byte-identical installed plan workflow copy; shipped prompt is VALUE. |"
+    },
+    {
+      "member": "coordinator/workspace/2026/TFW_20260913-172107_INIT/evidence/outer-accounting/value-membership.md",
+      "line": 38,
+      "text": "| `.claude/commands/tfw-plan.md` | M (MODIFY) | VALUE | 19 | 14 | Byte-identical installed plan workflow copy; shipped prompt is VALUE. |"
+    }
+  ],
+  "conclusion": "No actual selected ordinary planning invocation/result was supplied. Init REVIEW explicitly names /tfw-plan as next route; research/planning recommendations and copied outer TS do not pay that evidence requirement. AC10 is an application note, not /tfw-plan.",
+  "status": "AC9 BLOCKED, scoped to supplied evidence; no claim that no such action exists anywhere."
+}

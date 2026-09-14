@@ -1,0 +1,29 @@
+{
+  "clock_tool_value": "2026-09-13 20:41:30 UTC",
+  "event_time": "2026-09-14T01:41:30+05:00",
+  "from": "ONB",
+  "to": "RF",
+  "event": "journal/20260914-014130__transition__6454.md",
+  "status_written_at": "2026-09-13T20:42:20.758080+00:00",
+  "event_written_at": "2026-09-13T20:42:20.758492+00:00",
+  "status_before_sha256": "8259d7b908a7b11550c3f882427de3afcca4c10a4e3382552d33b251e07bec17",
+  "status_sha256": "0bc219c055d4353a45e5980af6b8dbea94d57544d556ab42630eb07c1edd91fe",
+  "event_sha256": "f958b5b2c9ec48f457312d4efc0175dfc2bfcf889bc6122abe53cbf02e64948a",
+  "authority": "HL-TFW_20260909-231654_TKL.md",
+  "authority_sha256": "cb1e21259e6fa8263aa21d3f56facf73a0f5c932cbc8faf8ae692de63157e6f8",
+  "refs_inspected_before_write": {
+    "status.md": "8259d7b908a7b11550c3f882427de3afcca4c10a4e3382552d33b251e07bec17",
+    "ONB__TFW_20260909-231654_TKL.md": "4a5907ada3d71315448d6c22d51fcce86ee33ab526309a55caa7a27ec243331e",
+    "RF__TFW_20260909-231654_TKL.md": "b26e99bc55322fe3ff59fb650fb5cc26bec078bb86e590e541a3f6b1e6887c54",
+    "evidence/EV__TFW_20260909-231654_TKL.md": "b9e0667bc9cc8bf202a0e24ef6b5e853ec7b301f6fa86c217883e69fed10e389",
+    "REVIEW__TFW_20260909-231654_TKL__rev2.md": "73fc1b890b34c30cf7e30db57a0e28e7831839764a4db9a2be1f1f2ceaafc185",
+    "journal/20260914-012203__dispatch__37e0.md": "c4ce4bca09fa40c3f3bb9dc81e2d22fec4b3d8a9bf9e849917238b06c702b6b5",
+    "evidence/r2-native/08-git-seal.json": "5307442140d709c1c61e016673044eb335c6a544984a3c3362a21668a8ee9219",
+    "evidence/r2-return/00-native-return.json": "5455fdac06f912a884ff2964ed1750666f017428e6d651b27d626d446b1712f5"
+  },
+  "schema_errors": [],
+  "native_attempt_already_returned": true,
+  "native_operator_count": 10,
+  "post_native_TRACE_only": true,
+  "no_terminal_outcome": true
+}

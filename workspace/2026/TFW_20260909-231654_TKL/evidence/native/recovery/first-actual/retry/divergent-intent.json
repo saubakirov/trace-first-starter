@@ -1,0 +1,10 @@
+{
+  "key": "T/A/7",
+  "alias_only": true,
+  "source_path": "KNOWLEDGE.md",
+  "legacy_identity": "D87",
+  "accepted_close": "c51ee0c0d7891fd165d105f3565e0e54512c1040",
+  "accepted_blob": "4f3a90aea1280981edadbd09d24f2e9c72bbe5ba",
+  "acceptance": "99198f133c0047568c1e8411bfae849239b352b1",
+  "intent": "Prepared conflicting replacement: claim all historical work must be made active and replace D87 under the same key."
+}

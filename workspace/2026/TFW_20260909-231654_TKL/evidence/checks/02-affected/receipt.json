@@ -1,0 +1,30 @@
+{
+  "argv": [
+    "E:/TEMP/pttc-phase-a-b9b5/venv/Scripts/python.exe",
+    "-m",
+    "pytest",
+    "tools/tests/test_tfw_state.py",
+    "tools/tests/test_tfw_doctor.py",
+    "docs/scripts/test_repository_contracts.py",
+    "docs/scripts/test_runtime_context.py",
+    "docs/scripts/test_update_experience.py",
+    "docs/scripts/test_gen_docs.py",
+    "-q"
+  ],
+  "cwd": "C:/Users/c0rpa/.codex/worktrees/f3f3/steps-framework",
+  "started": "2026-09-13T10:17:12.612769+00:00",
+  "finished": "2026-09-13T10:22:03.657479+00:00",
+  "seconds": 291.0469904999918,
+  "exit_code": 1,
+  "head": "32c452949838266c59a129eb63d7ca587c9e3522",
+  "streams": {
+    "stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "stdout.txt": {
+      "bytes": 49310,
+      "sha256": "d4b727340ca11a0afd6c29fb85914e844d63f83226982895425039078b02b19d"
+    }
+  }
+}

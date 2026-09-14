@@ -1,0 +1,159 @@
+{
+  "observed_at": "2026-09-13T11:56:14.095479+00:00",
+  "physical_context": "complete accepted repository; all2290 files verified against original Git blobs before this gate",
+  "status": {
+    "schema_errors": [],
+    "body_exact": true,
+    "authority_path": "C:\\Users\\c0rpa\\AppData\\Local\\Temp\\TFW_TKL_NATIVE_01a09a0c\\recovery-2\\pristine\\workspace\\2026\\TFW_20260907-020729_SLC\\HL-TFW_20260907-020729_SLC.md",
+    "authority_sha256": "ef97fe425b047ad8d48173a8b92d1cfec316e182a5c22f4911d3a27461ddbb47",
+    "owner": "saubakirov",
+    "lifecycle": "DONE"
+  },
+  "terminal_event_errors": [],
+  "event_sha256": "ae1e10e71d9d6249244dc52c873fc743cb3f96807db2e341c4e85f4c1f08181b",
+  "event_refs": [
+    {
+      "ref": "REVIEW__TFW_20260907-020729_SLC.md",
+      "sha256": "d12f56812b4f3f242601799b1dd6f13d53336715db0f9bd8d9386cbe0b73c481",
+      "bytes": 51134
+    },
+    {
+      "ref": "RF__TFW_20260907-020729_SLC.md",
+      "sha256": "6c3340a7b23928feb8a70e7f02438015549e9ba66a96a331144d45ac058804f7",
+      "bytes": 28959
+    },
+    {
+      "ref": "evidence/EV__TFW_20260907-020729_SLC.md",
+      "sha256": "e3efb2e4e0766bda602c942525f7d470d6a064cc258a64837f7557a9ce9f3d80",
+      "bytes": 27168
+    },
+    {
+      "ref": "HL-TFW_20260907-020729_SLC.md",
+      "sha256": "ef97fe425b047ad8d48173a8b92d1cfec316e182a5c22f4911d3a27461ddbb47",
+      "bytes": 85281
+    },
+    {
+      "ref": "TS__TFW_20260907-020729_SLC.md",
+      "sha256": "952cfd72b4a7229d0da5ee5fa8b54b10d0560b56d18c3dd557008f403a2813ef",
+      "bytes": 62857
+    },
+    {
+      "ref": "status.md",
+      "sha256": "c4bc55418a480f6fc7bb4277c656abe149ca6a262c5903a80296aa3f0b8e7875",
+      "bytes": 792
+    },
+    {
+      "ref": "journal/20260910-131441__transition__fc2b.md",
+      "sha256": "a4ff0fea4ca192fb40c4cdfbf14f922f51ddfbc4fccd0471e7653b8975352a04",
+      "bytes": 622
+    },
+    {
+      "ref": "evidence/review-c2-final/opened-output.json",
+      "sha256": "dfba2b129e7bac0dd255297fd4321fb8c1bdec42d867f84c29e4b06650ef1421",
+      "bytes": 318916
+    }
+  ],
+  "accepted_product_24_equal_C2": [
+    {
+      "path": ".agents/workflows/tfw-init.md",
+      "sha256": "7ec919af5ec2c905f81d9b697bdfca41bc531d09d72dd37e3259e2852c134ef4"
+    },
+    {
+      "path": ".agents/workflows/tfw-knowledge.md",
+      "sha256": "119a419db124e45fded4722b38d46ac5f7aa46cf928431df0585421336b608ef"
+    },
+    {
+      "path": ".agents/workflows/tfw-resume.md",
+      "sha256": "1ce3b2e1ee30f1f5be9cfd62af3cd400022a34ba106295978c426e26e46be5e3"
+    },
+    {
+      "path": ".agents/workflows/tfw-update.md",
+      "sha256": "677f98c2ba61dcec1f59a5847ec12c782bf85132437194d291dcab3061707b1d"
+    },
+    {
+      "path": ".claude/commands/tfw-init.md",
+      "sha256": "7ec919af5ec2c905f81d9b697bdfca41bc531d09d72dd37e3259e2852c134ef4"
+    },
+    {
+      "path": ".claude/commands/tfw-knowledge.md",
+      "sha256": "119a419db124e45fded4722b38d46ac5f7aa46cf928431df0585421336b608ef"
+    },
+    {
+      "path": ".claude/commands/tfw-resume.md",
+      "sha256": "1ce3b2e1ee30f1f5be9cfd62af3cd400022a34ba106295978c426e26e46be5e3"
+    },
+    {
+      "path": ".claude/commands/tfw-update.md",
+      "sha256": "677f98c2ba61dcec1f59a5847ec12c782bf85132437194d291dcab3061707b1d"
+    },
+    {
+      "path": ".tfw/CHANGELOG.md",
+      "sha256": "ac550a1c026c3fc5b3fc137bff7a896f5a7577ae64fc7a1b2bc603d0d4764d9f"
+    },
+    {
+      "path": ".tfw/VERSION",
+      "sha256": "5eee6c0c5c6901f5e523f0a434bca4106e1ff7136deb451f982b0bb1a7b13716"
+    },
+    {
+      "path": ".tfw/compilable_contract.md",
+      "sha256": "b7e464e5500ef5fca56a3b320adfaef98179f644c35a325f17d14af46a3523bf"
+    },
+    {
+      "path": ".tfw/conventions.md",
+      "sha256": "09d248e997cf19bae1cef53f64423af343c8640d3b270a804e7986ffb874f9d2"
+    },
+    {
+      "path": ".tfw/knowledge_state.yaml",
+      "sha256": "668da37c5c42afe2dd5e8d67f2894f4252e842745afc05f37b9e365e7c56569d"
+    },
+    {
+      "path": ".tfw/migrations/3.3.0.md",
+      "sha256": "d544442538eef8000885700ac379ee4f9fbf3d112757aa8bcf21a46ac969e44c"
+    },
+    {
+      "path": ".tfw/project_config.yaml",
+      "sha256": "2a36ce8ed4514b7e552438082bb8ea1f12c889b1c7d0817753acb9d95785c4c2"
+    },
+    {
+      "path": ".tfw/quickstart.md",
+      "sha256": "ad66adac58fc7d5b2da907caeae9982188313155cdd2776cb0ab031ff4e6dd40"
+    },
+    {
+      "path": ".tfw/templates/project_config.yaml",
+      "sha256": "b7587c459c91003a5487f99a4c138385644ec791a4ef8eeb8406f735b057ec4c"
+    },
+    {
+      "path": ".tfw/workflows/init.md",
+      "sha256": "7ec919af5ec2c905f81d9b697bdfca41bc531d09d72dd37e3259e2852c134ef4"
+    },
+    {
+      "path": ".tfw/workflows/knowledge.md",
+      "sha256": "119a419db124e45fded4722b38d46ac5f7aa46cf928431df0585421336b608ef"
+    },
+    {
+      "path": ".tfw/workflows/resume.md",
+      "sha256": "1ce3b2e1ee30f1f5be9cfd62af3cd400022a34ba106295978c426e26e46be5e3"
+    },
+    {
+      "path": ".tfw/workflows/update.md",
+      "sha256": "677f98c2ba61dcec1f59a5847ec12c782bf85132437194d291dcab3061707b1d"
+    },
+    {
+      "path": "docs/scripts/gen_docs.py",
+      "sha256": "475d88e709f0fa8c63a65d27d339cbba850e50ab9cb964d6fe4e64f5f88c5af2"
+    },
+    {
+      "path": "tasks/README.md",
+      "sha256": "de861697af095ef200c3d737e00783e73abefc520ecddab1c264aa25aaec9678"
+    },
+    {
+      "path": "tools/tfw_state.py",
+      "sha256": "7b32ef4d6af70aaaa6ddee690072debd82cf513f1a119267075c736e6293682b"
+    }
+  ],
+  "accepted_knowledge_sha256": "a2d82e20092a361319d80f5f7db63360957a84a8eb36415461567323fc0b797f",
+  "independent_acceptance_source": "99198f133c0047568c1e8411bfae849239b352b1",
+  "independent_acceptance_sha256": "5e24416d70866cf1372e56bf7ae0e8be2ad129b54d6054c4408ef0a15d7dbdce",
+  "observer_errors": "Initial marker literal became ASCII ? (codepoint63) in PowerShell stdin. Actual acceptance source contains codepoint9989, verified by explicit codepoint. First diagnostic mistyped SHA; then loaded exact SHA from immutable cases. Both read-only failures preserved; no cut existed before this completed preflight.",
+  "scope": "Historical accepted SLC output in this isolated exact receiver; current TKL output is not the recovered subject."
+}

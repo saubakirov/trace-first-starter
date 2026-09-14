@@ -1,0 +1,129 @@
+{
+  "observed_at": "2026-09-13T12:06:27.119605+00:00",
+  "author_unit": "01a09a0c-c9e2-7d01-af4e-64931af967ed",
+  "candidate": "27cdb701b91c5b45b9f54b3e98c9ad67635b3e30",
+  "base": "e00ca51d05f4e451441cb9fc267579a7f9e4d4ce",
+  "integration": "f679483cf11007f6f214e4d24aae5cbabd0b263e",
+  "verified_four_original_blobs": {
+    "workspace/2026/TFW_20260909-231654_TKL/evidence/executor-handover-2.md": "dc598d9671beb4028080fd97e93f8a09be252e24",
+    "knowledge/records/TKL-NATIVE-EXEC-2.md": "2f72dd6972b1ae8e786e05f3fd9e53a8d06036c0",
+    "workspace/2026/TFW_20260909-231654_TKL/evidence/coordinator-source-2.md": "e83310c9c28e4a750f6a1d0e21164118845accc3",
+    "knowledge/records/TKL-NATIVE-COORD-2.md": "328e00ae548b144d986ce2c8ea92e67d0a827586"
+  },
+  "complete_changed_path_set_equals_four_owned_paths": true,
+  "actual_overlap_seconds": 85.583887,
+  "executor_interval": [
+    "2026-09-13T12:01:17.745315+00:00",
+    "2026-09-13T12:03:21.566429+00:00"
+  ],
+  "coordinator_interval": [
+    "2026-09-13T12:01:38.460337+00:00",
+    "2026-09-13T12:03:04.044224+00:00"
+  ],
+  "prior_first_epoch_exposure_disclosed": true,
+  "new_acceptance": false,
+  "third_attempt": false,
+  "raw_copies": [
+    {
+      "source": "C:/Users/c0rpa/AppData/Local/Temp/TFW_TKL_NATIVE_01a09a0c/overlap-2/capture/executor/01-actual-start.json",
+      "copy": "workspace/2026/TFW_20260909-231654_TKL/evidence/native/raw/overlap-2/executor/01-actual-start.json",
+      "sha256": "4c8d677f2aa808739436790b748e693d76d48feb38da553bd351f0e11425e220",
+      "bytes": 302
+    },
+    {
+      "source": "C:/Users/c0rpa/AppData/Local/Temp/TFW_TKL_NATIVE_01a09a0c/overlap-2/capture/executor/02-incoming-search.stderr.txt",
+      "copy": "workspace/2026/TFW_20260909-231654_TKL/evidence/native/raw/overlap-2/executor/02-incoming-search.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "source": "C:/Users/c0rpa/AppData/Local/Temp/TFW_TKL_NATIVE_01a09a0c/overlap-2/capture/executor/02-incoming-search.stdout.txt",
+      "copy": "workspace/2026/TFW_20260909-231654_TKL/evidence/native/raw/overlap-2/executor/02-incoming-search.stdout.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "source": "C:/Users/c0rpa/AppData/Local/Temp/TFW_TKL_NATIVE_01a09a0c/overlap-2/capture/executor/02-own-reads.json",
+      "copy": "workspace/2026/TFW_20260909-231654_TKL/evidence/native/raw/overlap-2/executor/02-own-reads.json",
+      "sha256": "304729e94df81d8450d5a4fac3f7c76e21b15a6eb551173cb513ad3e2ab9e60e",
+      "bytes": 1349
+    },
+    {
+      "source": "C:/Users/c0rpa/AppData/Local/Temp/TFW_TKL_NATIVE_01a09a0c/overlap-2/capture/executor/02-own-reads.txt",
+      "copy": "workspace/2026/TFW_20260909-231654_TKL/evidence/native/raw/overlap-2/executor/02-own-reads.txt",
+      "sha256": "d709b4bdae5e2c19874a99ddf9c432e63a44f9102709817a1ee7f23a59efdedf",
+      "bytes": 10112
+    },
+    {
+      "source": "C:/Users/c0rpa/AppData/Local/Temp/TFW_TKL_NATIVE_01a09a0c/overlap-2/capture/executor/03-first-seal.json",
+      "copy": "workspace/2026/TFW_20260909-231654_TKL/evidence/native/raw/overlap-2/executor/03-first-seal.json",
+      "sha256": "cf9aa74e20f3f221985887dbcadf55e7ef6c8de78b15b9c1b62c0f104d0637ec",
+      "bytes": 13413
+    },
+    {
+      "source": "C:/Users/c0rpa/AppData/Local/Temp/TFW_TKL_NATIVE_01a09a0c/overlap-2/capture/executor/original-executor-handover-2.md",
+      "copy": "workspace/2026/TFW_20260909-231654_TKL/evidence/native/raw/overlap-2/executor/original-executor-handover-2.md",
+      "sha256": "86a03d1620b8640ecc918c43e63d99e148e41bebdad02fcf8a7207159e35724c",
+      "bytes": 3409
+    },
+    {
+      "source": "C:/Users/c0rpa/AppData/Local/Temp/TFW_TKL_NATIVE_01a09a0c/overlap-2/capture/executor/original-TKL-NATIVE-EXEC-2.md",
+      "copy": "workspace/2026/TFW_20260909-231654_TKL/evidence/native/raw/overlap-2/executor/original-TKL-NATIVE-EXEC-2.md",
+      "sha256": "5c58124f61ebba2c425927f01e199ea7afdf34c2b508812394613b1c7d21c9f9",
+      "bytes": 3465
+    },
+    {
+      "source": "C:/Users/c0rpa/AppData/Local/Temp/TFW_TKL_NATIVE_01a09a0c/overlap-2/capture/coordinator/00-explicit-barrier.json",
+      "copy": "workspace/2026/TFW_20260909-231654_TKL/evidence/native/raw/overlap-2/coordinator/00-explicit-barrier.json",
+      "sha256": "ac1c1e94fa4818f2acb96421becf174155d40ba491bd5e037cf200af657223af",
+      "bytes": 788
+    },
+    {
+      "source": "C:/Users/c0rpa/AppData/Local/Temp/TFW_TKL_NATIVE_01a09a0c/overlap-2/capture/coordinator/01-actual-start.json",
+      "copy": "workspace/2026/TFW_20260909-231654_TKL/evidence/native/raw/overlap-2/coordinator/01-actual-start.json",
+      "sha256": "99c2796e59d2f674ca94e044d4f376abe57ed3f5f8b8cdf70578e39380422a9d",
+      "bytes": 214
+    },
+    {
+      "source": "C:/Users/c0rpa/AppData/Local/Temp/TFW_TKL_NATIVE_01a09a0c/overlap-2/capture/coordinator/02-own-reads.json",
+      "copy": "workspace/2026/TFW_20260909-231654_TKL/evidence/native/raw/overlap-2/coordinator/02-own-reads.json",
+      "sha256": "53a418efa339956fe2e879e6c4ef047afda774a266dbcfb9c90f104cad64dfd8",
+      "bytes": 886
+    },
+    {
+      "source": "C:/Users/c0rpa/AppData/Local/Temp/TFW_TKL_NATIVE_01a09a0c/overlap-2/capture/coordinator/03-first-seal.json",
+      "copy": "workspace/2026/TFW_20260909-231654_TKL/evidence/native/raw/overlap-2/coordinator/03-first-seal.json",
+      "sha256": "0319dc0c345798784aa6c6b6a9d7f49f81daa5d0ca734dd4f654351b4749e160",
+      "bytes": 4562
+    },
+    {
+      "source": "C:/Users/c0rpa/AppData/Local/Temp/TFW_TKL_NATIVE_01a09a0c/overlap-2/capture/coordinator/04-integration.json",
+      "copy": "workspace/2026/TFW_20260909-231654_TKL/evidence/native/raw/overlap-2/coordinator/04-integration.json",
+      "sha256": "dcc1c18a99a3006d3565a108575ed279900e9887789a3f57deadfd49a3988ba8",
+      "bytes": 5907
+    },
+    {
+      "source": "C:/Users/c0rpa/AppData/Local/Temp/TFW_TKL_NATIVE_01a09a0c/overlap-2/capture/coordinator/05-post-integration-assessment.json",
+      "copy": "workspace/2026/TFW_20260909-231654_TKL/evidence/native/raw/overlap-2/coordinator/05-post-integration-assessment.json",
+      "sha256": "618f6013833c708db982287a5525af143e7024acc86a6aaf5d0bb4b6091d5997",
+      "bytes": 1749
+    },
+    {
+      "source": "C:/Users/c0rpa/AppData/Local/Temp/TFW_TKL_NATIVE_01a09a0c/overlap-2/capture/coordinator/coordinator-source-2.md",
+      "copy": "workspace/2026/TFW_20260909-231654_TKL/evidence/native/raw/overlap-2/coordinator/coordinator-source-2.md",
+      "sha256": "ddaf4cf96f7c7df01b62f8c1219fe84f8785c90b146dd240645677f31ac961b2",
+      "bytes": 3703
+    },
+    {
+      "source": "C:/Users/c0rpa/AppData/Local/Temp/TFW_TKL_NATIVE_01a09a0c/overlap-2/capture/coordinator/TKL-NATIVE-COORD-2.md",
+      "copy": "workspace/2026/TFW_20260909-231654_TKL/evidence/native/raw/overlap-2/coordinator/TKL-NATIVE-COORD-2.md",
+      "sha256": "c56557cbb06cf1acbf5d5f99b430f69f9723084aea8f257d446b1c933c0f7b6b",
+      "bytes": 3418
+    }
+  ],
+  "bundle_sha256": "208f560b433bb747b3399431a5a5a3a6076ecd4f38f92d87d81659c6fbf7c52a",
+  "bundle_bytes": 198352,
+  "bundle_verify_exit": 0,
+  "bundle_prerequisite": "27cdb701b91c5b45b9f54b3e98c9ad67635b3e30",
+  "limits": "Actual bounded overlapping read/author/seal work by the same two native holders. No locking/universal convergence/global fresh-design or independent corroborating origin claim; source/original byte and timing intake is not independent acceptance."
+}

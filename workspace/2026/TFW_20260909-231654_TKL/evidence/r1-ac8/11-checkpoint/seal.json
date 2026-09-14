@@ -1,0 +1,439 @@
+{
+  "observed_at": "2026-09-13T18:00:55.051243+00:00",
+  "candidate": "65c3c94b2347c69f6d21ac2e2664a39ef46b3ae2",
+  "baseline": "ec91c56007c20cda79f740fec15c85e4af74d17c",
+  "checks": [
+    {
+      "name": "candidate-authored-check",
+      "argv": [
+        "git",
+        "-c",
+        "core.longpaths=true",
+        "diff",
+        "--check",
+        "ec91c56007c20cda79f740fec15c85e4af74d17c",
+        "65c3c94b2347c69f6d21ac2e2664a39ef46b3ae2",
+        "--",
+        ".tfw/conventions.md",
+        ".tfw/glossary.md",
+        ".tfw/compilable_contract.md",
+        ".tfw/project_config.yaml",
+        ".tfw/templates/project_config.yaml",
+        ".tfw/quickstart.md",
+        ".tfw/templates/KNOWLEDGE.md",
+        ".tfw/templates/knowledge/topic.md",
+        ".tfw/templates/knowledge_state.yaml",
+        ".tfw/templates/knowledge/record.md",
+        ".tfw/templates/knowledge/handover.md",
+        ".tfw/templates/HL.md",
+        ".tfw/templates/ONB.md",
+        ".tfw/templates/RF.md",
+        ".tfw/templates/RES.md",
+        ".tfw/templates/REVIEW.md",
+        ".tfw/templates/review/verify.md",
+        ".tfw/workflows/plan.md",
+        ".tfw/workflows/research/base.md",
+        ".tfw/workflows/handoff.md",
+        ".tfw/workflows/review.md",
+        ".tfw/workflows/resume.md",
+        ".tfw/workflows/docs.md",
+        ".tfw/workflows/knowledge.md",
+        ".tfw/workflows/init.md",
+        ".tfw/workflows/update.md",
+        ".tfw/workflows/config.md",
+        ".agents/workflows/tfw-plan.md",
+        ".claude/commands/tfw-plan.md",
+        ".agents/workflows/tfw-research.md",
+        ".claude/commands/tfw-research.md",
+        ".agents/workflows/tfw-handoff.md",
+        ".claude/commands/tfw-handoff.md",
+        ".agents/workflows/tfw-review.md",
+        ".claude/commands/tfw-review.md",
+        ".agents/workflows/tfw-resume.md",
+        ".claude/commands/tfw-resume.md",
+        ".agents/workflows/tfw-docs.md",
+        ".claude/commands/tfw-docs.md",
+        ".agents/workflows/tfw-knowledge.md",
+        ".claude/commands/tfw-knowledge.md",
+        ".agents/workflows/tfw-init.md",
+        ".claude/commands/tfw-init.md",
+        ".agents/workflows/tfw-update.md",
+        ".claude/commands/tfw-update.md",
+        ".agents/workflows/tfw-config.md",
+        ".claude/commands/tfw-config.md",
+        ".tfw/adapters/codex/skills/tfw-docs/SKILL.md",
+        ".agents/skills/tfw-docs/SKILL.md",
+        ".tfw/adapters/codex/skills/tfw-knowledge/SKILL.md",
+        ".agents/skills/tfw-knowledge/SKILL.md",
+        ".tfw/migrations/knowledge-lifecycle.md",
+        "KNOWLEDGE.md",
+        "knowledge/records/TKL-20260913-01.md",
+        "tools/tfw_state.py",
+        "tools/tfw_doctor.py",
+        "tools/README.md",
+        "docs/scripts/gen_docs.py",
+        "docs/scripts/test_gen_docs.py",
+        "docs/scripts/test_integration.py",
+        "docs/scripts/test_repository_contracts.py",
+        "docs/scripts/test_runtime_context.py",
+        "docs/scripts/test_update_experience.py",
+        "tools/tests/test_tfw_doctor.py",
+        "tools/tests/test_tfw_state.py"
+      ],
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "onb-authored-check",
+      "argv": [
+        "git",
+        "-c",
+        "core.longpaths=true",
+        "diff",
+        "--check",
+        "--",
+        "workspace/2026/TFW_20260909-231654_TKL/ONB__TFW_20260909-231654_TKL.md"
+      ],
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "candidate-complete-check",
+      "argv": [
+        "git",
+        "-c",
+        "core.longpaths=true",
+        "diff",
+        "--check",
+        "ec91c56007c20cda79f740fec15c85e4af74d17c",
+        "65c3c94b2347c69f6d21ac2e2664a39ef46b3ae2"
+      ],
+      "exit": 2,
+      "stdout_sha256": "a62245a6a7dcc0e20271c75f8d6794244992c7559fec5bde829afc1d3587ecf2",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "complete_diff_check_limit": "Inherited sealed raw custody formatting diagnostics remain; O3 says retain bytes and do not pay this nonmaterial debt. Current authored VALUE/ASSURANCE and ONB checks pass.",
+  "tracked_input_drift_after_tests": [
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/ONB__TFW_20260909-231654_TKL.md",
+      "effect": "append-only TRACE checkpoint after tested build epoch",
+      "tested_raw_is_prefix": true
+    }
+  ],
+  "all_other_2792_tracked_inputs_unchanged": true,
+  "receipts_streams_and_archives_verified": true,
+  "receiver_absent": true,
+  "replay_started": false,
+  "lifecycle": "ONB",
+  "checkpoint_exact_paths": [
+    "workspace/2026/TFW_20260909-231654_TKL/ONB__TFW_20260909-231654_TKL.md",
+    "workspace/2026/TFW_20260909-231654_TKL/evidence/r1-ac8/03-input/source-after.json",
+    "workspace/2026/TFW_20260909-231654_TKL/evidence/r1-ac8/03-input/source-before.json",
+    "workspace/2026/TFW_20260909-231654_TKL/evidence/r1-ac8/03-input/source-before.zip",
+    "workspace/2026/TFW_20260909-231654_TKL/evidence/r1-ac8/04-generator-tests/receipt.json",
+    "workspace/2026/TFW_20260909-231654_TKL/evidence/r1-ac8/04-generator-tests/stderr.txt",
+    "workspace/2026/TFW_20260909-231654_TKL/evidence/r1-ac8/04-generator-tests/stdout.txt",
+    "workspace/2026/TFW_20260909-231654_TKL/evidence/r1-ac8/05-contract-tests/receipt.json",
+    "workspace/2026/TFW_20260909-231654_TKL/evidence/r1-ac8/05-contract-tests/stderr.txt",
+    "workspace/2026/TFW_20260909-231654_TKL/evidence/r1-ac8/05-contract-tests/stdout.txt",
+    "workspace/2026/TFW_20260909-231654_TKL/evidence/r1-ac8/06-integration-tests/build/receipt.json",
+    "workspace/2026/TFW_20260909-231654_TKL/evidence/r1-ac8/06-integration-tests/build/stderr.txt",
+    "workspace/2026/TFW_20260909-231654_TKL/evidence/r1-ac8/06-integration-tests/build/stdout.txt",
+    "workspace/2026/TFW_20260909-231654_TKL/evidence/r1-ac8/06-integration-tests/receipt.json",
+    "workspace/2026/TFW_20260909-231654_TKL/evidence/r1-ac8/06-integration-tests/stderr.txt",
+    "workspace/2026/TFW_20260909-231654_TKL/evidence/r1-ac8/06-integration-tests/stdout.txt",
+    "workspace/2026/TFW_20260909-231654_TKL/evidence/r1-ac8/07-collection/receipt.json",
+    "workspace/2026/TFW_20260909-231654_TKL/evidence/r1-ac8/07-collection/stderr.txt",
+    "workspace/2026/TFW_20260909-231654_TKL/evidence/r1-ac8/07-collection/stdout.txt",
+    "workspace/2026/TFW_20260909-231654_TKL/evidence/r1-ac8/08-navigation/browser-observations.json",
+    "workspace/2026/TFW_20260909-231654_TKL/evidence/r1-ac8/08-navigation/five-pages.zip",
+    "workspace/2026/TFW_20260909-231654_TKL/evidence/r1-ac8/08-navigation/manifest.json",
+    "workspace/2026/TFW_20260909-231654_TKL/evidence/r1-ac8/08-navigation/site-inventory.json",
+    "workspace/2026/TFW_20260909-231654_TKL/evidence/r1-ac8/09-accounting/accounting.json",
+    "workspace/2026/TFW_20260909-231654_TKL/evidence/r1-ac8/09-accounting/all-name-status.stderr.txt",
+    "workspace/2026/TFW_20260909-231654_TKL/evidence/r1-ac8/09-accounting/all-name-status.z",
+    "workspace/2026/TFW_20260909-231654_TKL/evidence/r1-ac8/09-accounting/value-membership.md",
+    "workspace/2026/TFW_20260909-231654_TKL/evidence/r1-ac8/09-accounting/value-name-status.stderr.txt",
+    "workspace/2026/TFW_20260909-231654_TKL/evidence/r1-ac8/09-accounting/value-name-status.z",
+    "workspace/2026/TFW_20260909-231654_TKL/evidence/r1-ac8/09-accounting/value-numstat.stderr.txt",
+    "workspace/2026/TFW_20260909-231654_TKL/evidence/r1-ac8/09-accounting/value-numstat.z",
+    "workspace/2026/TFW_20260909-231654_TKL/evidence/r1-ac8/10-ac7-source-preflight/65c3c94b-tree.z",
+    "workspace/2026/TFW_20260909-231654_TKL/evidence/r1-ac8/10-ac7-source-preflight/ec91c560-tree.z",
+    "workspace/2026/TFW_20260909-231654_TKL/evidence/r1-ac8/10-ac7-source-preflight/preflight.json",
+    "workspace/2026/TFW_20260909-231654_TKL/evidence/r1-ac8/10-ac7-source-preflight/source-bytes.zip",
+    "workspace/2026/TFW_20260909-231654_TKL/evidence/r1-ac8/11-checkpoint/candidate-authored-check.stderr.txt",
+    "workspace/2026/TFW_20260909-231654_TKL/evidence/r1-ac8/11-checkpoint/candidate-authored-check.stdout.txt",
+    "workspace/2026/TFW_20260909-231654_TKL/evidence/r1-ac8/11-checkpoint/candidate-complete-check.stderr.txt",
+    "workspace/2026/TFW_20260909-231654_TKL/evidence/r1-ac8/11-checkpoint/candidate-complete-check.stdout.txt",
+    "workspace/2026/TFW_20260909-231654_TKL/evidence/r1-ac8/11-checkpoint/onb-authored-check.stderr.txt",
+    "workspace/2026/TFW_20260909-231654_TKL/evidence/r1-ac8/11-checkpoint/onb-authored-check.stdout.txt",
+    "workspace/2026/TFW_20260909-231654_TKL/evidence/r1-ac8/11-checkpoint/precommit-status.txt",
+    "workspace/2026/TFW_20260909-231654_TKL/evidence/r1-ac8/11-checkpoint/seal.json"
+  ],
+  "checkpoint_files": [
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/ONB__TFW_20260909-231654_TKL.md",
+      "class": "TRACE",
+      "bytes": 52870,
+      "sha256": "e3a7875fdd82399b2994911f1a128a3c6f27041c1dc902ccd3b6780d8812a324"
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/r1-ac8/03-input/source-after.json",
+      "class": "TRACE",
+      "bytes": 327,
+      "sha256": "dfcd4411386587ec0d5f74d55bb41aa2beed78d1deb218c85e87c310729b6bb9"
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/r1-ac8/03-input/source-before.json",
+      "class": "TRACE",
+      "bytes": 791424,
+      "sha256": "57219734c8b1f46363177a88970fcdab87d84f7fd7e7aa6fd261bc1096fcfebb"
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/r1-ac8/03-input/source-before.zip",
+      "class": "TRACE",
+      "bytes": 18722824,
+      "sha256": "6555dacade7f22ac4b494ebbd27267b63186088edbee545bcbce8c408c797f9b"
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/r1-ac8/04-generator-tests/receipt.json",
+      "class": "TRACE",
+      "bytes": 655,
+      "sha256": "3efe64a4695bcbbf1616a7ffcd119daeeb864c7f07aa3f18b5b8ccca881f8c0a"
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/r1-ac8/04-generator-tests/stderr.txt",
+      "class": "TRACE",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/r1-ac8/04-generator-tests/stdout.txt",
+      "class": "TRACE",
+      "bytes": 182,
+      "sha256": "5a4851f570466edf0e6b09d3ff0b6c54539a61b3d53cc49883218edf68ff223d"
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/r1-ac8/05-contract-tests/receipt.json",
+      "class": "TRACE",
+      "bytes": 886,
+      "sha256": "8fe02c529becad833f54e97295dcad77c0d853834804e9e56c762b67213423ed"
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/r1-ac8/05-contract-tests/stderr.txt",
+      "class": "TRACE",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/r1-ac8/05-contract-tests/stdout.txt",
+      "class": "TRACE",
+      "bytes": 117,
+      "sha256": "272748825dd168695f3204bf9d7489fccb27845723b4041585c479c2bfc0d7eb"
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/r1-ac8/06-integration-tests/build/receipt.json",
+      "class": "TRACE",
+      "bytes": 661,
+      "sha256": "3b704e7c6e9df7c070f2129c7cf8663b4c767d3c4ccffc4bb9366df872bc28c4"
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/r1-ac8/06-integration-tests/build/stderr.txt",
+      "class": "TRACE",
+      "bytes": 1029036,
+      "sha256": "20087622fc29d82cc59166748401c23ce8e6bbcd88e07fbed7443e6b9ddc676b"
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/r1-ac8/06-integration-tests/build/stdout.txt",
+      "class": "TRACE",
+      "bytes": 10039,
+      "sha256": "14dcaa6e7f188830d55645fd255486d2755f2619e8ed090b9227b25c6d82599c"
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/r1-ac8/06-integration-tests/receipt.json",
+      "class": "TRACE",
+      "bytes": 931,
+      "sha256": "03b677c2ca67a5f1b406f81828b1f63f1fc20ae4961f1c37e5bbd133b85f59bc"
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/r1-ac8/06-integration-tests/stderr.txt",
+      "class": "TRACE",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/r1-ac8/06-integration-tests/stdout.txt",
+      "class": "TRACE",
+      "bytes": 113,
+      "sha256": "e9daa8c6d7d416af69bc4b2faa11ae552353a11d4ab79ab67fbb0187beba7dd8"
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/r1-ac8/07-collection/receipt.json",
+      "class": "TRACE",
+      "bytes": 623,
+      "sha256": "dd6656443df1ec5800582aaa57842f691c69f64a57680016e184bea302d554e6"
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/r1-ac8/07-collection/stderr.txt",
+      "class": "TRACE",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/r1-ac8/07-collection/stdout.txt",
+      "class": "TRACE",
+      "bytes": 70008,
+      "sha256": "14f161a72db78db47038183651c5dda052ed7f8a63e237a1f5d7eae1dd178d67"
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/r1-ac8/08-navigation/browser-observations.json",
+      "class": "TRACE",
+      "bytes": 2562,
+      "sha256": "c2cc2b652c906e32a919e48829f5290eeff2480fa5beb2c74734c9fc46fe3a5f"
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/r1-ac8/08-navigation/five-pages.zip",
+      "class": "TRACE",
+      "bytes": 107223,
+      "sha256": "4333950220e32432d0ff8607fd8248f2a65f3f66be84a3ec4302949fde676951"
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/r1-ac8/08-navigation/manifest.json",
+      "class": "TRACE",
+      "bytes": 4921,
+      "sha256": "95ab31837650c57a87095decad6e9e2614f4cbc3e97138f73369eccb907aed6d"
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/r1-ac8/08-navigation/site-inventory.json",
+      "class": "TRACE",
+      "bytes": 450392,
+      "sha256": "eb1eca3c71bc4069811eb76ce7509c0507d33dcdf763e7a9892703d5e0dc61a7"
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/r1-ac8/09-accounting/accounting.json",
+      "class": "TRACE",
+      "bytes": 147199,
+      "sha256": "70319a7bf8e816b0dc9822f7d49269e8452b5ddd7d5ee7d0200d7adf33772395"
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/r1-ac8/09-accounting/all-name-status.stderr.txt",
+      "class": "TRACE",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/r1-ac8/09-accounting/all-name-status.z",
+      "class": "TRACE",
+      "bytes": 46342,
+      "sha256": "a518f3a2c4e4fbf996af216a31d24efdc90c25eec125f3d41c662d0a533ac785"
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/r1-ac8/09-accounting/value-membership.md",
+      "class": "TRACE",
+      "bytes": 8964,
+      "sha256": "89cb2ff5f7c919bade2a42f634cdc1f762121e7c4c2e70dd6bcfc45f5b7160cd"
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/r1-ac8/09-accounting/value-name-status.stderr.txt",
+      "class": "TRACE",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/r1-ac8/09-accounting/value-name-status.z",
+      "class": "TRACE",
+      "bytes": 1793,
+      "sha256": "b0f9d3f781caa5717a017a2b92838fd78b8108bf88f1883ba4a89daa3b1a8f3a"
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/r1-ac8/09-accounting/value-numstat.stderr.txt",
+      "class": "TRACE",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/r1-ac8/09-accounting/value-numstat.z",
+      "class": "TRACE",
+      "bytes": 1960,
+      "sha256": "36fc67f74aff2c3dd8ddd53900a16a80c9f93d2e8b9db1be499e238e8f3665d5"
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/r1-ac8/10-ac7-source-preflight/65c3c94b-tree.z",
+      "class": "TRACE",
+      "bytes": 364974,
+      "sha256": "5ac9147703f6c2711c2a3ae1c74a81bc3c10aaf771a433792eaea7c280c0c28b"
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/r1-ac8/10-ac7-source-preflight/ec91c560-tree.z",
+      "class": "TRACE",
+      "bytes": 296220,
+      "sha256": "c2f8bb3f21c13d500b9172f9f16c5926788acf7b3983fa5ea4cd8f8aa2c4ccdc"
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/r1-ac8/10-ac7-source-preflight/preflight.json",
+      "class": "TRACE",
+      "bytes": 154956,
+      "sha256": "4eee6e2f48a43c6977a38e2da2b1ea98c6876655ccadc6162d79a2ef00b3a601"
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/r1-ac8/10-ac7-source-preflight/source-bytes.zip",
+      "class": "TRACE",
+      "bytes": 1216838,
+      "sha256": "d473aca916a90f2a73c09439c1cf81258f1cb88219f873c8a63defc735bbd121"
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/r1-ac8/11-checkpoint/candidate-authored-check.stderr.txt",
+      "class": "TRACE",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/r1-ac8/11-checkpoint/candidate-authored-check.stdout.txt",
+      "class": "TRACE",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/r1-ac8/11-checkpoint/candidate-complete-check.stderr.txt",
+      "class": "TRACE",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/r1-ac8/11-checkpoint/candidate-complete-check.stdout.txt",
+      "class": "TRACE",
+      "bytes": 9325410,
+      "sha256": "a62245a6a7dcc0e20271c75f8d6794244992c7559fec5bde829afc1d3587ecf2"
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/r1-ac8/11-checkpoint/onb-authored-check.stderr.txt",
+      "class": "TRACE",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/r1-ac8/11-checkpoint/onb-authored-check.stdout.txt",
+      "class": "TRACE",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/r1-ac8/11-checkpoint/precommit-status.txt",
+      "class": "TRACE",
+      "bytes": 3810,
+      "sha256": "e200b0549f807d02f328637cc7a71b69cf9e0ba5a3dcf2257814bd355d9cc9ba"
+    }
+  ],
+  "self_identity": "This seal.json is TRACE; its own bytes are bound by the actual subsequent commit, avoiding self-hash recursion.",
+  "candidate_inventory_counts": {
+    "VALUE": 58,
+    "TRACE": 481,
+    "ASSURANCE": 7
+  },
+  "checkpoint_added_paths": 42,
+  "checkpoint_effect": "Excluded TRACE only; Candidate VALUE/ASSURANCE unchanged. No self-acceptance, RF completion or AC7 execution.",
+  "browser_cleanup": "Own temporary CUA tab 2 closed; own loopback HTTP server stopped by Ctrl-C."
+}

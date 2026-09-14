@@ -1,0 +1,22 @@
+{
+  "at": "2026-09-13T15:58:54.122037+00:00",
+  "argv": [
+    "git",
+    "-c",
+    "core.longpaths=true",
+    "-c",
+    "core.autocrlf=false",
+    "-C",
+    "C:\\Users\\c0rpa\\AppData\\Local\\Temp\\TFW_TKL_NATIVE_01a09a0c\\adoption-established\\coordinator",
+    "worktree",
+    "add",
+    "--detach",
+    "C:\\Users\\c0rpa\\AppData\\Local\\Temp\\TFW_TKL_NATIVE_01a09a0c\\adoption-established\\planning-entry",
+    "60066bf1143da33fad12102c0c17163501abd631"
+  ],
+  "exit": 0,
+  "head": "60066bf1143da33fad12102c0c17163501abd631",
+  "raw_plan_sha256": "8967783329c291602639aca02a7d387e23dfc98a808497724c08d6a845fc1720",
+  "raw_selected_adapter_sha256": "813b219286bf7fb6521b836cf3a802806fdc38760aaf9a55c75c49a0d5be7cfe",
+  "status": ""
+}

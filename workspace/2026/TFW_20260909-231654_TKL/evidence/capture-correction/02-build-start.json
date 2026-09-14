@@ -1,0 +1,22 @@
+{
+  "candidate": "daa520874c1f1236c95bc2dfbd268be911098d49",
+  "tree": "9f69be16192c3ca32f4faf5c8af6782ce8c96abe",
+  "cwd": "C:\\Users\\c0rpa\\.codex\\worktrees\\f3f3\\steps-framework",
+  "argv": [
+    "E:\\TEMP\\pttc-phase-a-b9b5\\venv\\Scripts\\python.exe",
+    "-m",
+    "mkdocs",
+    "build",
+    "--config-file",
+    "docs/mkdocs.yml",
+    "--site-dir",
+    "E:\\TEMP\\TFW_TKL_CAPTURE_CORRECT_daa52087_oti183cl\\site"
+  ],
+  "site_dir": "E:\\TEMP\\TFW_TKL_CAPTURE_CORRECT_daa52087_oti183cl\\site",
+  "env_overrides": {
+    "DISABLE_MKDOCS_2_WARNING": "true",
+    "PYTHONIOENCODING": "utf-8"
+  },
+  "started": "2026-09-14T00:20:33.624018+00:00",
+  "scope": "One direct source MkDocs build under f1b0; no pytest module run, receiver/native effect, older output cleanup or report writes during build."
+}

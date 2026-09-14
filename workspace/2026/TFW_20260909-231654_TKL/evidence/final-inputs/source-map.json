@@ -1,0 +1,151 @@
+{
+  "producer": "Coordinator 01a09974-6716-7cc0-9916-fd6d04c91481",
+  "ingesting_unit": "Executor 01a09a0c-c9e2-7d01-af4e-64931af967ed",
+  "method": "Exact git show blob bytes, no merge or native rerun",
+  "files": [
+    {
+      "source_commit": "f5e33d0672b1c9a52700180e5d2a62800eabe402",
+      "source_path": "workspace/2026/TFW_20260909-231654_TKL/evidence/coordinator-ac7-complete/adoption-established-raw.zip",
+      "git_blob": "10477f72c5a3caa3aea1f69ff8010e374a2b259e",
+      "destination": "workspace/2026/TFW_20260909-231654_TKL/evidence/final-inputs/ac7/adoption-established-raw.zip",
+      "bytes": 1509317,
+      "sha256": "fcc5013db14befe91757d88d336bbd4f90f02699642dbfa6551ccae3f60031b3"
+    },
+    {
+      "source_commit": "f5e33d0672b1c9a52700180e5d2a62800eabe402",
+      "source_path": "workspace/2026/TFW_20260909-231654_TKL/evidence/coordinator-ac7-complete/adoption-established.bundle",
+      "git_blob": "e2cab25ee15eced49be33cd0660c47481d6ba6c6",
+      "destination": "workspace/2026/TFW_20260909-231654_TKL/evidence/final-inputs/ac7/adoption-established.bundle",
+      "bytes": 310603,
+      "sha256": "005384a0c27116de712d397465386744442c8329a4de71c026f0ca9c50b9af35"
+    },
+    {
+      "source_commit": "f5e33d0672b1c9a52700180e5d2a62800eabe402",
+      "source_path": "workspace/2026/TFW_20260909-231654_TKL/evidence/coordinator-ac7-complete/custody.json",
+      "git_blob": "f56096e922e98c512549092e0c0f5d3b370f8521",
+      "destination": "workspace/2026/TFW_20260909-231654_TKL/evidence/final-inputs/ac7/custody.json",
+      "bytes": 122616,
+      "sha256": "8ef3a9f986dd08167384b5f1f92e5b77d9494b15582ae49ba724018173e6fc04"
+    },
+    {
+      "source_commit": "f5e33d0672b1c9a52700180e5d2a62800eabe402",
+      "source_path": "workspace/2026/TFW_20260909-231654_TKL/evidence/coordinator-ac7-complete/init-clean-raw.zip",
+      "git_blob": "87e62701b439917b3e24f70705997ff837856c3f",
+      "destination": "workspace/2026/TFW_20260909-231654_TKL/evidence/final-inputs/ac7/init-clean-raw.zip",
+      "bytes": 548007,
+      "sha256": "ed8960a4699160d994d86c2ff11666d5d6d9c4430db9234e01279a87dcf998c8"
+    },
+    {
+      "source_commit": "f5e33d0672b1c9a52700180e5d2a62800eabe402",
+      "source_path": "workspace/2026/TFW_20260909-231654_TKL/evidence/coordinator-ac7-complete/init-clean.bundle",
+      "git_blob": "d5fa75f733ee074a7b588a33338db802b176380d",
+      "destination": "workspace/2026/TFW_20260909-231654_TKL/evidence/final-inputs/ac7/init-clean.bundle",
+      "bytes": 494285,
+      "sha256": "cffa6152bf849ca1cfabde64fb5549db0861ceb2005d431309bbe1bfa8968e8a"
+    },
+    {
+      "source_commit": "7bbf6b9f9be11abe227f5ccc48bca0473c8fa228",
+      "source_path": "workspace/2026/TFW_20260909-231654_TKL/evidence/coordinator-ac10/00-admission-observer.json",
+      "git_blob": "13e2763021efc8d385ce11a569b32b2d25091ca8",
+      "destination": "workspace/2026/TFW_20260909-231654_TKL/evidence/final-inputs/ac10-original/00-admission-observer.json",
+      "bytes": 768,
+      "sha256": "227b42d6d80591f9042b778e7e9549af9ff7d8114ad029599cf612e510f708ed"
+    },
+    {
+      "source_commit": "7bbf6b9f9be11abe227f5ccc48bca0473c8fa228",
+      "source_path": "workspace/2026/TFW_20260909-231654_TKL/evidence/coordinator-ac10/01-predispatch.json",
+      "git_blob": "bf19a21f9bb1c41836a154970ce34ad7c18cb7f1",
+      "destination": "workspace/2026/TFW_20260909-231654_TKL/evidence/final-inputs/ac10-original/01-predispatch.json",
+      "bytes": 4762,
+      "sha256": "247bf9225af14bc0f5062e8163074c9e422b6dfe11d1b07ea76e8e5ec59e8bc2"
+    },
+    {
+      "source_commit": "7bbf6b9f9be11abe227f5ccc48bca0473c8fa228",
+      "source_path": "workspace/2026/TFW_20260909-231654_TKL/evidence/coordinator-ac10/02-first-answer.txt",
+      "git_blob": "fa494f7b1ae9b500c0ae2beede69dd245b571b1b",
+      "destination": "workspace/2026/TFW_20260909-231654_TKL/evidence/final-inputs/ac10-original/02-first-answer.txt",
+      "bytes": 2425,
+      "sha256": "1fd3dd800a6c79e3842f8a47da7937ee236d673437b4d0c50fba1bb34af67cff"
+    },
+    {
+      "source_commit": "7bbf6b9f9be11abe227f5ccc48bca0473c8fa228",
+      "source_path": "workspace/2026/TFW_20260909-231654_TKL/evidence/coordinator-ac10/03-visible-tool-trail.json",
+      "git_blob": "fab632bd9431c94f2bfe30eec94bba4c8661de98",
+      "destination": "workspace/2026/TFW_20260909-231654_TKL/evidence/final-inputs/ac10-original/03-visible-tool-trail.json",
+      "bytes": 37728,
+      "sha256": "8b46267e30f33ada283c3bacbbdf0fda02cbe6410dfca0c0cb158d1454d609c6"
+    },
+    {
+      "source_commit": "7bbf6b9f9be11abe227f5ccc48bca0473c8fa228",
+      "source_path": "workspace/2026/TFW_20260909-231654_TKL/evidence/coordinator-ac10/04-original-turn-clock.json",
+      "git_blob": "52dd13c2cb9df5c850c6d502e9f550261c9bbca3",
+      "destination": "workspace/2026/TFW_20260909-231654_TKL/evidence/final-inputs/ac10-original/04-original-turn-clock.json",
+      "bytes": 915,
+      "sha256": "23c4794e770dc103aafd4af7640d1e6364868969e84336c0bd6391c01e279827"
+    },
+    {
+      "source_commit": "7bbf6b9f9be11abe227f5ccc48bca0473c8fa228",
+      "source_path": "workspace/2026/TFW_20260909-231654_TKL/evidence/coordinator-ac10/05-original-custody.json",
+      "git_blob": "8f9a283f57500be439daa519b5fa0f3c47a6cbcb",
+      "destination": "workspace/2026/TFW_20260909-231654_TKL/evidence/final-inputs/ac10-original/05-original-custody.json",
+      "bytes": 4016,
+      "sha256": "bbf92f70cfefab9821bd0bd8dc1aecf3c8e609abfe7245443abcec8c6c5c26aa"
+    },
+    {
+      "source_commit": "7bbf6b9f9be11abe227f5ccc48bca0473c8fa228",
+      "source_path": "workspace/2026/TFW_20260909-231654_TKL/evidence/coordinator-ac10/capture-first.py",
+      "git_blob": "f8b2fbf551af296feb40f58e6183d89c3a0444c3",
+      "destination": "workspace/2026/TFW_20260909-231654_TKL/evidence/final-inputs/ac10-original/capture-first.py",
+      "bytes": 6553,
+      "sha256": "3fa7addd02fd45913af591224e5722b85fb00ace9e02cdd913aa878e7bc7fc4d"
+    },
+    {
+      "source_commit": "ec5506d3f89bafc8de5337d0af22fd7975410448",
+      "source_path": "workspace/2026/TFW_20260909-231654_TKL/evidence/coordinator-ac10/06-operation-and-preservation-check.json",
+      "git_blob": "44bdedb6d7d658e65d0a35c6bdac2b1bc74a4497",
+      "destination": "workspace/2026/TFW_20260909-231654_TKL/evidence/final-inputs/ac10-later/06-operation-and-preservation-check.json",
+      "bytes": 3777,
+      "sha256": "dde7ef42167c57ec83a6409fc9dd3afd5388f3d352bbdf2e63d383b77b25a731"
+    },
+    {
+      "source_commit": "ec5506d3f89bafc8de5337d0af22fd7975410448",
+      "source_path": "workspace/2026/TFW_20260909-231654_TKL/journal/20260913-204259__dispatch__5ebc.md",
+      "git_blob": "336a8d7c89793d0a64ceee9df35bc4fc3a2306ac",
+      "destination": "workspace/2026/TFW_20260909-231654_TKL/evidence/final-inputs/authority/20260913-204259__dispatch__5ebc.md",
+      "bytes": 4076,
+      "sha256": "ed62802e42d1b0713ebc7a5866c1cf9c1e0510c7b95f9b5941e819608c49a4a7"
+    },
+    {
+      "source_commit": "1c6a9bd7ae9709944b3260af4c1f084a8501dce9",
+      "source_path": "workspace/2026/TFW_20260909-231654_TKL/journal/20260913-192247__dispatch__e5a1.md",
+      "git_blob": "dbc1b046f9183beb67dab63e993c7d7b5bdf893a",
+      "destination": "workspace/2026/TFW_20260909-231654_TKL/evidence/final-inputs/authority/20260913-192247__dispatch__e5a1.md",
+      "bytes": 3279,
+      "sha256": "4322b23ffe0dfa670c26168e2eeca4183e3b7f64f0f42079f5c370d932daa336"
+    },
+    {
+      "source_commit": "144e3e651382330afba4d7131a562d05e7f515f9",
+      "source_path": "workspace/2026/TFW_20260909-231654_TKL/journal/20260913-154545__dispatch__0173.md",
+      "git_blob": "df9afd14a836a8ee8e444524949048a288a6c54e",
+      "destination": "workspace/2026/TFW_20260909-231654_TKL/evidence/final-inputs/authority/20260913-154545__dispatch__0173.md",
+      "bytes": 5563,
+      "sha256": "b56471d27bf2b1c45b73d6116446607a9f19df4e5662aa4ffa057227b4a863fe"
+    },
+    {
+      "source_commit": "c2fce07df4293ae4812f09b3919e7d833a74f324",
+      "source_path": "workspace/2026/TFW_20260909-231654_TKL/evidence/coordinator-ac10/00-admission-observer.json",
+      "git_blob": "5af4d00119b894254217baf969867f7910b2f823",
+      "destination": "workspace/2026/TFW_20260909-231654_TKL/evidence/final-inputs/ac10-earlier-normalized/00-admission-observer.json",
+      "bytes": 759,
+      "sha256": "a04ba3c0357dc467e83277321b674d0a6b213805de27646502003b8fdd49f30b"
+    },
+    {
+      "source_commit": "c2fce07df4293ae4812f09b3919e7d833a74f324",
+      "source_path": "workspace/2026/TFW_20260909-231654_TKL/evidence/coordinator-ac10/01-predispatch.json",
+      "git_blob": "7bdeec9a6246b6e244b10a5e2f6a9985d8eeb679",
+      "destination": "workspace/2026/TFW_20260909-231654_TKL/evidence/final-inputs/ac10-earlier-normalized/01-predispatch.json",
+      "bytes": 4663,
+      "sha256": "4804eac33bd1a1ef1d32684adb5695afe80ed05718379475ab0325b6ddc14166"
+    }
+  ]
+}

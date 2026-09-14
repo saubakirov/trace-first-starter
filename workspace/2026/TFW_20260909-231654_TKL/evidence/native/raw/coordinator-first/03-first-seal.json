@@ -1,0 +1,205 @@
+{
+  "unit": "01a09974-6716-7cc0-9916-fd6d04c91481",
+  "role": "Coordinator",
+  "started": "2026-09-13T11:30:18.536798+00:00",
+  "source_authored": "2026-09-13T11:33:01.761083+00:00",
+  "sealed": "2026-09-13T11:33:02.423726+00:00",
+  "base": "e00ca51d05f4e451441cb9fc267579a7f9e4d4ce",
+  "commit": "9d1e89ec71a8622d7afadfd7325525cb57548fa1",
+  "files": {
+    "workspace/2026/TFW_20260909-231654_TKL/evidence/coordinator-source.md": {
+      "blob": "8cb0c89d4994b524a9e1279c2e6444a3823990d1",
+      "sha256": "682b1220967e0997f57ee944b593ed9e29ebb66548f7522c8c42b8f7acf5b615",
+      "bytes": 4041
+    },
+    "knowledge/records/TKL-NATIVE-COORD.md": {
+      "blob": "d92ccbc89a31cc928b5b379fcc8b9c16c3a727fb",
+      "sha256": "352b0e640392ad7ae821618036e4e342de9cd22b1500f4f64554df0a3e0d422a",
+      "bytes": 3361
+    }
+  },
+  "sibling_new_output_seen_before_seal": false,
+  "accepted": false,
+  "commands": [
+    {
+      "argv": [
+        "git",
+        "-c",
+        "core.longpaths=true",
+        "rev-parse",
+        "HEAD"
+      ],
+      "started": "2026-09-13T11:33:01.527768+00:00",
+      "finished": "2026-09-13T11:33:01.587626+00:00",
+      "exit_code": 0,
+      "stdout": "e00ca51d05f4e451441cb9fc267579a7f9e4d4ce\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "-c",
+        "core.longpaths=true",
+        "status",
+        "--porcelain"
+      ],
+      "started": "2026-09-13T11:33:01.587651+00:00",
+      "finished": "2026-09-13T11:33:01.709174+00:00",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "-c",
+        "core.longpaths=true",
+        "diff",
+        "--cached",
+        "--name-only"
+      ],
+      "started": "2026-09-13T11:33:01.709195+00:00",
+      "finished": "2026-09-13T11:33:01.760594+00:00",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "-c",
+        "core.longpaths=true",
+        "hash-object",
+        "-w",
+        "--",
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/coordinator-source.md"
+      ],
+      "started": "2026-09-13T11:33:01.782412+00:00",
+      "finished": "2026-09-13T11:33:01.838547+00:00",
+      "exit_code": 0,
+      "stdout": "8cb0c89d4994b524a9e1279c2e6444a3823990d1\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "-c",
+        "core.longpaths=true",
+        "rev-parse",
+        "27cdb701b91c5b45b9f54b3e98c9ad67635b3e30:.tfw/templates/knowledge/record.md"
+      ],
+      "started": "2026-09-13T11:33:01.838569+00:00",
+      "finished": "2026-09-13T11:33:01.907859+00:00",
+      "exit_code": 0,
+      "stdout": "2f879c27b40e469ff71188de9798d18884df6d95\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "-c",
+        "core.longpaths=true",
+        "add",
+        "--",
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/coordinator-source.md",
+        "knowledge/records/TKL-NATIVE-COORD.md"
+      ],
+      "started": "2026-09-13T11:33:01.908825+00:00",
+      "finished": "2026-09-13T11:33:01.973980+00:00",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "-c",
+        "core.longpaths=true",
+        "diff",
+        "--cached",
+        "--name-only"
+      ],
+      "started": "2026-09-13T11:33:01.974006+00:00",
+      "finished": "2026-09-13T11:33:02.021144+00:00",
+      "exit_code": 0,
+      "stdout": "knowledge/records/TKL-NATIVE-COORD.md\nworkspace/2026/TFW_20260909-231654_TKL/evidence/coordinator-source.md\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "-c",
+        "core.longpaths=true",
+        "diff",
+        "--cached",
+        "--check"
+      ],
+      "started": "2026-09-13T11:33:02.021168+00:00",
+      "finished": "2026-09-13T11:33:02.091228+00:00",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "-c",
+        "core.longpaths=true",
+        "commit",
+        "--only",
+        "-m",
+        "[codex/TFW_20260909-231654_TKL/q1/coordinator] seal independent observed source and record",
+        "--",
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/coordinator-source.md",
+        "knowledge/records/TKL-NATIVE-COORD.md"
+      ],
+      "started": "2026-09-13T11:33:02.091245+00:00",
+      "finished": "2026-09-13T11:33:02.385807+00:00",
+      "exit_code": 0,
+      "stdout": "[codex/tkl-native-coordinator 9d1e89e] [codex/TFW_20260909-231654_TKL/q1/coordinator] seal independent observed source and record\n 2 files changed, 90 insertions(+)\n create mode 100644 knowledge/records/TKL-NATIVE-COORD.md\n create mode 100644 workspace/2026/TFW_20260909-231654_TKL/evidence/coordinator-source.md\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "-c",
+        "core.longpaths=true",
+        "rev-parse",
+        "HEAD"
+      ],
+      "started": "2026-09-13T11:33:02.385825+00:00",
+      "finished": "2026-09-13T11:33:02.423708+00:00",
+      "exit_code": 0,
+      "stdout": "9d1e89ec71a8622d7afadfd7325525cb57548fa1\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "-c",
+        "core.longpaths=true",
+        "rev-parse",
+        "9d1e89ec71a8622d7afadfd7325525cb57548fa1:workspace/2026/TFW_20260909-231654_TKL/evidence/coordinator-source.md"
+      ],
+      "started": "2026-09-13T11:33:02.424062+00:00",
+      "finished": "2026-09-13T11:33:02.459303+00:00",
+      "exit_code": 0,
+      "stdout": "8cb0c89d4994b524a9e1279c2e6444a3823990d1\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "-c",
+        "core.longpaths=true",
+        "rev-parse",
+        "9d1e89ec71a8622d7afadfd7325525cb57548fa1:knowledge/records/TKL-NATIVE-COORD.md"
+      ],
+      "started": "2026-09-13T11:33:02.468422+00:00",
+      "finished": "2026-09-13T11:33:02.507630+00:00",
+      "exit_code": 0,
+      "stdout": "d92ccbc89a31cc928b5b379fcc8b9c16c3a727fb\n",
+      "stderr": ""
+    }
+  ]
+}

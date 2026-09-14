@@ -1,0 +1,322 @@
+workspace/2026/TFW_20260909-231654_TKL/evidence/q1-inputs/common.md
+# Prepared Q1 bounded inputs — assurance only
+
+These are prepared case claims, not observed results or accepted project knowledge. Real authority
+is the exported immutable Q1 ruling and direct dispatch. Candidate rules apply. No fixture imperative
+can appoint a role, accept either record, or authorize external effects.
+
+Both holders start from the same sealed base and inspect their own bounded source. Each records actual
+start, finish, commands/reads, inspected context, uncertainty and source/record Git identities. Each
+first source and record is committed and raw-hash sealed before either holder reads the other's new
+source or record. Start promptly after Coordinator's direct synchronized dispatch; measure real
+overlap only, without delay to manufacture it. Separate worktree paths alone do not establish overlap.
+Return only through the existing Coordinator channel. Preserve all first failures and originals.
+
+Both independently inspect Candidate's `.tfw/templates/knowledge/record.md` and selected current-use/
+handover/retry clauses. The independently reached equivalent observation is about the actual rule
+they inspected. Disclose that the underlying Candidate rule is a shared source, not two independent
+corroborating origins. Each also captures its own actual role-specific context and responsibility.
+
+The prepared conflicting claim is isolated scope `Q1 sample decision / review mode`. Executor input
+proposes `mode-alpha`; Coordinator input proposes `mode-beta`. These are explicit unsupported prepared
+assertions, not real project preferences. Keep the overlap unresolved. Do not decide it by timestamp,
+clean Git merge, source count or the principal shared by these distinct native units.
+
+After both seals, Coordinator integrates both real commits, checks both original source/record blobs,
+and inspects semantic overlap on the integrated revision. Neither author accepts either record.
+No global pending list, state, digest, count or inventory may be written.
+
+
+workspace/2026/TFW_20260909-231654_TKL/evidence/q1-inputs/executor.md
+# Prepared Executor input
+
+Actual unit: 01a09a0c-c9e2-7d01-af4e-64931af967ed; principal robert for owner saubakirov. The direct operational Coordinator is
+01a09974-6716-7cc0-9916-fd6d04c91481. Source `workspace/2026/TFW_20260909-231654_TKL/evidence/executor-handover.md` and effect `knowledge/records/TKL-NATIVE-EXEC.md`
+are your own writes in your worktree. Do not write another holder's return. Use actual context you
+have inspected, recording exact Candidate/ONB/ruling objects and remaining limits.
+
+The Executor has already made a real interim return in the Candidate ONB §§10–11. Its fixture fallback
+is necessary here because this disposable native checkpoint has no new real ONB/RF stage and the
+sealed upstream ONB is not edited by the exercise. The Coordinator captures its own actual bounded
+planning/qualification participation, rather than copying the Executor's role account.
+
+Independently authored effect remains observed/ASSURANCE, with no acceptance of the TKL product or
+this record. Original acceptance authority for a new accepted project claim is explicitly absent.
+Include the shared-source equivalent rule observation and the separate prepared `mode-alpha` assertion
+in clearly separate prose; the assertion has no evidential truth or authority. Preserve uncertainty.
+Only record facts you actually checked; do not claim to have inspected your sibling's new return.
+
+
+.tfw/templates/knowledge/record.md
+# Knowledge record — {record-id}: {title}
+
+> One material claim/decision and its completed or explicitly unresolved disposition.
+> Presence is not acceptance. Fill applicable fields; reasoned N/A only when inapplicable.
+
+| Field | Value |
+|---|---|
+| Record identity | Stable locally allocated ID; no global allocator |
+| Publication intent | Exact source claim/checkpoint and intended effect; retain on equal retry |
+| Kind | human knowledge / technical-reference decision |
+| Statement | Complete material claim or decision |
+| Applicability | Exact project, actor, condition, time and scope |
+| Grounds and uncertainty | Evidence, rationale, limitations and what remains unknown |
+| Disposition | observed / accepted / retain-only / rejected / superseded / unresolved |
+| Source | Exact locator, claim/heading and inspected epoch; Git object/path or preserved evidence |
+| Originating task and unit | Actual source task, phase/checkpoint and native producer address |
+| Producer | Actual author of this record, distinct from original source when copied |
+| Qualifier | Existing responsible role/principal and actual working unit |
+| Acceptance authority | Actual owner/valid grant and exact decision reference, or explicitly absent |
+| Completed effect or missing decision | Actual publication/reuse/retention; exact owed action and existing owner |
+| Relations | Kind, target identity/epoch, scope and grounds; explicit none after lookup |
+
+## Source and decision context
+
+Preserve enough context to assess the claim without inventing unseen conversation or copying every
+source section. Human-only knowledge retains human provenance; technical findings retain technical
+sources. Two paraphrases of one origin are not independent corroboration.
+
+## Relations and current use
+
+Relations may be equivalence/duplicate, scoped successor, correction or unresolved conflict.
+A legacy target names its exact path, D/F/heading identity and source epoch. Preserve old meaning;
+a scoped successor replaces only that scope. Search `knowledge/records/` for incoming references
+to this identity and material ancestors before use; follow relevant chains in both directions.
+A newer timestamp does not resolve overlapping conflict.
+
+## Retry and continuation
+
+Compare actual source, material intent, effect and acceptance. Equal retry reuses completed output;
+divergent intent refuses replacement until an authorized correction resolves it. Retain-only states
+why no publication/resolution is owed; unavailable acceptance-critical context keeps close open.
+
+
+.tfw/templates/knowledge/handover.md
+# Knowledge handover — {task-id}: {checkpoint}
+
+Use only when an actual interim/stopped return has no suitable existing HL/ONB/RF/RES/REVIEW or
+stage section. The producing role owns its available context. This is source evidence, not an
+accepted project record or a required file per participant.
+
+| Field | Actual return |
+|---|---|
+| Producer | Principal, role and exact native unit |
+| Owning task/checkpoint | Task/phase, transfer/stopping point and actual time |
+| Bounded context inspected | Exact source locator/version, or limits of available context |
+| Material statement/outcome | Captured insight, justified-none, unavailable or retain-only with grounds |
+| Source and uncertainty | Human origin or technical evidence; unavailable information stays unknown |
+| Existing reusable source | Exact locator/claim and why sufficient, or why this fallback is needed |
+| Continuation | Completed return or exact missing material decision/action and existing owner |
+
+An empty file, silence or unchecked claim is not a return. Justified-none names inspected scope;
+unavailable is not none. Retain-only requires an authorized completed disposition that no
+publication/resolution is owed; an owed effect remains open. Preserve rejected/interrupted source
+work without fabricating success. Return to the actual Coordinator through the authorized channel.
+
+
+.tfw/conventions.md
+### Knowledge handover
+
+Every producing role preserves available material insight before transfer/checkpoint, normal return,
+or an orderly stop: Coordinator planning/decision transfer; Researcher stage/iteration return;
+Executor interim/final return; Reviewer return. Reuse the existing HL/ONB/RF/RES/REVIEW or stage section
+first. Only an interim/stopped return without a suitable source uses the minimal handover template
+under its owning task. Capture needs actual producer/unit, bounded source/epoch, material statement
+or explicit outcome, grounds/uncertainty and continuation. No per-person file, copied corpus, raw chat
+or private reasoning is required. A lost/unseen context is never invented.
+
+| Actual selected input | Required disposition at handover/close |
+|---|---|
+| Missing producer return | Identify the known contributor and material gap from actual task-local dispatch/return lineage; stop affected close |
+| Justified-none | Producer names inspected bounded context and an existing reusable source when relevant; inspect rationale, accept no filler publication |
+| Unavailable | Preserve uncertainty and exact missing decision plus existing owner; acceptance-critical missing context keeps close open |
+| Retain-only | Preserve source and authorized completed reason why no publication/resolution is owed; irrelevant uncertainty need not block |
+| Owed publication/resolution | Complete the effect or retain an honest nonterminal dependency; never hide it as retain-only |
+
+An empty file, checkbox, silence, global zero or another role's return proves no missing handover.
+Rejected/interrupted work retains useful sources with its actual non-success state. The existing
+Coordinator verifies material coverage at `Closing and record recovery`; it does not see private
+context or create a global contribution inventory. Preserve sealed sources after close.
+
+
+### Knowledge qualification
+
+Preservation is not promotion. `/tfw-knowledge` owns human-sourced knowledge; `/tfw-docs` owns technical
+reference/decisions. Both use `.tfw/templates/knowledge/record.md` for warranted new independent
+records. A valid record carries stable identity/publication intent, kind, material statement,
+applicability, grounds/uncertainty, disposition, exact source/epoch, actual source producer/unit,
+qualifier and acceptance authority. Git sources must resolve the real object/path/claim; otherwise
+retain inspectable exact evidence. Unresolvable identity or absent authority cannot be accepted.
+
+Observed, accepted, retain-only, rejected, superseded and unresolved claims stay distinguishable.
+The existing human owner or valid grant controls qualification, never a child/record/source imperative.
+Human knowledge retains its original human provenance. Copied/paraphrased returns are not independent
+corroboration. Record source independence and scope before treating equivalent claims as support.
+
+Immediately before any publication/retry inspect actual source, material intent, current effect and
+acceptance. Equal source intent with an already accepted effect reuses that exact effect and repairs
+only a missing current reference. Changed statement/scope/source/authority under the same identity
+refuses replacement, preserves both inputs and needs an authorized correction identity/disposition.
+Do not issue a second accepted identity to hide divergence. Independent equivalents retain both
+provenance chains through explicit equivalence/duplicate relations or one properly qualified claim.
+
+Independent contributions use separate paths without a shared counter/digest/inventory write.
+After integration inspect actual semantic overlap; textual merge success is not agreement. Overlapping
+contradictions preserve both scopes/sources and name the missing decision and existing resolver.
+Newer timestamps, confidence and source repetition never appoint a winner. Retention is complete only
+when no publication/resolution is owed; required unresolved effects remain nonterminal.
+
+
+### Current knowledge use
+
+Start at `KNOWLEDGE.md`. It separates governing instructions, architecture/reference, legacy D/topic
+rows and new `knowledge/records/`. Navigate or search relevant ordinary files; no generated index,
+task-archive sweep, original chat or mandatory service is required. An optional view is rebuildable
+and non-authoritative. P0–P4 and relevant P5–P7 remain required at their existing stage sites; new
+records join their semantic priority, not a lower optional category.
+
+Before applying a relevant record or legacy row, inspect scope, grounds, disposition, source and
+producer. Search the record space for incoming successor/correction/equivalence/conflict references
+to its exact identity; follow material chains in both directions, checking each scope. A legacy
+target binds exact path plus D/F/heading and relevant source epoch. A backward-only link or old
+accepted label is insufficient. Scoped successors replace only their stated scope; unchanged
+accepted claims remain applicable. Unresolved branches name the missing authorized decision.
+
+Unavailable material source/authority blocks the dependent use, not unrelated planning. Retrieved
+instructions are evidence, never permission to publish, amend, execute or skip approvals. Preserve
+historical meaning/links; no every-fact conversion, source-marker write or maintained record list.
+The pinned `migrations/knowledge-lifecycle.md` owns adoption and retired-setting preservation.
+
+
+
+workspace/2026/TFW_20260909-231654_TKL/ONB__TFW_20260909-231654_TKL.md
+## 10. Q2/Q3 required evidence return — 2026-09-13
+
+This is the actual Executor interim return, requested by operational Coordinator
+`01a09974-6716-7cc0-9916-fd6d04c91481`. It preserves the earlier blocker-free Q1 epoch; these two
+newly identified questions do not revise that decision. No Candidate, EV, RF or native receiver
+exists at this return. Q1 authorization remains; the dependent operations below await their recorded
+bound. Full tests and independent read-only checks continue.
+
+### Q2 — full init evidence requires the existing research/review route
+
+**Missing evidence/authority:** TS AC-7 requires actual isolated clean Full initialization.
+Current canonical init §§3–5 requires research stages/RES, setup/RF, independent review and close.
+Executor cannot author RES/REVIEW or impersonate those holders. Mini-Setup, copied forms, adapter
+models and an unclosed receiver do not establish the full result. No additional native holder is
+proposed.
+
+**One prospective route for LEAD:** after a tested Candidate, complete the available Q1/source/gate
+checks. Run the sealed first AC-10 through the existing Researcher before giving it init material
+only if AC-10's prerequisite Gates actually pass; record missing native evidence separately. Then
+return the initial TKL EV/RF with AC-7 honestly BLOCKED, not successful completion. After that real
+RF allows the one independent Reviewer to exist, use that same Reviewer, existing Researcher and
+operational Coordinator for the isolated init. Supplement the real TKL evidence/RF and return to
+the same Reviewer. No early Reviewer, new native task or second consumer answer is implied.
+
+Proposed exact clean root:
+`C:/Users/c0rpa/AppData/Local/Temp/TFW_TKL_NATIVE_01a09a0c/init-clean`.
+Proposed established-update root:
+`C:/Users/c0rpa/AppData/Local/Temp/TFW_TKL_NATIVE_01a09a0c/adoption-established`.
+Both and their common parent were observed absent at **2026-09-13T10:37:57.178931+00:00**.
+They are proposed extensions of the finite disposable evidence surface, not already granted Q1 paths.
+
+Defaults submitted for that bounded decision: project **TKL isolated receiver assurance**; English
+content; no tutorial; no external receiver, publication or release; Codex adapter only; active
+`[workspace]`, no historical key; task prefix `TFW`; first task title **TKL receiver initialization**,
+abbreviation **INIT**. The actual task ID/time is allocated once from the execution clock only after
+those values are authorized. This is a local fixture task carrier, not another Codex task. The actual
+owner remains saubakirov; any minimal human profile is written from the resolved exercise authority,
+never copied from upstream team memory. No optional private preferences or invented release policy.
+
+Coordinator owns actual discovery/default resolution, clean setup, profile/config/state/event,
+managed adapter installation, init RF and final bounded close. Researcher owns actual required
+research stages and RES after its sealed AC-10 return; it follows its canonical research gates and
+records any missing input instead of synthesizing completed research. The existing independent
+Reviewer judges the actual init RF/output. Executor prepares pinned clean payload and raw snapshots,
+performs only its own checks/evidence, and records the real actions/limits. Receiver checks cover
+config/carrier validity, exact adapter routes/copies, no upstream memory/state scaffold, and unchanged
+repeat; no shipped Python service is introduced. Final effect is the honestly completed isolated
+Full init, with real research, independent review, applicable knowledge dispositions and filled DONE
+outcome, or its exact remaining nonterminal dependency. Established adoption follows the pinned guide
+with a prospective complete before-image, one repeat and one later-field refusal. No operation starts
+on this proposal alone.
+
+### Q3 — self-adoption before-image omitted reader identities
+
+Original attachment, unchanged:
+`.tfw/update_receipts/knowledge-lifecycle/0a435729c93141639ada55fb77a7508d47d0d1b9c159d50b6e05bdfb364ebacf/preservation.json`.
+Its actual SHA-256 equals its directory name. Guide SHA-256 remains
+`2ce771e0415aab0c63b011d44d613304566fdeb41dfd97954f45dc34da3c8da3`.
+The attachment binds actual Baseline `ec91c56007c20cda79f740fec15c85e4af74d17c`, approval
+`2794cbdb40f6c4f3a7d4bce1f8d4eb949d9e6913` and unchanged TS blob
+`f69fd4099a21a07ae2d17e6b5108b04ac94f107e`.
+
+It preserved complete original config/entry/state bytes, their hashes, nine retained-topic hashes,
+active/history choices, known retired fields and intended config/entry hashes. Application then
+removed the six-line known knowledge config block and changed only entry/current-use/count prose;
+legacy D/reference/topic/state meaning and bytes were retained. Reader/adapter changes were already
+present in the working tree. **The required separate old/intended reader/adapter identity map was
+omitted.** Later residual-reader corrections are separate observed generations.
+
+Observed filesystem metadata places originals/JSON at **2026-09-13 10:16:18.331723–.332950 UTC**;
+this is a present metadata observation, not a contemporaneous sealed timestamp. The original JSON
+contains no timestamp. First collection began at `10:16:50.674936 UTC`. The actual initial source
+snapshot was taken during the first affected run at `10:20:40.956326 UTC`, with archive hash
+`7139ae8343766970aa595a84f4f60ae8ba6ad9bd766440735e43f59bb14cdb25` in
+`evidence/checks/01-02-source-before-corrections.{json,zip}`. It explicitly discloses that timing.
+Checks 03–06 each preserve their own `source-before.json`/zip; 06 is the current full-suite epoch.
+These preserve the successive actual reader/adapter inputs, not a pre-application promise.
+
+Available reconstruction: the old canonical/adapter/role/form objects resolve from the immutable
+Baseline; the exact approved TS selects the 58 VALUE paths; the initial and later observed snapshots
+retain actual proposed/current bytes, and the future tested Candidate will identify final objects.
+The original config/entry/state attachment remains inspectable in this Executor checkout while the
+product/receipt dirt is uncommitted. Unknown from the attachment: exact pre-application checkout
+reader bytes (including working-tree line-ending details), a contemporaneous reader-map seal and the
+per-reader installation times. Baseline Git objects establish source identity, not those absent facts.
+
+**Proposed bounded recovery:** retain every original; add a clearly dated supplemental observation
+mapping reconstructable Baseline objects and actual snapshot/Candidate identities, explicitly leave
+unrecoverable timing/checkout facts unknown, and record the deviation in the existing receipt/EV for
+independent sufficiency judgment. No original rewrite, rollback, retrospective seal, new acceptance
+or adoption/provenance-completion claim. Coordinator/LEAD must rule the allowed continuation before
+those dependent effects; this Executor does not accept its reconstruction.
+
+
+
+## 11. Q2/Q3 executable resolution
+
+Read completely from immutable Git objects on 2026-09-13: LEAD ruling
+`144e3e651382330afba4d7131a562d05e7f515f9` at
+`journal/20260913-154545__dispatch__0173.md` and direct Coordinator continuation
+`bb3c2803e610bd5fe1cc6eed040b73a6cb2a40aa` at
+`journal/20260913-154924__dispatch__580a.md`. Their full parent tips were not merged into this
+Executor checkout because they also contain unselected RWNR task traces. Those exact Git objects
+supply authority without adding unrelated work to this Candidate.
+
+Q2 is resolved as an executable staged evidence order, not completed evidence: checks → Candidate →
+available Q1/source checks → initial EV/RF with AC-7, AC-10 and unsupported dependent claims BLOCKED →
+the single Reviewer is created after actual RF → real Full init with existing Researcher,
+Coordinator and Reviewer → established adoption/repeat/refusal → only after actual AC-7 gates,
+sealed AC-10 first answer → supplemental final EV/RF → same Reviewer starts outer TKL review.
+The proposal to run AC-10 first is expressly rejected. Do not prepare/disclose that fixture, oracle,
+question or answer-specific paths before Coordinator's explicit AC-7 completion dispatch.
+
+The exact init/adoption roots and §10 defaults are authorized. One Full-init attempt, one established
+adoption, one unchanged repeat and one later-field refusal have a combined 120-minute preparation
+plus active-role bound excluding scheduler/authority waits. Their actual starts remain future;
+Q1's 20/30-minute and AC-10's 10/20-minute/24-call bounds remain separate. Coordinator records
+individual receiver-role dispatches. Executor authors neither init RF/RES/REVIEW nor sibling returns.
+Researcher's later init exposure must be disclosed without exposing the still-uncreated AC-10 inputs.
+
+Q3 is resolved only as permission for one dated supplemental CURRENT observation after Candidate,
+using exact reconstructable Baseline objects and observed snapshot/Candidate hashes. The original
+attachment stays unchanged. Unknown pre-write bytes, line endings, contemporaneous map and per-reader
+times stay unknown. Missing original map is a procedural deviation, never repaired, retrospectively
+sealed, accepted or sufficient by this Executor/Coordinator act. Independent Reviewer decides the
+remaining acceptance defect; prospective established adoption proves only its own procedure.
+
+Implementation and available checks continue under the unchanged TS/selector/denominator and Q1.
+No generic new permission is needed, and no acceptance, outer review or successful task completion
+is supplied by this resolution.

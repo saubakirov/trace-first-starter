@@ -1,0 +1,22 @@
+{
+  "observed_at": "2026-09-13T18:24:54.035050+00:00",
+  "sequence": 24,
+  "path": ".tfw/adapters/codex/skills/tfw-knowledge/SKILL.md",
+  "actual": {
+    "bytes": 1264,
+    "sha256": "f5bea3e0deea8a8fa9b3d28b5979778fa869d62537d8c41d0ffe9b1a220f88b0",
+    "raw_git_blob": "b6884efab82ca8118a633066dc2cccfae49d379d",
+    "eol": {
+      "CRLF": 0,
+      "LF": 19,
+      "CR": 0
+    }
+  },
+  "equals_intended": true,
+  "immediate_source_authority": {
+    "source_identities": 122,
+    "authority_identities": 10,
+    "authority_batch_sha256": "0b47d6e18c8d425ce491f75f3d12311875fb9a88f9eca636e1d35fa2c050609e",
+    "attachment_sha256": "c3b0580ad155738e2db99b38577df3477fddafa0078fb5f4d256ce94d87b41cb"
+  }
+}

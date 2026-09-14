@@ -1,0 +1,99 @@
+{
+  "observed_at": "2026-09-13T15:39:54.877021+00:00",
+  "producer": "01a0995f-6132-7c92-86d3-c5388827a8cd",
+  "turn_id": "01a09b6a-6513-73f3-9ab6-f36149196b7c",
+  "parent_and_custodian": "01a09974-6716-7cc0-9916-fd6d04c91481",
+  "source_session": "C:\\Users\\c0rpa\\.codex\\sessions\\2026\\09\\13\\rollout-2026-09-13T11-06-00-01a0995f-6132-7c92-86d3-c5388827a8cd.jsonl",
+  "source_prefix": {
+    "path": "C:\\Users\\c0rpa\\.codex\\sessions\\2026\\09\\13\\rollout-2026-09-13T11-06-00-01a0995f-6132-7c92-86d3-c5388827a8cd.jsonl",
+    "bytes": 9840028,
+    "sha256": "575163d408d78227e4b07f6a7db077d54c33a796bcd2802846dd2edad88f269c",
+    "next_ordinal": 1523
+  },
+  "first_new_ordinal": 1523,
+  "completion_ordinal": 1576,
+  "first_answer_path": "02-first-answer.txt",
+  "first_answer_sha256": "1fd3dd800a6c79e3842f8a47da7937ee236d673437b4d0c50fba1bb34af67cff",
+  "first_answer_bytes": 2425,
+  "visible_trail_sha256": "8b46267e30f33ada283c3bacbbdf0fda02cbe6410dfca0c0cb158d1454d609c6",
+  "native_tool_invocations": 4,
+  "calls_for_manual_operation_count": [
+    {
+      "ordinal": 1532,
+      "name": "exec",
+      "type": "custom_tool_call"
+    },
+    {
+      "ordinal": 1539,
+      "name": "exec",
+      "type": "custom_tool_call"
+    },
+    {
+      "ordinal": 1549,
+      "name": "exec",
+      "type": "custom_tool_call"
+    },
+    {
+      "ordinal": 1560,
+      "name": "exec",
+      "type": "custom_tool_call"
+    }
+  ],
+  "input_path_set_and_bytes_unchanged": true,
+  "input_files": {
+    "KNOWLEDGE.md": {
+      "sha256": "09c6cfba5e259652613f897a00bc650bdeda010ea654715875a29cc84112cdbe",
+      "bytes": 2938
+    },
+    "incoming/message-033.md": {
+      "sha256": "739c189ad1254837e98957c12a9cc1d3910077859a2ddc4381a3acffe3e5e80c",
+      "bytes": 796
+    },
+    "knowledge/presentation.md": {
+      "sha256": "d5045c9375b153cd960bcef3d8ff77ce9a56a5ce76e0a6a0a43102b22cf64bb9",
+      "bytes": 795
+    },
+    "legacy/decisions.md": {
+      "sha256": "631e10deb4f50597daa353053c73dc2bc9f99bc28ba5a548c8fb556aac211b7b",
+      "bytes": 868
+    },
+    "sources/charter.md": {
+      "sha256": "7866f5afa5d49b06e3f284413b4812b7f013ae94f41cbd1e9adb1610bb5f2f14",
+      "bytes": 1287
+    },
+    "sources/session-014.md": {
+      "sha256": "409f2b844214da79956e15ebe390c5685f668918687cc82bd5869cc3daf72606",
+      "bytes": 974
+    },
+    "sources/session-027.md": {
+      "sha256": "5874277795f712a336f5d89389bde31d6f2aea80c39abd631d426f0598ccad8a",
+      "bytes": 849
+    },
+    "sources/session-032.md": {
+      "sha256": "17628ef20c544c18b44b9b5ee807bd76c9a29b475bfb881a1339d7872c1f15c0",
+      "bytes": 1050
+    },
+    "knowledge/records/CEDAR-17.md": {
+      "sha256": "4ecf36dc1790e907e7aac44b9df6658cb8ba1741dff1b70328d768478970fcbc",
+      "bytes": 2498
+    },
+    "knowledge/records/CEDAR-21.md": {
+      "sha256": "bb1affe7aa96006e5cb51a0fa1a0dbbd0c87b7321bb0f4a41aba05f714a68b5e",
+      "bytes": 2429
+    },
+    "knowledge/records/CEDAR-28.md": {
+      "sha256": "74a35ef7482b45d0c194aa2683b6fb3f3b417b84d962003afaa0f5384bc22fe7",
+      "bytes": 2214
+    },
+    "knowledge/records/CEDAR-29.md": {
+      "sha256": "8d6fb7c3a409cfda67fb7c1a20f20e9d4d8bc786f16cad7553534c96c291b8fb",
+      "bytes": 2193
+    }
+  },
+  "manifest_sha256": "6edb07da4ed72cd710a12a60b487e8b9becf9cc79b73ed9eb26b0e5515690be1",
+  "oracle_sha256": "cd02c756695e0cd251980a02c32e2b97ca277fbff2cd55c34417c027545a69eb",
+  "question_sha256": "30c3e54ac9e50d24ed8aefc2a7b4b514bc6ecfa4fdf7ed8e81d2c041466ad7e4",
+  "prior_exposure": "Same Researcher has C3, FC-2A and actual init research exposure; no fixture/oracle/question/answer-path exposure supplied before this dispatch. Exact preexisting task log probes also found no exact question/root/CEDAR17 path/oracle hash; bounded check, not universal memory proof.",
+  "reasoning_or_unrelated_history_exported": false,
+  "scope": "Original first answer and observable tool/clock/input custody only, sealed before scoring. This export makes no per-criterion judgment or OS containment claim."
+}

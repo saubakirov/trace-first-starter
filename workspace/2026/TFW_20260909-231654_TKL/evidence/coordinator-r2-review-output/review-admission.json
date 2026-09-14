@@ -1,0 +1,83 @@
+{
+  "observed_at": "2026-09-13T21:36:58.257277+00:00",
+  "kind": "Coordinator return admission and record-correction acceptance; not an independent product verdict",
+  "producer": {
+    "principal": "robert",
+    "unit": "01a09974-6716-7cc0-9916-fd6d04c91481",
+    "parent": "01a08161-79d3-7472-a01e-8cdc957ee951",
+    "for": "saubakirov"
+  },
+  "substantive_review": "2cc0143875ee275bc01495f728fc631b24e4d59c",
+  "current_formal_review": "b1e7d6219b20d43829b76a2166f4d26c0f6a8465",
+  "files": [
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/REVIEW__TFW_20260909-231654_TKL__rev2.md",
+      "commit": "2cc0143875ee275bc01495f728fc631b24e4d59c",
+      "bytes": 26371,
+      "sha256": "f2206ea5681be78501574003fd1ba3678bd5222b7adc434fa2132cd6e8783903",
+      "old_prefix_bytes": 18392
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/review/rev2/judge.md",
+      "commit": "2cc0143875ee275bc01495f728fc631b24e4d59c",
+      "bytes": 15665,
+      "sha256": "49337b84124245d5ea949506c40fa9e65d744a9a77f4e5dca160383ea387bea9",
+      "old_prefix_bytes": 9178
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/review/rev2/map.md",
+      "commit": "2cc0143875ee275bc01495f728fc631b24e4d59c",
+      "bytes": 11211,
+      "sha256": "0583198dbfa3b3f42ed4c82a8fee486843bf414ca93a66a4b61f3043134c007c",
+      "old_prefix_bytes": 7717
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/review/rev2/verify.md",
+      "commit": "2cc0143875ee275bc01495f728fc631b24e4d59c",
+      "bytes": 28858,
+      "sha256": "eea88fe2b44f7d04f770178302a87871f242519dfa2437aef6433790dd16fdbd",
+      "old_prefix_bytes": 16170
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/REVIEW__TFW_20260909-231654_TKL__rev3.md",
+      "commit": "b1e7d6219b20d43829b76a2166f4d26c0f6a8465",
+      "bytes": 11554,
+      "sha256": "dfc05f49fabe595b81adaec6e93b3f163c25bdb9ef63a410dbf73b673ddf2474"
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/review/rev3/judge.md",
+      "commit": "b1e7d6219b20d43829b76a2166f4d26c0f6a8465",
+      "bytes": 3966,
+      "sha256": "937bcc65f70fa41050dac3218d075807b9af4c6c444a26214fdde644ea705124"
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/review/rev3/map.md",
+      "commit": "b1e7d6219b20d43829b76a2166f4d26c0f6a8465",
+      "bytes": 2982,
+      "sha256": "fb4f3b787aea0216bb50e51ed1fbb2493cc2edfa25674cef84664af6e54b552e"
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/review/rev3/verify.md",
+      "commit": "b1e7d6219b20d43829b76a2166f4d26c0f6a8465",
+      "bytes": 5590,
+      "sha256": "148f80a07f36712bccb50ba65339298d2dc1df7cfe517cca8f0a4289e3143c6f"
+    }
+  ],
+  "all_eight_review_files_read": true,
+  "physical_equals_Git": true,
+  "four_original_review_prefixes_preserved": true,
+  "four_rev2_files_unchanged_by_rev3": true,
+  "highest_valid_lineage": "REVIEW revision 3; same single rung-1 REVISE condition and originating Reviewer; current carrier correction complete",
+  "lifecycle": "RF",
+  "status_sha256": "0bc219c055d4353a45e5980af6b8dbea94d57544d556ab42630eb07c1edd91fe",
+  "independent_accepted_scope": "AC5/affectedAC9 current descriptions, affectedAC8 source/final-report rendering and exact accounting, within reported limits",
+  "remaining": "AC7 changed Candidate effects and repeat; dependent AC11. No new native authority yet.",
+  "VALUE": "unchanged a99ba6cd756a7db444f217aef4e5a0eb83faee51; 58, +1235/-1005=2240; fixed58/2574",
+  "output_custody": "custody.json and ten selected pages plus explicitly truncated available command observations; no new build",
+  "record_limits": [
+    "Current rev3 verify V4 correctly names five distinct local paths; its Commands row says six. Exactly three persisted checkpoint files and two output directories exist. This arithmetic label introduces no unavailable target and does not reopen the accepted rendering claim.",
+    "The later interactive build has no persisted split raw files. Available API output explicitly retains truncation and failed read-only inspection commands. No complete raw stream or independent rendering of the later R2 verdict/rev3 carrier is claimed."
+  ],
+  "authority_request": "Same LEAD to decide bounded preflight and one new affected native attempt prospectively; no ruling/Executor dispatch yet",
+  "new_human_fact_candidates": false
+}

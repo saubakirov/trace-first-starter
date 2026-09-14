@@ -1,0 +1,22 @@
+{
+  "observed_at": "2026-09-13T18:24:58.624889+00:00",
+  "sequence": 26,
+  "path": ".tfw/conventions.md",
+  "actual": {
+    "bytes": 98870,
+    "sha256": "fb05c43570cf65b512e620c97633d0115daa8b733e9649e4a3c426e566b8cf21",
+    "raw_git_blob": "ab5504f898e972fc02d3827665070cbede9cf60c",
+    "eol": {
+      "CRLF": 0,
+      "LF": 1436,
+      "CR": 0
+    }
+  },
+  "equals_intended": true,
+  "immediate_source_authority": {
+    "source_identities": 122,
+    "authority_identities": 10,
+    "authority_batch_sha256": "0b47d6e18c8d425ce491f75f3d12311875fb9a88f9eca636e1d35fa2c050609e",
+    "attachment_sha256": "c3b0580ad155738e2db99b38577df3477fddafa0078fb5f4d256ce94d87b41cb"
+  }
+}

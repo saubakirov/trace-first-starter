@@ -1,0 +1,26 @@
+{
+  "started_at": "2026-09-13T18:38:51.209865+00:00",
+  "finished_at": "2026-09-13T18:39:13.303370+00:00",
+  "case": "one prepared later-field Z refusal",
+  "decision": {
+    "action": "REFUSE_CONNECTED_GROUP",
+    "conflict": "tfw.knowledge.interval is later Z=17; original old map was interval=5/gate_mode=hard/limits and intended map is absent",
+    "next_owner": "Existing Coordinator/owner must resolve the later affected-field intent before any real continuation. This prepared case grants no rollback."
+  },
+  "original_preservation": ".tfw/update_receipts/knowledge-lifecycle/c3b0580ad155738e2db99b38577df3477fddafa0078fb5f4d256ce94d87b41cb",
+  "before_map_sha256": "054d462190b78d1be40e2f404360c56010d3485df3441004efca0212fb8488ef",
+  "after_map_sha256": "054d462190b78d1be40e2f404360c56010d3485df3441004efca0212fb8488ef",
+  "receiver_files": 7037,
+  "receiver_writes": 0,
+  "Z_and_unrelated_note_preserved": true,
+  "source_authority": {
+    "source_identities": 122,
+    "authority_identities": 10,
+    "authority_batch_sha256": "0b47d6e18c8d425ce491f75f3d12311875fb9a88f9eca636e1d35fa2c050609e",
+    "attachment_sha256": "c3b0580ad155738e2db99b38577df3477fddafa0078fb5f4d256ce94d87b41cb"
+  },
+  "unrelated": {
+    "files": 2258,
+    "drift": []
+  }
+}

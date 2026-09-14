@@ -1,0 +1,20 @@
+{
+  "finished_at": "2026-09-13T15:31:16.535071+00:00",
+  "preparation_start": "2026-09-13T15:25:24.066920+00:00",
+  "sealed_at": "2026-09-13T15:31:16.519219+00:00",
+  "elapsed_to_seal_seconds": 352.452299,
+  "elapsed_including_custody_seconds": 352.468164,
+  "manifest_path": "C:/Users/c0rpa/AppData/Local/Temp/TFW_TKL_NATIVE_01a09a0c/ac10/manifest.json",
+  "manifest_sha256": "6edb07da4ed72cd710a12a60b487e8b9becf9cc79b73ed9eb26b0e5515690be1",
+  "fixture_files": 12,
+  "archive_path": "C:/Users/c0rpa/.codex/worktrees/f3f3/steps-framework/workspace/2026/TFW_20260909-231654_TKL/evidence/ac10-preparation/sealed-inputs.zip",
+  "archive_sha256": "b91caacadd06935f6317b8657819ccb0a2a636c9c3d6ba6ce4fb33b9a13526a0",
+  "archive_bytes": 16808,
+  "oracle_sha256": "cd02c756695e0cd251980a02c32e2b97ca277fbff2cd55c34417c027545a69eb",
+  "question_sha256": "30c3e54ac9e50d24ed8aefc2a7b4b514bc6ecfa4fdf7ed8e81d2c041466ad7e4",
+  "root_and_parent_observed_absent_before_creation": true,
+  "single_creation": true,
+  "consumer_run": false,
+  "source_body_and_internal_link_checks": "PASS before seal",
+  "no_oracle_edits_after_write": true
+}

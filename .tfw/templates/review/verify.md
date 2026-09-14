@@ -90,3 +90,11 @@
   - Total evidence items: {N}, verified: {M}, missing: {H}
 
 Stage complete: YES / NO
+
+### Selected knowledge evidence
+
+Inspect actual contributing-role returns, material sources and completed dispositions against the
+selected dispatch lineage; a missing producer is not covered by another return or an empty file.
+Check record source/epoch, scope, qualifier/authority and incoming relations, including exact legacy
+identities. Distinguish prepared cases, actual native actions and inherited evidence applicability.
+Do not treat presence, newer time, a clean merge or an Applied marker as independent acceptance.

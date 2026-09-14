@@ -1,0 +1,8 @@
+{
+  "observed_at": "2026-09-13T18:20:46.280808+00:00",
+  "operation": "pre-application SLC physical preservation reader",
+  "exit": 1,
+  "raw_stderr": "Traceback (most recent call last):\n  File \"<stdin>\", line 20, in <module>\nAttributeError: 'list' object has no attribute 'items'\n",
+  "cause": "Observer treated historical_task_git_blobs list as dict before inspecting its actual representation. No receiver prerequisite mismatch was observed; no affected write, preservation attachment or prepared case executed.",
+  "continuation": "Inspect actual list and complete the same pre-application verification inside the original 45-minute attempt; retain this failure."
+}

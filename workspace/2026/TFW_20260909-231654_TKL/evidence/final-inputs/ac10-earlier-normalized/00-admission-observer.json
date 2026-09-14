@@ -1,0 +1,9 @@
+{
+  "observed_at": "2026-09-13T15:37:15.506934+00:00",
+  "first_probe": "Coordinator admission assertion in exec chunk c8dbe2 before any dispatch clock or consumer invocation",
+  "error": "Compared complete entry suffix including its final LF to a manifest excerpt whose hash excludes that LF",
+  "whole_suffix_sha256": "fd0435f15c9423155df7eef720d9b7ae8fcc56d0320c88adbf4aca27c2328313",
+  "manifest_excerpt_sha256": "dbb71aff6ef14ca734e1d15555fcb043f6b0c674bed29b5fc14db8cfc554f03b",
+  "resolution": "Both exact byte sequences occur in the pinned source; declared excerpt hash matches the excerpt excluding its terminal LF. Whole entry/file/manifest/oracle hashes match. No source, fixture or oracle edit or second preparation.",
+  "input_unchanged": true
+}

@@ -1,0 +1,40 @@
+{
+  "started_at": "2026-09-13T21:51:22.364780+00:00",
+  "completed_at": "2026-09-13T21:51:23.274080+00:00",
+  "outcome": "PASS",
+  "checked_files": 2317,
+  "failures": [],
+  "archive": {
+    "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/r2-native/06-partial-physical.zip",
+    "commit": "1a0a37c443fe0d762a1396f1354d93ac08391637",
+    "sha256": "7ac460d99dbf9c39ca51d969ae03292d6652d2b6584c227fe2e8d45d795b2f42"
+  },
+  "positive_oracle": {
+    "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/r1-ac7/14-repeat-before-map.json",
+    "commit": "6b0d5c748d51c55c7c22147799cdb70131c22049",
+    "sha256": "f0377bc0d2bbc3f4a420b712733e8df042c1356535468139295f64635759c45c"
+  },
+  "feasibility": {
+    "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/r2-checkpoint/06-native-feasibility.json",
+    "commit": "793cd97f71f484fcbe7c2e01dcfe7503148b402d",
+    "sha256": "b7578665e7ac48cfe23623261f2d811eb6af1ccf10616f490c818a1e2269f758"
+  },
+  "observer": {
+    "bytes": 6164,
+    "sha256": "515fa7513171ba663f784982df23a994e3052370081381022cdf808fd0e5dd48",
+    "raw_git_blob": "8e447323fc26f0ff3510f8b32f0148e88d170c84",
+    "eol": {
+      "CRLF": 0,
+      "LF": 89,
+      "CR": 0
+    }
+  },
+  "receiver_access": false,
+  "extracted_archive_files": 0,
+  "output_files": [
+    "02-all-files.json",
+    "02-witness.json",
+    "02-result.json"
+  ],
+  "meaning": "All 2317 archive members match original accepted positive epoch and feasibility in every byte identity and all three EOL counters. R2 partial EOL fields are not an oracle."
+}

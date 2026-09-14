@@ -1,0 +1,52 @@
+{
+  "observed_at": "2026-09-13T17:38:32.978689+00:00",
+  "incoming": "5d189778d2e2ca9168d3487d1d838bf17d74756b",
+  "previous_executor": "2d863c81a97da6d29132b616ca71dbe47936cc54",
+  "clean_FF": true,
+  "original_ONB_bytes": 40632,
+  "original_ONB_sha256": "d08dce351c5576e23823ae59022f2e4c485b03e98dcca634400ceb9aaf2eac44",
+  "full_original_ONB_prefix_preserved": true,
+  "original_five_pages_verified": [
+    {
+      "source_root": "C:\\Users\\c0rpa\\AppData\\Local\\Temp\\tfw-review-01a09aaf-current-site",
+      "path": "tasks/2026/TFW_20260909-231654_TKL/HL-TFW_20260909-231654_TKL/index.html",
+      "bytes": 118510,
+      "sha256": "abe5752e55c23ced56cd57fa34decd269cd38e9ee812f1a049aebd54838b51ea"
+    },
+    {
+      "source_root": "C:\\Users\\c0rpa\\AppData\\Local\\Temp\\tfw-review-01a09aaf-current-site",
+      "path": "tasks/2026/TFW_20260909-231654_TKL/ONB__TFW_20260909-231654_TKL/index.html",
+      "bytes": 97637,
+      "sha256": "938e5543ab097ff5e10e3a8dd4d7df161c67562f02c6f0c1139ef7ef74071368"
+    },
+    {
+      "source_root": "C:\\Users\\c0rpa\\AppData\\Local\\Temp\\tfw-review-01a09aaf-current-site",
+      "path": "tasks/2026/TFW_20260907-020729_SLC/RF__TFW_20260907-020729_SLC/index.html",
+      "bytes": 88552,
+      "sha256": "c636634f11f814d93e72976fa669b317445a37f4710e666d6882568d7848f540"
+    },
+    {
+      "source_root": "C:\\Users\\c0rpa\\AppData\\Local\\Temp\\tfw-review-01a09aaf-current-site",
+      "path": "tasks/2026/TFW_20260907-020729_SLC/REVIEW__TFW_20260907-020729_SLC/index.html",
+      "bytes": 110794,
+      "sha256": "dbe812b0d7630d08ea54f6f8b6ffbbaa1c751f0a6f8c598818681f81438f8472"
+    },
+    {
+      "source_root": "C:\\Users\\c0rpa\\AppData\\Local\\Temp\\tfw-review-01a09aaf-current-site",
+      "path": "reference/workflows/knowledge/index.html",
+      "bytes": 55004,
+      "sha256": "78fe70c862d87632fe78ddbb4b2df9cb466df9b8ea58a6a13580b958bff34ec8"
+    }
+  ],
+  "read_contract": "handoff completely; actual ruledREVIEW/8019/a7a8/clarification; unchangedHL/priorcitations retained; highestTS fully read; addressed control/identity/honesty/commit rules; ONB template",
+  "planned_value_paths": [
+    ".tfw/workflows/knowledge.md",
+    ".agents/workflows/tfw-knowledge.md",
+    ".claude/commands/tfw-knowledge.md",
+    "docs/scripts/gen_docs.py",
+    ".tfw/compilable_contract.md"
+  ],
+  "forecast_value_files": 58,
+  "forecast_total_value_LOC_less_than": 2500,
+  "no_AC7_clock_or_preparation": true
+}

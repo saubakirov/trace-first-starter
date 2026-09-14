@@ -1,0 +1,22 @@
+{
+  "observed_at": "2026-09-13T18:24:39.719869+00:00",
+  "sequence": 17,
+  "path": ".claude/commands/tfw-knowledge.md",
+  "actual": {
+    "bytes": 7524,
+    "sha256": "7af2fe71f1ad2fc15475fb425c64687c4cc6b64a50ff7bb5249e755774973a71",
+    "raw_git_blob": "86a7bd094264b37b5c49e5377d08aa18bb914e9f",
+    "eol": {
+      "CRLF": 0,
+      "LF": 111,
+      "CR": 0
+    }
+  },
+  "equals_intended": true,
+  "immediate_source_authority": {
+    "source_identities": 122,
+    "authority_identities": 10,
+    "authority_batch_sha256": "0b47d6e18c8d425ce491f75f3d12311875fb9a88f9eca636e1d35fa2c050609e",
+    "attachment_sha256": "c3b0580ad155738e2db99b38577df3477fddafa0078fb5f4d256ce94d87b41cb"
+  }
+}

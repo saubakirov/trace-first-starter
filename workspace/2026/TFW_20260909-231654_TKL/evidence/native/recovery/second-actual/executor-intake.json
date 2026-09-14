@@ -1,0 +1,120 @@
+{
+  "observed_at": "2026-09-13T12:04:18.582877+00:00",
+  "author_unit": "01a09a0c-c9e2-7d01-af4e-64931af967ed",
+  "kind": "Executor intake of actual Coordinator recovery-2 result; no independent acceptance",
+  "source_commit": "c51ee0c0d7891fd165d105f3565e0e54512c1040",
+  "archive_path": "C:/Users/c0rpa/AppData/Local/Temp/TFW_TKL_NATIVE_01a09a0c/recovery-2/accepted-repository.zip",
+  "archive_sha256": "2054271bd8078775cacce98696713cb594c136868df217dc2740f87726c5b18c",
+  "archive_bytes": 31264670,
+  "archive_reproduction_argv": [
+    "git",
+    "archive",
+    "--format=zip",
+    "c51ee0c0d7891fd165d105f3565e0e54512c1040"
+  ],
+  "archive_policy": "Exact source archive retained at original local root; no duplicate full pristine/cut trees copied into task TRACE. Original Git object is immutable and locally reachable.",
+  "actual_original_and_restored_status_equal_git_blob": true,
+  "actual_original_event_equal_git_blob": true,
+  "coordinator_reported_complete_tree_check": 2290,
+  "coordinator_reported_final_differences": [],
+  "copies": [
+    {
+      "source": "C:/Users/c0rpa/AppData/Local/Temp/TFW_TKL_NATIVE_01a09a0c/recovery-2/01-first-preflight-observer-error.json",
+      "copy": "workspace/2026/TFW_20260909-231654_TKL/evidence/native/recovery/second-actual/01-first-preflight-observer-error.json",
+      "sha256": "cfe2e8637845699680c055226a108f089845cd1f102d67ed8f337a40e780b830",
+      "bytes": 707
+    },
+    {
+      "source": "C:/Users/c0rpa/AppData/Local/Temp/TFW_TKL_NATIVE_01a09a0c/recovery-2/02-pristine-full-carrier-preflight.json",
+      "copy": "workspace/2026/TFW_20260909-231654_TKL/evidence/native/recovery/second-actual/02-pristine-full-carrier-preflight.json",
+      "sha256": "d348a3b07bd2485dbe07cc1e9f55c97a85cd63ddba89485d1f1180bab3d117a5",
+      "bytes": 6326
+    },
+    {
+      "source": "C:/Users/c0rpa/AppData/Local/Temp/TFW_TKL_NATIVE_01a09a0c/recovery-2/03-actual-repair-result.json",
+      "copy": "workspace/2026/TFW_20260909-231654_TKL/evidence/native/recovery/second-actual/03-actual-repair-result.json",
+      "sha256": "23be906c00fe002522cc44998bf14b0b11c27ccd5627c0125575fd25ad0108de",
+      "bytes": 2271
+    },
+    {
+      "source": "C:/Users/c0rpa/AppData/Local/Temp/TFW_TKL_NATIVE_01a09a0c/recovery-2/archive-receipt.json",
+      "copy": "workspace/2026/TFW_20260909-231654_TKL/evidence/native/recovery/second-actual/archive-receipt.json",
+      "sha256": "4cf3ca6fcc116494531f7b19e547a5b5e746d18504e63e93631a5cff5f259b69",
+      "bytes": 279
+    },
+    {
+      "source": "C:/Users/c0rpa/AppData/Local/Temp/TFW_TKL_NATIVE_01a09a0c/recovery-2/pristine-object-verification.json",
+      "copy": "workspace/2026/TFW_20260909-231654_TKL/evidence/native/recovery/second-actual/pristine-object-verification.json",
+      "sha256": "62e47d52dda80ef0e88249b4cf534db2cd52621f6ec7f447f618fd46286ca640",
+      "bytes": 187
+    },
+    {
+      "source": "C:/Users/c0rpa/AppData/Local/Temp/TFW_TKL_NATIVE_01a09a0c/recovery-2/start.json",
+      "copy": "workspace/2026/TFW_20260909-231654_TKL/evidence/native/recovery/second-actual/start.json",
+      "sha256": "82b1f6067c832e7ea91e3e6bf6ea56d0bf98bed00c59f0e9ac9c32f197fb8f98",
+      "bytes": 361
+    },
+    {
+      "source": "C:/Users/c0rpa/AppData/Local/Temp/TFW_TKL_NATIVE_01a09a0c/recovery-2/status-original.md",
+      "copy": "workspace/2026/TFW_20260909-231654_TKL/evidence/native/recovery/second-actual/status-original.md",
+      "sha256": "c4bc55418a480f6fc7bb4277c656abe149ca6a262c5903a80296aa3f0b8e7875",
+      "bytes": 792
+    },
+    {
+      "source": "C:/Users/c0rpa/AppData/Local/Temp/TFW_TKL_NATIVE_01a09a0c/recovery-2/status-prepared-cut.md",
+      "copy": "workspace/2026/TFW_20260909-231654_TKL/evidence/native/recovery/second-actual/status-prepared-cut.md",
+      "sha256": "6c3cd6e16dfe37eb90660e6c597eda85cb1349013a70cdd139f197c182d50ac8",
+      "bytes": 613
+    },
+    {
+      "source": "C:/Users/c0rpa/AppData/Local/Temp/TFW_TKL_NATIVE_01a09a0c/overlap-2/capture/executor/01-actual-start.json",
+      "copy": "workspace/2026/TFW_20260909-231654_TKL/evidence/native/raw/overlap-2/executor/01-actual-start.json",
+      "sha256": "4c8d677f2aa808739436790b748e693d76d48feb38da553bd351f0e11425e220",
+      "bytes": 302
+    },
+    {
+      "source": "C:/Users/c0rpa/AppData/Local/Temp/TFW_TKL_NATIVE_01a09a0c/overlap-2/capture/executor/02-incoming-search.stderr.txt",
+      "copy": "workspace/2026/TFW_20260909-231654_TKL/evidence/native/raw/overlap-2/executor/02-incoming-search.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "source": "C:/Users/c0rpa/AppData/Local/Temp/TFW_TKL_NATIVE_01a09a0c/overlap-2/capture/executor/02-incoming-search.stdout.txt",
+      "copy": "workspace/2026/TFW_20260909-231654_TKL/evidence/native/raw/overlap-2/executor/02-incoming-search.stdout.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "source": "C:/Users/c0rpa/AppData/Local/Temp/TFW_TKL_NATIVE_01a09a0c/overlap-2/capture/executor/02-own-reads.json",
+      "copy": "workspace/2026/TFW_20260909-231654_TKL/evidence/native/raw/overlap-2/executor/02-own-reads.json",
+      "sha256": "304729e94df81d8450d5a4fac3f7c76e21b15a6eb551173cb513ad3e2ab9e60e",
+      "bytes": 1349
+    },
+    {
+      "source": "C:/Users/c0rpa/AppData/Local/Temp/TFW_TKL_NATIVE_01a09a0c/overlap-2/capture/executor/02-own-reads.txt",
+      "copy": "workspace/2026/TFW_20260909-231654_TKL/evidence/native/raw/overlap-2/executor/02-own-reads.txt",
+      "sha256": "d709b4bdae5e2c19874a99ddf9c432e63a44f9102709817a1ee7f23a59efdedf",
+      "bytes": 10112
+    },
+    {
+      "source": "C:/Users/c0rpa/AppData/Local/Temp/TFW_TKL_NATIVE_01a09a0c/overlap-2/capture/executor/03-first-seal.json",
+      "copy": "workspace/2026/TFW_20260909-231654_TKL/evidence/native/raw/overlap-2/executor/03-first-seal.json",
+      "sha256": "cf9aa74e20f3f221985887dbcadf55e7ef6c8de78b15b9c1b62c0f104d0637ec",
+      "bytes": 13413
+    },
+    {
+      "source": "C:/Users/c0rpa/AppData/Local/Temp/TFW_TKL_NATIVE_01a09a0c/overlap-2/capture/executor/original-executor-handover-2.md",
+      "copy": "workspace/2026/TFW_20260909-231654_TKL/evidence/native/raw/overlap-2/executor/original-executor-handover-2.md",
+      "sha256": "86a03d1620b8640ecc918c43e63d99e148e41bebdad02fcf8a7207159e35724c",
+      "bytes": 3409
+    },
+    {
+      "source": "C:/Users/c0rpa/AppData/Local/Temp/TFW_TKL_NATIVE_01a09a0c/overlap-2/capture/executor/original-TKL-NATIVE-EXEC-2.md",
+      "copy": "workspace/2026/TFW_20260909-231654_TKL/evidence/native/raw/overlap-2/executor/original-TKL-NATIVE-EXEC-2.md",
+      "sha256": "5c58124f61ebba2c425927f01e199ea7afdf34c2b508812394613b1c7d21c9f9",
+      "bytes": 3465
+    }
+  ],
+  "first_epoch_unchanged": true,
+  "limits": "All 2290 tree comparisons are Coordinator observations; this intake additionally checks actual status/event original/restored bytes directly, not a second full recovery attempt or independent review."
+}

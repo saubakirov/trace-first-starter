@@ -1,0 +1,43 @@
+{
+  "surface": "Codex in-app browser 1, temporary tab 2",
+  "server": "Python ThreadingHTTPServer bound only to 127.0.0.1:57472; isolated ac8-r1-site",
+  "method": "CUA browser semantic link clicks from the actual generated HL and ONB; actual URL and rendered target heading read after each click. Three SLC unique destinations also checked through read-only DOM for one legacy and one current ID. No source mutation or external publication.",
+  "observations": [
+    {
+      "occurrence": "HL:31",
+      "sourceHref": "../../../../reference/workflows/knowledge/#canonical-knowledge-gate-algorithm",
+      "targetUrl": "http://127.0.0.1:57472/reference/workflows/knowledge/#canonical-knowledge-gate-algorithm",
+      "heading": "Canonical Knowledge Gate algorithm",
+      "retiredNoticeVisible": true,
+      "observedAt": "2026-09-13T17:51:26.766Z"
+    },
+    {
+      "occurrence": "HL:190 RF",
+      "targetUrl": "http://127.0.0.1:57472/tasks/2026/TFW_20260907-020729_SLC/RF__TFW_20260907-020729_SLC/#11-correction-round-c2--exact-link-preservation",
+      "heading": "1.1. Correction round C2 — exact link preservation",
+      "legacyAndCurrentIds": true,
+      "observedAt": "2026-09-13T17:51:39.638Z"
+    },
+    {
+      "occurrence": "HL:190 REVIEW",
+      "targetUrl": "http://127.0.0.1:57472/tasks/2026/TFW_20260907-020729_SLC/REVIEW__TFW_20260907-020729_SLC/#c2-bounded-acceptance--2026-09-10",
+      "heading": "C2 bounded acceptance — 2026-09-10",
+      "legacyAndCurrentIds": true,
+      "observedAt": "2026-09-13T17:51:58.854Z"
+    },
+    {
+      "occurrence": "ONB:81 RF",
+      "targetUrl": "http://127.0.0.1:57472/tasks/2026/TFW_20260907-020729_SLC/RF__TFW_20260907-020729_SLC/#11-correction-round-c2--exact-link-preservation",
+      "heading": "1.1. Correction round C2 — exact link preservation",
+      "observedAt": "2026-09-13T17:52:19.734Z"
+    },
+    {
+      "occurrence": "ONB:81 REVIEW",
+      "targetUrl": "http://127.0.0.1:57472/tasks/2026/TFW_20260907-020729_SLC/REVIEW__TFW_20260907-020729_SLC/#independent-c2-return-and-closure-boundary--2026-09-10",
+      "heading": "Independent C2 return and closure boundary — 2026-09-10",
+      "legacyAndCurrentIds": true,
+      "observedAt": "2026-09-13T17:52:32.969Z"
+    }
+  ],
+  "limits": "Transcribed observations from actual tool responses, not a raw browser export. Full source/destination HTML is separately archived in five-pages.zip. No screenshot or all-pages visual audit is claimed. The first timestamp records the observation immediately after the completed first click."
+}

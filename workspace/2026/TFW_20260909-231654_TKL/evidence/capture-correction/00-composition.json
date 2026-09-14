@@ -1,0 +1,50 @@
+{
+  "producer": "robert",
+  "unit": "01a09a0c-c9e2-7d01-af4e-64931af967ed",
+  "parent": "01a09974-6716-7cc0-9916-fd6d04c91481",
+  "prior_head": "bfc8525ab79238e3ea0c84d14ce4b4ef1637230a",
+  "authoring_checkpoint": "6898fb90deec4a8bdda277f2d5c551fdb549c1bb",
+  "started": "2026-09-14T00:19:46.453794+00:00",
+  "guards": {
+    "exact_one_locator_replacement": true,
+    "knowledge_bytes": 136687,
+    "knowledge_sha256": "f63ad534d559c5fbdd37f95178f98cca19bd8e4008ec2b25de8e7cc12c659fbd",
+    "dispatch_refs": [
+      "status.md",
+      "HL-TFW_20260909-231654_TKL.md",
+      "TS__TFW_20260909-231654_TKL.md",
+      "REVIEW__TFW_20260909-231654_TKL__rev4.md",
+      "RF__TFW_20260909-231654_TKL.md",
+      "evidence/EV__TFW_20260909-231654_TKL.md",
+      "evidence/capture-final/05-opened-output.json",
+      "evidence/capture-final/07-stopped-return.json",
+      "journal/20260914-045719__dispatch__6e83.md",
+      "journal/20260914-051049__dispatch__4a0c.md"
+    ],
+    "no_new_effect_from_conditional_release_ruling": true
+  },
+  "argv": [
+    "git",
+    "-c",
+    "core.longpaths=true",
+    "-c",
+    "core.autocrlf=false",
+    "merge",
+    "--no-ff",
+    "--no-edit",
+    "6898fb90deec4a8bdda277f2d5c551fdb549c1bb",
+    "-m",
+    "[codex/TFW_20260909-231654_TKL/phase-a/executor] Compose corrected Coordinator source locator before check"
+  ],
+  "exit_code": 0,
+  "stdout": "Merge made by the 'ort' strategy.\n KNOWLEDGE.md                                       |  2 +-\n .../REVIEW__TFW_20260909-231654_TKL__rev4.md       | 56 ++++++++++++++++++++++\n .../journal/20260914-051049__dispatch__4a0c.md     | 25 ++++++++++\n .../journal/20260914-051824__dispatch__f1b0.md     | 27 +++++++++++\n 4 files changed, 109 insertions(+), 1 deletion(-)\n create mode 100644 workspace/2026/TFW_20260909-231654_TKL/journal/20260914-051049__dispatch__4a0c.md\n create mode 100644 workspace/2026/TFW_20260909-231654_TKL/journal/20260914-051824__dispatch__f1b0.md\n",
+  "stderr": "",
+  "finished": "2026-09-14T00:19:46.701481+00:00",
+  "candidate": "daa520874c1f1236c95bc2dfbd268be911098d49",
+  "parents": [
+    "bfc8525ab79238e3ea0c84d14ce4b4ef1637230a",
+    "6898fb90deec4a8bdda277f2d5c551fdb549c1bb"
+  ],
+  "clean_after_merge": true,
+  "tool_chunk": "b88ef8"
+}

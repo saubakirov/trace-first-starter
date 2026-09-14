@@ -1,0 +1,55 @@
+{
+  "unit": "01a09a0c-c9e2-7d01-af4e-64931af967ed",
+  "principal": "robert",
+  "role": "Executor",
+  "started": "2026-09-13T11:33:29.885707+00:00",
+  "read_finished": "2026-09-13T11:33:29.953803+00:00",
+  "start_dispatch": "535212fb1e0497438a761f009709ebf359766ac2",
+  "base": "e00ca51d05f4e451441cb9fc267579a7f9e4d4ce",
+  "reads": [
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/q1-inputs/common.md",
+      "sha256": "1077d9965b05c62ad03f74fb1cb39c48dd496dfc981c9111978b2f5c71bb1773",
+      "headings": null,
+      "read_at": "2026-09-13T11:33:29.923899+00:00"
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/q1-inputs/executor.md",
+      "sha256": "44447097cc7f5a442be8e214cafbc9dad16553527226a6b6e9541f559f50a3ad",
+      "headings": null,
+      "read_at": "2026-09-13T11:33:29.924858+00:00"
+    },
+    {
+      "path": ".tfw/templates/knowledge/record.md",
+      "sha256": "d0615f7582e15280f4c69ef0350294daf9e1b32b5de0d2fba964dc9a4db0d6b0",
+      "headings": null,
+      "read_at": "2026-09-13T11:33:29.925882+00:00"
+    },
+    {
+      "path": ".tfw/templates/knowledge/handover.md",
+      "sha256": "8fc00b42a7b4b7587b0c2d39b38584bea4d205379cadfa57aa74ed63b450d62b",
+      "headings": null,
+      "read_at": "2026-09-13T11:33:29.931034+00:00"
+    },
+    {
+      "path": ".tfw/conventions.md",
+      "sha256": "fb05c43570cf65b512e620c97633d0115daa8b733e9649e4a3c426e566b8cf21",
+      "headings": [
+        "Knowledge handover",
+        "Knowledge qualification",
+        "Current knowledge use"
+      ],
+      "read_at": "2026-09-13T11:33:29.943027+00:00"
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/ONB__TFW_20260909-231654_TKL.md",
+      "sha256": "d08dce351c5576e23823ae59022f2e4c485b03e98dcca634400ceb9aaf2eac44",
+      "headings": [
+        "10. Q2/Q3 required evidence return \u2014 2026-09-13",
+        "11. Q2/Q3 executable resolution"
+      ],
+      "read_at": "2026-09-13T11:33:29.952257+00:00"
+    }
+  ],
+  "sibling_new_source_read": false
+}

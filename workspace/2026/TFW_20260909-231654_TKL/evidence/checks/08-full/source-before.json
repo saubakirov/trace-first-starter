@@ -1,0 +1,277 @@
+{
+  ".tfw/conventions.md": {
+    "bytes": 100306,
+    "sha256": "97cb69402892b42fc3f05646586d57d0f962d8f3b0a94ac285865b6fc96636ea"
+  },
+  ".tfw/glossary.md": {
+    "bytes": 25096,
+    "sha256": "ea581d4889d4f1ff6f5932033e0d57e4fb4ba88aee26b03fe45a43bb63ad2852"
+  },
+  ".tfw/compilable_contract.md": {
+    "bytes": 7898,
+    "sha256": "171566776eeeb548b7d2a340a45d3ac835d359d157f22146ea97786ef39ae12c"
+  },
+  ".tfw/project_config.yaml": {
+    "bytes": 4334,
+    "sha256": "c6e86611751ad123c4139e1203098fa0f7635b54b33c2a6c0b9040cb25753f7c"
+  },
+  ".tfw/templates/project_config.yaml": {
+    "bytes": 5790,
+    "sha256": "a0284513c177a2b3ff149fcc3a74027178b81b97f5154d1e4ce2910f043e3ea4"
+  },
+  ".tfw/quickstart.md": {
+    "bytes": 4634,
+    "sha256": "031c5fcbecccb6f17705c4ba494d2b72f8940450635d5190cf3c0abd07f72cf6"
+  },
+  ".tfw/templates/KNOWLEDGE.md": {
+    "bytes": 2208,
+    "sha256": "fe8cdc199c8b314548198b3104c47755df7f9f17c8a12869b604b97614a01541"
+  },
+  ".tfw/templates/knowledge/topic.md": {
+    "bytes": 675,
+    "sha256": "8a2531fbe8e596d34e33d09bf713746f97cefbe1f6f1054fa49124bf67680221"
+  },
+  ".tfw/templates/knowledge_state.yaml": {
+    "absent": true
+  },
+  ".tfw/templates/knowledge/record.md": {
+    "bytes": 2548,
+    "sha256": "d0615f7582e15280f4c69ef0350294daf9e1b32b5de0d2fba964dc9a4db0d6b0"
+  },
+  ".tfw/templates/knowledge/handover.md": {
+    "bytes": 1358,
+    "sha256": "8fc00b42a7b4b7587b0c2d39b38584bea4d205379cadfa57aa74ed63b450d62b"
+  },
+  ".tfw/templates/HL.md": {
+    "bytes": 15759,
+    "sha256": "bf52f991cb21c06d6675a058e5616560be30365e124fd2e21acf96bfa06721cd"
+  },
+  ".tfw/templates/ONB.md": {
+    "bytes": 2194,
+    "sha256": "825ad460c2e411427e0c1c13b3c8638e8df9a089eaa686520bfc2334adfbb507"
+  },
+  ".tfw/templates/RF.md": {
+    "bytes": 3125,
+    "sha256": "d514940a78912e02ad2fb4884fb8a3596b0d6126c8bb98adb57b42a67e80153e"
+  },
+  ".tfw/templates/RES.md": {
+    "bytes": 6078,
+    "sha256": "ae742e4465c2f54c77f98ca3f2eb1232a0343c5605d264dd4bbfe34e7feb5a6e"
+  },
+  ".tfw/templates/REVIEW.md": {
+    "bytes": 5306,
+    "sha256": "bfe71d82233174ae8c4f0fa846593a5abdcd93b75824a1024a015b3b5de0407e"
+  },
+  ".tfw/templates/review/verify.md": {
+    "bytes": 5642,
+    "sha256": "06875d2b31341f55e5c15ebc61a582d83d9da25bb2d1803b0a74b86b5389e232"
+  },
+  ".tfw/workflows/plan.md": {
+    "bytes": 14839,
+    "sha256": "8967783329c291602639aca02a7d387e23dfc98a808497724c08d6a845fc1720"
+  },
+  ".tfw/workflows/research/base.md": {
+    "bytes": 9021,
+    "sha256": "b5bdeb054182e3981bd2cdc034c27d6a512245a0922b96700e4342da1a520d5d"
+  },
+  ".tfw/workflows/handoff.md": {
+    "bytes": 16144,
+    "sha256": "0950b8bdd25bcaf43691c92c5ae00904311abf58637e80d4bb03c12c649aaf4c"
+  },
+  ".tfw/workflows/review.md": {
+    "bytes": 16727,
+    "sha256": "c9c63ad961e70e66a3a480dc646586e0f27fa2bf61fc76b20689f876bef6e492"
+  },
+  ".tfw/workflows/resume.md": {
+    "bytes": 5740,
+    "sha256": "86e84db9dc66139579e80881b591f4e7f9fd970b56ec0b058f2b0576631e08fa"
+  },
+  ".tfw/workflows/docs.md": {
+    "bytes": 4992,
+    "sha256": "3863e69a77371a084156dd295e38dd0b3f9788f4ddd632961e99808da464e176"
+  },
+  ".tfw/workflows/knowledge.md": {
+    "bytes": 7106,
+    "sha256": "1701035491afd0eb2558f9c0d818b5295bee247eb9443d1f394fc00ec09f0520"
+  },
+  ".tfw/workflows/init.md": {
+    "bytes": 8677,
+    "sha256": "6fcbad17fb5a7bc52f5fcb36edf8f2fd5802a593dfa7cd02c9fa874f38a1e2cc"
+  },
+  ".tfw/workflows/update.md": {
+    "bytes": 18922,
+    "sha256": "4df00bea1d0eb8e229e830e974b9de5c72e2c9bd41bc808cdb0d348a6ea1379a"
+  },
+  ".tfw/workflows/config.md": {
+    "bytes": 5149,
+    "sha256": "5aa4d56d0ad801c499aeac2d20a9a41b5dd66c0f027dea300b5d3a008879b190"
+  },
+  ".agents/workflows/tfw-plan.md": {
+    "bytes": 14839,
+    "sha256": "8967783329c291602639aca02a7d387e23dfc98a808497724c08d6a845fc1720"
+  },
+  ".claude/commands/tfw-plan.md": {
+    "bytes": 14839,
+    "sha256": "8967783329c291602639aca02a7d387e23dfc98a808497724c08d6a845fc1720"
+  },
+  ".agents/workflows/tfw-research.md": {
+    "bytes": 9021,
+    "sha256": "b5bdeb054182e3981bd2cdc034c27d6a512245a0922b96700e4342da1a520d5d"
+  },
+  ".claude/commands/tfw-research.md": {
+    "bytes": 9021,
+    "sha256": "b5bdeb054182e3981bd2cdc034c27d6a512245a0922b96700e4342da1a520d5d"
+  },
+  ".agents/workflows/tfw-handoff.md": {
+    "bytes": 16144,
+    "sha256": "0950b8bdd25bcaf43691c92c5ae00904311abf58637e80d4bb03c12c649aaf4c"
+  },
+  ".claude/commands/tfw-handoff.md": {
+    "bytes": 16144,
+    "sha256": "0950b8bdd25bcaf43691c92c5ae00904311abf58637e80d4bb03c12c649aaf4c"
+  },
+  ".agents/workflows/tfw-review.md": {
+    "bytes": 16727,
+    "sha256": "c9c63ad961e70e66a3a480dc646586e0f27fa2bf61fc76b20689f876bef6e492"
+  },
+  ".claude/commands/tfw-review.md": {
+    "bytes": 16727,
+    "sha256": "c9c63ad961e70e66a3a480dc646586e0f27fa2bf61fc76b20689f876bef6e492"
+  },
+  ".agents/workflows/tfw-resume.md": {
+    "bytes": 5740,
+    "sha256": "86e84db9dc66139579e80881b591f4e7f9fd970b56ec0b058f2b0576631e08fa"
+  },
+  ".claude/commands/tfw-resume.md": {
+    "bytes": 5740,
+    "sha256": "86e84db9dc66139579e80881b591f4e7f9fd970b56ec0b058f2b0576631e08fa"
+  },
+  ".agents/workflows/tfw-docs.md": {
+    "bytes": 4992,
+    "sha256": "3863e69a77371a084156dd295e38dd0b3f9788f4ddd632961e99808da464e176"
+  },
+  ".claude/commands/tfw-docs.md": {
+    "bytes": 4992,
+    "sha256": "3863e69a77371a084156dd295e38dd0b3f9788f4ddd632961e99808da464e176"
+  },
+  ".agents/workflows/tfw-knowledge.md": {
+    "bytes": 7106,
+    "sha256": "1701035491afd0eb2558f9c0d818b5295bee247eb9443d1f394fc00ec09f0520"
+  },
+  ".claude/commands/tfw-knowledge.md": {
+    "bytes": 7106,
+    "sha256": "1701035491afd0eb2558f9c0d818b5295bee247eb9443d1f394fc00ec09f0520"
+  },
+  ".agents/workflows/tfw-init.md": {
+    "bytes": 8677,
+    "sha256": "6fcbad17fb5a7bc52f5fcb36edf8f2fd5802a593dfa7cd02c9fa874f38a1e2cc"
+  },
+  ".claude/commands/tfw-init.md": {
+    "bytes": 8677,
+    "sha256": "6fcbad17fb5a7bc52f5fcb36edf8f2fd5802a593dfa7cd02c9fa874f38a1e2cc"
+  },
+  ".agents/workflows/tfw-update.md": {
+    "bytes": 18922,
+    "sha256": "4df00bea1d0eb8e229e830e974b9de5c72e2c9bd41bc808cdb0d348a6ea1379a"
+  },
+  ".claude/commands/tfw-update.md": {
+    "bytes": 18922,
+    "sha256": "4df00bea1d0eb8e229e830e974b9de5c72e2c9bd41bc808cdb0d348a6ea1379a"
+  },
+  ".agents/workflows/tfw-config.md": {
+    "bytes": 5149,
+    "sha256": "5aa4d56d0ad801c499aeac2d20a9a41b5dd66c0f027dea300b5d3a008879b190"
+  },
+  ".claude/commands/tfw-config.md": {
+    "bytes": 5149,
+    "sha256": "5aa4d56d0ad801c499aeac2d20a9a41b5dd66c0f027dea300b5d3a008879b190"
+  },
+  ".tfw/adapters/codex/skills/tfw-docs/SKILL.md": {
+    "bytes": 992,
+    "sha256": "8fbe734b43a4acf2e8b1b61a623a497322a11b2c6c35b2a16abedb26e2e566f5"
+  },
+  ".agents/skills/tfw-docs/SKILL.md": {
+    "bytes": 992,
+    "sha256": "8fbe734b43a4acf2e8b1b61a623a497322a11b2c6c35b2a16abedb26e2e566f5"
+  },
+  ".tfw/adapters/codex/skills/tfw-knowledge/SKILL.md": {
+    "bytes": 1264,
+    "sha256": "f5bea3e0deea8a8fa9b3d28b5979778fa869d62537d8c41d0ffe9b1a220f88b0"
+  },
+  ".agents/skills/tfw-knowledge/SKILL.md": {
+    "bytes": 1264,
+    "sha256": "f5bea3e0deea8a8fa9b3d28b5979778fa869d62537d8c41d0ffe9b1a220f88b0"
+  },
+  ".tfw/migrations/knowledge-lifecycle.md": {
+    "bytes": 8858,
+    "sha256": "2ce771e0415aab0c63b011d44d613304566fdeb41dfd97954f45dc34da3c8da3"
+  },
+  "KNOWLEDGE.md": {
+    "bytes": 135222,
+    "sha256": "c633bb3e7a0d622285bc7ecd2ce5a011350e8d4a5e8967d0db223046f6c061ad"
+  },
+  "knowledge/records/TKL-20260913-01.md": {
+    "bytes": 3802,
+    "sha256": "affb020c75e91b5e1d90b06cb94ff4d838d09a4bc6239fc6d6681ba833ee27c7"
+  },
+  "tools/tfw_state.py": {
+    "bytes": 42782,
+    "sha256": "ca4f93b188d139a1115855d4c500edfe4db7bbd8afbef10465bd9eab50dec3d4"
+  },
+  "tools/tfw_doctor.py": {
+    "bytes": 12313,
+    "sha256": "f1ca05812b2b83ba2fdc41d281b977e96ac5ef0c26c04614ceda961b046b41c3"
+  },
+  "tools/README.md": {
+    "bytes": 6859,
+    "sha256": "e422216c97a16b122c8038372d54bc292193c4bc0a932baba78b4c3ea338bc2b"
+  },
+  "docs/scripts/gen_docs.py": {
+    "bytes": 33838,
+    "sha256": "74f2e6f4ca8c5e51f2e0adb058f11113b75f83b8bcfffd3d725f18a01fb1bb82"
+  },
+  "tools/tests/test_tfw_state.py": {
+    "bytes": 15168,
+    "sha256": "3037ff3a31823374b2f34b883e8d3c0a5cc6267301005b092051080350a12e2d"
+  },
+  "tools/tests/test_tfw_doctor.py": {
+    "bytes": 7144,
+    "sha256": "0f4692285a1e2144e505d77ea24e726bd8e28ec704babb9cde3120f09d581104"
+  },
+  "docs/scripts/test_repository_contracts.py": {
+    "bytes": 158659,
+    "sha256": "4789bb5a27d9932f997f9d224fecfd282034569b77929b0f81e53c9ad69dfe73"
+  },
+  "docs/scripts/test_runtime_context.py": {
+    "bytes": 343705,
+    "sha256": "b1624d66c5318dcbeba373597ae841d734ecd3664e3b23afe711562f97ad3ac0"
+  },
+  "docs/scripts/test_update_experience.py": {
+    "bytes": 44600,
+    "sha256": "5ddb7e4ac43ed3511cf6f0d62c2be48364b3382f8a9af584c911faf45b1d14e8"
+  },
+  "docs/scripts/test_gen_docs.py": {
+    "bytes": 32959,
+    "sha256": "4351fa5a404173715199475464fa3c55245f3eaeb4e00de1c0f2f95ab9751d69"
+  },
+  "docs/scripts/test_integration.py": {
+    "bytes": 15224,
+    "sha256": "fd16bff8a8e0180412ed2b6f2cbfee3fbfe4ba8f3756336b33552d2f3b72579b"
+  },
+  "docs/mkdocs.yml": {
+    "bytes": 1266,
+    "sha256": "6d97cd6bfa7596f694749eede5861d402441074fb851e126f0163da6a42f18fd"
+  },
+  "tools/requirements.txt": {
+    "bytes": 30,
+    "sha256": "3d57e21140980a7b669ba9f4ccc20535fce5a3a7e423f1195d94f23ae2a13cc0"
+  },
+  "docs/requirements.txt": {
+    "bytes": 130,
+    "sha256": "21ffa5abb328edf77562858815278574cd3e22c94533903730dfeaa47dacfd85"
+  },
+  ".tfw/adapters/manifest.yaml": {
+    "bytes": 2179,
+    "sha256": "db11326ea8089069ea54880063fea07ec42d8bd2084fdb1604c63d67cbe2beb1"
+  }
+}

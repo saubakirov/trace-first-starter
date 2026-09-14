@@ -1,0 +1,22 @@
+{
+  "observed_at": "2026-09-13T18:27:14.235665+00:00",
+  "sequence": 57,
+  "path": "KNOWLEDGE.md",
+  "actual": {
+    "bytes": 135267,
+    "sha256": "3fa4a662613e9c4409cc87a92237eeaf5cbf36291067badd2630f8d933609b21",
+    "raw_git_blob": "f39123f6c4842f0d5a49151c9318849d26a3881e",
+    "eol": {
+      "CRLF": 0,
+      "LF": 303,
+      "CR": 0
+    }
+  },
+  "equals_intended": true,
+  "immediate_source_authority": {
+    "source_identities": 122,
+    "authority_identities": 10,
+    "authority_batch_sha256": "0b47d6e18c8d425ce491f75f3d12311875fb9a88f9eca636e1d35fa2c050609e",
+    "attachment_sha256": "c3b0580ad155738e2db99b38577df3477fddafa0078fb5f4d256ce94d87b41cb"
+  }
+}

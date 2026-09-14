@@ -1,0 +1,20 @@
+{
+  "argv": [
+    "E:\\TEMP\\pttc-phase-a-b9b5\\venv\\Scripts\\python.exe",
+    "-m",
+    "mkdocs",
+    "build",
+    "--config-file",
+    "docs/mkdocs.yml",
+    "--site-dir",
+    "E:\\TEMP\\TFW_TKL_CAPTURE_a6c48949_cfzs4axh\\site"
+  ],
+  "started": "2026-09-14T00:03:07.895523+00:00",
+  "finished": "2026-09-14T00:05:53.036622+00:00",
+  "exit_code": 0,
+  "cwd": "C:\\Users\\c0rpa\\.codex\\worktrees\\f3f3\\steps-framework",
+  "streams": {
+    "stderr.txt": "a0f60626a03b902cd131b10791841536ced779480d79ce18abd4e2bca029ab05",
+    "stdout.txt": "14dcaa6e7f188830d55645fd255486d2755f2619e8ed090b9227b25c6d82599c"
+  }
+}

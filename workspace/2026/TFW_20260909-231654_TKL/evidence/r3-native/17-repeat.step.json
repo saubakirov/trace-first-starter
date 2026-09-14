@@ -1,0 +1,74 @@
+{
+  "step": "repeat",
+  "started_at": "2026-09-13T22:32:19.328420+00:00",
+  "argv": [
+    "workspace/2026/TFW_20260909-231654_TKL/evidence/r3-native/native.py",
+    "repeat"
+  ],
+  "subprocesses": [
+    {
+      "argv": [
+        "git",
+        "-c",
+        "core.longpaths=true",
+        "-c",
+        "core.autocrlf=false",
+        "rev-parse",
+        "HEAD"
+      ],
+      "cwd": "C:\\Users\\c0rpa\\.codex\\worktrees\\f3f3\\steps-framework",
+      "start": "2026-09-13T22:32:19.337369+00:00",
+      "stdout": "repeat-1.stdout.raw",
+      "stderr": "repeat-1.stderr.raw",
+      "end": "2026-09-13T22:32:19.395651+00:00",
+      "exit": 0
+    },
+    {
+      "argv": [
+        "git",
+        "-c",
+        "core.longpaths=true",
+        "-c",
+        "core.autocrlf=false",
+        "rev-parse",
+        "HEAD"
+      ],
+      "cwd": "C:\\Users\\c0rpa\\.codex\\worktrees\\f3f3\\steps-framework",
+      "start": "2026-09-13T22:32:32.077838+00:00",
+      "stdout": "repeat-2.stdout.raw",
+      "stderr": "repeat-2.stderr.raw",
+      "end": "2026-09-13T22:32:32.145536+00:00",
+      "exit": 0
+    },
+    {
+      "argv": [
+        "git",
+        "-c",
+        "core.longpaths=true",
+        "-c",
+        "core.autocrlf=false",
+        "rev-parse",
+        "HEAD"
+      ],
+      "cwd": "C:\\Users\\c0rpa\\.codex\\worktrees\\f3f3\\steps-framework",
+      "start": "2026-09-13T22:32:32.171132+00:00",
+      "stdout": "repeat-3.stdout.raw",
+      "stderr": "repeat-3.stderr.raw",
+      "end": "2026-09-13T22:32:32.250563+00:00",
+      "exit": 0
+    }
+  ],
+  "writes": [],
+  "result": {
+    "started_at": "2026-09-13T22:32:19.328420+00:00",
+    "completed_at": "2026-09-13T22:32:45.719800+00:00",
+    "result": "UNCHANGED",
+    "files": 7281,
+    "physical_receiver_writes": 0,
+    "completed_repeat_count": 1,
+    "new_receipt_or_build": false,
+    "same_source_authority_intent_effect_provenance_receipt": true
+  },
+  "exit": 0,
+  "completed_at": "2026-09-13T22:32:45.737993+00:00"
+}

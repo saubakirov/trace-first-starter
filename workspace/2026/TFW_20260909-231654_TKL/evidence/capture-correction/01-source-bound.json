@@ -1,0 +1,175 @@
+{
+  "candidate": "daa520874c1f1236c95bc2dfbd268be911098d49",
+  "tree": "9f69be16192c3ca32f4faf5c8af6782ce8c96abe",
+  "observed_at": "2026-09-14T00:20:33.530545+00:00",
+  "source_files": [
+    {
+      "path": "KNOWLEDGE.md",
+      "git_blob": "83d4e0d00f59b1c593e3236c4d30f6e20c41227a",
+      "git_bytes": 136687,
+      "git_sha256": "f63ad534d559c5fbdd37f95178f98cca19bd8e4008ec2b25de8e7cc12c659fbd",
+      "physical_bytes": 136687,
+      "physical_sha256": "f63ad534d559c5fbdd37f95178f98cca19bd8e4008ec2b25de8e7cc12c659fbd",
+      "physical_equals_git": true
+    },
+    {
+      "path": "knowledge/records/TKL-20260913-01.md",
+      "git_blob": "c22dbcc910ccddf8c3a96c012cfa3bb3f4f257a8",
+      "git_bytes": 3764,
+      "git_sha256": "d13918a5d99569332a971d35dd56461565d27533463b20e4336cd3db2f20b7b0",
+      "physical_bytes": 3802,
+      "physical_sha256": "affb020c75e91b5e1d90b06cb94ff4d838d09a4bc6239fc6d6681ba833ee27c7",
+      "physical_equals_git": false
+    },
+    {
+      "path": ".tfw/migrations/knowledge-lifecycle.md",
+      "git_blob": "03a5ba4e6cd08cd0c25e7cb7b09bcbd724fe43d8",
+      "git_bytes": 8858,
+      "git_sha256": "2ce771e0415aab0c63b011d44d613304566fdeb41dfd97954f45dc34da3c8da3",
+      "physical_bytes": 8858,
+      "physical_sha256": "2ce771e0415aab0c63b011d44d613304566fdeb41dfd97954f45dc34da3c8da3",
+      "physical_equals_git": true
+    },
+    {
+      "path": "docs/scripts/gen_docs.py",
+      "git_blob": "7294707db5722c206dd1031bea48d8adfcd2f179",
+      "git_bytes": 35546,
+      "git_sha256": "e123b0f72ea618948915fa63fda7367a3f8ca4816a181f83f4d97f94ffc2b037",
+      "physical_bytes": 35546,
+      "physical_sha256": "e123b0f72ea618948915fa63fda7367a3f8ca4816a181f83f4d97f94ffc2b037",
+      "physical_equals_git": true
+    },
+    {
+      "path": "docs/scripts/test_gen_docs.py",
+      "git_blob": "93b8f70ea5b782191a00075b02a4a3621e21e685",
+      "git_bytes": 33827,
+      "git_sha256": "9e6af27e7cac79485e5c6119d976cb947193e5725ae5714e4d12a324077ef25a",
+      "physical_bytes": 33827,
+      "physical_sha256": "9e6af27e7cac79485e5c6119d976cb947193e5725ae5714e4d12a324077ef25a",
+      "physical_equals_git": true
+    },
+    {
+      "path": "docs/scripts/test_integration.py",
+      "git_blob": "d3b1aa8b2c8eab78c97322b3ce3607b1e7046519",
+      "git_bytes": 16902,
+      "git_sha256": "8c1dd9bfdde78c4b93a1c156e4618d3d8acf465a28c1647861aa563781014fc3",
+      "physical_bytes": 16902,
+      "physical_sha256": "8c1dd9bfdde78c4b93a1c156e4618d3d8acf465a28c1647861aa563781014fc3",
+      "physical_equals_git": true
+    },
+    {
+      "path": "docs/mkdocs.yml",
+      "git_blob": "9c4ca82abdd473c4ed7e22a59909d01dc9936f11",
+      "git_bytes": 1266,
+      "git_sha256": "6d97cd6bfa7596f694749eede5861d402441074fb851e126f0163da6a42f18fd",
+      "physical_bytes": 1266,
+      "physical_sha256": "6d97cd6bfa7596f694749eede5861d402441074fb851e126f0163da6a42f18fd",
+      "physical_equals_git": true
+    },
+    {
+      "path": ".tfw/compilable_contract.md",
+      "git_blob": "32dd370071d9ad9edfd24cd91af34a992427cfa5",
+      "git_bytes": 8292,
+      "git_sha256": "7eeee2c32fd39fd19e2831a0387f9c4c46cabeeed8b6b698eb5783d00b85ac34",
+      "physical_bytes": 8292,
+      "physical_sha256": "7eeee2c32fd39fd19e2831a0387f9c4c46cabeeed8b6b698eb5783d00b85ac34",
+      "physical_equals_git": true
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/TS__TFW_20260909-231654_TKL.md",
+      "git_blob": "f69fd4099a21a07ae2d17e6b5108b04ac94f107e",
+      "git_bytes": 55220,
+      "git_sha256": "6929b45c6ec0908933a2d7e9088707dd317c56a1089895cac9fc31a1b3f8c48c",
+      "physical_bytes": 55220,
+      "physical_sha256": "6929b45c6ec0908933a2d7e9088707dd317c56a1089895cac9fc31a1b3f8c48c",
+      "physical_equals_git": true
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/HL-TFW_20260909-231654_TKL.md",
+      "git_blob": "c2e14bfebaac53495eb32772d381bfdc93f51e41",
+      "git_bytes": 55629,
+      "git_sha256": "cb1e21259e6fa8263aa21d3f56facf73a0f5c932cbc8faf8ae692de63157e6f8",
+      "physical_bytes": 55629,
+      "physical_sha256": "cb1e21259e6fa8263aa21d3f56facf73a0f5c932cbc8faf8ae692de63157e6f8",
+      "physical_equals_git": true
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/status.md",
+      "git_blob": "a9239672c3284b7420bf4b297298612b36ee819d",
+      "git_bytes": 588,
+      "git_sha256": "99fbeb9a134f341fcff79db93099f33b693609a6dd3d80ee6e138cfeb308a137",
+      "physical_bytes": 588,
+      "physical_sha256": "99fbeb9a134f341fcff79db93099f33b693609a6dd3d80ee6e138cfeb308a137",
+      "physical_equals_git": true
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/journal/20260914-045719__dispatch__6e83.md",
+      "git_blob": "2b045d8bbebd69e781bd46a881bf6dda383f29c4",
+      "git_bytes": 2976,
+      "git_sha256": "b2fa823f38c7ac32f19956a1e5ca6cf5c1b73b15d0f503786eb97f9164a9365e",
+      "physical_bytes": 2976,
+      "physical_sha256": "b2fa823f38c7ac32f19956a1e5ca6cf5c1b73b15d0f503786eb97f9164a9365e",
+      "physical_equals_git": true
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/REVIEW__TFW_20260909-231654_TKL__rev4.md",
+      "git_blob": "88386ad7c69fce66f3f7ab3113aaf5c1bcbb1e2f",
+      "git_bytes": 24664,
+      "git_sha256": "0d70ea5981eb5f9cc3be7fc31a09efc09496d1fe2d5ce4c47066c240d0d0fcde",
+      "physical_bytes": 24664,
+      "physical_sha256": "0d70ea5981eb5f9cc3be7fc31a09efc09496d1fe2d5ce4c47066c240d0d0fcde",
+      "physical_equals_git": true
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/RF__TFW_20260909-231654_TKL.md",
+      "git_blob": "58a42e6c0d7bcbb0581976d266a3c7e4a7d6050f",
+      "git_bytes": 62710,
+      "git_sha256": "0dd170cf686ceca408f774e750021494b512648e2017360e29c866ff80f01724",
+      "physical_bytes": 62710,
+      "physical_sha256": "0dd170cf686ceca408f774e750021494b512648e2017360e29c866ff80f01724",
+      "physical_equals_git": true
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/EV__TFW_20260909-231654_TKL.md",
+      "git_blob": "b9525f32df6e289af5b9b27d9405b040728da1bc",
+      "git_bytes": 45064,
+      "git_sha256": "3d503e1241b166eec88c5ebcdaa597845e2b4f5e0596392a624e1aa157e2c59c",
+      "physical_bytes": 45064,
+      "physical_sha256": "3d503e1241b166eec88c5ebcdaa597845e2b4f5e0596392a624e1aa157e2c59c",
+      "physical_equals_git": true
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/journal/20260914-051824__dispatch__f1b0.md",
+      "git_blob": "74453033aee38d1dc2e87cc5351b6c3067f9ba54",
+      "git_bytes": 3188,
+      "git_sha256": "dea6d67ae6df24b39bbb6b316c6ea301bfbb853561183888a66ad9964632ae4b",
+      "physical_bytes": 3188,
+      "physical_sha256": "dea6d67ae6df24b39bbb6b316c6ea301bfbb853561183888a66ad9964632ae4b",
+      "physical_equals_git": true
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/journal/20260914-051049__dispatch__4a0c.md",
+      "git_blob": "f42422ea224616161d8fdb1356c1f788ac708b5e",
+      "git_bytes": 3544,
+      "git_sha256": "a8ebdb2485125416e16f9f98a3e0676c423a651a90acc76fd71f3306b4672d25",
+      "physical_bytes": 3544,
+      "physical_sha256": "a8ebdb2485125416e16f9f98a3e0676c423a651a90acc76fd71f3306b4672d25",
+      "physical_equals_git": true
+    }
+  ],
+  "archive": "01-source-bytes.zip",
+  "archive_bytes": 175522,
+  "archive_sha256": "fa954df65f9e03180c5bab2ac33271cc37eca92d768336a8e9c57aa4e3ee11aa",
+  "107_PASS_reuse": {
+    "source_epoch": "a6c48949c2cec3443c914fb57a74be6dcd66d274",
+    "receipt": "../capture-final/01-checks-result.json",
+    "unchanged_code_oracles": [
+      "docs/scripts/test_gen_docs.py",
+      "docs/scripts/test_integration.py",
+      "docs/scripts/gen_docs.py"
+    ],
+    "new_test_run": false,
+    "authority": "f1b0 / D86; actual changed output requires separate one build."
+  },
+  "inherited_checkout_EOL": "Owner record physical CRLF remains unchanged; its exact Git LF blob differs only by CRLF-to-LF. All physical identities retained without normalization."
+}

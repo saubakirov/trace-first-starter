@@ -1,0 +1,105 @@
+{
+  "step": "effect55",
+  "started_at": "2026-09-13T22:25:05.487350+00:00",
+  "argv": [
+    "workspace/2026/TFW_20260909-231654_TKL/evidence/r3-native/native.py",
+    "effect55"
+  ],
+  "subprocesses": [
+    {
+      "argv": [
+        "git",
+        "-c",
+        "core.longpaths=true",
+        "-c",
+        "core.autocrlf=false",
+        "rev-parse",
+        "HEAD"
+      ],
+      "cwd": "C:\\Users\\c0rpa\\.codex\\worktrees\\f3f3\\steps-framework",
+      "start": "2026-09-13T22:25:05.494552+00:00",
+      "stdout": "effect55-1.stdout.raw",
+      "stderr": "effect55-1.stderr.raw",
+      "end": "2026-09-13T22:25:05.533019+00:00",
+      "exit": 0
+    },
+    {
+      "argv": [
+        "git",
+        "-c",
+        "core.longpaths=true",
+        "-c",
+        "core.autocrlf=false",
+        "rev-parse",
+        "HEAD"
+      ],
+      "cwd": "C:\\Users\\c0rpa\\.codex\\worktrees\\f3f3\\steps-framework",
+      "start": "2026-09-13T22:25:05.542360+00:00",
+      "stdout": "effect55-2.stdout.raw",
+      "stderr": "effect55-2.stderr.raw",
+      "end": "2026-09-13T22:25:05.596262+00:00",
+      "exit": 0
+    },
+    {
+      "argv": [
+        "git",
+        "-c",
+        "core.longpaths=true",
+        "-c",
+        "core.autocrlf=false",
+        "rev-parse",
+        "HEAD"
+      ],
+      "cwd": "C:\\Users\\c0rpa\\.codex\\worktrees\\f3f3\\steps-framework",
+      "start": "2026-09-13T22:25:13.397840+00:00",
+      "stdout": "effect55-3.stdout.raw",
+      "stderr": "effect55-3.stderr.raw",
+      "end": "2026-09-13T22:25:13.468129+00:00",
+      "exit": 0
+    }
+  ],
+  "writes": [
+    {
+      "path": "tools/tfw_state.py",
+      "purpose": "authorized current-description effect",
+      "before": {
+        "bytes": 42782,
+        "sha256": "ca4f93b188d139a1115855d4c500edfe4db7bbd8afbef10465bd9eab50dec3d4",
+        "raw_git_blob": "2ce2f2bd9cb510bc1467a29ae8ffdd22354cabc6",
+        "eol": {
+          "CRLF": 0,
+          "LF": 913,
+          "CR": 0
+        }
+      },
+      "after": {
+        "bytes": 42735,
+        "sha256": "b66a89cf39922b5295faad21685066270b20ab03e0dab8920ad92159454bb9af",
+        "raw_git_blob": "9705cef607eb2fc44c68143180d99c471398cb64",
+        "eol": {
+          "CRLF": 0,
+          "LF": 912,
+          "CR": 0
+        }
+      },
+      "at": "2026-09-13T22:25:13.506168+00:00"
+    }
+  ],
+  "result": {
+    "path": "tools/tfw_state.py",
+    "identity": {
+      "bytes": 42735,
+      "sha256": "b66a89cf39922b5295faad21685066270b20ab03e0dab8920ad92159454bb9af",
+      "raw_git_blob": "9705cef607eb2fc44c68143180d99c471398cb64",
+      "eol": {
+        "CRLF": 0,
+        "LF": 912,
+        "CR": 0
+      }
+    },
+    "unrelated_preserved": true,
+    "physical_writes": 1
+  },
+  "exit": 0,
+  "completed_at": "2026-09-13T22:25:21.889282+00:00"
+}

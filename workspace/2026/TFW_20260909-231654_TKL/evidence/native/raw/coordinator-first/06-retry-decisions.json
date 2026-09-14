@@ -1,0 +1,20 @@
+{
+  "started_at": "2026-09-13T11:45:59.725413+00:00",
+  "completed_at": "2026-09-13T11:45:59.849418+00:00",
+  "unit": "01a09974-6716-7cc0-9916-fd6d04c91481",
+  "same_intent": {
+    "decision": "REUSE accepted P; repair only absent current fixture reference; no second publication, record or acceptance",
+    "current_before_sha256": "1843ca1a8cd2aabd6b4299dda4c0fabda55a0cb8677db691da56a419b6dee9e4",
+    "current_after_sha256": "d7b1c106cdda3b2055616e8f7e5e44f2d4a5cb2ce3f0fec3ec3e4bcff9f2f1e1",
+    "P_before_after_sha256": "a2d82e20092a361319d80f5f7db63360957a84a8eb36415461567323fc0b797f",
+    "source_blob": "4f3a90aea1280981edadbd09d24f2e9c72bbe5ba",
+    "authority": "Q1 dedf8527ff110fa160358239bbf45ebb498838dd; historical SLC close c51ee0c0d7891fd165d105f3565e0e54512c1040 and independent acceptance 99198f133c0047568c1e8411bfae849239b352b1",
+    "scope": "Exact prepared historical accepted effect only; not current live Candidate KNOWLEDGE or new acceptance."
+  },
+  "divergent_intent": {
+    "decision": "REFUSE replacement under T/A/7: proposed all-history-active intent contradicts accepted D87 and has no replacement authority/acceptance. Preserve P and completed equal-intent current reference; route a real changed obligation through its existing owner before publication.",
+    "P_before_after_equal": true,
+    "current_before_after_equal": true,
+    "prepared_input_sha256": "10dbebbc5a64ccf32177e2fd6e581f9071002447427ec2af0f9e1ca4db6ffa95"
+  }
+}

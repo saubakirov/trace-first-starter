@@ -1,0 +1,118 @@
+{
+  "observed_at": "2026-09-13T16:12:34.610265+00:00",
+  "producer": "Coordinator 01a09974-6716-7cc0-9916-fd6d04c91481",
+  "ingesting_executor": "01a09a0c-c9e2-7d01-af4e-64931af967ed",
+  "grant": "7b1455a58f5aa4002edd4bcb6f02fb3fdc9c25d7",
+  "original_result_commit": "ce268a3ab0d32f34f4dad8f935ef8c8fb3811063",
+  "files": [
+    {
+      "source_commit": "ce268a3ab0d32f34f4dad8f935ef8c8fb3811063",
+      "source_path": "workspace/2026/TFW_20260909-231654_TKL/evidence/coordinator-ac9/00-start.json",
+      "git_blob": "da9b155cb6c415e4ecc79d00f2ac078c61dad16c",
+      "copied_path": "workspace/2026/TFW_20260909-231654_TKL/evidence/ac9-supplement/original/00-start.json",
+      "bytes": 1127,
+      "sha256": "7190c2c18230dbe4a32a63591f631e8dfce4cc4e132a8d053196025d9e0f56b3",
+      "parent_working_observed_sha256": "7190c2c18230dbe4a32a63591f631e8dfce4cc4e132a8d053196025d9e0f56b3",
+      "working_equals_exact_source_blob": true,
+      "working_CRLF_to_LF_equals_source_CRLF_to_LF": true,
+      "representation_rule": "Copied immutable source Git bytes; physical checkout bytes separately observed, not silently treated equal"
+    },
+    {
+      "source_commit": "ce268a3ab0d32f34f4dad8f935ef8c8fb3811063",
+      "source_path": "workspace/2026/TFW_20260909-231654_TKL/evidence/coordinator-ac9/01-checkout.json",
+      "git_blob": "4089f696f80fd4d2c28d49a7fe1fd1e0fdfff918",
+      "copied_path": "workspace/2026/TFW_20260909-231654_TKL/evidence/ac9-supplement/original/01-checkout.json",
+      "bytes": 737,
+      "sha256": "341844ccee556d0bcc922844c33a2dc561cb0d4f7d144f01b6409b5fae52a172",
+      "parent_working_observed_sha256": "341844ccee556d0bcc922844c33a2dc561cb0d4f7d144f01b6409b5fae52a172",
+      "working_equals_exact_source_blob": true,
+      "working_CRLF_to_LF_equals_source_CRLF_to_LF": true,
+      "representation_rule": "Copied immutable source Git bytes; physical checkout bytes separately observed, not silently treated equal"
+    },
+    {
+      "source_commit": "ce268a3ab0d32f34f4dad8f935ef8c8fb3811063",
+      "source_path": "workspace/2026/TFW_20260909-231654_TKL/evidence/coordinator-ac9/01-checkout.stderr.txt",
+      "git_blob": "2a1f67e681b52f5a8195876122b20285fad4eb64",
+      "copied_path": "workspace/2026/TFW_20260909-231654_TKL/evidence/ac9-supplement/original/01-checkout.stderr.txt",
+      "bytes": 43,
+      "sha256": "5dfe84ad39969fe33b7e7c567eb2252ff8eb46fcd82737a41411a60c492f777e",
+      "parent_working_observed_sha256": "5dfe84ad39969fe33b7e7c567eb2252ff8eb46fcd82737a41411a60c492f777e",
+      "working_equals_exact_source_blob": true,
+      "working_CRLF_to_LF_equals_source_CRLF_to_LF": true,
+      "representation_rule": "Copied immutable source Git bytes; physical checkout bytes separately observed, not silently treated equal"
+    },
+    {
+      "source_commit": "ce268a3ab0d32f34f4dad8f935ef8c8fb3811063",
+      "source_path": "workspace/2026/TFW_20260909-231654_TKL/evidence/coordinator-ac9/01-checkout.stdout.txt",
+      "git_blob": "7052e6ac2a61170744cbc5b5df7d2775cd8eb9a3",
+      "copied_path": "workspace/2026/TFW_20260909-231654_TKL/evidence/ac9-supplement/original/01-checkout.stdout.txt",
+      "bytes": 107,
+      "sha256": "25e47999b6aea42b9f2436e808cc16d65ecd798f1895f546863ae31b49f0843d",
+      "parent_working_observed_sha256": "25e47999b6aea42b9f2436e808cc16d65ecd798f1895f546863ae31b49f0843d",
+      "working_equals_exact_source_blob": true,
+      "working_CRLF_to_LF_equals_source_CRLF_to_LF": true,
+      "representation_rule": "Copied immutable source Git bytes; physical checkout bytes separately observed, not silently treated equal"
+    },
+    {
+      "source_commit": "ce268a3ab0d32f34f4dad8f935ef8c8fb3811063",
+      "source_path": "workspace/2026/TFW_20260909-231654_TKL/evidence/coordinator-ac9/02-handover.md",
+      "git_blob": "24eb795d27b2867d2f116ec038238d4276078565",
+      "copied_path": "workspace/2026/TFW_20260909-231654_TKL/evidence/ac9-supplement/original/02-handover.md",
+      "bytes": 4681,
+      "sha256": "6f234eb9a9cde75993d5265079a008465568c640040cfc22c27f8ed8a2b00b5e",
+      "parent_working_observed_sha256": "6f234eb9a9cde75993d5265079a008465568c640040cfc22c27f8ed8a2b00b5e",
+      "working_equals_exact_source_blob": true,
+      "working_CRLF_to_LF_equals_source_CRLF_to_LF": true,
+      "representation_rule": "Copied immutable source Git bytes; physical checkout bytes separately observed, not silently treated equal"
+    },
+    {
+      "source_commit": "ce268a3ab0d32f34f4dad8f935ef8c8fb3811063",
+      "source_path": "workspace/2026/TFW_20260909-231654_TKL/evidence/coordinator-ac9/03-visible-entry-trail.json",
+      "git_blob": "35e8eaee3de81350761260639773e756a187e641",
+      "copied_path": "workspace/2026/TFW_20260909-231654_TKL/evidence/ac9-supplement/original/03-visible-entry-trail.json",
+      "bytes": 111285,
+      "sha256": "3852c76de28e59e98e1f008a019e17ef09d18f3e9386dcfe4805634697a0b5b8",
+      "parent_working_observed_sha256": "3852c76de28e59e98e1f008a019e17ef09d18f3e9386dcfe4805634697a0b5b8",
+      "working_equals_exact_source_blob": true,
+      "working_CRLF_to_LF_equals_source_CRLF_to_LF": true,
+      "representation_rule": "Copied immutable source Git bytes; physical checkout bytes separately observed, not silently treated equal"
+    },
+    {
+      "source_commit": "ce268a3ab0d32f34f4dad8f935ef8c8fb3811063",
+      "source_path": "workspace/2026/TFW_20260909-231654_TKL/evidence/coordinator-ac9/04-result.json",
+      "git_blob": "1a0270720e4f24bf720e1335757ecc0063fbdcbd",
+      "copied_path": "workspace/2026/TFW_20260909-231654_TKL/evidence/ac9-supplement/original/04-result.json",
+      "bytes": 63752,
+      "sha256": "b56430537f9b131ae70294b1ad6f3f08384ee2b0b991ec50ca41910d853906da",
+      "parent_working_observed_sha256": "b56430537f9b131ae70294b1ad6f3f08384ee2b0b991ec50ca41910d853906da",
+      "working_equals_exact_source_blob": true,
+      "working_CRLF_to_LF_equals_source_CRLF_to_LF": true,
+      "representation_rule": "Copied immutable source Git bytes; physical checkout bytes separately observed, not silently treated equal"
+    },
+    {
+      "source_commit": "ce268a3ab0d32f34f4dad8f935ef8c8fb3811063",
+      "source_path": "workspace/2026/TFW_20260909-231654_TKL/evidence/coordinator-ac9/05-count-and-bound.json",
+      "git_blob": "1cd03a3fc9c12b340a6cd988b01bdf676eccfc90",
+      "copied_path": "workspace/2026/TFW_20260909-231654_TKL/evidence/ac9-supplement/original/05-count-and-bound.json",
+      "bytes": 1596,
+      "sha256": "6863c18b9cdb7386e3ce4e9988197d7bbd3882a3e9de76fe166cbb2a74294ce0",
+      "parent_working_observed_sha256": "6863c18b9cdb7386e3ce4e9988197d7bbd3882a3e9de76fe166cbb2a74294ce0",
+      "working_equals_exact_source_blob": true,
+      "working_CRLF_to_LF_equals_source_CRLF_to_LF": true,
+      "representation_rule": "Copied immutable source Git bytes; physical checkout bytes separately observed, not silently treated equal"
+    },
+    {
+      "source_commit": "7b1455a58f5aa4002edd4bcb6f02fb3fdc9c25d7",
+      "source_path": "workspace/2026/TFW_20260909-231654_TKL/journal/20260913-205534__dispatch__ac09.md",
+      "git_blob": "60beac29ff5dc9cc719a2f1f84507514fa06266d",
+      "copied_path": "workspace/2026/TFW_20260909-231654_TKL/evidence/ac9-supplement/authority/20260913-205534__dispatch__ac09.md",
+      "bytes": 3451,
+      "sha256": "c2999a682e01f1afdad048e1b8dca5f4d99b7cbd92d8f9d9fcd16314bf6eacac",
+      "parent_working_observed_sha256": "c2999a682e01f1afdad048e1b8dca5f4d99b7cbd92d8f9d9fcd16314bf6eacac",
+      "working_equals_exact_source_blob": true,
+      "working_CRLF_to_LF_equals_source_CRLF_to_LF": true,
+      "representation_rule": "Copied immutable source Git bytes; physical checkout bytes separately observed, not silently treated equal"
+    }
+  ],
+  "no_merge_or_native_attempt": true
+}

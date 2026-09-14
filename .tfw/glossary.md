@@ -35,7 +35,7 @@ and incident histories live at the linked authority or durable history source.
 **Meaning:** The Reviewer-locked verdict and disposition record produced after independent verification. **Authority:** [conventions.md](conventions.md#review-review-report), `REVIEW (Review Report)`, and `.tfw/templates/REVIEW.md`.
 
 ### KNOWLEDGE.md
-**Meaning:** The project index for architecture, key artifacts, legacy, and verified topic facts. **Authority:** [conventions.md](conventions.md#102-knowledge-infrastructure), `Knowledge Infrastructure`.
+**Meaning:** The stable ordinary-file entry for architecture/reference, preserved legacy topics/D rows and independent qualified records; no maintained counts or inventory. **Authority:** [conventions.md](conventions.md#102-knowledge-infrastructure), `Knowledge Infrastructure`.
 
 ### RELEASE.md
 **Meaning:** Project-specific release context and checks used by the release workflow. **Authority:** [.tfw/workflows/release.md](workflows/release.md), `TFW Release`.
@@ -291,16 +291,38 @@ or the highest approved TS sibling, while ONB/RF/EV append. **Authority:** [conv
 
 ## Knowledge Gate
 
-**Meaning:** The off/soft/hard threshold over distinct pending full-task digests that routes overdue work to consolidation. **Authority:** [.tfw/workflows/plan.md](workflows/plan.md#step-2-knowledge-gate) and [.tfw/workflows/knowledge.md](workflows/knowledge.md#phase-1-orient).
+**Meaning:** Retired global pending-count mechanism, retained only in historical sources. Current material obligations are checked at selected handover, use and close. **Authority:** [conventions.md](conventions.md#knowledge-handover), `Knowledge handover` and `Current knowledge use`.
 
 ## Consolidation
 
-**Meaning:** Human-gated promotion, merge, rejection, and marking of pending task knowledge, with post-marker digest state written last. **Authority:** [.tfw/workflows/knowledge.md](workflows/knowledge.md), Phases 2–4.
+**Meaning:** Source-bound qualification and completed dispositions for explicitly selected human knowledge; no global batch, markers or state writes. **Authority:** [.tfw/workflows/knowledge.md](workflows/knowledge.md), Phases 2–4.
+
+## Qualified Record
+
+**Meaning:** An independently addressable source-bound claim/decision with intent, scope, grounds,
+disposition, producer, qualifier and real acceptance authority. Presence is not acceptance.
+**Authority:** [conventions.md](conventions.md#knowledge-qualification), `Knowledge qualification`.
+
+## Knowledge Handover
+
+**Meaning:** An actual producing-role return preserving available material context or a justified
+absence/unavailable/retention outcome; missing or owed material remains open.
+**Authority:** [conventions.md](conventions.md#knowledge-handover), `Knowledge handover`.
+
+## Current Knowledge Use
+
+**Meaning:** Apply relevant legacy/record claims only after source/scope/disposition and incoming
+successor/correction/equivalence/conflict checks. Newer time does not resolve conflicting authority.
+**Authority:** [conventions.md](conventions.md#current-knowledge-use), `Current knowledge use`.
 
 ## Project Values (PV)
 
 PV is the ordered decision context below. Coordinator and Reviewer independently scan P0–P4;
 P5–P7 are relevance-triggered.
+
+New records join the semantic priority of the corresponding legacy source below. Apply `Current
+knowledge use` to relevant records and incoming relations; this table is a priority map, not a fact
+inventory. P0–P4 remain mandatory and P5–P7 relevance-selected.
 
 ### PV Index (scan order)
 

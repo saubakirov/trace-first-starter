@@ -1,0 +1,58 @@
+{
+  "recorded_utc": "2026-09-13T10:55:47.597073+00:00",
+  "classification": "Executor observation summary of actual cua_repl outputs, not provider-exported raw transcript",
+  "build": "checks/08-full/build/receipt.json",
+  "browser": "Codex in-app browser id1/tab1; closed",
+  "server": "127.0.0.1:60801; stdlib loopback-only session11128 stopped after final observed HTTP200 with KeyboardInterrupt",
+  "interval": "2026-09-13 15:47:42–15:50:26 +05:00, actual server log times",
+  "items": [
+    {
+      "family": "record",
+      "url": "http://127.0.0.1:60801/knowledge/records/TKL-20260913-01/",
+      "observed_heading_or_anchor": "TKL-20260913-01: Selected team knowledge lifecycle",
+      "action": "direct navigation; later generated-nav returns"
+    },
+    {
+      "family": "legacy-D37",
+      "url": "http://127.0.0.1:60801/knowledge-index/#d37",
+      "observed_heading_or_anchor": "D37",
+      "action": "click KNOWLEDGE.md D37"
+    },
+    {
+      "family": "legacy-topic",
+      "url": "http://127.0.0.1:60801/knowledge/process/",
+      "observed_heading_or_anchor": "Knowledge: Process",
+      "action": "click Process"
+    },
+    {
+      "family": "legacy-source",
+      "url": "http://127.0.0.1:60801/tasks/TFW-22__coordinator_research_enrichment/RES__TFW-22__coordinator_research_enrichment/",
+      "observed_heading_or_anchor": "RES — TFW-22: Coordinator & Research Enrichment",
+      "action": "click first exact RES TFW-22"
+    },
+    {
+      "family": "legacy-relation-D82",
+      "url": "http://127.0.0.1:60801/knowledge-index/#d82",
+      "observed_heading_or_anchor": "D82",
+      "action": "click D82"
+    },
+    {
+      "family": "current-source",
+      "url": "http://127.0.0.1:60801/tasks/2026/TFW_20260909-231654_TKL/journal/20260913-141400__handoff__8c2a/",
+      "observed_heading_or_anchor": "20260913 141400  handoff  8c2a",
+      "action": "click owner decision"
+    },
+    {
+      "family": "current-HL",
+      "url": "http://127.0.0.1:60801/tasks/2026/TFW_20260909-231654_TKL/HL-TFW_20260909-231654_TKL/",
+      "observed_heading_or_anchor": "HL — TFW_20260909-231654_TKL: Team Knowledge Lifecycle",
+      "action": "direct navigation to observed href after failed click/wait"
+    }
+  ],
+  "first_failures": [
+    "Browser content.export unsupported; no export created.",
+    "HL decision context click left URL unchanged and waitForURL timed out; href inspected, no console errors observed. Direct navigation opened correct HL. Cause not established.",
+    "Attempt to copy 08 rendered HTML after starting 11-full found site had already been cleaned for rebuild; no HTML copied. Do not claim later 11 output is original 08 output."
+  ],
+  "applicability": "No VALUE changes occurred between 08 and 11. Only further held-input ASSURANCE cases and ONB control resolution were added. Original VALUE sources are preserved by each source-before snapshot. Preserve final rendered HTML separately with its own observed build epoch; 08 browser results are bounded observations, not universal behavior."
+}

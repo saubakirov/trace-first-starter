@@ -1,0 +1,203 @@
+{
+  "observed_at": "2026-09-13T16:13:33.106296+00:00",
+  "kind": "Executor retrospective custody intake; no plan invocation or independent acceptance",
+  "source_commit": "ce268a3ab0d32f34f4dad8f935ef8c8fb3811063",
+  "grant": "7b1455a58f5aa4002edd4bcb6f02fb3fdc9c25d7",
+  "original_handover_and_trail_hashes_match": true,
+  "positive_git_revision": "60066bf1143da33fad12102c0c17163501abd631",
+  "source_archive_sha256": "a241ce0b4c89eeb89a9b5c5bde40326da0d22a2983e7c4f7af6ec0eac80bcb8b",
+  "all_positive_git_files_match_original_raw_map": 276,
+  "installed_plan_and_skill_identity_match": true,
+  "native_command_groups": [
+    {
+      "ordinal": 4620,
+      "commands": 2
+    },
+    {
+      "ordinal": 4628,
+      "commands": 1
+    },
+    {
+      "ordinal": 4635,
+      "commands": 1
+    },
+    {
+      "ordinal": 4642,
+      "commands": 1
+    },
+    {
+      "ordinal": 4649,
+      "commands": 2
+    },
+    {
+      "ordinal": 4657,
+      "commands": 5
+    },
+    {
+      "ordinal": 4672,
+      "commands": 1
+    }
+  ],
+  "native_entry_commands": 13,
+  "initial_preparation_skill_reads": 1,
+  "conservative_operations": {
+    "total": 18,
+    "basis": "13 native entry commands + initial skill read + four extra individual operations inside multi-operation commands: configured workspace presence, second file at4649, record-space presence at4657, handover form at4672."
+  },
+  "visible_command_outputs": [
+    {
+      "output_ordinal": 4616,
+      "exit": 0,
+      "characters": 260,
+      "original_token_count": 65,
+      "truncated_output_notice": false,
+      "sha256": "fd320b6982dd015dc991c6543822dc8d644577092eaf039b74e8abada67fd164"
+    },
+    {
+      "output_ordinal": 4616,
+      "exit": 0,
+      "characters": 2193,
+      "original_token_count": 549,
+      "truncated_output_notice": false,
+      "sha256": "535f6ffeea565b1cf05a88831e6fad934a0bf5073ae40c0c192106b83d1fa3b4"
+    },
+    {
+      "output_ordinal": 4624,
+      "exit": 0,
+      "characters": 14674,
+      "original_token_count": 3711,
+      "truncated_output_notice": false,
+      "sha256": "383f99a3468f2a7aeb466d3487a2f02c66e0f9a35a977842531bb2f4b5fc407d"
+    },
+    {
+      "output_ordinal": 4624,
+      "exit": 0,
+      "characters": 1903,
+      "original_token_count": 476,
+      "truncated_output_notice": false,
+      "sha256": "01652993166036e5edfe08d4c5a58020ee595204f79a1becb281525c7cccb60e"
+    },
+    {
+      "output_ordinal": 4631,
+      "exit": 1,
+      "characters": 114,
+      "original_token_count": 29,
+      "truncated_output_notice": false,
+      "sha256": "b373ff40a009f2197c14e4616c2c6bc3a9eba90025f7225941eb9936c0207a21"
+    },
+    {
+      "output_ordinal": 4638,
+      "exit": 0,
+      "characters": 112,
+      "original_token_count": 28,
+      "truncated_output_notice": false,
+      "sha256": "93896fd1b16402a125b81f24b4749d01a551cf1054c451360f05037a29e4fe43"
+    },
+    {
+      "output_ordinal": 4645,
+      "exit": 0,
+      "characters": 34257,
+      "original_token_count": 8666,
+      "truncated_output_notice": false,
+      "sha256": "f1302f337eb3e6b3b7e20363636ce2497500350e2d6307f1dc1ff11a9cc9341e"
+    },
+    {
+      "output_ordinal": 4653,
+      "exit": 0,
+      "characters": 5471,
+      "original_token_count": 1375,
+      "truncated_output_notice": false,
+      "sha256": "503c7445b49a5220cd6926f8c814edfc3c38db3d1ad081acdedc828ace1e3a62"
+    },
+    {
+      "output_ordinal": 4653,
+      "exit": 0,
+      "characters": 199,
+      "original_token_count": 50,
+      "truncated_output_notice": false,
+      "sha256": "7beb9666b218baf18bb2c5588e5010c52a7da0a26a5248acdf90b637f8a42de0"
+    },
+    {
+      "output_ordinal": 4664,
+      "exit": 0,
+      "characters": 1905,
+      "original_token_count": 477,
+      "truncated_output_notice": false,
+      "sha256": "901b571f16d11b2bf3f6ab9cc3ea14e58273b31fdec65ff5d0c6bbda87f99736"
+    },
+    {
+      "output_ordinal": 4664,
+      "exit": 0,
+      "characters": 259,
+      "original_token_count": 65,
+      "truncated_output_notice": false,
+      "sha256": "047393a1b05ad73ed0a4a4cf4c638a19e4c7a6e78cb05c1e630bdf77dfe84f86"
+    },
+    {
+      "output_ordinal": 4664,
+      "exit": 0,
+      "characters": 299,
+      "original_token_count": 75,
+      "truncated_output_notice": false,
+      "sha256": "33ea094594cc92e7a27d0dcfa999b8e8a521feaa49341c606c8e13e10361c946"
+    },
+    {
+      "output_ordinal": 4664,
+      "exit": 0,
+      "characters": 1023,
+      "original_token_count": 256,
+      "truncated_output_notice": false,
+      "sha256": "cdb82b3d6f71fc2f8c5b5a0bdf565e01ffaeb1f107046cf777cea17730466eed"
+    },
+    {
+      "output_ordinal": 4664,
+      "exit": 0,
+      "characters": 170,
+      "original_token_count": 43,
+      "truncated_output_notice": false,
+      "sha256": "08f448750b8d0aad92a593e085a0899b5b2e6335ee1a97d9d0eda45965591ab5"
+    },
+    {
+      "output_ordinal": 4675,
+      "exit": 0,
+      "characters": 8618,
+      "original_token_count": 2172,
+      "truncated_output_notice": false,
+      "sha256": "b89f1546bda8df410f8e1de821e1179a480d3bb069d429f96605a7267e53bda6"
+    },
+    {
+      "output_ordinal": 4686,
+      "exit": 0,
+      "characters": 114,
+      "original_token_count": 29,
+      "truncated_output_notice": false,
+      "sha256": "85cc39b1a4e509e753234ee40942883ea0db5f1e7cab14cb5c3ef37e8b65b7a9"
+    }
+  ],
+  "timing": {
+    "entry_seconds": 412.198144,
+    "raw_seal_seconds": 472.756166,
+    "late_count_seconds_after_deadline": 39.656088,
+    "reported_commit_completion_seconds_after_deadline": 40.398844
+  },
+  "git_commit_headers": {
+    "author": "2026-09-13T21:09:33+05:00",
+    "committer": "2026-09-13T21:09:33+05:00",
+    "reported_command_completion_UTC": "2026-09-13T16:09:34.011369+00:00",
+    "reported_completion_source": "Coordinator direct supplement dispatch; distinct from Git second-resolution headers"
+  },
+  "entry_last_ordinal": 4675,
+  "later_exported_nonplanning_context": [
+    4683,
+    4686,
+    4688
+  ],
+  "recorded_limitations": [
+    "Initial heading punctuation assertion failure before returned body; original failure retained.",
+    "Capture start self-match and later quoted-workdir count-selector error remain observer errors, not new native attempts.",
+    "Count correction and commit are after the600second deadline; no deductions or retroactive timely claim.",
+    "Absent unrelated workspace and record space were observed; no whole-host containment claim.",
+    "D1/F1 are synthetic/unqualified, no incoming record result or full PV/planning completion.",
+    "Q3 and independent AC10 assessment remain open; same Reviewer judges AC9 scope/adequacy/timing."
+  ]
+}

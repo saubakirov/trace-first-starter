@@ -1,0 +1,168 @@
+{
+  "kind": "Coordinator admission of exact R3 documentary RF return; independent sufficiency remains open",
+  "recorded_clock": "2026-09-13T23:06:32Z",
+  "coordinator": "01a09974-6716-7cc0-9916-fd6d04c91481",
+  "executor": "01a09a0c-c9e2-7d01-af4e-64931af967ed",
+  "reviewer": "01a09aaf-9af3-7d13-8ef8-59d3bc84d5e7",
+  "return": {
+    "commit": "3971b80cb6422e358c613a52dde3a2d0cca257ab",
+    "parent": "bc03aa784f360631491fdd169fd4a45284fbe378",
+    "raw": "fc7497279ef3f70e2fcae5bb342e605a4cc7673e",
+    "candidate": "a99ba6cd756a7db444f217aef4e5a0eb83faee51",
+    "commitStart": "2026-09-13T23:03:29.883617Z",
+    "commitEnd": "2026-09-13T23:03:30.268670Z",
+    "paths": 12,
+    "counts": {
+      "VALUE": 58,
+      "ASSURANCE": 9,
+      "TRACE": 951
+    },
+    "total": 1018,
+    "RFEvent": "journal/20260914-035716__transition__79ad.md",
+    "state": "admitted for independent review, not accepted"
+  },
+  "lateRaw": {
+    "commit": "fc7497279ef3f70e2fcae5bb342e605a4cc7673e",
+    "parent": "22c75aae5ce1a0a6aed5a7b867277a304dd3ee6e",
+    "paths": 122,
+    "allOriginalIndexBlobsExact": true,
+    "committerTime": "2026-09-14T03:51:11+05:00",
+    "tool": "8f1379",
+    "actualLate": true
+  },
+  "documentaryAuthority": {
+    "commit": "43a55292579e4ad9ec37866926a78a8bae036ef3",
+    "event": "workspace/2026/TFW_20260909-231654_TKL/journal/20260914-034741__dispatch__f00f.md",
+    "grant": "accdb3378fe5fd42df282ba037c4d1a285fb9c29",
+    "grantEvent": "journal/20260914-034547__dispatch__d3c8.md",
+    "grantSHA": "1283069a984cdcc1bfe7d2f845606f4353256e35f5bf6abe4fd8116f7eaf4088",
+    "status": "dispatched"
+  },
+  "stoppedCondition": {
+    "commit": "ea73981a0dafa1d8396e48f764cc5220946a6444",
+    "event": "workspace/2026/TFW_20260909-231654_TKL/journal/20260914-034415__dispatch__68ee.md",
+    "nativeStaged": 122,
+    "manifestSHA": "93e7f6b79c70e40bf9545788641044e873082c6ddc7f9f980cf5b1bf9eb4ddb8",
+    "state": "granted-dispatched; exact late raw commit admitted; cumulative RF pending"
+  },
+  "archiveAdmission": {
+    "files": 7281,
+    "allSizeShaRawGitEol": true,
+    "repeatMapsAndFinalEqual": true,
+    "gitMetadataInitialFinalRawEqual": true,
+    "archiveSHA": "a86e77a4777ad86379b4abf40e69b8304a5b57fb55a140daaa8356f1c976b5c8",
+    "receiverAccess": false,
+    "source": "unchanged staged task evidence only",
+    "tool": "00789d",
+    "toolExit": 1,
+    "toolLimit": "All archive checks and success summary completed; later display of native.py failed on cp1252 stdout. No driver executed and no archive recheck required."
+  },
+  "sourceAdmission": {
+    "tool": "6c4e6f",
+    "preparedPositiveFiles": 2317,
+    "allPreparedMapIdentitiesEqual": true,
+    "preparedMapSerializationDifferentKeyOrder": true,
+    "firstKeyOrderDifference": {
+      "index": 38,
+      "expected": ".tfw/CHANGELOG.md",
+      "actual": ".tfw/adapters/antigravity/README.md"
+    },
+    "targets": 4,
+    "intendedExactCandidateDescriptions": 3,
+    "config": "4420 bytes, one installed_from replacement, other YAML fields unchanged",
+    "preservedArchiveMembers": 20,
+    "exactCandidateStagingFiles": 3036,
+    "currentPinRows": 31,
+    "openedPagesExactFinalArchive": 2,
+    "phaseResults": "13 exit0",
+    "receipt": {
+      "path": ".tfw/update_receipts/UPDATE__20260913-223205__fb31.md",
+      "bytes": 4969,
+      "sha": "e5bb94d9120f8299b9015b755c076fa3268d468b709c66cfc2a45a761d1700db",
+      "gitBlob": "b7a707e8f626b8fb5da152d09cd1b3dca97b9958"
+    },
+    "nativeDriverFullyRead": {
+      "tool": "a47f5d",
+      "bytes": 30251,
+      "sha": "e9e63b654b21b91be79b15cf2497189610cf09ad9503f31791679392b365a3a4",
+      "gitBlob": "747c7197ad196e5c2920f91c90da734ba9704566"
+    },
+    "earlierReadonlyHelperFailure": {
+      "tool": "eff1f8",
+      "exit": 1,
+      "cause": "Unnecessary raw serialization equality assertion failed on equal identity maps with different key ordering. No byte/source mismatch and no receiver access."
+    }
+  },
+  "cumulativeReports": {
+    "tool": "bcd6df",
+    "oldPrefixesExact": true,
+    "fullAdditionsRead": true,
+    "files": {
+      "ONB__TFW_20260909-231654_TKL.md": {
+        "bytes": 86255,
+        "sha256": "c2766baf07207b132bd8796f1fa4b1de95a7e7b9852ee5def7a8ec6e949ca96b",
+        "oldBytes": 79703
+      },
+      "RF__TFW_20260909-231654_TKL.md": {
+        "bytes": 56389,
+        "sha256": "44daa5861c534c584a7d199b8816f6b4271d9b8b372bd86c35e1a74e3d34c02a",
+        "oldBytes": 47230
+      },
+      "evidence/EV__TFW_20260909-231654_TKL.md": {
+        "bytes": 40956,
+        "sha256": "9bf09faa05df341357bed0533e3084722ee0dea99e5e9c82760eb3ebe66c9ac5",
+        "oldBytes": 33111
+      }
+    },
+    "merge": "bc03aa784f360631491fdd169fd4a45284fbe378",
+    "claims": "STOPPED24/24; four effects; one repeat; late raw22:51:11.876309; AC7/AC11 independent sufficiency open; no final-report render claim"
+  },
+  "finalChecks": {
+    "full12FinalPhysicalGitBytesEqual": true,
+    "final11NonselfManifestHashesVerified": true,
+    "all1005InheritedClassesPreserved": true,
+    "completeInventory1018": {
+      "VALUE": 58,
+      "ASSURANCE": 9,
+      "TRACE": 951
+    },
+    "original65ProductAndTestsUnchanged": true,
+    "raw122Unchanged": true,
+    "all45NewLinksResolve": true,
+    "actualONBtoRF": true,
+    "event": "journal/20260914-035716__transition__79ad.md",
+    "eventRefsVerified": 11,
+    "statusSHA256": "f477332577cbbb2ac1a7ee4832b7b0893cad4ce62045af0542653bce97ed7b25",
+    "validationSHA256": "15bf7014b0e55f2d5650d12410635a875a661bbf13c63fcf4214da50f6f48ca4",
+    "integrationFastForward": true,
+    "integration134ReturnedFilesPhysicalRawGitEqual": true,
+    "integrationClean": true,
+    "toolEvidence": [
+      "182793",
+      "eeed35",
+      "d9c926"
+    ]
+  },
+  "coordinatorReadLimits": {
+    "firstEolFieldAliasMismatch": {
+      "toolChunk": "961dfd",
+      "exit": 1,
+      "where": "read-only staged final archive audit, first file",
+      "cause": "Coordinator compared uppercase EOL field keys from raw observer to lowercase computed keys; counts identical. Schema alias only, no byte drift; no receiver access or native invocation.",
+      "next": "Compare EOL keys case-insensitively without changing source bytes."
+    },
+    "stdoutEncodingAfterSuccessfulArchiveCheck": "00789d completed all7281 archive/map checks and printed success; later native.py display failed cp1252. a47f5d read full unchanged driver with UTF8. No archive rerun required.",
+    "mapSerializationOverassertion": "eff1f8 unnecessarily required raw JSON equality for equal2317 identity maps. 6c4e6f confirmed semantic identity; path-key order differs first at index38. No file bytes differ and no map rewritten.",
+    "boundedDisplayTruncations": "Initial index diagnostics printed excessive map keys and truncated output; all122byte checks had completed, then bounded121manifest and selected-metadata reads completed. The selected TS rg projection truncated and both exact AC7/AC11 sections were subsequently read in full. Fast-forward stat display was truncated; separate134-file rawGit/physical verification completed.",
+    "receiverAccess": false,
+    "nativeOrSourceSuiteRerun": false
+  },
+  "interpretation": {
+    "nativeAttempt": "STOPPED at24/24 with both late failures; late custody does not cure the attempt or declare bounded success",
+    "observations": "Four effects, one native build, exact receipt and one complete unchanged repeat are distinct actual observations, whose sufficiency belongs to same Reviewer.",
+    "unknownOriginalStdout": "Targeted whitespace-check stdout was not returned by failed helper; no exact original diagnostic is invented.",
+    "reviewCarrier": "Next ordered formal verdict is REVIEW__TFW_20260909-231654_TKL__rev4.md plus review/rev4; preserve prior revisions.",
+    "scope": "Affected AC7/AC11 and applicable source/output/final-report claims under accepted D86; no full replay/init/AC9/AC10/full suite/prior refusal, no receiver access, no new product changes.",
+    "humanFactCandidate": "None from these technical observations."
+  }
+}

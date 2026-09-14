@@ -4,7 +4,7 @@ project:
   branch: main
 
 tfw:
-  version: "3.3.0"   # Installed TFW version (update via tfw-update)
+  version: "3.4.0"   # Installed TFW version (update via tfw-update)
   installed_from: "self"   # this repository IS the upstream; a receiving project names source@tag
   upstream: "https://github.com/saubakirov/trace-first-starter"  # Source for tfw-update
   content_language: en      # Language for filled artifact content (en, ru, etc.)
@@ -69,12 +69,6 @@ tfw:
 
   review:
     min_verify_ratio: 0.42    # minimum fraction of changed files to verify (escalate to 1.0 on discrepancy)
-
-  knowledge:
-    interval: 5
-    gate_mode: hard          # hard / soft / off
-    max_facts_per_topic: 100   # owner, 2026-08-30 (was 50)
-    max_topic_files: 13       # owner, 2026-08-30 (was 8)
 
   statuses:
     - id: TODO

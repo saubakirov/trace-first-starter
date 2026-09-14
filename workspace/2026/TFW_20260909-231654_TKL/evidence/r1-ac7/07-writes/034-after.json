@@ -1,0 +1,22 @@
+{
+  "observed_at": "2026-09-13T18:25:15.593255+00:00",
+  "sequence": 34,
+  "path": ".tfw/templates/REVIEW.md",
+  "actual": {
+    "bytes": 5306,
+    "sha256": "bfe71d82233174ae8c4f0fa846593a5abdcd93b75824a1024a015b3b5de0407e",
+    "raw_git_blob": "4b9752f88671469107789f0813ce2c080677563c",
+    "eol": {
+      "CRLF": 0,
+      "LF": 122,
+      "CR": 0
+    }
+  },
+  "equals_intended": true,
+  "immediate_source_authority": {
+    "source_identities": 122,
+    "authority_identities": 10,
+    "authority_batch_sha256": "0b47d6e18c8d425ce491f75f3d12311875fb9a88f9eca636e1d35fa2c050609e",
+    "attachment_sha256": "c3b0580ad155738e2db99b38577df3477fddafa0078fb5f4d256ce94d87b41cb"
+  }
+}

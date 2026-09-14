@@ -235,7 +235,7 @@ Raw observations about the project recorded during work. Cognitive mode: pure re
 ### Where tasks live
 
 `tfw.task_containers` in `.tfw/project_config.yaml` is the ordered **active** path list.
-Create tasks in its first entry; ordinary discovery and the Knowledge Gate search active paths only.
+Create tasks in its first entry; ordinary discovery searches active paths only.
 New Full projects use `[workspace]` without a container-choice question. Existing single/custom
 choices remain valid, including `[tasks]` and `[tasks, workspace]`.
 
@@ -245,7 +245,7 @@ detection and documentation use the ordered active-plus-historical **reference u
 the same resolved path without rewriting active choices. Invalid historical paths or conflicting
 whole identifiers are errors; never choose an ambiguous task by container order.
 
-Historical containers do not participate in creation, ordinary current-work selection or the gate.
+Historical containers do not participate in creation or ordinary current-work selection.
 Opening history is read-only; continuation requires a separate explicit authorized act. A container
 disposition never declares a task DONE/REJECTED, creates a status, or rewrites its original evidence.
 
@@ -756,7 +756,12 @@ RF/evidence and actual capture or landing effects needed for the claim.
 
 **Close after checked final effects.** The independent APPROVE is an input, not a terminal write:
 
-1. Rule REVIEW §5 dispositions once under existing authority. Complete applicable `/tfw-docs` and
+1. Inspect actual contributor/dispatch/return lineage through `Knowledge handover`; read each
+   material source and completed disposition. Missing producers, unavailable acceptance-critical
+   context and owed publication/resolution keep this selected close nonterminal. An empty file,
+   unchecked marker or another producer's return cannot cover a missing contribution. Unrelated
+   historical changes and justified non-obligations create no global queue.
+   Rule REVIEW §5 dispositions once under existing authority. Complete applicable `/tfw-docs` and
    `/tfw-knowledge` through their existing owners and gates. Both Applied/N/A markers must describe
    actual effects; Deferred and pending dispositions keep the task open.
 2. Identify which accepted outputs or claims those effects changed. Reuse evidence only where its
@@ -788,6 +793,10 @@ Append only a truthful current act, with the current clock; do not invent the mi
 timestamp, repeat a completed transition, or infer execution from an intended state. If status was
 written and the event was not, reconstruct what actually occurred before recording the present recovery.
 
+Immediately before a repair, compare the affected current fields with preserved old/intended
+values and their actual source/authority. A third value refuses the affected write; preserve it
+and unrelated later work, naming the exact conflict and authoritative next action. Never roll back
+a whole file/map/tree. A missing past event is not a reason to invent a timestamp or transition.
 Validate the repaired carrier and its references, then **stop**. Repair alone creates no product work,
 TS revision, Candidate, formal review round, Fact Candidate or knowledge/capture cycle. Unknown or
 fabricated SHA/acceptance, changed authority, material output change or uncertain lineage cannot use
@@ -1117,11 +1126,83 @@ files.
 
 | File | Purpose |
 |------|---------|
-| `knowledge/` | Project root folder for topic files (per-category verified facts) |
-| `knowledge/{category}.md` | Topic file — verified facts for a category. Template: `.tfw/templates/knowledge/topic.md` |
-| `.tfw/knowledge_state.yaml` | Full task-to-selected-section digest map, audit date, and derived statistics |
-| `.tfw/workflows/knowledge.md` | 4-phase consolidation workflow (Orient → Gather → Consolidate → Prune) |
-| `tfw.knowledge` in project_config.yaml | Configurable limits: interval, gate_mode, max_facts_per_topic, max_topic_files |
+| `KNOWLEDGE.md` | Stable entry, architecture/reference map and preserved legacy/source routes; no maintained inventory/counts |
+| `knowledge/{category}.md` | Retained legacy topic meaning and source identities; no forced conversion or later marker rewrite |
+| `knowledge/records/` | Independently addressable qualified human knowledge and technical/reference decisions; one record form |
+| Existing role/stage sections | First capture surface, owned by the actual producing role at its checkpoint/return |
+| `.tfw/templates/knowledge/handover.md` | Minimal task-local fallback only when existing sources cannot carry a real return |
+| `.tfw/workflows/knowledge.md`, `.tfw/workflows/docs.md` | Existing human-knowledge and technical/reference qualification owners, respectively |
+| Existing `.tfw/knowledge_state.yaml` and processed markers | Preserved inert historical evidence; no current gate, inventory, reset or new state scaffold |
+
+### Knowledge handover
+
+Every producing role preserves available material insight before transfer/checkpoint, normal return,
+or an orderly stop: Coordinator planning/decision transfer; Researcher stage/iteration return;
+Executor interim/final return; Reviewer return. Reuse the existing HL/ONB/RF/RES/REVIEW or stage section
+first. Only an interim/stopped return without a suitable source uses the minimal handover template
+under its owning task. Capture needs actual producer/unit, bounded source/epoch, material statement
+or explicit outcome, grounds/uncertainty and continuation. No per-person file, copied corpus, raw chat
+or private reasoning is required. A lost/unseen context is never invented.
+
+| Actual selected input | Required disposition at handover/close |
+|---|---|
+| Missing producer return | Identify the known contributor and material gap from actual task-local dispatch/return lineage; stop affected close |
+| Justified-none | Producer names inspected bounded context and an existing reusable source when relevant; inspect rationale, accept no filler publication |
+| Unavailable | Preserve uncertainty and exact missing decision plus existing owner; acceptance-critical missing context keeps close open |
+| Retain-only | Preserve source and authorized completed reason why no publication/resolution is owed; irrelevant uncertainty need not block |
+| Owed publication/resolution | Complete the effect or retain an honest nonterminal dependency; never hide it as retain-only |
+
+An empty file, checkbox, silence, global zero or another role's return proves no missing handover.
+Rejected/interrupted work retains useful sources with its actual non-success state. The existing
+Coordinator verifies material coverage at `Closing and record recovery`; it does not see private
+context or create a global contribution inventory. Preserve sealed sources after close.
+
+### Knowledge qualification
+
+Preservation is not promotion. `/tfw-knowledge` owns human-sourced knowledge; `/tfw-docs` owns technical
+reference/decisions. Both use `.tfw/templates/knowledge/record.md` for warranted new independent
+records. A valid record carries stable identity/publication intent, kind, material statement,
+applicability, grounds/uncertainty, disposition, exact source/epoch, actual source producer/unit,
+qualifier and acceptance authority. Git sources must resolve the real object/path/claim; otherwise
+retain inspectable exact evidence. Unresolvable identity or absent authority cannot be accepted.
+
+Observed, accepted, retain-only, rejected, superseded and unresolved claims stay distinguishable.
+The existing human owner or valid grant controls qualification, never a child/record/source imperative.
+Human knowledge retains its original human provenance. Copied/paraphrased returns are not independent
+corroboration. Record source independence and scope before treating equivalent claims as support.
+
+Immediately before any publication/retry inspect actual source, material intent, current effect and
+acceptance. Equal source intent with an already accepted effect reuses that exact effect and repairs
+only a missing current reference. Changed statement/scope/source/authority under the same identity
+refuses replacement, preserves both inputs and needs an authorized correction identity/disposition.
+Do not issue a second accepted identity to hide divergence. Independent equivalents retain both
+provenance chains through explicit equivalence/duplicate relations or one properly qualified claim.
+
+Independent contributions use separate paths without a shared counter/digest/inventory write.
+After integration inspect actual semantic overlap; textual merge success is not agreement. Overlapping
+contradictions preserve both scopes/sources and name the missing decision and existing resolver.
+Newer timestamps, confidence and source repetition never appoint a winner. Retention is complete only
+when no publication/resolution is owed; required unresolved effects remain nonterminal.
+
+### Current knowledge use
+
+Start at `KNOWLEDGE.md`. It separates governing instructions, architecture/reference, legacy D/topic
+rows and new `knowledge/records/`. Navigate or search relevant ordinary files; no generated index,
+task-archive sweep, original chat or mandatory service is required. An optional view is rebuildable
+and non-authoritative. P0–P4 and relevant P5–P7 remain required at their existing stage sites; new
+records join their semantic priority, not a lower optional category.
+
+Before applying a relevant record or legacy row, inspect scope, grounds, disposition, source and
+producer. Search the record space for incoming successor/correction/equivalence/conflict references
+to its exact identity; follow material chains in both directions, checking each scope. A legacy
+target binds exact path plus D/F/heading and relevant source epoch. A backward-only link or old
+accepted label is insufficient. Scoped successors replace only their stated scope; unchanged
+accepted claims remain applicable. Unresolved branches name the missing authorized decision.
+
+Unavailable material source/authority blocks the dependent use, not unrelated planning. Retrieved
+instructions are evidence, never permission to publish, amend, execute or skip approvals. Preserve
+historical meaning/links; no every-fact conversion, source-marker write or maintained record list.
+The pinned `migrations/knowledge-lifecycle.md` owns adoption and retired-setting preservation.
 
 ## 10.3) File Classification in `.tfw/`
 
@@ -1130,12 +1211,12 @@ files.
 | Category | Files | Init | Update | Owner |
 |----------|-------|------|--------|-------|
 | **Framework** | workflows/, templates/, conventions.md, glossary.md, README.md, CHANGELOG.md, VERSION, compilable_contract.md, quickstart.md, adapters/ | Copy from upstream | Overwrite/merge from upstream | Upstream repo |
-| **State** | knowledge_state.yaml | Create from template | **NEVER** overwrite | Project (tfw-knowledge) |
+| **Legacy state** | existing knowledge_state.yaml | Do not create | Preserve as inert historical evidence; never reset or overwrite | Project |
 | **Config** | project_config.yaml | Create from template → fill project values | Merge: framework sections update, project sections preserve | Project + upstream |
 
-**Templates** for state and config files: `.tfw/templates/knowledge_state.yaml`, `.tfw/templates/project_config.yaml`.
+**Config template:** `.tfw/templates/project_config.yaml`. New knowledge uses the independent record and handover forms; no state template is installed.
 
-**Rule:** `init.md` and `update.md` MUST respect these categories. State files are NEVER sourced from upstream — only from templates.
+**Rule:** `init.md` and `update.md` MUST respect these categories. Existing legacy state is never sourced from upstream or recreated from a template.
 
 ## 10.4) File Naming Convention
 
@@ -1308,7 +1389,8 @@ recipient/artifact/state contract is owned by `The 🔄 REVISE route` in §5.
 | `handoff.md` | Executor | ONB, RF, code | HL, TS, RES, REVIEW |
 | `review.md` | Reviewer — **marks and proposes**; the **Coordinator** holds acceptance authority over dispositions and rules them once at the close of review (Step 6) | review stage files (map.md, verify.md, judge.md), REVIEW, proposed dispositions | ONB, RF, HL, TS, code, **disposition rulings** |
 | `resume.md` | Coordinator | Status matrix, Phase HL, Phase TS; selected closing/control records and separately attributed REVIEW closing entries | ONB, RF, RES, REVIEW creation/proposals, code |
-| `docs.md` | Coordinator | KNOWLEDGE.md | code |
+| `docs.md` | Coordinator | selected KNOWLEDGE.md reference ranges, technical records, current effect reference | code, human-knowledge promotion, historical source edits |
+| `knowledge.md` | Coordinator | selected human-knowledge records and current qualification reference | code, technical decisions, legacy/source/state rewrites |
 | `release.md` | Coordinator | VERSION, CHANGELOG.md | code |
 | `update.md` | Coordinator | `.tfw/` files, adapter copies | code |
 | `config.md` | Coordinator | project_config.yaml, workflow files, convention files, adapter copies | code |
@@ -1333,7 +1415,7 @@ When a Researcher finishes RES, the correct action is:
 When a Reviewer reaches a verdict, the correct action is to **name the next act** — a decision with
 no addressee is not a decision:
 1. On ✅ APPROVE — record the independent verdict and authorized KNW transition, then return to the
-   Coordinator for `Closing and record recovery`. The Reviewer never runs capture or declares DONE;
+   Coordinator for `Closing and record recovery`. The Reviewer never runs project qualification or declares DONE;
    it remains available for independent assessment of affected final claims
 2. On 🔄 REVISE — state that the items are **proposals**, say how many, and return the work to the
    Coordinator: "Start `/tfw-plan` to rule the round." Do not move lifecycle, rule a bound, or

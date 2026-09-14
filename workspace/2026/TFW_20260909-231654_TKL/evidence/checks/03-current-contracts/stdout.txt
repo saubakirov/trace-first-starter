@@ -1,0 +1,21 @@
+..F..............................                                        [100%]
+================================== FAILURES ===================================
+________ test_knowledge_pending_reports_changed_removed_and_migration _________
+
+tmp_path = WindowsPath('E:/TEMP/pytest-of-c0rpa/pytest-809/test_knowledge_pending_reports0')
+
+    def test_knowledge_pending_reports_changed_removed_and_migration(tmp_path):
+        root = project(tmp_path)
+        item = task(root, "tasks/TFW-1__knowledge")
+        write_knowledge_state(root, {"TFW-1": "0" * 64, "TFW-99": "f" * 64})
+        unresolved = legacy_state.knowledge_pending(root)
+>       assert unresolved["removed_task_ids"] == ["TFW-99"]
+E       AssertionError: assert [] == ['TFW-99']
+E         
+E         Right contains one more item: 'TFW-99'
+E         Use -v to get more diff
+
+tools\tests\test_tfw_state.py:330: AssertionError
+=========================== short test summary info ===========================
+FAILED tools/tests/test_tfw_state.py::test_knowledge_pending_reports_changed_removed_and_migration
+1 failed, 32 passed, 319 deselected in 3.91s

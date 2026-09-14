@@ -1,0 +1,145 @@
+{
+  "observed_at": "2026-09-13T20:34:10.266034+00:00",
+  "mode": "Stopped native evidence",
+  "candidate": "a99ba6cd756a7db444f217aef4e5a0eb83faee51",
+  "exact_paths": [
+    "workspace/2026/TFW_20260909-231654_TKL/evidence/r2-native/01-clock.json",
+    "workspace/2026/TFW_20260909-231654_TKL/evidence/r2-native/03-checkout.json",
+    "workspace/2026/TFW_20260909-231654_TKL/evidence/r2-native/03-checkout.stderr.raw",
+    "workspace/2026/TFW_20260909-231654_TKL/evidence/r2-native/03-checkout.stdout.raw",
+    "workspace/2026/TFW_20260909-231654_TKL/evidence/r2-native/03-clone.json",
+    "workspace/2026/TFW_20260909-231654_TKL/evidence/r2-native/03-clone.stderr.raw",
+    "workspace/2026/TFW_20260909-231654_TKL/evidence/r2-native/03-clone.stdout.raw",
+    "workspace/2026/TFW_20260909-231654_TKL/evidence/r2-native/06-git-metadata.zip",
+    "workspace/2026/TFW_20260909-231654_TKL/evidence/r2-native/06-invocations-through-stop.json",
+    "workspace/2026/TFW_20260909-231654_TKL/evidence/r2-native/06-partial-physical-map.json",
+    "workspace/2026/TFW_20260909-231654_TKL/evidence/r2-native/06-partial-physical.zip",
+    "workspace/2026/TFW_20260909-231654_TKL/evidence/r2-native/06-stop-diagnosis.json",
+    "workspace/2026/TFW_20260909-231654_TKL/evidence/r2-native/08-git-seal.json",
+    "workspace/2026/TFW_20260909-231654_TKL/evidence/r2-native/08-invocation-ledger.json",
+    "workspace/2026/TFW_20260909-231654_TKL/evidence/r2-native/08-precommit-cached.raw",
+    "workspace/2026/TFW_20260909-231654_TKL/evidence/r2-native/08-precommit-status.raw",
+    "workspace/2026/TFW_20260909-231654_TKL/evidence/r2-native/08-stopped-result.json",
+    "workspace/2026/TFW_20260909-231654_TKL/evidence/r2-native/op-03-failure.json",
+    "workspace/2026/TFW_20260909-231654_TKL/evidence/r2-native/op-03-start.json",
+    "workspace/2026/TFW_20260909-231654_TKL/evidence/r2-native/op-06-stop-custody.json"
+  ],
+  "files": [
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/r2-native/01-clock.json",
+      "class": "TRACE",
+      "bytes": 227,
+      "sha256": "7f34c85ad8eefa6b5cd8db911aa40c11d3489f5581870ddb5d7db7c3a296e89b"
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/r2-native/03-checkout.json",
+      "class": "TRACE",
+      "bytes": 669,
+      "sha256": "8b843cdf5ac00bb978bcf00c81ae5879872968628d62bfe9f2a7664737f0465c"
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/r2-native/03-checkout.stderr.raw",
+      "class": "TRACE",
+      "bytes": 124,
+      "sha256": "d82e2eb4e26a0639ec1c5ecee09258996163b3d3158e0d0171265d9533985778"
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/r2-native/03-checkout.stdout.raw",
+      "class": "TRACE",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/r2-native/03-clone.json",
+      "class": "TRACE",
+      "bytes": 655,
+      "sha256": "70011d5813261ae8460d21cc79a2084cc77d194f4cc2657d4025b1818477735e"
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/r2-native/03-clone.stderr.raw",
+      "class": "TRACE",
+      "bytes": 99,
+      "sha256": "dcddf3dcae68bf90136fd757aba0a05cdca454c5534b0a5e0b35ae0e814bff0b"
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/r2-native/03-clone.stdout.raw",
+      "class": "TRACE",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/r2-native/06-git-metadata.zip",
+      "class": "TRACE",
+      "bytes": 106936,
+      "sha256": "ed650ee5e0f1e8b83ee090f581318ccb72009d4fa108b34dcfb2e9bc6accf444"
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/r2-native/06-invocations-through-stop.json",
+      "class": "TRACE",
+      "bytes": 9818,
+      "sha256": "c610683fde416b774beb4c063884b38a01c0c41a498583c3b7ec01e0923f714f"
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/r2-native/06-partial-physical-map.json",
+      "class": "TRACE",
+      "bytes": 738514,
+      "sha256": "2328aa0fedfa9c5d1e7dde53267245d45bb239ab6d46b0af739dac9b284e3028"
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/r2-native/06-partial-physical.zip",
+      "class": "TRACE",
+      "bytes": 31840944,
+      "sha256": "7ac460d99dbf9c39ca51d969ae03292d6652d2b6584c227fe2e8d45d795b2f42"
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/r2-native/06-stop-diagnosis.json",
+      "class": "TRACE",
+      "bytes": 20643,
+      "sha256": "bec7c1d1efcf96b99c3b1ae5beaf5b389eb4aecbcb3eca01911f4b524f6778b7"
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/r2-native/08-invocation-ledger.json",
+      "class": "TRACE",
+      "bytes": 3341,
+      "sha256": "4f75f784a0408c00ce4e528bb357ac1381bbf34c79e2947da4467947cdb1d5b5"
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/r2-native/08-precommit-cached.raw",
+      "class": "TRACE",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/r2-native/08-precommit-status.raw",
+      "class": "TRACE",
+      "bytes": 1406,
+      "sha256": "543b62ed6918976b3f0c97f27b1a2adfb574f3fa0fddf617c32e639ae73bc4a7"
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/r2-native/08-stopped-result.json",
+      "class": "TRACE",
+      "bytes": 1604,
+      "sha256": "ec6b0f5d27660224c23958c322e857ee4eb46c1fe2e211aaa4d77779ffd593b0"
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/r2-native/op-03-failure.json",
+      "class": "TRACE",
+      "bytes": 650,
+      "sha256": "90a19ecb983b13be5b496d5c09348e91f3b63e913514109c756f6bf11c656c07"
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/r2-native/op-03-start.json",
+      "class": "TRACE",
+      "bytes": 225,
+      "sha256": "570ca9b9a7b9f9d8551cfd096b85bd8b50592edd606843ff574e3a4eadc079fd"
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/r2-native/op-06-stop-custody.json",
+      "class": "TRACE",
+      "bytes": 280,
+      "sha256": "0d585946ecf038d6576d2eb6300516623a4ab1fba4533499905110e74f2274d8"
+    }
+  ],
+  "self_identity": "Committed Git blob; no recursive hash",
+  "commit_operator_invocation": 8
+}

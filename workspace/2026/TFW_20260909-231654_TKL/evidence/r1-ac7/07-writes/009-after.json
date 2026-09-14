@@ -1,0 +1,22 @@
+{
+  "observed_at": "2026-09-13T18:24:23.468527+00:00",
+  "sequence": 9,
+  "path": ".agents/workflows/tfw-research.md",
+  "actual": {
+    "bytes": 9021,
+    "sha256": "b5bdeb054182e3981bd2cdc034c27d6a512245a0922b96700e4342da1a520d5d",
+    "raw_git_blob": "197514a9a193930e785ee08b89212c511d0f4c5e",
+    "eol": {
+      "CRLF": 0,
+      "LF": 161,
+      "CR": 0
+    }
+  },
+  "equals_intended": true,
+  "immediate_source_authority": {
+    "source_identities": 122,
+    "authority_identities": 10,
+    "authority_batch_sha256": "0b47d6e18c8d425ce491f75f3d12311875fb9a88f9eca636e1d35fa2c050609e",
+    "attachment_sha256": "c3b0580ad155738e2db99b38577df3477fddafa0078fb5f4d256ce94d87b41cb"
+  }
+}

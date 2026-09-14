@@ -1,0 +1,22 @@
+{
+  "observed_at": "2026-09-13T18:25:17.728556+00:00",
+  "sequence": 35,
+  "path": ".tfw/templates/RF.md",
+  "actual": {
+    "bytes": 3125,
+    "sha256": "d514940a78912e02ad2fb4884fb8a3596b0d6126c8bb98adb57b42a67e80153e",
+    "raw_git_blob": "fe1d6585d98aefce662f1fefdae399d805e7f628",
+    "eol": {
+      "CRLF": 0,
+      "LF": 103,
+      "CR": 0
+    }
+  },
+  "equals_intended": true,
+  "immediate_source_authority": {
+    "source_identities": 122,
+    "authority_identities": 10,
+    "authority_batch_sha256": "0b47d6e18c8d425ce491f75f3d12311875fb9a88f9eca636e1d35fa2c050609e",
+    "attachment_sha256": "c3b0580ad155738e2db99b38577df3477fddafa0078fb5f4d256ce94d87b41cb"
+  }
+}

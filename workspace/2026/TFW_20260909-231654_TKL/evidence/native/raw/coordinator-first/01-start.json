@@ -1,0 +1,10 @@
+{
+  "started": "2026-09-13T11:30:18.536798+00:00",
+  "native_unit": "01a09974-6716-7cc0-9916-fd6d04c91481",
+  "role": "Coordinator",
+  "base": "e00ca51d05f4e451441cb9fc267579a7f9e4d4ce",
+  "start_dispatch": "535212fb1e0497438a761f009709ebf359766ac2",
+  "nonce": "TKL-Q1-e00ca51d",
+  "receiver": "C:\\Users\\c0rpa\\AppData\\Local\\Temp\\TFW_TKL_NATIVE_01a09a0c\\coordinator",
+  "prior_new_sibling_output_seen": false
+}

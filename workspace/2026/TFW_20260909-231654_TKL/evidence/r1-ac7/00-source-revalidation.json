@@ -1,0 +1,14 @@
+{
+  "observed_at": "2026-09-13T18:13:40.927095+00:00",
+  "routing_commit": "e419cf2b61cfe53a1a8bcc6e056783f7f6e3ea15",
+  "baseline": "ec91c56007c20cda79f740fec15c85e4af74d17c",
+  "candidate": "65c3c94b2347c69f6d21ac2e2664a39ef46b3ae2",
+  "preflight_sha256": "4eee6e2f48a43c6977a38e2da2b1ea98c6876655ccadc6162d79a2ef00b3a601",
+  "source_archive_sha256": "d473aca916a90f2a73c09439c1cf81258f1cb88219f873c8a63defc735bbd121",
+  "source_rows": 122,
+  "present_source_identities": 214,
+  "authority_rows": 8,
+  "both_tree_maps_match": true,
+  "receiver_absent": true,
+  "replay_clock_not_started": true
+}

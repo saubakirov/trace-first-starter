@@ -1,0 +1,13 @@
+{
+  "observed_at": "2026-09-13T15:27:45.319620+00:00",
+  "first_check": "Raw working bytes != Git blob; assertion failed before fixture creation. This is a preserved read-only observer check, not another preparation/consumer trial.",
+  "git_commit": "d219beb89b4b10b7a873866e46b84d1dfc1a9b07",
+  "path": "workspace/2026/TFW_20260909-231654_TKL/journal/20260913-202426__dispatch__015a.md",
+  "git_blob": "b8afa0d2e94327f58a40628ee24853a3de1bd58f",
+  "normal_filter_blob": "b8afa0d2e94327f58a40628ee24853a3de1bd58f",
+  "raw_working_sha256": "edf3538a639b524efd91d8134f5cdc03f048f1d1e724d08533e5f6dec97783c5",
+  "git_bytes_sha256": "59dcff42b0775c9563073aa0e31a9388fd8eb19ae6d5a1c87746a438343c23da",
+  "only_crlf_difference": true,
+  "working_crlf": 26,
+  "git_crlf": 0
+}

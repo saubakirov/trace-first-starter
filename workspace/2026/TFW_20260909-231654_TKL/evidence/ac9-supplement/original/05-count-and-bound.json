@@ -1,0 +1,46 @@
+{
+  "observed_at": "2026-09-13T16:09:33.268613+00:00",
+  "entry_completed_at": "2026-09-13T16:05:45.810669+00:00",
+  "raw_result_sealed_at": "2026-09-13T16:06:46.368691+00:00",
+  "deadline": "2026-09-13T16:08:53.612525+00:00",
+  "native_entry_read_list_search_commands": 13,
+  "installed_skill_read_during_preparation": 1,
+  "conservative_individual_file_read_list_presence_operations": 18,
+  "limit": 24,
+  "groups": [
+    {
+      "ordinal": 4620,
+      "commands": 2
+    },
+    {
+      "ordinal": 4628,
+      "commands": 1
+    },
+    {
+      "ordinal": 4635,
+      "commands": 1
+    },
+    {
+      "ordinal": 4642,
+      "commands": 1
+    },
+    {
+      "ordinal": 4649,
+      "commands": 2
+    },
+    {
+      "ordinal": 4657,
+      "commands": 5
+    },
+    {
+      "ordinal": 4672,
+      "commands": 1
+    }
+  ],
+  "entry_last_ordinal": 4675,
+  "trace_note": "The preserved original export also includes later custody-only session-file lookup4683 and unsolicited concurrent Executor return4688; neither is a selected planning input or a planning command. The original export is not rewritten.",
+  "count_observer_error": "First command-count predicate expected unquoted workdir key; exact recorded JS uses a quoted key. Initial empty count assertion preserved in native log; corrected literal-key predicate yields13.",
+  "entry_completed_in_bound": true,
+  "custody_count_observed_within_bound": false,
+  "scope": "No second entry. Source/role handover completed in412.198144s; raw276-file equality/custody sealed before deadline; administrative count/commit time is separately observable."
+}

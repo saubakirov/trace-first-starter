@@ -1,0 +1,22 @@
+{
+  "observed_at": "2026-09-13T18:25:49.564472+00:00",
+  "sequence": 51,
+  "path": ".tfw/workflows/update.md",
+  "actual": {
+    "bytes": 18922,
+    "sha256": "4df00bea1d0eb8e229e830e974b9de5c72e2c9bd41bc808cdb0d348a6ea1379a",
+    "raw_git_blob": "a4187ba20b1ad36576a552fd3cb85730769eddb4",
+    "eol": {
+      "CRLF": 0,
+      "LF": 279,
+      "CR": 0
+    }
+  },
+  "equals_intended": true,
+  "immediate_source_authority": {
+    "source_identities": 122,
+    "authority_identities": 10,
+    "authority_batch_sha256": "0b47d6e18c8d425ce491f75f3d12311875fb9a88f9eca636e1d35fa2c050609e",
+    "attachment_sha256": "c3b0580ad155738e2db99b38577df3477fddafa0078fb5f4d256ce94d87b41cb"
+  }
+}

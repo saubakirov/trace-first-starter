@@ -21,7 +21,7 @@ adapters are not inputs.
 | 1 | `.tfw/`; `.tfw/project_config.yaml` → `tfw.task_containers`, `tfw.historical_containers`; task `status.md`/`journal/` | route full-init or attach/repair across the reference union | filesystem/config/task-local |
 | 2 | `.tfw/adapters/manifest.yaml` and selected adapter sources/targets | exact repair mapping and preservation | manifest/receiver |
 | 3 | full-init only: root README, receiver `.tfw/README.md`, project docs/structure/build/people/process | discovery and purpose preservation | project/receiver |
-| 4 | templates for config, knowledge state, profile, status, journal | output forms | templates |
+| 4 | templates for config, knowledge entry/record/handover, profile, status, journal | output forms | templates |
 | 5 | `.tfw/conventions.md` → `Identifier`, `Session identity` | identity and naming | shared rule |
 | 6 | selected research/knowledge/RF forms at their gates | init research and result | workflows/templates |
 
@@ -78,7 +78,8 @@ the observed designation and current readers use that exact path for historical 
 purpose stops for one material question or a concrete next action rather than silently preserving or
 replacing.
 
-1. Create project config and clean knowledge state from templates, never upstream live state.
+1. Create project config and clean knowledge entry/forms from templates, never upstream live state.
+   Create no `.tfw/knowledge_state.yaml` or obsolete state scaffold.
    Default active paths to `[workspace]` without asking a container question; honor an explicit custom
    path. Create no historical key, historical folder, or archive scaffold. New config uses only
    `decomposition_trigger_files: 50`, `decomposition_trigger_loc: 5000`, and
@@ -115,7 +116,10 @@ one exists. Wait wherever the research workflow waits.
 ## 4. Full Setup
 
 1. Merge the managed TFW block into root `AGENTS.md`; never overwrite project-owned text.
-2. Create `KNOWLEDGE.md` from its template and approved research findings.
+2. Create `KNOWLEDGE.md` from its clean template and approved research findings.
+   Keep its stable ordinary-file entry and record-directory route; create no invented facts or
+   maintained inventory. Use the record/handover forms only when an actual qualified claim or
+   necessary fallback exists. Preserve human versus technical qualification and source authority.
 3. Install selected adapters from the manifest's persistent row and exact 11 command records. Preserve
    unrelated/unmarked content; reject missing/extra routes, duplicate blocks, drift, or second-run diff.
 4. Offer `.user_preferences.md`, add it to `.gitignore` when accepted, and never commit it.
@@ -129,7 +133,8 @@ one exists. Wait wherever the research workflow waits.
 Verify core/config/root files, state, RES, knowledge choice, selected adapter roots, exact routes/roles/
 bytes, idempotence, literal `/tfw-*` routes, VERSION/config agreement, direct setup postconditions, and
 configured build commands. Write RF from its template with findings, decisions, files, and observed
-verification. After review/knowledge gates, close with `DONE` and a filled outcome; stop with `/tfw-plan`.
+verification. Check actual producing-role handovers and completed dispositions through `Knowledge handover`;
+no unrelated history/count gate applies. After independent review and applicable knowledge effects, close with `DONE` and a filled outcome; stop with `/tfw-plan`.
 
 ## Anti-patterns
 

@@ -1,0 +1,19 @@
+{
+  "hex": "00410d0a420a430d440d0aff450a0d",
+  "expected_eol_by_hand": {
+    "CRLF": 2,
+    "LF": 2,
+    "CR": 2
+  },
+  "actual": {
+    "bytes": 15,
+    "sha256": "68e939a22e42629f6aa6f085ac43269e45af6fd30dbe6d4399be3bf52e586b60",
+    "raw_git_blob": "260093035b7173ea69d2c38e1928194c3bcdf7d6",
+    "eol": {
+      "CRLF": 2,
+      "LF": 2,
+      "CR": 2
+    }
+  },
+  "meaning": "LF and CR exclude bytes consumed by CRLF; includes NUL and non-UTF8 byte"
+}

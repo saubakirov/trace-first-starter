@@ -1,0 +1,22 @@
+{
+  "observed_at": "2026-09-13T18:25:04.816420+00:00",
+  "sequence": 29,
+  "path": ".tfw/quickstart.md",
+  "actual": {
+    "bytes": 4634,
+    "sha256": "031c5fcbecccb6f17705c4ba494d2b72f8940450635d5190cf3c0abd07f72cf6",
+    "raw_git_blob": "6b71012a76a7648b32febfdb37d0827bd8dadbd1",
+    "eol": {
+      "CRLF": 0,
+      "LF": 92,
+      "CR": 0
+    }
+  },
+  "equals_intended": true,
+  "immediate_source_authority": {
+    "source_identities": 122,
+    "authority_identities": 10,
+    "authority_batch_sha256": "0b47d6e18c8d425ce491f75f3d12311875fb9a88f9eca636e1d35fa2c050609e",
+    "attachment_sha256": "c3b0580ad155738e2db99b38577df3477fddafa0078fb5f4d256ce94d87b41cb"
+  }
+}

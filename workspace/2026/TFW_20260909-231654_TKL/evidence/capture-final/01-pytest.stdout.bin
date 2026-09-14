@@ -1,0 +1,115 @@
+........................................................................ [ 67%]
+...................................                                      [100%]
+=================================== PASSES ====================================
+___________ TestResolveReferences.test_unresolved_ref_left_as_text ____________
+---------------------------- Captured stdout call -----------------------------
+WARNING [gen_docs]: Unresolved reference: RF TFW-999
+=========================== short test summary info ===========================
+PASSED docs/scripts/test_gen_docs.py::TestExtractTitle::test_heading_found
+PASSED docs/scripts/test_gen_docs.py::TestExtractTitle::test_no_heading_fallback_to_filename
+PASSED docs/scripts/test_gen_docs.py::TestExtractTitle::test_heading_with_special_chars
+PASSED docs/scripts/test_gen_docs.py::TestExtractTitle::test_second_level_heading_ignored
+PASSED docs/scripts/test_gen_docs.py::TestExtractTitle::test_heading_with_trailing_whitespace
+PASSED docs/scripts/test_gen_docs.py::TestExtractTitle::test_nested_path_filename
+PASSED docs/scripts/test_gen_docs.py::TestAddFrontmatter::test_adds_frontmatter
+PASSED docs/scripts/test_gen_docs.py::TestAddFrontmatter::test_a_hostile_title_still_parses[Briefing \u2014 "What should we investigate?"]
+PASSED docs/scripts/test_gen_docs.py::TestAddFrontmatter::test_a_hostile_title_still_parses[Phase AA: portable delivery]
+PASSED docs/scripts/test_gen_docs.py::TestAddFrontmatter::test_a_hostile_title_still_parses[%directive]
+PASSED docs/scripts/test_gen_docs.py::TestAddFrontmatter::test_a_hostile_title_still_parses[# hash]
+PASSED docs/scripts/test_gen_docs.py::TestAddFrontmatter::test_a_hostile_title_still_parses[trailing colon:]
+PASSED docs/scripts/test_gen_docs.py::TestAddFrontmatter::test_skips_existing_frontmatter
+PASSED docs/scripts/test_gen_docs.py::TestAddFrontmatter::test_blank_line_after_frontmatter
+PASSED docs/scripts/test_gen_docs.py::TestGlobBase::test_tasks_glob
+PASSED docs/scripts/test_gen_docs.py::TestGlobBase::test_knowledge_glob
+PASSED docs/scripts/test_gen_docs.py::TestGlobBase::test_nested_glob
+PASSED docs/scripts/test_gen_docs.py::TestGlobBase::test_star_only
+PASSED docs/scripts/test_gen_docs.py::test_resolver_preserves_exact_existing_and_generated_destinations[False-TFW-18]
+PASSED docs/scripts/test_gen_docs.py::test_resolver_preserves_exact_existing_and_generated_destinations[False-TFW_20260907-020729_SLC]
+PASSED docs/scripts/test_gen_docs.py::test_resolver_preserves_exact_existing_and_generated_destinations[False-20260826-143000__query_redesign]
+PASSED docs/scripts/test_gen_docs.py::test_resolver_preserves_exact_existing_and_generated_destinations[True-TFW-18]
+PASSED docs/scripts/test_gen_docs.py::test_resolver_preserves_exact_existing_and_generated_destinations[True-TFW_20260907-020729_SLC]
+PASSED docs/scripts/test_gen_docs.py::test_resolver_preserves_exact_existing_and_generated_destinations[True-20260826-143000__query_redesign]
+PASSED docs/scripts/test_gen_docs.py::test_resolver_opaque_tokens_do_not_replace_literal_input
+PASSED docs/scripts/test_gen_docs.py::TestResolveReferences::test_artifact_ref_resolved
+PASSED docs/scripts/test_gen_docs.py::TestResolveReferences::test_unresolved_ref_left_as_text
+PASSED docs/scripts/test_gen_docs.py::TestResolveReferences::test_existing_link_not_doubled
+PASSED docs/scripts/test_gen_docs.py::TestResolveReferences::test_hl_dash_ref_resolved
+PASSED docs/scripts/test_gen_docs.py::TestResolveReferences::test_phase_ref_resolved
+PASSED docs/scripts/test_gen_docs.py::TestResolveReferences::test_current_identifier_artifact_phase_hl_and_bare_refs_resolve
+PASSED docs/scripts/test_gen_docs.py::TestResolveReferences::test_dirty_clock_identifier_artifact_and_bare_refs_resolve
+PASSED docs/scripts/test_gen_docs.py::TestResolveReferences::test_identifier_boundaries_reject_prefixes_suffixes_and_malformed_current_ids
+PASSED docs/scripts/test_gen_docs.py::TestResolveReferences::test_td_ref_resolved
+PASSED docs/scripts/test_gen_docs.py::TestResolveReferences::test_decision_ref_resolved
+PASSED docs/scripts/test_gen_docs.py::TestResolveReferences::test_decision_ref_in_table
+PASSED docs/scripts/test_gen_docs.py::TestResolveReferences::test_decision_ref_not_in_backtick
+PASSED docs/scripts/test_gen_docs.py::TestResolveReferences::test_pn_not_resolved
+PASSED docs/scripts/test_gen_docs.py::TestResolveReferences::test_multiple_refs_in_one_line
+PASSED docs/scripts/test_gen_docs.py::TestValidateSources::test_required_missing_raises
+PASSED docs/scripts/test_gen_docs.py::TestValidateSources::test_optional_missing_warns
+PASSED docs/scripts/test_gen_docs.py::TestValidateSources::test_all_present_no_warnings
+PASSED docs/scripts/test_gen_docs.py::TestReadTaskPrefix::test_reads_from_config
+PASSED docs/scripts/test_gen_docs.py::TestReadTaskPrefix::test_default_on_missing
+PASSED docs/scripts/test_gen_docs.py::TestNormalizePosixPath::test_basic_path
+PASSED docs/scripts/test_gen_docs.py::TestNormalizePosixPath::test_dotdot
+PASSED docs/scripts/test_gen_docs.py::TestNormalizePosixPath::test_dot
+PASSED docs/scripts/test_gen_docs.py::TestNormalizePosixPath::test_empty
+PASSED docs/scripts/test_gen_docs.py::TestNormalizePosixPath::test_backslash
+PASSED docs/scripts/test_gen_docs.py::TestPosixRelpath::test_sibling_dirs
+PASSED docs/scripts/test_gen_docs.py::TestPosixRelpath::test_same_dir
+PASSED docs/scripts/test_gen_docs.py::TestPosixRelpath::test_root_base
+PASSED docs/scripts/test_gen_docs.py::TestPosixRelpath::test_empty_base
+PASSED docs/scripts/test_gen_docs.py::TestPosixRelpath::test_deep_to_root
+PASSED docs/scripts/test_gen_docs.py::TestRewriteMarkdownLinks::test_sibling_link_rewritten
+PASSED docs/scripts/test_gen_docs.py::TestRewriteMarkdownLinks::test_external_link_unchanged
+PASSED docs/scripts/test_gen_docs.py::TestRewriteMarkdownLinks::test_anchor_preserved
+PASSED docs/scripts/test_gen_docs.py::TestRewriteMarkdownLinks::test_absolute_link_unchanged
+PASSED docs/scripts/test_gen_docs.py::TestRewriteMarkdownLinks::test_template_placeholder_neutralized
+PASSED docs/scripts/test_gen_docs.py::TestRewriteMarkdownLinks::test_image_link_unchanged
+PASSED docs/scripts/test_gen_docs.py::TestRewriteMarkdownLinks::test_unknown_target_unchanged
+PASSED docs/scripts/test_gen_docs.py::TestAddTableAnchors::test_decision_anchor
+PASSED docs/scripts/test_gen_docs.py::TestAddTableAnchors::test_td_anchor
+PASSED docs/scripts/test_gen_docs.py::TestAddTableAnchors::test_principle_anchor
+PASSED docs/scripts/test_gen_docs.py::TestAddTableAnchors::test_no_anchor_in_text
+PASSED docs/scripts/test_gen_docs.py::TestAddTableAnchors::test_header_row_unchanged
+PASSED docs/scripts/test_gen_docs.py::TestBareTaskIdResolver::test_bare_id_resolved
+PASSED docs/scripts/test_gen_docs.py::TestBareTaskIdResolver::test_bare_id_in_existing_link_skipped
+PASSED docs/scripts/test_gen_docs.py::TestBareTaskIdResolver::test_bare_id_with_suffix_skipped
+PASSED docs/scripts/test_gen_docs.py::TestBareTaskIdResolver::test_bare_id_no_folder_unchanged
+PASSED docs/scripts/test_gen_docs.py::TestBareTaskIdResolver::test_no_hl_fallback_targets_hidden_landing_not_source_folder
+PASSED docs/scripts/test_gen_docs.py::test_task_output_preserves_container_relative_year_nesting
+PASSED docs/scripts/test_gen_docs.py::test_container_root_readme_cannot_become_top_level_tasks_index
+PASSED docs/scripts/test_gen_docs.py::test_real_compiler_reads_history_maps_urls_and_generates_unlisted_landings
+PASSED docs/scripts/test_gen_docs.py::test_the_creation_year_is_never_grouped_as_a_task
+PASSED docs/scripts/test_gen_docs.py::test_a_flat_legacy_page_still_groups_by_its_task
+PASSED docs/scripts/test_gen_docs.py::test_a_phase_directory_is_not_mistaken_for_a_task
+PASSED docs/scripts/test_gen_docs.py::test_a_reference_resolves_into_a_year_nested_clock_task
+PASSED docs/scripts/test_gen_docs.py::test_a_reference_resolves_into_the_legacy_container
+PASSED docs/scripts/test_gen_docs.py::test_both_containers_are_searched_in_order
+PASSED docs/scripts/test_gen_docs.py::test_a_phase_reference_resolves_under_year_nesting
+PASSED docs/scripts/test_gen_docs.py::test_a_renamed_container_still_resolves
+PASSED docs/scripts/test_gen_docs.py::test_resolution_is_deterministic_and_duplicate_free
+PASSED docs/scripts/test_gen_docs.py::test_the_generator_holds_no_hardcoded_container_glob
+PASSED docs/scripts/test_gen_docs.py::test_a_path_reaches_a_string_only_through_as_posix
+PASSED docs/scripts/test_gen_docs.py::test_tkl_nested_record_destination_and_source_links_are_exact_and_idempotent
+PASSED docs/scripts/test_gen_docs.py::test_tkl_slc_alias_preserves_frozen_text_current_ids_and_retry[RF__TFW_20260907-020729_SLC.md-### 1.1. Correction round C2 \u2014 exact link preservation-11-correction-round-c2--exact-link-preservation]
+PASSED docs/scripts/test_gen_docs.py::test_tkl_slc_alias_preserves_frozen_text_current_ids_and_retry[REVIEW__TFW_20260907-020729_SLC.md-### C2 bounded acceptance \u2014 2026-09-10-c2-bounded-acceptance--2026-09-10]
+PASSED docs/scripts/test_gen_docs.py::test_tkl_slc_alias_preserves_frozen_text_current_ids_and_retry[REVIEW__TFW_20260907-020729_SLC.md-### Independent C2 return and closure boundary \u2014 2026-09-10-independent-c2-return-and-closure-boundary--2026-09-10]
+PASSED docs/scripts/test_integration.py::test_static_pages_generated
+PASSED docs/scripts/test_integration.py::test_knowledge_index_generated
+PASSED docs/scripts/test_integration.py::test_task_pages_generated
+PASSED docs/scripts/test_integration.py::test_knowledge_topic_pages_generated
+PASSED docs/scripts/test_integration.py::test_workflow_pages_generated
+PASSED docs/scripts/test_integration.py::test_template_pages_generated
+PASSED docs/scripts/test_integration.py::test_frontmatter_in_generated_pages
+PASSED docs/scripts/test_integration.py::test_decision_refs_resolved_in_knowledge_index
+PASSED docs/scripts/test_integration.py::test_artifact_refs_resolved_in_knowledge_topics
+PASSED docs/scripts/test_integration.py::test_td_refs_resolved_in_output
+PASSED docs/scripts/test_integration.py::test_no_page_renders_its_own_frontmatter_as_body_text
+PASSED docs/scripts/test_integration.py::test_index_override_used
+PASSED docs/scripts/test_integration.py::test_section_index_pages_generated
+PASSED docs/scripts/test_integration.py::test_every_recognized_task_has_an_unlisted_landing_and_nav_has_no_tasks_entry
+PASSED docs/scripts/test_integration.py::test_resolved_links_use_directory_urls
+PASSED docs/scripts/test_integration.py::test_current_slc_parent_hl_routes_are_real_single_destinations
+PASSED docs/scripts/test_integration.py::test_tkl_five_mixed_navigation_families_reach_exact_generated_destinations
+PASSED docs/scripts/test_integration.py::test_tkl_five_reviewed_fragment_occurrences_reach_existing_exact_ids
+107 passed in 219.23s (0:03:39)

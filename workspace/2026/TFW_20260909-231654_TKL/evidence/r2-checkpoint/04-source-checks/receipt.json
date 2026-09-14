@@ -1,0 +1,24 @@
+{
+  "argv": [
+    "E:/TEMP/pttc-phase-a-b9b5/venv/Scripts/python.exe",
+    "-m",
+    "pytest",
+    "docs/scripts/test_repository_contracts.py::test_tkl_current_descriptions_retire_gate_without_banning_history",
+    "docs/scripts/test_repository_contracts.py::test_tkl_self_adoption_preserves_real_legacy_and_source_epochs",
+    "docs/scripts/test_repository_contracts.py::test_no_normative_file_states_a_retired_rule",
+    "tools/tests/test_tfw_state.py::test_workspace_default_and_reference_scope_preserve_active_choices",
+    "tools/tests/test_tfw_state.py::test_malformed_historical_input_refuses_without_changing_active_choice",
+    "tools/tests/test_tfw_state.py::test_reference_collision_names_both_paths_while_current_discovery_is_unchanged",
+    "docs/scripts/test_runtime_context.py::test_tkl_current_use_held_inputs_follow_incoming_scope_source_and_authority",
+    "-q"
+  ],
+  "cwd": "C:\\Users\\c0rpa\\.codex\\worktrees\\f3f3\\steps-framework",
+  "started_at": "2026-09-13T20:02:19.113787+00:00",
+  "finished_at": "2026-09-13T20:02:20.857071+00:00",
+  "exit": 0,
+  "input": "../03-tested-inputs.json",
+  "streams": {
+    "stdout.raw": "0c2ebcf3b138db7adc9be84b431807c035d8b2bddd4ffd19d1a38fe338eacf95",
+    "stderr.raw": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+}

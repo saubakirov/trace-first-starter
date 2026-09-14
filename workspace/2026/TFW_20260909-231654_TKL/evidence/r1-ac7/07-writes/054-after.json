@@ -1,0 +1,22 @@
+{
+  "observed_at": "2026-09-13T18:25:55.638524+00:00",
+  "sequence": 54,
+  "path": "tools/tfw_doctor.py",
+  "actual": {
+    "bytes": 12313,
+    "sha256": "f1ca05812b2b83ba2fdc41d281b977e96ac5ef0c26c04614ceda961b046b41c3",
+    "raw_git_blob": "d486cc9653e1861f6f5bfea33d85c9052285bf4e",
+    "eol": {
+      "CRLF": 0,
+      "LF": 315,
+      "CR": 0
+    }
+  },
+  "equals_intended": true,
+  "immediate_source_authority": {
+    "source_identities": 122,
+    "authority_identities": 10,
+    "authority_batch_sha256": "0b47d6e18c8d425ce491f75f3d12311875fb9a88f9eca636e1d35fa2c050609e",
+    "attachment_sha256": "c3b0580ad155738e2db99b38577df3477fddafa0078fb5f4d256ce94d87b41cb"
+  }
+}

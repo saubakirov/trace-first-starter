@@ -1,0 +1,22 @@
+{
+  "started_at": "2026-09-13T18:38:14.442293+00:00",
+  "finished_at": "2026-09-13T18:38:49.534252+00:00",
+  "case": "one unchanged completed repeat of the same positive update",
+  "outcome": "UNCHANGED; no remaining update effect",
+  "receiver_files": 7035,
+  "before_map_sha256": "62ce8e248494d842084a433655ac28a7a0b666b0bd2a8d3cfbed7eb1903e7bc4",
+  "after_map_sha256": "62ce8e248494d842084a433655ac28a7a0b666b0bd2a8d3cfbed7eb1903e7bc4",
+  "receiver_writes": 0,
+  "preserved_receipt": ".tfw/update_receipts/UPDATE__20260913-183635__b139.md",
+  "source_authority": {
+    "source_identities": 122,
+    "authority_identities": 10,
+    "authority_batch_sha256": "0b47d6e18c8d425ce491f75f3d12311875fb9a88f9eca636e1d35fa2c050609e",
+    "attachment_sha256": "c3b0580ad155738e2db99b38577df3477fddafa0078fb5f4d256ce94d87b41cb"
+  },
+  "unrelated": {
+    "files": 2258,
+    "drift": []
+  },
+  "duplicate_publication_or_inventory_write": false
+}

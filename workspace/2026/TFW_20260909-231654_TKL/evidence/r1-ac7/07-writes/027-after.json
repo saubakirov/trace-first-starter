@@ -1,0 +1,22 @@
+{
+  "observed_at": "2026-09-13T18:25:00.319751+00:00",
+  "sequence": 27,
+  "path": ".tfw/glossary.md",
+  "actual": {
+    "bytes": 25096,
+    "sha256": "ea581d4889d4f1ff6f5932033e0d57e4fb4ba88aee26b03fe45a43bb63ad2852",
+    "raw_git_blob": "4d85446b53e43d88dc98eb483698a4e9f3b45285",
+    "eol": {
+      "CRLF": 0,
+      "LF": 419,
+      "CR": 0
+    }
+  },
+  "equals_intended": true,
+  "immediate_source_authority": {
+    "source_identities": 122,
+    "authority_identities": 10,
+    "authority_batch_sha256": "0b47d6e18c8d425ce491f75f3d12311875fb9a88f9eca636e1d35fa2c050609e",
+    "attachment_sha256": "c3b0580ad155738e2db99b38577df3477fddafa0078fb5f4d256ce94d87b41cb"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "argv": [
+    "E:\\TEMP\\pttc-phase-a-b9b5\\venv\\Scripts\\python.exe",
+    "-m",
+    "pytest",
+    "docs/scripts/test_integration.py",
+    "-q"
+  ],
+  "cwd": "C:\\Users\\c0rpa\\.codex\\worktrees\\f3f3\\steps-framework",
+  "started_at": "2026-09-13T17:44:11.211711+00:00",
+  "finished_at": "2026-09-13T17:47:24.938959+00:00",
+  "exit": 0,
+  "input": "../03-input/source-before.json",
+  "environment_overrides": {
+    "TFW_ASSURANCE_SITE_DIR": "C:\\Users\\c0rpa\\AppData\\Local\\Temp\\TFW_TKL_NATIVE_01a09a0c\\ac8-r1-site",
+    "TFW_ASSURANCE_BUILD_CAPTURE": "C:\\Users\\c0rpa\\.codex\\worktrees\\f3f3\\steps-framework\\workspace\\2026\\TFW_20260909-231654_TKL\\evidence\\r1-ac8\\06-integration-tests\\build"
+  },
+  "streams": {
+    "stdout.txt": "e9daa8c6d7d416af69bc4b2faa11ae552353a11d4ab79ab67fbb0187beba7dd8",
+    "stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+}

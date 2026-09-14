@@ -1,0 +1,23 @@
+ M workspace/2026/TFW_20260909-231654_TKL/ONB__TFW_20260909-231654_TKL.md
+?? workspace/2026/TFW_20260909-231654_TKL/evidence/r2-checkpoint/02-source-edit.json
+?? workspace/2026/TFW_20260909-231654_TKL/evidence/r2-checkpoint/03-tested-inputs.json
+?? workspace/2026/TFW_20260909-231654_TKL/evidence/r2-checkpoint/03-tested-selected-sources.zip
+?? workspace/2026/TFW_20260909-231654_TKL/evidence/r2-checkpoint/04-source-checks/receipt.json
+?? workspace/2026/TFW_20260909-231654_TKL/evidence/r2-checkpoint/04-source-checks/stderr.raw
+?? workspace/2026/TFW_20260909-231654_TKL/evidence/r2-checkpoint/04-source-checks/stdout.raw
+?? workspace/2026/TFW_20260909-231654_TKL/evidence/r2-checkpoint/05-docs-build/receipt.json
+?? workspace/2026/TFW_20260909-231654_TKL/evidence/r2-checkpoint/05-docs-build/stderr.raw
+?? workspace/2026/TFW_20260909-231654_TKL/evidence/r2-checkpoint/05-docs-build/stdout.raw
+?? workspace/2026/TFW_20260909-231654_TKL/evidence/r2-checkpoint/06-native-feasibility.json
+?? workspace/2026/TFW_20260909-231654_TKL/evidence/r2-checkpoint/07-opened-output.zip
+?? workspace/2026/TFW_20260909-231654_TKL/evidence/r2-checkpoint/07-output-observation.json
+?? workspace/2026/TFW_20260909-231654_TKL/evidence/r2-checkpoint/08-accounting/accounting.json
+?? workspace/2026/TFW_20260909-231654_TKL/evidence/r2-checkpoint/08-accounting/all-name-status.stderr.raw
+?? workspace/2026/TFW_20260909-231654_TKL/evidence/r2-checkpoint/08-accounting/all-name-status.z
+?? workspace/2026/TFW_20260909-231654_TKL/evidence/r2-checkpoint/08-accounting/value-name-status.stderr.raw
+?? workspace/2026/TFW_20260909-231654_TKL/evidence/r2-checkpoint/08-accounting/value-name-status.z
+?? workspace/2026/TFW_20260909-231654_TKL/evidence/r2-checkpoint/08-accounting/value-numstat.stderr.raw
+?? workspace/2026/TFW_20260909-231654_TKL/evidence/r2-checkpoint/08-accounting/value-numstat.z
+?? workspace/2026/TFW_20260909-231654_TKL/evidence/r2-checkpoint/09-source-pin-proposal.json
+?? workspace/2026/TFW_20260909-231654_TKL/evidence/r2-checkpoint/10-native-proposal.md
+?? workspace/2026/TFW_20260909-231654_TKL/evidence/r2-checkpoint/11-precommit-observer-error.json

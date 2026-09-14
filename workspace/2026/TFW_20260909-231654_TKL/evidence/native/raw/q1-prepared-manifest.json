@@ -1,0 +1,1098 @@
+{
+  "preparation_started": "2026-09-13T11:20:38.395912+00:00",
+  "preparation_finished": "2026-09-13T11:24:01.967104+00:00",
+  "candidate": "27cdb701b91c5b45b9f54b3e98c9ad67635b3e30",
+  "base": "e00ca51d05f4e451441cb9fc267579a7f9e4d4ce",
+  "root": "C:\\Users\\c0rpa\\AppData\\Local\\Temp\\TFW_TKL_NATIVE_01a09a0c",
+  "prepared_sources": [
+    {
+      "source_commit": "dedf8527ff110fa160358239bbf45ebb498838dd",
+      "source_path": "workspace/2026/TFW_20260909-231654_TKL/journal/20260913-145904__dispatch__3328.md",
+      "git_blob": "aea244d47d05ee93e4b4cdf956be16c6c2481e43",
+      "sha256": "d7cc0e6f0c0d83a611b0671b66bfc4a5bef94ce1ec8e6469d1b1c1848db62a3f",
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/q1-inputs/sources/dedf8527ff110fa160358239bbf45ebb498838dd/workspace/2026/TFW_20260909-231654_TKL/journal/20260913-145904__dispatch__3328.md"
+    },
+    {
+      "source_commit": "e6f1c2ef8d90941c3020bd4f0bd85cacce7cd6d0",
+      "source_path": "workspace/2026/TFW_20260909-231654_TKL/journal/20260913-150051__dispatch__5df5.md",
+      "git_blob": "49ddc95eb3ff6974ed3829851a60ae4f6c8fbb36",
+      "sha256": "730086ce65c42275f8f2a5e2067d4464895a37f575c71249e75c491a7aaefa59",
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/q1-inputs/sources/e6f1c2ef8d90941c3020bd4f0bd85cacce7cd6d0/workspace/2026/TFW_20260909-231654_TKL/journal/20260913-150051__dispatch__5df5.md"
+    },
+    {
+      "source_commit": "144e3e651382330afba4d7131a562d05e7f515f9",
+      "source_path": "workspace/2026/TFW_20260909-231654_TKL/journal/20260913-154545__dispatch__0173.md",
+      "git_blob": "df9afd14a836a8ee8e444524949048a288a6c54e",
+      "sha256": "b56471d27bf2b1c45b73d6116446607a9f19df4e5662aa4ffa057227b4a863fe",
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/q1-inputs/sources/144e3e651382330afba4d7131a562d05e7f515f9/workspace/2026/TFW_20260909-231654_TKL/journal/20260913-154545__dispatch__0173.md"
+    },
+    {
+      "source_commit": "bb3c2803e610bd5fe1cc6eed040b73a6cb2a40aa",
+      "source_path": "workspace/2026/TFW_20260909-231654_TKL/journal/20260913-154924__dispatch__580a.md",
+      "git_blob": "7f13149f03138ec488d9851c94814d33cd0e461c",
+      "sha256": "5afb1de235ccec110b90a77c7dd1486fcac9cc9f3e6bd5cb1a987e6a0889e07b",
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/q1-inputs/sources/bb3c2803e610bd5fe1cc6eed040b73a6cb2a40aa/workspace/2026/TFW_20260909-231654_TKL/journal/20260913-154924__dispatch__580a.md"
+    },
+    {
+      "source_commit": "2794cbdb40f6c4f3a7d4bce1f8d4eb949d9e6913",
+      "source_path": "workspace/2026/TFW_20260909-231654_TKL/TS__TFW_20260909-231654_TKL.md",
+      "git_blob": "f69fd4099a21a07ae2d17e6b5108b04ac94f107e",
+      "sha256": "6929b45c6ec0908933a2d7e9088707dd317c56a1089895cac9fc31a1b3f8c48c",
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/q1-inputs/sources/2794cbdb40f6c4f3a7d4bce1f8d4eb949d9e6913/workspace/2026/TFW_20260909-231654_TKL/TS__TFW_20260909-231654_TKL.md"
+    },
+    {
+      "source_commit": "27cdb701b91c5b45b9f54b3e98c9ad67635b3e30",
+      "source_path": "workspace/2026/TFW_20260909-231654_TKL/ONB__TFW_20260909-231654_TKL.md",
+      "git_blob": "040d9cf723f580ef1ee313cef9e98a1adb8af3cd",
+      "sha256": "d08dce351c5576e23823ae59022f2e4c485b03e98dcca634400ceb9aaf2eac44",
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/q1-inputs/sources/27cdb701b91c5b45b9f54b3e98c9ad67635b3e30/workspace/2026/TFW_20260909-231654_TKL/ONB__TFW_20260909-231654_TKL.md"
+    },
+    {
+      "source_commit": "27cdb701b91c5b45b9f54b3e98c9ad67635b3e30",
+      "source_path": "workspace/2026/TFW_20260909-231654_TKL/research/iter2/RES.md",
+      "git_blob": "bfe6e6ffbca958473c08d01cd8fa7c3c783224ab",
+      "sha256": "4dd019e566128e74da1e05928525cf33f61329366fd08b7df2acd666aaa27f9b",
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/q1-inputs/sources/27cdb701b91c5b45b9f54b3e98c9ad67635b3e30/workspace/2026/TFW_20260909-231654_TKL/research/iter2/RES.md"
+    },
+    {
+      "source_commit": "c51ee0c0d7891fd165d105f3565e0e54512c1040",
+      "source_path": "workspace/2026/TFW_20260907-020729_SLC/status.md",
+      "git_blob": "87488f50931e9284e382fc41ec7abc1d94a6e0c2",
+      "sha256": "c4bc55418a480f6fc7bb4277c656abe149ca6a262c5903a80296aa3f0b8e7875",
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/q1-inputs/sources/c51ee0c0d7891fd165d105f3565e0e54512c1040/workspace/2026/TFW_20260907-020729_SLC/status.md"
+    },
+    {
+      "source_commit": "c51ee0c0d7891fd165d105f3565e0e54512c1040",
+      "source_path": "workspace/2026/TFW_20260907-020729_SLC/journal/20260910-132537__transition__803f.md",
+      "git_blob": "0136ad6f9fb49404c48558a579f1baf50ce189ec",
+      "sha256": "ae1e10e71d9d6249244dc52c873fc743cb3f96807db2e341c4e85f4c1f08181b",
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/q1-inputs/sources/c51ee0c0d7891fd165d105f3565e0e54512c1040/workspace/2026/TFW_20260907-020729_SLC/journal/20260910-132537__transition__803f.md"
+    },
+    {
+      "source_commit": "c51ee0c0d7891fd165d105f3565e0e54512c1040",
+      "source_path": "workspace/2026/TFW_20260907-020729_SLC/RF__TFW_20260907-020729_SLC.md",
+      "git_blob": "9309628d1f7d8439dd80d67a208105005779d7ff",
+      "sha256": "6c3340a7b23928feb8a70e7f02438015549e9ba66a96a331144d45ac058804f7",
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/q1-inputs/sources/c51ee0c0d7891fd165d105f3565e0e54512c1040/workspace/2026/TFW_20260907-020729_SLC/RF__TFW_20260907-020729_SLC.md"
+    },
+    {
+      "source_commit": "c51ee0c0d7891fd165d105f3565e0e54512c1040",
+      "source_path": "workspace/2026/TFW_20260907-020729_SLC/HL-TFW_20260907-020729_SLC.md",
+      "git_blob": "5f6a2dd97c190d7a378488f4bdc015ae91540a47",
+      "sha256": "ef97fe425b047ad8d48173a8b92d1cfec316e182a5c22f4911d3a27461ddbb47",
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/q1-inputs/sources/c51ee0c0d7891fd165d105f3565e0e54512c1040/workspace/2026/TFW_20260907-020729_SLC/HL-TFW_20260907-020729_SLC.md"
+    },
+    {
+      "source_commit": "c51ee0c0d7891fd165d105f3565e0e54512c1040",
+      "source_path": "workspace/2026/TFW_20260907-020729_SLC/TS__TFW_20260907-020729_SLC.md",
+      "git_blob": "6535418fb65ad1b6f7f7a7b40a01506c1df27943",
+      "sha256": "952cfd72b4a7229d0da5ee5fa8b54b10d0560b56d18c3dd557008f403a2813ef",
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/q1-inputs/sources/c51ee0c0d7891fd165d105f3565e0e54512c1040/workspace/2026/TFW_20260907-020729_SLC/TS__TFW_20260907-020729_SLC.md"
+    },
+    {
+      "source_commit": "99198f133c0047568c1e8411bfae849239b352b1",
+      "source_path": "workspace/2026/TFW_20260907-020729_SLC/REVIEW__TFW_20260907-020729_SLC.md",
+      "git_blob": "8c119df9349c80d42a6ea52f8dd9a773b7ee39f8",
+      "sha256": "5e24416d70866cf1372e56bf7ae0e8be2ad129b54d6054c4408ef0a15d7dbdce",
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/q1-inputs/sources/99198f133c0047568c1e8411bfae849239b352b1/workspace/2026/TFW_20260907-020729_SLC/REVIEW__TFW_20260907-020729_SLC.md"
+    },
+    {
+      "source_commit": "99198f133c0047568c1e8411bfae849239b352b1",
+      "source_path": "workspace/2026/TFW_20260907-020729_SLC/evidence/review-c2-final/accounting-result.json",
+      "git_blob": "7fa221e75ba22aee6bd5746952cd8e223aa1ae03",
+      "sha256": "c5b14c1a02270e1cca81a89ef94fce1e630df229a6faf8817a31ba5019e835c2",
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/q1-inputs/sources/99198f133c0047568c1e8411bfae849239b352b1/workspace/2026/TFW_20260907-020729_SLC/evidence/review-c2-final/accounting-result.json"
+    },
+    {
+      "source_commit": "99198f133c0047568c1e8411bfae849239b352b1",
+      "source_path": "workspace/2026/TFW_20260907-020729_SLC/evidence/review-c2-final/executor-evidence-verification.json",
+      "git_blob": "53d44264c6b1fed4b99fabae41653749221d9021",
+      "sha256": "d755f63c56d42acaaa56a9f54f659058bac145ee6549b28f85dc35c810a000d0",
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/q1-inputs/sources/99198f133c0047568c1e8411bfae849239b352b1/workspace/2026/TFW_20260907-020729_SLC/evidence/review-c2-final/executor-evidence-verification.json"
+    },
+    {
+      "source_commit": "99198f133c0047568c1e8411bfae849239b352b1",
+      "source_path": "workspace/2026/TFW_20260907-020729_SLC/evidence/review-c2-final/opened-output.json",
+      "git_blob": "72ade870b699fd3b7724a85c6443dab6e7402e69",
+      "sha256": "dfba2b129e7bac0dd255297fd4321fb8c1bdec42d867f84c29e4b06650ef1421",
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/q1-inputs/sources/99198f133c0047568c1e8411bfae849239b352b1/workspace/2026/TFW_20260907-020729_SLC/evidence/review-c2-final/opened-output.json"
+    },
+    {
+      "source_commit": "c51ee0c0d7891fd165d105f3565e0e54512c1040",
+      "source_path": "KNOWLEDGE.md",
+      "git_blob": "4f3a90aea1280981edadbd09d24f2e9c72bbe5ba",
+      "sha256": "a2d82e20092a361319d80f5f7db63360957a84a8eb36415461567323fc0b797f",
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/q1-inputs/sources/c51ee0c0d7891fd165d105f3565e0e54512c1040/KNOWLEDGE.md"
+    }
+  ],
+  "input_files": {
+    "workspace/2026/TFW_20260909-231654_TKL/evidence/q1-inputs/common.md": {
+      "sha256": "1077d9965b05c62ad03f74fb1cb39c48dd496dfc981c9111978b2f5c71bb1773",
+      "bytes": 1989
+    },
+    "workspace/2026/TFW_20260909-231654_TKL/evidence/q1-inputs/coordinator.md": {
+      "sha256": "4da242347e57027f08a4c9a4b9b4a9c9d9cc8cf7c16e08755537c93fee45f60b",
+      "bytes": 1398
+    },
+    "workspace/2026/TFW_20260909-231654_TKL/evidence/q1-inputs/executor.md": {
+      "sha256": "44447097cc7f5a442be8e214cafbc9dad16553527226a6b6e9541f559f50a3ad",
+      "bytes": 1394
+    },
+    "workspace/2026/TFW_20260909-231654_TKL/evidence/q1-inputs/handover-cases.json": {
+      "sha256": "1623f4b1bc96f3fc36a5e9a7b58afdc4c77258f0063e4bc8e4bd0fee5fc0bcec",
+      "bytes": 1973
+    },
+    "workspace/2026/TFW_20260909-231654_TKL/evidence/q1-inputs/source-identities.json": {
+      "sha256": "ffe003da95f3454f8f31102eba0e09eaed7c46c090ce72acdb2c74bccc48f50e",
+      "bytes": 8564
+    },
+    "workspace/2026/TFW_20260909-231654_TKL/evidence/q1-inputs/sources/144e3e651382330afba4d7131a562d05e7f515f9/workspace/2026/TFW_20260909-231654_TKL/journal/20260913-154545__dispatch__0173.md": {
+      "sha256": "b56471d27bf2b1c45b73d6116446607a9f19df4e5662aa4ffa057227b4a863fe",
+      "bytes": 5563
+    },
+    "workspace/2026/TFW_20260909-231654_TKL/evidence/q1-inputs/sources/2794cbdb40f6c4f3a7d4bce1f8d4eb949d9e6913/workspace/2026/TFW_20260909-231654_TKL/TS__TFW_20260909-231654_TKL.md": {
+      "sha256": "6929b45c6ec0908933a2d7e9088707dd317c56a1089895cac9fc31a1b3f8c48c",
+      "bytes": 55220
+    },
+    "workspace/2026/TFW_20260909-231654_TKL/evidence/q1-inputs/sources/27cdb701b91c5b45b9f54b3e98c9ad67635b3e30/workspace/2026/TFW_20260909-231654_TKL/ONB__TFW_20260909-231654_TKL.md": {
+      "sha256": "d08dce351c5576e23823ae59022f2e4c485b03e98dcca634400ceb9aaf2eac44",
+      "bytes": 40632
+    },
+    "workspace/2026/TFW_20260909-231654_TKL/evidence/q1-inputs/sources/27cdb701b91c5b45b9f54b3e98c9ad67635b3e30/workspace/2026/TFW_20260909-231654_TKL/research/iter2/RES.md": {
+      "sha256": "4dd019e566128e74da1e05928525cf33f61329366fd08b7df2acd666aaa27f9b",
+      "bytes": 18734
+    },
+    "workspace/2026/TFW_20260909-231654_TKL/evidence/q1-inputs/sources/99198f133c0047568c1e8411bfae849239b352b1/workspace/2026/TFW_20260907-020729_SLC/evidence/review-c2-final/accounting-result.json": {
+      "sha256": "c5b14c1a02270e1cca81a89ef94fce1e630df229a6faf8817a31ba5019e835c2",
+      "bytes": 4152
+    },
+    "workspace/2026/TFW_20260909-231654_TKL/evidence/q1-inputs/sources/99198f133c0047568c1e8411bfae849239b352b1/workspace/2026/TFW_20260907-020729_SLC/evidence/review-c2-final/executor-evidence-verification.json": {
+      "sha256": "d755f63c56d42acaaa56a9f54f659058bac145ee6549b28f85dc35c810a000d0",
+      "bytes": 580
+    },
+    "workspace/2026/TFW_20260909-231654_TKL/evidence/q1-inputs/sources/99198f133c0047568c1e8411bfae849239b352b1/workspace/2026/TFW_20260907-020729_SLC/evidence/review-c2-final/opened-output.json": {
+      "sha256": "dfba2b129e7bac0dd255297fd4321fb8c1bdec42d867f84c29e4b06650ef1421",
+      "bytes": 318916
+    },
+    "workspace/2026/TFW_20260909-231654_TKL/evidence/q1-inputs/sources/99198f133c0047568c1e8411bfae849239b352b1/workspace/2026/TFW_20260907-020729_SLC/REVIEW__TFW_20260907-020729_SLC.md": {
+      "sha256": "5e24416d70866cf1372e56bf7ae0e8be2ad129b54d6054c4408ef0a15d7dbdce",
+      "bytes": 47859
+    },
+    "workspace/2026/TFW_20260909-231654_TKL/evidence/q1-inputs/sources/bb3c2803e610bd5fe1cc6eed040b73a6cb2a40aa/workspace/2026/TFW_20260909-231654_TKL/journal/20260913-154924__dispatch__580a.md": {
+      "sha256": "5afb1de235ccec110b90a77c7dd1486fcac9cc9f3e6bd5cb1a987e6a0889e07b",
+      "bytes": 3534
+    },
+    "workspace/2026/TFW_20260909-231654_TKL/evidence/q1-inputs/sources/c51ee0c0d7891fd165d105f3565e0e54512c1040/KNOWLEDGE.md": {
+      "sha256": "a2d82e20092a361319d80f5f7db63360957a84a8eb36415461567323fc0b797f",
+      "bytes": 134291
+    },
+    "workspace/2026/TFW_20260909-231654_TKL/evidence/q1-inputs/sources/c51ee0c0d7891fd165d105f3565e0e54512c1040/workspace/2026/TFW_20260907-020729_SLC/HL-TFW_20260907-020729_SLC.md": {
+      "sha256": "ef97fe425b047ad8d48173a8b92d1cfec316e182a5c22f4911d3a27461ddbb47",
+      "bytes": 85281
+    },
+    "workspace/2026/TFW_20260909-231654_TKL/evidence/q1-inputs/sources/c51ee0c0d7891fd165d105f3565e0e54512c1040/workspace/2026/TFW_20260907-020729_SLC/journal/20260910-132537__transition__803f.md": {
+      "sha256": "ae1e10e71d9d6249244dc52c873fc743cb3f96807db2e341c4e85f4c1f08181b",
+      "bytes": 1130
+    },
+    "workspace/2026/TFW_20260909-231654_TKL/evidence/q1-inputs/sources/c51ee0c0d7891fd165d105f3565e0e54512c1040/workspace/2026/TFW_20260907-020729_SLC/RF__TFW_20260907-020729_SLC.md": {
+      "sha256": "6c3340a7b23928feb8a70e7f02438015549e9ba66a96a331144d45ac058804f7",
+      "bytes": 28959
+    },
+    "workspace/2026/TFW_20260909-231654_TKL/evidence/q1-inputs/sources/c51ee0c0d7891fd165d105f3565e0e54512c1040/workspace/2026/TFW_20260907-020729_SLC/status.md": {
+      "sha256": "c4bc55418a480f6fc7bb4277c656abe149ca6a262c5903a80296aa3f0b8e7875",
+      "bytes": 792
+    },
+    "workspace/2026/TFW_20260909-231654_TKL/evidence/q1-inputs/sources/c51ee0c0d7891fd165d105f3565e0e54512c1040/workspace/2026/TFW_20260907-020729_SLC/TS__TFW_20260907-020729_SLC.md": {
+      "sha256": "952cfd72b4a7229d0da5ee5fa8b54b10d0560b56d18c3dd557008f403a2813ef",
+      "bytes": 62857
+    },
+    "workspace/2026/TFW_20260909-231654_TKL/evidence/q1-inputs/sources/dedf8527ff110fa160358239bbf45ebb498838dd/workspace/2026/TFW_20260909-231654_TKL/journal/20260913-145904__dispatch__3328.md": {
+      "sha256": "d7cc0e6f0c0d83a611b0671b66bfc4a5bef94ce1ec8e6469d1b1c1848db62a3f",
+      "bytes": 4198
+    },
+    "workspace/2026/TFW_20260909-231654_TKL/evidence/q1-inputs/sources/e6f1c2ef8d90941c3020bd4f0bd85cacce7cd6d0/workspace/2026/TFW_20260909-231654_TKL/journal/20260913-150051__dispatch__5df5.md": {
+      "sha256": "730086ce65c42275f8f2a5e2067d4464895a37f575c71249e75c491a7aaefa59",
+      "bytes": 2866
+    }
+  },
+  "recovery_files": {
+    "cases.json": {
+      "sha256": "83702972277afef8d25c84f448812a664d3361a84761423ea199fc595cf5bfd2",
+      "bytes": 2010
+    },
+    "changed-authority/status.md": {
+      "sha256": "6c3cd6e16dfe37eb90660e6c597eda85cb1349013a70cdd139f197c182d50ac8",
+      "bytes": 613
+    },
+    "changed-output/status.md": {
+      "sha256": "6c3cd6e16dfe37eb90660e6c597eda85cb1349013a70cdd139f197c182d50ac8",
+      "bytes": 613
+    },
+    "later-z/status.md": {
+      "sha256": "0a4acd6b03710bbb8680f8f6391d038b46131eb10e933691f554cfb94ac87f99",
+      "bytes": 752
+    },
+    "missing-acceptance/status.md": {
+      "sha256": "6c3cd6e16dfe37eb90660e6c597eda85cb1349013a70cdd139f197c182d50ac8",
+      "bytes": 613
+    },
+    "missing-outcome/status.md": {
+      "sha256": "6c3cd6e16dfe37eb90660e6c597eda85cb1349013a70cdd139f197c182d50ac8",
+      "bytes": 613
+    },
+    "original/accepted-outcome-line.txt": {
+      "sha256": "6a086421f966df1951126ff07dba8ceacba5404c426fbb26cd65ed3aabc051ac",
+      "bytes": 179
+    },
+    "original/status.md": {
+      "sha256": "c4bc55418a480f6fc7bb4277c656abe149ca6a262c5903a80296aa3f0b8e7875",
+      "bytes": 792
+    },
+    "original/terminal-event.md": {
+      "sha256": "ae1e10e71d9d6249244dc52c873fc743cb3f96807db2e341c4e85f4c1f08181b",
+      "bytes": 1130
+    },
+    "retry/accepted-P-KNOWLEDGE.md": {
+      "sha256": "a2d82e20092a361319d80f5f7db63360957a84a8eb36415461567323fc0b797f",
+      "bytes": 134291
+    },
+    "retry/current-return.md": {
+      "sha256": "1843ca1a8cd2aabd6b4299dda4c0fabda55a0cb8677db691da56a419b6dee9e4",
+      "bytes": 133
+    },
+    "retry/divergent-intent.json": {
+      "sha256": "10dbebbc5a64ccf32177e2fd6e581f9071002447427ec2af0f9e1ca4db6ffa95",
+      "bytes": 422
+    },
+    "retry/same-intent.json": {
+      "sha256": "89749d9c1dc6cc346da0e28b7e344655a1d0fb2402a45a537840060983d6d06c",
+      "bytes": 398
+    },
+    "sources/99198f133c0047568c1e8411bfae849239b352b1/workspace/2026/TFW_20260907-020729_SLC/evidence/review-c2-final/accounting-result.json": {
+      "sha256": "c5b14c1a02270e1cca81a89ef94fce1e630df229a6faf8817a31ba5019e835c2",
+      "bytes": 4152
+    },
+    "sources/99198f133c0047568c1e8411bfae849239b352b1/workspace/2026/TFW_20260907-020729_SLC/evidence/review-c2-final/executor-evidence-verification.json": {
+      "sha256": "d755f63c56d42acaaa56a9f54f659058bac145ee6549b28f85dc35c810a000d0",
+      "bytes": 580
+    },
+    "sources/99198f133c0047568c1e8411bfae849239b352b1/workspace/2026/TFW_20260907-020729_SLC/evidence/review-c2-final/opened-output.json": {
+      "sha256": "dfba2b129e7bac0dd255297fd4321fb8c1bdec42d867f84c29e4b06650ef1421",
+      "bytes": 318916
+    },
+    "sources/99198f133c0047568c1e8411bfae849239b352b1/workspace/2026/TFW_20260907-020729_SLC/REVIEW__TFW_20260907-020729_SLC.md": {
+      "sha256": "5e24416d70866cf1372e56bf7ae0e8be2ad129b54d6054c4408ef0a15d7dbdce",
+      "bytes": 47859
+    },
+    "sources/c51ee0c0d7891fd165d105f3565e0e54512c1040/KNOWLEDGE.md": {
+      "sha256": "a2d82e20092a361319d80f5f7db63360957a84a8eb36415461567323fc0b797f",
+      "bytes": 134291
+    },
+    "sources/c51ee0c0d7891fd165d105f3565e0e54512c1040/workspace/2026/TFW_20260907-020729_SLC/HL-TFW_20260907-020729_SLC.md": {
+      "sha256": "ef97fe425b047ad8d48173a8b92d1cfec316e182a5c22f4911d3a27461ddbb47",
+      "bytes": 85281
+    },
+    "sources/c51ee0c0d7891fd165d105f3565e0e54512c1040/workspace/2026/TFW_20260907-020729_SLC/journal/20260910-132537__transition__803f.md": {
+      "sha256": "ae1e10e71d9d6249244dc52c873fc743cb3f96807db2e341c4e85f4c1f08181b",
+      "bytes": 1130
+    },
+    "sources/c51ee0c0d7891fd165d105f3565e0e54512c1040/workspace/2026/TFW_20260907-020729_SLC/RF__TFW_20260907-020729_SLC.md": {
+      "sha256": "6c3340a7b23928feb8a70e7f02438015549e9ba66a96a331144d45ac058804f7",
+      "bytes": 28959
+    },
+    "sources/c51ee0c0d7891fd165d105f3565e0e54512c1040/workspace/2026/TFW_20260907-020729_SLC/status.md": {
+      "sha256": "c4bc55418a480f6fc7bb4277c656abe149ca6a262c5903a80296aa3f0b8e7875",
+      "bytes": 792
+    },
+    "sources/c51ee0c0d7891fd165d105f3565e0e54512c1040/workspace/2026/TFW_20260907-020729_SLC/TS__TFW_20260907-020729_SLC.md": {
+      "sha256": "952cfd72b4a7229d0da5ee5fa8b54b10d0560b56d18c3dd557008f403a2813ef",
+      "bytes": 62857
+    }
+  },
+  "heads": {
+    "executor": "e00ca51d05f4e451441cb9fc267579a7f9e4d4ce",
+    "coordinator": "e00ca51d05f4e451441cb9fc267579a7f9e4d4ce"
+  },
+  "role_operations_started": false,
+  "ac7_started": false,
+  "ac10_prepared": false,
+  "commands": [
+    {
+      "argv": [
+        "git",
+        "-c",
+        "core.longpaths=true",
+        "init"
+      ],
+      "cwd": "C:\\Users\\c0rpa\\AppData\\Local\\Temp\\TFW_TKL_NATIVE_01a09a0c\\concurrent-repo",
+      "started": "2026-09-13T11:23:51.002002+00:00",
+      "finished": "2026-09-13T11:23:51.075682+00:00",
+      "exit_code": 0,
+      "stdout_sha256": "03ab7cfc1ee0517b325d5912e7b066810f134f6561684d12a8fc46c6d35a5377",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "git",
+        "-c",
+        "core.longpaths=true",
+        "fetch",
+        "--depth=1",
+        "C:\\Users\\c0rpa\\.codex\\worktrees\\f3f3\\steps-framework",
+        "27cdb701b91c5b45b9f54b3e98c9ad67635b3e30"
+      ],
+      "cwd": "C:\\Users\\c0rpa\\AppData\\Local\\Temp\\TFW_TKL_NATIVE_01a09a0c\\concurrent-repo",
+      "started": "2026-09-13T11:23:51.075742+00:00",
+      "finished": "2026-09-13T11:23:53.743993+00:00",
+      "exit_code": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "c7dc8edbea7895b284a1e8d70238d78953537e2c5a4b5fe41b1db5d7fb2fe590"
+    },
+    {
+      "argv": [
+        "git",
+        "-c",
+        "core.longpaths=true",
+        "checkout",
+        "--detach",
+        "27cdb701b91c5b45b9f54b3e98c9ad67635b3e30"
+      ],
+      "cwd": "C:\\Users\\c0rpa\\AppData\\Local\\Temp\\TFW_TKL_NATIVE_01a09a0c\\concurrent-repo",
+      "started": "2026-09-13T11:23:53.744019+00:00",
+      "finished": "2026-09-13T11:23:55.420757+00:00",
+      "exit_code": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "274ed3e34ba2c69e7c46764f33b0c4ffb3b79d2ea6f0638e26614dcbc0376654"
+    },
+    {
+      "argv": [
+        "git",
+        "-c",
+        "core.longpaths=true",
+        "rev-parse",
+        "HEAD"
+      ],
+      "cwd": "C:\\Users\\c0rpa\\AppData\\Local\\Temp\\TFW_TKL_NATIVE_01a09a0c\\concurrent-repo",
+      "started": "2026-09-13T11:23:55.420813+00:00",
+      "finished": "2026-09-13T11:23:55.455361+00:00",
+      "exit_code": 0,
+      "stdout_sha256": "e1bbd9c87c1371c16f6e582fde05dd5d7a5b4f21d5407d602f4b7e9d2ec61e74",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "git",
+        "-c",
+        "core.longpaths=true",
+        "show",
+        "dedf8527ff110fa160358239bbf45ebb498838dd:workspace/2026/TFW_20260909-231654_TKL/journal/20260913-145904__dispatch__3328.md"
+      ],
+      "cwd": "C:\\Users\\c0rpa\\.codex\\worktrees\\f3f3\\steps-framework",
+      "started": "2026-09-13T11:23:55.455408+00:00",
+      "finished": "2026-09-13T11:23:55.495071+00:00",
+      "exit_code": 0,
+      "stdout_sha256": "d7cc0e6f0c0d83a611b0671b66bfc4a5bef94ce1ec8e6469d1b1c1848db62a3f",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "git",
+        "-c",
+        "core.longpaths=true",
+        "rev-parse",
+        "dedf8527ff110fa160358239bbf45ebb498838dd:workspace/2026/TFW_20260909-231654_TKL/journal/20260913-145904__dispatch__3328.md"
+      ],
+      "cwd": "C:\\Users\\c0rpa\\.codex\\worktrees\\f3f3\\steps-framework",
+      "started": "2026-09-13T11:23:55.495101+00:00",
+      "finished": "2026-09-13T11:23:55.531387+00:00",
+      "exit_code": 0,
+      "stdout_sha256": "ced1ec1b2ca97e44ebd472153b14340617749443d34f34b21b2698e51ebb227c",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "git",
+        "-c",
+        "core.longpaths=true",
+        "show",
+        "e6f1c2ef8d90941c3020bd4f0bd85cacce7cd6d0:workspace/2026/TFW_20260909-231654_TKL/journal/20260913-150051__dispatch__5df5.md"
+      ],
+      "cwd": "C:\\Users\\c0rpa\\.codex\\worktrees\\f3f3\\steps-framework",
+      "started": "2026-09-13T11:23:55.539267+00:00",
+      "finished": "2026-09-13T11:23:55.578043+00:00",
+      "exit_code": 0,
+      "stdout_sha256": "730086ce65c42275f8f2a5e2067d4464895a37f575c71249e75c491a7aaefa59",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "git",
+        "-c",
+        "core.longpaths=true",
+        "rev-parse",
+        "e6f1c2ef8d90941c3020bd4f0bd85cacce7cd6d0:workspace/2026/TFW_20260909-231654_TKL/journal/20260913-150051__dispatch__5df5.md"
+      ],
+      "cwd": "C:\\Users\\c0rpa\\.codex\\worktrees\\f3f3\\steps-framework",
+      "started": "2026-09-13T11:23:55.578092+00:00",
+      "finished": "2026-09-13T11:23:55.615479+00:00",
+      "exit_code": 0,
+      "stdout_sha256": "51cfcc1368a8dc0bc43c59087377b5d5627aa1b04d1736b1b8c20cfa09c4d021",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "git",
+        "-c",
+        "core.longpaths=true",
+        "show",
+        "144e3e651382330afba4d7131a562d05e7f515f9:workspace/2026/TFW_20260909-231654_TKL/journal/20260913-154545__dispatch__0173.md"
+      ],
+      "cwd": "C:\\Users\\c0rpa\\.codex\\worktrees\\f3f3\\steps-framework",
+      "started": "2026-09-13T11:23:55.620761+00:00",
+      "finished": "2026-09-13T11:23:55.672878+00:00",
+      "exit_code": 0,
+      "stdout_sha256": "b56471d27bf2b1c45b73d6116446607a9f19df4e5662aa4ffa057227b4a863fe",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "git",
+        "-c",
+        "core.longpaths=true",
+        "rev-parse",
+        "144e3e651382330afba4d7131a562d05e7f515f9:workspace/2026/TFW_20260909-231654_TKL/journal/20260913-154545__dispatch__0173.md"
+      ],
+      "cwd": "C:\\Users\\c0rpa\\.codex\\worktrees\\f3f3\\steps-framework",
+      "started": "2026-09-13T11:23:55.672944+00:00",
+      "finished": "2026-09-13T11:23:55.712101+00:00",
+      "exit_code": 0,
+      "stdout_sha256": "2f7f0fbe134ccaa5d9f1b3e0faeecdc414fec5662b1f62188f7f2264af88834a",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "git",
+        "-c",
+        "core.longpaths=true",
+        "show",
+        "bb3c2803e610bd5fe1cc6eed040b73a6cb2a40aa:workspace/2026/TFW_20260909-231654_TKL/journal/20260913-154924__dispatch__580a.md"
+      ],
+      "cwd": "C:\\Users\\c0rpa\\.codex\\worktrees\\f3f3\\steps-framework",
+      "started": "2026-09-13T11:23:55.718232+00:00",
+      "finished": "2026-09-13T11:23:55.758713+00:00",
+      "exit_code": 0,
+      "stdout_sha256": "5afb1de235ccec110b90a77c7dd1486fcac9cc9f3e6bd5cb1a987e6a0889e07b",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "git",
+        "-c",
+        "core.longpaths=true",
+        "rev-parse",
+        "bb3c2803e610bd5fe1cc6eed040b73a6cb2a40aa:workspace/2026/TFW_20260909-231654_TKL/journal/20260913-154924__dispatch__580a.md"
+      ],
+      "cwd": "C:\\Users\\c0rpa\\.codex\\worktrees\\f3f3\\steps-framework",
+      "started": "2026-09-13T11:23:55.758754+00:00",
+      "finished": "2026-09-13T11:23:55.807141+00:00",
+      "exit_code": 0,
+      "stdout_sha256": "a501aa7f39738326ea76fbb739912fd8bf047138c3c6ac0ac837fa7cd923b7e9",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "git",
+        "-c",
+        "core.longpaths=true",
+        "show",
+        "2794cbdb40f6c4f3a7d4bce1f8d4eb949d9e6913:workspace/2026/TFW_20260909-231654_TKL/TS__TFW_20260909-231654_TKL.md"
+      ],
+      "cwd": "C:\\Users\\c0rpa\\.codex\\worktrees\\f3f3\\steps-framework",
+      "started": "2026-09-13T11:23:55.813010+00:00",
+      "finished": "2026-09-13T11:23:55.853430+00:00",
+      "exit_code": 0,
+      "stdout_sha256": "6929b45c6ec0908933a2d7e9088707dd317c56a1089895cac9fc31a1b3f8c48c",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "git",
+        "-c",
+        "core.longpaths=true",
+        "rev-parse",
+        "2794cbdb40f6c4f3a7d4bce1f8d4eb949d9e6913:workspace/2026/TFW_20260909-231654_TKL/TS__TFW_20260909-231654_TKL.md"
+      ],
+      "cwd": "C:\\Users\\c0rpa\\.codex\\worktrees\\f3f3\\steps-framework",
+      "started": "2026-09-13T11:23:55.853528+00:00",
+      "finished": "2026-09-13T11:23:55.892402+00:00",
+      "exit_code": 0,
+      "stdout_sha256": "8b512aed38cd49eeecb227ba3b2b5957fe4810dc279b14e0b22a2e928917687a",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "git",
+        "-c",
+        "core.longpaths=true",
+        "show",
+        "27cdb701b91c5b45b9f54b3e98c9ad67635b3e30:workspace/2026/TFW_20260909-231654_TKL/ONB__TFW_20260909-231654_TKL.md"
+      ],
+      "cwd": "C:\\Users\\c0rpa\\.codex\\worktrees\\f3f3\\steps-framework",
+      "started": "2026-09-13T11:23:55.895965+00:00",
+      "finished": "2026-09-13T11:23:55.934280+00:00",
+      "exit_code": 0,
+      "stdout_sha256": "d08dce351c5576e23823ae59022f2e4c485b03e98dcca634400ceb9aaf2eac44",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "git",
+        "-c",
+        "core.longpaths=true",
+        "rev-parse",
+        "27cdb701b91c5b45b9f54b3e98c9ad67635b3e30:workspace/2026/TFW_20260909-231654_TKL/ONB__TFW_20260909-231654_TKL.md"
+      ],
+      "cwd": "C:\\Users\\c0rpa\\.codex\\worktrees\\f3f3\\steps-framework",
+      "started": "2026-09-13T11:23:55.934334+00:00",
+      "finished": "2026-09-13T11:23:55.973155+00:00",
+      "exit_code": 0,
+      "stdout_sha256": "0e215274689c481f5fa0446069a64db4bb9f614c4a2392a99f299dfc79c68911",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "git",
+        "-c",
+        "core.longpaths=true",
+        "show",
+        "27cdb701b91c5b45b9f54b3e98c9ad67635b3e30:workspace/2026/TFW_20260909-231654_TKL/research/iter2/RES.md"
+      ],
+      "cwd": "C:\\Users\\c0rpa\\.codex\\worktrees\\f3f3\\steps-framework",
+      "started": "2026-09-13T11:23:55.976973+00:00",
+      "finished": "2026-09-13T11:23:56.015829+00:00",
+      "exit_code": 0,
+      "stdout_sha256": "4dd019e566128e74da1e05928525cf33f61329366fd08b7df2acd666aaa27f9b",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "git",
+        "-c",
+        "core.longpaths=true",
+        "rev-parse",
+        "27cdb701b91c5b45b9f54b3e98c9ad67635b3e30:workspace/2026/TFW_20260909-231654_TKL/research/iter2/RES.md"
+      ],
+      "cwd": "C:\\Users\\c0rpa\\.codex\\worktrees\\f3f3\\steps-framework",
+      "started": "2026-09-13T11:23:56.015869+00:00",
+      "finished": "2026-09-13T11:23:56.051426+00:00",
+      "exit_code": 0,
+      "stdout_sha256": "f86c0caa4b6fa1e833b79ec31db45ff767253e4a8389825d77fc50c6444659fa",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "git",
+        "-c",
+        "core.longpaths=true",
+        "show",
+        "c51ee0c0d7891fd165d105f3565e0e54512c1040:workspace/2026/TFW_20260907-020729_SLC/status.md"
+      ],
+      "cwd": "C:\\Users\\c0rpa\\.codex\\worktrees\\f3f3\\steps-framework",
+      "started": "2026-09-13T11:23:56.053457+00:00",
+      "finished": "2026-09-13T11:23:56.091078+00:00",
+      "exit_code": 0,
+      "stdout_sha256": "c4bc55418a480f6fc7bb4277c656abe149ca6a262c5903a80296aa3f0b8e7875",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "git",
+        "-c",
+        "core.longpaths=true",
+        "rev-parse",
+        "c51ee0c0d7891fd165d105f3565e0e54512c1040:workspace/2026/TFW_20260907-020729_SLC/status.md"
+      ],
+      "cwd": "C:\\Users\\c0rpa\\.codex\\worktrees\\f3f3\\steps-framework",
+      "started": "2026-09-13T11:23:56.091116+00:00",
+      "finished": "2026-09-13T11:23:56.129651+00:00",
+      "exit_code": 0,
+      "stdout_sha256": "e8713e54c2328b266b50628276344a052033597761e21a8fe79384c046b91c0a",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "git",
+        "-c",
+        "core.longpaths=true",
+        "show",
+        "c51ee0c0d7891fd165d105f3565e0e54512c1040:workspace/2026/TFW_20260907-020729_SLC/journal/20260910-132537__transition__803f.md"
+      ],
+      "cwd": "C:\\Users\\c0rpa\\.codex\\worktrees\\f3f3\\steps-framework",
+      "started": "2026-09-13T11:23:56.133252+00:00",
+      "finished": "2026-09-13T11:23:56.173454+00:00",
+      "exit_code": 0,
+      "stdout_sha256": "ae1e10e71d9d6249244dc52c873fc743cb3f96807db2e341c4e85f4c1f08181b",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "git",
+        "-c",
+        "core.longpaths=true",
+        "rev-parse",
+        "c51ee0c0d7891fd165d105f3565e0e54512c1040:workspace/2026/TFW_20260907-020729_SLC/journal/20260910-132537__transition__803f.md"
+      ],
+      "cwd": "C:\\Users\\c0rpa\\.codex\\worktrees\\f3f3\\steps-framework",
+      "started": "2026-09-13T11:23:56.173511+00:00",
+      "finished": "2026-09-13T11:23:56.209369+00:00",
+      "exit_code": 0,
+      "stdout_sha256": "ad09e16c245b435971eb3c8b75cca7d753566c254856de5733c1878589209d6b",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "git",
+        "-c",
+        "core.longpaths=true",
+        "show",
+        "c51ee0c0d7891fd165d105f3565e0e54512c1040:workspace/2026/TFW_20260907-020729_SLC/RF__TFW_20260907-020729_SLC.md"
+      ],
+      "cwd": "C:\\Users\\c0rpa\\.codex\\worktrees\\f3f3\\steps-framework",
+      "started": "2026-09-13T11:23:56.210944+00:00",
+      "finished": "2026-09-13T11:23:56.251847+00:00",
+      "exit_code": 0,
+      "stdout_sha256": "6c3340a7b23928feb8a70e7f02438015549e9ba66a96a331144d45ac058804f7",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "git",
+        "-c",
+        "core.longpaths=true",
+        "rev-parse",
+        "c51ee0c0d7891fd165d105f3565e0e54512c1040:workspace/2026/TFW_20260907-020729_SLC/RF__TFW_20260907-020729_SLC.md"
+      ],
+      "cwd": "C:\\Users\\c0rpa\\.codex\\worktrees\\f3f3\\steps-framework",
+      "started": "2026-09-13T11:23:56.251889+00:00",
+      "finished": "2026-09-13T11:23:56.286697+00:00",
+      "exit_code": 0,
+      "stdout_sha256": "c62a935f97106513cd0772c8fe6c4edfe2c42fba19b050d158c84d833a2f04d2",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "git",
+        "-c",
+        "core.longpaths=true",
+        "show",
+        "c51ee0c0d7891fd165d105f3565e0e54512c1040:workspace/2026/TFW_20260907-020729_SLC/HL-TFW_20260907-020729_SLC.md"
+      ],
+      "cwd": "C:\\Users\\c0rpa\\.codex\\worktrees\\f3f3\\steps-framework",
+      "started": "2026-09-13T11:23:56.287771+00:00",
+      "finished": "2026-09-13T11:23:56.326406+00:00",
+      "exit_code": 0,
+      "stdout_sha256": "ef97fe425b047ad8d48173a8b92d1cfec316e182a5c22f4911d3a27461ddbb47",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "git",
+        "-c",
+        "core.longpaths=true",
+        "rev-parse",
+        "c51ee0c0d7891fd165d105f3565e0e54512c1040:workspace/2026/TFW_20260907-020729_SLC/HL-TFW_20260907-020729_SLC.md"
+      ],
+      "cwd": "C:\\Users\\c0rpa\\.codex\\worktrees\\f3f3\\steps-framework",
+      "started": "2026-09-13T11:23:56.326483+00:00",
+      "finished": "2026-09-13T11:23:56.361481+00:00",
+      "exit_code": 0,
+      "stdout_sha256": "fb64efca2a6f83d8accaf4c2e3ae19b1e8e792139227ceda8a18f85ebb09467f",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "git",
+        "-c",
+        "core.longpaths=true",
+        "show",
+        "c51ee0c0d7891fd165d105f3565e0e54512c1040:workspace/2026/TFW_20260907-020729_SLC/TS__TFW_20260907-020729_SLC.md"
+      ],
+      "cwd": "C:\\Users\\c0rpa\\.codex\\worktrees\\f3f3\\steps-framework",
+      "started": "2026-09-13T11:23:56.363191+00:00",
+      "finished": "2026-09-13T11:23:56.405650+00:00",
+      "exit_code": 0,
+      "stdout_sha256": "952cfd72b4a7229d0da5ee5fa8b54b10d0560b56d18c3dd557008f403a2813ef",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "git",
+        "-c",
+        "core.longpaths=true",
+        "rev-parse",
+        "c51ee0c0d7891fd165d105f3565e0e54512c1040:workspace/2026/TFW_20260907-020729_SLC/TS__TFW_20260907-020729_SLC.md"
+      ],
+      "cwd": "C:\\Users\\c0rpa\\.codex\\worktrees\\f3f3\\steps-framework",
+      "started": "2026-09-13T11:23:56.405750+00:00",
+      "finished": "2026-09-13T11:23:56.454999+00:00",
+      "exit_code": 0,
+      "stdout_sha256": "c59a288a447d8b5dde8cb10d9177073a55fa3259fe3f5293e5007a44b39ed44c",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "git",
+        "-c",
+        "core.longpaths=true",
+        "show",
+        "99198f133c0047568c1e8411bfae849239b352b1:workspace/2026/TFW_20260907-020729_SLC/REVIEW__TFW_20260907-020729_SLC.md"
+      ],
+      "cwd": "C:\\Users\\c0rpa\\.codex\\worktrees\\f3f3\\steps-framework",
+      "started": "2026-09-13T11:23:56.456721+00:00",
+      "finished": "2026-09-13T11:23:56.494896+00:00",
+      "exit_code": 0,
+      "stdout_sha256": "5e24416d70866cf1372e56bf7ae0e8be2ad129b54d6054c4408ef0a15d7dbdce",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "git",
+        "-c",
+        "core.longpaths=true",
+        "rev-parse",
+        "99198f133c0047568c1e8411bfae849239b352b1:workspace/2026/TFW_20260907-020729_SLC/REVIEW__TFW_20260907-020729_SLC.md"
+      ],
+      "cwd": "C:\\Users\\c0rpa\\.codex\\worktrees\\f3f3\\steps-framework",
+      "started": "2026-09-13T11:23:56.494955+00:00",
+      "finished": "2026-09-13T11:23:56.536692+00:00",
+      "exit_code": 0,
+      "stdout_sha256": "e0c886809648153b935b1bfb9e83fe3edb8d8a25171d7e6519360a94fb6be482",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "git",
+        "-c",
+        "core.longpaths=true",
+        "show",
+        "99198f133c0047568c1e8411bfae849239b352b1:workspace/2026/TFW_20260907-020729_SLC/evidence/review-c2-final/accounting-result.json"
+      ],
+      "cwd": "C:\\Users\\c0rpa\\.codex\\worktrees\\f3f3\\steps-framework",
+      "started": "2026-09-13T11:23:56.539801+00:00",
+      "finished": "2026-09-13T11:23:56.578169+00:00",
+      "exit_code": 0,
+      "stdout_sha256": "c5b14c1a02270e1cca81a89ef94fce1e630df229a6faf8817a31ba5019e835c2",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "git",
+        "-c",
+        "core.longpaths=true",
+        "rev-parse",
+        "99198f133c0047568c1e8411bfae849239b352b1:workspace/2026/TFW_20260907-020729_SLC/evidence/review-c2-final/accounting-result.json"
+      ],
+      "cwd": "C:\\Users\\c0rpa\\.codex\\worktrees\\f3f3\\steps-framework",
+      "started": "2026-09-13T11:23:56.578203+00:00",
+      "finished": "2026-09-13T11:23:56.623803+00:00",
+      "exit_code": 0,
+      "stdout_sha256": "5b35f60d18bc22588608da339076e8faae6eaad8ba5a0223676f2b3a39f5dfe3",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "git",
+        "-c",
+        "core.longpaths=true",
+        "show",
+        "99198f133c0047568c1e8411bfae849239b352b1:workspace/2026/TFW_20260907-020729_SLC/evidence/review-c2-final/executor-evidence-verification.json"
+      ],
+      "cwd": "C:\\Users\\c0rpa\\.codex\\worktrees\\f3f3\\steps-framework",
+      "started": "2026-09-13T11:23:56.626310+00:00",
+      "finished": "2026-09-13T11:23:56.669954+00:00",
+      "exit_code": 0,
+      "stdout_sha256": "d755f63c56d42acaaa56a9f54f659058bac145ee6549b28f85dc35c810a000d0",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "git",
+        "-c",
+        "core.longpaths=true",
+        "rev-parse",
+        "99198f133c0047568c1e8411bfae849239b352b1:workspace/2026/TFW_20260907-020729_SLC/evidence/review-c2-final/executor-evidence-verification.json"
+      ],
+      "cwd": "C:\\Users\\c0rpa\\.codex\\worktrees\\f3f3\\steps-framework",
+      "started": "2026-09-13T11:23:56.669982+00:00",
+      "finished": "2026-09-13T11:23:56.706432+00:00",
+      "exit_code": 0,
+      "stdout_sha256": "57fbd72b998cb6747abffbdcce840f7552e0553adb055f6d5d31da065145cdd4",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "git",
+        "-c",
+        "core.longpaths=true",
+        "show",
+        "99198f133c0047568c1e8411bfae849239b352b1:workspace/2026/TFW_20260907-020729_SLC/evidence/review-c2-final/opened-output.json"
+      ],
+      "cwd": "C:\\Users\\c0rpa\\.codex\\worktrees\\f3f3\\steps-framework",
+      "started": "2026-09-13T11:23:56.707521+00:00",
+      "finished": "2026-09-13T11:23:56.755355+00:00",
+      "exit_code": 0,
+      "stdout_sha256": "dfba2b129e7bac0dd255297fd4321fb8c1bdec42d867f84c29e4b06650ef1421",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "git",
+        "-c",
+        "core.longpaths=true",
+        "rev-parse",
+        "99198f133c0047568c1e8411bfae849239b352b1:workspace/2026/TFW_20260907-020729_SLC/evidence/review-c2-final/opened-output.json"
+      ],
+      "cwd": "C:\\Users\\c0rpa\\.codex\\worktrees\\f3f3\\steps-framework",
+      "started": "2026-09-13T11:23:56.755663+00:00",
+      "finished": "2026-09-13T11:23:56.795019+00:00",
+      "exit_code": 0,
+      "stdout_sha256": "0f4e271f76cfded832efa0b47326c52b110c0da57e14641968fb3f597e98a341",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "git",
+        "-c",
+        "core.longpaths=true",
+        "show",
+        "c51ee0c0d7891fd165d105f3565e0e54512c1040:KNOWLEDGE.md"
+      ],
+      "cwd": "C:\\Users\\c0rpa\\.codex\\worktrees\\f3f3\\steps-framework",
+      "started": "2026-09-13T11:23:56.796834+00:00",
+      "finished": "2026-09-13T11:23:56.836984+00:00",
+      "exit_code": 0,
+      "stdout_sha256": "a2d82e20092a361319d80f5f7db63360957a84a8eb36415461567323fc0b797f",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "git",
+        "-c",
+        "core.longpaths=true",
+        "rev-parse",
+        "c51ee0c0d7891fd165d105f3565e0e54512c1040:KNOWLEDGE.md"
+      ],
+      "cwd": "C:\\Users\\c0rpa\\.codex\\worktrees\\f3f3\\steps-framework",
+      "started": "2026-09-13T11:23:56.837186+00:00",
+      "finished": "2026-09-13T11:23:56.871430+00:00",
+      "exit_code": 0,
+      "stdout_sha256": "6c80c35f5303db540eb6fb7cc4d8378b73e6abefa3917087e9ed2af406aa9957",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "git",
+        "-c",
+        "core.longpaths=true",
+        "show",
+        "c51ee0c0d7891fd165d105f3565e0e54512c1040:workspace/2026/TFW_20260907-020729_SLC/status.md"
+      ],
+      "cwd": "C:\\Users\\c0rpa\\.codex\\worktrees\\f3f3\\steps-framework",
+      "started": "2026-09-13T11:23:56.876472+00:00",
+      "finished": "2026-09-13T11:23:56.911406+00:00",
+      "exit_code": 0,
+      "stdout_sha256": "c4bc55418a480f6fc7bb4277c656abe149ca6a262c5903a80296aa3f0b8e7875",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "git",
+        "-c",
+        "core.longpaths=true",
+        "show",
+        "c51ee0c0d7891fd165d105f3565e0e54512c1040:workspace/2026/TFW_20260907-020729_SLC/journal/20260910-132537__transition__803f.md"
+      ],
+      "cwd": "C:\\Users\\c0rpa\\.codex\\worktrees\\f3f3\\steps-framework",
+      "started": "2026-09-13T11:23:56.911442+00:00",
+      "finished": "2026-09-13T11:23:56.953161+00:00",
+      "exit_code": 0,
+      "stdout_sha256": "ae1e10e71d9d6249244dc52c873fc743cb3f96807db2e341c4e85f4c1f08181b",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "git",
+        "-c",
+        "core.longpaths=true",
+        "show",
+        "c51ee0c0d7891fd165d105f3565e0e54512c1040:KNOWLEDGE.md"
+      ],
+      "cwd": "C:\\Users\\c0rpa\\.codex\\worktrees\\f3f3\\steps-framework",
+      "started": "2026-09-13T11:23:57.083762+00:00",
+      "finished": "2026-09-13T11:23:57.118421+00:00",
+      "exit_code": 0,
+      "stdout_sha256": "a2d82e20092a361319d80f5f7db63360957a84a8eb36415461567323fc0b797f",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "git",
+        "-c",
+        "core.longpaths=true",
+        "add",
+        "--",
+        "C:\\Users\\c0rpa\\AppData\\Local\\Temp\\TFW_TKL_NATIVE_01a09a0c\\concurrent-repo\\workspace\\2026\\TFW_20260909-231654_TKL\\evidence\\q1-inputs\\common.md",
+        "C:\\Users\\c0rpa\\AppData\\Local\\Temp\\TFW_TKL_NATIVE_01a09a0c\\concurrent-repo\\workspace\\2026\\TFW_20260909-231654_TKL\\evidence\\q1-inputs\\coordinator.md",
+        "C:\\Users\\c0rpa\\AppData\\Local\\Temp\\TFW_TKL_NATIVE_01a09a0c\\concurrent-repo\\workspace\\2026\\TFW_20260909-231654_TKL\\evidence\\q1-inputs\\executor.md",
+        "C:\\Users\\c0rpa\\AppData\\Local\\Temp\\TFW_TKL_NATIVE_01a09a0c\\concurrent-repo\\workspace\\2026\\TFW_20260909-231654_TKL\\evidence\\q1-inputs\\handover-cases.json",
+        "C:\\Users\\c0rpa\\AppData\\Local\\Temp\\TFW_TKL_NATIVE_01a09a0c\\concurrent-repo\\workspace\\2026\\TFW_20260909-231654_TKL\\evidence\\q1-inputs\\source-identities.json",
+        "C:\\Users\\c0rpa\\AppData\\Local\\Temp\\TFW_TKL_NATIVE_01a09a0c\\concurrent-repo\\workspace\\2026\\TFW_20260909-231654_TKL\\evidence\\q1-inputs\\sources\\144e3e651382330afba4d7131a562d05e7f515f9\\workspace\\2026\\TFW_20260909-231654_TKL\\journal\\20260913-154545__dispatch__0173.md",
+        "C:\\Users\\c0rpa\\AppData\\Local\\Temp\\TFW_TKL_NATIVE_01a09a0c\\concurrent-repo\\workspace\\2026\\TFW_20260909-231654_TKL\\evidence\\q1-inputs\\sources\\2794cbdb40f6c4f3a7d4bce1f8d4eb949d9e6913\\workspace\\2026\\TFW_20260909-231654_TKL\\TS__TFW_20260909-231654_TKL.md",
+        "C:\\Users\\c0rpa\\AppData\\Local\\Temp\\TFW_TKL_NATIVE_01a09a0c\\concurrent-repo\\workspace\\2026\\TFW_20260909-231654_TKL\\evidence\\q1-inputs\\sources\\27cdb701b91c5b45b9f54b3e98c9ad67635b3e30\\workspace\\2026\\TFW_20260909-231654_TKL\\ONB__TFW_20260909-231654_TKL.md",
+        "C:\\Users\\c0rpa\\AppData\\Local\\Temp\\TFW_TKL_NATIVE_01a09a0c\\concurrent-repo\\workspace\\2026\\TFW_20260909-231654_TKL\\evidence\\q1-inputs\\sources\\27cdb701b91c5b45b9f54b3e98c9ad67635b3e30\\workspace\\2026\\TFW_20260909-231654_TKL\\research\\iter2\\RES.md",
+        "C:\\Users\\c0rpa\\AppData\\Local\\Temp\\TFW_TKL_NATIVE_01a09a0c\\concurrent-repo\\workspace\\2026\\TFW_20260909-231654_TKL\\evidence\\q1-inputs\\sources\\99198f133c0047568c1e8411bfae849239b352b1\\workspace\\2026\\TFW_20260907-020729_SLC\\evidence\\review-c2-final\\accounting-result.json",
+        "C:\\Users\\c0rpa\\AppData\\Local\\Temp\\TFW_TKL_NATIVE_01a09a0c\\concurrent-repo\\workspace\\2026\\TFW_20260909-231654_TKL\\evidence\\q1-inputs\\sources\\99198f133c0047568c1e8411bfae849239b352b1\\workspace\\2026\\TFW_20260907-020729_SLC\\evidence\\review-c2-final\\executor-evidence-verification.json",
+        "C:\\Users\\c0rpa\\AppData\\Local\\Temp\\TFW_TKL_NATIVE_01a09a0c\\concurrent-repo\\workspace\\2026\\TFW_20260909-231654_TKL\\evidence\\q1-inputs\\sources\\99198f133c0047568c1e8411bfae849239b352b1\\workspace\\2026\\TFW_20260907-020729_SLC\\evidence\\review-c2-final\\opened-output.json",
+        "C:\\Users\\c0rpa\\AppData\\Local\\Temp\\TFW_TKL_NATIVE_01a09a0c\\concurrent-repo\\workspace\\2026\\TFW_20260909-231654_TKL\\evidence\\q1-inputs\\sources\\99198f133c0047568c1e8411bfae849239b352b1\\workspace\\2026\\TFW_20260907-020729_SLC\\REVIEW__TFW_20260907-020729_SLC.md",
+        "C:\\Users\\c0rpa\\AppData\\Local\\Temp\\TFW_TKL_NATIVE_01a09a0c\\concurrent-repo\\workspace\\2026\\TFW_20260909-231654_TKL\\evidence\\q1-inputs\\sources\\bb3c2803e610bd5fe1cc6eed040b73a6cb2a40aa\\workspace\\2026\\TFW_20260909-231654_TKL\\journal\\20260913-154924__dispatch__580a.md",
+        "C:\\Users\\c0rpa\\AppData\\Local\\Temp\\TFW_TKL_NATIVE_01a09a0c\\concurrent-repo\\workspace\\2026\\TFW_20260909-231654_TKL\\evidence\\q1-inputs\\sources\\c51ee0c0d7891fd165d105f3565e0e54512c1040\\KNOWLEDGE.md",
+        "C:\\Users\\c0rpa\\AppData\\Local\\Temp\\TFW_TKL_NATIVE_01a09a0c\\concurrent-repo\\workspace\\2026\\TFW_20260909-231654_TKL\\evidence\\q1-inputs\\sources\\c51ee0c0d7891fd165d105f3565e0e54512c1040\\workspace\\2026\\TFW_20260907-020729_SLC\\HL-TFW_20260907-020729_SLC.md",
+        "C:\\Users\\c0rpa\\AppData\\Local\\Temp\\TFW_TKL_NATIVE_01a09a0c\\concurrent-repo\\workspace\\2026\\TFW_20260909-231654_TKL\\evidence\\q1-inputs\\sources\\c51ee0c0d7891fd165d105f3565e0e54512c1040\\workspace\\2026\\TFW_20260907-020729_SLC\\journal\\20260910-132537__transition__803f.md",
+        "C:\\Users\\c0rpa\\AppData\\Local\\Temp\\TFW_TKL_NATIVE_01a09a0c\\concurrent-repo\\workspace\\2026\\TFW_20260909-231654_TKL\\evidence\\q1-inputs\\sources\\c51ee0c0d7891fd165d105f3565e0e54512c1040\\workspace\\2026\\TFW_20260907-020729_SLC\\RF__TFW_20260907-020729_SLC.md",
+        "C:\\Users\\c0rpa\\AppData\\Local\\Temp\\TFW_TKL_NATIVE_01a09a0c\\concurrent-repo\\workspace\\2026\\TFW_20260909-231654_TKL\\evidence\\q1-inputs\\sources\\c51ee0c0d7891fd165d105f3565e0e54512c1040\\workspace\\2026\\TFW_20260907-020729_SLC\\status.md",
+        "C:\\Users\\c0rpa\\AppData\\Local\\Temp\\TFW_TKL_NATIVE_01a09a0c\\concurrent-repo\\workspace\\2026\\TFW_20260909-231654_TKL\\evidence\\q1-inputs\\sources\\c51ee0c0d7891fd165d105f3565e0e54512c1040\\workspace\\2026\\TFW_20260907-020729_SLC\\TS__TFW_20260907-020729_SLC.md",
+        "C:\\Users\\c0rpa\\AppData\\Local\\Temp\\TFW_TKL_NATIVE_01a09a0c\\concurrent-repo\\workspace\\2026\\TFW_20260909-231654_TKL\\evidence\\q1-inputs\\sources\\dedf8527ff110fa160358239bbf45ebb498838dd\\workspace\\2026\\TFW_20260909-231654_TKL\\journal\\20260913-145904__dispatch__3328.md",
+        "C:\\Users\\c0rpa\\AppData\\Local\\Temp\\TFW_TKL_NATIVE_01a09a0c\\concurrent-repo\\workspace\\2026\\TFW_20260909-231654_TKL\\evidence\\q1-inputs\\sources\\e6f1c2ef8d90941c3020bd4f0bd85cacce7cd6d0\\workspace\\2026\\TFW_20260909-231654_TKL\\journal\\20260913-150051__dispatch__5df5.md"
+      ],
+      "cwd": "C:\\Users\\c0rpa\\AppData\\Local\\Temp\\TFW_TKL_NATIVE_01a09a0c\\concurrent-repo",
+      "started": "2026-09-13T11:23:57.152879+00:00",
+      "finished": "2026-09-13T11:23:57.540274+00:00",
+      "exit_code": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "git",
+        "-c",
+        "core.longpaths=true",
+        "commit",
+        "--only",
+        "-m",
+        "[codex/TFW_20260909-231654_TKL/assurance/executor] seal prepared Q1 inputs",
+        "--",
+        "C:\\Users\\c0rpa\\AppData\\Local\\Temp\\TFW_TKL_NATIVE_01a09a0c\\concurrent-repo\\workspace\\2026\\TFW_20260909-231654_TKL\\evidence\\q1-inputs\\common.md",
+        "C:\\Users\\c0rpa\\AppData\\Local\\Temp\\TFW_TKL_NATIVE_01a09a0c\\concurrent-repo\\workspace\\2026\\TFW_20260909-231654_TKL\\evidence\\q1-inputs\\coordinator.md",
+        "C:\\Users\\c0rpa\\AppData\\Local\\Temp\\TFW_TKL_NATIVE_01a09a0c\\concurrent-repo\\workspace\\2026\\TFW_20260909-231654_TKL\\evidence\\q1-inputs\\executor.md",
+        "C:\\Users\\c0rpa\\AppData\\Local\\Temp\\TFW_TKL_NATIVE_01a09a0c\\concurrent-repo\\workspace\\2026\\TFW_20260909-231654_TKL\\evidence\\q1-inputs\\handover-cases.json",
+        "C:\\Users\\c0rpa\\AppData\\Local\\Temp\\TFW_TKL_NATIVE_01a09a0c\\concurrent-repo\\workspace\\2026\\TFW_20260909-231654_TKL\\evidence\\q1-inputs\\source-identities.json",
+        "C:\\Users\\c0rpa\\AppData\\Local\\Temp\\TFW_TKL_NATIVE_01a09a0c\\concurrent-repo\\workspace\\2026\\TFW_20260909-231654_TKL\\evidence\\q1-inputs\\sources\\144e3e651382330afba4d7131a562d05e7f515f9\\workspace\\2026\\TFW_20260909-231654_TKL\\journal\\20260913-154545__dispatch__0173.md",
+        "C:\\Users\\c0rpa\\AppData\\Local\\Temp\\TFW_TKL_NATIVE_01a09a0c\\concurrent-repo\\workspace\\2026\\TFW_20260909-231654_TKL\\evidence\\q1-inputs\\sources\\2794cbdb40f6c4f3a7d4bce1f8d4eb949d9e6913\\workspace\\2026\\TFW_20260909-231654_TKL\\TS__TFW_20260909-231654_TKL.md",
+        "C:\\Users\\c0rpa\\AppData\\Local\\Temp\\TFW_TKL_NATIVE_01a09a0c\\concurrent-repo\\workspace\\2026\\TFW_20260909-231654_TKL\\evidence\\q1-inputs\\sources\\27cdb701b91c5b45b9f54b3e98c9ad67635b3e30\\workspace\\2026\\TFW_20260909-231654_TKL\\ONB__TFW_20260909-231654_TKL.md",
+        "C:\\Users\\c0rpa\\AppData\\Local\\Temp\\TFW_TKL_NATIVE_01a09a0c\\concurrent-repo\\workspace\\2026\\TFW_20260909-231654_TKL\\evidence\\q1-inputs\\sources\\27cdb701b91c5b45b9f54b3e98c9ad67635b3e30\\workspace\\2026\\TFW_20260909-231654_TKL\\research\\iter2\\RES.md",
+        "C:\\Users\\c0rpa\\AppData\\Local\\Temp\\TFW_TKL_NATIVE_01a09a0c\\concurrent-repo\\workspace\\2026\\TFW_20260909-231654_TKL\\evidence\\q1-inputs\\sources\\99198f133c0047568c1e8411bfae849239b352b1\\workspace\\2026\\TFW_20260907-020729_SLC\\evidence\\review-c2-final\\accounting-result.json",
+        "C:\\Users\\c0rpa\\AppData\\Local\\Temp\\TFW_TKL_NATIVE_01a09a0c\\concurrent-repo\\workspace\\2026\\TFW_20260909-231654_TKL\\evidence\\q1-inputs\\sources\\99198f133c0047568c1e8411bfae849239b352b1\\workspace\\2026\\TFW_20260907-020729_SLC\\evidence\\review-c2-final\\executor-evidence-verification.json",
+        "C:\\Users\\c0rpa\\AppData\\Local\\Temp\\TFW_TKL_NATIVE_01a09a0c\\concurrent-repo\\workspace\\2026\\TFW_20260909-231654_TKL\\evidence\\q1-inputs\\sources\\99198f133c0047568c1e8411bfae849239b352b1\\workspace\\2026\\TFW_20260907-020729_SLC\\evidence\\review-c2-final\\opened-output.json",
+        "C:\\Users\\c0rpa\\AppData\\Local\\Temp\\TFW_TKL_NATIVE_01a09a0c\\concurrent-repo\\workspace\\2026\\TFW_20260909-231654_TKL\\evidence\\q1-inputs\\sources\\99198f133c0047568c1e8411bfae849239b352b1\\workspace\\2026\\TFW_20260907-020729_SLC\\REVIEW__TFW_20260907-020729_SLC.md",
+        "C:\\Users\\c0rpa\\AppData\\Local\\Temp\\TFW_TKL_NATIVE_01a09a0c\\concurrent-repo\\workspace\\2026\\TFW_20260909-231654_TKL\\evidence\\q1-inputs\\sources\\bb3c2803e610bd5fe1cc6eed040b73a6cb2a40aa\\workspace\\2026\\TFW_20260909-231654_TKL\\journal\\20260913-154924__dispatch__580a.md",
+        "C:\\Users\\c0rpa\\AppData\\Local\\Temp\\TFW_TKL_NATIVE_01a09a0c\\concurrent-repo\\workspace\\2026\\TFW_20260909-231654_TKL\\evidence\\q1-inputs\\sources\\c51ee0c0d7891fd165d105f3565e0e54512c1040\\KNOWLEDGE.md",
+        "C:\\Users\\c0rpa\\AppData\\Local\\Temp\\TFW_TKL_NATIVE_01a09a0c\\concurrent-repo\\workspace\\2026\\TFW_20260909-231654_TKL\\evidence\\q1-inputs\\sources\\c51ee0c0d7891fd165d105f3565e0e54512c1040\\workspace\\2026\\TFW_20260907-020729_SLC\\HL-TFW_20260907-020729_SLC.md",
+        "C:\\Users\\c0rpa\\AppData\\Local\\Temp\\TFW_TKL_NATIVE_01a09a0c\\concurrent-repo\\workspace\\2026\\TFW_20260909-231654_TKL\\evidence\\q1-inputs\\sources\\c51ee0c0d7891fd165d105f3565e0e54512c1040\\workspace\\2026\\TFW_20260907-020729_SLC\\journal\\20260910-132537__transition__803f.md",
+        "C:\\Users\\c0rpa\\AppData\\Local\\Temp\\TFW_TKL_NATIVE_01a09a0c\\concurrent-repo\\workspace\\2026\\TFW_20260909-231654_TKL\\evidence\\q1-inputs\\sources\\c51ee0c0d7891fd165d105f3565e0e54512c1040\\workspace\\2026\\TFW_20260907-020729_SLC\\RF__TFW_20260907-020729_SLC.md",
+        "C:\\Users\\c0rpa\\AppData\\Local\\Temp\\TFW_TKL_NATIVE_01a09a0c\\concurrent-repo\\workspace\\2026\\TFW_20260909-231654_TKL\\evidence\\q1-inputs\\sources\\c51ee0c0d7891fd165d105f3565e0e54512c1040\\workspace\\2026\\TFW_20260907-020729_SLC\\status.md",
+        "C:\\Users\\c0rpa\\AppData\\Local\\Temp\\TFW_TKL_NATIVE_01a09a0c\\concurrent-repo\\workspace\\2026\\TFW_20260909-231654_TKL\\evidence\\q1-inputs\\sources\\c51ee0c0d7891fd165d105f3565e0e54512c1040\\workspace\\2026\\TFW_20260907-020729_SLC\\TS__TFW_20260907-020729_SLC.md",
+        "C:\\Users\\c0rpa\\AppData\\Local\\Temp\\TFW_TKL_NATIVE_01a09a0c\\concurrent-repo\\workspace\\2026\\TFW_20260909-231654_TKL\\evidence\\q1-inputs\\sources\\dedf8527ff110fa160358239bbf45ebb498838dd\\workspace\\2026\\TFW_20260909-231654_TKL\\journal\\20260913-145904__dispatch__3328.md",
+        "C:\\Users\\c0rpa\\AppData\\Local\\Temp\\TFW_TKL_NATIVE_01a09a0c\\concurrent-repo\\workspace\\2026\\TFW_20260909-231654_TKL\\evidence\\q1-inputs\\sources\\e6f1c2ef8d90941c3020bd4f0bd85cacce7cd6d0\\workspace\\2026\\TFW_20260909-231654_TKL\\journal\\20260913-150051__dispatch__5df5.md"
+      ],
+      "cwd": "C:\\Users\\c0rpa\\AppData\\Local\\Temp\\TFW_TKL_NATIVE_01a09a0c\\concurrent-repo",
+      "started": "2026-09-13T11:23:57.540304+00:00",
+      "finished": "2026-09-13T11:23:58.170383+00:00",
+      "exit_code": 0,
+      "stdout_sha256": "4a02e4e33832bc2eb72e9e4c41acb06aa9993457ba45d4f8c4337b48e6b2f402",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "git",
+        "-c",
+        "core.longpaths=true",
+        "rev-parse",
+        "HEAD"
+      ],
+      "cwd": "C:\\Users\\c0rpa\\AppData\\Local\\Temp\\TFW_TKL_NATIVE_01a09a0c\\concurrent-repo",
+      "started": "2026-09-13T11:23:58.170423+00:00",
+      "finished": "2026-09-13T11:23:58.206911+00:00",
+      "exit_code": 0,
+      "stdout_sha256": "c399b5b8a50387c9718c810ca05108c77cfcb04f7ac34445133fe2f2dd86774f",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "git",
+        "-c",
+        "core.longpaths=true",
+        "worktree",
+        "add",
+        "-b",
+        "codex/tkl-native-executor",
+        "C:\\Users\\c0rpa\\AppData\\Local\\Temp\\TFW_TKL_NATIVE_01a09a0c\\executor",
+        "e00ca51d05f4e451441cb9fc267579a7f9e4d4ce"
+      ],
+      "cwd": "C:\\Users\\c0rpa\\AppData\\Local\\Temp\\TFW_TKL_NATIVE_01a09a0c\\concurrent-repo",
+      "started": "2026-09-13T11:23:58.206963+00:00",
+      "finished": "2026-09-13T11:24:00.086906+00:00",
+      "exit_code": 0,
+      "stdout_sha256": "09c7d005c6b93c4aad5af1879ea6f13165fd9c6abef04393ed66cbe9872a5b4f",
+      "stderr_sha256": "1ef6e4cce1ea6758420d7ae251e613a18526a42fda2d858a434f3ff1ec75dbbf"
+    },
+    {
+      "argv": [
+        "git",
+        "-c",
+        "core.longpaths=true",
+        "worktree",
+        "add",
+        "-b",
+        "codex/tkl-native-coordinator",
+        "C:\\Users\\c0rpa\\AppData\\Local\\Temp\\TFW_TKL_NATIVE_01a09a0c\\coordinator",
+        "e00ca51d05f4e451441cb9fc267579a7f9e4d4ce"
+      ],
+      "cwd": "C:\\Users\\c0rpa\\AppData\\Local\\Temp\\TFW_TKL_NATIVE_01a09a0c\\concurrent-repo",
+      "started": "2026-09-13T11:24:00.088287+00:00",
+      "finished": "2026-09-13T11:24:01.966337+00:00",
+      "exit_code": 0,
+      "stdout_sha256": "09c7d005c6b93c4aad5af1879ea6f13165fd9c6abef04393ed66cbe9872a5b4f",
+      "stderr_sha256": "d55eb7fc8105abea41646c83dea515f68625b9aa35528666f0c91a0db3939c47"
+    },
+    {
+      "argv": [
+        "git",
+        "-c",
+        "core.longpaths=true",
+        "rev-parse",
+        "HEAD"
+      ],
+      "cwd": "C:\\Users\\c0rpa\\AppData\\Local\\Temp\\TFW_TKL_NATIVE_01a09a0c\\executor",
+      "started": "2026-09-13T11:24:02.247432+00:00",
+      "finished": "2026-09-13T11:24:02.294321+00:00",
+      "exit_code": 0,
+      "stdout_sha256": "c399b5b8a50387c9718c810ca05108c77cfcb04f7ac34445133fe2f2dd86774f",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "git",
+        "-c",
+        "core.longpaths=true",
+        "rev-parse",
+        "HEAD"
+      ],
+      "cwd": "C:\\Users\\c0rpa\\AppData\\Local\\Temp\\TFW_TKL_NATIVE_01a09a0c\\coordinator",
+      "started": "2026-09-13T11:24:02.294382+00:00",
+      "finished": "2026-09-13T11:24:02.335061+00:00",
+      "exit_code": 0,
+      "stdout_sha256": "c399b5b8a50387c9718c810ca05108c77cfcb04f7ac34445133fe2f2dd86774f",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ]
+}

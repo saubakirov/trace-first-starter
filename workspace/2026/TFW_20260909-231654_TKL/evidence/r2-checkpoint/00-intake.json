@@ -1,0 +1,54 @@
+{
+  "observed_at": "2026-09-13T19:57:35.549112+00:00",
+  "dispatch_commit": "16bc29cd4238a8a8e185eab80c84001cff41d2d8",
+  "governing_TS_blob": "f69fd4099a21a07ae2d17e6b5108b04ac94f107e",
+  "approval": "2794cbdb40f6c4f3a7d4bce1f8d4eb949d9e6913",
+  "authority": {
+    "HL-TFW_20260909-231654_TKL.md": {
+      "sha256": "cb1e21259e6fa8263aa21d3f56facf73a0f5c932cbc8faf8ae692de63157e6f8",
+      "git_blob": "c2e14bfebaac53495eb32772d381bfdc93f51e41"
+    },
+    "TS__TFW_20260909-231654_TKL.md": {
+      "sha256": "6929b45c6ec0908933a2d7e9088707dd317c56a1089895cac9fc31a1b3f8c48c",
+      "git_blob": "f69fd4099a21a07ae2d17e6b5108b04ac94f107e"
+    },
+    "REVIEW__TFW_20260909-231654_TKL__rev2.md": {
+      "sha256": "73fc1b890b34c30cf7e30db57a0e28e7831839764a4db9a2be1f1f2ceaafc185",
+      "git_blob": "be9a6671e03b91cdcab5efb7d4f3cbc88519ca73"
+    },
+    "journal/20260914-005021__dispatch__4491.md": {
+      "sha256": "00b525e08698ab99df72cc4e9a93b1c85836fc915644decc409e1b60c8d5d82a",
+      "git_blob": "9b1713f42c250ccca264d6734f9a8518f53f62dd"
+    },
+    "journal/20260913-141400__handoff__8c2a.md": {
+      "sha256": "acc3de13384fec670614eeaa8758d9997f97f5396c796a2f88ddc46fa8f87102",
+      "git_blob": "8f0e29189af9983f3a1dffe2efb2b7daaf0686cd"
+    }
+  },
+  "prior_ONB": {
+    "bytes": 56488,
+    "sha256": "69af75d3c1e6d563741a7787db6c504b0542ec539b21c0490006ffef2f122c72",
+    "commit": "16bc29cd4238a8a8e185eab80c84001cff41d2d8"
+  },
+  "role": "Executor",
+  "principal": "robert",
+  "unit": "01a09a0c-c9e2-7d01-af4e-64931af967ed",
+  "parent": "01a09974-6716-7cc0-9916-fd6d04c91481",
+  "native_started": false,
+  "native_preparation": false,
+  "pre_implementation_source_observer_errors": [
+    {
+      "tool_output": "b9494a",
+      "type": "AssertionError",
+      "text": "('Task Statuses', [])",
+      "cause": "Reader matched numbered headings with dot, actual heading uses 5). No missing canonical heading."
+    },
+    {
+      "tool_output": "df4ece",
+      "type": "ValueError",
+      "text": "substring not found",
+      "cause": "Guessed TS subheading ### ASSURANCE does not exist; actual approved table/ranges read."
+    }
+  ],
+  "limits": "Source checkpoint only. Exact valid native grant/pin/shape remains pending; no clock or receiver preparation."
+}

@@ -1,0 +1,105 @@
+{
+  "step": "effect26",
+  "started_at": "2026-09-13T22:24:48.852770+00:00",
+  "argv": [
+    "workspace/2026/TFW_20260909-231654_TKL/evidence/r3-native/native.py",
+    "effect26"
+  ],
+  "subprocesses": [
+    {
+      "argv": [
+        "git",
+        "-c",
+        "core.longpaths=true",
+        "-c",
+        "core.autocrlf=false",
+        "rev-parse",
+        "HEAD"
+      ],
+      "cwd": "C:\\Users\\c0rpa\\.codex\\worktrees\\f3f3\\steps-framework",
+      "start": "2026-09-13T22:24:48.860085+00:00",
+      "stdout": "effect26-1.stdout.raw",
+      "stderr": "effect26-1.stderr.raw",
+      "end": "2026-09-13T22:24:48.948012+00:00",
+      "exit": 0
+    },
+    {
+      "argv": [
+        "git",
+        "-c",
+        "core.longpaths=true",
+        "-c",
+        "core.autocrlf=false",
+        "rev-parse",
+        "HEAD"
+      ],
+      "cwd": "C:\\Users\\c0rpa\\.codex\\worktrees\\f3f3\\steps-framework",
+      "start": "2026-09-13T22:24:48.970891+00:00",
+      "stdout": "effect26-2.stdout.raw",
+      "stderr": "effect26-2.stderr.raw",
+      "end": "2026-09-13T22:24:49.036669+00:00",
+      "exit": 0
+    },
+    {
+      "argv": [
+        "git",
+        "-c",
+        "core.longpaths=true",
+        "-c",
+        "core.autocrlf=false",
+        "rev-parse",
+        "HEAD"
+      ],
+      "cwd": "C:\\Users\\c0rpa\\.codex\\worktrees\\f3f3\\steps-framework",
+      "start": "2026-09-13T22:24:56.914596+00:00",
+      "stdout": "effect26-3.stdout.raw",
+      "stderr": "effect26-3.stderr.raw",
+      "end": "2026-09-13T22:24:56.975665+00:00",
+      "exit": 0
+    }
+  ],
+  "writes": [
+    {
+      "path": ".tfw/conventions.md",
+      "purpose": "authorized current-description effect",
+      "before": {
+        "bytes": 98870,
+        "sha256": "fb05c43570cf65b512e620c97633d0115daa8b733e9649e4a3c426e566b8cf21",
+        "raw_git_blob": "ab5504f898e972fc02d3827665070cbede9cf60c",
+        "eol": {
+          "CRLF": 0,
+          "LF": 1436,
+          "CR": 0
+        }
+      },
+      "after": {
+        "bytes": 98839,
+        "sha256": "ac688a8edfacfb98528b740621982065cb3269115725ace842a30772f3318fbf",
+        "raw_git_blob": "47d64213d923792efe782057241156a3cac41873",
+        "eol": {
+          "CRLF": 0,
+          "LF": 1436,
+          "CR": 0
+        }
+      },
+      "at": "2026-09-13T22:24:56.988143+00:00"
+    }
+  ],
+  "result": {
+    "path": ".tfw/conventions.md",
+    "identity": {
+      "bytes": 98839,
+      "sha256": "ac688a8edfacfb98528b740621982065cb3269115725ace842a30772f3318fbf",
+      "raw_git_blob": "47d64213d923792efe782057241156a3cac41873",
+      "eol": {
+        "CRLF": 0,
+        "LF": 1436,
+        "CR": 0
+      }
+    },
+    "unrelated_preserved": true,
+    "physical_writes": 1
+  },
+  "exit": 0,
+  "completed_at": "2026-09-13T22:25:05.231608+00:00"
+}

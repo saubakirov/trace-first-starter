@@ -1,0 +1,215 @@
+{
+  "observed_at": "2026-09-13T15:53:17.969386+00:00",
+  "producer": "Executor 01a09a0c-c9e2-7d01-af4e-64931af967ed",
+  "ac10_original_custody_commit": "7bbf6b9f9be11abe227f5ccc48bca0473c8fa228",
+  "later_operation_check_commit": "ec5506d3f89bafc8de5337d0af22fd7975410448",
+  "fixture_paths_verified_against_seal_and_custody": [
+    "KNOWLEDGE.md",
+    "incoming/message-033.md",
+    "knowledge/presentation.md",
+    "knowledge/records/CEDAR-17.md",
+    "knowledge/records/CEDAR-21.md",
+    "knowledge/records/CEDAR-28.md",
+    "knowledge/records/CEDAR-29.md",
+    "legacy/decisions.md",
+    "sources/charter.md",
+    "sources/session-014.md",
+    "sources/session-027.md",
+    "sources/session-032.md"
+  ],
+  "total_fixture_bytes": 18891,
+  "answer": {
+    "bytes": 2425,
+    "sha256": "1fd3dd800a6c79e3842f8a47da7937ee236d673437b4d0c50fba1bb34af67cff"
+  },
+  "manifest_oracle_question_exact": true,
+  "wrapper_calls": 4,
+  "read_list_search_calls": 14,
+  "clock_calls": 2,
+  "operations": [
+    {
+      "ordinal": 1532,
+      "command": "Get-Content -Raw -Encoding UTF8 KNOWLEDGE.md"
+    },
+    {
+      "ordinal": 1539,
+      "command": "rg --files"
+    },
+    {
+      "ordinal": 1539,
+      "command": "Get-Content -Raw -Encoding UTF8 sources/charter.md"
+    },
+    {
+      "ordinal": 1539,
+      "command": "Get-Content -Raw -Encoding UTF8 legacy/decisions.md"
+    },
+    {
+      "ordinal": 1539,
+      "command": "Get-Content -Raw -Encoding UTF8 knowledge/presentation.md"
+    },
+    {
+      "ordinal": 1549,
+      "command": "rg -n 'legacy/decisions.md|knowledge/presentation.md|CEDAR-|Orion|motion|static|background|publish' knowledge/records"
+    },
+    {
+      "ordinal": 1549,
+      "command": "Get-Content -Raw -Encoding UTF8 knowledge/records/CEDAR-17.md"
+    },
+    {
+      "ordinal": 1549,
+      "command": "Get-Content -Raw -Encoding UTF8 knowledge/records/CEDAR-21.md"
+    },
+    {
+      "ordinal": 1549,
+      "command": "Get-Content -Raw -Encoding UTF8 knowledge/records/CEDAR-28.md"
+    },
+    {
+      "ordinal": 1549,
+      "command": "Get-Content -Raw -Encoding UTF8 knowledge/records/CEDAR-29.md"
+    },
+    {
+      "ordinal": 1560,
+      "command": "Get-Content -Raw -Encoding UTF8 sources/session-014.md"
+    },
+    {
+      "ordinal": 1560,
+      "command": "Get-Content -Raw -Encoding UTF8 sources/session-027.md"
+    },
+    {
+      "ordinal": 1560,
+      "command": "Get-Content -Raw -Encoding UTF8 sources/session-032.md"
+    },
+    {
+      "ordinal": 1560,
+      "command": "Get-Content -Raw -Encoding UTF8 incoming/message-033.md"
+    }
+  ],
+  "result_exits": [
+    {
+      "call_id": "call_rIYmGWy1LxPojTXm3akqSfQI",
+      "exit_code": 0,
+      "output_sha256": "dec74c967f1ddc7faaba6a466211b68f42b138dbe6c0cea66204691904e22f2e",
+      "output_characters": 2934,
+      "truncation_notice": false
+    },
+    {
+      "call_id": "call_HQLLn0SXUnMLrCs4ZnSuiQOd",
+      "exit_code": 0,
+      "output_sha256": "f42fab7d35fc77e724479757169dda2d10265029a077fd79e21fb1ad9cc51e85",
+      "output_characters": 291,
+      "truncation_notice": false
+    },
+    {
+      "call_id": "call_HQLLn0SXUnMLrCs4ZnSuiQOd",
+      "exit_code": 0,
+      "output_sha256": "461115fdbb3c1b520c89f265e950f014b9f5041c2f18a1cd66151266958bde70",
+      "output_characters": 1287,
+      "truncation_notice": false
+    },
+    {
+      "call_id": "call_HQLLn0SXUnMLrCs4ZnSuiQOd",
+      "exit_code": 0,
+      "output_sha256": "2246c4e317d89aa0c00fca2aa3c97a70ea6f45e9ee26ba9c8823f49a36b3bfbb",
+      "output_characters": 866,
+      "truncation_notice": false
+    },
+    {
+      "call_id": "call_HQLLn0SXUnMLrCs4ZnSuiQOd",
+      "exit_code": 0,
+      "output_sha256": "a3005b55022074874cb13da9849a4608b7715fa6a0bba1f719cfcd26a43ce7dc",
+      "output_characters": 793,
+      "truncation_notice": false
+    },
+    {
+      "call_id": "call_484KQFa2QlqtnuYxozP4iaSG",
+      "exit_code": 0,
+      "output_sha256": "1abcac2668a6de4251d97bb439fcc949ce919a504ce5bb56f0839c0008d65561",
+      "output_characters": 5491,
+      "truncation_notice": false
+    },
+    {
+      "call_id": "call_484KQFa2QlqtnuYxozP4iaSG",
+      "exit_code": 0,
+      "output_sha256": "a124274b8f5e30cdd1ac9bdc3900e5f12bfd1d656f5b2e0433de734aeb6dff4f",
+      "output_characters": 2500,
+      "truncation_notice": false
+    },
+    {
+      "call_id": "call_484KQFa2QlqtnuYxozP4iaSG",
+      "exit_code": 0,
+      "output_sha256": "292ac10f0dd547d2a25884f84de2a3ae9d813cd6dbccc649c7266f4be672fac6",
+      "output_characters": 2431,
+      "truncation_notice": false
+    },
+    {
+      "call_id": "call_484KQFa2QlqtnuYxozP4iaSG",
+      "exit_code": 0,
+      "output_sha256": "a66000de0302039b110674ac4f998d811f35be9498fe6bf2e3e65513f1a27752",
+      "output_characters": 2212,
+      "truncation_notice": false
+    },
+    {
+      "call_id": "call_484KQFa2QlqtnuYxozP4iaSG",
+      "exit_code": 0,
+      "output_sha256": "3985c5c3de14b1a8a5fba96fbce9112e64369a07532c8b20812d25b4529c8307",
+      "output_characters": 2191,
+      "truncation_notice": false
+    },
+    {
+      "call_id": "call_6JMSMQL9ufGn9AyXJ076zJmV",
+      "exit_code": 0,
+      "output_sha256": "80e8ecfa83ba4bf0958c3986ff09b7d10fa59a6a6d3bc7e7b62f6919c35e9a23",
+      "output_characters": 974,
+      "truncation_notice": false
+    },
+    {
+      "call_id": "call_6JMSMQL9ufGn9AyXJ076zJmV",
+      "exit_code": 0,
+      "output_sha256": "2a17fb02d29894d10048ae8b18ca4dbe9f7587bafd16eab803fd647c7a72f094",
+      "output_characters": 849,
+      "truncation_notice": false
+    },
+    {
+      "call_id": "call_6JMSMQL9ufGn9AyXJ076zJmV",
+      "exit_code": 0,
+      "output_sha256": "30adeb1bcc27d322d6a146574628940ef2c2aba54cdad75513378cce34f40ef6",
+      "output_characters": 1046,
+      "truncation_notice": false
+    },
+    {
+      "call_id": "call_6JMSMQL9ufGn9AyXJ076zJmV",
+      "exit_code": 0,
+      "output_sha256": "8e7550a58aa935d1f29896c9460435113c6c211b1b9915fdb2b8ae386d584437",
+      "output_characters": 796,
+      "truncation_notice": false
+    }
+  ],
+  "representations": [
+    {
+      "file": "00-admission-observer.json",
+      "earlier_commit": "c2fce07df4293ae4812f09b3919e7d833a74f324",
+      "earlier_sha256": "a04ba3c0357dc467e83277321b674d0a6b213805de27646502003b8fdd49f30b",
+      "original_capture_sha256": "227b42d6d80591f9042b778e7e9549af9ff7d8114ad029599cf612e510f708ed",
+      "bytes_differ": true,
+      "CRLF_to_LF_equal": true,
+      "JSON_values_equal": true,
+      "historical_physical_no_write_claim": "Coordinator contemporaneous custody; not retroactively established by this later byte comparison"
+    },
+    {
+      "file": "01-predispatch.json",
+      "earlier_commit": "c2fce07df4293ae4812f09b3919e7d833a74f324",
+      "earlier_sha256": "4804eac33bd1a1ef1d32684adb5695afe80ed05718379475ab0325b6ddc14166",
+      "original_capture_sha256": "247bf9225af14bc0f5062e8163074c9e422b6dfe11d1b07ea76e8e5ec59e8bc2",
+      "bytes_differ": true,
+      "CRLF_to_LF_equal": true,
+      "JSON_values_equal": true,
+      "historical_physical_no_write_claim": "Coordinator contemporaneous custody; not retroactively established by this later byte comparison"
+    }
+  ],
+  "independent_criterion_judgment": "Not performed; reserved to same Reviewer",
+  "intake_observer_errors": [
+    "Initial report lookup used task-root EV path; corrected to evidence/EV without mutation.",
+    "Attempted to read 06-operation-and-preservation-check.json at 7bbf, exit128 absent path; resolved actual later source ec550, no original epoch relabeling."
+  ],
+  "scope": "Read-only custody verification, not a native retry, OS audit, global memory proof, whole-context export or acceptance"
+}

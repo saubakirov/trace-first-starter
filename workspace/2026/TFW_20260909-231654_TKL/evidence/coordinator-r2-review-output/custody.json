@@ -1,0 +1,69 @@
+{
+  "captured_at": "2026-09-13T21:21:14.117650+00:00",
+  "kind": "Coordinator custody of actual pre-existing Reviewer output; no build or new acceptance",
+  "source_site": "C:\\Users\\c0rpa\\AppData\\Local\\Temp\\TFW_TKL_REVIEW_01a09aaf\\r2-final-site-1409cbd",
+  "review_build_input": "1409cbdcb8046bcc0a7c0efa727536e5ad6d3e62 plus same Reviewer R2 map continuation",
+  "limits": [
+    "Output predates the later independent R2 verdict appendix and formal rev3 carrier. It is not rendering evidence for those later review writes.",
+    "Ten selected actual pages, not a claimed archive of all 2058 build files.",
+    "Original split stdout/stderr and file receipt were never saved by Reviewer. Available tool observations retain explicit truncation."
+  ],
+  "files": [
+    {
+      "path": "knowledge-index/index.html",
+      "bytes": 241110,
+      "sha256": "a35e94a8cc99d7c5b160154dc238760b823202f2a85521a7c863f6cdd2c75b03"
+    },
+    {
+      "path": "reference/conventions/index.html",
+      "bytes": 210706,
+      "sha256": "2b975dae58c4d06a0d429e2163dc03ebe2b8e3997edf5847aa705d6a5ddb57a7"
+    },
+    {
+      "path": "reference/workflows/knowledge/index.html",
+      "bytes": 56149,
+      "sha256": "cb98d79ec33357e8c27e9cebf4c7d3ebd6f4b2f3e2ab287ad05d1c8a9d5d2f8c"
+    },
+    {
+      "path": "tasks/2026/TFW_20260909-231654_TKL/HL-TFW_20260909-231654_TKL/index.html",
+      "bytes": 118510,
+      "sha256": "abe5752e55c23ced56cd57fa34decd269cd38e9ee812f1a049aebd54838b51ea"
+    },
+    {
+      "path": "tasks/2026/TFW_20260909-231654_TKL/ONB__TFW_20260909-231654_TKL/index.html",
+      "bytes": 141653,
+      "sha256": "03bb600cf6002660ed0fbfa3629aba7de45bb5104399744e5a38519cbb47e89b"
+    },
+    {
+      "path": "tasks/2026/TFW_20260909-231654_TKL/RF__TFW_20260909-231654_TKL/index.html",
+      "bytes": 113933,
+      "sha256": "ffef8a59d7a62d301e6a69b5c8c9feafacadc7cb5f057b9a3de1d11ecf15f344"
+    },
+    {
+      "path": "tasks/2026/TFW_20260909-231654_TKL/evidence/EV__TFW_20260909-231654_TKL/index.html",
+      "bytes": 92558,
+      "sha256": "30910e2a9d361854a7eaf286cc890f7db1f8a39bb45193c3faad0ba3da498d8b"
+    },
+    {
+      "path": "tasks/2026/TFW_20260909-231654_TKL/REVIEW__TFW_20260909-231654_TKL__rev2/index.html",
+      "bytes": 70377,
+      "sha256": "9ed7a472dea922cec36a8ba1ed45afab0078077bd58ace93323918cdb9e13162"
+    },
+    {
+      "path": "tasks/2026/TFW_20260907-020729_SLC/RF__TFW_20260907-020729_SLC/index.html",
+      "bytes": 88626,
+      "sha256": "1023b509d9171670bd11a3b218e6ed41fbae5053dc0d5618ec9c4ff606c0af33"
+    },
+    {
+      "path": "tasks/2026/TFW_20260907-020729_SLC/REVIEW__TFW_20260907-020729_SLC/index.html",
+      "bytes": 110935,
+      "sha256": "9a8effd15fd4d9b83ad8d45fced510fd328354c7723c1805e091f24b4b1bb4f5"
+    }
+  ],
+  "archive": {
+    "path": "actual-reviewed-pages.zip",
+    "bytes": 285652,
+    "sha256": "3b33b71a82c2a2253909c7b001743e857f396ec5f0c5c4e66cfaaa96c643bca0"
+  },
+  "tool_observations_sha256": "d1f7a5dcce9d889d7df4b43ea8ff091092b9f4fab3f29e375501c3fe227619fe"
+}

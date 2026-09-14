@@ -1,0 +1,17 @@
+{
+  "source_commit": "6b0d5c748d51c55c7c22147799cdb70131c22049",
+  "prefixes": {
+    "ONB__TFW_20260909-231654_TKL.md": {
+      "bytes": 52870,
+      "sha256": "e3a7875fdd82399b2994911f1a128a3c6f27041c1dc902ccd3b6780d8812a324"
+    },
+    "evidence/EV__TFW_20260909-231654_TKL.md": {
+      "bytes": 16526,
+      "sha256": "90de82e4f7f286cfe7a3f0320c7bc1043cf96ae281c267b4e30fa323c28c80a0"
+    },
+    "RF__TFW_20260909-231654_TKL.md": {
+      "bytes": 28803,
+      "sha256": "c5ec6ba000ca7d0a9faad092286bf491750efb07fbf982ed6e26f4581cb5c4da"
+    }
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "observed_at": "2026-09-13T18:22:30.622734+00:00",
+  "determination": "completed SLC; no SLC application required",
+  "preservation": ".tfw/update_receipts/slc-preservation/f4aa02e2c14d6513f56c3d37b74957ff6522ccb18ec55ed06f51b039199d006d/before.json",
+  "preservation_sha256": "f4aa02e2c14d6513f56c3d37b74957ff6522ccb18ec55ed06f51b039199d006d",
+  "active": [
+    "workspace"
+  ],
+  "historical": [
+    "tasks"
+  ],
+  "removed_pairs_absent": 53,
+  "unaffected_pairs_exact": 11,
+  "all_other_state_values_preserved": true,
+  "historical_files_preserved": 856,
+  "independent_approve": "99198f133c0047568c1e8411bfae849239b352b1",
+  "terminal_close": "c51ee0c0d7891fd165d105f3565e0e54512c1040",
+  "both_ancestors_of_baseline": true,
+  "actual_status": "DONE",
+  "source_and_actual_bytes_basis": "03-baseline-physical.json and retained SLC RF/REVIEW/status/preservation",
+  "observer_error_retained": "05-observer-error.json"
+}

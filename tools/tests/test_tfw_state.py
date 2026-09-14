@@ -4,6 +4,8 @@ from __future__ import annotations
 
 import hashlib
 import sys
+import subprocess
+import types
 from pathlib import Path
 
 import pytest
@@ -15,6 +17,14 @@ import tfw_state as state  # noqa: E402
 
 
 PROJECT_ROOT = state.find_project_root(Path(__file__))
+TKL_BASELINE = "ec91c56007c20cda79f740fec15c85e4af74d17c"
+legacy_state = types.ModuleType("tkl_legacy_state")
+legacy_state.__file__ = str(PROJECT_ROOT / "tools/tfw_state.py")
+sys.modules[legacy_state.__name__] = legacy_state
+exec(compile(subprocess.check_output(
+    ["git", "show", f"{TKL_BASELINE}:tools/tfw_state.py"], cwd=PROJECT_ROOT
+), f"{TKL_BASELINE}:tools/tfw_state.py", "exec"), legacy_state.__dict__)
+
 
 
 def project(tmp_path: Path, containers=("workspace", "tasks")) -> Path:
@@ -104,7 +114,8 @@ def test_workspace_default_and_reference_scope_preserve_active_choices(tmp_path)
     assert state.iter_task_dirs(root) == [active]
     assert state.iter_task_dirs(root, state.reference_containers(root)) == [old, active]
     (root / '.tfw/knowledge_state.yaml').write_text('knowledge:\n  processed_task_digests: {}\n')
-    assert set(state.knowledge_pending(root)['current_task_digests']) == {'TFW_20260906-120000_NOW'}
+    assert [p.name for p in state.iter_task_dirs(root)] == ['TFW_20260906-120000_NOW']
+    assert not hasattr(state, 'knowledge_pending')
     path.write_text('tfw:\n  task_containers: tasks\n  historical_containers: [history]\n')
     assert state.task_containers(root) == ['tasks']  # existing scalar compatibility
     assert state.reference_containers(root) == ['tasks', 'history']
@@ -240,7 +251,7 @@ def reference_sections(path: Path) -> list[tuple[str, str]]:
     """Independent small reference extractor for conformance fixtures."""
     lines = path.read_text(encoding="utf-8").replace("\r\n", "\n").splitlines(keepends=True)
     found: list[tuple[str, str]] = []
-    selected = set(state.KNOWLEDGE_HEADINGS)
+    selected = set(legacy_state.KNOWLEDGE_HEADINGS)
     index = 0
     fence = None
     while index < len(lines):
@@ -250,8 +261,8 @@ def reference_sections(path: Path) -> list[tuple[str, str]]:
             fence = None if fence == marker else marker if fence is None else fence
             index += 1
             continue
-        heading = state.MARKDOWN_HEADING.match(lines[index].rstrip("\n")) if fence is None else None
-        canonical = state._knowledge_heading(heading.group("title")) if heading else None
+        heading = legacy_state.MARKDOWN_HEADING.match(lines[index].rstrip("\n")) if fence is None else None
+        canonical = legacy_state._knowledge_heading(heading.group("title")) if heading else None
         if canonical and any(canonical == name or canonical.startswith(name + " (") for name in selected):
             level = len(heading.group("marks"))
             end = index + 1
@@ -262,7 +273,7 @@ def reference_sections(path: Path) -> list[tuple[str, str]]:
                 if inner:
                     inner_fence = None if inner_fence == inner else inner if inner_fence is None else inner_fence
                 elif inner_fence is None:
-                    next_heading = state.MARKDOWN_HEADING.match(lines[end].rstrip("\n"))
+                    next_heading = legacy_state.MARKDOWN_HEADING.match(lines[end].rstrip("\n"))
                     if next_heading and len(next_heading.group("marks")) <= level:
                         break
                 end += 1
@@ -297,7 +308,7 @@ def test_knowledge_digest_matches_independent_reference_and_defeats_regex_mutant
     )
     rel = artifact.relative_to(root).as_posix()
     expected = independent_digest(rel, reference_sections(artifact))
-    actual = state.knowledge_task_digest(root, item)
+    actual = legacy_state.knowledge_task_digest(root, item)
     mutant_body = "mutant-only\n"
     mutant = independent_digest(rel, [("Fact Candidates", mutant_body)])
     assert actual == expected
@@ -315,12 +326,12 @@ def test_knowledge_pending_reports_changed_removed_and_migration(tmp_path):
     root = project(tmp_path)
     item = task(root, "tasks/TFW-1__knowledge")
     write_knowledge_state(root, {"TFW-1": "0" * 64, "TFW-99": "f" * 64})
-    unresolved = state.knowledge_pending(root)
+    unresolved = legacy_state.knowledge_pending(root)
     assert unresolved["removed_task_ids"] == ["TFW-99"]
     assert unresolved["pending_task_ids"] == []
     assert unresolved["problems"]
-    write_knowledge_state(root, {"TFW-1": state.knowledge_task_digest(root, item)})
-    assert state.knowledge_pending(root)["pending_task_ids"] == []
+    write_knowledge_state(root, {"TFW-1": legacy_state.knowledge_task_digest(root, item)})
+    assert legacy_state.knowledge_pending(root)["pending_task_ids"] == []
 
 
 @pytest.mark.parametrize(
@@ -333,7 +344,7 @@ def test_knowledge_pending_reports_changed_removed_and_migration(tmp_path):
     ],
 )
 def test_knowledge_threshold_outcomes(mode, interval, pending, action):
-    assert state.knowledge_gate_result(mode, interval, pending)["action"] == action
+    assert legacy_state.knowledge_gate_result(mode, interval, pending)["action"] == action
 
 
 def test_library_has_no_cli_render_or_shared_write_surface():

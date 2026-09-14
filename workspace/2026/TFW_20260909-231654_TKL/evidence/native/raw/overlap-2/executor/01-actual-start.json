@@ -1,0 +1,8 @@
+{
+  "started": "2026-09-13T12:01:17.745315+00:00",
+  "unit": "01a09a0c-c9e2-7d01-af4e-64931af967ed",
+  "role": "Executor",
+  "base": "e00ca51d05f4e451441cb9fc267579a7f9e4d4ce",
+  "barrier": "actual direct Coordinator explicit start message, after packet verification",
+  "sibling_output_read": false
+}

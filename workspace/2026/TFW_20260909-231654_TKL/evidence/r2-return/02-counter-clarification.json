@@ -1,0 +1,27 @@
+{
+  "observed_at": "2026-09-13T20:37:49.695546+00:00",
+  "source": "../r2-native/06-stop-diagnosis.json",
+  "original_failure_remains": "../r2-native/op-03-failure.json",
+  "corrected_interpretation": "Only LF differs in40 records: original counts bare LF, failed observer counts every LF byte including CRLF. CR and CRLF agree. Complete bytes/size/raw Git identities match all2317 files.",
+  "first_difference": {
+    "path": ".tfw/update_receipts/knowledge-lifecycle/c3b0580ad155738e2db99b38577df3477fddafa0078fb5f4d256ce94d87b41cb/old-intended.zip",
+    "expected_original_eol": {
+      "CRLF": 9,
+      "LF": 2134,
+      "CR": 2236
+    },
+    "observer_eol": {
+      "CRLF": 9,
+      "LF": 2143,
+      "CR": 2236
+    },
+    "actual_CR_bytes": 2245,
+    "actual_CRLF_pairs": 9,
+    "actual_LF_bytes": 2143,
+    "all_byte_and_Git_identities_equal": true
+  },
+  "earlier_CR_hypothesis": "Preserved original06-stop-diagnosis meaning was incorrect;08-stopped-result explicitly records explanation=false. Operator9 independently parsed the sealed comparison data and established LF-only disagreement.",
+  "native_attempt_status": "STOPPED; diagnosis is not a retry, continued observation or successful native update",
+  "receiver_access_in_this_clarification": false,
+  "no_NEW_effects_or_native_build_or_repeat": true
+}

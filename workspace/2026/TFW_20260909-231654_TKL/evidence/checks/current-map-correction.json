@@ -1,0 +1,10 @@
+{
+  "observed_utc": "2026-09-13T11:03:22.011560+00:00",
+  "scope": "approved whole KNOWLEDGE.md VALUE path; correct current Architecture Map Knowledge row before first Candidate",
+  "old_sha256": "c633bb3e7a0d622285bc7ecd2ce5a011350e8d4a5e8967d0db223046f6c061ad",
+  "new_sha256": "3fa4a662613e9c4409cc87a92237eeaf5cbf36291067badd2630f8d933609b21",
+  "initial_preservation": "original unchanged; initial intended entry is now a prior working generation, not silently rebound",
+  "source_epoch": "11-full/source-before.json and zip preserve preceding bytes",
+  "legacy": "No D row/topic/source or inert state changed",
+  "authority": "exact approved TKL TS f69fd4099a21a07ae2d17e6b5108b04ac94f107e; ordinary implementation correction, not new acceptance"
+}

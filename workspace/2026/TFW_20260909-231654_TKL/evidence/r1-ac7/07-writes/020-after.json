@@ -1,0 +1,22 @@
+{
+  "observed_at": "2026-09-13T18:24:45.788719+00:00",
+  "sequence": 20,
+  "path": ".claude/commands/tfw-resume.md",
+  "actual": {
+    "bytes": 5740,
+    "sha256": "86e84db9dc66139579e80881b591f4e7f9fd970b56ec0b058f2b0576631e08fa",
+    "raw_git_blob": "5bc68ab5d3f9de4a52b1bb06b671a50c60a2d044",
+    "eol": {
+      "CRLF": 0,
+      "LF": 90,
+      "CR": 0
+    }
+  },
+  "equals_intended": true,
+  "immediate_source_authority": {
+    "source_identities": 122,
+    "authority_identities": 10,
+    "authority_batch_sha256": "0b47d6e18c8d425ce491f75f3d12311875fb9a88f9eca636e1d35fa2c050609e",
+    "attachment_sha256": "c3b0580ad155738e2db99b38577df3477fddafa0078fb5f4d256ce94d87b41cb"
+  }
+}

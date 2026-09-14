@@ -1,0 +1,1 @@
+HEAD is now at 27cdb70 [codex/TFW_20260909-231654_TKL/implementation/executor] implement selected team knowledge lifecycle

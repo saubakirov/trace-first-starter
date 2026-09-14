@@ -1,0 +1,40 @@
+...............................................s........................ [ 11%]
+........................................................................ [ 23%]
+........................................................................ [ 34%]
+........................................................................ [ 46%]
+........................................................................ [ 57%]
+........................................................................ [ 69%]
+..............F......................................................... [ 80%]
+........................................................................ [ 92%]
+...............................................                          [100%]
+================================== FAILURES ===================================
+______ test_phase_c_graphs_expose_dynamic_repeated_and_transitive_inputs ______
+
+    def test_phase_c_graphs_expose_dynamic_repeated_and_transitive_inputs():
+        candidate = SourceTree.from_path(PROJECT_ROOT)
+        graphs = {command: discover_read_graph(candidate, command) for command in RUNTIME_VARIANTS}
+        assert all(graphs.values())
+        assert all(any(edge.dynamic and not edge.charged and edge.heading == "@dynamic"
+                       for edge in graphs[command])
+                   for command in (*SECONDARY_COMMANDS, *LIFECYCLE_VARIANTS))
+        assert all(any(edge.repeat == "repeated" for edge in graphs[command])
+                   for command in (*SECONDARY_COMMANDS[:-1], *LIFECYCLE_VARIANTS))
+        required_transitive = {
+            "/tfw-resume": "<governing HL/TS/REVIEW/RF lineage>",
+            "/tfw-docs": "<selected status, journal, REVIEW, and RF>",
+            "/tfw-knowledge": "<pending task knowledge headings>",
+            "/tfw-release": "<DONE status and referenced task artifacts since tag>",
+            "/tfw-update": "<intervening changelog and migration ranges>",
+            "/tfw-config": "<affected installed adapter targets>",
+            "/tfw-init": "<selected research workflow and task artifacts>",
+        }
+        for command, source in required_transitive.items():
+>           assert any(edge.source == source and edge.dynamic and not edge.charged
+                       for edge in graphs[command])
+E           assert False
+E            +  where False = any(<generator object test_phase_c_graphs_expose_dynamic_repeated_and_transitive_inputs.<locals>.<genexpr> at 0x000001E5DEF229B0>)
+
+docs\scripts\test_runtime_context.py:2402: AssertionError
+=========================== short test summary info ===========================
+FAILED docs/scripts/test_runtime_context.py::test_phase_c_graphs_expose_dynamic_repeated_and_transitive_inputs
+1 failed, 621 passed, 1 skipped in 510.06s (0:08:30)

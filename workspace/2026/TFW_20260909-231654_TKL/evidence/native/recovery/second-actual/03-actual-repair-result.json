@@ -1,0 +1,38 @@
+{
+  "cut_created_at": "2026-09-13T11:56:18.465482+00:00",
+  "repair_at": "2026-09-13T11:56:18.718288+00:00",
+  "completed_at": "2026-09-13T11:56:36.795121+00:00",
+  "unit": "01a09974-6716-7cc0-9916-fd6d04c91481",
+  "authority": "f70037d94c975fe889eaab9bf17ee18e26608137 / journal/20260913-164842__dispatch__6f91.md",
+  "decision": "One field restored only after exact physical carrier, source, authority, accepted effect, dependencies and independent acceptance checks. Stop after validation.",
+  "old_sha256": "c4bc55418a480f6fc7bb4277c656abe149ca6a262c5903a80296aa3f0b8e7875",
+  "cut_sha256": "6c3cd6e16dfe37eb90660e6c597eda85cb1349013a70cdd139f197c182d50ac8",
+  "restored_sha256": "c4bc55418a480f6fc7bb4277c656abe149ca6a262c5903a80296aa3f0b8e7875",
+  "cut_schema_errors": [
+    "lifecycle is terminal (DONE) but outcome is absent"
+  ],
+  "proposed_full_validation": {
+    "schema_errors": [],
+    "body_exact": true,
+    "authority_path": "C:\\Users\\c0rpa\\AppData\\Local\\Temp\\TFW_TKL_NATIVE_01a09a0c\\recovery-2\\cut\\workspace\\2026\\TFW_20260907-020729_SLC\\HL-TFW_20260907-020729_SLC.md",
+    "authority_sha256": "ef97fe425b047ad8d48173a8b92d1cfec316e182a5c22f4911d3a27461ddbb47",
+    "owner": "saubakirov",
+    "lifecycle": "DONE"
+  },
+  "post_full_validation": {
+    "schema_errors": [],
+    "body_exact": true,
+    "authority_path": "C:\\Users\\c0rpa\\AppData\\Local\\Temp\\TFW_TKL_NATIVE_01a09a0c\\recovery-2\\cut\\workspace\\2026\\TFW_20260907-020729_SLC\\HL-TFW_20260907-020729_SLC.md",
+    "authority_sha256": "ef97fe425b047ad8d48173a8b92d1cfec316e182a5c22f4911d3a27461ddbb47",
+    "owner": "saubakirov",
+    "lifecycle": "DONE"
+  },
+  "whole_repository_files_compared": 2290,
+  "final_differences_from_pristine": [],
+  "event_before_after_sha256": "ae1e10e71d9d6249244dc52c873fc743cb3f96807db2e341c4e85f4c1f08181b",
+  "events_written": 0,
+  "new_publications": 0,
+  "new_acceptance": false,
+  "original_first_failed_epoch": "untouched; recovery-2 is a separately authorized faithful preparation/completion",
+  "limits": "Prepared cut is not an observed interruption. Exact accepted SLC receiver, not live SLC/current TKL output. No status timestamp/transition invented; actual present repair time recorded here."
+}

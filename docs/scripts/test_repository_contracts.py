@@ -4,6 +4,7 @@ These tests neither import the output-test module nor require generated site/.
 Historical selectors retain the paths belonging to their pinned deliverables.
 """
 
+import ast
 import hashlib
 import re
 import shutil
@@ -23,7 +24,7 @@ def test_slc_clean_default_release_composition_and_registered_copies():
     assert config['installed_from'] == 'unrecorded'
     installed = yaml.safe_load((PROJECT_ROOT/'.tfw/project_config.yaml').read_text(encoding='utf-8'))['tfw']
     assert installed['task_containers'] == ['workspace'] and installed['historical_containers'] == ['tasks']
-    assert installed['version'] == config['version'] == (PROJECT_ROOT/'.tfw/VERSION').read_text().strip() == '3.3.0'
+    assert installed['version'] == config['version'] == (PROJECT_ROOT/'.tfw/VERSION').read_text().strip()
     quickstart = (PROJECT_ROOT/'.tfw/quickstart.md').read_text(encoding='utf-8')
     for excluded in ('project_config.yaml','knowledge_state.yaml','update_receipts/','.upstream/','team/','knowledge/'):
         assert excluded in quickstart
@@ -44,7 +45,8 @@ def test_slc_history_gate_and_resume_guards_precede_current_work():
     resume = (PROJECT_ROOT/'.tfw/workflows/resume.md').read_text(encoding='utf-8')
     assert resume.index('**Historical read:**') < resume.index('For an explicitly selected closing/recovery request')
     assert 'stop read-only before phase selection' in resume
-    knowledge = (PROJECT_ROOT/'.tfw/workflows/knowledge.md').read_text(encoding='utf-8')
+    # Retired SLC gate vectors retain their actual pre-TKL source.
+    knowledge = _git_bytes('ec91c56007c20cda79f740fec15c85e4af74d17c', '.tfw/workflows/knowledge.md').decode('utf-8')
     assert knowledge.index('incomplete container migration') < knowledge.index('1. Semantically parse')
     assert 'never historical containers' in knowledge and 'state last' in knowledge
 
@@ -923,12 +925,13 @@ def test_every_project_owned_payload_file_is_excluded_from_the_copy():
 
     `cp -r` of the payload overwrote a consumer's `project_config.yaml` with the framework's
     own (`name: my-project`) and its `knowledge_state.yaml` with the framework's consolidation
-    state. The list is derived from the payload, not typed: every root `.yaml` with a
-    template counterpart is project-owned.
+    state. Active config is derived from template counterparts; the retired knowledge
+    state remains project-owned despite having no fresh-install template.
     """
     payload = PROJECT_ROOT / ".tfw"
     owned = {p.name for p in payload.glob("*.yaml")
              if (payload / "templates" / p.name).exists()}
+    owned |= {"knowledge_state.yaml"} if (payload / "knowledge_state.yaml").exists() else set()
     assert owned == PROJECT_OWNED_PAYLOAD_FILES, (
         "the payload's project-owned files changed; update the exclusion list in update.md "
         "Step 5 and this registry together: " + ", ".join(sorted(owned)))
@@ -1032,7 +1035,7 @@ PAYLOAD_PATH_FORMS = (
 def _bare_file_targets(payload):
     index = {}
     for f in payload.rglob("*"):
-        if f.is_file() and ".upstream" not in f.parts:
+        if f.is_file() and not {".upstream", "update_receipts"}.intersection(f.parts):
             index.setdefault(f.name, []).append(f)
     return index
 
@@ -1045,7 +1048,7 @@ def payload_path_findings():
     for f in sorted(payload.rglob("*")):
         if not f.is_file() or f.suffix not in {".md", ".yaml", ".yml", ".template"}:
             continue
-        if ".upstream" in f.parts:
+        if {".upstream", "update_receipts"}.intersection(f.parts):
             continue
         rel = f.relative_to(payload).as_posix()
         if rel in PAYLOAD_PATH_EXEMPT:
@@ -1783,7 +1786,7 @@ RTPSN_MODE_MARKERS = {
     "init": ("Full-init: after-item4/before-item5.", "Attach/repair:"),
 }
 RTPSN_ORDER_ANCHORS = {
-    "plan-existing": ("## Step 1: Load context", "### Session identity checkpoint", "## Step 2: Knowledge Gate"),
+    "plan-existing": ("## Step 1: Load context", "### Session identity checkpoint", "## Step 2: Selected Current Knowledge"),
     "plan-new": ("**The whole directory name is the identifier.**", "3. **Apply session identity.**", "4. **Write the task's own state"),
     "research": ("Resume from first missing stage.", "## Session identity checkpoint", "## Who Is Acting"),
     "handoff": ("## Read Contract", "## Session identity checkpoint", "## Who Is Acting"),
@@ -2905,6 +2908,9 @@ def test_rtpsn_phase_b_codex_manifest_roots_phase_a_cratm_and_project_routes_are
 
 # RWNR Phase A assurance. These models prove retirement preconditions without changing the live
 # eleven-command manifest or any Resume path; Phase B still owns the real versioned migration.
+# Phase-A REVIEW sections 4.2 and 6.3 pin this historical scope oracle.
+# workspace/TFW_20260913-151442_RWNR/phase-a/REVIEW__phase-a__continuation_responsibilities.md
+RWNR_ACCEPTED_PHASE_A = "ddb6fc4a1ab528525abd1020ee2fb562d4e10f65"
 RWNR_ACCOUNTING_BASELINE = "f6e85aa898061779c6b37bba34dc97e28c76f01f"
 RWNR_HISTORY_BASELINE = "a2363fd07253ca92410db149b4301432de79be3b"
 RWNR_VALUE_PATHS = (
@@ -3305,7 +3311,7 @@ def rwnr_history_record(candidate_ref: str | None = None) -> dict[str, object]:
 
 
 def test_rwnr_phase_a_accounting_parity_scope_and_boundaries_are_exact():
-    record = rwnr_accounting_record()
+    record = rwnr_accounting_record(RWNR_ACCEPTED_PHASE_A)
     assert record["baseline_operands"] == {"plan": 2021, "resume": 716, "total": 2737}
     assert record["baseline_blobs"] == {
         "plan": "81f7d78bd7f270871bc4ee325789a3f457059812",
@@ -3372,8 +3378,121 @@ def test_rwnr_phase_a_history_manifest_aggregates_and_mutants_are_exact():
 
 
 def test_rwnr_phase_a_resume_and_live_retirement_paths_are_unchanged():
-    changed = set(_rwnr_changed_paths())
+    changed = set(_rwnr_changed_paths(RWNR_ACCEPTED_PHASE_A))
     forbidden = {path for path in changed if re.search(r"resume", path, re.IGNORECASE)}
     assert forbidden == set()
-    assert _git_bytes(RWNR_ACCOUNTING_BASELINE, ".tfw/workflows/resume.md") == (
-        PROJECT_ROOT / ".tfw/workflows/resume.md").read_bytes()
+    assert _git_bytes(RWNR_ACCOUNTING_BASELINE, ".tfw/workflows/resume.md") == _git_bytes(
+        RWNR_ACCEPTED_PHASE_A, ".tfw/workflows/resume.md")
+TKL_BASELINE = "ec91c56007c20cda79f740fec15c85e4af74d17c"
+
+
+def _tkl_current_gate_claims(sources):
+    """Select current descriptions, not historical D rows, guides or code vectors."""
+    rows = [line for line in sources["KNOWLEDGE.md"].splitlines()
+            if line.startswith("| Task Storage |")]
+    assert len(rows) == 1, "current Task Storage row must resolve uniquely"
+    conventions = sources[".tfw/conventions.md"]
+    heading = "### Where tasks live\n"
+    assert conventions.count(heading) == 1, "current location contract must resolve uniquely"
+    location = conventions.split(heading, 1)[1].split("\n### ", 1)[0]
+    description = ast.get_docstring(ast.parse(sources["tools/tfw_state.py"]))
+    assert description, "maintained tool must retain its module description"
+    return {"KNOWLEDGE.md": rows[0], ".tfw/conventions.md": location,
+            "tools/tfw_state.py": description}
+
+
+def _tkl_active_gate_claims(sources):
+    errors = []
+    for path, text in _tkl_current_gate_claims(sources).items():
+        # An explicit retirement statement is legitimate current prose. A separate
+        # active claim cannot borrow its retirement marker from a neighbouring sentence.
+        for sentence in re.split(r"[.!?](?:\s+|$)", " ".join(text.split())):
+            if re.search(r"\bgate\b", sentence, re.I) and not re.search(
+                    r"\b(?:retired|no longer|inert historical)\b", sentence, re.I):
+                errors.append((path, sentence))
+    return errors
+
+
+def test_tkl_current_descriptions_retire_gate_without_banning_history():
+    paths = ("KNOWLEDGE.md", ".tfw/conventions.md", "tools/tfw_state.py")
+    sources = {path: (PROJECT_ROOT / path).read_text(encoding="utf-8") for path in paths}
+    assert not _tkl_active_gate_claims(sources)
+    # These accepted historical occurrences must remain readable, not cleaned away.
+    for identity in ("D82", "D87"):
+        original = next(line for line in _git_bytes(TKL_BASELINE, "KNOWLEDGE.md")
+                        .decode("utf-8").splitlines() if line.startswith(f"| {identity} |"))
+        assert original in sources["KNOWLEDGE.md"] and "gate" in original.lower()
+    retired = dict(sources)
+    retired[".tfw/conventions.md"] = retired[".tfw/conventions.md"].replace(
+        "### Where tasks live\n", "### Where tasks live\n\nThe Knowledge Gate is retired.\n", 1)
+    assert not _tkl_active_gate_claims(retired)
+    mixed = dict(retired)
+    mixed[".tfw/conventions.md"] = mixed[".tfw/conventions.md"].replace(
+        "The Knowledge Gate is retired.",
+        "The Knowledge Gate is retired. The Knowledge Gate searches active paths.", 1)
+    assert _tkl_active_gate_claims(mixed), "retirement cannot excuse a separate active claim"
+    # The very same original claim is invalid when restored to its current carrier.
+    old = {path: _git_bytes(TKL_BASELINE, path).decode("utf-8") for path in paths}
+    old_claims, current_claims = _tkl_current_gate_claims(old), _tkl_current_gate_claims(sources)
+    for path in paths:
+        mutant = dict(sources)
+        if path == "tools/tfw_state.py":
+            mutant[path] = old[path]  # AST reads only its docstring, never imports old code.
+        else:
+            mutant[path] = mutant[path].replace(current_claims[path], old_claims[path], 1)
+        assert any(offender == path for offender, _ in _tkl_active_gate_claims(mutant)), path
+
+
+def test_tkl_self_adoption_preserves_real_legacy_and_source_epochs():
+    old = _git_bytes(TKL_BASELINE, "KNOWLEDGE.md").decode("utf-8")
+    current = (PROJECT_ROOT / "KNOWLEDGE.md").read_text(encoding="utf-8")
+    current_map = next(line for line in current.splitlines() if line.startswith("| Knowledge |"))
+    assert "state last" not in current_map and "pending/digest gate is retired" in current_map
+    for line in old.splitlines():
+        if line.startswith("| D"):
+            assert line in current
+    paths = subprocess.check_output(["git", "ls-tree", "-r", "--name-only", TKL_BASELINE, "--", "knowledge/"], cwd=PROJECT_ROOT, text=True).splitlines()
+    for path in paths:
+        assert (PROJECT_ROOT / path).read_text(encoding="utf-8") == _git_bytes(TKL_BASELINE, path).decode("utf-8")
+    preserved = next((PROJECT_ROOT / ".tfw/update_receipts/knowledge-lifecycle").glob("*/preservation.json"))
+    assert hashlib.sha256(preserved.read_bytes()).hexdigest() == preserved.parent.name
+    assert (preserved.parent / "before/.tfw/knowledge_state.yaml").read_bytes() == (PROJECT_ROOT / ".tfw/knowledge_state.yaml").read_bytes()
+    for path in (".tfw/project_config.yaml", ".tfw/templates/project_config.yaml"):
+        assert "knowledge" not in yaml.safe_load((PROJECT_ROOT / path).read_text(encoding="utf-8"))["tfw"]
+    assert not (PROJECT_ROOT / ".tfw/templates/knowledge_state.yaml").exists()
+    assert not (PROJECT_ROOT / ".cursor").exists()
+
+
+@pytest.mark.parametrize("adapter", sorted(EXPECTED_PERSISTENT_TARGETS))
+def test_tkl_clean_adapter_copy_and_repeat_preserve_selected_contract(tmp_path, adapter):
+    receiver = tmp_path / adapter
+    _install_from_manifest(receiver, adapter)
+    before = {p.relative_to(receiver): p.read_bytes() for p in receiver.rglob("*") if p.is_file()}
+    _sync_from_manifest(receiver, adapter)
+    assert {p.relative_to(receiver): p.read_bytes() for p in receiver.rglob("*") if p.is_file()} == before
+    manifest = _adapter_manifest()
+    for command in ("plan", "knowledge", "docs", "handoff", "review", "resume", "init", "update", "config", "research"):
+        target = receiver / _expand(manifest["adapters"][adapter]["commands"]["target"], command)
+        text = target.read_text(encoding="utf-8")
+        if adapter == "codex":
+            assert manifest["commands"][command]["workflow"] in text
+        else:
+            assert text == (PROJECT_ROOT / manifest["commands"][command]["workflow"]).read_text(encoding="utf-8")
+    assert not (receiver / ".tfw/knowledge_state.yaml").exists()
+
+
+def test_tkl_record_source_and_authority_are_actual_not_file_presence():
+    text = (PROJECT_ROOT / "knowledge/records/TKL-20260913-01.md").read_text(encoding="utf-8")
+    for field in ("Record identity", "Publication intent", "Kind", "Statement", "Applicability",
+                  "Grounds and uncertainty", "Disposition", "Source", "Originating task and unit",
+                  "Producer", "Qualifier", "Acceptance authority", "Relations"):
+        assert f"| {field} |" in text
+    approval = "2794cbdb40f6c4f3a7d4bce1f8d4eb949d9e6913"
+    source = "workspace/2026/TFW_20260909-231654_TKL/journal/20260913-141400__handoff__8c2a.md"
+    assert approval in text and _git_bytes(approval, source)
+    assert _git_bytes(approval, "workspace/2026/TFW_20260909-231654_TKL/TS__TFW_20260909-231654_TKL.md")
+    for identity in ("d37", "d82", "d86", "d87"):
+        assert f"../../KNOWLEDGE.md#{identity}" in text
+    with pytest.raises(subprocess.CalledProcessError):
+        _git_bytes(approval, "knowledge/records/fabricated-source.md")
+    assert "no new verdict" in text and "No implementation success" in text

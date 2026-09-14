@@ -1,0 +1,155 @@
+{
+  "observed_at": "2026-09-13 22:10:18 UTC",
+  "kind": "Coordinator preflight admission and exact conditional-grant pin, not independent native acceptance",
+  "producer": {
+    "principal": "robert",
+    "unit": "01a09974-6716-7cc0-9916-fd6d04c91481",
+    "parent": "01a08161-79d3-7472-a01e-8cdc957ee951",
+    "for": "saubakirov"
+  },
+  "grant": {
+    "commit": "a54fa27cb9fd7aa78000e586fd3922b2c9e40cd4",
+    "event": "journal/20260914-023917__dispatch__c4e1.md",
+    "bytes": 3735,
+    "sha256": "1ab2f0441ac21db948d01a2af93aae752cf3a2c3f8196e83e4e04671bb0f0dbf",
+    "refs": 4,
+    "tsBlob": "f69fd4099a21a07ae2d17e6b5108b04ac94f107e",
+    "owner": "saubakirov",
+    "a2MandateVerified": true,
+    "grantTreeStatus": "older ONB epoch updated 20260913-150236; not imported as current state. Exact grant names b523 current condition; governing operational state from dispatch/R3 actual Executor acceptance.",
+    "preflight": {
+      "seconds": 600,
+      "operations": 12,
+      "deductions": 0
+    },
+    "native": {
+      "seconds": 1800,
+      "operations": 24,
+      "deductions": 0,
+      "retry": false,
+      "conditionalOn": "Successful preflight and exact Coordinator pin"
+    }
+  },
+  "ruling": "1d36cdfd2d7d483a63e1602acab4ac0cae604b12",
+  "checkpoint": "5662e41af386bad9a3644b0eedb71db4079dfcab",
+  "candidate": "a99ba6cd756a7db444f217aef4e5a0eb83faee51",
+  "baseline": "ec91c56007c20cda79f740fec15c85e4af74d17c",
+  "checked": {
+    "checkpointFiles": 15,
+    "fullChainFiles": 20,
+    "declaredHashes": 14,
+    "allPhysicalGit": true,
+    "fullInventory": 880,
+    "classes": {
+      "VALUE": 58,
+      "ASSURANCE": 8,
+      "TRACE": 814
+    },
+    "sources": 15,
+    "authority": 13,
+    "targets": 4,
+    "mapCount": 2317,
+    "unchangedOld65": true,
+    "controlRefs": 7,
+    "onbBlob": "f1bd10a9664ddfd1deb4aa02139c34092162ecd2",
+    "onbBytes": 79703,
+    "onbSHA": "5ffa47874813c4531050be96468e2d149311ace6c80f88df2ad35be975b88416",
+    "schemaSHA": "dbdb04cd142bb29fac3ce7c74cd7b37ffbac4ec34012325066152ec7735a3b38",
+    "sourceAuthoritySHA": "dd6dfe034ee4ab6a0c1d32300f81ce038ea7f381f6ec9e592c2cc1cb68655c8e",
+    "validationSHA": "7cbe08d00a27a7e2974e70cb1d6ce3929d0ce388304672161fa7cb571d2d5f0f"
+  },
+  "preflight": {
+    "start": "2026-09-13T21:49:18Z",
+    "deadline": "2026-09-13T21:59:18Z",
+    "ceiling_seconds": 600,
+    "ceiling_calls": 12,
+    "deductions": 0,
+    "actual_calls": 8,
+    "commit_completed_at": "2026-09-13T21:56:36.809590Z",
+    "verification_at": "2026-09-13T21:57:40.007042Z",
+    "reported_direct_return_seconds": 584.103,
+    "entire_Executor_turn_completed_at": "2026-09-13T21:59:09Z",
+    "independent_upper_bound_seconds": 591,
+    "meaning": "Completed send tool and entire producing turn finished before the preflight deadline. Exact 584.103-second send timing is the Executor's report; provider whole-turn completion independently bounds the return at 591 seconds.",
+    "outcome": "SUCCESS, receiver-free only",
+    "observer_run_count": 1,
+    "observer_unchanged_after_run": true,
+    "observer_file_read_in_full": true,
+    "all_file_map_read_and_compared": 2317,
+    "binary_witness": {
+      "bytes": 15,
+      "hex": "00410d0a420a430d440d0aff450a0d",
+      "eol": {
+        "CRLF": 2,
+        "LF": 2,
+        "CR": 2
+      }
+    },
+    "intake": {
+      "seconds": 245.35991,
+      "calls": 13,
+      "archive_observer_receiver_work": false
+    },
+    "limits": [
+      "Intake heading-selector failure was corrected before durable acceptance/preflight; actual numbered Task Statuses heading exists.",
+      "Preflight operation 2 and some metadata reads exceeded transport display; full comparison map and actual launch streams are persisted. Read-only metadata display is not full raw custody.",
+      "read_thread exposes the six preflight exec records and completed direct message; original clock is retained in committed 00-clock.json, not separately exposed by this API projection. No hidden timestamp is invented.",
+      "No receiver or physical tree/file observation occurred in preflight. The native attempt and its effects remain unobserved."
+    ]
+  },
+  "pin": {
+    "observer": {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/r3-preflight/observer.py",
+      "bytes": 6164,
+      "sha256": "515fa7513171ba663f784982df23a994e3052370081381022cdf808fd0e5dd48",
+      "blob": "8e447323fc26f0ff3510f8b32f0148e88d170c84"
+    },
+    "schema_sha256": "dbdb04cd142bb29fac3ce7c74cd7b37ffbac4ec34012325066152ec7735a3b38",
+    "source_authority_target_sha256": "dd6dfe034ee4ab6a0c1d32300f81ce038ea7f381f6ec9e592c2cc1cb68655c8e",
+    "archive": {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/r2-native/06-partial-physical.zip",
+      "commit": "1a0a37c443fe0d762a1396f1354d93ac08391637",
+      "sha256": "7ac460d99dbf9c39ca51d969ae03292d6652d2b6584c227fe2e8d45d795b2f42",
+      "members": 2317
+    },
+    "positive_map": {
+      "commit": "6b0d5c748d51c55c7c22147799cdb70131c22049",
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/r1-ac7/14-repeat-before-map.json",
+      "sha256": "f0377bc0d2bbc3f4a420b712733e8df042c1356535468139295f64635759c45c"
+    },
+    "receiver_repository_root": "C:/Users/c0rpa/AppData/Local/Temp/TFW_TKL_NATIVE_01a09a0c/self-adoption-r3",
+    "root_not_accessed_by_Coordinator": true,
+    "root_nonexistence_is_first_native_guard": true,
+    "current_ONB": {
+      "commit": "5662e41af386bad9a3644b0eedb71db4079dfcab",
+      "blob": "f1bd10a9664ddfd1deb4aa02139c34092162ecd2",
+      "bytes": 79703,
+      "sha256": "5ffa47874813c4531050be96468e2d149311ace6c80f88df2ad35be975b88416"
+    },
+    "current_status": {
+      "lifecycle": "ONB",
+      "sha256": "4f9aa165983bc138d3c14153a09c5b58d09a53681638d9cdc87bc87a52dda927"
+    },
+    "native": {
+      "elapsed_seconds": 1800,
+      "underlying_invocations": 24,
+      "deductions": 0,
+      "retry": false,
+      "start_clock": "not yet read; actual next start after this immutable pin",
+      "planned_phase_calls": 18,
+      "reserve_calls": 6,
+      "scope": "Only selected26/55/57 and single installed_from scalar corresponding56/58 after checks, applicable output, one completed zero-write repeat; no full replay or old receiver access"
+    },
+    "identity_notes": [
+      "Use verified_old_identity and verified_intended_identity from the exact source/target schema for effect comparisons. They consistently use lowercase eol; historical proposed/EOL spelling is an alias, not byte drift.",
+      "Read immutable historical source rows at their named epoch; do not compare old REVIEW/ONB whole-file hashes against legitimate current appended carriers.",
+      "Current complete ONB is pinned here, preserving the original 9e66498 acceptance as a prefix. Later authorized append-only return records never retroactively alter the historical source oracle.",
+      "Never rerun observer preflight mode after its deadline. Native file/tree modes or import of its exact observe_bytes function require actual existence/cardinality/safe-path/source/authority guards; no empty tree is success.",
+      "Native clock covers creation of any one-off native orchestration driver, receiver preparation/application/output/repeat/raw sealing/commit/direct return. File-based short launches and all actual tool calls/inner subprocesses are recorded."
+    ]
+  },
+  "lifecycle": "ONB",
+  "new_Coordinator_product_or_receiver_effect": false,
+  "independent_ACCEPT": false,
+  "capture_DONE_release_push": false
+}

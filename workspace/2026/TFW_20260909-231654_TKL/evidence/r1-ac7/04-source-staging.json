@@ -1,0 +1,101 @@
+{
+  "observed_at": "2026-09-13T18:18:10.051973+00:00",
+  "argv": [
+    "git",
+    "-c",
+    "core.longpaths=true",
+    "-C",
+    "C:\\Users\\c0rpa\\AppData\\Local\\Temp\\TFW_TKL_NATIVE_01a09a0c\\self-adoption-r1",
+    "archive",
+    "--format=tar",
+    "65c3c94b2347c69f6d21ac2e2664a39ef46b3ae2"
+  ],
+  "candidate": "65c3c94b2347c69f6d21ac2e2664a39ef46b3ae2",
+  "source_root": "C:\\Users\\c0rpa\\AppData\\Local\\Temp\\TFW_TKL_NATIVE_01a09a0c\\self-adoption-r1\\.tfw\\.upstream",
+  "tar_sha256": "bf077bca6fb7352c772a1aa0971203536b9073240fd8de9683f733216a57383f",
+  "tar_bytes": 84705280,
+  "members": 3357,
+  "required_source_files": {
+    ".tfw/workflows/update.md": {
+      "bytes": 18922,
+      "sha256": "4df00bea1d0eb8e229e830e974b9de5c72e2c9bd41bc808cdb0d348a6ea1379a",
+      "raw_git_blob": "a4187ba20b1ad36576a552fd3cb85730769eddb4",
+      "eol": {
+        "CRLF": 0,
+        "LF": 279,
+        "CR": 0
+      }
+    },
+    ".tfw/migrations/knowledge-lifecycle.md": {
+      "bytes": 8858,
+      "sha256": "2ce771e0415aab0c63b011d44d613304566fdeb41dfd97954f45dc34da3c8da3",
+      "raw_git_blob": "03a5ba4e6cd08cd0c25e7cb7b09bcbd724fe43d8",
+      "eol": {
+        "CRLF": 0,
+        "LF": 111,
+        "CR": 0
+      }
+    },
+    ".tfw/migrations/3.3.0.md": {
+      "bytes": 11783,
+      "sha256": "d544442538eef8000885700ac379ee4f9fbf3d112757aa8bcf21a46ac969e44c",
+      "raw_git_blob": "8a8c8cc1c3f2054ff71d5b119a3a6a8e494e75e4",
+      "eol": {
+        "CRLF": 0,
+        "LF": 141,
+        "CR": 0
+      }
+    },
+    ".tfw/adapters/manifest.yaml": {
+      "bytes": 2179,
+      "sha256": "db11326ea8089069ea54880063fea07ec42d8bd2084fdb1604c63d67cbe2beb1",
+      "raw_git_blob": "752e22ae03c9d1d85949a09111b019f3ec192d0e",
+      "eol": {
+        "CRLF": 0,
+        "LF": 86,
+        "CR": 0
+      }
+    },
+    ".tfw/templates/update_receipt.md": {
+      "bytes": 3660,
+      "sha256": "7ff319944d89ad227ac2b7bf42af74f2a8ae81a12cd6f53582f4f258380ba9ca",
+      "raw_git_blob": "097aab2eebabe2ada5288619722e8980f76758d3",
+      "eol": {
+        "CRLF": 0,
+        "LF": 79,
+        "CR": 0
+      }
+    },
+    ".tfw/templates/briefing.md": {
+      "bytes": 1670,
+      "sha256": "8a25e1fc8a4dcf7a7c40f49ba64925e9966724d42314b9c4a13215845dc9ed56",
+      "raw_git_blob": "c5eb17bf4c19aa6549dccb6b89086f553e458418",
+      "eol": {
+        "CRLF": 0,
+        "LF": 36,
+        "CR": 0
+      }
+    },
+    ".tfw/CHANGELOG.md": {
+      "bytes": 205552,
+      "sha256": "ac550a1c026c3fc5b3fc137bff7a896f5a7577ae64fc7a1b2bc603d0d4764d9f",
+      "raw_git_blob": "403776ef38da18df21a40d665c1ef75001993ff5",
+      "eol": {
+        "CRLF": 0,
+        "LF": 2505,
+        "CR": 0
+      }
+    },
+    ".tfw/VERSION": {
+      "bytes": 6,
+      "sha256": "5eee6c0c5c6901f5e523f0a434bca4106e1ff7136deb451f982b0bb1a7b13716",
+      "raw_git_blob": "15a279981720791464e46ab21ae96b3c1c65c3b6",
+      "eol": {
+        "CRLF": 0,
+        "LF": 1,
+        "CR": 0
+      }
+    }
+  },
+  "classification": "Diagnostic source staging only; project memory in this exact archive is excluded from application, no release or knowledge publication."
+}

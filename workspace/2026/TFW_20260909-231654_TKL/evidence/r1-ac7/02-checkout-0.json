@@ -1,0 +1,17 @@
+{
+  "argv": [
+    "git",
+    "-c",
+    "core.longpaths=true",
+    "-c",
+    "core.autocrlf=false",
+    "clone",
+    "--no-checkout",
+    "--shared",
+    "D:/projects/research/steps-framework/.git",
+    "C:\\Users\\c0rpa\\AppData\\Local\\Temp\\TFW_TKL_NATIVE_01a09a0c\\self-adoption-r1"
+  ],
+  "started_at": "2026-09-13T18:14:17.762842+00:00",
+  "finished_at": "2026-09-13T18:14:18.019641+00:00",
+  "exit": 0
+}

@@ -1,0 +1,23 @@
+{
+  "argv": [
+    "E:\\TEMP\\pttc-phase-a-b9b5\\venv\\Scripts\\python.exe",
+    "-m",
+    "pytest",
+    "docs/scripts/test_repository_contracts.py",
+    "docs/scripts/test_runtime_context.py",
+    "docs/scripts/test_update_experience.py",
+    "-q",
+    "-k",
+    "tkl or no_normative_file_states_a_retired_rule or no_adapter_file_states_a_retired_rule or installed_adapter_copies_match_their_sources"
+  ],
+  "cwd": "C:\\Users\\c0rpa\\.codex\\worktrees\\f3f3\\steps-framework",
+  "started_at": "2026-09-13T17:44:11.199480+00:00",
+  "finished_at": "2026-09-13T17:44:13.096534+00:00",
+  "exit": 0,
+  "input": "../03-input/source-before.json",
+  "environment_overrides": {},
+  "streams": {
+    "stdout.txt": "272748825dd168695f3204bf9d7489fccb27845723b4041585c479c2bfc0d7eb",
+    "stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "argv": [
+    "E:/TEMP/pttc-phase-a-b9b5/venv/Scripts/python.exe",
+    "tools/tfw_doctor.py",
+    "--root",
+    "C:\\Users\\c0rpa\\AppData\\Local\\Temp\\TFW_TKL_NATIVE_01a09a0c\\self-adoption-r1",
+    "knowledge-pending",
+    "--format",
+    "json"
+  ],
+  "cwd": "C:\\Users\\c0rpa\\AppData\\Local\\Temp\\TFW_TKL_NATIVE_01a09a0c\\self-adoption-r1",
+  "started_at": "2026-09-13T18:27:16.142961+00:00",
+  "finished_at": "2026-09-13T18:27:16.273584+00:00",
+  "exit": 0,
+  "stdout_sha256": "9de1bae58c25d5d3758e09ac31c20a27af8678790b4d568f98e48b98f165dc92",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "capture": "raw pipe bytes",
+  "source": "03-baseline-physical.json plus exact 55 reader effects and 56/57 semantic writes; no upstream project memory or ASSURANCE transplant"
+}

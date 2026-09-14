@@ -1,0 +1,427 @@
+# TS — TFW_20260907-020729_SLC / Phase A: Workspace default and compatible historical access
+
+> **Date**: 2026-09-09
+> **Author**: robert, separate Coordinator unit `01a08584-8bcf-7481-97a0-bd27d04dbb55`
+> **Status**: 🟡 TS_DRAFT — owner-ready proposal for SLC 3.3.0; exact TS/version/VALUE approval pending
+> **Parent HL**: [Frozen SLC HL](HL-TFW_20260907-020729_SLC.md), §§1/3–7 and signed A1/A2; freeze `9463a12c1762a928c2c14734762d34dd2eb50e65`
+> **Dispatch**: [Coordinator dispatch](journal/20260909-143800__dispatch__1cf6.md), committed in `ec00d05797a5bd0d0185b01cfde73cd562ceaffd`; direct continuation nonce `slc-plan-ec00d05`
+> **Current continuation**: [Final TS binding](journal/20260909-183956__dispatch__34c6.md), root control `26949a51bbd49b15e163c7fe7e3259cc7fa4c5ae`; nonce `slc-final-ts-binding`; planning/free-HL only. The accepted [post-PTTC return](journal/20260909-180906__dispatch__f7a3.md) and [N1 ruling](journal/20260909-150355__dispatch__6993.md) remain applicable
+> **Topology**: one Phase A, one root-level TS→RF cycle; no phase subfolder or second phase authority
+
+## 1. Objective
+
+New Full projects start in `workspace/` without choosing a task container. Existing projects keep their deliberate configuration; the temporary `[workspace, tasks]` arrangement retires an established historical-only second container without moving history, reopening old work, or breaking the Knowledge Gate. Readers, migration, this repository, and the release route supply that result together.
+
+The LEAD accepted both completed [iteration 1 RES](research/iter1/RES.md) and [iteration 2 RES](research/iter2/RES.md) as sufficient planning input. Their original single-agent provenance remains historical; their earlier non-AT assumption is not an owner decision. No native delivery proof is inferred from their models. The owner waiver in HL §2 permits this planning despite the Knowledge Gate; it neither changes `gate_mode: hard`/interval `5` nor authorizes a general gate redesign.
+
+## 2. Scope
+
+### In Scope
+
+- Keep `tfw.task_containers` as the ordered active paths; add only optional `tfw.historical_containers` for retained history. No history key or folder in a new project.
+- Current task creation/discovery and the ordinary Knowledge Gate use active paths. Exact historical reading, initialized-project detection, and documentation use the ordered active-plus-historical reference union with whole-ID and collision semantics preserved.
+- Supported Full copy/template initialization, minimal current guidance, and history-only attach/repair detection.
+- One version-addressed compatible migration, reached by ordinary and equal-version update entry; exact digest reconciliation, immutable preservation evidence, and present-state recovery.
+- Apply the owner's existing historical disposition in this repository; preserve historical task bytes, knowledge, and unaffected state. Prepare the minimal release-ready payload and required copies in the same accepted result.
+- Source/consumer tests, disposable receiver exercises, independent review, and separate final release checks.
+
+### Out of Scope
+
+General archive management, a maintained registry, marker files, task relocation/copying/relabeling, another lifecycle, a runtime prerequisite, automatic historical continuation, full Knowledge Gate redesign, edits to external receiver repositories, Light/Assisted changes, broad README cleanup, publication/push, or edits to the saved checkout. Final local tagging is the LEAD's separately routed A2 effect after acceptance and release checks.
+
+### Drafting facts and approval gate
+
+Original drafting baseline: **`ec00d05797a5bd0d0185b01cfde73cd562ceaffd`**, containing accepted PTTC A (`65ff320fa520d96a857014b44cf1210012468560`). Current assessed post-B drafting source: **`231a3245710ec07cfe61112d2205b76d69ff1ac2`**. Root imported accepted B's product/landing receipt `108d2a883aaf57063e106a59605cb7393f184829` and terminal TRACE `f153b4ca2ad06fe8edc707c0f5c9fbdc8456b6fd`; both PTTC phases are DONE. The source includes landed D86 in KNOWLEDGE blob `440fac1419ab44905fc4b038603d2404eeb80d89`. These immutable objects and their actual carriers were read; they are not a PTTC release or the approved SLC execution Baseline. The template still says `[tasks]`; the owner's separate `[workspace]` edit supplies intended content, not permission to copy a dirty source tree.
+
+The original baseline's explicit `tasks` walk observed 53 whole task IDs, 42 directories without modern status, 53 matching remembered digest keys, and 11 unaffected keys. B did not change those task/config/digest inputs, so the observation remains applicable planning input without another walk. These are not fixed receiver counts or permission to prune by prefix. Recompute exact sets at the execution baseline.
+
+**PTTC dependency resolved:** its parent and both phases are DONE through `1e0565910ef261a778ae9a4b56ab5d50126f2331`, including the owner-authorized root knowledge closure without duplicate publication or global consolidation. The actual annotated `v3.2.0` has tag object **`5d72fbd61c5b02df2802e8b9a9415e70457ddb8b`**, checked commit **`d11eadf7476b04a4c7532fba21c9ba2f92dd4064`**, and tree **`8482669672901e3a98e6f76b49431c1a178bb7dc`**. Root integrated that commit into the isolated SLC tree; this Coordinator read the actual tag object and affected release inputs. Root's subsequent direct receipt reports completed PTTC owner-authorized merge/push/publication and root-verified local refs `master = origin/master = v3.2.0` at that same commit. This publication adds no product delta and changes no SLC Baseline or verification epoch. The saved checkout's uncommitted owner `[workspace]` template edit is excluded; the published template remains `[tasks]`. PTTC's publication authority does not authorize SLC push/publication or saved-checkout writes.
+
+**Concrete proposal for owner approval:** use immutable execution Baseline **`affd9033abf94e9b9a9e27114f3bfbb16066438a`** (tree `a46b2b2adc781160093e3eb322e929768df65ed4`), subsequent SLC version **`3.3.0`**, and literal guide **`.tfw/migrations/3.3.0.md`**. The next minor expresses the compatible new active/historical capability and fresh-project default while retaining existing choices; it is a proposed release decision under RELEASE.md §3, not an existing SLC release. The Baseline already contains accepted PTTC A/B, closure and the actual 3.2.0 release payload. Later planning/control commits do not replace this fixed measurement origin. Section 4 supplies all 24 literal VALUE paths and the prospective 24-file/556-LOC denominator. No external planning dependency remains; the real owner must still approve this exact TS/blob, version, selector and denominator before implementation. A subsequent approval trace binds the actual TS producer commit/blob and owner act; this draft supplies neither a self-referential approval SHA nor a future Candidate/tag.
+
+**Bounded release-delta assessment:** the actual PTTC release changes only `.tfw/VERSION`, the version value in each config, `.tfw/CHANGELOG.md`, and the new 104-line `.tfw/migrations/3.2.0.md`. All are inherited Baseline content. The three SLC version replacements were already included in rows 1/2/22; row 23 still adds the SLC entry above unchanged PTTC history. The existing 100-line guide forecast in row 24 covers the actual 3.2.0 predecessor route and the narrow successor to its preservation wording through §6, without duplicating older route tables or editing old guides. No new path or responsibility is introduced: **24 files / +393 −163 = 556 touched LOC** remains the reasoned prospective estimate, not a measured implementation or quota. No general consumer inventory, research, tests or fixtures were repeated for this release-only binding.
+
+### N1 resolved: same-role native Coordinator continuation
+
+Independent read-only preflight by Researcher unit `01a08584-bac9-74c0-a00c-1706aace2eeb` corrected the earlier Executor-only interpretation. The actual root's ruling is recorded in HL §8 and the current dispatch: `init`, `update`, `resume` and `plan` are Coordinator commands; AT permits a bounded continuation in the same role. Session identity explicitly accommodates a root across Plan/Resume. This is an in-bound A1 assignment, not an exception to the Executor's Role Lock, an additional unit, or an amendment. The earlier N1 authority-stop diagnosis is superseded; its original producer commit remains inspectable.
+
+**Operator and native method:** existing Coordinator **`01a08584-8bcf-7481-97a0-bd27d04dbb55`**, using this same Codex desktop task and its native file/shell tools, directly reads and follows the pinned fixture's applicable canonical workflow and ordered read contract. Commands run with the named disposable receiver as their explicit working directory. No CLI agent/helper, subagent, sibling dispatch, provider switch or synthetic workflow interpreter stands in for the acting agent. Reading a case script is input to a real run, not proof of its outcome.
+
+**Future start boundary:** the present planning assignment ends first. After exact TS/cost approval and accepted PTTC/release bindings, the root records a separate bounded native-fixture dispatch naming the immutable source/Candidate, each absolute disposable root, command/case, permitted receiver artifacts and exact stop/return. The same Coordinator re-resolves that dispatch and acts only within it. The existing Executor `01a08585-01f5-7101-b4a7-5155aaead0da` continues to own SLC ONB/RF/EV and indexes the Coordinator's actual receipts/observations after their direct return through root; Reviewer `01a08585-1e08-76b1-94fb-9498e4b57ba0` independently verifies them. No additional owner gate is introduced beyond the real exact TS approval; unresolved new real decisions return to root.
+
+**Fixture inputs, not real-owner decisions:** use clearly labeled synthetic receiver identity `slcfx-owner` and robert attribution, prefix `SLCFX`, Russian, Codex adapter, no tutorial/preferences, greenfield or prepared-configured state as named below. Init title/acronym: **Workspace Default Probe / WDP**; ordinary plan: **First Task Probe / FTP**. Scripted purpose is a disposable workspace/default probe with preservation and first-creation checks, not an application project. Synthetic profiles and receiver answers are recorded as test inputs; they never claim saubakirov approved these names or that a real init/research/review completed. Actual creation timestamps come from the clock and event tokens are drawn. Case inputs also name the established layout/disposition, synthetic keep-active response, and exact prepared before-images/digests. For NF-7, supply the scripted reply only after the actual grouped question is observed. An unexpected substantive question is returned to root rather than answered by invention.
+
+**Artifact and observation bounds:** NF-1 may install the Full payload through the supported acquisition route and perform init §§0–2: inspect the declared synthetic context, create template-derived config/state, the synthetic human profile, container, root route and first init task `status.md`/created event. Stop **before init §3 Research Gate**; a lifecycle token `RES` created by Mini-Setup is not a RES artifact or proof of research. NF-2 uses a separately labeled prepared configured receiver, not a claimed completed NF-1 project; it may create ordinary task status/journal/HL_DRAFT only and stops before HL approval, freeze, research or TS. Update cases may change only their allowed fixture payload/config/state/adapters and immutable receipts/preservation attachments; repair may install the selected managed adapter surfaces. Historical resume writes nothing. Existing synthetic agent attribution data, when needed, is explicit fixture preparation, not an agent-session profile created by init. No run creates RES/RF/REVIEW/DONE to fake completed setup, and no receiver artifact substitutes for an SLC role artifact.
+
+Mini-Setup's actual source creates config/container/task in §2 items 1/3/4 and the state/event in item 5, before §3; Full Setup §4 handles later knowledge/adapters/config finalization. Therefore NF-1 proves the changed acquisition/default/initial-creation effect, NF-2 proves ordinary first-task creation, and NF-4 proves actual adapter installation/repair. Source checks additionally verify that later Full Setup preserves the selected active default. Together these cover the SLC DoD-1 installation/default/first-task outcomes while making **no native claim that full init discovery, research or closure completed**. A concrete later-source overwrite or other uncovered SLC outcome must be reported, not excused by this boundary.
+
+### Finite native fixture matrix
+
+Each numbered case is one bounded fixture family, including only the listed repeats/variants; other combinations remain source/consumer/model checks. Record the source SHA, prepared before-state, scripted inputs, actual questions/actions, resulting bytes and stop point separately.
+
+| Case | Native action / receiver | Required observation | Boundary / AC |
+|---|---|---|---|
+| NF-1 | Greenfield supported Full acquisition + init through technical Mini-Setup | Clean payload, template-derived active `[workspace]`, no historical scaffold/container question, real first WDP task creation | Stop before init §3 research; no full-init DONE claim; AC-1/7 |
+| NF-2 | Ordinary plan in a separate prepared configured receiver | Actual FTP task creation in workspace with status/journal/HL_DRAFT, using the explicitly scripted title/acronym | No claimed completed-init history, HL approval/freeze, TS or research; AC-1 |
+| NF-3 | Existing `[tasks]` update and repeat | Choice and first creation path remain tasks; repeat does not replace it or ask again | Fixture update effects/receipts only; AC-2/8 |
+| NF-4 | History-only init attach/repair, then historical resume | State retained; selected Codex managed roots/11 commands actually installed or repaired; historical citation readable | Repair stops on its canonical return; resume has zero writes; AC-2/4/7 |
+| NF-5 | Exact `[workspace, tasks]` with absent and empty secondary storage, update and repeat | Determinate cases normalize without routine question; no spurious history scaffold or repeated effect | Two declared before-states, not arbitrary cases; unexplained digest refuses; AC-3/5 |
+| NF-6 | Established-history same-major migration, repeat and historical resume | Historical disposition retained, exact reconciliation, stable paths; no repeated transition/question | Update receipts retained; historical resume zero writes; AC-3/4/5/6/8 |
+| NF-7 | Unresolved secondary update, actual grouped question, scripted keep-active reply, repeat | Reachability preserved before choice; observed question is recorded; settled keep-active decision retained on repeat | Reply is synthetic input, not real-owner approval or expected output; AC-3 |
+| NF-8 | Prepared state-first cut, with later active changes, native retry | Completes only evidenced affected group and preserves later active values | Prepared interruption state, not an observed crash; AC-5 |
+| NF-9 | Prepared config-first/equal-version retry, then completed equal-version repeat | Guide reached despite equal version; exact recovery, then no repeated migration | Pin/disclose untagged Candidate; no invented release tag or crash; AC-5/8 |
+| NF-10 | Divergent affected-input native attempt | Concrete refusal; later project work and conflicting input remain intact | No whole-map/tree restore; AC-5 |
+
+## 3. Principles Check
+
+| # | HL §7 principle | Enforced by | Gate |
+|---|---|---|---|
+| P1 | Saint-Exupéry as a design test | AC-1, AC-3, AC-5, AC-9 | One optional list and existing update attachment/receipt; each touched surface has a job in §4 |
+| P2 | Default and project choice have different owners | AC-1–AC-3 | Preserved single/custom configurations and recorded dispositions; no routine container interview |
+| P3 | Historical access has a precise purpose | AC-4, AC-6, AC-7 | Actual readers/build plus historical byte comparison; no inferred lifecycle |
+| P4 | Use the existing update mechanism | AC-3, AC-5, AC-8 | Pinned guide reached before state effects, including equal-version recovery |
+| P5 | Ship the complete change | AC-1–AC-10 | One integrated result and independent review; no receiver-only follow-up phase |
+
+## 4. Affected Files and Value-Bearing Accounting
+
+Whole-path semantic classification applies. Shipped instructions, necessary reader code, receiver migration data, and release metadata are VALUE. Ordinary checks/fixtures are ASSURANCE; task decisions/results/evidence and preservation attachments are TRACE; generated site output is DERIVED. Location does not override purpose. No freehand line subtraction or hidden secondary budget applies.
+
+### Literal VALUE paths and prospective work
+
+Add/delete estimates are planning judgments for the named responsibility, not measured implementation diffs or line quotas. Copy estimates repeat their canonical source exactly; they spend the budget independently.
+
+| # | Literal path | Action | Adds | Deletes | Necessary result |
+|---|---|---|---:|---:|---|
+| 1 | `.tfw/templates/project_config.yaml` | MODIFY | 5 | 4 | `[workspace]` default/comments and proposed `tfw.version: 3.3.0`; no optional history scaffold |
+| 2 | `.tfw/project_config.yaml` | MODIFY | 6 | 6 | Active workspace, historical tasks, accurate comments/provenance and proposed `tfw.version: 3.3.0`; retain all unrelated project keys |
+| 3 | `.tfw/knowledge_state.yaml` | MODIFY | 0 | 53 | Remove only the observed affected historical digest pairs under the guide; preserve other state |
+| 4 | `.tfw/conventions.md` | MODIFY | 30 | 13 | Where tasks live/Discovery operation split and compatible migration route; align existing migration-guide pointers with version-addressed routing |
+| 5 | `.tfw/compilable_contract.md` | MODIFY | 6 | 6 | Source row 10 and resolver use reference union; stable source paths and `tasks/` output URLs |
+| 6 | `.tfw/quickstart.md` | MODIFY | 12 | 3 | Clean Full acquisition/template route, workspace default, preservation of configured projects |
+| 7 | `.tfw/workflows/init.md` | MODIFY | 13 | 6 | Distinguish fresh template setup from configured/history-only repair before state writes |
+| 8 | `.tfw/workflows/resume.md` | MODIFY | 10 | 3 | Exact historical access is read-only; ordinary current selection and continuation remain active-scoped |
+| 9 | `.tfw/workflows/knowledge.md` | MODIFY | 7 | 2 | Explicit active discovery and update-recovery prerequisite; bounded reference to migration exception, unchanged ordinary digest/state-last algorithm |
+| 10 | `.tfw/workflows/update.md` | MODIFY | 24 | 6 | Prescribed container/digest exception, same-version guide reachability, and connected-group ordering without duplicating the guide |
+| 11 | `tools/tfw_state.py` | MODIFY | 24 | 5 | Workspace fallback and small reference-union reader using existing walker; ordinary discovery remains active-only |
+| 12 | `docs/scripts/gen_docs.py` | MODIFY | 12 | 9 | All four consumer jobs: source globs, output mapping, hidden landings, reference resolution |
+| 13 | `tasks/README.md` | MODIFY | 13 | 12 | Container-level access explanation and corrected direct workspace link; retain historical migration claims as dated history |
+| 14 | `.claude/commands/tfw-init.md` | MODIFY | 13 | 6 | Manifest-registered exact copy of row 7 |
+| 15 | `.claude/commands/tfw-resume.md` | MODIFY | 10 | 3 | Manifest-registered exact copy of row 8 |
+| 16 | `.claude/commands/tfw-knowledge.md` | MODIFY | 7 | 2 | Manifest-registered exact copy of row 9 |
+| 17 | `.claude/commands/tfw-update.md` | MODIFY | 24 | 6 | Manifest-registered exact copy of row 10 |
+| 18 | `.agents/workflows/tfw-init.md` | MODIFY | 13 | 6 | Manifest-registered exact copy of row 7 |
+| 19 | `.agents/workflows/tfw-resume.md` | MODIFY | 10 | 3 | Manifest-registered exact copy of row 8 |
+| 20 | `.agents/workflows/tfw-knowledge.md` | MODIFY | 7 | 2 | Manifest-registered exact copy of row 9 |
+| 21 | `.agents/workflows/tfw-update.md` | MODIFY | 24 | 6 | Manifest-registered exact copy of row 10 |
+| 22 | `.tfw/VERSION` | MODIFY | 1 | 1 | Proposed SLC release identity `3.3.0`, replacing actual Baseline `3.2.0` |
+| 23 | `.tfw/CHANGELOG.md` | MODIFY | 22 | 0 | Outcome, compatibility, retired-norm successor, all-earlier-supported-tag and same-major/equal-version guide route |
+| 24 | `.tfw/migrations/3.3.0.md` | CREATE | 100 | 0 | One SLC guide: actual predecessor chain including 3.2.0, disposition/exact digest exception, preservation/retry/refusal, same-major/equal-version entry and bounded normative successors |
+
+All 24 paths are literal. Approval would authorize the proposed guide as part of this delivery; no guide or SLC release metadata is created during planning. The 3.2.0 guide and all older guides remain unchanged Baseline constituents.
+
+**Release composition without gratuitous edits:** [RELEASE.md](../../../RELEASE.md) §6 also requires `.tfw/templates/briefing.md` and `.tfw/adapters/manifest.yaml`. Include and verify their actual bytes with the selected payload. Both already provide the required generic outcome and copy contract; neither embeds a framework release number, so no content change is forecast. They are necessary composition inputs, with **zero touched files/LOC** unless inspection reveals a real SLC change; any such change requires prospective selector/cost treatment. Config/template/version/changelog/guide are already accounted above.
+
+No installed Cursor command copies are tracked at the drafting baseline. Verify its copied workflows in a disposable receiver instead of adding an unused tree. Codex's thin skill routers reference the same canonical files and need no edits. `.agent/` legacy paths and the pinned `tools/migrations/2.0.0/` implementation remain historical; its own `[tasks]` fallback is intentional. `tools/tfw_doctor.py` continues to inspect active work through the unchanged ordinary API. The Config Sync Registry has no container propagation row to update; do not add a registry merely for the new optional key.
+
+**Post-B consumer/cost assessment:** all 23 literal paths above exist at `231a3245710ec07cfe61112d2205b76d69ff1ac2`. Relative to the original drafting source, only seven changed: conventions, resume, knowledge, and the two registered copies of each changed workflow. The remaining sixteen literal VALUE inputs, including config/template/digest state, init/update, helper and real compiler, are byte-identical. B adds no container API or SLC migration consumer. SLC's resume distinction belongs before the newly exposed selected closing/recovery branch so opening history cannot trigger closing; the planned small guard and read-contract edit already cover that job. Knowledge's B change is confined to Phase 4 step 6 effect return, outside SLC's active-scope/update prerequisite and normal digest algorithm. Existing B carriers/closing instructions are consumed, not rewritten. Therefore the forecast remains **24 files, +393/-163 = 556 LOC**; no new VALUE path or justified growth was identified. B's landed delta is dependency cost, never SLC additions/deletions.
+
+### Non-VALUE paths and output classes
+
+| Literal path / bounded selector | Action | Class | Reason |
+|---|---|---|---|
+| `tools/tests/test_tfw_state.py` | MODIFY | ASSURANCE | Real helper default, active/reference scopes, whole IDs, duplicate/refusal behavior, gate oracle |
+| `docs/scripts/test_gen_docs.py` | MODIFY | ASSURANCE | Actual compiler functions for reference union, stable URLs, mapping and hidden landings |
+| `docs/scripts/test_integration.py` | MODIFY | ASSURANCE | Generated-output family owns one fresh MkDocs build per module; its actual every-task landing predicate must use reference union while current diagnostics remain active-only |
+| `docs/scripts/test_update_experience.py` | MODIFY | ASSURANCE | Source-linked migration routing, exact-set reconciliation and bounded cut/re-entry fixtures |
+| `docs/scripts/test_runtime_context.py` | MODIFY | ASSURANCE | Current init/resume/knowledge/update read edges; retain accepted PTTC B behavior |
+| `docs/scripts/test_repository_contracts.py` | MODIFY | ASSURANCE | Source/Git/temp-tree family has no site dependency. Preserve B's historical writer/RTPSN epochs and current attribution/manifest/route/copy assertions; add only needed SLC source contracts |
+| `workspace/2026/TFW_20260907-020729_SLC/` trace carriers named by the current workflow/templates | CREATE/MODIFY | TRACE | TS/status/journal now; later role-owned ONB/RF/REVIEW/EV and observations; existing research stays immutable |
+| `.tfw/update_receipts/` immutable SLC attempt/preservation attachments | CREATE | TRACE | Before-image and receiver attempt evidence under the existing mechanism; not an archive runtime/index |
+| `KNOWLEDGE.md` §§1–3, when required at the docs closure gate | MODIFY | TRACE | Reviewed project architecture/decision record, not a new shipped SLC procedure; independently accepted product documentation is VALUE. Either classification still requires D86 assessment of changed accepted claims and output |
+| Disposable receiver roots and generated site output outside the tracked product | CREATE | ASSURANCE / DERIVED | Exercises and reproducible pages; no committed receiver project or site catalogue |
+
+Existing six assurance files are sufficient planned homes; prefer inline disposable data in those tests and evidence attachments over a new assurance subsystem. Approximate assurance work is 250–400 touched LOC, disclosed as effort but not a second delivery budget. Any new necessary path is classified before writing; historical tests are not mechanically rewritten to current semantics.
+
+### Prospective accounting contract
+
+| Fact | Owner-ready proposed value; exact approval pending |
+|---|---|
+| Subject / selector | Entire one-phase SLC accepted delivery. All 24 literal rows above and the matching PowerShell array below. Whole-path selector, no narrower exclusions |
+| Drafting sources | Original `ec00d05797a5bd0d0185b01cfde73cd562ceaffd`; re-assessed against actual post-B `231a3245710ec07cfe61112d2205b76d69ff1ac2`. Neither is asserted as the approved execution Baseline |
+| Execution Baseline / selector source | Fixed proposed Baseline `affd9033abf94e9b9a9e27114f3bfbb16066438a`; this exact TS's literal selector. The subsequent actual owner-approval trace must bind its producer commit/blob, Baseline, version and denominator; no self-reference or approval is invented |
+| Release identity / guide | Proposed `3.3.0` and `.tfw/migrations/3.3.0.md`, after actual local PTTC `v3.2.0`; required version/provenance composition in §6 |
+| Candidate | First tested immutable Executor VALUE+ASSURANCE commit, before EV/RF/REVIEW/final transition. Excluded-only writes do not move it; later VALUE requires a replacement Candidate and recomputation/review |
+| Logical touched VALUE files | **24** forecast; 23 MODIFY + 1 CREATE, no DELETE or rename. Rename counts once if prospectively introduced |
+| Touched text LOC | **393 additions + 163 deletions = 556** forecast, including all eight copies and the guide. All planned files are text; binary/non-text is per-file N/A |
+| Soft decomposition triggers | Configured 50 files / 5,000 LOC. Neither fires at 24/556. If one fires, record cause, cost, assurance, split, authority, terminal disposition and pre-work reference; it is not a quality veto |
+| Multiplier / authority | Configured `2`. If owner approves 24/556 unchanged, boundaries are **48 files or 1,112 LOC**; at/above either or growth from planned zero returns to the owner before work. Below both, only necessary constituents with all listed invariants fixed may receive the governing Coordinator's prospective ruling through the LEAD |
+| Immutable denominator | **None approved.** After approval, the approved two measures never ratchet. Completed growth remains a deviation and cannot be retrospectively authorized |
+| Failure semantics | Missing/mutable/mismatched/late accounting is BLOCKED; metric-only inapplicability is N/A; unresolved phase attribution is INVALID; DEFERRED is not terminal |
+| PTTC attribution | Its accepted changes belong in the execution Baseline. Do not count B's whole-file delta as SLC or subtract it informally. SLC deltas in shared files are measured only from that fixed Baseline |
+
+### Replayable VALUE selector
+
+Run the following PowerShell script from the governed repository root only when its actual tested Candidate exists. `CandidateSha` is a mandatory full commit SHA with no default; `OutputDirectory` is the actual authorized accounting-attachment directory. Save the block as a script or invoke it as a script block and supply those two parameters. Neither a mutable `HEAD` nor an invented Candidate is a usable argument. This is a prospective measurement recipe, not an executed check or completed accounting result.
+
+```powershell
+param(
+    [Parameter(Mandatory = $true)]
+    [ValidatePattern('^[0-9a-fA-F]{40}$')]
+    [string]$CandidateSha,
+    [Parameter(Mandatory = $true)]
+    [string]$OutputDirectory
+)
+$slcBaseline = 'affd9033abf94e9b9a9e27114f3bfbb16066438a'
+$valuePaths = @(
+    '.tfw/templates/project_config.yaml'
+    '.tfw/project_config.yaml'
+    '.tfw/knowledge_state.yaml'
+    '.tfw/conventions.md'
+    '.tfw/compilable_contract.md'
+    '.tfw/quickstart.md'
+    '.tfw/workflows/init.md'
+    '.tfw/workflows/resume.md'
+    '.tfw/workflows/knowledge.md'
+    '.tfw/workflows/update.md'
+    'tools/tfw_state.py'
+    'docs/scripts/gen_docs.py'
+    'tasks/README.md'
+    '.claude/commands/tfw-init.md'
+    '.claude/commands/tfw-resume.md'
+    '.claude/commands/tfw-knowledge.md'
+    '.claude/commands/tfw-update.md'
+    '.agents/workflows/tfw-init.md'
+    '.agents/workflows/tfw-resume.md'
+    '.agents/workflows/tfw-knowledge.md'
+    '.agents/workflows/tfw-update.md'
+    '.tfw/VERSION'
+    '.tfw/CHANGELOG.md'
+    '.tfw/migrations/3.3.0.md'
+)
+$slcResolvedCandidate = git rev-parse --verify ($CandidateSha + '^{commit}')
+if ($LASTEXITCODE -ne 0 -or $slcResolvedCandidate -ine $CandidateSha) {
+    throw 'CandidateSha must identify an existing commit by its exact full SHA.'
+}
+$slcOutput = (Resolve-Path -LiteralPath $OutputDirectory -ErrorAction Stop).ProviderPath
+$slcNames = Join-Path $slcOutput ('slc-' + $CandidateSha + '-name-status.z')
+$slcNumstat = Join-Path $slcOutput ('slc-' + $CandidateSha + '-numstat.z')
+if ((Test-Path -LiteralPath $slcNames) -or (Test-Path -LiteralPath $slcNumstat)) {
+    throw 'Use a fresh accounting directory; preserve earlier measurement attachments.'
+}
+git --literal-pathspecs diff --no-ext-diff --name-status --find-renames=50% -z --output=$slcNames $slcBaseline $CandidateSha -- $valuePaths
+if ($LASTEXITCODE -ne 0) { throw 'SLC name-status measurement failed.' }
+git --literal-pathspecs diff --no-ext-diff --numstat --find-renames=50% -z --output=$slcNumstat $slcBaseline $CandidateSha -- $valuePaths
+if ($LASTEXITCODE -ne 0) { throw 'SLC numstat measurement failed.' }
+```
+
+Git writes the native NUL-delimited bytes directly to the two files, avoiding PowerShell text-redirection conversion. Parse complete records, including rename records: sum only numeric additions/deletions; count each logical changed selector member once (one rename is one), and report binary/non-text LOC per file as N/A. Record the actual Baseline, Candidate, approval reference, raw attachments and arithmetic in one EV accounting row. Independently classify the complete changed-path inventory as well: an unexpected necessary VALUE path requires its prospective scope ruling, not silent omission by this selector. The Reviewer reruns the same approved recipe into a separate directory; they do not supply missing authority or a new denominator.
+
+### Prospective scope rulings
+
+None. No implementation or growth is approved by this draft. The one-phase shape follows frozen HL §4; splitting only to avoid a soft trigger would defer part of the accepted outcome. No broad historic-reference count is an edit list.
+
+### Task-local hard constraints
+
+These protect material effects; 24 files/556 LOC are not hard size limits.
+
+| M1 — consequence | M2 — protected object/risk | M3 — direct measure + selector | M4 — pre-act check | M5 — softer control insufficiency | M6 — prospective authority |
+|---|---|---|---|---|---|
+| Loss or false closure of history | Every existing task directory resolved from the retiring container; original paths/IDs/states | Baseline→proposed-write path/blob comparison: zero task-artifact writes/moves/copies/deletes; only container-level `tasks/README.md` may change | Compare exact write plan to the recorded historical set before each migration group | Review cannot recreate lost uncommitted receiver history or undo an externally followed false status | Human owner through root; frozen HL DoF-3 |
+| Irrecoverable state drift or erased knowledge | Exact historical digest pairs, unaffected state/knowledge, and later receiver work | Affected membership and old/intended values equal preserved evidence; all other digests/metadata/knowledge preserved | Validate source/disposition/before-image and current affected fields immediately before state/config writes; refuse disagreement | A later diff cannot establish missing before-images or reconstruct overwritten later work | Human owner for changed scope/data/authority; in-bound operational clarification through root |
+| Unreviewed shared product effects | SLC product writes before accepted PTTC B, exact TS/cost approval, or outside its worktree | Dispatch gates resolve immutable refs and absolute target paths; no mutation path in `D:/projects/research/steps-framework` or an external receiver | Executor preflight before product mutation; release preflight before tag | After-the-fact merge/testing cannot supply the missing authority or preserve another unit's uncommitted work | Human owner; A1/A2 via actual LEAD only |
+
+## 5. Acceptance Criteria
+
+All outcomes below are required. Gates are source/synthetic checks; Evidence is actual intended-environment observation. A copied model, seeded expected result, substring check, or source suite is never relabeled as a native agent run. The same Coordinator executes only the finite NF-1–NF-10 families under §2's later bounded dispatch, after exact TS approval; no native exercise starts during planning. Evidence records the actual source/receiver/operator, synthetic inputs, observed effects and stop point, retaining the distinct Executor/Reviewer record ownership.
+
+### Verification applicability and final effects
+
+Apply landed D86 and `Closing and record recovery` to the existing EV/REVIEW rows. For each reused claim identify its still-applicable input/output, oracle or authority, and environment assumptions; changed, missing or uncertain dependencies require the affected check. A new enclosing control SHA or a record-only correction alone requires neither a full suite nor a fresh native run, and a TRACE/ASSURANCE label supplies neither blanket reuse nor blanket invalidation. Preserve earlier evidence epochs and append actual later observations.
+
+SLC's changed reference union/config/migration requires its own source, real compiler and bounded native evidence; PTTC's native closing observations do not prove those outcomes. `test_repository_contracts.py` performs source/Git/temp-tree checks without importing the output module. `test_integration.py` owns generated-output predicates and one shared MkDocs build; the configured full suite includes this family. Reuse that actual build/output evidence for the same unchanged subject instead of immediately running MkDocs again. When release metadata, documentation capture or another final input changes output, perform the relevant output verification; no full unrelated suite is implied. No tests or fixtures are run for this planning revision.
+
+Before later SLC/fixture status or event writes, read the current templates and validate the whole proposed carriers together: actual owner/authority, closed fields, lifecycle/outcome, clock/token, valid pair, and every opened target. Status authority resolves inside the project; event refs resolve inside their owning task/phase. Do not point first-creation records at a nonexistent future HL/RES, invent a past event, or create a same-state transition. Reconstructable record-only defects preserve historical bytes, repair the actual carrier and stop; uncertain authority/acceptance or a material output change follows its real route. These are inherited B obligations, not extra SLC artifacts or gates.
+
+### AC-1: One clean default [HL DoD-1; DoF-1/6]
+
+- [ ] Supported Full installation from the selected payload creates project config/state from clean templates; first task creation uses only `workspace/` and the current whole-ID/year grammar.
+- [ ] No upstream config/history/receipts, second working container, history key, archive directory, or container-choice question leaks into a new project. Explicit custom choice remains possible.
+- [ ] Public Full prompts reach this same corrected acquisition/init route; they need no independent install mechanism.
+
+Gate: test actual template/default readers, acquisition exclusions, init source ordering and installed copy parity. Keep ordinary mandatory purpose/identity/task-approval questions distinguishable from container questions.
+
+Evidence: NF-1 observes supported Full payload acquisition and native init through Mini-Setup's actual first WDP task creation; NF-2 independently observes ordinary first FTP task creation through HL_DRAFT in a prepared configured receiver. NF-4 exercises real adapter installation/repair. Retain source locator, scripted inputs, config/state/tree snapshots and observed questions. Stop NF-1 before research and NF-2 before HL approval; neither is evidence of completed full init. Verify the later Full Setup source preserves the selected default. A complete framework clone remains its own configured project and is not mislabeled a fresh receiver.
+
+### AC-2: Existing choices and history-only repair [HL DoD-2; DoF-2]
+
+- [ ] Existing `[workspace]`, `[tasks]`, custom single/multiple paths, and `[tasks, workspace]` retain ordered configuration and first-path task creation behavior.
+- [ ] Configured active paths with no traces plus configured historical traces select attach/repair, preserve state, and create no second init task.
+
+Gate: real readers plus source-linked init/update matrix for these configurations and absent optional history. Validate malformed/duplicate/conflicting input as a concrete problem, without inferring a layout.
+
+Evidence: NF-3 `[tasks]` update/repeat and NF-4 history-only attach/repair, with unchanged choice/state and actual native entry observations. The remaining custom-order/creation-path combinations use deterministic consumer fixtures; no unobserved universal native claim.
+
+### AC-3: Disposition controls mixed-container migration [HL DoD-3; DoF-2/5/6]
+
+- [ ] Exact `[workspace, tasks]` with absent/empty secondary storage normalizes only with determinate state. Historical-only storage moves to the optional historical list under applicable recorded authority.
+- [ ] Old dates, ID grammar, list position, missing status, or mixed config alone never establish completed work or historical disposition.
+- [ ] Live/unclear continuation stays operationally reachable until resolved. Existing explicit keep-active or historical decisions are retained. One grouped material question is possible only where existing evidence cannot settle the case; no per-task interview or repeated unchanged question.
+
+Gate: empty/history/live/unknown/recorded-keep-active/already-migrated cases, plus missing-dir/unmatched-digest refusal; assert selected effects and preserved reachability rather than a magic phrase.
+
+Evidence: NF-5 observes absent/empty secondary update and repeat; NF-6 established-history migration/repeat; NF-7 observes the grouped question, then applies the labeled scripted keep-active input and repeats. Preserve observed effects and synthetic authority separately; do not invent owner comprehension.
+
+### AC-4: Historical reads and real compilation survive [HL DoD-4; DoF-3/4]
+
+- [ ] Routine discovery, current-work projections and Knowledge Gate exclude historical containers; exact citations remain readable in place, including stateless history.
+- [ ] Compiler source globs, output mapping, hidden landings and artifact/bare-ID resolution all use the reference union. Existing public `tasks/` URLs, years, grammar and relative links survive.
+- [ ] Historical `/tfw-resume` explains/read-opens the cited history without changing state or silently creating a continuation. A later explicit continuation is a separate authorized act, not part of this migration.
+- [ ] Duplicate whole IDs across active/history are refused/reported, never selected by order; repeated reference paths are deduplicated without changing configured active choices.
+
+Gate: actual `tfw_state` and `gen_docs` functions with active/history/custom/year-nested/collision fixtures; use the real landing generator and resolver, not a copied glob helper.
+
+Evidence: Executor runs the real MkDocs build of the migrated repository and opens representative legacy HL, phase artifact and no-HL landing plus a current task, checking URLs/relative links. The Coordinator's NF-4/NF-6 historical resume records zero writes. Source build success alone does not prove that native resume behaved correctly.
+
+### AC-5: Exact state exception and recoverable update [HL DoD-5; DoF-5/6]
+
+- [ ] The guide names a one-time exception for the affected `processed_task_digests` pairs; state is never copied from upstream, reset wholesale, filtered by ID prefix, or recomputed as fictional consolidation. Normal knowledge consolidation retains its existing state-last rule.
+- [ ] Before migration/provenance publication, one immutable attachment under existing update receipts preserves source SHA/previous provenance, disposition authority, old/intended fields, exact container-path→whole-ID membership and removed digest pairs. Reusing an identical attachment is allowed; contradictory evidence refuses the group.
+- [ ] Compatible readers are available before narrowing scope. Immediately revalidate affected inputs, reconcile exact keys, then publish final container config; complete/recover this connected group before ordinary gate arithmetic or successful update reporting.
+- [ ] Re-entry observes present fields/state/source. Expected old/intended states can finish without duplicate effects. Divergent affected input or corrupt/missing required preservation evidence refuses without overwriting subsequent work. Unaffected later active changes survive; whole-map/whole-tree restore is forbidden.
+- [ ] Absent digest-map migration state is preserved as such: do not invent removed pairs or mark historical tasks processed. An absent secondary directory with unexplained remembered IDs remains indeterminate.
+
+Gate: seven bounded cut/repeat states (before preservation, after preservation, compatible readers only, state reconciled/config old, legacy config-first/digests old, config+state final/provenance unfinished, completed repeat) plus six refusal classes (missing/colliding preservation, target mismatch, disposition conflict, membership/ID collision, changed affected digest, divergent affected config). Include later active edits and the `HD-1`/`HD-10` non-prefix case. Model checks are explicitly labeled model.
+
+Evidence: Coordinator NF-5/NF-6 cover clean migrations/repeats; NF-8 state-first retry with later active changes; NF-9 config-first/equal-version recovery and completed repeat; NF-10 affected-input refusal. Prepared cut snapshots are labeled prepared snapshots, not observed process crashes. Preserve receiver diffs, attempts/attachments and final gate results; zero introduced removed IDs, unchanged unaffected digests/knowledge/statistics/date. Do not write the live helpdesk repository.
+
+### AC-6: This repository adopts the same contract [HL DoD-6; DoF-3/5]
+
+- [ ] This repository ends with active `[workspace]`, historical `[tasks]`, and exact state reconciliation through the same guide under HL §3's recorded disposition.
+- [ ] All historical task paths and tracked bytes are identical to execution Baseline; no task state, journal, source marker or snapshot is rewritten. `tasks/README.md` only explains container-level access and preserves chronology.
+- [ ] Unaffected remembered digests, accumulated knowledge, dates/statistics and project config choices are preserved. No assumption that all history is DONE/REJECTED appears.
+
+Gate: replay exact membership and compare historical task trees plus unaffected YAML values from fixed Baseline to Candidate; `tasks/README.md` is the sole container-level exception. Report pre-existing gate issues separately from introduced removed IDs.
+
+Evidence: inspect the actual isolated migrated repository config/state and comparison output; cross-reference its immutable preservation attachment and affected pairs. Recompute 53/11 baseline observations rather than trusting research counts after PTTC.
+
+### AC-7: No replacement archive subsystem [HL DoF-6; DoD-1/4]
+
+- [ ] The sole added project setting has one job: historical reference reachability. No new registry, index, per-task marker, status vocabulary, runtime/helper prerequisite, automated copy route, mass link rewrite, or permanent retry controller is introduced.
+- [ ] Existing source/receipt fields and bounded attachments suffice; no new receipt template solely to duplicate the guide.
+
+Gate: inspect complete changed path/semantic surface and entry dependencies against §4, not only matching prohibited words. Reference-union support reuses the existing walker and whole-ID rules.
+
+Evidence: changed payload inventory and fresh/migrated receiver trees plus native-run dependency logs; verify the exercised Full route did not depend on upstream Python helpers. Upstream pytest/MkDocs may use Python normally.
+
+### AC-8: Release-ready version and guide routing [HL DoD-7; DoF-1/5]
+
+- [ ] After exact approval of the proposed SLC `3.3.0` decision, every required release constituent named in RELEASE.md §6 resolves in one coherent prepared composition from the fixed Baseline containing actual PTTC `3.2.0`; metadata, changelog, `.tfw/migrations/3.3.0.md` and installed copies agree.
+- [ ] The changelog reaches every earlier supported tag, including same-major updates. Equal-version re-entry still resolves the applicable SLC guide from the pinned target/attempt provenance before declaring already-current, even when no intervening range exists.
+- [ ] The retired mixed-list and blanket state-preservation wording, including the actual 3.2.0 guide clauses in §6, is quoted with its bounded successor. All previous guides remain unchanged. The state exception remains narrow and discoverable at the point of use.
+- [ ] Final checks inspect the exact prepared release bytes, including any post-Candidate metadata/integration change. A later VALUE change requires replacement accounting and appropriate independent acceptance before tagging.
+
+Gate: source coherence/routing tests, required-file checks, metadata and manifest parity; satisfy configured pytest collection/full-suite and actual output verification through §5's applicability rule. The integration family supplies its shared MkDocs build; do not duplicate it for unchanged inputs. Final changed metadata/output still needs affected verification. Use actual post-PTTC package checks if configured; no package command exists in the assessed source.
+
+Evidence: NF-6 covers native same-major update; NF-9 equal-version recovery/completed repeat using a pinned, disclosed untagged Candidate where release tagging has not yet occurred. Never pretend its version implies a release tag. Later final release evidence records the checked commit and the authorized local tag separately; that effect is outside the native-fixture assignment.
+
+### AC-9: PTTC integration preserves both results [HL DoD-4/5/7]
+
+- [ ] SLC changes active/history semantics against accepted PTTC B bytes, retaining its closing/recovery interfaces and current writer/parity/read-edge assertions.
+- [ ] No stale wordcount or RTPSN approval-epoch oracle is reintroduced as a current acceptance rule. The accepted PTTC A/B evidence remains dependency evidence, not SLC native proof.
+
+Gate: inspect the actual shared sections in §9. For the SLC combination, satisfy their changed-claim tests and preserve applicable evidence for unchanged claims; a control-only SHA does not force a rerun. Investigate a concrete regression before broadening scope.
+
+Evidence: integration baseline/candidate identities, combined changed-section review and configured check logs. Native combined history read/update outcomes are supplied by AC-4/5/8; do not create another independent trial or claim G8 reliability.
+
+### AC-10: Reproducible accounting and independent handoff
+
+- [ ] The exact owner-approved Baseline, TS blob/literal selector, denominator and pre-work rulings resolve; one EV row reproduces files and numeric adds+deletes for the immutable Candidate.
+- [ ] RF links real evidence/results/deviations. The separately assigned Reviewer verifies actual Candidate content and evidence; the same Executor/Reviewer handle returns through the LEAD.
+- [ ] All surviving observations receive the canonical disposition and applicable knowledge/documentation closure before final release; TRACE classification never waives these gates.
+- [ ] After independent APPROVE, the existing authorized Coordinator completes actual docs/knowledge effects and separately attributed REVIEW §6 closing facts. The same independent Reviewer assesses material changed final claims with a bounded follow-up. Actual selected landing and complete valid control records precede DONE; reviewed, landed and published remain distinct.
+
+Gate: independent accounting recomputation and exact-path diff inventory; required artifacts/lineage, actual final effects and release gates resolve. Under D86, record-only recovery stops after truthful carrier repair without creating a TS revision/Candidate/capture loop; changed or uncertain material acceptance uses its existing route. Later VALUE still requires the accounting contract's replacement Candidate, but a bounded final-claim assessment alone does not restart all review stages. Missing authority is a stop, not a zero count.
+
+Evidence: EV accounting attachments, immutable Candidate locator, actual independent REVIEW and applicable closure records. Evidence is not available at planning time and is not claimed as completed.
+
+### Evidence Artifacts
+
+| File / bounded attachment | Description |
+|---|---|
+| `evidence/EV__TFW_20260907-020729_SLC.md` | Environment, per-AC observed result/limitation and one reproducible VALUE accounting row |
+| `evidence/` source-check and native receiver logs/snapshots indexed from EV | Exact source/receiver subjects, commands, question/route observations, historical comparisons and recovery cuts; complete only when collected |
+| Existing immutable `.tfw/update_receipts/` attempt and preservation attachments, referenced by EV | Before-images and actual update outcomes; exact generated paths recorded when created |
+
+A required native result that cannot be collected is BLOCKED or specifically DEFERRED with its missing environment named, never silently N/A. An unresolved required result is not terminal acceptance. Model/source checks can reduce duplicate exercises but cannot substitute for the native outcomes explicitly required above.
+
+## 6. Technical Guidance
+
+- Keep the optional union reader small; preserve current reader calls for ordinary discovery. Feed the reference union explicitly to the existing walker where historical access is intended. Validate whole identifiers and report collisions before accepting a reference universe; preserve output paths and YAML/frontmatter handling.
+- Put receiver case selection and recovery detail in the one guide. Update workflow/knowledge points of use should name their exception/prerequisite and link to that authority, rather than each growing a second recovery algorithm.
+- Before-image evidence is finite historical data used during this migration/re-entry. It is not authority to overwrite changed affected values; use current observation and the established decision. Recover expected partial states, otherwise preserve and report the concrete conflict.
+- Preserve normal canonical Knowledge Gate section selection, SHA-256 tuple recipe, thresholds, unknown-input refusal and consolidation state-last behavior. SLC adjusts scope and an explicitly authorized update effect only; no general gate redesign is delegated.
+- Public EN/RU/KK entry prompts already call Full quickstart; repair the common route rather than rewrite unrelated public prose. If final source testing proves another current entry necessarily bypasses it, propose the exact constituent/cost before editing.
+
+### Release composition and predecessor compatibility
+
+The proposed version is **3.3.0** in `.tfw/VERSION` and `tfw.version` in both config files. Self-hosting `installed_from: self` stays correct; the clean template keeps `unrecorded` until real source provenance is known. Actual receiver updates record their configured upstream plus verified target tag or explicitly authorized full untagged SHA and exact receipt. The new `.tfw/CHANGELOG.md` entry explains SLC and directly links `.tfw/migrations/3.3.0.md`; release dates and eventual tag/checked-commit facts are actual later acts, never inferred from the proposed version. Preserve all earlier changelog sections and guides.
+
+The 3.3.0 guide must route installed 3.2.0 directly to SLC; earlier supported versions follow the still-needed ordered routes already enumerated in the unchanged [3.2.0 guide](../../../.tfw/migrations/3.2.0.md), including its predecessors, then SLC. Acquire every applicable guide from the same verified final target object: older tag/version examples retain their historical meaning and do not change that target or require intermediate payload installations. Preserve the existing project-specific stop for 0.x/unknown/custom forms. Installed 3.3.0 with incomplete migration or equal-version repeat reaches this SLC guide through the pinned target/attempt provenance before any already-current return.
+
+The inherited 3.2.0 guide §2 includes these exact clauses:
+
+> Keep project purpose, root README/RELEASE, configured task
+> containers and checks, scope budgets, knowledge/index/state, profiles/grants, private preferences,
+> external bindings, task artifacts and immutable journals.
+
+> No configuration keys are added, renamed or retired by this release.
+
+> Do not reset knowledge digests or processed markers.
+
+The new SLC guide quotes the affected wording and names its bounded successor: the no-new-key statement describes 3.2.0; 3.3.0 adds only optional `tfw.historical_containers`. Preserving configured choices remains the default; only the exact mixed-container cases and established dispositions in AC-2/3 permit the specified transition. Digest reset remains forbidden; only AC-5's preserved exact affected historical pairs may be removed as the one-time migration effect, with compatible readers before narrowing and state reconciliation before final config. Unaffected state, knowledge, markers, tasks, and all other preservation obligations remain intact. This replaces the relevant live blanket reading through the new guide; it neither edits 3.2.0 history nor weakens ordinary consolidation.
+
+## 7. Definition of Failure
+
+| Frozen HL failure | Rejectable result and checking AC |
+|---|---|
+| DoF-1 | Fresh-project tasks/mixed/history contamination — AC-1/8 |
+| DoF-2 | Existing choice replaced or unresolved work hidden — AC-2/3 |
+| DoF-3 | Historical artifacts relocated/copied/deleted/relabeled or false completion claimed — AC-4/6 |
+| DoF-4 | Historical links/build broken or history returns to ordinary current discovery — AC-4/7 |
+| DoF-5 | Removed-ID regression, knowledge reset, unrelated digest loss, repeated transition/decision — AC-3/5/6/8 |
+| DoF-6 | Registry/lifecycle/marker/runtime/rename/interview subsystem becomes necessary — AC-1/3/5/7 |
+
+Refuse the affected semantic group before mutation where possible. On partial application preserve later work and use the guide's evidenced recovery/refusal. Purpose/architecture conflicts return to the actual LEAD with original proposer; this child holds no amendment grant. No self-issued owner approval or retrospective overrun ruling.
+
+## 8. Phase Risks
+
+| Risk | Mitigation |
+|---|---|
+| A later material dependency change is silently substituted for the fixed Baseline | Actual PTTC 3.2.0 is assessed and included; any real later delta needs its affected-claim assessment and prospective ruling. Publication/ref arrivals alone do not change the fixed origin or force checks |
+| Proposed SLC identities are mistaken for owner approval or an actual release | §§2/4 fix one concrete proposal; the subsequent owner trace must approve its exact TS/blob, version and denominator before execution. Candidate and checked local tag remain actual later facts |
+| Live work is mistaken for old history | Recorded disposition and whole-ID membership; preserve unresolved reachability |
+| Update state exception leaks into ordinary consolidation | Narrow guide plus point-of-use routing, unchanged normal algorithm and contrasting tests |
+| A fixture is mistaken for complete init or a synthetic input for a real approval | Same-role Coordinator dispatch, explicit NF stop points and separate input/observation records; no fictitious RES/RF/REVIEW/DONE, helpers, provider trial/G8 or broader research |
+| Compact estimates become a reason to omit compatibility | Forecast is not a quota; prospective necessary growth with fixed invariants, owner boundary and no retrospective waiver |
+
+## 9. Shared PTTC Modification Boundary
+
+SLC has no second phase. This table records cross-task integration, not a second accounting owner.
+
+| Shared source/test | Observed accepted B effect at `231a324` | SLC boundary |
+|---|---|---|
+| `.tfw/conventions.md` | New `Closing and record recovery`; Coordinator owns close; complete carrier/ref validation; actual effects/landing before DONE | SLC Where tasks live/Discovery and guide routing stay outside those changed ranges. Consume final-effect/repair obligations without a second closing procedure |
+| `.tfw/workflows/resume.md` and two tracked copies | Selected close/recovery returns before matrix/phase choice; new read edge and Coordinator closing permission | Resolve historical-read membership before this branch; exact historical opening cannot silently close or repair history. Current authorized closing remains available |
+| `.tfw/workflows/knowledge.md` and two tracked copies | Only Phase 4 step 6 adds actual output/effect return to Coordinator | Active scope/update-recovery prerequisite remains SLC; canonical digest discovery/steps 2–5/state-last are unchanged by B |
+| `docs/scripts/test_runtime_context.py` | Separate historical/live C1 and L3-close expected records; live L3-close reads conventions; corrected mutations and resume/closing read edges | Preserve the real live oracle and historical epoch distinction when extending SLC reads; source projections remain source evidence |
+| `docs/scripts/test_repository_contracts.py` | Writer word/copy epoch pinned to `b5a45c622c035c574d0fd5f5f7795add769be529`; RTPSN protected epoch pinned to `e16e6100b4957478a2ba351a225a1d400cee6367`; current attribution/manifest/routes/copy parity still checked | Keep both historical and current protections. This source/Git/temp-tree family requires no MkDocs/site; no historical word ceiling or protected-byte list is imposed on current SLC output |
+| `docs/scripts/test_integration.py` | Unchanged by B; accepted A split gives this module one shared fresh MkDocs build and actual corpus/landing/output predicates | Its `test_every_recognized_task_has_an_unlisted_landing_and_nav_has_no_tasks_entry` currently uses active containers/walker and must follow the reference union for SLC. Keep current diagnostics active-only |
+| Handoff/review/docs, status/event/EV/REVIEW/verify templates and registered copies/skills | Applicable evidence reuse; Reviewer returns; Coordinator records actual effects, separate affected judgment and complete controls | Use existing carriers. No SLC product changes forecast in these inherited surfaces; TRACE labels do not waive changed-output verification |
+
+The former B control HEAD `7cef5dc09a4d082d61346824c44063287a3decf3` remains historical and was never acceptance evidence. Actual [B RF](../TFW_20260907-133942_PTTC/phase-b/RF__phase-b__finite_closure_and_recovery.md), [independent REVIEW and closing record](../TFW_20260907-133942_PTTC/phase-b/REVIEW__phase-b__finite_closure_and_recovery.md), phase DONE carriers and the landing/terminal objects in §2 establish the dependency. Their native observations and final-output checks are PTTC evidence, not SLC container results or provider reliability. PTTC parent closure and the actual 3.2.0 release are now complete; §2 records the tag/commit/tree, integrated fixed Baseline and root's later publication receipt. Its five-file release delta changes none of the assessed B interfaces or test oracles above. The separate Knowledge Gate discussion at native task `01a08161-79d3-7472-a01e-8cdc957ee951` has no approved task ID/HL or implementation in the available report; do not await an imaginary active diff or allocate a TKL ID.
+
+**Return route and remaining decision:** this owner-ready planning proposal returns directly to root `01a08164-fb6d-78a3-b41a-e0fabdc680c9`. The sole unresolved planning decision is the owner's exact approval of this TS/blob, fixed Baseline, proposed 3.3.0 version/guide, literal selector and prospective 24-file/556-LOC denominator. After that actual approval is recorded, root may dispatch `/tfw-handoff` to the existing Executor and, when its pinned source is ready, the separate NF-1–NF-10 native assignment to this same Coordinator. No additional generic implementation-start approval is needed under A2. Results return through root for the Executor's EV/RF; after RF, root routes `/tfw-review` to the existing independent Reviewer. Future Candidate, receiver paths, evidence and checked local tag are execution outputs to bind when they exist, not missing planning choices. This Coordinator ends planning now and performs none of those future effects under the current dispatch.
+
+---
+
+*TS — TFW_20260907-020729_SLC / Phase A | 2026-09-09*

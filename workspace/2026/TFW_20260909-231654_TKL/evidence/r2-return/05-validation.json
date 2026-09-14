@@ -1,0 +1,356 @@
+{
+  "observed_at": "2026-09-13T20:44:03.175537+00:00",
+  "candidate": "a99ba6cd756a7db444f217aef4e5a0eb83faee51",
+  "baseline": "ec91c56007c20cda79f740fec15c85e4af74d17c",
+  "raw_native_commit": "1a0a37c443fe0d762a1396f1354d93ac08391637",
+  "all_documentary_checks_pass": true,
+  "native_attempt_outcome": "STOPPED / incomplete; documentary checks are not native acceptance",
+  "prefix_checks": [
+    {
+      "path": "ONB__TFW_20260909-231654_TKL.md",
+      "preserved_prefix_bytes": 67893,
+      "prefix_sha256": "9bf30adae577e7d8ac691d3afba78e369ab7b0ace139b78e4adfb0ff69774f70",
+      "current_sha256": "4a5907ada3d71315448d6c22d51fcce86ee33ab526309a55caa7a27ec243331e"
+    },
+    {
+      "path": "RF__TFW_20260909-231654_TKL.md",
+      "preserved_prefix_bytes": 37467,
+      "prefix_sha256": "9d5a2d5942f05866968985b8d3d691e98b3f8a471c03d7e8dd1d362da52d762a",
+      "current_sha256": "b26e99bc55322fe3ff59fb650fb5cc26bec078bb86e590e541a3f6b1e6887c54"
+    },
+    {
+      "path": "evidence/EV__TFW_20260909-231654_TKL.md",
+      "preserved_prefix_bytes": 25012,
+      "prefix_sha256": "66a3ea2f0541424726cbde00ff95f4ee381ecabe95f7f3df3a01e756164c80ec",
+      "current_sha256": "b9e0667bc9cc8bf202a0e24ef6b5e853ec7b301f6fa86c217883e69fed10e389"
+    }
+  ],
+  "current_RF_sections_1_to_9": true,
+  "EV_rows": 12,
+  "verdict": {
+    "VERIFIED": 10,
+    "DEFERRED": 0,
+    "BLOCKED": 2,
+    "NA": 0,
+    "blocked": "AC7 changed native evidence; AC11 dependent final judgment"
+  },
+  "all65_VALUE_ASSURANCE_unchanged_after_candidate": true,
+  "exact_two_approved_accounting_commands_reproduced": true,
+  "actual_accounting": {
+    "logical_value_files": 58,
+    "additions": 1235,
+    "deletions": 1005,
+    "touched_text_loc": 2240
+  },
+  "frozen_HL_TS_both_REVIEW_unchanged": true,
+  "native19_raw_hashes_unchanged": true,
+  "state_event_schema_errors": [],
+  "status": "RF",
+  "event": "journal/20260914-014130__transition__6454.md",
+  "fixed_status_body_preserved": true,
+  "all_event_refs_resolve": true,
+  "new_report_links": [
+    {
+      "source": "ONB__TFW_20260909-231654_TKL.md",
+      "href": "journal/20260914-012203__dispatch__37e0.md",
+      "target": "workspace/2026/TFW_20260909-231654_TKL/journal/20260914-012203__dispatch__37e0.md"
+    },
+    {
+      "source": "ONB__TFW_20260909-231654_TKL.md",
+      "href": "evidence/r2-return/00-native-return.json",
+      "target": "workspace/2026/TFW_20260909-231654_TKL/evidence/r2-return/00-native-return.json"
+    },
+    {
+      "source": "ONB__TFW_20260909-231654_TKL.md",
+      "href": "evidence/r2-return/02-counter-clarification.json",
+      "target": "workspace/2026/TFW_20260909-231654_TKL/evidence/r2-return/02-counter-clarification.json"
+    },
+    {
+      "source": "RF__TFW_20260909-231654_TKL.md",
+      "href": "evidence/r2-checkpoint/08-accounting/accounting.json",
+      "target": "workspace/2026/TFW_20260909-231654_TKL/evidence/r2-checkpoint/08-accounting/accounting.json"
+    },
+    {
+      "source": "RF__TFW_20260909-231654_TKL.md",
+      "href": "evidence/r2-checkpoint/07-output-observation.json",
+      "target": "workspace/2026/TFW_20260909-231654_TKL/evidence/r2-checkpoint/07-output-observation.json"
+    },
+    {
+      "source": "RF__TFW_20260909-231654_TKL.md",
+      "href": "evidence/r2-checkpoint/11-validation.json",
+      "target": "workspace/2026/TFW_20260909-231654_TKL/evidence/r2-checkpoint/11-validation.json"
+    },
+    {
+      "source": "RF__TFW_20260909-231654_TKL.md",
+      "href": "evidence/r2-return/00-native-return.json",
+      "target": "workspace/2026/TFW_20260909-231654_TKL/evidence/r2-return/00-native-return.json"
+    },
+    {
+      "source": "RF__TFW_20260909-231654_TKL.md",
+      "href": "evidence/r2-return/02-counter-clarification.json",
+      "target": "workspace/2026/TFW_20260909-231654_TKL/evidence/r2-return/02-counter-clarification.json"
+    },
+    {
+      "source": "RF__TFW_20260909-231654_TKL.md",
+      "href": "evidence/EV__TFW_20260909-231654_TKL.md",
+      "target": "workspace/2026/TFW_20260909-231654_TKL/evidence/EV__TFW_20260909-231654_TKL.md"
+    },
+    {
+      "source": "evidence/EV__TFW_20260909-231654_TKL.md",
+      "href": "../REVIEW__TFW_20260909-231654_TKL__rev2.md",
+      "target": "workspace/2026/TFW_20260909-231654_TKL/REVIEW__TFW_20260909-231654_TKL__rev2.md"
+    },
+    {
+      "source": "evidence/EV__TFW_20260909-231654_TKL.md",
+      "href": "handover.md",
+      "target": "workspace/2026/TFW_20260909-231654_TKL/evidence/handover.md"
+    },
+    {
+      "source": "evidence/EV__TFW_20260909-231654_TKL.md",
+      "href": "../REVIEW__TFW_20260909-231654_TKL__rev2.md",
+      "target": "workspace/2026/TFW_20260909-231654_TKL/REVIEW__TFW_20260909-231654_TKL__rev2.md"
+    },
+    {
+      "source": "evidence/EV__TFW_20260909-231654_TKL.md",
+      "href": "handover.md",
+      "target": "workspace/2026/TFW_20260909-231654_TKL/evidence/handover.md"
+    },
+    {
+      "source": "evidence/EV__TFW_20260909-231654_TKL.md",
+      "href": "../REVIEW__TFW_20260909-231654_TKL__rev2.md",
+      "target": "workspace/2026/TFW_20260909-231654_TKL/REVIEW__TFW_20260909-231654_TKL__rev2.md"
+    },
+    {
+      "source": "evidence/EV__TFW_20260909-231654_TKL.md",
+      "href": "final-inputs/source-map.json",
+      "target": "workspace/2026/TFW_20260909-231654_TKL/evidence/final-inputs/source-map.json"
+    },
+    {
+      "source": "evidence/EV__TFW_20260909-231654_TKL.md",
+      "href": "../REVIEW__TFW_20260909-231654_TKL__rev2.md",
+      "target": "workspace/2026/TFW_20260909-231654_TKL/REVIEW__TFW_20260909-231654_TKL__rev2.md"
+    },
+    {
+      "source": "evidence/EV__TFW_20260909-231654_TKL.md",
+      "href": "native/second-epoch.md",
+      "target": "workspace/2026/TFW_20260909-231654_TKL/evidence/native/second-epoch.md"
+    },
+    {
+      "source": "evidence/EV__TFW_20260909-231654_TKL.md",
+      "href": "r2-checkpoint/04-source-checks/receipt.json",
+      "target": "workspace/2026/TFW_20260909-231654_TKL/evidence/r2-checkpoint/04-source-checks/receipt.json"
+    },
+    {
+      "source": "evidence/EV__TFW_20260909-231654_TKL.md",
+      "href": "r2-checkpoint/07-output-observation.json",
+      "target": "workspace/2026/TFW_20260909-231654_TKL/evidence/r2-checkpoint/07-output-observation.json"
+    },
+    {
+      "source": "evidence/EV__TFW_20260909-231654_TKL.md",
+      "href": "../REVIEW__TFW_20260909-231654_TKL__rev2.md",
+      "target": "workspace/2026/TFW_20260909-231654_TKL/REVIEW__TFW_20260909-231654_TKL__rev2.md"
+    },
+    {
+      "source": "evidence/EV__TFW_20260909-231654_TKL.md",
+      "href": "native/second-epoch.md",
+      "target": "workspace/2026/TFW_20260909-231654_TKL/evidence/native/second-epoch.md"
+    },
+    {
+      "source": "evidence/EV__TFW_20260909-231654_TKL.md",
+      "href": "r2-native/op-03-failure.json",
+      "target": "workspace/2026/TFW_20260909-231654_TKL/evidence/r2-native/op-03-failure.json"
+    },
+    {
+      "source": "evidence/EV__TFW_20260909-231654_TKL.md",
+      "href": "r2-native/08-stopped-result.json",
+      "target": "workspace/2026/TFW_20260909-231654_TKL/evidence/r2-native/08-stopped-result.json"
+    },
+    {
+      "source": "evidence/EV__TFW_20260909-231654_TKL.md",
+      "href": "r2-return/00-native-return.json",
+      "target": "workspace/2026/TFW_20260909-231654_TKL/evidence/r2-return/00-native-return.json"
+    },
+    {
+      "source": "evidence/EV__TFW_20260909-231654_TKL.md",
+      "href": "r2-checkpoint/05-docs-build/receipt.json",
+      "target": "workspace/2026/TFW_20260909-231654_TKL/evidence/r2-checkpoint/05-docs-build/receipt.json"
+    },
+    {
+      "source": "evidence/EV__TFW_20260909-231654_TKL.md",
+      "href": "r2-checkpoint/07-output-observation.json",
+      "target": "workspace/2026/TFW_20260909-231654_TKL/evidence/r2-checkpoint/07-output-observation.json"
+    },
+    {
+      "source": "evidence/EV__TFW_20260909-231654_TKL.md",
+      "href": "../REVIEW__TFW_20260909-231654_TKL__rev2.md",
+      "target": "workspace/2026/TFW_20260909-231654_TKL/REVIEW__TFW_20260909-231654_TKL__rev2.md"
+    },
+    {
+      "source": "evidence/EV__TFW_20260909-231654_TKL.md",
+      "href": "r2-checkpoint/04-source-checks/receipt.json",
+      "target": "workspace/2026/TFW_20260909-231654_TKL/evidence/r2-checkpoint/04-source-checks/receipt.json"
+    },
+    {
+      "source": "evidence/EV__TFW_20260909-231654_TKL.md",
+      "href": "r2-checkpoint/11-validation.json",
+      "target": "workspace/2026/TFW_20260909-231654_TKL/evidence/r2-checkpoint/11-validation.json"
+    },
+    {
+      "source": "evidence/EV__TFW_20260909-231654_TKL.md",
+      "href": "ac9-supplement/README.md",
+      "target": "workspace/2026/TFW_20260909-231654_TKL/evidence/ac9-supplement/README.md"
+    },
+    {
+      "source": "evidence/EV__TFW_20260909-231654_TKL.md",
+      "href": "../REVIEW__TFW_20260909-231654_TKL__rev2.md",
+      "target": "workspace/2026/TFW_20260909-231654_TKL/REVIEW__TFW_20260909-231654_TKL__rev2.md"
+    },
+    {
+      "source": "evidence/EV__TFW_20260909-231654_TKL.md",
+      "href": "fresh-consumer.md",
+      "target": "workspace/2026/TFW_20260909-231654_TKL/evidence/fresh-consumer.md"
+    },
+    {
+      "source": "evidence/EV__TFW_20260909-231654_TKL.md",
+      "href": "r2-return/00-native-return.json",
+      "target": "workspace/2026/TFW_20260909-231654_TKL/evidence/r2-return/00-native-return.json"
+    },
+    {
+      "source": "evidence/EV__TFW_20260909-231654_TKL.md",
+      "href": "../RF__TFW_20260909-231654_TKL.md",
+      "target": "workspace/2026/TFW_20260909-231654_TKL/RF__TFW_20260909-231654_TKL.md"
+    },
+    {
+      "source": "evidence/EV__TFW_20260909-231654_TKL.md",
+      "href": "r2-checkpoint/08-accounting/accounting.json",
+      "target": "workspace/2026/TFW_20260909-231654_TKL/evidence/r2-checkpoint/08-accounting/accounting.json"
+    },
+    {
+      "source": "evidence/EV__TFW_20260909-231654_TKL.md",
+      "href": "r2-return/05-inventory.json",
+      "target": "workspace/2026/TFW_20260909-231654_TKL/evidence/r2-return/05-inventory.json"
+    },
+    {
+      "source": "evidence/EV__TFW_20260909-231654_TKL.md",
+      "href": "r2-return/02-counter-clarification.json",
+      "target": "workspace/2026/TFW_20260909-231654_TKL/evidence/r2-return/02-counter-clarification.json"
+    },
+    {
+      "source": "evidence/EV__TFW_20260909-231654_TKL.md",
+      "href": "r2-checkpoint/11-validation.json",
+      "target": "workspace/2026/TFW_20260909-231654_TKL/evidence/r2-checkpoint/11-validation.json"
+    },
+    {
+      "source": "evidence/EV__TFW_20260909-231654_TKL.md",
+      "href": "r2-native/08-git-seal.json",
+      "target": "workspace/2026/TFW_20260909-231654_TKL/evidence/r2-native/08-git-seal.json"
+    },
+    {
+      "source": "evidence/EV__TFW_20260909-231654_TKL.md",
+      "href": "r2-return/00-native-return.json",
+      "target": "workspace/2026/TFW_20260909-231654_TKL/evidence/r2-return/00-native-return.json"
+    },
+    {
+      "source": "evidence/EV__TFW_20260909-231654_TKL.md",
+      "href": "r2-return/02-counter-clarification.json",
+      "target": "workspace/2026/TFW_20260909-231654_TKL/evidence/r2-return/02-counter-clarification.json"
+    },
+    {
+      "source": "evidence/EV__TFW_20260909-231654_TKL.md",
+      "href": "r2-return/05-validation.json",
+      "target": "workspace/2026/TFW_20260909-231654_TKL/evidence/r2-return/05-validation.json"
+    }
+  ],
+  "native_operation_count": 10,
+  "native_closed_at": "2026-09-13T20:35:33.937Z",
+  "post_native_trace_return_only": true,
+  "authored_tracked_diff_check_exit": 0,
+  "no_full_raw_diff_or_test_build_or_native_rerun": true,
+  "inventory": "05-inventory.json",
+  "inventory_sha256": "e064e4aa92285eca22b87a90728426eac7750f6d77ae115a53555e5ab9a2f73d",
+  "files": [
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/ONB__TFW_20260909-231654_TKL.md",
+      "class": "TRACE",
+      "bytes": 70930,
+      "sha256": "4a5907ada3d71315448d6c22d51fcce86ee33ab526309a55caa7a27ec243331e"
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/RF__TFW_20260909-231654_TKL.md",
+      "class": "TRACE",
+      "bytes": 47230,
+      "sha256": "b26e99bc55322fe3ff59fb650fb5cc26bec078bb86e590e541a3f6b1e6887c54"
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/EV__TFW_20260909-231654_TKL.md",
+      "class": "TRACE",
+      "bytes": 33111,
+      "sha256": "b9e0667bc9cc8bf202a0e24ef6b5e853ec7b301f6fa86c217883e69fed10e389"
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/r2-return/00-native-return.json",
+      "class": "TRACE",
+      "bytes": 10542,
+      "sha256": "5455fdac06f912a884ff2964ed1750666f017428e6d651b27d626d446b1712f5"
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/r2-return/01-prior-prefixes.json",
+      "class": "TRACE",
+      "bytes": 731,
+      "sha256": "bc3bdb220ece3e017bb0edbd21ec0839b59bdc6c8e6b690b3a5eec80aa4d69a6"
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/r2-return/02-counter-clarification.json",
+      "class": "TRACE",
+      "bytes": 1319,
+      "sha256": "8cd304be8b6dc6db4adc017ef88df3c31e2bbd5cfd70238e064463b00c34ae77"
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/r2-return/04-control.json",
+      "class": "TRACE",
+      "bytes": 1784,
+      "sha256": "9a1b6c327607573f1fd1e73f3d6bdceb49fb4c18fbe193964bad51cd69792ecd"
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/r2-return/04-status-before.md",
+      "class": "TRACE",
+      "bytes": 588,
+      "sha256": "8259d7b908a7b11550c3f882427de3afcca4c10a4e3382552d33b251e07bec17"
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/r2-return/05-inventory.json",
+      "class": "TRACE",
+      "bytes": 135164,
+      "sha256": "e064e4aa92285eca22b87a90728426eac7750f6d77ae115a53555e5ab9a2f73d"
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/r2-return/05-precommit-cached.raw",
+      "class": "TRACE",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/r2-return/05-precommit-status.raw",
+      "class": "TRACE",
+      "bytes": 784,
+      "sha256": "5a326bd86c33eb9583d498731f809772884d674e899c46e7e394372c0057d1a6"
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/r2-return/05-validation.json",
+      "class": "TRACE",
+      "identity": "Committed Git blob for this validation file"
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/journal/20260914-014130__transition__6454.md",
+      "class": "TRACE",
+      "bytes": 934,
+      "sha256": "f958b5b2c9ec48f457312d4efc0175dfc2bfcf889bc6122abe53cbf02e64948a"
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/status.md",
+      "class": "TRACE",
+      "bytes": 587,
+      "sha256": "0bc219c055d4353a45e5980af6b8dbea94d57544d556ab42630eb07c1edd91fe"
+    }
+  ]
+}

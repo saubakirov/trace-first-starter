@@ -1,0 +1,762 @@
+{
+  "observed_at": "2026-09-13T20:31:31.427345+00:00",
+  "mode": "Read-only custody after strict stop, not corrected preparation or continuation",
+  "original_failure": {
+    "seq": 3,
+    "label": "03 prepare exact positive repository",
+    "failed_at": "2026-09-13T20:29:53.549973+00:00",
+    "exception": "AssertionError",
+    "message": ".tfw/update_receipts/knowledge-lifecycle/c3b0580ad155738e2db99b38577df3477fddafa0078fb5f4d256ce94d87b41cb/old-intended.zip",
+    "traceback": "Traceback (most recent call last):\n  File \"<stdin>\", line 73, in perform\n  File \"<stdin>\", line 113, in body\nAssertionError: .tfw/update_receipts/knowledge-lifecycle/c3b0580ad155738e2db99b38577df3477fddafa0078fb5f4d256ce94d87b41cb/old-intended.zip\n",
+    "required_action": "STOP; no retry or further native effects; preserve and return"
+  },
+  "expected_repository_files": 2317,
+  "actual_repository_files": 2317,
+  "extra_paths": [],
+  "byte_or_Git_mismatches": [],
+  "eol_observer_differences": [
+    {
+      "path": ".tfw/update_receipts/knowledge-lifecycle/c3b0580ad155738e2db99b38577df3477fddafa0078fb5f4d256ce94d87b41cb/old-intended.zip",
+      "expected_original_eol": {
+        "CRLF": 9,
+        "LF": 2134,
+        "CR": 2236
+      },
+      "observer_eol": {
+        "CRLF": 9,
+        "LF": 2143,
+        "CR": 2236
+      },
+      "actual_CR_bytes": 2245,
+      "actual_CRLF_pairs": 9,
+      "actual_LF_bytes": 2143,
+      "all_byte_and_Git_identities_equal": true
+    },
+    {
+      "path": "docs/brand/commands_card.png",
+      "expected_original_eol": {
+        "CRLF": 3,
+        "LF": 3309,
+        "CR": 2369
+      },
+      "observer_eol": {
+        "CRLF": 3,
+        "LF": 3312,
+        "CR": 2369
+      },
+      "actual_CR_bytes": 2372,
+      "actual_CRLF_pairs": 3,
+      "actual_LF_bytes": 3312,
+      "all_byte_and_Git_identities_equal": true
+    },
+    {
+      "path": "docs/brand/favicon.png",
+      "expected_original_eol": {
+        "CRLF": 1,
+        "LF": 11,
+        "CR": 13
+      },
+      "observer_eol": {
+        "CRLF": 1,
+        "LF": 12,
+        "CR": 13
+      },
+      "actual_CR_bytes": 14,
+      "actual_CRLF_pairs": 1,
+      "actual_LF_bytes": 12,
+      "all_byte_and_Git_identities_equal": true
+    },
+    {
+      "path": "docs/brand/logo_header.png",
+      "expected_original_eol": {
+        "CRLF": 2,
+        "LF": 41,
+        "CR": 70
+      },
+      "observer_eol": {
+        "CRLF": 2,
+        "LF": 43,
+        "CR": 70
+      },
+      "actual_CR_bytes": 72,
+      "actual_CRLF_pairs": 2,
+      "actual_LF_bytes": 43,
+      "all_byte_and_Git_identities_equal": true
+    },
+    {
+      "path": "docs/brand/overview.png",
+      "expected_original_eol": {
+        "CRLF": 62,
+        "LF": 15348,
+        "CR": 14131
+      },
+      "observer_eol": {
+        "CRLF": 62,
+        "LF": 15410,
+        "CR": 14131
+      },
+      "actual_CR_bytes": 14193,
+      "actual_CRLF_pairs": 62,
+      "actual_LF_bytes": 15410,
+      "all_byte_and_Git_identities_equal": true
+    },
+    {
+      "path": "docs/brand/philosophy.png",
+      "expected_original_eol": {
+        "CRLF": 23,
+        "LF": 5573,
+        "CR": 5268
+      },
+      "observer_eol": {
+        "CRLF": 23,
+        "LF": 5596,
+        "CR": 5268
+      },
+      "actual_CR_bytes": 5291,
+      "actual_CRLF_pairs": 23,
+      "actual_LF_bytes": 5596,
+      "all_byte_and_Git_identities_equal": true
+    },
+    {
+      "path": "workspace/2026/TFW_20260830-114238_ASSISTED15/evidence/templates/a4-custom-page-1.png",
+      "expected_original_eol": {
+        "CRLF": 4,
+        "LF": 429,
+        "CR": 487
+      },
+      "observer_eol": {
+        "CRLF": 4,
+        "LF": 433,
+        "CR": 487
+      },
+      "actual_CR_bytes": 491,
+      "actual_CRLF_pairs": 4,
+      "actual_LF_bytes": 433,
+      "all_byte_and_Git_identities_equal": true
+    },
+    {
+      "path": "workspace/2026/TFW_20260830-114238_ASSISTED15/evidence/templates/a4-custom-page-2.png",
+      "expected_original_eol": {
+        "CRLF": 7,
+        "LF": 648,
+        "CR": 648
+      },
+      "observer_eol": {
+        "CRLF": 7,
+        "LF": 655,
+        "CR": 648
+      },
+      "actual_CR_bytes": 655,
+      "actual_CRLF_pairs": 7,
+      "actual_LF_bytes": 655,
+      "all_byte_and_Git_identities_equal": true
+    },
+    {
+      "path": "workspace/2026/TFW_20260830-114238_ASSISTED15/evidence/templates/a4-custom-page-3.png",
+      "expected_original_eol": {
+        "CRLF": 2,
+        "LF": 59,
+        "CR": 80
+      },
+      "observer_eol": {
+        "CRLF": 2,
+        "LF": 61,
+        "CR": 80
+      },
+      "actual_CR_bytes": 82,
+      "actual_CRLF_pairs": 2,
+      "actual_LF_bytes": 61,
+      "all_byte_and_Git_identities_equal": true
+    },
+    {
+      "path": "workspace/2026/TFW_20260830-114238_ASSISTED15/evidence/templates/a4-custom.pdf",
+      "expected_original_eol": {
+        "CRLF": 1,
+        "LF": 2685,
+        "CR": 343
+      },
+      "observer_eol": {
+        "CRLF": 1,
+        "LF": 2686,
+        "CR": 343
+      },
+      "actual_CR_bytes": 344,
+      "actual_CRLF_pairs": 1,
+      "actual_LF_bytes": 2686,
+      "all_byte_and_Git_identities_equal": true
+    },
+    {
+      "path": "workspace/2026/TFW_20260830-114238_ASSISTED15/evidence/templates/a4-stock-page-1.png",
+      "expected_original_eol": {
+        "CRLF": 6,
+        "LF": 393,
+        "CR": 466
+      },
+      "observer_eol": {
+        "CRLF": 6,
+        "LF": 399,
+        "CR": 466
+      },
+      "actual_CR_bytes": 472,
+      "actual_CRLF_pairs": 6,
+      "actual_LF_bytes": 399,
+      "all_byte_and_Git_identities_equal": true
+    },
+    {
+      "path": "workspace/2026/TFW_20260830-114238_ASSISTED15/evidence/templates/a4-stock-page-2.png",
+      "expected_original_eol": {
+        "CRLF": 3,
+        "LF": 531,
+        "CR": 614
+      },
+      "observer_eol": {
+        "CRLF": 3,
+        "LF": 534,
+        "CR": 614
+      },
+      "actual_CR_bytes": 617,
+      "actual_CRLF_pairs": 3,
+      "actual_LF_bytes": 534,
+      "all_byte_and_Git_identities_equal": true
+    },
+    {
+      "path": "workspace/2026/TFW_20260830-114238_ASSISTED15/evidence/templates/a4-stock-page-3.png",
+      "expected_original_eol": {
+        "CRLF": 1,
+        "LF": 66,
+        "CR": 67
+      },
+      "observer_eol": {
+        "CRLF": 1,
+        "LF": 67,
+        "CR": 67
+      },
+      "actual_CR_bytes": 68,
+      "actual_CRLF_pairs": 1,
+      "actual_LF_bytes": 67,
+      "all_byte_and_Git_identities_equal": true
+    },
+    {
+      "path": "workspace/2026/TFW_20260830-114238_ASSISTED15/evidence/templates/a4-stock.pdf",
+      "expected_original_eol": {
+        "CRLF": 1,
+        "LF": 2594,
+        "CR": 319
+      },
+      "observer_eol": {
+        "CRLF": 1,
+        "LF": 2595,
+        "CR": 319
+      },
+      "actual_CR_bytes": 320,
+      "actual_CRLF_pairs": 1,
+      "actual_LF_bytes": 2595,
+      "all_byte_and_Git_identities_equal": true
+    },
+    {
+      "path": "workspace/2026/TFW_20260830-114238_ASSISTED15/evidence/templates/browser-a4-custom-full.png",
+      "expected_original_eol": {
+        "CRLF": 2,
+        "LF": 473,
+        "CR": 520
+      },
+      "observer_eol": {
+        "CRLF": 2,
+        "LF": 475,
+        "CR": 520
+      },
+      "actual_CR_bytes": 522,
+      "actual_CRLF_pairs": 2,
+      "actual_LF_bytes": 475,
+      "all_byte_and_Git_identities_equal": true
+    },
+    {
+      "path": "workspace/2026/TFW_20260830-114238_ASSISTED15/evidence/templates/browser-a4-stock-full.png",
+      "expected_original_eol": {
+        "CRLF": 1,
+        "LF": 503,
+        "CR": 458
+      },
+      "observer_eol": {
+        "CRLF": 1,
+        "LF": 504,
+        "CR": 458
+      },
+      "actual_CR_bytes": 459,
+      "actual_CRLF_pairs": 1,
+      "actual_LF_bytes": 504,
+      "all_byte_and_Git_identities_equal": true
+    },
+    {
+      "path": "workspace/2026/TFW_20260830-114238_ASSISTED15/evidence/templates/browser-presentation-custom-full.png",
+      "expected_original_eol": {
+        "CRLF": 3,
+        "LF": 544,
+        "CR": 687
+      },
+      "observer_eol": {
+        "CRLF": 3,
+        "LF": 547,
+        "CR": 687
+      },
+      "actual_CR_bytes": 690,
+      "actual_CRLF_pairs": 3,
+      "actual_LF_bytes": 547,
+      "all_byte_and_Git_identities_equal": true
+    },
+    {
+      "path": "workspace/2026/TFW_20260830-114238_ASSISTED15/evidence/templates/browser-presentation-stock-full.png",
+      "expected_original_eol": {
+        "CRLF": 4,
+        "LF": 596,
+        "CR": 758
+      },
+      "observer_eol": {
+        "CRLF": 4,
+        "LF": 600,
+        "CR": 758
+      },
+      "actual_CR_bytes": 762,
+      "actual_CRLF_pairs": 4,
+      "actual_LF_bytes": 600,
+      "all_byte_and_Git_identities_equal": true
+    },
+    {
+      "path": "workspace/2026/TFW_20260830-114238_ASSISTED15/evidence/templates/presentation-custom-page-1.png",
+      "expected_original_eol": {
+        "CRLF": 1,
+        "LF": 78,
+        "CR": 89
+      },
+      "observer_eol": {
+        "CRLF": 1,
+        "LF": 79,
+        "CR": 89
+      },
+      "actual_CR_bytes": 90,
+      "actual_CRLF_pairs": 1,
+      "actual_LF_bytes": 79,
+      "all_byte_and_Git_identities_equal": true
+    },
+    {
+      "path": "workspace/2026/TFW_20260830-114238_ASSISTED15/evidence/templates/presentation-custom-page-2.png",
+      "expected_original_eol": {
+        "CRLF": 1,
+        "LF": 204,
+        "CR": 181
+      },
+      "observer_eol": {
+        "CRLF": 1,
+        "LF": 205,
+        "CR": 181
+      },
+      "actual_CR_bytes": 182,
+      "actual_CRLF_pairs": 1,
+      "actual_LF_bytes": 205,
+      "all_byte_and_Git_identities_equal": true
+    },
+    {
+      "path": "workspace/2026/TFW_20260830-114238_ASSISTED15/evidence/templates/presentation-custom-page-3.png",
+      "expected_original_eol": {
+        "CRLF": 1,
+        "LF": 143,
+        "CR": 166
+      },
+      "observer_eol": {
+        "CRLF": 1,
+        "LF": 144,
+        "CR": 166
+      },
+      "actual_CR_bytes": 167,
+      "actual_CRLF_pairs": 1,
+      "actual_LF_bytes": 144,
+      "all_byte_and_Git_identities_equal": true
+    },
+    {
+      "path": "workspace/2026/TFW_20260830-114238_ASSISTED15/evidence/templates/presentation-custom-page-4.png",
+      "expected_original_eol": {
+        "CRLF": 2,
+        "LF": 142,
+        "CR": 133
+      },
+      "observer_eol": {
+        "CRLF": 2,
+        "LF": 144,
+        "CR": 133
+      },
+      "actual_CR_bytes": 135,
+      "actual_CRLF_pairs": 2,
+      "actual_LF_bytes": 144,
+      "all_byte_and_Git_identities_equal": true
+    },
+    {
+      "path": "workspace/2026/TFW_20260830-114238_ASSISTED15/evidence/templates/presentation-custom-page-5.png",
+      "expected_original_eol": {
+        "CRLF": 1,
+        "LF": 173,
+        "CR": 268
+      },
+      "observer_eol": {
+        "CRLF": 1,
+        "LF": 174,
+        "CR": 268
+      },
+      "actual_CR_bytes": 269,
+      "actual_CRLF_pairs": 1,
+      "actual_LF_bytes": 174,
+      "all_byte_and_Git_identities_equal": true
+    },
+    {
+      "path": "workspace/2026/TFW_20260830-114238_ASSISTED15/evidence/templates/presentation-stock-page-1.png",
+      "expected_original_eol": {
+        "CRLF": 1,
+        "LF": 92,
+        "CR": 81
+      },
+      "observer_eol": {
+        "CRLF": 1,
+        "LF": 93,
+        "CR": 81
+      },
+      "actual_CR_bytes": 82,
+      "actual_CRLF_pairs": 1,
+      "actual_LF_bytes": 93,
+      "all_byte_and_Git_identities_equal": true
+    },
+    {
+      "path": "workspace/2026/TFW_20260830-114238_ASSISTED15/evidence/templates/presentation-stock-page-2.png",
+      "expected_original_eol": {
+        "CRLF": 2,
+        "LF": 177,
+        "CR": 201
+      },
+      "observer_eol": {
+        "CRLF": 2,
+        "LF": 179,
+        "CR": 201
+      },
+      "actual_CR_bytes": 203,
+      "actual_CRLF_pairs": 2,
+      "actual_LF_bytes": 179,
+      "all_byte_and_Git_identities_equal": true
+    },
+    {
+      "path": "workspace/2026/TFW_20260830-114238_ASSISTED15/evidence/templates/presentation-stock-page-3.png",
+      "expected_original_eol": {
+        "CRLF": 1,
+        "LF": 144,
+        "CR": 139
+      },
+      "observer_eol": {
+        "CRLF": 1,
+        "LF": 145,
+        "CR": 139
+      },
+      "actual_CR_bytes": 140,
+      "actual_CRLF_pairs": 1,
+      "actual_LF_bytes": 145,
+      "all_byte_and_Git_identities_equal": true
+    },
+    {
+      "path": "workspace/2026/TFW_20260830-114238_ASSISTED15/evidence/templates/presentation-stock-page-4.png",
+      "expected_original_eol": {
+        "CRLF": 3,
+        "LF": 132,
+        "CR": 131
+      },
+      "observer_eol": {
+        "CRLF": 3,
+        "LF": 135,
+        "CR": 131
+      },
+      "actual_CR_bytes": 134,
+      "actual_CRLF_pairs": 3,
+      "actual_LF_bytes": 135,
+      "all_byte_and_Git_identities_equal": true
+    },
+    {
+      "path": "workspace/2026/TFW_20260830-114238_ASSISTED15/evidence/templates/presentation-stock-page-5.png",
+      "expected_original_eol": {
+        "CRLF": 1,
+        "LF": 136,
+        "CR": 190
+      },
+      "observer_eol": {
+        "CRLF": 1,
+        "LF": 137,
+        "CR": 190
+      },
+      "actual_CR_bytes": 191,
+      "actual_CRLF_pairs": 1,
+      "actual_LF_bytes": 137,
+      "all_byte_and_Git_identities_equal": true
+    },
+    {
+      "path": "workspace/2026/TFW_20260830-114238_ASSISTED15/evidence/templates/presentation-stock.pdf",
+      "expected_original_eol": {
+        "CRLF": 1,
+        "LF": 1386,
+        "CR": 227
+      },
+      "observer_eol": {
+        "CRLF": 1,
+        "LF": 1387,
+        "CR": 227
+      },
+      "actual_CR_bytes": 228,
+      "actual_CRLF_pairs": 1,
+      "actual_LF_bytes": 1387,
+      "all_byte_and_Git_identities_equal": true
+    },
+    {
+      "path": "workspace/2026/TFW_20260830-194027_TLD/evidence/td_citation_resolves_to_snapshot.png",
+      "expected_original_eol": {
+        "CRLF": 3,
+        "LF": 217,
+        "CR": 239
+      },
+      "observer_eol": {
+        "CRLF": 3,
+        "LF": 220,
+        "CR": 239
+      },
+      "actual_CR_bytes": 242,
+      "actual_CRLF_pairs": 3,
+      "actual_LF_bytes": 220,
+      "all_byte_and_Git_identities_equal": true
+    },
+    {
+      "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/c2-check-capture.tar.xz",
+      "expected_original_eol": {
+        "CRLF": 13,
+        "LF": 2882,
+        "CR": 2944
+      },
+      "observer_eol": {
+        "CRLF": 13,
+        "LF": 2895,
+        "CR": 2944
+      },
+      "actual_CR_bytes": 2957,
+      "actual_CRLF_pairs": 13,
+      "actual_LF_bytes": 2895,
+      "all_byte_and_Git_identities_equal": true
+    },
+    {
+      "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/c2-opened-html.tar.xz",
+      "expected_original_eol": {
+        "CRLF": 13,
+        "LF": 2681,
+        "CR": 2708
+      },
+      "observer_eol": {
+        "CRLF": 13,
+        "LF": 2694,
+        "CR": 2708
+      },
+      "actual_CR_bytes": 2721,
+      "actual_CRLF_pairs": 13,
+      "actual_LF_bytes": 2694,
+      "all_byte_and_Git_identities_equal": true
+    },
+    {
+      "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/final-doc-links/raw-capture.tar.xz",
+      "expected_original_eol": {
+        "CRLF": 4,
+        "LF": 1103,
+        "CR": 1106
+      },
+      "observer_eol": {
+        "CRLF": 4,
+        "LF": 1107,
+        "CR": 1106
+      },
+      "actual_CR_bytes": 1110,
+      "actual_CRLF_pairs": 4,
+      "actual_LF_bytes": 1107,
+      "all_byte_and_Git_identities_equal": true
+    },
+    {
+      "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/final-release/opened-html.tar.xz",
+      "expected_original_eol": {
+        "CRLF": 2,
+        "LF": 463,
+        "CR": 411
+      },
+      "observer_eol": {
+        "CRLF": 2,
+        "LF": 465,
+        "CR": 411
+      },
+      "actual_CR_bytes": 413,
+      "actual_CRLF_pairs": 2,
+      "actual_LF_bytes": 465,
+      "all_byte_and_Git_identities_equal": true
+    },
+    {
+      "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/final-release/raw-capture.tar.xz",
+      "expected_original_eol": {
+        "CRLF": 3,
+        "LF": 1427,
+        "CR": 1411
+      },
+      "observer_eol": {
+        "CRLF": 3,
+        "LF": 1430,
+        "CR": 1411
+      },
+      "actual_CR_bytes": 1414,
+      "actual_CRLF_pairs": 3,
+      "actual_LF_bytes": 1430,
+      "all_byte_and_Git_identities_equal": true
+    },
+    {
+      "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/native-evidence.tar.xz",
+      "expected_original_eol": {
+        "CRLF": 12,
+        "LF": 2478,
+        "CR": 2487
+      },
+      "observer_eol": {
+        "CRLF": 12,
+        "LF": 2490,
+        "CR": 2487
+      },
+      "actual_CR_bytes": 2499,
+      "actual_CRLF_pairs": 12,
+      "actual_LF_bytes": 2490,
+      "all_byte_and_Git_identities_equal": true
+    },
+    {
+      "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/review-c2-final/raw-capture.tar.xz",
+      "expected_original_eol": {
+        "CRLF": 1,
+        "LF": 1121,
+        "CR": 1153
+      },
+      "observer_eol": {
+        "CRLF": 1,
+        "LF": 1122,
+        "CR": 1153
+      },
+      "actual_CR_bytes": 1154,
+      "actual_CRLF_pairs": 1,
+      "actual_LF_bytes": 1122,
+      "all_byte_and_Git_identities_equal": true
+    },
+    {
+      "path": "workspace/2026/TFW_20260907-133942_PTTC/phase-a/evidence/phase-a-raw.zip",
+      "expected_original_eol": {
+        "CRLF": 32,
+        "LF": 8418,
+        "CR": 8758
+      },
+      "observer_eol": {
+        "CRLF": 32,
+        "LF": 8450,
+        "CR": 8758
+      },
+      "actual_CR_bytes": 8790,
+      "actual_CRLF_pairs": 32,
+      "actual_LF_bytes": 8450,
+      "all_byte_and_Git_identities_equal": true
+    },
+    {
+      "path": "workspace/2026/TFW_20260907-133942_PTTC/phase-b/evidence/phase-b-failed-source.zip",
+      "expected_original_eol": {
+        "CRLF": 4,
+        "LF": 1207,
+        "CR": 1250
+      },
+      "observer_eol": {
+        "CRLF": 4,
+        "LF": 1211,
+        "CR": 1250
+      },
+      "actual_CR_bytes": 1254,
+      "actual_CRLF_pairs": 4,
+      "actual_LF_bytes": 1211,
+      "all_byte_and_Git_identities_equal": true
+    },
+    {
+      "path": "workspace/2026/TFW_20260907-133942_PTTC/phase-b/evidence/phase-b-original-captures.zip",
+      "expected_original_eol": {
+        "CRLF": 24,
+        "LF": 3461,
+        "CR": 3818
+      },
+      "observer_eol": {
+        "CRLF": 24,
+        "LF": 3485,
+        "CR": 3818
+      },
+      "actual_CR_bytes": 3842,
+      "actual_CRLF_pairs": 24,
+      "actual_LF_bytes": 3485,
+      "all_byte_and_Git_identities_equal": true
+    }
+  ],
+  "meaning": "The observer calculated bare CR as total CR minus CRLF pairs; original accepted records count CR bytes including CRLF. Preserve both conventions and actual raw bytes. The assertion is an observer failure and still ends this attempt; no retry or retroactive successful-case claim.",
+  "receiver_mutations_in_this_stop_operation": 0,
+  "new_target_effect_writes": 0,
+  "source_archive_prepared": false,
+  "new_preservation_attachment_created": false,
+  "new_config_provenance_written": false,
+  "native_build_run": false,
+  "repeat_run": false,
+  "old_R1_Z_receiver_accessed": false,
+  "partial_archive_sha256": "7ac460d99dbf9c39ca51d969ae03292d6652d2b6584c227fe2e8d45d795b2f42",
+  "git_metadata": {
+    "HEAD": {
+      "bytes": 41,
+      "sha256": "cfb57f22b1d11a8284509f9f328b4920c45b115af0a65a222d1efb5eca68a90d",
+      "raw_git_blob": "916e08ee8043a6817870abc01cf98f8121806f7c",
+      "eol": {
+        "CRLF": 0,
+        "LF": 1,
+        "CR": 0
+      }
+    },
+    "index": {
+      "bytes": 342569,
+      "sha256": "34e6a603f4f6a8bfd749e0795156d6ffe0a4941e918a111473bd8c4d26618726",
+      "raw_git_blob": "cb4b7f791a8ad233d8b2e43a25f16d3ed8b4beef",
+      "eol": {
+        "CRLF": 1,
+        "LF": 888,
+        "CR": 357
+      }
+    },
+    "config": {
+      "bytes": 304,
+      "sha256": "25224cd7402f459eb05626c21eaab2ccc0c4c3bd8a0a8660d4599d336bf5df1b",
+      "raw_git_blob": "cc290f6cea3295e659ce5e33c6bb0c2be2981fc6",
+      "eol": {
+        "CRLF": 0,
+        "LF": 13,
+        "CR": 0
+      }
+    },
+    "objects/info/alternates": {
+      "bytes": 50,
+      "sha256": "0f7c08bbbed55bf3ae8bbf5011a8fda2ff14c2f954e1e8bc868705cac8f2b9eb",
+      "raw_git_blob": "7a5d991c034db173c778f21bbf0d846864f11790",
+      "eol": {
+        "CRLF": 0,
+        "LF": 1,
+        "CR": 0
+      }
+    },
+    "logs/HEAD": {
+      "bytes": 407,
+      "sha256": "4ce9cb3a50d7805f731223ba601ad84d899a372b83bdabb1b5be7de251605032",
+      "raw_git_blob": "ed7e9788eb370e8ddf05484b2babf81d41bc0b05",
+      "eol": {
+        "CRLF": 0,
+        "LF": 2,
+        "CR": 0
+      }
+    }
+  },
+  "native_result": "STOPPED / affected-native evidence incomplete"
+}

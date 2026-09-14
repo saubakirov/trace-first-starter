@@ -1,0 +1,54 @@
+{
+  "step": "build",
+  "started_at": "2026-09-13T22:26:25.811253+00:00",
+  "argv": [
+    "workspace/2026/TFW_20260909-231654_TKL/evidence/r3-native/native.py",
+    "build"
+  ],
+  "subprocesses": [
+    {
+      "argv": [
+        "git",
+        "-c",
+        "core.longpaths=true",
+        "-c",
+        "core.autocrlf=false",
+        "rev-parse",
+        "HEAD"
+      ],
+      "cwd": "C:\\Users\\c0rpa\\.codex\\worktrees\\f3f3\\steps-framework",
+      "start": "2026-09-13T22:26:25.818254+00:00",
+      "stdout": "build-1.stdout.raw",
+      "stderr": "build-1.stderr.raw",
+      "end": "2026-09-13T22:26:25.862693+00:00",
+      "exit": 0
+    },
+    {
+      "argv": [
+        "E:\\TEMP\\pttc-phase-a-b9b5\\venv\\Scripts\\python.exe",
+        "-m",
+        "mkdocs",
+        "build",
+        "-f",
+        "docs/mkdocs.yml",
+        "--site-dir",
+        "C:\\Users\\c0rpa\\AppData\\Local\\Temp\\TFW_TKL_NATIVE_01a09a0c\\self-adoption-r3\\site"
+      ],
+      "cwd": "C:\\Users\\c0rpa\\AppData\\Local\\Temp\\TFW_TKL_NATIVE_01a09a0c\\self-adoption-r3",
+      "start": "2026-09-13T22:26:42.031211+00:00",
+      "stdout": "13-build.stdout.raw",
+      "stderr": "13-build.stderr.raw",
+      "end": "2026-09-13T22:29:25.623612+00:00",
+      "exit": 0
+    }
+  ],
+  "writes": [],
+  "result": {
+    "site": "C:\\Users\\c0rpa\\AppData\\Local\\Temp\\TFW_TKL_NATIVE_01a09a0c\\self-adoption-r3\\site",
+    "files": 1924,
+    "existing_inputs_preserved": true,
+    "builds": 1
+  },
+  "exit": 0,
+  "completed_at": "2026-09-13T22:30:28.620209+00:00"
+}

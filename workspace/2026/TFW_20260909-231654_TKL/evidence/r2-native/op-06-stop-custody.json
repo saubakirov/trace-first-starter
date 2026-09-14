@@ -1,0 +1,10 @@
+{
+  "seq": 6,
+  "tool": "exec_command",
+  "started_at": "2026-09-13T20:31:28.412523+00:00",
+  "finished_at": "2026-09-13T20:31:31.471118+00:00",
+  "kind": "failure custody only",
+  "partial_map_files": 2317,
+  "complete_physical_bytes_sealed": true,
+  "no_receiver_write": true
+}

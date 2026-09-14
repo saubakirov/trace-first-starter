@@ -1,0 +1,33 @@
+{
+  "written_at": "2026-09-14T00:09:04.734663+00:00",
+  "candidate": "a6c48949c2cec3443c914fb57a74be6dcd66d274",
+  "state": "STOPPED / RETURN TO COORDINATOR; task lifecycle remains KNW",
+  "authority": "0a775eb3999d0a194c12045f61c282842c7f3b86, dispatch 6e83 and REVIEW rev4 section 6",
+  "first_material_failure": {
+    "tool_chunk": "854491",
+    "observed_at": "2026-09-14T00:07:29.547858+00:00",
+    "operation": "Read actual built knowledge-index two rows, resolve each new href, open existing destinations, then assert all destinations exist.",
+    "assertion": "assert all(d['exists'] and d['fragment_exists'] for d in destinations)",
+    "exit_code": 1,
+    "reported_traceback": "Traceback (most recent call last):\n  File \"<stdin>\", line 43, in <module>\nAssertionError\n",
+    "raw_result_file": "05-opened-output.json",
+    "reported_tool_output_custody": "Original process output and traceback remain in task tool chunk 854491. The JSON file was durably written before the assertion; this record quotes the returned traceback and does not claim a separately captured process stream.",
+    "new_link_label": "knowledge lifecycle migration",
+    "actual_href": ".tfw/migrations/knowledge-lifecycle.md",
+    "literal_url_path": "knowledge-index/.tfw/migrations/knowledge-lifecycle.md",
+    "literal_url_path_absent_from_complete_build_map": true,
+    "directory_index_probe": "knowledge-index/.tfw/migrations/knowledge-lifecycle.md/index.html",
+    "directory_index_probe_absent": true,
+    "link_occurrences": 8,
+    "existing_link_occurrences": 7,
+    "opened_distinct_existing_pages_including_entry": 6,
+    "consequence": "New capture cannot receive successful final-output acceptance: a supplied migration reference is not reachable from its generated entry. Existing 107 tests and exit-0 build do not cover this new exact destination."
+  },
+  "after_stop_actions": "Immediate direct Coordinator notification; custody only of already-generated output, source identities, original observations and bounded RF/EV return. No further source/test/build/native/receiver checks or repairs.",
+  "permissions": "No authority to edit the two rows, product/tests or REVIEW, or to repeat a build. Coordinator must resolve any amendment through existing holders before work resumes.",
+  "source_meananing_limit": "Five distinct existing destinations were opened plus entry. The migration source file was opened before build, but its intended compiled destination is absent from the new href. The original observation description saying each destination was opened must be read with its explicit exists:false record; no successful migration HTML open is claimed.",
+  "stream_fidelity": "pytest stdout/stderr were captured as subprocess bytes; build stdout/stderr use the unmodified existing fixture text capture and its own hashes. This is not byte-level subprocess capture of the build pipes.",
+  "state_file_sha256": "99fbeb9a134f341fcff79db93099f33b693609a6dd3d80ee6e138cfeb308a137",
+  "no_new_transition": true,
+  "prior_native": "Permanent STOPPED 24/24 retained; its independent rev4 APPROVE applies to prior Candidate effects/custody and is not a success verdict for this new capture."
+}

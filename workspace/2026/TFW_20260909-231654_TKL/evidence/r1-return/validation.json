@@ -1,0 +1,437 @@
+{
+  "observed_at": "2026-09-13T18:52:20.364959+00:00",
+  "baseline": "ec91c56007c20cda79f740fec15c85e4af74d17c",
+  "candidate": "65c3c94b2347c69f6d21ac2e2664a39ef46b3ae2",
+  "native_commit": "6b0d5c748d51c55c7c22147799cdb70131c22049",
+  "all_checks_pass": true,
+  "report_prefix_checks": [
+    {
+      "path": "ONB__TFW_20260909-231654_TKL.md",
+      "original_bytes": 52870,
+      "original_sha256": "e3a7875fdd82399b2994911f1a128a3c6f27041c1dc902ccd3b6780d8812a324",
+      "current_bytes": 56488,
+      "current_sha256": "69af75d3c1e6d563741a7787db6c504b0542ec539b21c0490006ffef2f122c72",
+      "exact_complete_prefix": true
+    },
+    {
+      "path": "evidence/EV__TFW_20260909-231654_TKL.md",
+      "original_bytes": 16526,
+      "original_sha256": "90de82e4f7f286cfe7a3f0320c7bc1043cf96ae281c267b4e30fa323c28c80a0",
+      "current_bytes": 25012,
+      "current_sha256": "66a3ea2f0541424726cbde00ff95f4ee381ecabe95f7f3df3a01e756164c80ec",
+      "exact_complete_prefix": true
+    },
+    {
+      "path": "RF__TFW_20260909-231654_TKL.md",
+      "original_bytes": 28803,
+      "original_sha256": "c5ec6ba000ca7d0a9faad092286bf491750efb07fbf982ed6e26f4581cb5c4da",
+      "current_bytes": 37467,
+      "current_sha256": "9d5a2d5942f05866968985b8d3d691e98b3f8a471c03d7e8dd1d362da52d762a",
+      "exact_complete_prefix": true
+    }
+  ],
+  "new_appendix_links": [
+    {
+      "source": "ONB__TFW_20260909-231654_TKL.md",
+      "href": "journal/20260913-231110__dispatch__1c7b.md",
+      "target": "workspace/2026/TFW_20260909-231654_TKL/journal/20260913-231110__dispatch__1c7b.md"
+    },
+    {
+      "source": "ONB__TFW_20260909-231654_TKL.md",
+      "href": "evidence/r1-ac7/17-raw-seal.json",
+      "target": "workspace/2026/TFW_20260909-231654_TKL/evidence/r1-ac7/17-raw-seal.json"
+    },
+    {
+      "source": "ONB__TFW_20260909-231654_TKL.md",
+      "href": "evidence/r1-return/native-commit.json",
+      "target": "workspace/2026/TFW_20260909-231654_TKL/evidence/r1-return/native-commit.json"
+    },
+    {
+      "source": "ONB__TFW_20260909-231654_TKL.md",
+      "href": "evidence/r1-ac7/16-native-result.json",
+      "target": "workspace/2026/TFW_20260909-231654_TKL/evidence/r1-ac7/16-native-result.json"
+    },
+    {
+      "source": "evidence/EV__TFW_20260909-231654_TKL.md",
+      "href": "../REVIEW__TFW_20260909-231654_TKL.md",
+      "target": "workspace/2026/TFW_20260909-231654_TKL/REVIEW__TFW_20260909-231654_TKL.md"
+    },
+    {
+      "source": "evidence/EV__TFW_20260909-231654_TKL.md",
+      "href": "handover.md",
+      "target": "workspace/2026/TFW_20260909-231654_TKL/evidence/handover.md"
+    },
+    {
+      "source": "evidence/EV__TFW_20260909-231654_TKL.md",
+      "href": "../REVIEW__TFW_20260909-231654_TKL.md",
+      "target": "workspace/2026/TFW_20260909-231654_TKL/REVIEW__TFW_20260909-231654_TKL.md"
+    },
+    {
+      "source": "evidence/EV__TFW_20260909-231654_TKL.md",
+      "href": "handover.md",
+      "target": "workspace/2026/TFW_20260909-231654_TKL/evidence/handover.md"
+    },
+    {
+      "source": "evidence/EV__TFW_20260909-231654_TKL.md",
+      "href": "../REVIEW__TFW_20260909-231654_TKL.md",
+      "target": "workspace/2026/TFW_20260909-231654_TKL/REVIEW__TFW_20260909-231654_TKL.md"
+    },
+    {
+      "source": "evidence/EV__TFW_20260909-231654_TKL.md",
+      "href": "final-inputs/source-map.json",
+      "target": "workspace/2026/TFW_20260909-231654_TKL/evidence/final-inputs/source-map.json"
+    },
+    {
+      "source": "evidence/EV__TFW_20260909-231654_TKL.md",
+      "href": "../REVIEW__TFW_20260909-231654_TKL.md",
+      "target": "workspace/2026/TFW_20260909-231654_TKL/REVIEW__TFW_20260909-231654_TKL.md"
+    },
+    {
+      "source": "evidence/EV__TFW_20260909-231654_TKL.md",
+      "href": "native/second-epoch.md",
+      "target": "workspace/2026/TFW_20260909-231654_TKL/evidence/native/second-epoch.md"
+    },
+    {
+      "source": "evidence/EV__TFW_20260909-231654_TKL.md",
+      "href": "../REVIEW__TFW_20260909-231654_TKL.md",
+      "target": "workspace/2026/TFW_20260909-231654_TKL/REVIEW__TFW_20260909-231654_TKL.md"
+    },
+    {
+      "source": "evidence/EV__TFW_20260909-231654_TKL.md",
+      "href": "fresh-consumer.md",
+      "target": "workspace/2026/TFW_20260909-231654_TKL/evidence/fresh-consumer.md"
+    },
+    {
+      "source": "evidence/EV__TFW_20260909-231654_TKL.md",
+      "href": "../REVIEW__TFW_20260909-231654_TKL.md",
+      "target": "workspace/2026/TFW_20260909-231654_TKL/REVIEW__TFW_20260909-231654_TKL.md"
+    },
+    {
+      "source": "evidence/EV__TFW_20260909-231654_TKL.md",
+      "href": "native/second-epoch.md",
+      "target": "workspace/2026/TFW_20260909-231654_TKL/evidence/native/second-epoch.md"
+    },
+    {
+      "source": "evidence/EV__TFW_20260909-231654_TKL.md",
+      "href": "r1-ac7/16-native-result.json",
+      "target": "workspace/2026/TFW_20260909-231654_TKL/evidence/r1-ac7/16-native-result.json"
+    },
+    {
+      "source": "evidence/EV__TFW_20260909-231654_TKL.md",
+      "href": "r1-ac7/03-baseline-physical.json",
+      "target": "workspace/2026/TFW_20260909-231654_TKL/evidence/r1-ac7/03-baseline-physical.json"
+    },
+    {
+      "source": "evidence/EV__TFW_20260909-231654_TKL.md",
+      "href": "r1-ac7/06-preservation.json",
+      "target": "workspace/2026/TFW_20260909-231654_TKL/evidence/r1-ac7/06-preservation.json"
+    },
+    {
+      "source": "evidence/EV__TFW_20260909-231654_TKL.md",
+      "href": "r1-ac7/17-raw-seal.json",
+      "target": "workspace/2026/TFW_20260909-231654_TKL/evidence/r1-ac7/17-raw-seal.json"
+    },
+    {
+      "source": "evidence/EV__TFW_20260909-231654_TKL.md",
+      "href": "r1-return/native-commit.json",
+      "target": "workspace/2026/TFW_20260909-231654_TKL/evidence/r1-return/native-commit.json"
+    },
+    {
+      "source": "evidence/EV__TFW_20260909-231654_TKL.md",
+      "href": "adoption.md",
+      "target": "workspace/2026/TFW_20260909-231654_TKL/evidence/adoption.md"
+    },
+    {
+      "source": "evidence/EV__TFW_20260909-231654_TKL.md",
+      "href": "r1-ac8/08-navigation/manifest.json",
+      "target": "workspace/2026/TFW_20260909-231654_TKL/evidence/r1-ac8/08-navigation/manifest.json"
+    },
+    {
+      "source": "evidence/EV__TFW_20260909-231654_TKL.md",
+      "href": "r1-ac8/08-navigation/browser-observations.json",
+      "target": "workspace/2026/TFW_20260909-231654_TKL/evidence/r1-ac8/08-navigation/browser-observations.json"
+    },
+    {
+      "source": "evidence/EV__TFW_20260909-231654_TKL.md",
+      "href": "r1-ac7/11-output.json",
+      "target": "workspace/2026/TFW_20260909-231654_TKL/evidence/r1-ac7/11-output.json"
+    },
+    {
+      "source": "evidence/EV__TFW_20260909-231654_TKL.md",
+      "href": "../REVIEW__TFW_20260909-231654_TKL.md",
+      "target": "workspace/2026/TFW_20260909-231654_TKL/REVIEW__TFW_20260909-231654_TKL.md"
+    },
+    {
+      "source": "evidence/EV__TFW_20260909-231654_TKL.md",
+      "href": "ac9-supplement/README.md",
+      "target": "workspace/2026/TFW_20260909-231654_TKL/evidence/ac9-supplement/README.md"
+    },
+    {
+      "source": "evidence/EV__TFW_20260909-231654_TKL.md",
+      "href": "r1-ac8/05-contract-tests/receipt.json",
+      "target": "workspace/2026/TFW_20260909-231654_TKL/evidence/r1-ac8/05-contract-tests/receipt.json"
+    },
+    {
+      "source": "evidence/EV__TFW_20260909-231654_TKL.md",
+      "href": "../REVIEW__TFW_20260909-231654_TKL.md",
+      "target": "workspace/2026/TFW_20260909-231654_TKL/REVIEW__TFW_20260909-231654_TKL.md"
+    },
+    {
+      "source": "evidence/EV__TFW_20260909-231654_TKL.md",
+      "href": "fresh-consumer.md",
+      "target": "workspace/2026/TFW_20260909-231654_TKL/evidence/fresh-consumer.md"
+    },
+    {
+      "source": "evidence/EV__TFW_20260909-231654_TKL.md",
+      "href": "r1-ac8/09-accounting/accounting.json",
+      "target": "workspace/2026/TFW_20260909-231654_TKL/evidence/r1-ac8/09-accounting/accounting.json"
+    },
+    {
+      "source": "evidence/EV__TFW_20260909-231654_TKL.md",
+      "href": "r1-ac7/17-raw-seal.json",
+      "target": "workspace/2026/TFW_20260909-231654_TKL/evidence/r1-ac7/17-raw-seal.json"
+    },
+    {
+      "source": "evidence/EV__TFW_20260909-231654_TKL.md",
+      "href": "r1-ac8/09-accounting/value-membership.md",
+      "target": "workspace/2026/TFW_20260909-231654_TKL/evidence/r1-ac8/09-accounting/value-membership.md"
+    },
+    {
+      "source": "evidence/EV__TFW_20260909-231654_TKL.md",
+      "href": "r1-ac8/09-accounting/accounting.json",
+      "target": "workspace/2026/TFW_20260909-231654_TKL/evidence/r1-ac8/09-accounting/accounting.json"
+    },
+    {
+      "source": "evidence/EV__TFW_20260909-231654_TKL.md",
+      "href": "r1-ac7/17-accounting-recheck.json",
+      "target": "workspace/2026/TFW_20260909-231654_TKL/evidence/r1-ac7/17-accounting-recheck.json"
+    },
+    {
+      "source": "evidence/EV__TFW_20260909-231654_TKL.md",
+      "href": "r1-ac8/11-checkpoint/seal.json",
+      "target": "workspace/2026/TFW_20260909-231654_TKL/evidence/r1-ac8/11-checkpoint/seal.json"
+    },
+    {
+      "source": "evidence/EV__TFW_20260909-231654_TKL.md",
+      "href": "r1-ac7/18-git-seal.json",
+      "target": "workspace/2026/TFW_20260909-231654_TKL/evidence/r1-ac7/18-git-seal.json"
+    },
+    {
+      "source": "evidence/EV__TFW_20260909-231654_TKL.md",
+      "href": "r1-return/native-commit.json",
+      "target": "workspace/2026/TFW_20260909-231654_TKL/evidence/r1-return/native-commit.json"
+    },
+    {
+      "source": "evidence/EV__TFW_20260909-231654_TKL.md",
+      "href": "r1-return/validation.json",
+      "target": "workspace/2026/TFW_20260909-231654_TKL/evidence/r1-return/validation.json"
+    },
+    {
+      "source": "RF__TFW_20260909-231654_TKL.md",
+      "href": "evidence/r1-ac8/09-accounting/value-membership.md",
+      "target": "workspace/2026/TFW_20260909-231654_TKL/evidence/r1-ac8/09-accounting/value-membership.md"
+    },
+    {
+      "source": "RF__TFW_20260909-231654_TKL.md",
+      "href": "evidence/r1-ac8/09-accounting/accounting.json",
+      "target": "workspace/2026/TFW_20260909-231654_TKL/evidence/r1-ac8/09-accounting/accounting.json"
+    },
+    {
+      "source": "RF__TFW_20260909-231654_TKL.md",
+      "href": "evidence/r1-ac7/17-accounting-recheck.json",
+      "target": "workspace/2026/TFW_20260909-231654_TKL/evidence/r1-ac7/17-accounting-recheck.json"
+    },
+    {
+      "source": "RF__TFW_20260909-231654_TKL.md",
+      "href": "evidence/r1-return/native-commit.json",
+      "target": "workspace/2026/TFW_20260909-231654_TKL/evidence/r1-return/native-commit.json"
+    },
+    {
+      "source": "RF__TFW_20260909-231654_TKL.md",
+      "href": "evidence/EV__TFW_20260909-231654_TKL.md",
+      "target": "workspace/2026/TFW_20260909-231654_TKL/evidence/EV__TFW_20260909-231654_TKL.md"
+    },
+    {
+      "source": "RF__TFW_20260909-231654_TKL.md",
+      "href": "evidence/r1-ac7/17-raw-seal.json",
+      "target": "workspace/2026/TFW_20260909-231654_TKL/evidence/r1-ac7/17-raw-seal.json"
+    },
+    {
+      "source": "RF__TFW_20260909-231654_TKL.md",
+      "href": "evidence/r1-ac8/08-navigation/manifest.json",
+      "target": "workspace/2026/TFW_20260909-231654_TKL/evidence/r1-ac8/08-navigation/manifest.json"
+    }
+  ],
+  "verdict": {
+    "rows": 12,
+    "VERIFIED": 11,
+    "DEFERRED": 0,
+    "BLOCKED": 1,
+    "NA": 0,
+    "remaining": "AC11 same independent Reviewer R1 sufficiency and actual changed-report judgment"
+  },
+  "required_RF_sections_1_to_9": true,
+  "candidate_VALUE_58_ASSURANCE_7_unchanged": true,
+  "current_frozen_authority_review_unchanged": true,
+  "status_event": {
+    "current": "RF",
+    "from": "ONB",
+    "to": "RF",
+    "status_schema_errors": [],
+    "event_schema_errors": [],
+    "refs_all_read_and_resolve": true,
+    "fixed_status_body_unchanged": true,
+    "no_outcome": true,
+    "control": "control.json"
+  },
+  "native_raw_files_rechecked": 174,
+  "native_raw_paths_at_immutable_commit": 175,
+  "native_case_or_build_rerun": false,
+  "accounting": {
+    "logical_value_files": 58,
+    "additions": 1230,
+    "deletions": 999,
+    "binary_metric_na": [],
+    "touched_text_loc": 2229
+  },
+  "accounting_reproduction": "../r1-ac7/17-accounting-recheck.json",
+  "full_diff_check": {
+    "exit": 2,
+    "stdout": "full-diff-check.stdout.raw",
+    "stderr": "full-diff-check.stderr.raw",
+    "meaning": "Retained raw-custody formatting diagnostics under O3; forbidden to normalize. Not an authored change failure.",
+    "stdout_bytes": 57216329,
+    "scope": "Actual Baseline-to-native-commit6b0d5c; retained verbatim, including pre-existing raw diagnostics. No recursive check of this copied diagnostic output."
+  },
+  "authored_diff_check": {
+    "exit": 0,
+    "stdout": "authored-diff-check.stdout.raw",
+    "stderr": "authored-diff-check.stderr.raw",
+    "staged_authored_markdown_including_new_event_exit": 0,
+    "staged_observation_at": "2026-09-13T18:53:11.955352+00:00",
+    "scope": "ONB/RF/EV appendices, live status and new immutable transition event; status-before is raw custody."
+  },
+  "inventory": "inventory.json",
+  "inventory_sha256": "e60060c395bd6bfc37e9176dec888c96c2b6d27d5f57245c7f13403c0645934e",
+  "self_identity": "validation.json identity is the committed Git blob; no recursive hash assertion. Exact final commit is delivered to sole Coordinator.",
+  "final_commit_paths": [
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/ONB__TFW_20260909-231654_TKL.md",
+      "class": "TRACE",
+      "action": "M",
+      "bytes": 56488,
+      "sha256": "69af75d3c1e6d563741a7787db6c504b0542ec539b21c0490006ffef2f122c72"
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/RF__TFW_20260909-231654_TKL.md",
+      "class": "TRACE",
+      "action": "M",
+      "bytes": 37467,
+      "sha256": "9d5a2d5942f05866968985b8d3d691e98b3f8a471c03d7e8dd1d362da52d762a"
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/EV__TFW_20260909-231654_TKL.md",
+      "class": "TRACE",
+      "action": "M",
+      "bytes": 25012,
+      "sha256": "66a3ea2f0541424726cbde00ff95f4ee381ecabe95f7f3df3a01e756164c80ec"
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/r1-return/authored-diff-check.stderr.raw",
+      "class": "TRACE",
+      "action": "A",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/r1-return/authored-diff-check.stdout.raw",
+      "class": "TRACE",
+      "action": "A",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/r1-return/control.json",
+      "class": "TRACE",
+      "action": "A",
+      "bytes": 1717,
+      "sha256": "fa8dbea7a71e35dc323c83173f402ee51e49799a4327bb93202dbc76fb672bf9"
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/r1-return/full-diff-check.stderr.raw",
+      "class": "TRACE",
+      "action": "A",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/r1-return/full-diff-check.stdout.raw",
+      "class": "TRACE",
+      "action": "A",
+      "bytes": 57216329,
+      "sha256": "85c24ca232a172bd23c25c98996f6a93633272705991a440031f2fe2de4bc286"
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/r1-return/inventory.json",
+      "class": "TRACE",
+      "action": "A",
+      "bytes": 208073,
+      "sha256": "e60060c395bd6bfc37e9176dec888c96c2b6d27d5f57245c7f13403c0645934e"
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/r1-return/native-commit.json",
+      "class": "TRACE",
+      "action": "A",
+      "bytes": 445,
+      "sha256": "2a020ca787a67497047805135b01691af61c07d664b8eb9abd2ebba5d0157975"
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/r1-return/precommit-cached.raw",
+      "class": "TRACE",
+      "action": "A",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/r1-return/precommit-status.raw",
+      "class": "TRACE",
+      "action": "A",
+      "bytes": 1041,
+      "sha256": "f359cbb855f8e51adfca02047aa9d27e94b6bdaa4296528d0838511c17228649"
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/r1-return/prior-prefixes.json",
+      "class": "TRACE",
+      "action": "A",
+      "bytes": 569,
+      "sha256": "7d0b5016f5e5866e35dae79e4e93c25eb9660651c1eedc53f9b440f99f3e4571"
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/r1-return/status-before.md",
+      "class": "TRACE",
+      "action": "A",
+      "bytes": 588,
+      "sha256": "0554a74d01f7593cd33485b5ef4b0c8c41ef81614e36768909da4609345a7127"
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/r1-return/validation.json",
+      "class": "TRACE",
+      "action": "A",
+      "identity": "Committed Git blob (this validation file)"
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/journal/20260913-234533__transition__7597.md",
+      "class": "TRACE",
+      "action": "A",
+      "bytes": 979,
+      "sha256": "d3dd6bdda88e3c0151704e139d6699d391595da792e9cced184a640dc02f3a40"
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/status.md",
+      "class": "TRACE",
+      "action": "M",
+      "bytes": 587,
+      "sha256": "e3789fbf10ee0d929e55fa743b509250ae266b03395844ac51179964b49c5cf4"
+    }
+  ]
+}

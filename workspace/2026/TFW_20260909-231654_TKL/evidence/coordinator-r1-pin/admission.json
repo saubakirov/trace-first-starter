@@ -1,0 +1,52 @@
+{
+  "observed_at": "2026-09-13T18:11:10.244297+00:00",
+  "coordinator": "01a09974-6716-7cc0-9916-fd6d04c91481",
+  "executor": "01a09a0c-c9e2-7d01-af4e-64931af967ed",
+  "lead_grant": "9336fc882719e1aacdefca0f7e6ab1fc3d5b6da7:workspace/2026/TFW_20260909-231654_TKL/journal/20260913-222750__dispatch__a7a8.md",
+  "baseline": "ec91c56007c20cda79f740fec15c85e4af74d17c",
+  "candidate": "65c3c94b2347c69f6d21ac2e2664a39ef46b3ae2",
+  "checkpoint": "3ed647865ebae39ae2c39955812636ecc0cbb4df",
+  "source_preflight": "evidence/r1-ac8/10-ac7-source-preflight/preflight.json",
+  "preflight_sha256": "4eee6e2f48a43c6977a38e2da2b1ea98c6876655ccadc6162d79a2ef00b3a601",
+  "source_zip_sha256": "d473aca916a90f2a73c09439c1cf81258f1cb88219f873c8a63defc735bbd121",
+  "coordinator_identity_inspection": {
+    "source_rows": 122,
+    "authority_rows": 8,
+    "unique_source_blobs_verified_size_sha256_eol": 121,
+    "zip_members": 222,
+    "all_present_source_authority_hashes_covered": true,
+    "authority_archive_bytes_equal_exact_commit_paths": true,
+    "baseline_candidate_full_tree_maps_exact": true,
+    "checkpoint_paths": 43,
+    "checkpoint_only_trace": true,
+    "checkpoint_file_hashes_verified": 42,
+    "onb_append_only": true,
+    "frozen_selected_sources_unchanged": true,
+    "slc_accepted_review_and_close_ancestors_baseline": true,
+    "receiver_absent": true,
+    "executor_head_checkpoint_clean": true,
+    "landing_fast_forward_clean": true
+  },
+  "accounting": {
+    "literal_value_paths": 58,
+    "added_lines": 1230,
+    "removed_lines": 999,
+    "touched_text_loc": 2229,
+    "modify": 53,
+    "create": 4,
+    "delete": 1,
+    "initial_denominator_files": 58,
+    "initial_denominator_loc": 2574,
+    "file_boundary": 116,
+    "loc_boundary": 5148,
+    "numstat_sha256": "36fc67f74aff2c3dd8ddd53900a16a80c9f93d2e8b9db1be499e238e8f3665d5"
+  },
+  "limits": [
+    "Admission checks inspect retained identities, scope and accounting; no generator, pytest, build, browser or native case was rerun by Coordinator.",
+    "All 58 VALUE and 7 ASSURANCE states remain the actual tested Candidate; this pin and checkpoint are excluded TRACE.",
+    "Original independent REVISE, raw evidence, Q3 omission, O1-O3 rulings and all prior acceptance epochs remain unchanged.",
+    "Source Git bytes do not substitute for future physical receiver before-images; actual completed-SLC prerequisite must be revalidated in faithful receiver before application.",
+    "One 45-minute replay is authorized by existing LEAD a7a8 after this pin; its UTC clock has not started. No deductions, extension or second attempt.",
+    "This pin is routing/admission, not independent AC7/AC8 acceptance, RF completion or task closure."
+  ]
+}

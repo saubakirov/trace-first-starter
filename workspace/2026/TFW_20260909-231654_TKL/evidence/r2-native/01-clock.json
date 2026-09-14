@@ -1,0 +1,9 @@
+{
+  "start_utc": "2026-09-13T20:28:59Z",
+  "deadline_utc": "2026-09-13T20:58:59Z",
+  "deductions_seconds": 0,
+  "operation_ceiling": 24,
+  "planned": 18,
+  "failure_at": "2026-09-13T20:29:53.549973+00:00",
+  "no_retry": true
+}

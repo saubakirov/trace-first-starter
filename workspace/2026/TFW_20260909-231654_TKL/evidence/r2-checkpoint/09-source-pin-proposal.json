@@ -1,0 +1,405 @@
+{
+  "observed_at": "2026-09-13T20:10:06.914846+00:00",
+  "candidate": "a99ba6cd756a7db444f217aef4e5a0eb83faee51",
+  "baseline": "ec91c56007c20cda79f740fec15c85e4af74d17c",
+  "sources": [
+    {
+      "path": ".tfw/conventions.md",
+      "commit": "a99ba6cd756a7db444f217aef4e5a0eb83faee51",
+      "blob": "47d64213d923792efe782057241156a3cac41873",
+      "bytes": 98839,
+      "sha256": "ac688a8edfacfb98528b740621982065cb3269115725ace842a30772f3318fbf",
+      "raw_git_blob": "47d64213d923792efe782057241156a3cac41873",
+      "EOL": {
+        "CRLF": 0,
+        "LF": 1436,
+        "CR": 0
+      }
+    },
+    {
+      "path": "tools/tfw_state.py",
+      "commit": "a99ba6cd756a7db444f217aef4e5a0eb83faee51",
+      "blob": "9705cef607eb2fc44c68143180d99c471398cb64",
+      "bytes": 42735,
+      "sha256": "b66a89cf39922b5295faad21685066270b20ab03e0dab8920ad92159454bb9af",
+      "raw_git_blob": "9705cef607eb2fc44c68143180d99c471398cb64",
+      "EOL": {
+        "CRLF": 0,
+        "LF": 912,
+        "CR": 0
+      }
+    },
+    {
+      "path": "KNOWLEDGE.md",
+      "commit": "a99ba6cd756a7db444f217aef4e5a0eb83faee51",
+      "blob": "8046b555288fdfeb2dba63f48deb944d017f864e",
+      "bytes": 135244,
+      "sha256": "b000ad11e5103a273200bb75f16174fc555679352ade167b419620abb9b862f7",
+      "raw_git_blob": "8046b555288fdfeb2dba63f48deb944d017f864e",
+      "EOL": {
+        "CRLF": 0,
+        "LF": 303,
+        "CR": 0
+      }
+    },
+    {
+      "path": ".tfw/project_config.yaml",
+      "commit": "a99ba6cd756a7db444f217aef4e5a0eb83faee51",
+      "blob": "d821fe17a0f2fc9aba03b3f87ebab27b241743e3",
+      "bytes": 4334,
+      "sha256": "c6e86611751ad123c4139e1203098fa0f7635b54b33c2a6c0b9040cb25753f7c",
+      "raw_git_blob": "d821fe17a0f2fc9aba03b3f87ebab27b241743e3",
+      "EOL": {
+        "CRLF": 0,
+        "LF": 123,
+        "CR": 0
+      }
+    },
+    {
+      "path": ".tfw/workflows/update.md",
+      "commit": "a99ba6cd756a7db444f217aef4e5a0eb83faee51",
+      "blob": "a4187ba20b1ad36576a552fd3cb85730769eddb4",
+      "bytes": 18922,
+      "sha256": "4df00bea1d0eb8e229e830e974b9de5c72e2c9bd41bc808cdb0d348a6ea1379a",
+      "raw_git_blob": "a4187ba20b1ad36576a552fd3cb85730769eddb4",
+      "EOL": {
+        "CRLF": 0,
+        "LF": 279,
+        "CR": 0
+      }
+    },
+    {
+      "path": ".tfw/migrations/knowledge-lifecycle.md",
+      "commit": "a99ba6cd756a7db444f217aef4e5a0eb83faee51",
+      "blob": "03a5ba4e6cd08cd0c25e7cb7b09bcbd724fe43d8",
+      "bytes": 8858,
+      "sha256": "2ce771e0415aab0c63b011d44d613304566fdeb41dfd97954f45dc34da3c8da3",
+      "raw_git_blob": "03a5ba4e6cd08cd0c25e7cb7b09bcbd724fe43d8",
+      "EOL": {
+        "CRLF": 0,
+        "LF": 111,
+        "CR": 0
+      }
+    },
+    {
+      "path": ".tfw/migrations/3.3.0.md",
+      "commit": "a99ba6cd756a7db444f217aef4e5a0eb83faee51",
+      "blob": "8a8c8cc1c3f2054ff71d5b119a3a6a8e494e75e4",
+      "bytes": 11783,
+      "sha256": "d544442538eef8000885700ac379ee4f9fbf3d112757aa8bcf21a46ac969e44c",
+      "raw_git_blob": "8a8c8cc1c3f2054ff71d5b119a3a6a8e494e75e4",
+      "EOL": {
+        "CRLF": 0,
+        "LF": 141,
+        "CR": 0
+      }
+    },
+    {
+      "path": ".tfw/adapters/manifest.yaml",
+      "commit": "a99ba6cd756a7db444f217aef4e5a0eb83faee51",
+      "blob": "752e22ae03c9d1d85949a09111b019f3ec192d0e",
+      "bytes": 2179,
+      "sha256": "db11326ea8089069ea54880063fea07ec42d8bd2084fdb1604c63d67cbe2beb1",
+      "raw_git_blob": "752e22ae03c9d1d85949a09111b019f3ec192d0e",
+      "EOL": {
+        "CRLF": 0,
+        "LF": 86,
+        "CR": 0
+      }
+    },
+    {
+      "path": ".tfw/templates/update_receipt.md",
+      "commit": "a99ba6cd756a7db444f217aef4e5a0eb83faee51",
+      "blob": "097aab2eebabe2ada5288619722e8980f76758d3",
+      "bytes": 3660,
+      "sha256": "7ff319944d89ad227ac2b7bf42af74f2a8ae81a12cd6f53582f4f258380ba9ca",
+      "raw_git_blob": "097aab2eebabe2ada5288619722e8980f76758d3",
+      "EOL": {
+        "CRLF": 0,
+        "LF": 79,
+        "CR": 0
+      }
+    },
+    {
+      "path": ".tfw/templates/briefing.md",
+      "commit": "a99ba6cd756a7db444f217aef4e5a0eb83faee51",
+      "blob": "c5eb17bf4c19aa6549dccb6b89086f553e458418",
+      "bytes": 1670,
+      "sha256": "8a25e1fc8a4dcf7a7c40f49ba64925e9966724d42314b9c4a13215845dc9ed56",
+      "raw_git_blob": "c5eb17bf4c19aa6549dccb6b89086f553e458418",
+      "EOL": {
+        "CRLF": 0,
+        "LF": 36,
+        "CR": 0
+      }
+    },
+    {
+      "path": ".tfw/CHANGELOG.md",
+      "commit": "a99ba6cd756a7db444f217aef4e5a0eb83faee51",
+      "blob": "403776ef38da18df21a40d665c1ef75001993ff5",
+      "bytes": 205552,
+      "sha256": "ac550a1c026c3fc5b3fc137bff7a896f5a7577ae64fc7a1b2bc603d0d4764d9f",
+      "raw_git_blob": "403776ef38da18df21a40d665c1ef75001993ff5",
+      "EOL": {
+        "CRLF": 0,
+        "LF": 2505,
+        "CR": 0
+      }
+    },
+    {
+      "path": ".tfw/VERSION",
+      "commit": "a99ba6cd756a7db444f217aef4e5a0eb83faee51",
+      "blob": "15a279981720791464e46ab21ae96b3c1c65c3b6",
+      "bytes": 6,
+      "sha256": "5eee6c0c5c6901f5e523f0a434bca4106e1ff7136deb451f982b0bb1a7b13716",
+      "raw_git_blob": "15a279981720791464e46ab21ae96b3c1c65c3b6",
+      "EOL": {
+        "CRLF": 0,
+        "LF": 1,
+        "CR": 0
+      }
+    },
+    {
+      "path": "docs/mkdocs.yml",
+      "commit": "a99ba6cd756a7db444f217aef4e5a0eb83faee51",
+      "blob": "9c4ca82abdd473c4ed7e22a59909d01dc9936f11",
+      "bytes": 1266,
+      "sha256": "6d97cd6bfa7596f694749eede5861d402441074fb851e126f0163da6a42f18fd",
+      "raw_git_blob": "9c4ca82abdd473c4ed7e22a59909d01dc9936f11",
+      "EOL": {
+        "CRLF": 0,
+        "LF": 58,
+        "CR": 0
+      }
+    },
+    {
+      "path": "docs/scripts/gen_docs.py",
+      "commit": "a99ba6cd756a7db444f217aef4e5a0eb83faee51",
+      "blob": "7294707db5722c206dd1031bea48d8adfcd2f179",
+      "bytes": 35546,
+      "sha256": "e123b0f72ea618948915fa63fda7367a3f8ca4816a181f83f4d97f94ffc2b037",
+      "raw_git_blob": "7294707db5722c206dd1031bea48d8adfcd2f179",
+      "EOL": {
+        "CRLF": 0,
+        "LF": 844,
+        "CR": 0
+      }
+    },
+    {
+      "path": "docs/scripts/test_repository_contracts.py",
+      "commit": "a99ba6cd756a7db444f217aef4e5a0eb83faee51",
+      "blob": "4d94d397ef6f2e5488519685db8622a82f2c3892",
+      "bytes": 159229,
+      "sha256": "7fcd70aa4092edfe8b7794f8a9968b5c5c99161c3c86fed498b5cac2ad87f1c0",
+      "raw_git_blob": "4d94d397ef6f2e5488519685db8622a82f2c3892",
+      "EOL": {
+        "CRLF": 0,
+        "LF": 3021,
+        "CR": 0
+      }
+    }
+  ],
+  "authority_sources": [
+    {
+      "commit": "2794cbdb40f6c4f3a7d4bce1f8d4eb949d9e6913",
+      "path": "workspace/2026/TFW_20260909-231654_TKL/journal/20260913-141400__handoff__8c2a.md",
+      "blob": "8f0e29189af9983f3a1dffe2efb2b7daaf0686cd",
+      "bytes": 1716,
+      "sha256": "acc3de13384fec670614eeaa8758d9997f97f5396c796a2f88ddc46fa8f87102",
+      "raw_git_blob": "8f0e29189af9983f3a1dffe2efb2b7daaf0686cd",
+      "EOL": {
+        "CRLF": 0,
+        "LF": 19,
+        "CR": 0
+      }
+    },
+    {
+      "commit": "2794cbdb40f6c4f3a7d4bce1f8d4eb949d9e6913",
+      "path": "workspace/2026/TFW_20260909-231654_TKL/TS__TFW_20260909-231654_TKL.md",
+      "blob": "f69fd4099a21a07ae2d17e6b5108b04ac94f107e",
+      "bytes": 55220,
+      "sha256": "6929b45c6ec0908933a2d7e9088707dd317c56a1089895cac9fc31a1b3f8c48c",
+      "raw_git_blob": "f69fd4099a21a07ae2d17e6b5108b04ac94f107e",
+      "EOL": {
+        "CRLF": 0,
+        "LF": 377,
+        "CR": 0
+      }
+    },
+    {
+      "commit": "16bc29cd4238a8a8e185eab80c84001cff41d2d8",
+      "path": "workspace/2026/TFW_20260909-231654_TKL/HL-TFW_20260909-231654_TKL.md",
+      "blob": "c2e14bfebaac53495eb32772d381bfdc93f51e41",
+      "bytes": 55629,
+      "sha256": "cb1e21259e6fa8263aa21d3f56facf73a0f5c932cbc8faf8ae692de63157e6f8",
+      "raw_git_blob": "c2e14bfebaac53495eb32772d381bfdc93f51e41",
+      "EOL": {
+        "CRLF": 0,
+        "LF": 303,
+        "CR": 0
+      }
+    },
+    {
+      "commit": "16bc29cd4238a8a8e185eab80c84001cff41d2d8",
+      "path": "workspace/2026/TFW_20260909-231654_TKL/REVIEW__TFW_20260909-231654_TKL__rev2.md",
+      "blob": "be9a6671e03b91cdcab5efb7d4f3cbc88519ca73",
+      "bytes": 18392,
+      "sha256": "73fc1b890b34c30cf7e30db57a0e28e7831839764a4db9a2be1f1f2ceaafc185",
+      "raw_git_blob": "be9a6671e03b91cdcab5efb7d4f3cbc88519ca73",
+      "EOL": {
+        "CRLF": 0,
+        "LF": 123,
+        "CR": 0
+      }
+    },
+    {
+      "commit": "16bc29cd4238a8a8e185eab80c84001cff41d2d8",
+      "path": "workspace/2026/TFW_20260909-231654_TKL/journal/20260914-005021__dispatch__4491.md",
+      "blob": "9b1713f42c250ccca264d6734f9a8518f53f62dd",
+      "bytes": 1927,
+      "sha256": "00b525e08698ab99df72cc4e9a93b1c85836fc915644decc409e1b60c8d5d82a",
+      "raw_git_blob": "9b1713f42c250ccca264d6734f9a8518f53f62dd",
+      "EOL": {
+        "CRLF": 0,
+        "LF": 23,
+        "CR": 0
+      }
+    },
+    {
+      "commit": "cb28b426bfb021ff3c0949d605cef6c54974c96c",
+      "path": "workspace/2026/TFW_20260909-231654_TKL/journal/20260914-004939__dispatch__r2p7.md",
+      "blob": "998afc9d595400f77f8bb4b11d87869bd8a09478",
+      "bytes": 2780,
+      "sha256": "e3c263e52cff8ea98ea945f4af82b8bcd805e0b8dfb06b42a841b4b09eed7693",
+      "raw_git_blob": "998afc9d595400f77f8bb4b11d87869bd8a09478",
+      "EOL": {
+        "CRLF": 0,
+        "LF": 21,
+        "CR": 0
+      }
+    },
+    {
+      "commit": "89839fb912d78d99f41dae59959fdc32a8ee2b3a",
+      "path": "workspace/2026/TFW_20260909-231654_TKL/journal/20260914-005242__dispatch__a2f7.md",
+      "blob": "e64e9d30bf6b7c2094716ed9e3ec123a21d7b7c0",
+      "bytes": 1859,
+      "sha256": "7836e8e55f72212de2080154c0fbaf60b0cf606af77622be0aa08ebf58997229",
+      "raw_git_blob": "e64e9d30bf6b7c2094716ed9e3ec123a21d7b7c0",
+      "EOL": {
+        "CRLF": 0,
+        "LF": 19,
+        "CR": 0
+      }
+    }
+  ],
+  "affected_native_proposal": [
+    {
+      "historical_write": 26,
+      "path": ".tfw/conventions.md",
+      "old_positive": {
+        "bytes": 98870,
+        "sha256": "fb05c43570cf65b512e620c97633d0115daa8b733e9649e4a3c426e566b8cf21",
+        "raw_git_blob": "ab5504f898e972fc02d3827665070cbede9cf60c",
+        "eol": {
+          "CRLF": 0,
+          "LF": 1436,
+          "CR": 0
+        }
+      },
+      "proposed_intended": {
+        "bytes": 98839,
+        "sha256": "ac688a8edfacfb98528b740621982065cb3269115725ace842a30772f3318fbf",
+        "raw_git_blob": "47d64213d923792efe782057241156a3cac41873",
+        "EOL": {
+          "CRLF": 0,
+          "LF": 1436,
+          "CR": 0
+        }
+      }
+    },
+    {
+      "historical_write": 55,
+      "path": "tools/tfw_state.py",
+      "old_positive": {
+        "bytes": 42782,
+        "sha256": "ca4f93b188d139a1115855d4c500edfe4db7bbd8afbef10465bd9eab50dec3d4",
+        "raw_git_blob": "2ce2f2bd9cb510bc1467a29ae8ffdd22354cabc6",
+        "eol": {
+          "CRLF": 0,
+          "LF": 913,
+          "CR": 0
+        }
+      },
+      "proposed_intended": {
+        "bytes": 42735,
+        "sha256": "b66a89cf39922b5295faad21685066270b20ab03e0dab8920ad92159454bb9af",
+        "raw_git_blob": "9705cef607eb2fc44c68143180d99c471398cb64",
+        "EOL": {
+          "CRLF": 0,
+          "LF": 912,
+          "CR": 0
+        }
+      }
+    },
+    {
+      "historical_write": 57,
+      "path": "KNOWLEDGE.md",
+      "old_positive": {
+        "bytes": 135267,
+        "sha256": "3fa4a662613e9c4409cc87a92237eeaf5cbf36291067badd2630f8d933609b21",
+        "raw_git_blob": "f39123f6c4842f0d5a49151c9318849d26a3881e",
+        "eol": {
+          "CRLF": 0,
+          "LF": 303,
+          "CR": 0
+        }
+      },
+      "proposed_intended": {
+        "bytes": 135244,
+        "sha256": "b000ad11e5103a273200bb75f16174fc555679352ade167b419620abb9b862f7",
+        "raw_git_blob": "8046b555288fdfeb2dba63f48deb944d017f864e",
+        "EOL": {
+          "CRLF": 0,
+          "LF": 303,
+          "CR": 0
+        }
+      }
+    },
+    {
+      "historical_write_refs": [
+        56,
+        58
+      ],
+      "path": ".tfw/project_config.yaml",
+      "old_positive": {
+        "bytes": 4420,
+        "sha256": "65a41337829a5c8f9612a83db58510c16c21157493f4515d4b6d6d54f88628b1",
+        "raw_git_blob": "fb7b9098e2b5acff57172d90a69e87339c473b19",
+        "EOL": {
+          "CRLF": 0,
+          "LF": 123,
+          "CR": 0
+        }
+      },
+      "proposed_intended": {
+        "bytes": 4420,
+        "sha256": "c30f7ef8eb0e3132a3e6b1b3d4088b07bd3ea2bf2db9cc3b974771118a1abcc1",
+        "raw_git_blob": "3305bc869e217fc6b2d1e8aec564a14ad2d6fb45",
+        "EOL": {
+          "CRLF": 0,
+          "LF": 123,
+          "CR": 0
+        }
+      },
+      "old_installed_from": "https://github.com/saubakirov/trace-first-starter@65c3c94b2347c69f6d21ac2e2664a39ef46b3ae2",
+      "intended_installed_from": "https://github.com/saubakirov/trace-first-starter@a99ba6cd756a7db444f217aef4e5a0eb83faee51",
+      "actual_future_effect": "One installed_from scalar replacement after checks; prior completed retirement/version/container fields remain unchanged. No repeated retirement write."
+    }
+  ],
+  "prepared_receiver_proposed_root": "C:/Users/c0rpa/AppData/Local/Temp/TFW_TKL_NATIVE_01a09a0c/self-adoption-r2",
+  "prior_positive_epoch": "6b0d5c748d51c55c7c22147799cdb70131c22049:workspace/2026/TFW_20260909-231654_TKL/evidence/r1-ac7/14-repeat-before-map.json",
+  "reconstructable_positive_repository_files": 2317,
+  "receiver_prepared": false,
+  "native_clock_started": false,
+  "pending": "Coordinator exact tested pin and accepted operation/receiver shape before any receiver preparation or clock. LEAD valid confirmation does not independently dispatch this Executor."
+}

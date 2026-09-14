@@ -1,0 +1,32 @@
+[
+  {
+    "path": ".tfw/templates/knowledge/record.md",
+    "sha256": "d0615f7582e15280f4c69ef0350294daf9e1b32b5de0d2fba964dc9a4db0d6b0",
+    "read_at": "2026-09-13T11:30:55.118360+00:00",
+    "sections": [
+      "whole file"
+    ]
+  },
+  {
+    "path": ".tfw/conventions.md",
+    "sha256": "fb05c43570cf65b512e620c97633d0115daa8b733e9649e4a3c426e566b8cf21",
+    "read_at": "2026-09-13T11:30:55.126089+00:00",
+    "sections": [
+      "### Knowledge handover",
+      "### Current knowledge use"
+    ]
+  },
+  {
+    "command": [
+      "rg",
+      "--fixed-strings",
+      "--line-number",
+      "TKL-NATIVE-COORD",
+      "knowledge/records"
+    ],
+    "time": "2026-09-13T11:30:55.250371+00:00",
+    "exit_code": 1,
+    "stdout": "",
+    "stderr": ""
+  }
+]

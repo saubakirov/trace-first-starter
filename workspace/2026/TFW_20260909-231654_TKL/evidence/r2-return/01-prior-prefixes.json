@@ -1,0 +1,20 @@
+{
+  "commit": "1a0a37c443fe0d762a1396f1354d93ac08391637",
+  "prefixes": {
+    "ONB__TFW_20260909-231654_TKL.md": {
+      "bytes": 67893,
+      "sha256": "9bf30adae577e7d8ac691d3afba78e369ab7b0ace139b78e4adfb0ff69774f70",
+      "git_blob": "8a0cb307bcfa53e76d8735ddf5402f003eea33f4"
+    },
+    "RF__TFW_20260909-231654_TKL.md": {
+      "bytes": 37467,
+      "sha256": "9d5a2d5942f05866968985b8d3d691e98b3f8a471c03d7e8dd1d362da52d762a",
+      "git_blob": "0b2adbad34f1466e27aa8dd5b17bd60d87d46743"
+    },
+    "evidence/EV__TFW_20260909-231654_TKL.md": {
+      "bytes": 25012,
+      "sha256": "66a3ea2f0541424726cbde00ff95f4ee381ecabe95f7f3df3a01e756164c80ec",
+      "git_blob": "47223850d25ffeb96d225ae97897ecbf90b8b1da"
+    }
+  }
+}

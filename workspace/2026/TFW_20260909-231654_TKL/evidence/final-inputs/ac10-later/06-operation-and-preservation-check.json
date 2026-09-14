@@ -1,0 +1,99 @@
+{
+  "observed_at": "2026-09-13T15:41:19.933317+00:00",
+  "original_custody_commit": "7bbf6b9f9be11abe227f5ccc48bca0473c8fa228",
+  "wrapper_calls": 4,
+  "native_read_list_search_calls": 14,
+  "file_reads": 12,
+  "list_calls": 1,
+  "search_calls": 1,
+  "clock_calls": 2,
+  "calls": [
+    {
+      "ordinal": 1532,
+      "command": "Get-Content -Raw -Encoding UTF8 KNOWLEDGE.md"
+    },
+    {
+      "ordinal": 1539,
+      "command": "rg --files"
+    },
+    {
+      "ordinal": 1539,
+      "command": "Get-Content -Raw -Encoding UTF8 sources/charter.md"
+    },
+    {
+      "ordinal": 1539,
+      "command": "Get-Content -Raw -Encoding UTF8 legacy/decisions.md"
+    },
+    {
+      "ordinal": 1539,
+      "command": "Get-Content -Raw -Encoding UTF8 knowledge/presentation.md"
+    },
+    {
+      "ordinal": 1549,
+      "command": "rg -n 'legacy/decisions.md|knowledge/presentation.md|CEDAR-|Orion|motion|static|background|publish' knowledge/records"
+    },
+    {
+      "ordinal": 1549,
+      "command": "Get-Content -Raw -Encoding UTF8 knowledge/records/CEDAR-17.md"
+    },
+    {
+      "ordinal": 1549,
+      "command": "Get-Content -Raw -Encoding UTF8 knowledge/records/CEDAR-21.md"
+    },
+    {
+      "ordinal": 1549,
+      "command": "Get-Content -Raw -Encoding UTF8 knowledge/records/CEDAR-28.md"
+    },
+    {
+      "ordinal": 1549,
+      "command": "Get-Content -Raw -Encoding UTF8 knowledge/records/CEDAR-29.md"
+    },
+    {
+      "ordinal": 1560,
+      "command": "Get-Content -Raw -Encoding UTF8 sources/session-014.md"
+    },
+    {
+      "ordinal": 1560,
+      "command": "Get-Content -Raw -Encoding UTF8 sources/session-027.md"
+    },
+    {
+      "ordinal": 1560,
+      "command": "Get-Content -Raw -Encoding UTF8 sources/session-032.md"
+    },
+    {
+      "ordinal": 1560,
+      "command": "Get-Content -Raw -Encoding UTF8 incoming/message-033.md"
+    }
+  ],
+  "complete_corpus_read": true,
+  "consumer_bytes": 18891,
+  "tools_scope": "All14 shell read/list/search commands use exact consumer root; no write/helper/install/web/external command present in visible trail. No OS containment assertion.",
+  "no_per_criterion_score": "Same independent Reviewer must score original answer against sealed oracle.",
+  "raw_commit_observer": {
+    "original_diff_check": "Nonzero CR-at-EOL diagnostics on previously normalized00/01 receipts; shell sequence proceeded to commit. No passing original check is claimed.",
+    "followup_argv": [
+      "git",
+      "-c",
+      "core.longpaths=true",
+      "-c",
+      "core.whitespace=cr-at-eol",
+      "diff",
+      "HEAD^",
+      "HEAD",
+      "--check"
+    ],
+    "followup_exit": 0,
+    "originals": {
+      "00-admission-observer.json": {
+        "earlier_normal_filter_blob_sha256": "a04ba3c0357dc467e83277321b674d0a6b213805de27646502003b8fdd49f30b",
+        "current_raw_blob_and_unchanged_working_bytes_sha256": "227b42d6d80591f9042b778e7e9549af9ff7d8114ad029599cf612e510f708ed",
+        "reason": "Capture commit used per-command autocrlf=false on whole evidence directory, preserving existing raw CRLF while changing their earlier Git LF representation. Physical predispatch data was not rewritten; earlier commit retains original normalized objects."
+      },
+      "01-predispatch.json": {
+        "earlier_normal_filter_blob_sha256": "4804eac33bd1a1ef1d32684adb5695afe80ed05718379475ab0325b6ddc14166",
+        "current_raw_blob_and_unchanged_working_bytes_sha256": "247bf9225af14bc0f5062e8163074c9e422b6dfe11d1b07ea76e8e5ec59e8bc2",
+        "reason": "Capture commit used per-command autocrlf=false on whole evidence directory, preserving existing raw CRLF while changing their earlier Git LF representation. Physical predispatch data was not rewritten; earlier commit retains original normalized objects."
+      }
+    }
+  }
+}

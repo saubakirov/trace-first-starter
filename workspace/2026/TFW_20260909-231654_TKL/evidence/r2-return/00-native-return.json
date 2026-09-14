@@ -1,0 +1,138 @@
+{
+  "native_start": "2026-09-13T20:28:59Z",
+  "native_deadline": "2026-09-13T20:58:59Z",
+  "native_closed_at": "2026-09-13T20:35:33.937Z",
+  "native_closed_time_source": "functions runtime UTC observed after successful operation10 message tool returned",
+  "native_total_elapsed_seconds": 394.937,
+  "native_operations": 10,
+  "calls": [
+    {
+      "seq": 1,
+      "tool": "clock__curr_time",
+      "result": {
+        "current_time": "2026-09-13 20:28:59 UTC"
+      },
+      "start": "2026-09-13T20:28:59Z",
+      "deadline": "2026-09-13T20:58:59Z"
+    },
+    {
+      "seq": 2,
+      "tool": "send_message_to_thread",
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"threadId\":\"01a09974-6716-7cc0-9916-fd6d04c91481\"}"
+          }
+        ],
+        "isError": false
+      }
+    },
+    {
+      "seq": 3,
+      "tool": "exec_command",
+      "planned": "03",
+      "result": {
+        "chunk_id": "dbdf6c",
+        "wall_time_seconds": 10.0136507,
+        "session_id": 73913,
+        "original_token_count": 0,
+        "output": ""
+      }
+    },
+    {
+      "seq": 4,
+      "tool": "write_stdin",
+      "parent_operation": 3,
+      "result": {
+        "chunk_id": "5a5d9a",
+        "wall_time_seconds": 13.4055442,
+        "exit_code": 1,
+        "original_token_count": 137,
+        "output": "Traceback (most recent call last):\r\n  File \"<stdin>\", line 73, in perform\r\n  File \"<stdin>\", line 113, in body\r\nAssertionError: .tfw/update_receipts/knowledge-lifecycle/c3b0580ad155738e2db99b38577df3477fddafa0078fb5f4d256ce94d87b41cb/old-intended.zip\r\n\r\nTraceback (most recent call last):\r\n  File \"<stdin>\", line 118, in <module>\r\n  File \"<stdin>\", line 73, in perform\r\n  File \"<stdin>\", line 113, in body\r\nAssertionError: .tfw/update_receipts/knowledge-lifecycle/c3b0580ad155738e2db99b38577df3477fddafa0078fb5f4d256ce94d87b41cb/old-intended.zip\r\n"
+      }
+    },
+    {
+      "seq": 5,
+      "tool": "send_message_to_thread",
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"threadId\":\"01a09974-6716-7cc0-9916-fd6d04c91481\"}"
+          }
+        ],
+        "isError": false
+      },
+      "kind": "stop_notification"
+    },
+    {
+      "seq": 6,
+      "tool": "exec_command",
+      "kind": "stop_custody",
+      "result": {
+        "chunk_id": "8ca7c0",
+        "wall_time_seconds": 3.370155,
+        "exit_code": 0,
+        "original_token_count": 80,
+        "output": "{\r\n  \"seq\": 6,\r\n  \"sealed_at\": \"2026-09-13T20:31:31.471583+00:00\",\r\n  \"native_outcome\": \"STOPPED\",\r\n  \"partial_files\": 2317,\r\n  \"byte_Git_mismatches\": 0,\r\n  \"EOL_counter_differences\": 40,\r\n  \"no_target_effects\": true,\r\n  \"partial_archive_sha256\": \"7ac460d99dbf9c39ca51d969ae03292d6652d2b6584c227fe2e8d45d795b2f42\"\r\n}\r\n"
+      }
+    },
+    {
+      "seq": 7,
+      "tool": "exec_command",
+      "kind": "stopped_raw_commit_transport_failure",
+      "result": {
+        "error": "CreateProcess rejected: Failed to create unified exec process: The filename or extension is too long. (os error 206)",
+        "process_created": false
+      },
+      "effect": "No script execution; stopped native result unchanged. Remaining calls only preserve and close stopped custody."
+    },
+    {
+      "seq": 8,
+      "tool": "exec_command",
+      "kind": "minimal_stopped_custody_commit",
+      "result": {
+        "chunk_id": "64012a",
+        "wall_time_seconds": 2.7368568,
+        "exit_code": 0,
+        "original_token_count": 1039,
+        "output": "?? workspace/2026/TFW_20260909-231654_TKL/evidence/r2-native/01-clock.json\r\n?? workspace/2026/TFW_20260909-231654_TKL/evidence/r2-native/03-checkout.json\r\n?? workspace/2026/TFW_20260909-231654_TKL/evidence/r2-native/03-checkout.stderr.raw\r\n?? workspace/2026/TFW_20260909-231654_TKL/evidence/r2-native/03-checkout.stdout.raw\r\n?? workspace/2026/TFW_20260909-231654_TKL/evidence/r2-native/03-clone.json\r\n?? workspace/2026/TFW_20260909-231654_TKL/evidence/r2-native/03-clone.stderr.raw\r\n?? workspace/2026/TFW_20260909-231654_TKL/evidence/r2-native/03-clone.stdout.raw\r\n?? workspace/2026/TFW_20260909-231654_TKL/evidence/r2-native/06-git-metadata.zip\r\n?? workspace/2026/TFW_20260909-231654_TKL/evidence/r2-native/06-invocations-through-stop.json\r\n?? workspace/2026/TFW_20260909-231654_TKL/evidence/r2-native/06-partial-physical-map.json\r\n?? workspace/2026/TFW_20260909-231654_TKL/evidence/r2-native/06-partial-physical.zip\r\n?? workspace/2026/TFW_20260909-231654_TKL/evidence/r2-native/06-stop-diagnosis.json\r\n?? workspace/2026/TFW_20260909-231654_TKL/evidence/r2-native/08-git-seal.json\r\n?? workspace/2026/TFW_20260909-231654_TKL/evidence/r2-native/08-invocation-ledger.json\r\n?? workspace/2026/TFW_20260909-231654_TKL/evidence/r2-native/08-precommit-cached.raw\r\n?? workspace/2026/TFW_20260909-231654_TKL/evidence/r2-native/08-precommit-status.raw\r\n?? workspace/2026/TFW_20260909-231654_TKL/evidence/r2-native/08-stopped-result.json\r\n?? workspace/2026/TFW_20260909-231654_TKL/evidence/r2-native/op-03-failure.json\r\n?? workspace/2026/TFW_20260909-231654_TKL/evidence/r2-native/op-03-start.json\r\n?? workspace/2026/TFW_20260909-231654_TKL/evidence/r2-native/op-06-stop-custody.json\r\n\r\nCACHED \r\n[detached HEAD 1a0a37c] [codex/TFW_20260909-231654_TKL/phase-a/executor] preserve stopped R2 native evidence\r\n 20 files changed, 24361 insertions(+)\r\n create mode 100644 workspace/2026/TFW_20260909-231654_TKL/evidence/r2-native/01-clock.json\r\n create mode 100644 workspace/2026/TFW_20260909-231654_TKL/evidence/r2-native/03-checkout.json\r\n create mode 100644 workspace/2026/TFW_20260909-231654_TKL/evidence/r2-native/03-checkout.stderr.raw\r\n create mode 100644 workspace/2026/TFW_20260909-231654_TKL/evidence/r2-native/03-checkout.stdout.raw\r\n create mode 100644 workspace/2026/TFW_20260909-231654_TKL/evidence/r2-native/03-clone.json\r\n create mode 100644 workspace/2026/TFW_20260909-231654_TKL/evidence/r2-native/03-clone.stderr.raw\r\n create mode 100644 workspace/2026/TFW_20260909-231654_TKL/evidence/r2-native/03-clone.stdout.raw\r\n create mode 100644 workspace/2026/TFW_20260909-231654_TKL/evidence/r2-native/06-git-metadata.zip\r\n create mode 100644 workspace/2026/TFW_20260909-231654_TKL/evidence/r2-native/06-invocations-through-stop.json\r\n create mode 100644 workspace/2026/TFW_20260909-231654_TKL/evidence/r2-native/06-partial-physical-map.json\r\n create mode 100644 workspace/2026/TFW_20260909-231654_TKL/evidence/r2-native/06-partial-physical.zip\r\n create mode 100644 workspace/2026/TFW_20260909-231654_TKL/evidence/r2-native/06-stop-diagnosis.json\r\n create mode 100644 workspace/2026/TFW_20260909-231654_TKL/evidence/r2-native/08-git-seal.json\r\n create mode 100644 workspace/2026/TFW_20260909-231654_TKL/evidence/r2-native/08-invocation-ledger.json\r\n create mode 100644 workspace/2026/TFW_20260909-231654_TKL/evidence/r2-native/08-precommit-cached.raw\r\n create mode 100644 workspace/2026/TFW_20260909-231654_TKL/evidence/r2-native/08-precommit-status.raw\r\n create mode 100644 workspace/2026/TFW_20260909-231654_TKL/evidence/r2-native/08-stopped-result.json\r\n create mode 100644 workspace/2026/TFW_20260909-231654_TKL/evidence/r2-native/op-03-failure.json\r\n create mode 100644 workspace/2026/TFW_20260909-231654_TKL/evidence/r2-native/op-03-start.json\r\n create mode 100644 workspace/2026/TFW_20260909-231654_TKL/evidence/r2-native/op-06-stop-custody.json\r\n\r\n{\r\n  \"seq\": 8,\r\n  \"commit\": \"1a0a37c443fe0d762a1396f1354d93ac08391637\",\r\n  \"commit_started_at\": \"2026-09-13T20:34:12.264486+00:00\",\r\n  \"committed_at\": \"2026-09-13T20:34:12.701849+00:00\",\r\n  \"elapsed_seconds\": 313.701849,\r\n  \"exact_trace_paths\": 20,\r\n  \"stopped\": true,\r\n  \"counter_explanation\": false\r\n}\r\n"
+      }
+    },
+    {
+      "seq": 9,
+      "tool": "exec_command",
+      "kind": "stopped_commit_verification_and_counter_diagnosis",
+      "result": {
+        "chunk_id": "42fb14",
+        "wall_time_seconds": 1.1686308,
+        "exit_code": 0,
+        "original_token_count": 360,
+        "output": "{\r\n  \"operation\": 9,\r\n  \"checked_at\": \"2026-09-13T20:34:55.405745+00:00\",\r\n  \"native_commit\": \"1a0a37c443fe0d762a1396f1354d93ac08391637\",\r\n  \"19_manifest_hashes_equal_Git_and_physical\": true,\r\n  \"20_exact_trace_paths\": true,\r\n  \"worktree_clean\": true,\r\n  \"mismatch_field_counts\": {\r\n    \"LF\": 40\r\n  },\r\n  \"example_differences\": [\r\n    {\r\n      \"path\": \".tfw/update_receipts/knowledge-lifecycle/c3b0580ad155738e2db99b38577df3477fddafa0078fb5f4d256ce94d87b41cb/old-intended.zip\",\r\n      \"expected_original_eol\": {\r\n        \"CRLF\": 9,\r\n        \"LF\": 2134,\r\n        \"CR\": 2236\r\n      },\r\n      \"observer_eol\": {\r\n        \"CRLF\": 9,\r\n        \"LF\": 2143,\r\n        \"CR\": 2236\r\n      },\r\n      \"actual_CR_bytes\": 2245,\r\n      \"actual_CRLF_pairs\": 9,\r\n      \"actual_LF_bytes\": 2143,\r\n      \"all_byte_and_Git_identities_equal\": true\r\n    },\r\n    {\r\n      \"path\": \"docs/brand/commands_card.png\",\r\n      \"expected_original_eol\": {\r\n        \"CRLF\": 3,\r\n        \"LF\": 3309,\r\n        \"CR\": 2369\r\n      },\r\n      \"observer_eol\": {\r\n        \"CRLF\": 3,\r\n        \"LF\": 3312,\r\n        \"CR\": 2369\r\n      },\r\n      \"actual_CR_bytes\": 2372,\r\n      \"actual_CRLF_pairs\": 3,\r\n      \"actual_LF_bytes\": 3312,\r\n      \"all_byte_and_Git_identities_equal\": true\r\n    }\r\n  ],\r\n  \"expected_LF_is_bare_LF_in_all\": true,\r\n  \"expected_CR_is_bare_CR_in_all\": true,\r\n  \"original_stop_diagnosis_counter_hypothesis_was_not_confirmed\": true,\r\n  \"no_native_continuation\": true\r\n}\r\n"
+      }
+    },
+    {
+      "seq": 10,
+      "tool": "send_message_to_thread",
+      "kind": "bounded_stopped_native_return",
+      "finished_at": "2026-09-13T20:35:33.937Z",
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"threadId\":\"01a09974-6716-7cc0-9916-fd6d04c91481\"}"
+          }
+        ],
+        "isError": false
+      }
+    }
+  ],
+  "raw_commit": "1a0a37c443fe0d762a1396f1354d93ac08391637",
+  "raw_commit_finished_at": "2026-09-13T20:34:12.701849Z",
+  "raw_commit_elapsed_seconds": 313.701849,
+  "raw_trace_paths": 20,
+  "raw_hashes_verified_against_git": 19,
+  "status": "STOPPED; no new target effects",
+  "final_trace_work_is_after_native_return": true
+}

@@ -1,0 +1,17 @@
+{
+  "start": "2026-09-13T15:58:53.612525+00:00",
+  "deadline": "2026-09-13T16:08:53.612525+00:00",
+  "limit_elapsed_seconds": 600,
+  "entry_read_list_search_limit": 24,
+  "deductions": 0,
+  "source_unit": "01a09974-6716-7cc0-9916-fd6d04c91481",
+  "parent": "01a08161-79d3-7472-a01e-8cdc957ee951",
+  "authority_original_commit": "7b1455a58f5aa4002edd4bcb6f02fb3fdc9c25d7",
+  "authority_path": "workspace/2026/TFW_20260909-231654_TKL/journal/20260913-205534__dispatch__ac09.md",
+  "positive_adoption": "60066bf1143da33fad12102c0c17163501abd631",
+  "root": "C:\\Users\\c0rpa\\AppData\\Local\\Temp\\TFW_TKL_NATIVE_01a09a0c\\adoption-established\\planning-entry",
+  "source_receiver": "C:\\Users\\c0rpa\\AppData\\Local\\Temp\\TFW_TKL_NATIVE_01a09a0c\\adoption-established\\coordinator",
+  "path_observed_absent": true,
+  "scope": "One actual installed /tfw-plan Steps1-2 entry and truthful outertask evidence handover only; no new receiver task/HL/TS/lifecycle/effects",
+  "prior_exposure": "Coordinator performed actual init and adoption and read the full Candidate plan contract while proposing this bound; no freshness claim."
+}

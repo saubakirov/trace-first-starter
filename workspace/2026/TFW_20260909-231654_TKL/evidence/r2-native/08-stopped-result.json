@@ -1,0 +1,34 @@
+{
+  "observed_at": "2026-09-13T20:34:10.175594+00:00",
+  "candidate": "a99ba6cd756a7db444f217aef4e5a0eb83faee51",
+  "pin": "98a250d28679f43741e97c48556eb1804d812411",
+  "start_utc": "2026-09-13T20:28:59Z",
+  "deadline_utc": "2026-09-13T20:58:59Z",
+  "native_outcome": "STOPPED / affected native evidence BLOCKED",
+  "original_failure": {
+    "seq": 3,
+    "label": "03 prepare exact positive repository",
+    "failed_at": "2026-09-13T20:29:53.549973+00:00",
+    "exception": "AssertionError",
+    "message": ".tfw/update_receipts/knowledge-lifecycle/c3b0580ad155738e2db99b38577df3477fddafa0078fb5f4d256ce94d87b41cb/old-intended.zip",
+    "traceback": "Traceback (most recent call last):\n  File \"<stdin>\", line 73, in perform\n  File \"<stdin>\", line 113, in body\nAssertionError: .tfw/update_receipts/knowledge-lifecycle/c3b0580ad155738e2db99b38577df3477fddafa0078fb5f4d256ce94d87b41cb/old-intended.zip\n",
+    "required_action": "STOP; no retry or further native effects; preserve and return"
+  },
+  "all2317_byte_Git_identities_match": true,
+  "EOL_counter_explanation_all_differences": false,
+  "EOL_counter_differences": 40,
+  "secondary_stop_seal_transport_failure": {
+    "invocation": 7,
+    "error": "os error206; command envelope too long",
+    "process_created": false
+  },
+  "target_effect_writes": 0,
+  "new_source_staging": false,
+  "new_preservation": false,
+  "native_build": false,
+  "new_provenance": false,
+  "repeat": false,
+  "no_retry": true,
+  "deductions_seconds": 0,
+  "next": "Verify committed stopped evidence and return; cumulative RF is separate authorized TRACE work."
+}

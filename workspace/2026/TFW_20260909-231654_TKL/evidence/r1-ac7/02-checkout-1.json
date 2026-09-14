@@ -1,0 +1,17 @@
+{
+  "argv": [
+    "git",
+    "-c",
+    "core.longpaths=true",
+    "-c",
+    "core.autocrlf=false",
+    "-C",
+    "C:\\Users\\c0rpa\\AppData\\Local\\Temp\\TFW_TKL_NATIVE_01a09a0c\\self-adoption-r1",
+    "checkout",
+    "--detach",
+    "ec91c56007c20cda79f740fec15c85e4af74d17c"
+  ],
+  "started_at": "2026-09-13T18:14:18.020026+00:00",
+  "finished_at": "2026-09-13T18:14:19.939589+00:00",
+  "exit": 0
+}

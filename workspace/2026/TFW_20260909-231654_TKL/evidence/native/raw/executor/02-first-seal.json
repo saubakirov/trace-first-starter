@@ -1,0 +1,25 @@
+{
+  "unit": "01a09a0c-c9e2-7d01-af4e-64931af967ed",
+  "principal": "robert",
+  "role": "Executor",
+  "base": "e00ca51d05f4e451441cb9fc267579a7f9e4d4ce",
+  "candidate": "27cdb701b91c5b45b9f54b3e98c9ad67635b3e30",
+  "started": "2026-09-13T11:33:29.885707+00:00",
+  "finished": "2026-09-13T11:35:07.148363+00:00",
+  "commit": "56de4b23c5c8edbbf87426f578701bdb02b3a770",
+  "files": {
+    "workspace/2026/TFW_20260909-231654_TKL/evidence/executor-handover.md": {
+      "sha256": "801c49a6fa358e3b6f2a0f8de04e7c52f6d4adea49f504f5f12dea2f09b4ec3b",
+      "git_blob": "fe7f9915f4c9d80689245402d52842b925e35548",
+      "bytes": 3794
+    },
+    "knowledge/records/TKL-NATIVE-EXEC.md": {
+      "sha256": "39f9b29bfe3d5d3eaf10b08301ce87068843d049aa97994ebc47a2849b02c40e",
+      "git_blob": "5c5828f1d70edf035615e8ba5d1ee8319eeb1ada",
+      "bytes": 3912
+    }
+  },
+  "sibling_new_source_read_before_seal": false,
+  "acceptance": "absent for both new records",
+  "incoming_search_exit_code": 1
+}

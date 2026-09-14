@@ -1,0 +1,11 @@
+{
+  "observed_at": "2026-09-14T00:06:10.537369+00:00",
+  "candidate": "a6c48949c2cec3443c914fb57a74be6dcd66d274",
+  "archive": "04-opened-source-bytes.zip",
+  "archive_bytes": 166269,
+  "archive_sha256": "7dfc53943e4aa40c6c904ed06ea0661764e4369a89974dec5411c959a972a442",
+  "members": 15,
+  "member_identities": "04-source-bound.json source_files physical identities",
+  "owner_record_checkout_EOL": "The sole physical/Git byte difference among the 15 bound files is inherited CRLF in knowledge/records/TKL-20260913-01.md: 38 CRLF physical; 0 CRLF Git; physical CRLF-to-LF equals exact Candidate blob. No content conflict and no normalization performed.",
+  "source_meaning": "The opened owner record accepts only the original mixed-C3 architecture. Migration sections 1-2 retain legacy functions, retire numeric/global/marker/scaffold authority, require incomplete SLC recovery first and preserve custom settings/history. RF/EV retain the actual stopped native attempts; independent rev4 APPROVE judges old Candidate effects and explicitly separates later Coordinator capture/close."
+}

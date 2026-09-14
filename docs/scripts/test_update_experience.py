@@ -753,3 +753,72 @@ def test_selected_sibling_trace_has_exact_boundary_language():
         assert "sibling" in text and ("DONE" in text or "lifecycle state" in text)
     assert "legacy and historical citations" in judge
     assert "semantic effect" in judge
+
+
+
+def _tkl_adoption_model(root, preservation, *, target="pinned", authority="owner", slc_complete=True):
+    """Finite held-input model, not installed code or evidence of a native update."""
+    if not slc_complete: raise ValueError("incomplete SLC")
+    if not preservation: raise ValueError("missing preservation")
+    if preservation["target"] != target or preservation["authority"] != authority:
+        raise ValueError("source/authority")
+    data = json.loads((root / "affected.json").read_text())
+    for field, old in preservation["old"].items():
+        if data[field] not in (old, preservation["intended"][field]):
+            raise ValueError(f"later affected field: {field}")
+    # Compatible readers are enabled before live authority is retired. Unrelated
+    # values and absent/existing state are not part of the write set.
+    for field in ("readers", "config", "entry"):
+        data[field] = preservation["intended"][field]
+        (root / "affected.json").write_text(json.dumps(data, sort_keys=True))
+    return data
+
+
+@pytest.mark.parametrize("cut", ["preservation", "readers", "config", "entry", "completed"])
+@pytest.mark.parametrize("state_present", [False, True])
+def test_tkl_expected_adoption_cuts_repeat_and_custom_preservation(tmp_path, cut, state_present):
+    packet = {"target": "pinned", "authority": "owner",
+              "old": {"readers": "legacy", "config": "legacy gate", "entry": "legacy counts"},
+              "intended": {"readers": "mixed", "config": "selected", "entry": "stable routes"}}
+    data = {**packet["old"], "unknown_custom": {"keep": True}, "later_unrelated": "Z"}
+    stages = ["preservation", "readers", "config", "entry", "completed"]
+    for field in ("readers", "config", "entry"):
+        if stages.index(cut) >= stages.index(field): data[field] = packet["intended"][field]
+    (tmp_path / "affected.json").write_text(json.dumps(data))
+    state = tmp_path / "knowledge_state.yaml"
+    if state_present: state.write_bytes(b"legacy state and markers\r\n")
+    result = _tkl_adoption_model(tmp_path, packet)
+    before_repeat = (tmp_path / "affected.json").read_bytes()
+    assert _tkl_adoption_model(tmp_path, packet) == result
+    assert (tmp_path / "affected.json").read_bytes() == before_repeat
+    assert result["later_unrelated"] == "Z" and result["unknown_custom"] == {"keep": True}
+    assert state.exists() == state_present
+    if state_present: assert state.read_bytes() == b"legacy state and markers\r\n"
+
+
+@pytest.mark.parametrize("case", ["missing", "target", "authority", "readers", "config", "entry", "slc"])
+def test_tkl_adoption_refusal_preserves_whole_observed_input(tmp_path, case):
+    packet = {"target": "pinned", "authority": "owner",
+              "old": {"readers": "X", "config": "X", "entry": "X"},
+              "intended": {"readers": "Y", "config": "Y", "entry": "Y"}}
+    data = {**packet["old"], "later_unrelated": "keep"}
+    if case in packet["old"]: data[case] = "Z"
+    path = tmp_path / "affected.json"; path.write_text(json.dumps(data))
+    before = path.read_bytes()
+    kwargs = {case: "wrong"} if case in ("target", "authority") else {}
+    if case == "slc": kwargs["slc_complete"] = False
+    with pytest.raises(ValueError):
+        _tkl_adoption_model(tmp_path, None if case == "missing" else packet, **kwargs)
+    assert path.read_bytes() == before
+
+
+def test_tkl_pinned_guide_orders_preservation_readers_and_legacy_prerequisite():
+    guide = _read(".tfw/migrations/knowledge-lifecycle.md")
+    assert guide.index("incomplete SLC 3.3.0") < guide.index("## 3. Preserve")
+    assert guide.index("## 3. Preserve") < guide.index("## 4. Apply compatible")
+    for clause in ("including equal-version", "Unknown custom keys", "old/intended",
+                   "third value", "before provenance completion", "Prepared cuts are labelled prepared",
+                   "no shipped executable/Python service", "state absence stays absence"):
+        assert clause in guide
+    update = _read(".tfw/workflows/update.md")
+    assert "knowledge-lifecycle.md" in update

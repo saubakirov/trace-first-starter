@@ -1,0 +1,71 @@
+{
+  "actual_control_clock": "2026-09-13 22:57:16 UTC",
+  "local_event_time": "2026-09-14T03:57:16+05:00",
+  "status_written_at": "2026-09-13T22:57:59.498387+00:00",
+  "event_written_at": "2026-09-13T22:57:59.498743+00:00",
+  "event": "journal/20260914-035716__transition__79ad.md",
+  "status_sha256": "f477332577cbbb2ac1a7ee4832b7b0893cad4ce62045af0542653bce97ed7b25",
+  "event_sha256": "f00ad859e0241f6bc47ad4e5cee2f77b8eb62cd39a2a07c3d37ef63d3fded683",
+  "authority_sha256": "cb1e21259e6fa8263aa21d3f56facf73a0f5c932cbc8faf8ae692de63157e6f8",
+  "whole_carriers_valid_before_write": true,
+  "refs_read": [
+    {
+      "path": "status.md",
+      "bytes_before_control": 588,
+      "sha256_before_control": "4f9aa165983bc138d3c14153a09c5b58d09a53681638d9cdc87bc87a52dda927"
+    },
+    {
+      "path": "HL-TFW_20260909-231654_TKL.md",
+      "bytes_before_control": 55629,
+      "sha256_before_control": "cb1e21259e6fa8263aa21d3f56facf73a0f5c932cbc8faf8ae692de63157e6f8"
+    },
+    {
+      "path": "TS__TFW_20260909-231654_TKL.md",
+      "bytes_before_control": 55220,
+      "sha256_before_control": "6929b45c6ec0908933a2d7e9088707dd317c56a1089895cac9fc31a1b3f8c48c"
+    },
+    {
+      "path": "ONB__TFW_20260909-231654_TKL.md",
+      "bytes_before_control": 86255,
+      "sha256_before_control": "c2766baf07207b132bd8796f1fa4b1de95a7e7b9852ee5def7a8ec6e949ca96b"
+    },
+    {
+      "path": "RF__TFW_20260909-231654_TKL.md",
+      "bytes_before_control": 56389,
+      "sha256_before_control": "44daa5861c534c584a7d199b8816f6b4271d9b8b372bd86c35e1a74e3d34c02a"
+    },
+    {
+      "path": "evidence/EV__TFW_20260909-231654_TKL.md",
+      "bytes_before_control": 40956,
+      "sha256_before_control": "9bf09faa05df341357bed0533e3084722ee0dea99e5e9c82760eb3ebe66c9ac5"
+    },
+    {
+      "path": "REVIEW__TFW_20260909-231654_TKL__rev3.md",
+      "bytes_before_control": 18447,
+      "sha256_before_control": "9d7dce14536831f448bf5e92709a5605fd8c58db6d884441096447ab4768654c"
+    },
+    {
+      "path": "journal/20260914-034547__dispatch__d3c8.md",
+      "bytes_before_control": 2552,
+      "sha256_before_control": "1283069a984cdcc1bfe7d2f845606f4353256e35f5bf6abe4fd8116f7eaf4088"
+    },
+    {
+      "path": "journal/20260914-034741__dispatch__f00f.md",
+      "bytes_before_control": 4566,
+      "sha256_before_control": "382d69f1ce082f03d63deb404ec914c63363554c301d40c700882bc657858be6"
+    },
+    {
+      "path": "evidence/r3-return/00-terminal-tail.json",
+      "bytes_before_control": 2302,
+      "sha256_before_control": "af484fdc38f26718f7d8ca59df85280bbbd83b3af8c8af88b72bf2c31389ed04"
+    },
+    {
+      "path": "evidence/r3-return/01-late-custody.json",
+      "bytes_before_control": 1880,
+      "sha256_before_control": "c29a4c5a4f43a5f999b44ec7654a7957e9fabfef3bfb4774d675f1cf8b43879e"
+    }
+  ],
+  "native_outcome_unchanged": "STOPPED24/24",
+  "documentary_authority": "43a55292579e4ad9ec37866926a78a8bae036ef3",
+  "no_receiver_access": true
+}

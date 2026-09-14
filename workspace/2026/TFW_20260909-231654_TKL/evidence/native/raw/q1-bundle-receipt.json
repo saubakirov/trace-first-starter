@@ -1,0 +1,25 @@
+{
+  "started": "2026-09-13T11:45:46.536487+00:00",
+  "finished": "2026-09-13T11:45:47.165276+00:00",
+  "argv": [
+    "git",
+    "-c",
+    "core.longpaths=true",
+    "bundle",
+    "create",
+    "C:\\Users\\c0rpa\\.codex\\worktrees\\f3f3\\steps-framework\\workspace\\2026\\TFW_20260909-231654_TKL\\evidence\\native\\raw\\q1-receiver.bundle",
+    "^27cdb701b91c5b45b9f54b3e98c9ad67635b3e30",
+    "refs/heads/codex/tkl-native-executor",
+    "refs/heads/codex/tkl-native-coordinator"
+  ],
+  "heads": {
+    "executor": "56de4b23c5c8edbbf87426f578701bdb02b3a770",
+    "coordinator": "7d036298eb416b5cf5061c990874b44202a264f3"
+  },
+  "prerequisite_candidate": "27cdb701b91c5b45b9f54b3e98c9ad67635b3e30",
+  "bundle_sha256": "0d8b3e523775486f3ee9b1233a750852a2390ff493b33215cef03c534a7f9aa6",
+  "bundle_bytes": 198686,
+  "create_exit": 0,
+  "verify_in_main_repository_exit": 0,
+  "meaning": "Portable exact prepared/base and actual holder/integration objects with immutable Candidate prerequisite; no acceptance or main-branch import."
+}

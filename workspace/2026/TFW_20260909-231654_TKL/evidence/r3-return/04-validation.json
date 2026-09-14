@@ -1,0 +1,347 @@
+{
+  "observed_at": "2026-09-13T23:02:33.416659+00:00",
+  "checks": "Documentary structure, references, cumulative prefixes, allowed changed paths and Git ancestry only; no native/source suite or raw validator rerun",
+  "candidate": "a99ba6cd756a7db444f217aef4e5a0eb83faee51",
+  "late_raw_commit": "fc7497279ef3f70e2fcae5bb342e605a4cc7673e",
+  "authority_merge": "bc03aa784f360631491fdd169fd4a45284fbe378",
+  "prefixes_preserved": [
+    {
+      "path": "ONB__TFW_20260909-231654_TKL.md",
+      "preserved_bytes": 79703,
+      "sha256": "5ffa47874813c4531050be96468e2d149311ace6c80f88df2ad35be975b88416"
+    },
+    {
+      "path": "RF__TFW_20260909-231654_TKL.md",
+      "preserved_bytes": 47230,
+      "sha256": "b26e99bc55322fe3ff59fb650fb5cc26bec078bb86e590e541a3f6b1e6887c54"
+    },
+    {
+      "path": "evidence/EV__TFW_20260909-231654_TKL.md",
+      "preserved_bytes": 33111,
+      "sha256": "b9e0667bc9cc8bf202a0e24ef6b5e853ec7b301f6fa86c217883e69fed10e389"
+    }
+  ],
+  "RF_sections1_to9": true,
+  "EV_rows": 12,
+  "EV_verdict": {
+    "VERIFIED": 10,
+    "DEFERRED": 0,
+    "BLOCKED": 2,
+    "N/A": 0
+  },
+  "new_report_links": [
+    {
+      "source": "ONB__TFW_20260909-231654_TKL.md",
+      "href": "journal/20260914-034547__dispatch__d3c8.md",
+      "resolved": "journal/20260914-034547__dispatch__d3c8.md"
+    },
+    {
+      "source": "ONB__TFW_20260909-231654_TKL.md",
+      "href": "journal/20260914-034741__dispatch__f00f.md",
+      "resolved": "journal/20260914-034741__dispatch__f00f.md"
+    },
+    {
+      "source": "ONB__TFW_20260909-231654_TKL.md",
+      "href": "evidence/r3-return/00-terminal-tail.json",
+      "resolved": "evidence/r3-return/00-terminal-tail.json"
+    },
+    {
+      "source": "ONB__TFW_20260909-231654_TKL.md",
+      "href": "evidence/r3-return/01-late-custody.json",
+      "resolved": "evidence/r3-return/01-late-custody.json"
+    },
+    {
+      "source": "ONB__TFW_20260909-231654_TKL.md",
+      "href": "evidence/r3-return/04-inventory.json",
+      "resolved": "evidence/r3-return/04-inventory.json"
+    },
+    {
+      "source": "RF__TFW_20260909-231654_TKL.md",
+      "href": "evidence/r3-return/01-late-custody.json",
+      "resolved": "evidence/r3-return/01-late-custody.json"
+    },
+    {
+      "source": "RF__TFW_20260909-231654_TKL.md",
+      "href": "evidence/r2-checkpoint/08-accounting/accounting.json",
+      "resolved": "evidence/r2-checkpoint/08-accounting/accounting.json"
+    },
+    {
+      "source": "RF__TFW_20260909-231654_TKL.md",
+      "href": "evidence/r3-return/00-terminal-tail.json",
+      "resolved": "evidence/r3-return/00-terminal-tail.json"
+    },
+    {
+      "source": "RF__TFW_20260909-231654_TKL.md",
+      "href": "evidence/EV__TFW_20260909-231654_TKL.md",
+      "resolved": "evidence/EV__TFW_20260909-231654_TKL.md"
+    },
+    {
+      "source": "evidence/EV__TFW_20260909-231654_TKL.md",
+      "href": "../REVIEW__TFW_20260909-231654_TKL__rev2.md",
+      "resolved": "REVIEW__TFW_20260909-231654_TKL__rev2.md"
+    },
+    {
+      "source": "evidence/EV__TFW_20260909-231654_TKL.md",
+      "href": "handover.md",
+      "resolved": "evidence/handover.md"
+    },
+    {
+      "source": "evidence/EV__TFW_20260909-231654_TKL.md",
+      "href": "../REVIEW__TFW_20260909-231654_TKL__rev2.md",
+      "resolved": "REVIEW__TFW_20260909-231654_TKL__rev2.md"
+    },
+    {
+      "source": "evidence/EV__TFW_20260909-231654_TKL.md",
+      "href": "handover.md",
+      "resolved": "evidence/handover.md"
+    },
+    {
+      "source": "evidence/EV__TFW_20260909-231654_TKL.md",
+      "href": "../REVIEW__TFW_20260909-231654_TKL__rev2.md",
+      "resolved": "REVIEW__TFW_20260909-231654_TKL__rev2.md"
+    },
+    {
+      "source": "evidence/EV__TFW_20260909-231654_TKL.md",
+      "href": "final-inputs/source-map.json",
+      "resolved": "evidence/final-inputs/source-map.json"
+    },
+    {
+      "source": "evidence/EV__TFW_20260909-231654_TKL.md",
+      "href": "../REVIEW__TFW_20260909-231654_TKL__rev2.md",
+      "resolved": "REVIEW__TFW_20260909-231654_TKL__rev2.md"
+    },
+    {
+      "source": "evidence/EV__TFW_20260909-231654_TKL.md",
+      "href": "native/second-epoch.md",
+      "resolved": "evidence/native/second-epoch.md"
+    },
+    {
+      "source": "evidence/EV__TFW_20260909-231654_TKL.md",
+      "href": "../REVIEW__TFW_20260909-231654_TKL__rev3.md",
+      "resolved": "REVIEW__TFW_20260909-231654_TKL__rev3.md"
+    },
+    {
+      "source": "evidence/EV__TFW_20260909-231654_TKL.md",
+      "href": "r3-native/12-source-check.json",
+      "resolved": "evidence/r3-native/12-source-check.json"
+    },
+    {
+      "source": "evidence/EV__TFW_20260909-231654_TKL.md",
+      "href": "../REVIEW__TFW_20260909-231654_TKL__rev2.md",
+      "resolved": "REVIEW__TFW_20260909-231654_TKL__rev2.md"
+    },
+    {
+      "source": "evidence/EV__TFW_20260909-231654_TKL.md",
+      "href": "native/second-epoch.md",
+      "resolved": "evidence/native/second-epoch.md"
+    },
+    {
+      "source": "evidence/EV__TFW_20260909-231654_TKL.md",
+      "href": "r3-native/18-native-result.json",
+      "resolved": "evidence/r3-native/18-native-result.json"
+    },
+    {
+      "source": "evidence/EV__TFW_20260909-231654_TKL.md",
+      "href": "r3-native/17-repeat-result.json",
+      "resolved": "evidence/r3-native/17-repeat-result.json"
+    },
+    {
+      "source": "evidence/EV__TFW_20260909-231654_TKL.md",
+      "href": "r3-return/00-terminal-tail.json",
+      "resolved": "evidence/r3-return/00-terminal-tail.json"
+    },
+    {
+      "source": "evidence/EV__TFW_20260909-231654_TKL.md",
+      "href": "r3-return/01-late-custody.json",
+      "resolved": "evidence/r3-return/01-late-custody.json"
+    },
+    {
+      "source": "evidence/EV__TFW_20260909-231654_TKL.md",
+      "href": "../REVIEW__TFW_20260909-231654_TKL__rev3.md",
+      "resolved": "REVIEW__TFW_20260909-231654_TKL__rev3.md"
+    },
+    {
+      "source": "evidence/EV__TFW_20260909-231654_TKL.md",
+      "href": "r3-native/13-build.step.json",
+      "resolved": "evidence/r3-native/13-build.step.json"
+    },
+    {
+      "source": "evidence/EV__TFW_20260909-231654_TKL.md",
+      "href": "r3-native/14-output.json",
+      "resolved": "evidence/r3-native/14-output.json"
+    },
+    {
+      "source": "evidence/EV__TFW_20260909-231654_TKL.md",
+      "href": "../REVIEW__TFW_20260909-231654_TKL__rev3.md",
+      "resolved": "REVIEW__TFW_20260909-231654_TKL__rev3.md"
+    },
+    {
+      "source": "evidence/EV__TFW_20260909-231654_TKL.md",
+      "href": "r2-checkpoint/04-source-checks/receipt.json",
+      "resolved": "evidence/r2-checkpoint/04-source-checks/receipt.json"
+    },
+    {
+      "source": "evidence/EV__TFW_20260909-231654_TKL.md",
+      "href": "ac9-supplement/README.md",
+      "resolved": "evidence/ac9-supplement/README.md"
+    },
+    {
+      "source": "evidence/EV__TFW_20260909-231654_TKL.md",
+      "href": "../REVIEW__TFW_20260909-231654_TKL__rev2.md",
+      "resolved": "REVIEW__TFW_20260909-231654_TKL__rev2.md"
+    },
+    {
+      "source": "evidence/EV__TFW_20260909-231654_TKL.md",
+      "href": "fresh-consumer.md",
+      "resolved": "evidence/fresh-consumer.md"
+    },
+    {
+      "source": "evidence/EV__TFW_20260909-231654_TKL.md",
+      "href": "../RF__TFW_20260909-231654_TKL.md",
+      "resolved": "RF__TFW_20260909-231654_TKL.md"
+    },
+    {
+      "source": "evidence/EV__TFW_20260909-231654_TKL.md",
+      "href": "../journal/20260914-034741__dispatch__f00f.md",
+      "resolved": "journal/20260914-034741__dispatch__f00f.md"
+    },
+    {
+      "source": "evidence/EV__TFW_20260909-231654_TKL.md",
+      "href": "r3-return/04-validation.json",
+      "resolved": "evidence/r3-return/04-validation.json"
+    },
+    {
+      "source": "evidence/EV__TFW_20260909-231654_TKL.md",
+      "href": "r2-checkpoint/08-accounting/accounting.json",
+      "resolved": "evidence/r2-checkpoint/08-accounting/accounting.json"
+    },
+    {
+      "source": "evidence/EV__TFW_20260909-231654_TKL.md",
+      "href": "../REVIEW__TFW_20260909-231654_TKL__rev3.md",
+      "resolved": "REVIEW__TFW_20260909-231654_TKL__rev3.md"
+    },
+    {
+      "source": "evidence/EV__TFW_20260909-231654_TKL.md",
+      "href": "r3-return/04-inventory.json",
+      "resolved": "evidence/r3-return/04-inventory.json"
+    },
+    {
+      "source": "evidence/EV__TFW_20260909-231654_TKL.md",
+      "href": "r3-preflight/05-validation.json",
+      "resolved": "evidence/r3-preflight/05-validation.json"
+    },
+    {
+      "source": "evidence/EV__TFW_20260909-231654_TKL.md",
+      "href": "r3-native/23-validation.json",
+      "resolved": "evidence/r3-native/23-validation.json"
+    },
+    {
+      "source": "evidence/EV__TFW_20260909-231654_TKL.md",
+      "href": "coordinator-r3-stop/observed-index.json",
+      "resolved": "evidence/coordinator-r3-stop/observed-index.json"
+    },
+    {
+      "source": "evidence/EV__TFW_20260909-231654_TKL.md",
+      "href": "r3-return/00-terminal-tail.json",
+      "resolved": "evidence/r3-return/00-terminal-tail.json"
+    },
+    {
+      "source": "evidence/EV__TFW_20260909-231654_TKL.md",
+      "href": "r3-return/01-late-custody.json",
+      "resolved": "evidence/r3-return/01-late-custody.json"
+    },
+    {
+      "source": "evidence/EV__TFW_20260909-231654_TKL.md",
+      "href": "r3-return/04-validation.json",
+      "resolved": "evidence/r3-return/04-validation.json"
+    }
+  ],
+  "status": "RF",
+  "event": "journal/20260914-035716__transition__79ad.md",
+  "event_refs_valid": true,
+  "raw122_paths_unchanged_from_late_commit": true,
+  "frozen_HL_TS_all_REVIEW_unchanged": true,
+  "original65_VALUE_ASSURANCE_unchanged": true,
+  "complete_counts": {
+    "VALUE": 58,
+    "ASSURANCE": 9,
+    "TRACE": 951
+  },
+  "only_separate_final_TRACE_changes": true,
+  "documentary_inventory_correction": {
+    "tool_chunk": "c91355",
+    "kind": "Post-native documentary inventory assertion, not a native check",
+    "failure": "Preliminary final inventory assumed all baseline TRACE paths lived under this task; four original receiver-preservation paths already existed outside it. It stopped before writing final inventory/validation content.",
+    "correction": "Preserve their existing TRACE classification from the exact prior inventory; only newly changed paths must stay task-local. No old raw or receiver byte changed.",
+    "inherited_paths": [
+      ".tfw/update_receipts/knowledge-lifecycle/0a435729c93141639ada55fb77a7508d47d0d1b9c159d50b6e05bdfb364ebacf/before/.tfw/knowledge_state.yaml",
+      ".tfw/update_receipts/knowledge-lifecycle/0a435729c93141639ada55fb77a7508d47d0d1b9c159d50b6e05bdfb364ebacf/before/.tfw/project_config.yaml",
+      ".tfw/update_receipts/knowledge-lifecycle/0a435729c93141639ada55fb77a7508d47d0d1b9c159d50b6e05bdfb364ebacf/before/KNOWLEDGE.md",
+      ".tfw/update_receipts/knowledge-lifecycle/0a435729c93141639ada55fb77a7508d47d0d1b9c159d50b6e05bdfb364ebacf/preservation.json"
+    ],
+    "basis": "../r3-native/23-inventory.json"
+  },
+  "native_attempt": "STOPPED24/24, raw commit late, no retroactive cure",
+  "receiver_access_or_effect_check_build_repeat": false,
+  "files": [
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/ONB__TFW_20260909-231654_TKL.md",
+      "bytes": 86255,
+      "sha256": "c2766baf07207b132bd8796f1fa4b1de95a7e7b9852ee5def7a8ec6e949ca96b"
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/RF__TFW_20260909-231654_TKL.md",
+      "bytes": 56389,
+      "sha256": "44daa5861c534c584a7d199b8816f6b4271d9b8b372bd86c35e1a74e3d34c02a"
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/EV__TFW_20260909-231654_TKL.md",
+      "bytes": 40956,
+      "sha256": "9bf09faa05df341357bed0533e3084722ee0dea99e5e9c82760eb3ebe66c9ac5"
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/r3-return/00-terminal-tail.json",
+      "bytes": 2302,
+      "sha256": "af484fdc38f26718f7d8ca59df85280bbbd83b3af8c8af88b72bf2c31389ed04"
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/r3-return/01-late-custody.json",
+      "bytes": 1880,
+      "sha256": "c29a4c5a4f43a5f999b44ec7654a7957e9fabfef3bfb4774d675f1cf8b43879e"
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/r3-return/02-prior-prefixes.json",
+      "bytes": 652,
+      "sha256": "b00089f00b0a8a9805bfbcfd623e660503051524b66756c927bca3a575436f7a"
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/r3-return/03-control.json",
+      "bytes": 2950,
+      "sha256": "547965d5a933625fd4f05d95f224ebfe161b95cf3dcfb3c36225ad6157c67429"
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/r3-return/03-status-before.md",
+      "bytes": 588,
+      "sha256": "4f9aa165983bc138d3c14153a09c5b58d09a53681638d9cdc87bc87a52dda927"
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/r3-return/04-inventory.json",
+      "bytes": 263457,
+      "sha256": "53d1cbbd1fb75623686dd8911780743636f782abe580e1944a82ff92fa4203b1"
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/r3-return/04-validation.json",
+      "identity": "Committed Git blob for self"
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/journal/20260914-035716__transition__79ad.md",
+      "bytes": 1203,
+      "sha256": "f00ad859e0241f6bc47ad4e5cee2f77b8eb62cd39a2a07c3d37ef63d3fded683"
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/status.md",
+      "bytes": 587,
+      "sha256": "f477332577cbbb2ac1a7ee4832b7b0893cad4ce62045af0542653bce97ed7b25"
+    }
+  ]
+}

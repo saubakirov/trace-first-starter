@@ -1,0 +1,14 @@
+{
+  "start": "2026-09-13T22:13:37Z",
+  "deadline": "2026-09-13T22:43:37Z",
+  "seconds": 1800,
+  "operations": 24,
+  "deductions": 0,
+  "retry": false,
+  "pin": "22c75aae5ce1a0a6aed5a7b867277a304dd3ee6e",
+  "intake_start": "2026-09-13T22:13:00.417656+00:00",
+  "intake_last_check": "2026-09-13T22:13:27.019228+00:00",
+  "intake_calls": 2,
+  "clock_operation": 1,
+  "start_message_operation": 2
+}

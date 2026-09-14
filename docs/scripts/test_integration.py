@@ -5,6 +5,7 @@ Install docs/requirements.txt and pytest for this output family.
 """
 
 import re
+import os
 import subprocess
 import sys
 from pathlib import Path
@@ -12,22 +13,36 @@ from pathlib import Path
 import pytest
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent.parent
+SITE_DIR = Path(os.environ.get("TFW_ASSURANCE_SITE_DIR", str(PROJECT_ROOT / "site")))
 
 
 @pytest.fixture(scope="module", autouse=True)
 def build_site():
     """Run mkdocs build once before all integration tests."""
-    import os
     env = os.environ.copy()
     env["DISABLE_MKDOCS_2_WARNING"] = "true"
+    from datetime import datetime, timezone
+    started = datetime.now(timezone.utc).isoformat()
     result = subprocess.run(
         [
             sys.executable, "-m", "mkdocs", "build",
             "--config-file", "docs/mkdocs.yml",
+            "--site-dir", str(SITE_DIR),
         ],
         capture_output=True, text=True, cwd=str(PROJECT_ROOT),
         env=env,
     )
+    # Optional upstream evidence sink; not part of installed receiver behavior.
+    if capture := env.get("TFW_ASSURANCE_BUILD_CAPTURE"):
+        import hashlib, json
+        destination = Path(capture); destination.mkdir(parents=True, exist_ok=False)
+        for name, value in (("stdout.txt", result.stdout), ("stderr.txt", result.stderr)):
+            (destination / name).write_text(value, encoding="utf-8")
+        receipt = {"argv": result.args, "started": started,
+                   "finished": datetime.now(timezone.utc).isoformat(), "exit_code": result.returncode,
+                   "cwd": str(PROJECT_ROOT),
+                   "streams": {p.name: hashlib.sha256(p.read_bytes()).hexdigest() for p in destination.glob("*.txt")}}
+        (destination / "receipt.json").write_text(json.dumps(receipt, indent=2), encoding="utf-8")
     if result.returncode != 0:
         pytest.fail(f"MkDocs build failed:\n{result.stderr}\n{result.stdout}")
     yield
@@ -35,7 +50,7 @@ def build_site():
 
 def test_static_pages_generated():
     """Key static pages exist in site/ output."""
-    site = PROJECT_ROOT / "site"
+    site = SITE_DIR
     assert (site / "index.html").exists(), "index.html missing"
     assert (site / "getting-started" / "index.html").exists(), "getting-started missing"
     assert (site / "concepts" / "philosophy" / "index.html").exists(), "philosophy missing"
@@ -46,7 +61,7 @@ def test_static_pages_generated():
 
 def test_knowledge_index_generated():
     """KNOWLEDGE.md compiled to knowledge-index page."""
-    site = PROJECT_ROOT / "site"
+    site = SITE_DIR
     page = site / "knowledge-index" / "index.html"
     assert page.exists(), "knowledge-index page missing"
     content = page.read_text(encoding="utf-8")
@@ -55,7 +70,7 @@ def test_knowledge_index_generated():
 
 def test_task_pages_generated():
     """Task artifacts are accessible."""
-    site = PROJECT_ROOT / "site"
+    site = SITE_DIR
     tasks_dir = site / "tasks"
     if not tasks_dir.exists():
         pytest.skip("No tasks/ in site output")
@@ -65,7 +80,7 @@ def test_task_pages_generated():
 
 def test_knowledge_topic_pages_generated():
     """Knowledge topic files are compiled."""
-    site = PROJECT_ROOT / "site"
+    site = SITE_DIR
     knowledge_dir = site / "knowledge"
     assert knowledge_dir.exists(), "knowledge/ section missing"
     topic_pages = list(knowledge_dir.glob("*/index.html"))
@@ -74,7 +89,7 @@ def test_knowledge_topic_pages_generated():
 
 def test_workflow_pages_generated():
     """Workflow reference pages exist."""
-    site = PROJECT_ROOT / "site"
+    site = SITE_DIR
     wf_dir = site / "reference" / "workflows"
     assert wf_dir.exists(), "reference/workflows/ missing"
     wf_pages = list(wf_dir.rglob("index.html"))
@@ -83,7 +98,7 @@ def test_workflow_pages_generated():
 
 def test_template_pages_generated():
     """Template reference pages exist."""
-    site = PROJECT_ROOT / "site"
+    site = SITE_DIR
     tpl_dir = site / "reference" / "templates"
     assert tpl_dir.exists(), "reference/templates/ missing"
     tpl_pages = list(tpl_dir.rglob("index.html"))
@@ -92,7 +107,7 @@ def test_template_pages_generated():
 
 def test_frontmatter_in_generated_pages():
     """Generated pages have YAML frontmatter (title/source)."""
-    site = PROJECT_ROOT / "site"
+    site = SITE_DIR
     # Check knowledge-index page title in HTML
     page = site / "knowledge-index" / "index.html"
     if page.exists():
@@ -103,7 +118,7 @@ def test_frontmatter_in_generated_pages():
 
 def test_decision_refs_resolved_in_knowledge_index():
     """D{N} references in knowledge-index resolve to #architecture-decisions anchors."""
-    site = PROJECT_ROOT / "site"
+    site = SITE_DIR
     page = site / "knowledge-index" / "index.html"
     if not page.exists():
         pytest.skip("knowledge-index page not built")
@@ -115,7 +130,7 @@ def test_decision_refs_resolved_in_knowledge_index():
 
 def test_artifact_refs_resolved_in_knowledge_topics():
     """Knowledge topic files contain resolved links to task artifacts."""
-    site = PROJECT_ROOT / "site"
+    site = SITE_DIR
     knowledge_dir = site / "knowledge"
     if not knowledge_dir.exists():
         pytest.skip("knowledge/ not built")
@@ -137,7 +152,7 @@ def test_td_refs_resolved_in_output():
     the task-container glob, like BOARD-SNAPSHOT.md, so there is exactly one output page for it.
     This test is what stops a citation going dead in a rename that looks harmless.
     """
-    site = PROJECT_ROOT / "site"
+    site = SITE_DIR
     # Search across all pages for resolved TD links
     found_td_link = False
     for page in site.rglob("index.html"):
@@ -162,7 +177,7 @@ def test_no_page_renders_its_own_frontmatter_as_body_text():
     `Path.as_posix()`, `yaml.safe_dump`, and adding the header last. This test is the end-to-end
     backstop for a fourth cause nobody has thought of.
     """
-    site = PROJECT_ROOT / "site"
+    site = SITE_DIR
     leaked = re.compile(r"<hr />\s*<p>title: ")
     offenders = [p for p in site.rglob("index.html") if leaked.search(p.read_text(encoding="utf-8"))]
     assert not offenders, (
@@ -173,7 +188,7 @@ def test_no_page_renders_its_own_frontmatter_as_body_text():
 
 def test_index_override_used():
     """When docs/index.md exists, it should be used instead of README.md."""
-    site = PROJECT_ROOT / "site"
+    site = SITE_DIR
     index = site / "index.html"
     assert index.exists(), "index.html missing"
     content = index.read_text(encoding="utf-8")
@@ -186,7 +201,7 @@ def test_index_override_used():
 
 def test_section_index_pages_generated():
     """Knowledge is indexed; task traces have hidden per-task landings only."""
-    site = PROJECT_ROOT / "site"
+    site = SITE_DIR
     knowledge = site / "knowledge" / "index.html"
     assert knowledge.exists()
     assert "<a" in knowledge.read_text(encoding="utf-8")
@@ -198,7 +213,7 @@ def test_section_index_pages_generated():
 def test_every_recognized_task_has_an_unlisted_landing_and_nav_has_no_tasks_entry():
     sys.path.insert(0, str(PROJECT_ROOT / "tools"))
     import tfw_state
-    site = PROJECT_ROOT / "site"
+    site = SITE_DIR
     containers = tfw_state.reference_containers(PROJECT_ROOT)
     for task_dir in tfw_state.iter_task_dirs(PROJECT_ROOT, containers):
         relative = next(
@@ -214,7 +229,7 @@ def test_every_recognized_task_has_an_unlisted_landing_and_nav_has_no_tasks_entr
 
 def test_resolved_links_use_directory_urls():
     """Resolved artifact links use directory URLs (no .md extension)."""
-    site = PROJECT_ROOT / "site"
+    site = SITE_DIR
     knowledge_dir = site / "knowledge"
     if not knowledge_dir.exists():
         pytest.skip("knowledge/ not built")
@@ -245,7 +260,7 @@ def test_current_slc_parent_hl_routes_are_real_single_destinations():
                 self.links.append(self.current); self.current = None
 
     task_id = 'TFW_20260907-020729_SLC'
-    folder = PROJECT_ROOT / 'site/tasks/2026' / task_id
+    folder = SITE_DIR / 'tasks/2026' / task_id
     target = folder / f'HL-{task_id}/index.html'
     assert target.is_file()
     expected = [(folder / f'{kind}__{task_id}/index.html', label) for kind, label in
@@ -266,3 +281,92 @@ def test_current_slc_parent_hl_routes_are_real_single_destinations():
             assert actual == target.resolve() and actual.is_file(), (page, href)
             if url.fragment:
                 assert f'id="{unquote(url.fragment)}"' in actual.read_text(encoding='utf-8')
+
+
+
+def test_tkl_five_mixed_navigation_families_reach_exact_generated_destinations():
+    from html.parser import HTMLParser
+    from urllib.parse import unquote, urlsplit
+    class Links(HTMLParser):
+        def __init__(self):
+            super().__init__(); self.links = []; self.current = None
+        def handle_starttag(self, tag, attrs):
+            if tag == "a":
+                assert self.current is None, "nested anchor"
+                self.current = [dict(attrs).get("href", ""), ""]
+        def handle_data(self, value):
+            if self.current is not None: self.current[1] += value
+        def handle_endtag(self, tag):
+            if tag == "a" and self.current is not None:
+                self.links.append(self.current); self.current = None
+    site = SITE_DIR
+    record = site / "knowledge/records/TKL-20260913-01/index.html"
+    entry = site / "knowledge-index/index.html"
+    topic = site / "knowledge/process/index.html"
+    task = "tasks/2026/TFW_20260909-231654_TKL"
+    cases = [
+        (record, "KNOWLEDGE.md D37", entry, "d37"),
+        (entry, "Process", topic, ""),
+        (entry, "TKL-20260913-01", record, ""),
+        (record, "D82", entry, "d82"),
+        (record, "owner decision", site / task / "journal/20260913-141400__handoff__8c2a/index.html", ""),
+        (record, "HL decision context", site / task / "HL-TFW_20260909-231654_TKL/index.html", ""),
+        (topic, "RES TFW-22", site / "tasks/TFW-22__coordinator_research_enrichment/RES__TFW-22__coordinator_research_enrichment/index.html", ""),
+    ]
+    for page, label, target, fragment in cases:
+        assert page.is_file() and target.is_file(), (page, target)
+        parsed = Links(); parsed.feed(page.read_text(encoding="utf-8"))
+        matches = [href for href, text in parsed.links if label in text]
+        assert matches, (page, label)
+        resolved = []
+        for href in matches:
+            url = urlsplit(href)
+            if url.scheme or url.netloc: continue
+            destination = (page.parent / unquote(url.path) / "index.html").resolve()
+            resolved.append((destination, unquote(url.fragment)))
+        assert (target.resolve(), fragment) in resolved, (page, label, resolved)
+        if fragment: assert f'id="{fragment}"' in target.read_text(encoding="utf-8")
+
+
+def test_tkl_five_reviewed_fragment_occurrences_reach_existing_exact_ids():
+    from html.parser import HTMLParser
+    from urllib.parse import unquote, urlsplit
+
+    class Page(HTMLParser):
+        def __init__(self, path):
+            super().__init__()
+            self.hrefs = []
+            self.ids = []
+            self.feed(path.read_text(encoding="utf-8"))
+
+        def handle_starttag(self, tag, attrs):
+            attrs = dict(attrs)
+            if "id" in attrs:
+                self.ids.append(attrs["id"])
+            if tag == "a" and "href" in attrs:
+                self.hrefs.append(attrs["href"])
+
+    site = SITE_DIR
+    tkl = site / "tasks/2026/TFW_20260909-231654_TKL"
+    slc = site / "tasks/2026/TFW_20260907-020729_SLC"
+    hl = tkl / "HL-TFW_20260909-231654_TKL/index.html"
+    onb = tkl / "ONB__TFW_20260909-231654_TKL/index.html"
+    rf = slc / "RF__TFW_20260907-020729_SLC/index.html"
+    review = slc / "REVIEW__TFW_20260907-020729_SLC/index.html"
+    cases = [
+        (hl, site / "reference/workflows/knowledge/index.html", "canonical-knowledge-gate-algorithm"),
+        (hl, rf, "11-correction-round-c2--exact-link-preservation"),
+        (hl, review, "c2-bounded-acceptance--2026-09-10"),
+        (onb, rf, "11-correction-round-c2--exact-link-preservation"),
+        (onb, review, "independent-c2-return-and-closure-boundary--2026-09-10"),
+    ]
+    for source, target, fragment in cases:
+        matching = [urlsplit(href) for href in Page(source).hrefs
+                    if unquote(urlsplit(href).fragment) == fragment]
+        assert matching, (source, fragment)
+        assert any((source.parent / unquote(url.path) / "index.html").resolve() == target.resolve()
+                   for url in matching if not url.scheme and not url.netloc), (source, fragment)
+        assert Page(target).ids.count(fragment) == 1, (target, fragment)
+    historical = (site / "reference/workflows/knowledge/index.html").read_text(encoding="utf-8")
+    assert "Retired historical destination" in historical
+    assert "ec91c56007c20cda79f740fec15c85e4af74d17c" in historical

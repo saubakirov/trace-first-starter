@@ -1,0 +1,38 @@
+{
+  "authority": "dedf8527ff110fa160358239bbf45ebb498838dd; Coordinator alone performs present repair/refusals",
+  "accepted_close": "c51ee0c0d7891fd165d105f3565e0e54512c1040",
+  "accepted_output_candidate": "433d9db62905e16786113af9bfe126a89c21b9a5",
+  "acceptance": "99198f133c0047568c1e8411bfae849239b352b1",
+  "original_status_sha256": "c4bc55418a480f6fc7bb4277c656abe149ca6a262c5903a80296aa3f0b8e7875",
+  "terminal_event_sha256": "ae1e10e71d9d6249244dc52c873fc743cb3f96807db2e341c4e85f4c1f08181b",
+  "outcome_line_sha256": "6a086421f966df1951126ff07dba8ceacba5404c426fbb26cd65ed3aabc051ac",
+  "cases": [
+    {
+      "id": "missing-outcome",
+      "presented_output": "unchanged exact accepted SLC output",
+      "presented_authority": "unchanged accepted HL/TS and Q1 ruling",
+      "presented_acceptance": "99198f133c0047568c1e8411bfae849239b352b1",
+      "expected": "After actual output/oracle/authority/dependency/independent-acceptance checks restore only exact original outcome, validate whole carrier and stop; no event write."
+    },
+    {
+      "id": "later-z",
+      "expected": "Preserve Z and unrelated later edit; refuse overwrite and name exact conflict/next authorized decision."
+    },
+    {
+      "id": "missing-acceptance",
+      "presented_acceptance": null,
+      "expected": "Refuse; do not borrow the separate positive case acceptance into this countercase."
+    },
+    {
+      "id": "changed-output",
+      "presented_output": "PREPARED third-value output with historical access removed; not accepted SLC output",
+      "expected": "Refuse; accepted output precondition does not apply."
+    },
+    {
+      "id": "changed-authority",
+      "presented_authority": "PREPARED unapproved changed scope replacing accepted authority",
+      "expected": "Refuse; no original acceptance of changed authority."
+    }
+  ],
+  "limits": "All cuts/third values are prepared inputs, not observed interruption, accepted changes, live SLC edits or new acceptance. Raw originals remain unchanged."
+}

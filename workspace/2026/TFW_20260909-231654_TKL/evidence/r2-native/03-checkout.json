@@ -1,0 +1,20 @@
+{
+  "argv": [
+    "git",
+    "-c",
+    "core.longpaths=true",
+    "-c",
+    "core.autocrlf=false",
+    "-C",
+    "C:\\Users\\c0rpa\\AppData\\Local\\Temp\\TFW_TKL_NATIVE_01a09a0c\\self-adoption-r2",
+    "checkout",
+    "--detach",
+    "ec91c56007c20cda79f740fec15c85e4af74d17c"
+  ],
+  "cwd": "C:\\Users\\c0rpa\\AppData\\Local\\Temp\\TFW_TKL_NATIVE_01a09a0c\\self-adoption-r2",
+  "started_at": "2026-09-13T20:29:23.712110+00:00",
+  "finished_at": "2026-09-13T20:29:25.374698+00:00",
+  "exit": 0,
+  "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stderr_sha256": "d82e2eb4e26a0639ec1c5ecee09258996163b3d3158e0d0171265d9533985778"
+}

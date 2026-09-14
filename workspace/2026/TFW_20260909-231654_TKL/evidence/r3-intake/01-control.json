@@ -1,0 +1,52 @@
+{
+  "clock": "2026-09-13 21:48:25 UTC",
+  "status_written_at": "2026-09-13T21:49:10.177680+00:00",
+  "event_written_at": "2026-09-13T21:49:10.186586+00:00",
+  "event": "journal/20260914-024825__handoff__a4db.md",
+  "status_sha256": "4f9aa165983bc138d3c14153a09c5b58d09a53681638d9cdc87bc87a52dda927",
+  "event_sha256": "da409a9b0fb6353ca306987c0b5fe3d124a49191ab3be9f72d4c19dfbe1456c5",
+  "authority_sha256": "cb1e21259e6fa8263aa21d3f56facf73a0f5c932cbc8faf8ae692de63157e6f8",
+  "refs_read": [
+    {
+      "path": "status.md",
+      "bytes": 587,
+      "sha256_before_control": "0bc219c055d4353a45e5980af6b8dbea94d57544d556ab42630eb07c1edd91fe"
+    },
+    {
+      "path": "HL-TFW_20260909-231654_TKL.md",
+      "bytes": 55629,
+      "sha256_before_control": "cb1e21259e6fa8263aa21d3f56facf73a0f5c932cbc8faf8ae692de63157e6f8"
+    },
+    {
+      "path": "TS__TFW_20260909-231654_TKL.md",
+      "bytes": 55220,
+      "sha256_before_control": "6929b45c6ec0908933a2d7e9088707dd317c56a1089895cac9fc31a1b3f8c48c"
+    },
+    {
+      "path": "ONB__TFW_20260909-231654_TKL.md",
+      "bytes": 76540,
+      "sha256_before_control": "d8e9669318190c8bb4ec0fe3d76faf73d4fc8143892938893d111b27cd8915da"
+    },
+    {
+      "path": "REVIEW__TFW_20260909-231654_TKL__rev3.md",
+      "bytes": 18447,
+      "sha256_before_control": "9d7dce14536831f448bf5e92709a5605fd8c58db6d884441096447ab4768654c"
+    },
+    {
+      "path": "journal/20260914-024307__dispatch__6b2c.md",
+      "bytes": 3334,
+      "sha256_before_control": "20beeb67322c87d1e21ef1dc887d620e1eb18e0127cd69d5b07d1c3ccfb04613"
+    },
+    {
+      "path": "journal/20260914-023917__dispatch__c4e1.md",
+      "bytes": 3735,
+      "sha256_before_control": "1ab2f0441ac21db948d01a2af93aae752cf3a2c3f8196e83e4e04671bb0f0dbf"
+    }
+  ],
+  "full_schema_valid": true,
+  "ONB_commit": "9e664987365aa69fc749dc06ba417fabad12d8ec",
+  "preflight_started": false,
+  "receiver_or_archive_or_observer_access": false,
+  "intake_underlying_invocations_through_this_exec": 13,
+  "intake_first_observed_at": "2026-09-13T21:45:05.595232+00:00"
+}

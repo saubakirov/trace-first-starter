@@ -1,0 +1,7 @@
+| `tools/tests/test_tfw_state.py` | MODIFY | ASSURANCE | Preserve SLC active/history/status/event behavior; retire live pending tests without erasing historical vectors. |
+| `tools/tests/test_tfw_doctor.py` | MODIFY | ASSURANCE | Old pending invocation retires without a corpus scan; other scoped diagnostics keep their contracts. |
+| `docs/scripts/test_repository_contracts.py` | MODIFY | ASSURANCE | Whole-path product/receiver exclusions and clean-template compatibility. |
+| `docs/scripts/test_runtime_context.py` | MODIFY | ASSURANCE | Canonical role/read routes, capture sites, selected obligations and exact adapter parity. |
+| `docs/scripts/test_update_experience.py` | MODIFY | ASSURANCE | Source-pinned mixed adoption, expected cuts, identical repeat and divergent later-state refusal. |
+| `docs/scripts/test_gen_docs.py` | MODIFY | ASSURANCE | Nested record/source navigation and unchanged SLC resolver span protections. |
+| `docs/scripts/test_integration.py` | MODIFY | ASSURANCE | Actual mixed legacy/current rendered destinations and production build. |

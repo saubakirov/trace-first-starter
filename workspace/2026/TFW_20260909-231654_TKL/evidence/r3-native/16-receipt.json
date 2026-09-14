@@ -1,0 +1,16 @@
+{
+  "path": ".tfw/update_receipts/UPDATE__20260913-223205__fb31.md",
+  "identity": {
+    "bytes": 4969,
+    "sha256": "e5bb94d9120f8299b9015b755c076fa3268d468b709c66cfc2a45a761d1700db",
+    "raw_git_blob": "b7a707e8f626b8fb5da152d09cd1b3dca97b9958",
+    "eol": {
+      "CRLF": 0,
+      "LF": 55,
+      "CR": 0
+    }
+  },
+  "sealed_at": "2026-09-13T22:32:05.858154+00:00",
+  "delivery_at_seal": "planned/not-yet-observed",
+  "repeat_at_seal": "not yet observed"
+}

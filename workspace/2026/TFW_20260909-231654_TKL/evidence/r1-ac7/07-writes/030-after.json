@@ -1,0 +1,22 @@
+{
+  "observed_at": "2026-09-13T18:25:06.970009+00:00",
+  "sequence": 30,
+  "path": ".tfw/templates/HL.md",
+  "actual": {
+    "bytes": 15759,
+    "sha256": "bf52f991cb21c06d6675a058e5616560be30365e124fd2e21acf96bfa06721cd",
+    "raw_git_blob": "c1555f631aef910ef4aae8fb3c46a4750197380c",
+    "eol": {
+      "CRLF": 0,
+      "LF": 318,
+      "CR": 0
+    }
+  },
+  "equals_intended": true,
+  "immediate_source_authority": {
+    "source_identities": 122,
+    "authority_identities": 10,
+    "authority_batch_sha256": "0b47d6e18c8d425ce491f75f3d12311875fb9a88f9eca636e1d35fa2c050609e",
+    "attachment_sha256": "c3b0580ad155738e2db99b38577df3477fddafa0078fb5f4d256ce94d87b41cb"
+  }
+}

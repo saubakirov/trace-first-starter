@@ -1,0 +1,10 @@
+{
+  "issued_at": "2026-09-13T12:01:01.700473+00:00",
+  "unit": "01a09974-6716-7cc0-9916-fd6d04c91481",
+  "authority": "f70037d94c975fe889eaab9bf17ee18e26608137",
+  "prepared_packet_sha256": "38e95043144e3b461ddb501f790f1350b5abefaefc28f3cd8cb19e62d40388a7",
+  "intake": "Both exact clean e00 heads, all22 original input hashes, all4 future outputs absent verified by Coordinator",
+  "barrier": "Executor begins actual read/author/seal on receipt and immediately reports actual start timestamp. Coordinator begins its own real operation as soon as actual start metadata arrives, then reads/authors/seals independently. Waiting for metadata is scheduler coordination, not counted as writing or overlap.",
+  "post_barrier_bound_minutes": 15,
+  "attempts_remaining_after_this": 0
+}

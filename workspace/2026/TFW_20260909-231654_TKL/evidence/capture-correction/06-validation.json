@@ -1,0 +1,216 @@
+{
+  "observed_at": "2026-09-14T00:27:17.607584+00:00",
+  "candidate": "daa520874c1f1236c95bc2dfbd268be911098d49",
+  "tree": "9f69be16192c3ca32f4faf5c8af6782ce8c96abe",
+  "producer": "robert, same Executor01a09a0c-c9e2-7d01-af4e-64931af967ed",
+  "direct_parent": "Coordinator01a09974-6716-7cc0-9916-fd6d04c91481",
+  "prefixes": [
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/RF__TFW_20260909-231654_TKL.md",
+      "prior_bytes": 62710,
+      "prior_sha256": "0dd170cf686ceca408f774e750021494b512648e2017360e29c866ff80f01724",
+      "current_bytes": 68746,
+      "current_sha256": "96918edc16cc42440a7a6cf1647dd92a4ee8ea507087f2bce3701993041ded9d",
+      "old_prefix_preserved": true
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/EV__TFW_20260909-231654_TKL.md",
+      "prior_bytes": 45064,
+      "prior_sha256": "3d503e1241b166eec88c5ebcdaa597845e2b4f5e0596392a624e1aa157e2c59c",
+      "current_bytes": 48524,
+      "current_sha256": "acf7c6e363371faa509185b2bf47bf8b2f13d5f0be2c4d0b432115ce3a3985aa",
+      "old_prefix_preserved": true
+    }
+  ],
+  "new_report_refs": [
+    {
+      "source": "workspace/2026/TFW_20260909-231654_TKL/RF__TFW_20260909-231654_TKL.md",
+      "target": "journal/20260914-051824__dispatch__f1b0.md"
+    },
+    {
+      "source": "workspace/2026/TFW_20260909-231654_TKL/RF__TFW_20260909-231654_TKL.md",
+      "target": "evidence/capture-correction/00-composition.json"
+    },
+    {
+      "source": "workspace/2026/TFW_20260909-231654_TKL/RF__TFW_20260909-231654_TKL.md",
+      "target": "evidence/capture-correction/01-source-bound.json"
+    },
+    {
+      "source": "workspace/2026/TFW_20260909-231654_TKL/RF__TFW_20260909-231654_TKL.md",
+      "target": "evidence/capture-correction/03-accounting.json"
+    },
+    {
+      "source": "workspace/2026/TFW_20260909-231654_TKL/RF__TFW_20260909-231654_TKL.md",
+      "target": "evidence/capture-correction/02-build-result.json"
+    },
+    {
+      "source": "workspace/2026/TFW_20260909-231654_TKL/RF__TFW_20260909-231654_TKL.md",
+      "target": "evidence/capture-correction/04-opened-output.json"
+    },
+    {
+      "source": "workspace/2026/TFW_20260909-231654_TKL/evidence/EV__TFW_20260909-231654_TKL.md",
+      "target": "../journal/20260914-051824__dispatch__f1b0.md"
+    },
+    {
+      "source": "workspace/2026/TFW_20260909-231654_TKL/evidence/EV__TFW_20260909-231654_TKL.md",
+      "target": "capture-correction/00-composition.json"
+    },
+    {
+      "source": "workspace/2026/TFW_20260909-231654_TKL/evidence/EV__TFW_20260909-231654_TKL.md",
+      "target": "capture-correction/01-source-bound.json"
+    },
+    {
+      "source": "workspace/2026/TFW_20260909-231654_TKL/evidence/EV__TFW_20260909-231654_TKL.md",
+      "target": "capture-correction/03-accounting.json"
+    },
+    {
+      "source": "workspace/2026/TFW_20260909-231654_TKL/evidence/EV__TFW_20260909-231654_TKL.md",
+      "target": "capture-correction/02-build-result.json"
+    },
+    {
+      "source": "workspace/2026/TFW_20260909-231654_TKL/evidence/EV__TFW_20260909-231654_TKL.md",
+      "target": "capture-correction/04-opened-output.json"
+    },
+    {
+      "source": "workspace/2026/TFW_20260909-231654_TKL/evidence/EV__TFW_20260909-231654_TKL.md",
+      "target": "../RF__TFW_20260909-231654_TKL.md"
+    }
+  ],
+  "report_ref_count": 13,
+  "bound_nonreport_source_bytes_unchanged": true,
+  "source_archive_all17_members_exact": true,
+  "witness_archive_all6_members_exact": true,
+  "observed_output": "7/7remaininglinks exact; literal guide code path/no false href in corrected row",
+  "state": "KNW",
+  "state_bytes_unchanged": true,
+  "review_and_original_evidence_bytes_unchanged_after_Candidate": true,
+  "no_new_ONB_or_journal": true,
+  "test_applicability": "Prior107PASS unchanged compiler/oracles; no test or module rerun under f1b0",
+  "complete_final_counts": {
+    "VALUE": 58,
+    "TRACE": 1003,
+    "ASSURANCE": 9
+  },
+  "exact_final_TRACE_paths": [
+    "workspace/2026/TFW_20260909-231654_TKL/RF__TFW_20260909-231654_TKL.md",
+    "workspace/2026/TFW_20260909-231654_TKL/evidence/EV__TFW_20260909-231654_TKL.md",
+    "workspace/2026/TFW_20260909-231654_TKL/evidence/capture-correction/00-composition.json",
+    "workspace/2026/TFW_20260909-231654_TKL/evidence/capture-correction/01-source-bound.json",
+    "workspace/2026/TFW_20260909-231654_TKL/evidence/capture-correction/01-source-bytes.zip",
+    "workspace/2026/TFW_20260909-231654_TKL/evidence/capture-correction/02-build-result.json",
+    "workspace/2026/TFW_20260909-231654_TKL/evidence/capture-correction/02-build-start.json",
+    "workspace/2026/TFW_20260909-231654_TKL/evidence/capture-correction/02-build.stderr.bin",
+    "workspace/2026/TFW_20260909-231654_TKL/evidence/capture-correction/02-build.stdout.bin",
+    "workspace/2026/TFW_20260909-231654_TKL/evidence/capture-correction/03-accounting.json",
+    "workspace/2026/TFW_20260909-231654_TKL/evidence/capture-correction/03-full-name-status.stderr.bin",
+    "workspace/2026/TFW_20260909-231654_TKL/evidence/capture-correction/03-full-name-status.stdout.bin",
+    "workspace/2026/TFW_20260909-231654_TKL/evidence/capture-correction/03-value-name-status.stderr.bin",
+    "workspace/2026/TFW_20260909-231654_TKL/evidence/capture-correction/03-value-name-status.stdout.bin",
+    "workspace/2026/TFW_20260909-231654_TKL/evidence/capture-correction/03-value-numstat.stderr.bin",
+    "workspace/2026/TFW_20260909-231654_TKL/evidence/capture-correction/03-value-numstat.stdout.bin",
+    "workspace/2026/TFW_20260909-231654_TKL/evidence/capture-correction/04-opened-output.json",
+    "workspace/2026/TFW_20260909-231654_TKL/evidence/capture-correction/04-six-html-witnesses.zip",
+    "workspace/2026/TFW_20260909-231654_TKL/evidence/capture-correction/05-final-inventory.json",
+    "workspace/2026/TFW_20260909-231654_TKL/evidence/capture-correction/06-validation.json"
+  ],
+  "final_members_except_self": [
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/RF__TFW_20260909-231654_TKL.md",
+      "bytes": 68746,
+      "sha256": "96918edc16cc42440a7a6cf1647dd92a4ee8ea507087f2bce3701993041ded9d"
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/EV__TFW_20260909-231654_TKL.md",
+      "bytes": 48524,
+      "sha256": "acf7c6e363371faa509185b2bf47bf8b2f13d5f0be2c4d0b432115ce3a3985aa"
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/capture-correction/00-composition.json",
+      "bytes": 2251,
+      "sha256": "d8993b357889ea221a9db20bee83c7e4ddba18298d91e62cee651adc0ddcde7f"
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/capture-correction/01-source-bound.json",
+      "bytes": 8169,
+      "sha256": "e23575b8511f6be564fba6ba1a3861af8e0210bbeb30bdb3a507eedaa7bb87fd"
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/capture-correction/01-source-bytes.zip",
+      "bytes": 175522,
+      "sha256": "fa954df65f9e03180c5bab2ac33271cc37eca92d768336a8e9c57aa4e3ee11aa"
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/capture-correction/02-build-result.json",
+      "bytes": 1211,
+      "sha256": "bf64d1fb467ec9952c578faa35148df3e2c6cf3024df738a1c389bc22dc895ed"
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/capture-correction/02-build-start.json",
+      "bytes": 828,
+      "sha256": "ac7048dc4222938859e4325743583ff03c6f36692158f9511231cf98044f153f"
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/capture-correction/02-build.stderr.bin",
+      "bytes": 1065783,
+      "sha256": "a1bedfd2db46434ad9959adf3831fc011bb1b5b902011ccbc4cd30902febdb19"
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/capture-correction/02-build.stdout.bin",
+      "bytes": 10039,
+      "sha256": "14dcaa6e7f188830d55645fd255486d2755f2619e8ed090b9227b25c6d82599c"
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/capture-correction/03-accounting.json",
+      "bytes": 307504,
+      "sha256": "1e86af6261567f5682078ef4c30278e5bba0258bf156be5e7394deb83565a8b0"
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/capture-correction/03-full-name-status.stderr.bin",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/capture-correction/03-full-name-status.stdout.bin",
+      "bytes": 88425,
+      "sha256": "4d14182575fa12059c1e5c1e971ea9ea9e938ce7c374794780a95a760a04bbc8"
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/capture-correction/03-value-name-status.stderr.bin",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/capture-correction/03-value-name-status.stdout.bin",
+      "bytes": 1793,
+      "sha256": "b0f9d3f781caa5717a017a2b92838fd78b8108bf88f1883ba4a89daa3b1a8f3a"
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/capture-correction/03-value-numstat.stderr.bin",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/capture-correction/03-value-numstat.stdout.bin",
+      "bytes": 1960,
+      "sha256": "bb087a7515bd5459c96a12b84855f11eadc6c2d595687cc72d67ddb70c3dacf8"
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/capture-correction/04-opened-output.json",
+      "bytes": 10346,
+      "sha256": "eb10c6b8ae55d2ee5f81d80dc2bf651a2f9e9165e2272153e8435b571482a20f"
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/capture-correction/04-six-html-witnesses.zip",
+      "bytes": 166840,
+      "sha256": "606a567ab06df627fdebe5d6550559c70efc7de30491b733fac1bbb368b3c363"
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/capture-correction/05-final-inventory.json",
+      "bytes": 287862,
+      "sha256": "0a0cba31938c20ca599d42759ca67a98a1db1596b5ae0d8b1bec66072d66277c"
+    }
+  ],
+  "self_identity": "Final committed Git blob; no recursive self hash.",
+  "acceptance_owner": "Same independent Reviewer via sole Coordinator, existing rev4; no self-verdict, new revision or lifecycle change.",
+  "release_scope": "Conditional4a0c preserved only; no release/landing/tag/push effect."
+}

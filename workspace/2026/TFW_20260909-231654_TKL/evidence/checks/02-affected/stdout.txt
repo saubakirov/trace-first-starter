@@ -1,0 +1,783 @@
+........F...............FFFFFF.........F................................ [ 15%]
+...........FFF..........................................FFFFFFF......... [ 30%]
+........................F........F................FFF................... [ 45%]
+..................F.............FF.........FF.....F.F................... [ 60%]
+..................................................F..............FF..... [ 75%]
+........................................................................ [ 90%]
+.............................................                            [100%]
+================================== FAILURES ===================================
+_____ test_workspace_default_and_reference_scope_preserve_active_choices ______
+
+tmp_path = WindowsPath('E:/TEMP/pytest-of-c0rpa/pytest-804/test_workspace_default_and_ref0')
+
+    def test_workspace_default_and_reference_scope_preserve_active_choices(tmp_path):
+        assert state.task_containers(tmp_path) == ['workspace']
+        root = project(tmp_path, containers=('current',))
+        active = task(root, 'current/2026/TFW_20260906-120000_NOW')
+        old = task(root, 'history/TFW-1__old')
+        path = root / '.tfw/project_config.yaml'
+        path.write_text(path.read_text() + '  historical_containers: [history, history/]\n')
+        assert state.reference_containers(root) == ['current', 'history']
+        assert state.iter_task_dirs(root) == [active]
+        assert state.iter_task_dirs(root, state.reference_containers(root)) == [old, active]
+        (root / '.tfw/knowledge_state.yaml').write_text('knowledge:\n  processed_task_digests: {}\n')
+>       assert set(state.knowledge_pending(root)['current_task_digests']) == {'TFW_20260906-120000_NOW'}
+                   ^^^^^^^^^^^^^^^^^^^^^^^
+E       AttributeError: module 'tfw_state' has no attribute 'knowledge_pending'
+
+tools\tests\test_tfw_state.py:107: AttributeError
+_ test_knowledge_digest_matches_independent_reference_and_defeats_regex_mutant _
+
+tmp_path = WindowsPath('E:/TEMP/pytest-of-c0rpa/pytest-804/test_knowledge_digest_matches_0')
+
+    def test_knowledge_digest_matches_independent_reference_and_defeats_regex_mutant(tmp_path):
+        root = project(tmp_path)
+        item = task(root, "tasks/TFW-1__knowledge")
+        artifact = item / "RF__TFW-1.md"
+        artifact.write_text(
+            "# RF\n\n```md\n## Fact Candidates\nmutant-only\n```\n\n"
+            "## 7. Fact Candidates\nreal fact\n\n### Detail\nkept\n\n## Other\nstop\n",
+            encoding="utf-8",
+        )
+        rel = artifact.relative_to(root).as_posix()
+>       expected = independent_digest(rel, reference_sections(artifact))
+                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tools\tests\test_tfw_state.py:299: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+path = WindowsPath('E:/TEMP/pytest-of-c0rpa/pytest-804/test_knowledge_digest_matches_0/tasks/TFW-1__knowledge/RF__TFW-1.md')
+
+    def reference_sections(path: Path) -> list[tuple[str, str]]:
+        """Independent small reference extractor for conformance fixtures."""
+        lines = path.read_text(encoding="utf-8").replace("\r\n", "\n").splitlines(keepends=True)
+        found: list[tuple[str, str]] = []
+>       selected = set(state.KNOWLEDGE_HEADINGS)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^
+E       AttributeError: module 'tfw_state' has no attribute 'KNOWLEDGE_HEADINGS'
+
+tools\tests\test_tfw_state.py:243: AttributeError
+________ test_knowledge_pending_reports_changed_removed_and_migration _________
+
+tmp_path = WindowsPath('E:/TEMP/pytest-of-c0rpa/pytest-804/test_knowledge_pending_reports0')
+
+    def test_knowledge_pending_reports_changed_removed_and_migration(tmp_path):
+        root = project(tmp_path)
+        item = task(root, "tasks/TFW-1__knowledge")
+        write_knowledge_state(root, {"TFW-1": "0" * 64, "TFW-99": "f" * 64})
+>       unresolved = state.knowledge_pending(root)
+                     ^^^^^^^^^^^^^^^^^^^^^^^
+E       AttributeError: module 'tfw_state' has no attribute 'knowledge_pending'
+
+tools\tests\test_tfw_state.py:318: AttributeError
+___________ test_knowledge_threshold_outcomes[off-1-pending0-skip] ____________
+
+mode = 'off', interval = 1, pending = ['A'], action = 'skip'
+
+    @pytest.mark.parametrize(
+        "mode,interval,pending,action",
+        [
+            ("off", 1, ["A"], "skip"),
+            ("soft", 2, ["A"], "report"),
+            ("hard", 2, ["A"], "continue"),
+            ("hard", 2, ["A", "B"], "route:/tfw-knowledge"),
+        ],
+    )
+    def test_knowledge_threshold_outcomes(mode, interval, pending, action):
+>       assert state.knowledge_gate_result(mode, interval, pending)["action"] == action
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AttributeError: module 'tfw_state' has no attribute 'knowledge_gate_result'
+
+tools\tests\test_tfw_state.py:336: AttributeError
+__________ test_knowledge_threshold_outcomes[soft-2-pending1-report] __________
+
+mode = 'soft', interval = 2, pending = ['A'], action = 'report'
+
+    @pytest.mark.parametrize(
+        "mode,interval,pending,action",
+        [
+            ("off", 1, ["A"], "skip"),
+            ("soft", 2, ["A"], "report"),
+            ("hard", 2, ["A"], "continue"),
+            ("hard", 2, ["A", "B"], "route:/tfw-knowledge"),
+        ],
+    )
+    def test_knowledge_threshold_outcomes(mode, interval, pending, action):
+>       assert state.knowledge_gate_result(mode, interval, pending)["action"] == action
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AttributeError: module 'tfw_state' has no attribute 'knowledge_gate_result'
+
+tools\tests\test_tfw_state.py:336: AttributeError
+_________ test_knowledge_threshold_outcomes[hard-2-pending2-continue] _________
+
+mode = 'hard', interval = 2, pending = ['A'], action = 'continue'
+
+    @pytest.mark.parametrize(
+        "mode,interval,pending,action",
+        [
+            ("off", 1, ["A"], "skip"),
+            ("soft", 2, ["A"], "report"),
+            ("hard", 2, ["A"], "continue"),
+            ("hard", 2, ["A", "B"], "route:/tfw-knowledge"),
+        ],
+    )
+    def test_knowledge_threshold_outcomes(mode, interval, pending, action):
+>       assert state.knowledge_gate_result(mode, interval, pending)["action"] == action
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AttributeError: module 'tfw_state' has no attribute 'knowledge_gate_result'
+
+tools\tests\test_tfw_state.py:336: AttributeError
+___ test_knowledge_threshold_outcomes[hard-2-pending3-route:/tfw-knowledge] ___
+
+mode = 'hard', interval = 2, pending = ['A', 'B']
+action = 'route:/tfw-knowledge'
+
+    @pytest.mark.parametrize(
+        "mode,interval,pending,action",
+        [
+            ("off", 1, ["A"], "skip"),
+            ("soft", 2, ["A"], "report"),
+            ("hard", 2, ["A"], "continue"),
+            ("hard", 2, ["A", "B"], "route:/tfw-knowledge"),
+        ],
+    )
+    def test_knowledge_threshold_outcomes(mode, interval, pending, action):
+>       assert state.knowledge_gate_result(mode, interval, pending)["action"] == action
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AttributeError: module 'tfw_state' has no attribute 'knowledge_gate_result'
+
+tools\tests\test_tfw_state.py:336: AttributeError
+________ test_slc_history_gate_and_resume_guards_precede_current_work _________
+
+    def test_slc_history_gate_and_resume_guards_precede_current_work():
+        resume = (PROJECT_ROOT/'.tfw/workflows/resume.md').read_text(encoding='utf-8')
+        assert resume.index('**Historical read:**') < resume.index('For an explicitly selected closing/recovery request')
+        assert 'stop read-only before phase selection' in resume
+        knowledge = (PROJECT_ROOT/'.tfw/workflows/knowledge.md').read_text(encoding='utf-8')
+>       assert knowledge.index('incomplete container migration') < knowledge.index('1. Semantically parse')
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       ValueError: substring not found
+
+docs\scripts\test_repository_contracts.py:48: ValueError
+_______ test_every_project_owned_payload_file_is_excluded_from_the_copy _______
+
+    def test_every_project_owned_payload_file_is_excluded_from_the_copy():
+        """AC-7: a project-owned file added to the payload without an exclusion fails here.
+    
+        `cp -r` of the payload overwrote a consumer's `project_config.yaml` with the framework's
+        own (`name: my-project`) and its `knowledge_state.yaml` with the framework's consolidation
+        state. The list is derived from the payload, not typed: every root `.yaml` with a
+        template counterpart is project-owned.
+        """
+        payload = PROJECT_ROOT / ".tfw"
+        owned = {p.name for p in payload.glob("*.yaml")
+                 if (payload / "templates" / p.name).exists()}
+>       assert owned == PROJECT_OWNED_PAYLOAD_FILES, (
+            "the payload's project-owned files changed; update the exclusion list in update.md "
+            "Step 5 and this registry together: " + ", ".join(sorted(owned)))
+E       AssertionError: the payload's project-owned files changed; update the exclusion list in update.md Step 5 and this registry together: project_config.yaml
+E       assert {'project_config.yaml'} == {'knowledge_s..._config.yaml'}
+E         
+E         Extra items in the right set:
+E         'knowledge_state.yaml'
+E         Use -v to get more diff
+
+docs\scripts\test_repository_contracts.py:932: AssertionError
+________________ test_every_path_a_payload_file_names_resolves ________________
+
+    def test_every_path_a_payload_file_names_resolves():
+        """TD-193. Two independent sources named this gap before it was closed.
+    
+        The reviewer called it *"the mechanism gap that let TD-192 and TD-194 survive"*; an
+        external operator's report found the same thing from the other side. Both were right, and
+        both understated it — the earlier checks covered `.tfw/adapters/**` in one reference form,
+        so a dead path in `conventions.md` written as a bare filename was invisible to everything.
+        """
+        findings = payload_path_findings()
+>       assert not findings, ("payload files name paths the payload does not ship:" + chr(10)
+                              + chr(10).join(findings))
+E       AssertionError: payload files name paths the payload does not ship:
+E         conventions.md -> .tfw/templates/knowledge_state.yaml  [prefixed]
+E         update_receipts/knowledge-lifecycle/0a435729c93141639ada55fb77a7508d47d0d1b9c159d50b6e05bdfb364ebacf/before/KNOWLEDGE.md -> .tfw/scripts/gen_index.py  [prefixed]
+E         update_receipts/knowledge-lifecycle/0a435729c93141639ada55fb77a7508d47d0d1b9c159d50b6e05bdfb364ebacf/before/KNOWLEDGE.md -> .tfw/scripts/migrate_board.py  [prefixed]
+E         update_receipts/knowledge-lifecycle/0a435729c93141639ada55fb77a7508d47d0d1b9c159d50b6e05bdfb364ebacf/before/KNOWLEDGE.md -> .tfw/templates/knowledge_state.yaml  [prefixed]
+E         update_receipts/knowledge-lifecycle/0a435729c93141639ada55fb77a7508d47d0d1b9c159d50b6e05bdfb364ebacf/before/KNOWLEDGE.md -> topic_file.md  [bare-file]
+E       assert not ['conventions.md -> .tfw/templates/knowledge_state.yaml  [prefixed]', 'update_receipts/knowledge-lifecycle/0a435729c93...le/0a435729c93141639ada55fb77a7508d47d0d1b9c159d50b6e05bdfb364ebacf/before/KNOWLEDGE.md -> topic_file.md  [bare-file]']
+
+docs\scripts\test_repository_contracts.py:1090: AssertionError
+____________ test_the_payload_path_check_fires_in_all_three_forms _____________
+
+tmp_path = WindowsPath('E:/TEMP/pytest-of-c0rpa/pytest-804/test_the_payload_path_check_fi0')
+
+    def test_the_payload_path_check_fires_in_all_three_forms(tmp_path):
+        """Proven to fail before it is trusted to pass — once per form, since a form that cannot
+        fire is the defect this replaced."""
+        for form, sample in (
+            ("prefixed", "routes to `.tfw/workflows/definitely-not-here.md`"),
+            ("bare-dir", "copy `templates/definitely_not_here.md` into place"),
+            ("bare-file", "named `topic_file.md` (not `TOPIC_FILE.md`)"),
+        ):
+            probe = PROJECT_ROOT / ".tfw" / "templates" / "_probe.md"
+            probe.write_text(sample + chr(10), encoding="utf-8")
+            try:
+                findings = payload_path_findings()
+                assert any("_probe.md" in f and form in f for f in findings), (form, findings)
+            finally:
+                probe.unlink()
+        # and with nothing planted, the payload is clean
+>       assert payload_path_findings() == []
+E       AssertionError: assert ['conventions... [bare-file]'] == []
+E         
+E         Left contains 5 more items, first extra item: 'conventions.md -> .tfw/templates/knowledge_state.yaml  [prefixed]'
+E         Use -v to get more diff
+
+docs\scripts\test_repository_contracts.py:1110: AssertionError
+____ test_rtpsn_phase_b_manifest_census_classifies_all_eleven_routes_once _____
+
+    def test_rtpsn_phase_b_manifest_census_classifies_all_eleven_routes_once():
+        manifest = _adapter_manifest()
+        commands = set(manifest["commands"])
+        assert commands == RTPSN_TASK_ROUTES | RTPSN_PROJECT_ROUTES
+        assert RTPSN_TASK_ROUTES.isdisjoint(RTPSN_PROJECT_ROUTES)
+        for command, row in manifest["commands"].items():
+            text = (PROJECT_ROOT / row["workflow"]).read_text(encoding="utf-8")
+            if command in RTPSN_TASK_ROUTES:
+                assert "Session identity" in text
+>               assert all(marker in text for marker in RTPSN_MODE_MARKERS[command])
+E               assert False
+E                +  where False = all(<generator object test_rtpsn_phase_b_manifest_census_classifies_all_eleven_routes_once.<locals>.<genexpr> at 0x000001AF3B20BE00>)
+
+docs\scripts\test_repository_contracts.py:1824: AssertionError
+_ test_rtpsn_phase_b_identity_checkpoints_follow_resolution_and_precede_work __
+
+    def test_rtpsn_phase_b_identity_checkpoints_follow_resolution_and_precede_work():
+        for case, (before, marker, after) in RTPSN_ORDER_ANCHORS.items():
+            command = case.split("-", 1)[0]
+            path = _adapter_manifest()["commands"][command]["workflow"]
+            text = (PROJECT_ROOT / path).read_text(encoding="utf-8")
+>           assert _rtpsn_identity_route_errors(text, before, marker, after) == [], case
+E           AssertionError: plan-existing
+E           assert ["anchors:{'#...ge Gate': 0}"] == []
+E             
+E             Left contains one more item: "anchors:{'## Step 1: Load context': 1, '### Session identity checkpoint': 1, '## Step 2: Knowledge Gate': 0}"
+E             Use -v to get more diff
+
+docs\scripts\test_repository_contracts.py:1834: AssertionError
+__ test_rtpsn_phase_b_deleted_and_reordered_checkpoint_mutants_fail_locally ___
+
+    def test_rtpsn_phase_b_deleted_and_reordered_checkpoint_mutants_fail_locally():
+        for case, (before, marker, after) in RTPSN_ORDER_ANCHORS.items():
+            command = case.split("-", 1)[0]
+            text = (PROJECT_ROOT / _adapter_manifest()["commands"][command]["workflow"]).read_text(
+                encoding="utf-8")
+            deleted = text.replace(marker, "", 1)
+            reordered = text.replace(marker, "RTPSN_TEMP", 1).replace(
+                after, marker, 1).replace("RTPSN_TEMP", after, 1)
+            assert _rtpsn_identity_route_errors(deleted, before, marker, after)
+>           assert _rtpsn_identity_route_errors(reordered, before, marker, after) == ["order"]
+E           assert ["anchors:{'#...ge Gate': 1}"] == ['order']
+E             
+E             At index 0 diff: "anchors:{'## Step 1: Load context': 1, '### Session identity checkpoint': 0, '## Step 2: Knowledge Gate': 1}" != 'order'
+E             Use -v to get more diff
+
+docs\scripts\test_repository_contracts.py:1846: AssertionError
+_ test_rtpsn_phase_b_clean_receivers_have_exact_identity_classification[antigravity] _
+
+tmp_path = WindowsPath('E:/TEMP/pytest-of-c0rpa/pytest-804/test_rtpsn_phase_b_clean_recei0')
+adapter = 'antigravity'
+
+    @pytest.mark.parametrize("adapter", sorted(EXPECTED_PERSISTENT_TARGETS))
+    def test_rtpsn_phase_b_clean_receivers_have_exact_identity_classification(tmp_path, adapter):
+        receiver = tmp_path / f"phase-b-{adapter}"
+        _install_from_manifest(receiver, adapter)
+        manifest = _adapter_manifest()
+        assert len(manifest["commands"]) == 11
+        for command, row in manifest["commands"].items():
+            target = receiver / _expand(manifest["adapters"][adapter]["commands"]["target"], command)
+            installed = target.read_text(encoding="utf-8")
+            canonical = (PROJECT_ROOT / row["workflow"]).read_text(encoding="utf-8")
+            if adapter == "codex":
+                assert row["workflow"] in installed
+                assert installed.casefold().count("role lock") == 1
+            else:
+                assert installed == canonical
+                assert len(re.findall(r"^> .*ROLE LOCK", installed, re.MULTILINE)) == 1
+>           assert ("Session identity" in canonical) == (command in RTPSN_TASK_ROUTES)
+E           AssertionError: assert ('Session identity' in '---\ndescription: TFW Knowledge — qualify selected human-sourced knowledge without global bookkeeping\n---\n\n# TFW K...capture cycle.\nStop after the return. Qualification does not close the task or grant release/publication authority.\n') == ('knowledge' in frozenset({'docs', 'handoff', 'init', 'plan', 'research', 'resume', ...}))
+
+docs\scripts\test_repository_contracts.py:1865: AssertionError
+_ test_rtpsn_phase_b_clean_receivers_have_exact_identity_classification[claude-code] _
+
+tmp_path = WindowsPath('E:/TEMP/pytest-of-c0rpa/pytest-804/test_rtpsn_phase_b_clean_recei1')
+adapter = 'claude-code'
+
+    @pytest.mark.parametrize("adapter", sorted(EXPECTED_PERSISTENT_TARGETS))
+    def test_rtpsn_phase_b_clean_receivers_have_exact_identity_classification(tmp_path, adapter):
+        receiver = tmp_path / f"phase-b-{adapter}"
+        _install_from_manifest(receiver, adapter)
+        manifest = _adapter_manifest()
+        assert len(manifest["commands"]) == 11
+        for command, row in manifest["commands"].items():
+            target = receiver / _expand(manifest["adapters"][adapter]["commands"]["target"], command)
+            installed = target.read_text(encoding="utf-8")
+            canonical = (PROJECT_ROOT / row["workflow"]).read_text(encoding="utf-8")
+            if adapter == "codex":
+                assert row["workflow"] in installed
+                assert installed.casefold().count("role lock") == 1
+            else:
+                assert installed == canonical
+                assert len(re.findall(r"^> .*ROLE LOCK", installed, re.MULTILINE)) == 1
+>           assert ("Session identity" in canonical) == (command in RTPSN_TASK_ROUTES)
+E           AssertionError: assert ('Session identity' in '---\ndescription: TFW Knowledge — qualify selected human-sourced knowledge without global bookkeeping\n---\n\n# TFW K...capture cycle.\nStop after the return. Qualification does not close the task or grant release/publication authority.\n') == ('knowledge' in frozenset({'docs', 'handoff', 'init', 'plan', 'research', 'resume', ...}))
+
+docs\scripts\test_repository_contracts.py:1865: AssertionError
+_ test_rtpsn_phase_b_clean_receivers_have_exact_identity_classification[codex] _
+
+tmp_path = WindowsPath('E:/TEMP/pytest-of-c0rpa/pytest-804/test_rtpsn_phase_b_clean_recei2')
+adapter = 'codex'
+
+    @pytest.mark.parametrize("adapter", sorted(EXPECTED_PERSISTENT_TARGETS))
+    def test_rtpsn_phase_b_clean_receivers_have_exact_identity_classification(tmp_path, adapter):
+        receiver = tmp_path / f"phase-b-{adapter}"
+        _install_from_manifest(receiver, adapter)
+        manifest = _adapter_manifest()
+        assert len(manifest["commands"]) == 11
+        for command, row in manifest["commands"].items():
+            target = receiver / _expand(manifest["adapters"][adapter]["commands"]["target"], command)
+            installed = target.read_text(encoding="utf-8")
+            canonical = (PROJECT_ROOT / row["workflow"]).read_text(encoding="utf-8")
+            if adapter == "codex":
+                assert row["workflow"] in installed
+                assert installed.casefold().count("role lock") == 1
+            else:
+                assert installed == canonical
+                assert len(re.findall(r"^> .*ROLE LOCK", installed, re.MULTILINE)) == 1
+>           assert ("Session identity" in canonical) == (command in RTPSN_TASK_ROUTES)
+E           AssertionError: assert ('Session identity' in '---\ndescription: TFW Knowledge — qualify selected human-sourced knowledge without global bookkeeping\n---\n\n# TFW K...capture cycle.\nStop after the return. Qualification does not close the task or grant release/publication authority.\n') == ('knowledge' in frozenset({'docs', 'handoff', 'init', 'plan', 'research', 'resume', ...}))
+
+docs\scripts\test_repository_contracts.py:1865: AssertionError
+_ test_rtpsn_phase_b_clean_receivers_have_exact_identity_classification[cursor] _
+
+tmp_path = WindowsPath('E:/TEMP/pytest-of-c0rpa/pytest-804/test_rtpsn_phase_b_clean_recei3')
+adapter = 'cursor'
+
+    @pytest.mark.parametrize("adapter", sorted(EXPECTED_PERSISTENT_TARGETS))
+    def test_rtpsn_phase_b_clean_receivers_have_exact_identity_classification(tmp_path, adapter):
+        receiver = tmp_path / f"phase-b-{adapter}"
+        _install_from_manifest(receiver, adapter)
+        manifest = _adapter_manifest()
+        assert len(manifest["commands"]) == 11
+        for command, row in manifest["commands"].items():
+            target = receiver / _expand(manifest["adapters"][adapter]["commands"]["target"], command)
+            installed = target.read_text(encoding="utf-8")
+            canonical = (PROJECT_ROOT / row["workflow"]).read_text(encoding="utf-8")
+            if adapter == "codex":
+                assert row["workflow"] in installed
+                assert installed.casefold().count("role lock") == 1
+            else:
+                assert installed == canonical
+                assert len(re.findall(r"^> .*ROLE LOCK", installed, re.MULTILINE)) == 1
+>           assert ("Session identity" in canonical) == (command in RTPSN_TASK_ROUTES)
+E           AssertionError: assert ('Session identity' in '---\ndescription: TFW Knowledge — qualify selected human-sourced knowledge without global bookkeeping\n---\n\n# TFW K...capture cycle.\nStop after the return. Qualification does not close the task or grant release/publication authority.\n') == ('knowledge' in frozenset({'docs', 'handoff', 'init', 'plan', 'research', 'resume', ...}))
+
+docs\scripts\test_repository_contracts.py:1865: AssertionError
+____ test_baseline_and_candidate_have_their_governing_semantic_record[C2] _____
+
+case = 'C2'
+
+    @pytest.mark.parametrize("case", sorted(SCENARIOS))
+    def test_baseline_and_candidate_have_their_governing_semantic_record(case):
+>       baseline = semantic_record(case, "baseline"); candidate = semantic_record(case, "candidate")
+                                                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+docs\scripts\test_runtime_context.py:743: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+docs\scripts\test_runtime_context.py:365: in semantic_record
+    return execute_scenario(tree, case)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+tree = SourceTree(root=WindowsPath('C:/Users/c0rpa/.codex/worktrees/f3f3/steps-framework'), ref=None, overlays={})
+case = 'C2'
+
+    def execute_scenario(tree: SourceTree, case: str) -> SemanticRecord:
+        if case not in SCENARIOS:
+            raise SourceContractError(f"unknown scenario: {case}")
+        scenario = SCENARIOS[case]
+        probes = scenario.baseline if tree.ref is not None else scenario.candidate
+        sources = []
+        for probe in probes:
+            text = tree.read(probe.path)
+            addressed = text if probe.heading == "*" else resolve_heading(text, probe.heading)
+            if probe.needle not in addressed:
+>               raise SourceContractError(f"{case}: absent anchor in {probe.path}#{probe.heading}")
+E               test_runtime_context.SourceContractError: C2: absent anchor in .tfw/workflows/knowledge.md#*
+
+docs\scripts\test_runtime_context.py:347: SourceContractError
+____ test_baseline_and_candidate_have_their_governing_semantic_record[P4] _____
+
+case = 'P4'
+
+    @pytest.mark.parametrize("case", sorted(SCENARIOS))
+    def test_baseline_and_candidate_have_their_governing_semantic_record(case):
+>       baseline = semantic_record(case, "baseline"); candidate = semantic_record(case, "candidate")
+                                                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+docs\scripts\test_runtime_context.py:743: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+docs\scripts\test_runtime_context.py:365: in semantic_record
+    return execute_scenario(tree, case)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+docs\scripts\test_runtime_context.py:345: in execute_scenario
+    addressed = text if probe.heading == "*" else resolve_heading(text, probe.heading)
+                                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+text = '---\ndescription: TFW Plan — research, write HL, review, scope decision, write TS\n---\n\n# TFW Plan — Task Inception...nted. Preserve\nrejected work and its honest state. The receiving Coordinator checks actual dispatch/return lineage.\n'
+heading = 'Step 2: Knowledge Gate'
+
+    def resolve_heading(text: str, heading: str) -> str:
+        """Return one Markdown heading range, refusing zero or multiple matches."""
+        lines = text.replace("\r\n", "\n").replace("\r", "\n").splitlines(keepends=True)
+        matches = [(i, len(m.group("marks"))) for i, line in enumerate(lines)
+                   if (m := HEADING.match(line.rstrip("\n"))) and _heading_title(m.group("title")) == heading]
+>       if len(matches) != 1: raise ValueError(f"heading {heading!r} resolved {len(matches)} times")
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       ValueError: heading 'Step 2: Knowledge Gate' resolved 0 times
+
+docs\scripts\test_runtime_context.py:771: ValueError
+_________ test_phase_a_workflows_own_one_ordered_read_contract[plan] __________
+
+workflow = 'plan'
+
+    @pytest.mark.parametrize("workflow", ("plan", "knowledge"))
+    def test_phase_a_workflows_own_one_ordered_read_contract(workflow):
+        text = _read(f".tfw/workflows/{workflow}.md")
+        section = resolve_heading(text, "Read Contract")
+        assert "| Order |" in section
+        assert "status.md" in section
+        if workflow == "plan":
+>           assert "Canonical Knowledge Gate algorithm" in text
+E           AssertionError: assert 'Canonical Knowledge Gate algorithm' in '---\ndescription: TFW Plan — research, write HL, review, scope decision, write TS\n---\n\n# TFW Plan — Task Inception...nted. Preserve\nrejected work and its honest state. The receiving Coordinator checks actual dispatch/return lineage.\n'
+
+docs\scripts\test_runtime_context.py:805: AssertionError
+_______ test_phase_a_workflows_own_one_ordered_read_contract[knowledge] _______
+
+workflow = 'knowledge'
+
+    @pytest.mark.parametrize("workflow", ("plan", "knowledge"))
+    def test_phase_a_workflows_own_one_ordered_read_contract(workflow):
+        text = _read(f".tfw/workflows/{workflow}.md")
+        section = resolve_heading(text, "Read Contract")
+        assert "| Order |" in section
+        assert "status.md" in section
+        if workflow == "plan":
+            assert "Canonical Knowledge Gate algorithm" in text
+            assert ".tfw/scripts" not in text
+        else:
+>           assert "processed_task_digests" in text and "state last" in text.lower()
+E           AssertionError: assert ('processed_task_digests' in '---\ndescription: TFW Knowledge — qualify selected human-sourced knowledge without global bookkeeping\n---\n\n# TFW K...capture cycle.\nStop after the return. Qualification does not close the task or grant release/publication authority.\n')
+
+docs\scripts\test_runtime_context.py:808: AssertionError
+__________ test_slc_active_history_read_edges_are_operation_specific __________
+
+    def test_slc_active_history_read_edges_are_operation_specific():
+        tree = SourceTree.from_path(PROJECT_ROOT)
+        for command in ('/tfw-init','/tfw-resume'):
+            edges = discover_read_graph(tree, command)
+            assert any(edge.heading == '@historical-containers' for edge in edges)
+            assert any(edge.heading == '@task-containers' for edge in edges)
+        edges = discover_read_graph(tree, '/tfw-knowledge')
+>       assert any(edge.heading == '@task-containers' for edge in edges)
+E       assert False
+E        +  where False = any(<generator object test_slc_active_history_read_edges_are_operation_specific.<locals>.<genexpr> at 0x000001AF3B206400>)
+
+docs\scripts\test_runtime_context.py:818: AssertionError
+_ test_round1_semantic_records_come_from_both_source_trees_and_reject_source_mutants _
+
+    def test_round1_semantic_records_come_from_both_source_trees_and_reject_source_mutants():
+        baseline = SourceTree.from_git(PROJECT_ROOT, BASELINE_REF); candidate = SourceTree.from_path(PROJECT_ROOT)
+        for case in sorted(SCENARIOS):
+            assert semantic_projection(execute_scenario(baseline, case)) == EXPECTED_RECORDS[case]
+>           assert semantic_projection(execute_scenario(candidate, case)) == LIVE_EXPECTED_RECORDS[case]
+                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+docs\scripts\test_runtime_context.py:2247: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+tree = SourceTree(root=WindowsPath('C:/Users/c0rpa/.codex/worktrees/f3f3/steps-framework'), ref=None, overlays={})
+case = 'C2'
+
+    def execute_scenario(tree: SourceTree, case: str) -> SemanticRecord:
+        if case not in SCENARIOS:
+            raise SourceContractError(f"unknown scenario: {case}")
+        scenario = SCENARIOS[case]
+        probes = scenario.baseline if tree.ref is not None else scenario.candidate
+        sources = []
+        for probe in probes:
+            text = tree.read(probe.path)
+            addressed = text if probe.heading == "*" else resolve_heading(text, probe.heading)
+            if probe.needle not in addressed:
+>               raise SourceContractError(f"{case}: absent anchor in {probe.path}#{probe.heading}")
+E               test_runtime_context.SourceContractError: C2: absent anchor in .tfw/workflows/knowledge.md#*
+
+docs\scripts\test_runtime_context.py:347: SourceContractError
+_ test_phase_c_secondary_and_lifecycle_records_are_source_derived_and_exact[S2-docs] _
+
+case = 'S2-docs'
+
+    @pytest.mark.parametrize("case", sorted(PHASE_C_SEMANTIC_SPECS))
+    def test_phase_c_secondary_and_lifecycle_records_are_source_derived_and_exact(case):
+        baseline = SourceTree.from_git(PROJECT_ROOT, PHASE_C_BASELINE_REF)
+        candidate = SourceTree.from_path(PROJECT_ROOT)
+        before = execute_phase_c_semantic(baseline, case)
+>       after = execute_phase_c_semantic(candidate, case)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+docs\scripts\test_runtime_context.py:2377: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+tree = SourceTree(root=WindowsPath('C:/Users/c0rpa/.codex/worktrees/f3f3/steps-framework'), ref=None, overlays={})
+case = 'S2-docs'
+
+    def execute_phase_c_semantic(tree: SourceTree, case: str) -> SemanticRecord:
+        spec = PHASE_C_SEMANTIC_SPECS[case]
+        path = spec.candidate_path if tree.ref is None and spec.candidate_path else spec.path
+        text = tree.read(path)
+        anchors = spec.baseline_anchors if tree.ref is not None else spec.candidate_anchors
+        missing = [anchor for anchor in anchors if anchor not in text]
+        if missing:
+>           raise SourceContractError(f"{case}: semantic anchors are absent: {missing}")
+E           test_runtime_context.SourceContractError: S2-docs: semantic anchors are absent: ['tfw-docs: N/A (minor)', 'Show the exact diff and sources']
+
+docs\scripts\test_runtime_context.py:689: SourceContractError
+_ test_phase_c_secondary_and_lifecycle_records_are_source_derived_and_exact[S3-knowledge] _
+
+case = 'S3-knowledge'
+
+    @pytest.mark.parametrize("case", sorted(PHASE_C_SEMANTIC_SPECS))
+    def test_phase_c_secondary_and_lifecycle_records_are_source_derived_and_exact(case):
+        baseline = SourceTree.from_git(PROJECT_ROOT, PHASE_C_BASELINE_REF)
+        candidate = SourceTree.from_path(PROJECT_ROOT)
+        before = execute_phase_c_semantic(baseline, case)
+>       after = execute_phase_c_semantic(candidate, case)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+docs\scripts\test_runtime_context.py:2377: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+tree = SourceTree(root=WindowsPath('C:/Users/c0rpa/.codex/worktrees/f3f3/steps-framework'), ref=None, overlays={})
+case = 'S3-knowledge'
+
+    def execute_phase_c_semantic(tree: SourceTree, case: str) -> SemanticRecord:
+        spec = PHASE_C_SEMANTIC_SPECS[case]
+        path = spec.candidate_path if tree.ref is None and spec.candidate_path else spec.path
+        text = tree.read(path)
+        anchors = spec.baseline_anchors if tree.ref is not None else spec.candidate_anchors
+        missing = [anchor for anchor in anchors if anchor not in text]
+        if missing:
+>           raise SourceContractError(f"{case}: semantic anchors are absent: {missing}")
+E           test_runtime_context.SourceContractError: S3-knowledge: semantic anchors are absent: ['removed_task_ids', 'WAIT 2']
+
+docs\scripts\test_runtime_context.py:689: SourceContractError
+_ test_phase_c_each_secondary_lifecycle_and_adapter_mutant_changes_output[S2-docs] _
+
+case = 'S2-docs'
+
+    @pytest.mark.parametrize("case", sorted(PHASE_C_SEMANTIC_SPECS))
+    def test_phase_c_each_secondary_lifecycle_and_adapter_mutant_changes_output(case):
+        candidate = SourceTree.from_path(PROJECT_ROOT)
+>       normal = execute_phase_c_semantic(candidate, case)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+docs\scripts\test_runtime_context.py:2389: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+tree = SourceTree(root=WindowsPath('C:/Users/c0rpa/.codex/worktrees/f3f3/steps-framework'), ref=None, overlays={})
+case = 'S2-docs'
+
+    def execute_phase_c_semantic(tree: SourceTree, case: str) -> SemanticRecord:
+        spec = PHASE_C_SEMANTIC_SPECS[case]
+        path = spec.candidate_path if tree.ref is None and spec.candidate_path else spec.path
+        text = tree.read(path)
+        anchors = spec.baseline_anchors if tree.ref is not None else spec.candidate_anchors
+        missing = [anchor for anchor in anchors if anchor not in text]
+        if missing:
+>           raise SourceContractError(f"{case}: semantic anchors are absent: {missing}")
+E           test_runtime_context.SourceContractError: S2-docs: semantic anchors are absent: ['tfw-docs: N/A (minor)', 'Show the exact diff and sources']
+
+docs\scripts\test_runtime_context.py:689: SourceContractError
+_ test_phase_c_each_secondary_lifecycle_and_adapter_mutant_changes_output[S3-knowledge] _
+
+case = 'S3-knowledge'
+
+    @pytest.mark.parametrize("case", sorted(PHASE_C_SEMANTIC_SPECS))
+    def test_phase_c_each_secondary_lifecycle_and_adapter_mutant_changes_output(case):
+        candidate = SourceTree.from_path(PROJECT_ROOT)
+>       normal = execute_phase_c_semantic(candidate, case)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+docs\scripts\test_runtime_context.py:2389: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+tree = SourceTree(root=WindowsPath('C:/Users/c0rpa/.codex/worktrees/f3f3/steps-framework'), ref=None, overlays={})
+case = 'S3-knowledge'
+
+    def execute_phase_c_semantic(tree: SourceTree, case: str) -> SemanticRecord:
+        spec = PHASE_C_SEMANTIC_SPECS[case]
+        path = spec.candidate_path if tree.ref is None and spec.candidate_path else spec.path
+        text = tree.read(path)
+        anchors = spec.baseline_anchors if tree.ref is not None else spec.candidate_anchors
+        missing = [anchor for anchor in anchors if anchor not in text]
+        if missing:
+>           raise SourceContractError(f"{case}: semantic anchors are absent: {missing}")
+E           test_runtime_context.SourceContractError: S3-knowledge: semantic anchors are absent: ['removed_task_ids', 'WAIT 2']
+
+docs\scripts\test_runtime_context.py:689: SourceContractError
+_ test_phase_c_clean_context_lifecycle_roles_states_effects_and_return_are_complete _
+
+    def test_phase_c_clean_context_lifecycle_roles_states_effects_and_return_are_complete():
+        tree = SourceTree.from_path(PROJECT_ROOT)
+        sequence = (
+            ("P4", "route /tfw-knowledge"),
+            ("R3", "finish iteration 2"),
+            ("E4", "execute latest revision"),
+            ("V2", "reject purpose failure"),
+        )
+>       assert [execute_scenario(tree, case).decision for case, _ in sequence] == [
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+            expected for _, expected in sequence]
+
+docs\scripts\test_runtime_context.py:2421: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+docs\scripts\test_runtime_context.py:345: in execute_scenario
+    addressed = text if probe.heading == "*" else resolve_heading(text, probe.heading)
+                                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+text = '---\ndescription: TFW Plan — research, write HL, review, scope decision, write TS\n---\n\n# TFW Plan — Task Inception...nted. Preserve\nrejected work and its honest state. The receiving Coordinator checks actual dispatch/return lineage.\n'
+heading = 'Step 2: Knowledge Gate'
+
+    def resolve_heading(text: str, heading: str) -> str:
+        """Return one Markdown heading range, refusing zero or multiple matches."""
+        lines = text.replace("\r\n", "\n").replace("\r", "\n").splitlines(keepends=True)
+        matches = [(i, len(m.group("marks"))) for i, line in enumerate(lines)
+                   if (m := HEADING.match(line.rstrip("\n"))) and _heading_title(m.group("title")) == heading]
+>       if len(matches) != 1: raise ValueError(f"heading {heading!r} resolved {len(matches)} times")
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       ValueError: heading 'Step 2: Knowledge Gate' resolved 0 times
+
+docs\scripts\test_runtime_context.py:771: ValueError
+_ test_phase_c_role_census_rejects_omitted_duplicate_stale_conflicting_and_drifted_sources _
+
+    def test_phase_c_role_census_rejects_omitted_duplicate_stale_conflicting_and_drifted_sources():
+        candidate = SourceTree.from_path(PROJECT_ROOT)
+        mutations = (
+            (".tfw/workflows/docs.md", "> **Role:** Coordinator\n", ""),
+            (".tfw/workflows/release.md", "> **Role:** Coordinator\n",
+             "> **Role:** Coordinator\n> **Role:** Coordinator\n"),
+            (".tfw/workflows/docs.md", "> **Role:** Coordinator", "> **Role:** Reviewer"),
+            (".tfw/workflows/release.md", "ROLE LOCK: COORDINATOR", "ROLE LOCK: MAINTAINER"),
+            (".tfw/adapters/codex/skills/tfw-release/SKILL.md",
+             "Enforce the Coordinator role lock", "Enforce the Maintainer role lock"),
+            (".tfw/adapters/manifest.yaml", "  release:\n    route: /tfw-release\n    workflow: .tfw/workflows/release.md\n    role: Coordinator",
+             "  release:\n    route: /tfw-release\n    workflow: .tfw/workflows/release.md\n    role: Maintainer"),
+                (".agents/skills/tfw-release/SKILL.md", "permit only the selected release artifacts",
+                 "permit stale release artifacts"),
+            (".claude/commands/tfw-docs.md", "Show the exact diff and sources",
+             "Show a stale diff without sources"),
+        )
+        for path, old, new in mutations:
+>           assert old in candidate.read(path), path
+E           AssertionError: .claude/commands/tfw-docs.md
+E           assert 'Show the exact diff and sources' in '---\ndescription: TFW Docs — qualify technical decisions and update selected project reference\n---\n\n# TFW Docs — T...uired. A marker is not that\njudgment. Stop after the effect return; record-only repair starts no new capture cycle.\n'
+E            +  where '---\ndescription: TFW Docs — qualify technical decisions and update selected project reference\n---\n\n# TFW Docs — T...uired. A marker is not that\njudgment. Stop after the effect return; record-only repair starts no new capture cycle.\n' = read('.claude/commands/tfw-docs.md')
+E            +    where read = SourceTree(root=WindowsPath('C:/Users/c0rpa/.codex/worktrees/f3f3/steps-framework'), ref=None, overlays={}).read
+
+docs\scripts\test_runtime_context.py:2591: AssertionError
+___ test_rtpsn_phase_b_all_workflow_modes_are_classified_and_source_bounded ___
+
+    def test_rtpsn_phase_b_all_workflow_modes_are_classified_and_source_bounded():
+        tree = SourceTree.from_path(PROJECT_ROOT)
+        contract = parse_lead_navigation_contract(tree)
+        assert contract["plan_consumer"] and contract["resume_consumer"] and contract["consumer_order"]
+        for command in ("research", "handoff", "review", "docs", "init"):
+            assert "Session identity" in tree.read(SESSION_WORKFLOW_PATHS[command])
+        for command in SESSION_PROJECT_WIDE:
+>           assert "Session identity" not in tree.read(SESSION_WORKFLOW_PATHS[command])
+E           AssertionError: assert 'Session identity' not in '---\ndescri...authority.\n'
+E             
+E             'Session identity' is contained here:
+E             ?           ^^
+E               headings `Session identity`, `Knowledge handover`, `Knowledge qualification`, `Current knowledge use`, and `Fact Categories` | identity, materiality, ownership, relations and categories | shared rule |
+E             ?           ^^^^^^^^^^^^^^^^^^
+E               | 4 | `KNOWLEDGE.md` entry and relevant legacy rows/records plus incoming relations selected by `Current knowledge use` | existing applicable meaning and conflicts | project knowledge |
+E               | 5 | `.tfw/templates/knowledge/record.md`, only when a new record is warranted | output form | template |...
+E             
+E             ...Full output truncated (74 lines hidden), use '-vv' to show
+
+docs\scripts\test_runtime_context.py:5503: AssertionError
+____ test_phase_e_runtime_context_combines_rtbo_and_cratm_source_contracts ____
+
+    def test_phase_e_runtime_context_combines_rtbo_and_cratm_source_contracts():
+        current = SourceTree.from_path(PROJECT_ROOT)
+>       assert _phase_e_integrated_semantic_errors(current) == []
+E       AssertionError: assert ['.tfw/workfl...te algorithm'] == []
+E         
+E         Left contains one more item: '.tfw/workflows/plan.md: missing Canonical Knowledge Gate algorithm'
+E         Use -v to get more diff
+
+docs\scripts\test_runtime_context.py:5587: AssertionError
+_______ test_phase_e_runtime_context_mutants_are_independently_rejected _______
+
+    def test_phase_e_runtime_context_mutants_are_independently_rejected():
+        current = SourceTree.from_path(PROJECT_ROOT)
+        cases = (
+            (".tfw/conventions.md", "usable without Python or PyYAML"),
+            (".tfw/conventions.md", "RENDERED:=BASE|LEAD_BASE"),
+            (".tfw/templates/journal/event.md", "authoring advice, never validity"),
+            (".tfw/workflows/plan.md", "Canonical Knowledge Gate algorithm"),
+        )
+        for path, needle in cases:
+            original = current.read(path)
+>           assert original.count(needle) == 1
+E           AssertionError: assert 0 == 1
+E            +  where 0 = <built-in method count of str object at 0x000001AF39115C40>('Canonical Knowledge Gate algorithm')
+E            +    where <built-in method count of str object at 0x000001AF39115C40> = '---\ndescription: TFW Plan — research, write HL, review, scope decision, write TS\n---\n\n# TFW Plan — Task Inception...nted. Preserve\nrejected work and its honest state. The receiving Coordinator checks actual dispatch/return lineage.\n'.count
+
+docs\scripts\test_runtime_context.py:5603: AssertionError
+=========================== short test summary info ===========================
+FAILED tools/tests/test_tfw_state.py::test_workspace_default_and_reference_scope_preserve_active_choices
+FAILED tools/tests/test_tfw_state.py::test_knowledge_digest_matches_independent_reference_and_defeats_regex_mutant
+FAILED tools/tests/test_tfw_state.py::test_knowledge_pending_reports_changed_removed_and_migration
+FAILED tools/tests/test_tfw_state.py::test_knowledge_threshold_outcomes[off-1-pending0-skip]
+FAILED tools/tests/test_tfw_state.py::test_knowledge_threshold_outcomes[soft-2-pending1-report]
+FAILED tools/tests/test_tfw_state.py::test_knowledge_threshold_outcomes[hard-2-pending2-continue]
+FAILED tools/tests/test_tfw_state.py::test_knowledge_threshold_outcomes[hard-2-pending3-route:/tfw-knowledge]
+FAILED docs/scripts/test_repository_contracts.py::test_slc_history_gate_and_resume_guards_precede_current_work
+FAILED docs/scripts/test_repository_contracts.py::test_every_project_owned_payload_file_is_excluded_from_the_copy
+FAILED docs/scripts/test_repository_contracts.py::test_every_path_a_payload_file_names_resolves
+FAILED docs/scripts/test_repository_contracts.py::test_the_payload_path_check_fires_in_all_three_forms
+FAILED docs/scripts/test_repository_contracts.py::test_rtpsn_phase_b_manifest_census_classifies_all_eleven_routes_once
+FAILED docs/scripts/test_repository_contracts.py::test_rtpsn_phase_b_identity_checkpoints_follow_resolution_and_precede_work
+FAILED docs/scripts/test_repository_contracts.py::test_rtpsn_phase_b_deleted_and_reordered_checkpoint_mutants_fail_locally
+FAILED docs/scripts/test_repository_contracts.py::test_rtpsn_phase_b_clean_receivers_have_exact_identity_classification[antigravity]
+FAILED docs/scripts/test_repository_contracts.py::test_rtpsn_phase_b_clean_receivers_have_exact_identity_classification[claude-code]
+FAILED docs/scripts/test_repository_contracts.py::test_rtpsn_phase_b_clean_receivers_have_exact_identity_classification[codex]
+FAILED docs/scripts/test_repository_contracts.py::test_rtpsn_phase_b_clean_receivers_have_exact_identity_classification[cursor]
+FAILED docs/scripts/test_runtime_context.py::test_baseline_and_candidate_have_their_governing_semantic_record[C2]
+FAILED docs/scripts/test_runtime_context.py::test_baseline_and_candidate_have_their_governing_semantic_record[P4]
+FAILED docs/scripts/test_runtime_context.py::test_phase_a_workflows_own_one_ordered_read_contract[plan]
+FAILED docs/scripts/test_runtime_context.py::test_phase_a_workflows_own_one_ordered_read_contract[knowledge]
+FAILED docs/scripts/test_runtime_context.py::test_slc_active_history_read_edges_are_operation_specific
+FAILED docs/scripts/test_runtime_context.py::test_round1_semantic_records_come_from_both_source_trees_and_reject_source_mutants
+FAILED docs/scripts/test_runtime_context.py::test_phase_c_secondary_and_lifecycle_records_are_source_derived_and_exact[S2-docs]
+FAILED docs/scripts/test_runtime_context.py::test_phase_c_secondary_and_lifecycle_records_are_source_derived_and_exact[S3-knowledge]
+FAILED docs/scripts/test_runtime_context.py::test_phase_c_each_secondary_lifecycle_and_adapter_mutant_changes_output[S2-docs]
+FAILED docs/scripts/test_runtime_context.py::test_phase_c_each_secondary_lifecycle_and_adapter_mutant_changes_output[S3-knowledge]
+FAILED docs/scripts/test_runtime_context.py::test_phase_c_clean_context_lifecycle_roles_states_effects_and_return_are_complete
+FAILED docs/scripts/test_runtime_context.py::test_phase_c_role_census_rejects_omitted_duplicate_stale_conflicting_and_drifted_sources
+FAILED docs/scripts/test_runtime_context.py::test_rtpsn_phase_b_all_workflow_modes_are_classified_and_source_bounded
+FAILED docs/scripts/test_runtime_context.py::test_phase_e_runtime_context_combines_rtbo_and_cratm_source_contracts
+FAILED docs/scripts/test_runtime_context.py::test_phase_e_runtime_context_mutants_are_independently_rejected
+33 failed, 444 passed in 290.23s (0:04:50)

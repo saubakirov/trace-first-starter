@@ -1,0 +1,229 @@
+{
+  "observed_at": "2026-09-13T11:47:49.111253+00:00",
+  "author_unit": "01a09a0c-c9e2-7d01-af4e-64931af967ed",
+  "kind": "Executor intake of actual first Coordinator results and unchanged source identities, not independent acceptance",
+  "merged_commit": "7d036298eb416b5cf5061c990874b44202a264f3",
+  "four_source_record_blobs_retained": {
+    "workspace/2026/TFW_20260909-231654_TKL/evidence/executor-handover.md": "fe7f9915f4c9d80689245402d52842b925e35548",
+    "knowledge/records/TKL-NATIVE-EXEC.md": "5c5828f1d70edf035615e8ba5d1ee8319eeb1ada",
+    "workspace/2026/TFW_20260909-231654_TKL/evidence/coordinator-source.md": "8cb0c89d4994b524a9e1279c2e6444a3823990d1",
+    "knowledge/records/TKL-NATIVE-COORD.md": "d92ccbc89a31cc928b5b379fcc8b9c16c3a727fb"
+  },
+  "recovery_changes_since_preparation": [
+    {
+      "path": "retry/current-return.md",
+      "before": "1843ca1a8cd2aabd6b4299dda4c0fabda55a0cb8677db691da56a419b6dee9e4",
+      "after": "d7b1c106cdda3b2055616e8f7e5e44f2d4a5cb2ce3f0fec3ec3e4bcff9f2f1e1"
+    }
+  ],
+  "copied_files": [
+    {
+      "source": "C:/Users/c0rpa/AppData/Local/Temp/TFW_TKL_NATIVE_01a09a0c/capture/coordinator/01-start.json",
+      "copy": "workspace/2026/TFW_20260909-231654_TKL/evidence/native/raw/coordinator-first/01-start.json",
+      "sha256": "b752cbbdb413c7f2568793bf3261290599e7b5027f4bf36887a08f072ead79c4",
+      "bytes": 418
+    },
+    {
+      "source": "C:/Users/c0rpa/AppData/Local/Temp/TFW_TKL_NATIVE_01a09a0c/capture/coordinator/02-own-reads.json",
+      "copy": "workspace/2026/TFW_20260909-231654_TKL/evidence/native/raw/coordinator-first/02-own-reads.json",
+      "sha256": "11091c26b0085c33b948670acb726477937e374f7c91a72bcae71888d719f156",
+      "bytes": 753
+    },
+    {
+      "source": "C:/Users/c0rpa/AppData/Local/Temp/TFW_TKL_NATIVE_01a09a0c/capture/coordinator/03-first-seal.json",
+      "copy": "workspace/2026/TFW_20260909-231654_TKL/evidence/native/raw/coordinator-first/03-first-seal.json",
+      "sha256": "dbc93799b8ef17977b499c793a51fe2b895609e41939d1c8eb350d0b16775ec4",
+      "bytes": 6008
+    },
+    {
+      "source": "C:/Users/c0rpa/AppData/Local/Temp/TFW_TKL_NATIVE_01a09a0c/capture/coordinator/04-integration.json",
+      "copy": "workspace/2026/TFW_20260909-231654_TKL/evidence/native/raw/coordinator-first/04-integration.json",
+      "sha256": "337d7c30bd3488a1196d09acd53640be43ded794f6ff23bb021ed459c0aa098f",
+      "bytes": 7921
+    },
+    {
+      "source": "C:/Users/c0rpa/AppData/Local/Temp/TFW_TKL_NATIVE_01a09a0c/capture/coordinator/05-handover-decisions.json",
+      "copy": "workspace/2026/TFW_20260909-231654_TKL/evidence/native/raw/coordinator-first/05-handover-decisions.json",
+      "sha256": "020cd710b5488a9fc4d0b08aa00b56a4468dad62b371b8eb16eee8cc88145a47",
+      "bytes": 3673
+    },
+    {
+      "source": "C:/Users/c0rpa/AppData/Local/Temp/TFW_TKL_NATIVE_01a09a0c/capture/coordinator/06-retry-decisions.json",
+      "copy": "workspace/2026/TFW_20260909-231654_TKL/evidence/native/raw/coordinator-first/06-retry-decisions.json",
+      "sha256": "b390bb0ebb83d5277bfd2a04699e810bab4744329f0a9f678796f59c78dadd06",
+      "bytes": 1488
+    },
+    {
+      "source": "C:/Users/c0rpa/AppData/Local/Temp/TFW_TKL_NATIVE_01a09a0c/capture/coordinator/07-recovery-first-decisions.json",
+      "copy": "workspace/2026/TFW_20260909-231654_TKL/evidence/native/raw/coordinator-first/07-recovery-first-decisions.json",
+      "sha256": "5eab1f990e629cfa04b220897018ab9faa3ad431516ffe824292eecb74d3bd7a",
+      "bytes": 5240
+    },
+    {
+      "source": "C:/Users/c0rpa/AppData/Local/Temp/TFW_TKL_NATIVE_01a09a0c/capture/coordinator/coordinator-source.md",
+      "copy": "workspace/2026/TFW_20260909-231654_TKL/evidence/native/raw/coordinator-first/coordinator-source.md",
+      "sha256": "682b1220967e0997f57ee944b593ed9e29ebb66548f7522c8c42b8f7acf5b615",
+      "bytes": 4041
+    },
+    {
+      "source": "C:/Users/c0rpa/AppData/Local/Temp/TFW_TKL_NATIVE_01a09a0c/capture/coordinator/retry-current-return-after.md",
+      "copy": "workspace/2026/TFW_20260909-231654_TKL/evidence/native/raw/coordinator-first/retry-current-return-after.md",
+      "sha256": "d7b1c106cdda3b2055616e8f7e5e44f2d4a5cb2ce3f0fec3ec3e4bcff9f2f1e1",
+      "bytes": 386
+    },
+    {
+      "source": "C:/Users/c0rpa/AppData/Local/Temp/TFW_TKL_NATIVE_01a09a0c/capture/coordinator/retry-current-return-before.md",
+      "copy": "workspace/2026/TFW_20260909-231654_TKL/evidence/native/raw/coordinator-first/retry-current-return-before.md",
+      "sha256": "1843ca1a8cd2aabd6b4299dda4c0fabda55a0cb8677db691da56a419b6dee9e4",
+      "bytes": 133
+    },
+    {
+      "source": "C:/Users/c0rpa/AppData/Local/Temp/TFW_TKL_NATIVE_01a09a0c/capture/coordinator/TKL-NATIVE-COORD.md",
+      "copy": "workspace/2026/TFW_20260909-231654_TKL/evidence/native/raw/coordinator-first/TKL-NATIVE-COORD.md",
+      "sha256": "352b0e640392ad7ae821618036e4e342de9cd22b1500f4f64554df0a3e0d422a",
+      "bytes": 3361
+    },
+    {
+      "source": "C:/Users/c0rpa/AppData/Local/Temp/TFW_TKL_NATIVE_01a09a0c/recovery/cases.json",
+      "copy": "workspace/2026/TFW_20260909-231654_TKL/evidence/native/recovery/first-actual/cases.json",
+      "sha256": "83702972277afef8d25c84f448812a664d3361a84761423ea199fc595cf5bfd2",
+      "bytes": 2010
+    },
+    {
+      "source": "C:/Users/c0rpa/AppData/Local/Temp/TFW_TKL_NATIVE_01a09a0c/recovery/changed-authority/status.md",
+      "copy": "workspace/2026/TFW_20260909-231654_TKL/evidence/native/recovery/first-actual/changed-authority/status.md",
+      "sha256": "6c3cd6e16dfe37eb90660e6c597eda85cb1349013a70cdd139f197c182d50ac8",
+      "bytes": 613
+    },
+    {
+      "source": "C:/Users/c0rpa/AppData/Local/Temp/TFW_TKL_NATIVE_01a09a0c/recovery/changed-output/status.md",
+      "copy": "workspace/2026/TFW_20260909-231654_TKL/evidence/native/recovery/first-actual/changed-output/status.md",
+      "sha256": "6c3cd6e16dfe37eb90660e6c597eda85cb1349013a70cdd139f197c182d50ac8",
+      "bytes": 613
+    },
+    {
+      "source": "C:/Users/c0rpa/AppData/Local/Temp/TFW_TKL_NATIVE_01a09a0c/recovery/later-z/status.md",
+      "copy": "workspace/2026/TFW_20260909-231654_TKL/evidence/native/recovery/first-actual/later-z/status.md",
+      "sha256": "0a4acd6b03710bbb8680f8f6391d038b46131eb10e933691f554cfb94ac87f99",
+      "bytes": 752
+    },
+    {
+      "source": "C:/Users/c0rpa/AppData/Local/Temp/TFW_TKL_NATIVE_01a09a0c/recovery/missing-acceptance/status.md",
+      "copy": "workspace/2026/TFW_20260909-231654_TKL/evidence/native/recovery/first-actual/missing-acceptance/status.md",
+      "sha256": "6c3cd6e16dfe37eb90660e6c597eda85cb1349013a70cdd139f197c182d50ac8",
+      "bytes": 613
+    },
+    {
+      "source": "C:/Users/c0rpa/AppData/Local/Temp/TFW_TKL_NATIVE_01a09a0c/recovery/missing-outcome/status.md",
+      "copy": "workspace/2026/TFW_20260909-231654_TKL/evidence/native/recovery/first-actual/missing-outcome/status.md",
+      "sha256": "6c3cd6e16dfe37eb90660e6c597eda85cb1349013a70cdd139f197c182d50ac8",
+      "bytes": 613
+    },
+    {
+      "source": "C:/Users/c0rpa/AppData/Local/Temp/TFW_TKL_NATIVE_01a09a0c/recovery/original/accepted-outcome-line.txt",
+      "copy": "workspace/2026/TFW_20260909-231654_TKL/evidence/native/recovery/first-actual/original/accepted-outcome-line.txt",
+      "sha256": "6a086421f966df1951126ff07dba8ceacba5404c426fbb26cd65ed3aabc051ac",
+      "bytes": 179
+    },
+    {
+      "source": "C:/Users/c0rpa/AppData/Local/Temp/TFW_TKL_NATIVE_01a09a0c/recovery/original/status.md",
+      "copy": "workspace/2026/TFW_20260909-231654_TKL/evidence/native/recovery/first-actual/original/status.md",
+      "sha256": "c4bc55418a480f6fc7bb4277c656abe149ca6a262c5903a80296aa3f0b8e7875",
+      "bytes": 792
+    },
+    {
+      "source": "C:/Users/c0rpa/AppData/Local/Temp/TFW_TKL_NATIVE_01a09a0c/recovery/original/terminal-event.md",
+      "copy": "workspace/2026/TFW_20260909-231654_TKL/evidence/native/recovery/first-actual/original/terminal-event.md",
+      "sha256": "ae1e10e71d9d6249244dc52c873fc743cb3f96807db2e341c4e85f4c1f08181b",
+      "bytes": 1130
+    },
+    {
+      "source": "C:/Users/c0rpa/AppData/Local/Temp/TFW_TKL_NATIVE_01a09a0c/recovery/retry/accepted-P-KNOWLEDGE.md",
+      "copy": "workspace/2026/TFW_20260909-231654_TKL/evidence/native/recovery/first-actual/retry/accepted-P-KNOWLEDGE.md",
+      "sha256": "a2d82e20092a361319d80f5f7db63360957a84a8eb36415461567323fc0b797f",
+      "bytes": 134291
+    },
+    {
+      "source": "C:/Users/c0rpa/AppData/Local/Temp/TFW_TKL_NATIVE_01a09a0c/recovery/retry/current-return.md",
+      "copy": "workspace/2026/TFW_20260909-231654_TKL/evidence/native/recovery/first-actual/retry/current-return.md",
+      "sha256": "d7b1c106cdda3b2055616e8f7e5e44f2d4a5cb2ce3f0fec3ec3e4bcff9f2f1e1",
+      "bytes": 386
+    },
+    {
+      "source": "C:/Users/c0rpa/AppData/Local/Temp/TFW_TKL_NATIVE_01a09a0c/recovery/retry/divergent-intent.json",
+      "copy": "workspace/2026/TFW_20260909-231654_TKL/evidence/native/recovery/first-actual/retry/divergent-intent.json",
+      "sha256": "10dbebbc5a64ccf32177e2fd6e581f9071002447427ec2af0f9e1ca4db6ffa95",
+      "bytes": 422
+    },
+    {
+      "source": "C:/Users/c0rpa/AppData/Local/Temp/TFW_TKL_NATIVE_01a09a0c/recovery/retry/same-intent.json",
+      "copy": "workspace/2026/TFW_20260909-231654_TKL/evidence/native/recovery/first-actual/retry/same-intent.json",
+      "sha256": "89749d9c1dc6cc346da0e28b7e344655a1d0fb2402a45a537840060983d6d06c",
+      "bytes": 398
+    },
+    {
+      "source": "C:/Users/c0rpa/AppData/Local/Temp/TFW_TKL_NATIVE_01a09a0c/recovery/sources/99198f133c0047568c1e8411bfae849239b352b1/workspace/2026/TFW_20260907-020729_SLC/evidence/review-c2-final/accounting-result.json",
+      "copy": "workspace/2026/TFW_20260909-231654_TKL/evidence/native/recovery/first-actual/sources/99198f133c0047568c1e8411bfae849239b352b1/workspace/2026/TFW_20260907-020729_SLC/evidence/review-c2-final/accounting-result.json",
+      "sha256": "c5b14c1a02270e1cca81a89ef94fce1e630df229a6faf8817a31ba5019e835c2",
+      "bytes": 4152
+    },
+    {
+      "source": "C:/Users/c0rpa/AppData/Local/Temp/TFW_TKL_NATIVE_01a09a0c/recovery/sources/99198f133c0047568c1e8411bfae849239b352b1/workspace/2026/TFW_20260907-020729_SLC/evidence/review-c2-final/executor-evidence-verification.json",
+      "copy": "workspace/2026/TFW_20260909-231654_TKL/evidence/native/recovery/first-actual/sources/99198f133c0047568c1e8411bfae849239b352b1/workspace/2026/TFW_20260907-020729_SLC/evidence/review-c2-final/executor-evidence-verification.json",
+      "sha256": "d755f63c56d42acaaa56a9f54f659058bac145ee6549b28f85dc35c810a000d0",
+      "bytes": 580
+    },
+    {
+      "source": "C:/Users/c0rpa/AppData/Local/Temp/TFW_TKL_NATIVE_01a09a0c/recovery/sources/99198f133c0047568c1e8411bfae849239b352b1/workspace/2026/TFW_20260907-020729_SLC/evidence/review-c2-final/opened-output.json",
+      "copy": "workspace/2026/TFW_20260909-231654_TKL/evidence/native/recovery/first-actual/sources/99198f133c0047568c1e8411bfae849239b352b1/workspace/2026/TFW_20260907-020729_SLC/evidence/review-c2-final/opened-output.json",
+      "sha256": "dfba2b129e7bac0dd255297fd4321fb8c1bdec42d867f84c29e4b06650ef1421",
+      "bytes": 318916
+    },
+    {
+      "source": "C:/Users/c0rpa/AppData/Local/Temp/TFW_TKL_NATIVE_01a09a0c/recovery/sources/99198f133c0047568c1e8411bfae849239b352b1/workspace/2026/TFW_20260907-020729_SLC/REVIEW__TFW_20260907-020729_SLC.md",
+      "copy": "workspace/2026/TFW_20260909-231654_TKL/evidence/native/recovery/first-actual/sources/99198f133c0047568c1e8411bfae849239b352b1/workspace/2026/TFW_20260907-020729_SLC/REVIEW__TFW_20260907-020729_SLC.md",
+      "sha256": "5e24416d70866cf1372e56bf7ae0e8be2ad129b54d6054c4408ef0a15d7dbdce",
+      "bytes": 47859
+    },
+    {
+      "source": "C:/Users/c0rpa/AppData/Local/Temp/TFW_TKL_NATIVE_01a09a0c/recovery/sources/c51ee0c0d7891fd165d105f3565e0e54512c1040/KNOWLEDGE.md",
+      "copy": "workspace/2026/TFW_20260909-231654_TKL/evidence/native/recovery/first-actual/sources/c51ee0c0d7891fd165d105f3565e0e54512c1040/KNOWLEDGE.md",
+      "sha256": "a2d82e20092a361319d80f5f7db63360957a84a8eb36415461567323fc0b797f",
+      "bytes": 134291
+    },
+    {
+      "source": "C:/Users/c0rpa/AppData/Local/Temp/TFW_TKL_NATIVE_01a09a0c/recovery/sources/c51ee0c0d7891fd165d105f3565e0e54512c1040/workspace/2026/TFW_20260907-020729_SLC/HL-TFW_20260907-020729_SLC.md",
+      "copy": "workspace/2026/TFW_20260909-231654_TKL/evidence/native/recovery/first-actual/sources/c51ee0c0d7891fd165d105f3565e0e54512c1040/workspace/2026/TFW_20260907-020729_SLC/HL-TFW_20260907-020729_SLC.md",
+      "sha256": "ef97fe425b047ad8d48173a8b92d1cfec316e182a5c22f4911d3a27461ddbb47",
+      "bytes": 85281
+    },
+    {
+      "source": "C:/Users/c0rpa/AppData/Local/Temp/TFW_TKL_NATIVE_01a09a0c/recovery/sources/c51ee0c0d7891fd165d105f3565e0e54512c1040/workspace/2026/TFW_20260907-020729_SLC/journal/20260910-132537__transition__803f.md",
+      "copy": "workspace/2026/TFW_20260909-231654_TKL/evidence/native/recovery/first-actual/sources/c51ee0c0d7891fd165d105f3565e0e54512c1040/workspace/2026/TFW_20260907-020729_SLC/journal/20260910-132537__transition__803f.md",
+      "sha256": "ae1e10e71d9d6249244dc52c873fc743cb3f96807db2e341c4e85f4c1f08181b",
+      "bytes": 1130
+    },
+    {
+      "source": "C:/Users/c0rpa/AppData/Local/Temp/TFW_TKL_NATIVE_01a09a0c/recovery/sources/c51ee0c0d7891fd165d105f3565e0e54512c1040/workspace/2026/TFW_20260907-020729_SLC/RF__TFW_20260907-020729_SLC.md",
+      "copy": "workspace/2026/TFW_20260909-231654_TKL/evidence/native/recovery/first-actual/sources/c51ee0c0d7891fd165d105f3565e0e54512c1040/workspace/2026/TFW_20260907-020729_SLC/RF__TFW_20260907-020729_SLC.md",
+      "sha256": "6c3340a7b23928feb8a70e7f02438015549e9ba66a96a331144d45ac058804f7",
+      "bytes": 28959
+    },
+    {
+      "source": "C:/Users/c0rpa/AppData/Local/Temp/TFW_TKL_NATIVE_01a09a0c/recovery/sources/c51ee0c0d7891fd165d105f3565e0e54512c1040/workspace/2026/TFW_20260907-020729_SLC/status.md",
+      "copy": "workspace/2026/TFW_20260909-231654_TKL/evidence/native/recovery/first-actual/sources/c51ee0c0d7891fd165d105f3565e0e54512c1040/workspace/2026/TFW_20260907-020729_SLC/status.md",
+      "sha256": "c4bc55418a480f6fc7bb4277c656abe149ca6a262c5903a80296aa3f0b8e7875",
+      "bytes": 792
+    },
+    {
+      "source": "C:/Users/c0rpa/AppData/Local/Temp/TFW_TKL_NATIVE_01a09a0c/recovery/sources/c51ee0c0d7891fd165d105f3565e0e54512c1040/workspace/2026/TFW_20260907-020729_SLC/TS__TFW_20260907-020729_SLC.md",
+      "copy": "workspace/2026/TFW_20260909-231654_TKL/evidence/native/recovery/first-actual/sources/c51ee0c0d7891fd165d105f3565e0e54512c1040/workspace/2026/TFW_20260907-020729_SLC/TS__TFW_20260907-020729_SLC.md",
+      "sha256": "952cfd72b4a7229d0da5ee5fa8b54b10d0560b56d18c3dd557008f403a2813ef",
+      "bytes": 62857
+    }
+  ],
+  "positive_recovery": "BLOCKED before write by actual directory/authority-reference preconditions",
+  "temporal_overlap": false,
+  "gap_seconds": 27.461981,
+  "no_input_correction_or_new_trial": true
+}

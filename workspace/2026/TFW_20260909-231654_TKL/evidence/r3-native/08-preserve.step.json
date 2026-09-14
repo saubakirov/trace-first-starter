@@ -1,0 +1,96 @@
+{
+  "step": "preserve",
+  "started_at": "2026-09-13T22:24:05.860130+00:00",
+  "argv": [
+    "workspace/2026/TFW_20260909-231654_TKL/evidence/r3-native/native.py",
+    "preserve"
+  ],
+  "subprocesses": [
+    {
+      "argv": [
+        "git",
+        "-c",
+        "core.longpaths=true",
+        "-c",
+        "core.autocrlf=false",
+        "rev-parse",
+        "HEAD"
+      ],
+      "cwd": "C:\\Users\\c0rpa\\.codex\\worktrees\\f3f3\\steps-framework",
+      "start": "2026-09-13T22:24:05.879840+00:00",
+      "stdout": "preserve-1.stdout.raw",
+      "stderr": "preserve-1.stderr.raw",
+      "end": "2026-09-13T22:24:05.939730+00:00",
+      "exit": 0
+    },
+    {
+      "argv": [
+        "git",
+        "-c",
+        "core.longpaths=true",
+        "-c",
+        "core.autocrlf=false",
+        "rev-parse",
+        "HEAD"
+      ],
+      "cwd": "C:\\Users\\c0rpa\\.codex\\worktrees\\f3f3\\steps-framework",
+      "start": "2026-09-13T22:24:05.947838+00:00",
+      "stdout": "preserve-2.stdout.raw",
+      "stderr": "preserve-2.stderr.raw",
+      "end": "2026-09-13T22:24:06.002727+00:00",
+      "exit": 0
+    }
+  ],
+  "writes": [
+    {
+      "path": ".tfw/update_receipts/knowledge-lifecycle/e16c86be30e9331c213034d608ff70b9c49b4aa71013ce5a210130d1932f6ada/intent.json",
+      "purpose": "immutable content-addressed intent",
+      "before": null,
+      "after": {
+        "bytes": 5238,
+        "sha256": "e16c86be30e9331c213034d608ff70b9c49b4aa71013ce5a210130d1932f6ada",
+        "raw_git_blob": "21317a2246881a5cbfa5a8129de694b8548522bf",
+        "eol": {
+          "CRLF": 0,
+          "LF": 0,
+          "CR": 0
+        }
+      },
+      "at": "2026-09-13T22:24:13.682519+00:00"
+    },
+    {
+      "path": ".tfw/update_receipts/knowledge-lifecycle/e16c86be30e9331c213034d608ff70b9c49b4aa71013ce5a210130d1932f6ada/old-intended.zip",
+      "purpose": "complete old/intended and state/legacy bytes",
+      "before": null,
+      "after": {
+        "bytes": 293359,
+        "sha256": "dca72a7ae1641c95a11cdcb737a68aa70bfcbc4f1f60ff0e170a3c4e21afdee9",
+        "raw_git_blob": "67b8ff73d02e03abf125b8bce999d0c4e7d1401a",
+        "eol": {
+          "CRLF": 5,
+          "LF": 1124,
+          "CR": 1106
+        }
+      },
+      "at": "2026-09-13T22:24:13.724471+00:00"
+    },
+    {
+      "path": ".tfw/update_receipts/knowledge-lifecycle/e16c86be30e9331c213034d608ff70b9c49b4aa71013ce5a210130d1932f6ada/positive-map.json",
+      "purpose": "complete old positive repository identity",
+      "before": null,
+      "after": {
+        "bytes": 738514,
+        "sha256": "2b2f3041af30c68d1e33b1ba73b90f42b972d2f9ae8285546be75aa3368d1db9",
+        "raw_git_blob": "a126fe4e311a60a32de249cdffd7637e77416931",
+        "eol": {
+          "CRLF": 0,
+          "LF": 23172,
+          "CR": 0
+        }
+      },
+      "at": "2026-09-13T22:24:13.766348+00:00"
+    }
+  ],
+  "exit": 0,
+  "completed_at": "2026-09-13T22:24:22.060961+00:00"
+}

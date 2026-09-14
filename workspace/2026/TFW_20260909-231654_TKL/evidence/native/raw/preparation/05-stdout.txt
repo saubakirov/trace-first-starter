@@ -1,0 +1,26 @@
+---
+time: 2026-09-13T14:59:04+05:00
+kind: dispatch
+writer: robert
+on_behalf_of: saubakirov
+via: codex
+refs:
+  - status.md
+  - HL-TFW_20260909-231654_TKL.md
+  - TS__TFW_20260909-231654_TKL.md
+  - ONB__TFW_20260909-231654_TKL.md
+  - journal/20260913-145630__handoff__a530.md
+summary: "Resolve ONB Q1 with a bounded two-holder native evidence and carrier-repair route."
+---
+
+Source and parent: selected LEAD `01a08161-79d3-7472-a01e-8cdc957ee951`. Destination: operational Coordinator `01a09974-6716-7cc0-9916-fd6d04c91481`, host `local`, through its recorded native address. Origin remains Executor `{principal: robert, unit: 01a09a0c-c9e2-7d01-af4e-64931af967ed}`; forwarding does not transfer the root amendment grant. This is an executable in-scope assurance ruling, not an HL/TS/VALUE/budget amendment or another generic start approval.
+
+The approved AC-1 through AC-4 and AC-6 already require actual distinct-producer returns, isolated independent publication/integration, replay/refusal and accepted-effect carrier repair. Under that existing order, authorize only the finite disposable root `C:/Users/c0rpa/AppData/Local/Temp/TFW_TKL_NATIVE_01a09a0c` and the holder/path split in ONB §8.1-§8.3. The Coordinator may author `knowledge/records/TKL-NATIVE-COORD.md` and its own control return; the Executor may author `knowledge/records/TKL-NATIVE-EXEC.md` and its source/effect return. These paths are ASSURANCE subjects inside the disposable receiver, not live project publications or accepted records. Each must preserve its actual author/input/scope and explicitly state that presence is not acceptance. Neither holder may accept its own or the other's record. Seal each original before either holder sees the sibling source; report measured overlap only, otherwise report sequential independent writes. Preserve both source blobs during integration and use no shared pending/digest/inventory write.
+
+For identical retry P, bind the fixture key only as an alias to the already accepted SLC D87 effect: accepted close `c51ee0c0d7891fd165d105f3565e0e54512c1040`, unchanged `KNOWLEDGE.md` blob `4f3a90aea1280981edadbd09d24f2e9c72bbe5ba`, and independent acceptance `99198f133c0047568c1e8411bfae849239b352b1`. Do not invent a new T/A/7 acceptance, owner act or publication identity. Equal intent reuses that actual P and repairs only the fixture reference; changed intent is refused before replacing P and retains both inputs.
+
+For AC-6 use a disposable copy of SLC's current `status.md` from the accepted close as the owning current carrier. Preserve the exact original status and terminal event `journal/20260910-132537__transition__803f.md`; prepare a cut with only the required `outcome` field absent. After verifying unchanged accepted output, oracle, authority, dependencies and independent acceptance, the Coordinator restores the exact accepted `outcome` line in that copy, changes no historical event, validates the complete carrier and stops. Record the present repair and hashes only in TKL native evidence; do not invent a past event when no current event kind fits. A separate Z case with a different outcome plus an unrelated later edit must be refused and preserved. Missing acceptance, changed output or changed authority also refuses repair. This authorizes no edit to live SLC/PTTC/TKL status, KNOWLEDGE, REVIEW or journal bytes.
+
+For AC-2 the actual preserved Researcher-A return may be used with an intentionally omitted B in the prepared case view, provided it is labelled as historical source plus prepared absence, never a new Researcher return, crash or lost context. The new actual Coordinator and Executor returns separately supply the distinct current-producer observation for AC-1. The later independent Reviewer decides sufficiency and every limitation; this ruling supplies no PASS.
+
+Keep the ONB finite limits: preparation at most 20 minutes, actual two-holder operations at most 30 minutes excluding scheduler/authority wait, and the separately approved AC-10 limits. Preserve partial output on exhaustion. The operational Coordinator owns routine routing and returns only a new owner/LEAD boundary, material deviation, authority conflict or final result upward.

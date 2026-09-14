@@ -1,0 +1,68 @@
+$OutputEncoding=[Text.UTF8Encoding]::new($false)
+$env:PYTHONIOENCODING='utf-8'
+@'
+import pathlib,json,hashlib,subprocess,datetime,zipfile,yaml
+root=pathlib.Path.cwd();ev=root/'workspace/2026/TFW_20260909-231654_TKL/evidence/r1-ac7';r=pathlib.Path('C:/Users/c0rpa/AppData/Local/Temp/TFW_TKL_NATIVE_01a09a0c/self-adoption-r1');up=r/'.tfw/.upstream';cand='65c3c94b2347c69f6d21ac2e2664a39ef46b3ae2';base='ec91c56007c20cda79f740fec15c85e4af74d17c';sha=lambda b:hashlib.sha256(b).hexdigest();now=lambda:datetime.datetime.now(datetime.timezone.utc).isoformat()
+def guard():assert datetime.datetime.now(datetime.timezone.utc)<datetime.datetime.fromisoformat('2026-09-13T18:58:50+00:00'),'deadline exhausted'
+def git(a,data=None):guard();return subprocess.run(['git','-c','core.longpaths=true','-C',str(r),*a],input=data,capture_output=True,check=True).stdout
+def dump(p,d):p.parent.mkdir(parents=True,exist_ok=True);assert not p.exists(),p;p.write_text(json.dumps(d,indent=2,ensure_ascii=False)+'\n',encoding='utf-8')
+def ident(b):
+ if b is None:return {'absent':True}
+ return {'bytes':len(b),'sha256':sha(b),'raw_git_blob':hashlib.sha1(b'blob '+str(len(b)).encode()+b'\0'+b).hexdigest(),'eol':{'CRLF':b.count(b'\r\n'),'LF':b.count(b'\n')-b.count(b'\r\n'),'CR':b.count(b'\r')-b.count(b'\r\n')}}
+def physical(p):return (r/p).read_bytes() if (r/p).is_file() else None
+preview=json.loads((ev/'06-preview.json').read_text(encoding='utf-8'));pres=json.loads((ev/'06-preservation.json').read_text(encoding='utf-8'));baseline=json.loads((ev/'03-baseline-physical.json').read_text(encoding='utf-8'));attachment=r/preview['attachment'];images=zipfile.ZipFile(attachment/'old-intended.zip')
+pf=json.loads((root/'workspace/2026/TFW_20260909-231654_TKL/evidence/r1-ac8/10-ac7-source-preflight/preflight.json').read_text(encoding='utf-8'))
+source_ids={x['path']:x['identities']['candidate'] for x in pf['source_identities']}
+def revalidate_source_authority():
+ guard();assert sha((attachment/'preservation.json').read_bytes())==preview['preservation_sha256'];assert sha((attachment/'old-intended.zip').read_bytes())==preview['old_intended_zip_sha256']
+ for p,v in source_ids.items():
+  f=up/p
+  if v.get('absent'):assert not f.exists(),p
+  else:assert f.is_file() and sha(f.read_bytes())==v['sha256'],p
+ specs=[a['commit']+':'+a['path'] for a in pres['authority']];data=git(['cat-file','--batch'],('\n'.join(specs)+'\n').encode());offset=0
+ for a in pres['authority']:
+  end=data.index(b'\n',offset);header=data[offset:end].decode().split();assert len(header)==3 and header[1]=='blob';size=int(header[2]);b=data[end+1:end+1+size];assert sha(b)==a['sha256'];offset=end+size+2
+ assert offset==len(data)
+ return {'source_identities':len(source_ids),'authority_identities':len(specs),'authority_batch_sha256':sha(data),'attachment_sha256':preview['preservation_sha256']}
+def verify_unrelated():
+ guard();diff=[]
+ for p,v in baseline['files'].items():
+  if p not in pres['files']:
+   b=physical(p)
+   if b is None or sha(b)!=v['sha256']:diff.append(p)
+ assert not diff,diff
+ assert not (r/'knowledge/records/TKL-20260913-01.md').exists()
+ assert not (r/'.cursor').exists()
+ return {'files':len(baseline['files'])-sum(p in baseline['files'] for p in pres['files']),'drift':diff}
+def verify_selected(expected):
+ states={}
+ for p,v in pres['files'].items():
+  b=physical(p);state=ident(b)
+  accepted=expected[p]
+  assert state==v[accepted],(p,accepted,state)
+  states[p]=state
+ return states
+def write_effect(seq,p,state_name,expected):
+ guard();assert p in pres['files'];assert (r/p).resolve().is_relative_to(r.resolve())
+ old=physical(p);new=None if pres['files'][p][state_name].get('absent') else images.read(('intermediate/' if state_name=='intermediate_retired' else 'intended/')+p)
+ assert ident(new)==pres['files'][p][state_name]
+ source=revalidate_source_authority();unrelated=verify_unrelated();states=verify_selected(expected)
+ before={'observed_at':now(),'sequence':seq,'path':p,'current':ident(old),'intended':ident(new),'expected_selected_states':expected.copy(),'source_authority':source,'unrelated':unrelated,'preservation':preview['attachment'],'clock_deadline':'2026-09-13T18:58:50Z','physical_all_selected_verified':len(states)}
+ dump(ev/'07-writes'/f'{seq:03d}-before.json',before)
+ # After sealing, reread the actual target/intended and revalidate source and authority immediately before the single effect.
+ assert physical(p)==old
+ reread=None if new is None else images.read(('intermediate/' if state_name=='intermediate_retired' else 'intended/')+p);assert reread==new
+ source2=revalidate_source_authority();guard()
+ if new is None:(r/p).unlink()
+ else:(r/p).parent.mkdir(parents=True,exist_ok=True);(r/p).write_bytes(new)
+ assert physical(p)==new;expected[p]=state_name
+ dump(ev/'07-writes'/f'{seq:03d}-after.json',{'observed_at':now(),'sequence':seq,'path':p,'actual':ident(physical(p)),'equals_intended':True,'immediate_source_authority':source2})
+ return expected
+
+expected={p:'old' for p in pres['files']}
+for seq,p in enumerate(preview['readers'],1):write_effect(seq,p,'intended',expected)
+verify_selected(expected);u=verify_unrelated();s=revalidate_source_authority()
+dump(ev/'08-reader-only-cut.json',{'observed_at':now(),'kind':'explicitly prepared reader-only cut, not a crash','expected':expected,'reader_effects_applied':55,'config_and_entry_old':True,'state_preserved':ident(physical('.tfw/knowledge_state.yaml'))==pres['state'],'source_authority':s,'unrelated':u,'next':'Continue this same attempt after observing the cut; revalidate before retiring config/entry authority.'})
+print(json.dumps({'reader_only_cut':True,'observed_at':now(),'applied':55,'config_entry_unchanged':True,'state_preserved':True,'unrelated':u},indent=2))
+
+'@ | & 'E:/TEMP/pttc-phase-a-b9b5/venv/Scripts/python.exe' -

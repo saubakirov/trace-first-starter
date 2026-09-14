@@ -1,0 +1,48 @@
+{
+  "observed_at": "2026-09-13T11:37:03.033723+00:00",
+  "kind": "Executor current observation of actual own tool operations; not a provider transcript/export",
+  "author_unit": "01a09a0c-c9e2-7d01-af4e-64931af967ed",
+  "original_seal": {
+    "unit": "01a09a0c-c9e2-7d01-af4e-64931af967ed",
+    "principal": "robert",
+    "role": "Executor",
+    "base": "e00ca51d05f4e451441cb9fc267579a7f9e4d4ce",
+    "candidate": "27cdb701b91c5b45b9f54b3e98c9ad67635b3e30",
+    "started": "2026-09-13T11:33:29.885707+00:00",
+    "finished": "2026-09-13T11:35:07.148363+00:00",
+    "commit": "56de4b23c5c8edbbf87426f578701bdb02b3a770",
+    "files": {
+      "workspace/2026/TFW_20260909-231654_TKL/evidence/executor-handover.md": {
+        "sha256": "801c49a6fa358e3b6f2a0f8de04e7c52f6d4adea49f504f5f12dea2f09b4ec3b",
+        "git_blob": "fe7f9915f4c9d80689245402d52842b925e35548",
+        "bytes": 3794
+      },
+      "knowledge/records/TKL-NATIVE-EXEC.md": {
+        "sha256": "39f9b29bfe3d5d3eaf10b08301ce87068843d049aa97994ebc47a2849b02c40e",
+        "git_blob": "5c5828f1d70edf035615e8ba5d1ee8319eeb1ada",
+        "bytes": 3912
+      }
+    },
+    "sibling_new_source_read_before_seal": false,
+    "acceptance": "absent for both new records",
+    "incoming_search_exit_code": 1
+  },
+  "actual_sequence": [
+    "Read recorded start from original Git object",
+    "Read common and own prepared input; selected conventions and Candidate ONB headings; record/handover templates",
+    "Search own knowledge/records for incoming exact identity/sample scope; exit 1 means no match",
+    "Author own two permitted files",
+    "Compute source filtered Git blob before record creation",
+    "Stage exact two paths and check cached membership and whitespace",
+    "Commit --only with explicit two paths",
+    "Compare raw own files to actual source/record Git blobs",
+    "Preserve original raw copies and seal",
+    "Return metadata only to Coordinator"
+  ],
+  "custody_limits": "Read receipts, source originals, search streams and commit stdout were saved during actual operations. The shell/tool history contains the invoked scripts. This summary is not a raw provider transcript or an export of that history.",
+  "own_first_finish": "2026-09-13T11:35:07.148363+00:00",
+  "coordinator_reported_finish": "2026-09-13T11:33:02.423726+00:00",
+  "overlap": false,
+  "intervening_seconds": 27.461981,
+  "first_sibling_content_read": "After both first seals, read immutable Coordinator source/record at 9d1e89ec71a8622d7afadfd7325525cb57548fa1 via git show in the subsequent tool call; exact read-call clock was not captured separately. This current observation timestamp is not a retroactive read timestamp."
+}

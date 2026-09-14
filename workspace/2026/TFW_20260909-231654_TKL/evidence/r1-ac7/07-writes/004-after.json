@@ -1,0 +1,22 @@
+{
+  "observed_at": "2026-09-13T18:24:13.027575+00:00",
+  "sequence": 4,
+  "path": ".agents/workflows/tfw-docs.md",
+  "actual": {
+    "bytes": 4917,
+    "sha256": "46fb7316afdb4c8ceb7e7c5986332781f44d678fbd224baa4846a4e38c133271",
+    "raw_git_blob": "26b80dbb58c2f1406afef90ea5639f9dced246b7",
+    "eol": {
+      "CRLF": 0,
+      "LF": 75,
+      "CR": 0
+    }
+  },
+  "equals_intended": true,
+  "immediate_source_authority": {
+    "source_identities": 122,
+    "authority_identities": 10,
+    "authority_batch_sha256": "0b47d6e18c8d425ce491f75f3d12311875fb9a88f9eca636e1d35fa2c050609e",
+    "attachment_sha256": "c3b0580ad155738e2db99b38577df3477fddafa0078fb5f4d256ce94d87b41cb"
+  }
+}

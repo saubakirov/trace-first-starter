@@ -1,0 +1,159 @@
+{
+  "observed_at": "2026-09-13T12:04:10.691082+00:00",
+  "merge": "f679483cf11007f6f214e4d24aae5cbabd0b263e",
+  "parents": [
+    "0b7772bbd19ee1ddb2f8987651eace5ab31b66a2",
+    "48df07bde3cb924e4f6357c002113f2a7b54c0aa"
+  ],
+  "overlap_seconds": 85.583887,
+  "coordinator_start": "2026-09-13T12:01:38.460337+00:00",
+  "coordinator_end": "2026-09-13T12:03:04.044224+00:00",
+  "executor_start": "2026-09-13T12:01:17.745315+00:00",
+  "executor_end": "2026-09-13T12:03:21.566429+00:00",
+  "all_four_original_blobs_unchanged": {
+    "workspace/2026/TFW_20260909-231654_TKL/evidence/coordinator-source-2.md": "e83310c9c28e4a750f6a1d0e21164118845accc3",
+    "knowledge/records/TKL-NATIVE-COORD-2.md": "328e00ae548b144d986ce2c8ea92e67d0a827586",
+    "workspace/2026/TFW_20260909-231654_TKL/evidence/executor-handover-2.md": "dc598d9671beb4028080fd97e93f8a09be252e24",
+    "knowledge/records/TKL-NATIVE-EXEC-2.md": "2f72dd6972b1ae8e786e05f3fd9e53a8d06036c0"
+  },
+  "only_four_owned_paths_changed": [
+    "knowledge/records/TKL-NATIVE-COORD-2.md",
+    "knowledge/records/TKL-NATIVE-EXEC-2.md",
+    "workspace/2026/TFW_20260909-231654_TKL/evidence/coordinator-source-2.md",
+    "workspace/2026/TFW_20260909-231654_TKL/evidence/executor-handover-2.md"
+  ],
+  "clean": true,
+  "commands": [
+    {
+      "argv": [
+        "git",
+        "rev-parse",
+        "0b7772bbd19ee1ddb2f8987651eace5ab31b66a2^"
+      ],
+      "started_at": "2026-09-13T12:04:09.999062+00:00",
+      "finished_at": "2026-09-13T12:04:10.038565+00:00",
+      "exit": 0,
+      "stdout": "e00ca51d05f4e451441cb9fc267579a7f9e4d4ce\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "rev-parse",
+        "48df07bde3cb924e4f6357c002113f2a7b54c0aa^"
+      ],
+      "started_at": "2026-09-13T12:04:10.038584+00:00",
+      "finished_at": "2026-09-13T12:04:10.075236+00:00",
+      "exit": 0,
+      "stdout": "e00ca51d05f4e451441cb9fc267579a7f9e4d4ce\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "-c",
+        "core.longpaths=true",
+        "merge",
+        "--no-ff",
+        "48df07bde3cb924e4f6357c002113f2a7b54c0aa",
+        "-m",
+        "[robert] Integrate second native independent first seals"
+      ],
+      "started_at": "2026-09-13T12:04:10.075259+00:00",
+      "finished_at": "2026-09-13T12:04:10.377908+00:00",
+      "exit": 0,
+      "stdout": "Merge made by the 'ort' strategy.\n knowledge/records/TKL-NATIVE-EXEC-2.md             | 36 ++++++++++++++++\n .../evidence/executor-handover-2.md                | 48 ++++++++++++++++++++++\n 2 files changed, 84 insertions(+)\n create mode 100644 knowledge/records/TKL-NATIVE-EXEC-2.md\n create mode 100644 workspace/2026/TFW_20260909-231654_TKL/evidence/executor-handover-2.md\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "rev-parse",
+        "HEAD"
+      ],
+      "started_at": "2026-09-13T12:04:10.377925+00:00",
+      "finished_at": "2026-09-13T12:04:10.417295+00:00",
+      "exit": 0,
+      "stdout": "f679483cf11007f6f214e4d24aae5cbabd0b263e\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "rev-parse",
+        "f679483cf11007f6f214e4d24aae5cbabd0b263e:workspace/2026/TFW_20260909-231654_TKL/evidence/coordinator-source-2.md"
+      ],
+      "started_at": "2026-09-13T12:04:10.417316+00:00",
+      "finished_at": "2026-09-13T12:04:10.456986+00:00",
+      "exit": 0,
+      "stdout": "e83310c9c28e4a750f6a1d0e21164118845accc3\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "rev-parse",
+        "f679483cf11007f6f214e4d24aae5cbabd0b263e:knowledge/records/TKL-NATIVE-COORD-2.md"
+      ],
+      "started_at": "2026-09-13T12:04:10.457005+00:00",
+      "finished_at": "2026-09-13T12:04:10.494051+00:00",
+      "exit": 0,
+      "stdout": "328e00ae548b144d986ce2c8ea92e67d0a827586\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "rev-parse",
+        "f679483cf11007f6f214e4d24aae5cbabd0b263e:workspace/2026/TFW_20260909-231654_TKL/evidence/executor-handover-2.md"
+      ],
+      "started_at": "2026-09-13T12:04:10.494072+00:00",
+      "finished_at": "2026-09-13T12:04:10.532363+00:00",
+      "exit": 0,
+      "stdout": "dc598d9671beb4028080fd97e93f8a09be252e24\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "rev-parse",
+        "f679483cf11007f6f214e4d24aae5cbabd0b263e:knowledge/records/TKL-NATIVE-EXEC-2.md"
+      ],
+      "started_at": "2026-09-13T12:04:10.532381+00:00",
+      "finished_at": "2026-09-13T12:04:10.567670+00:00",
+      "exit": 0,
+      "stdout": "2f72dd6972b1ae8e786e05f3fd9e53a8d06036c0\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "diff",
+        "--name-only",
+        "-z",
+        "e00ca51d05f4e451441cb9fc267579a7f9e4d4ce",
+        "f679483cf11007f6f214e4d24aae5cbabd0b263e"
+      ],
+      "started_at": "2026-09-13T12:04:10.567686+00:00",
+      "finished_at": "2026-09-13T12:04:10.608657+00:00",
+      "exit": 0,
+      "stdout": "knowledge/records/TKL-NATIVE-COORD-2.md\u0000knowledge/records/TKL-NATIVE-EXEC-2.md\u0000workspace/2026/TFW_20260909-231654_TKL/evidence/coordinator-source-2.md\u0000workspace/2026/TFW_20260909-231654_TKL/evidence/executor-handover-2.md\u0000",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "-c",
+        "core.longpaths=true",
+        "status",
+        "--porcelain"
+      ],
+      "started_at": "2026-09-13T12:04:10.608687+00:00",
+      "finished_at": "2026-09-13T12:04:10.691046+00:00",
+      "exit": 0,
+      "stdout": "",
+      "stderr": ""
+    }
+  ],
+  "scope": "Actual two native holder work intervals overlap. No globally fresh exposure, independent-origin corroboration, accepted record or general provider reliability inferred."
+}

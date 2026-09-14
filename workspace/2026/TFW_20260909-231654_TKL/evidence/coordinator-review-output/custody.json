@@ -1,0 +1,68 @@
+{
+  "observed_at": "2026-09-13T22:33:11+05:00",
+  "producer": "Coordinator 01a09974-6716-7cc0-9916-fd6d04c91481",
+  "scope": "Preserve five exact existing Reviewer HTML outputs before the later correction/review; no build or trial",
+  "review_source": "a644c996e67bd01f677709140f51563bd17f5334",
+  "source_receipt_path": "workspace/2026/TFW_20260909-231654_TKL/review/evidence-clarification-20260913.md",
+  "source_receipt_sha256": "37c717c05e8f68ad7a2c0541c8f22a3e817b3cb98bb8c5a50efe3b43cf8fa4fe",
+  "archive_path": "workspace/2026/TFW_20260909-231654_TKL/evidence/coordinator-review-output/original-five-pages.zip",
+  "archive_sha256": "a03ea5d13fe41bdbc79a8883033e8434b9e1ed02eea341a8af2c3586ad272572",
+  "pages": [
+    {
+      "source_root": "C:\\Users\\c0rpa\\AppData\\Local\\Temp\\tfw-review-01a09aaf-current-site",
+      "path": "tasks/2026/TFW_20260909-231654_TKL/HL-TFW_20260909-231654_TKL/index.html",
+      "bytes": 118510,
+      "sha256": "abe5752e55c23ced56cd57fa34decd269cd38e9ee812f1a049aebd54838b51ea"
+    },
+    {
+      "source_root": "C:\\Users\\c0rpa\\AppData\\Local\\Temp\\tfw-review-01a09aaf-current-site",
+      "path": "tasks/2026/TFW_20260909-231654_TKL/ONB__TFW_20260909-231654_TKL/index.html",
+      "bytes": 97637,
+      "sha256": "938e5543ab097ff5e10e3a8dd4d7df161c67562f02c6f0c1139ef7ef74071368"
+    },
+    {
+      "source_root": "C:\\Users\\c0rpa\\AppData\\Local\\Temp\\tfw-review-01a09aaf-current-site",
+      "path": "tasks/2026/TFW_20260907-020729_SLC/RF__TFW_20260907-020729_SLC/index.html",
+      "bytes": 88552,
+      "sha256": "c636634f11f814d93e72976fa669b317445a37f4710e666d6882568d7848f540"
+    },
+    {
+      "source_root": "C:\\Users\\c0rpa\\AppData\\Local\\Temp\\tfw-review-01a09aaf-current-site",
+      "path": "tasks/2026/TFW_20260907-020729_SLC/REVIEW__TFW_20260907-020729_SLC/index.html",
+      "bytes": 110794,
+      "sha256": "dbe812b0d7630d08ea54f6f8b6ffbbaa1c751f0a6f8c598818681f81438f8472"
+    },
+    {
+      "source_root": "C:\\Users\\c0rpa\\AppData\\Local\\Temp\\tfw-review-01a09aaf-current-site",
+      "path": "reference/workflows/knowledge/index.html",
+      "bytes": 55004,
+      "sha256": "78fe70c862d87632fe78ddbb4b2df9cb466df9b8ea58a6a13580b958bff34ec8"
+    }
+  ],
+  "limitations": "Original build transport-output was truncated. Only these five preserved output pages are archived, not the whole site or a fabricated full log. No independent re-scoring or changed source.",
+  "authority_imports": [
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/journal/20260913-222625__handoff__18a1.md",
+      "source_commit": "2ddc14a9ef8407a6553bff4b0bc29722b11a85b7",
+      "blob": "5527e92644308814ae75c23e59a622bc58d07589",
+      "sha256": "d61a33f7fccce94850822ef42cda402ece7d1ea70c2fedde6eb0aaef7dfaebc8"
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/journal/20260913-222750__dispatch__a7a8.md",
+      "source_commit": "9336fc882719e1aacdefca0f7e6ab1fc3d5b6da7",
+      "blob": "856203c5af4c4707ebf3cfc5fb22e0bd92da8a16",
+      "sha256": "0c91116ea0b5372eba7b4562dd2768d8d14f4dd6cd208b51d5395fb020dc8e6a"
+    }
+  ],
+  "preserved_branch": "codex/tkl-checked-landing at 2ddc14a9ef8407a6553bff4b0bc29722b11a85b7",
+  "selected_branch": "codex/tkl-checked-landing-r1",
+  "complete_precommit_status": " M workspace/2026/TFW_20260909-231654_TKL/REVIEW__TFW_20260909-231654_TKL.md\n?? workspace/2026/TFW_20260909-231654_TKL/evidence/coordinator-review-output/custody.json\n?? workspace/2026/TFW_20260909-231654_TKL/evidence/coordinator-review-output/original-five-pages.zip\n?? workspace/2026/TFW_20260909-231654_TKL/journal/20260913-222625__handoff__18a1.md\n?? workspace/2026/TFW_20260909-231654_TKL/journal/20260913-222750__dispatch__a7a8.md\n?? workspace/2026/TFW_20260909-231654_TKL/journal/20260913-223311__dispatch__8019.md\n",
+  "exact_pathspecs": [
+    "workspace/2026/TFW_20260909-231654_TKL/journal/20260913-222625__handoff__18a1.md",
+    "workspace/2026/TFW_20260909-231654_TKL/journal/20260913-222750__dispatch__a7a8.md",
+    "workspace/2026/TFW_20260909-231654_TKL/evidence/coordinator-review-output/original-five-pages.zip",
+    "workspace/2026/TFW_20260909-231654_TKL/evidence/coordinator-review-output/custody.json",
+    "workspace/2026/TFW_20260909-231654_TKL/REVIEW__TFW_20260909-231654_TKL.md",
+    "workspace/2026/TFW_20260909-231654_TKL/journal/20260913-223311__dispatch__8019.md"
+  ]
+}

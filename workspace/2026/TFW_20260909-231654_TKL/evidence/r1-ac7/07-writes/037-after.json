@@ -1,0 +1,22 @@
+{
+  "observed_at": "2026-09-13T18:25:21.396743+00:00",
+  "sequence": 37,
+  "path": ".tfw/templates/knowledge/record.md",
+  "actual": {
+    "bytes": 2548,
+    "sha256": "d0615f7582e15280f4c69ef0350294daf9e1b32b5de0d2fba964dc9a4db0d6b0",
+    "raw_git_blob": "2f879c27b40e469ff71188de9798d18884df6d95",
+    "eol": {
+      "CRLF": 0,
+      "LF": 41,
+      "CR": 0
+    }
+  },
+  "equals_intended": true,
+  "immediate_source_authority": {
+    "source_identities": 122,
+    "authority_identities": 10,
+    "authority_batch_sha256": "0b47d6e18c8d425ce491f75f3d12311875fb9a88f9eca636e1d35fa2c050609e",
+    "attachment_sha256": "c3b0580ad155738e2db99b38577df3477fddafa0078fb5f4d256ce94d87b41cb"
+  }
+}

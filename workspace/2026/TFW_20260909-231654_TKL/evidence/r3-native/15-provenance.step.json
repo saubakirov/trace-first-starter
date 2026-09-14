@@ -1,0 +1,105 @@
+{
+  "step": "provenance",
+  "started_at": "2026-09-13T22:31:26.104054+00:00",
+  "argv": [
+    "workspace/2026/TFW_20260909-231654_TKL/evidence/r3-native/native.py",
+    "provenance"
+  ],
+  "subprocesses": [
+    {
+      "argv": [
+        "git",
+        "-c",
+        "core.longpaths=true",
+        "-c",
+        "core.autocrlf=false",
+        "rev-parse",
+        "HEAD"
+      ],
+      "cwd": "C:\\Users\\c0rpa\\.codex\\worktrees\\f3f3\\steps-framework",
+      "start": "2026-09-13T22:31:26.131959+00:00",
+      "stdout": "provenance-1.stdout.raw",
+      "stderr": "provenance-1.stderr.raw",
+      "end": "2026-09-13T22:31:26.225992+00:00",
+      "exit": 0
+    },
+    {
+      "argv": [
+        "git",
+        "-c",
+        "core.longpaths=true",
+        "-c",
+        "core.autocrlf=false",
+        "rev-parse",
+        "HEAD"
+      ],
+      "cwd": "C:\\Users\\c0rpa\\.codex\\worktrees\\f3f3\\steps-framework",
+      "start": "2026-09-13T22:31:26.249204+00:00",
+      "stdout": "provenance-2.stdout.raw",
+      "stderr": "provenance-2.stderr.raw",
+      "end": "2026-09-13T22:31:26.343598+00:00",
+      "exit": 0
+    },
+    {
+      "argv": [
+        "git",
+        "-c",
+        "core.longpaths=true",
+        "-c",
+        "core.autocrlf=false",
+        "rev-parse",
+        "HEAD"
+      ],
+      "cwd": "C:\\Users\\c0rpa\\.codex\\worktrees\\f3f3\\steps-framework",
+      "start": "2026-09-13T22:31:39.368116+00:00",
+      "stdout": "provenance-3.stdout.raw",
+      "stderr": "provenance-3.stderr.raw",
+      "end": "2026-09-13T22:31:39.436031+00:00",
+      "exit": 0
+    }
+  ],
+  "writes": [
+    {
+      "path": ".tfw/project_config.yaml",
+      "purpose": "single installed_from provenance scalar",
+      "before": {
+        "bytes": 4420,
+        "sha256": "65a41337829a5c8f9612a83db58510c16c21157493f4515d4b6d6d54f88628b1",
+        "raw_git_blob": "fb7b9098e2b5acff57172d90a69e87339c473b19",
+        "eol": {
+          "CRLF": 0,
+          "LF": 123,
+          "CR": 0
+        }
+      },
+      "after": {
+        "bytes": 4420,
+        "sha256": "c30f7ef8eb0e3132a3e6b1b3d4088b07bd3ea2bf2db9cc3b974771118a1abcc1",
+        "raw_git_blob": "3305bc869e217fc6b2d1e8aec564a14ad2d6fb45",
+        "eol": {
+          "CRLF": 0,
+          "LF": 123,
+          "CR": 0
+        }
+      },
+      "at": "2026-09-13T22:31:39.466515+00:00"
+    }
+  ],
+  "result": {
+    "path": ".tfw/project_config.yaml",
+    "identity": {
+      "bytes": 4420,
+      "sha256": "c30f7ef8eb0e3132a3e6b1b3d4088b07bd3ea2bf2db9cc3b974771118a1abcc1",
+      "raw_git_blob": "3305bc869e217fc6b2d1e8aec564a14ad2d6fb45",
+      "eol": {
+        "CRLF": 0,
+        "LF": 123,
+        "CR": 0
+      }
+    },
+    "unrelated_preserved": true,
+    "physical_writes": 1
+  },
+  "exit": 0,
+  "completed_at": "2026-09-13T22:31:52.820339+00:00"
+}

@@ -1,0 +1,163 @@
+{
+  "recorded_at": "2026-09-13T22:39:20.454743+00:00",
+  "attempt_outcome": "STOPPED after all affected observations; not a SUCCESS native attempt",
+  "stop": "21-original-failure.json",
+  "candidate": "a99ba6cd756a7db444f217aef4e5a0eb83faee51",
+  "pin": "22c75aae5ce1a0a6aed5a7b867277a304dd3ee6e",
+  "start": "2026-09-13T22:13:37Z",
+  "deadline": "2026-09-13T22:43:37Z",
+  "deductions_seconds": 0,
+  "no_retry": true,
+  "actual_pre_stop_observation": {
+    "outcome": "SUCCESS for the bounded affected-native application and one unchanged repeat",
+    "candidate": "a99ba6cd756a7db444f217aef4e5a0eb83faee51",
+    "pin": "22c75aae5ce1a0a6aed5a7b867277a304dd3ee6e",
+    "start": "2026-09-13T22:13:37Z",
+    "deadline": "2026-09-13T22:43:37+00:00",
+    "sealed_at": "2026-09-13T22:33:09.547541+00:00",
+    "new_target_effects": 4,
+    "repeat": {
+      "started_at": "2026-09-13T22:32:19.328420+00:00",
+      "completed_at": "2026-09-13T22:32:45.719800+00:00",
+      "result": "UNCHANGED",
+      "files": 7281,
+      "physical_receiver_writes": 0,
+      "completed_repeat_count": 1,
+      "new_receipt_or_build": false,
+      "same_source_authority_intent_effect_provenance_receipt": true
+    },
+    "receiver": "C:\\Users\\c0rpa\\AppData\\Local\\Temp\\TFW_TKL_NATIVE_01a09a0c\\self-adoption-r3",
+    "files": 7281,
+    "source_staging_files": 3036,
+    "derived_files": 1924,
+    "repository_receipt_files": 2321,
+    "no_old_receiver_access": true,
+    "no_retry": true,
+    "deductions_seconds": 0,
+    "next": "Commit and return within the same native bound, then no further receiver actions."
+  },
+  "actual_phase_records": [
+    {
+      "path": "06-prepare.step.json",
+      "step": "prepare",
+      "started_at": "2026-09-13T22:21:43.001440+00:00",
+      "completed_at": "2026-09-13T22:22:41.706113+00:00",
+      "exit": 0,
+      "recorded_receiver_file_writes": 2318,
+      "subprocesses": 4
+    },
+    {
+      "path": "07-stage.step.json",
+      "step": "stage",
+      "started_at": "2026-09-13T22:23:16.424429+00:00",
+      "completed_at": "2026-09-13T22:24:05.613574+00:00",
+      "exit": 0,
+      "recorded_receiver_file_writes": 3036,
+      "subprocesses": 9
+    },
+    {
+      "path": "08-preserve.step.json",
+      "step": "preserve",
+      "started_at": "2026-09-13T22:24:05.860130+00:00",
+      "completed_at": "2026-09-13T22:24:22.060961+00:00",
+      "exit": 0,
+      "recorded_receiver_file_writes": 3,
+      "subprocesses": 2
+    },
+    {
+      "path": "09-effect26.step.json",
+      "step": "effect26",
+      "started_at": "2026-09-13T22:24:48.852770+00:00",
+      "completed_at": "2026-09-13T22:25:05.231608+00:00",
+      "exit": 0,
+      "recorded_receiver_file_writes": 1,
+      "subprocesses": 3
+    },
+    {
+      "path": "10-effect55.step.json",
+      "step": "effect55",
+      "started_at": "2026-09-13T22:25:05.487350+00:00",
+      "completed_at": "2026-09-13T22:25:21.889282+00:00",
+      "exit": 0,
+      "recorded_receiver_file_writes": 1,
+      "subprocesses": 3
+    },
+    {
+      "path": "11-effect57.step.json",
+      "step": "effect57",
+      "started_at": "2026-09-13T22:25:22.106245+00:00",
+      "completed_at": "2026-09-13T22:25:38.518225+00:00",
+      "exit": 0,
+      "recorded_receiver_file_writes": 1,
+      "subprocesses": 3
+    },
+    {
+      "path": "12-check.step.json",
+      "step": "check",
+      "started_at": "2026-09-13T22:25:38.802362+00:00",
+      "completed_at": "2026-09-13T22:25:54.896398+00:00",
+      "exit": 0,
+      "recorded_receiver_file_writes": 0,
+      "subprocesses": 2
+    },
+    {
+      "path": "13-build.step.json",
+      "step": "build",
+      "started_at": "2026-09-13T22:26:25.811253+00:00",
+      "completed_at": "2026-09-13T22:30:28.620209+00:00",
+      "exit": 0,
+      "recorded_receiver_file_writes": 0,
+      "subprocesses": 2
+    },
+    {
+      "path": "14-output.step.json",
+      "step": "output",
+      "started_at": "2026-09-13T22:31:13.317442+00:00",
+      "completed_at": "2026-09-13T22:31:25.905644+00:00",
+      "exit": 0,
+      "recorded_receiver_file_writes": 0,
+      "subprocesses": 1
+    },
+    {
+      "path": "15-provenance.step.json",
+      "step": "provenance",
+      "started_at": "2026-09-13T22:31:26.104054+00:00",
+      "completed_at": "2026-09-13T22:31:52.820339+00:00",
+      "exit": 0,
+      "recorded_receiver_file_writes": 1,
+      "subprocesses": 3
+    },
+    {
+      "path": "16-receipt.step.json",
+      "step": "receipt",
+      "started_at": "2026-09-13T22:31:53.119617+00:00",
+      "completed_at": "2026-09-13T22:32:19.159780+00:00",
+      "exit": 0,
+      "recorded_receiver_file_writes": 1,
+      "subprocesses": 2
+    },
+    {
+      "path": "17-repeat.step.json",
+      "step": "repeat",
+      "started_at": "2026-09-13T22:32:19.328420+00:00",
+      "completed_at": "2026-09-13T22:32:45.737993+00:00",
+      "exit": 0,
+      "recorded_receiver_file_writes": 0,
+      "subprocesses": 3
+    },
+    {
+      "path": "18-seal.step.json",
+      "step": "seal",
+      "started_at": "2026-09-13T22:32:45.959727+00:00",
+      "completed_at": "2026-09-13T22:33:09.559099+00:00",
+      "exit": 0,
+      "recorded_receiver_file_writes": 0,
+      "subprocesses": 1
+    }
+  ],
+  "all_observed_phase_exits_zero": true,
+  "actual_phase_count": 13,
+  "phase_count14_assertion_was_wrong": true,
+  "new_receiver_access_in_stop_seal": false,
+  "independent_sufficiency": "Coordinator and same Reviewer decide the significance of actual4effects/build/receipt/repeat plus this late bookkeeping failure; no self-acceptance or silent waiver."
+}

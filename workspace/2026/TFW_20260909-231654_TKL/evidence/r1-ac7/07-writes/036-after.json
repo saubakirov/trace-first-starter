@@ -1,0 +1,22 @@
+{
+  "observed_at": "2026-09-13T18:25:19.574250+00:00",
+  "sequence": 36,
+  "path": ".tfw/templates/knowledge/handover.md",
+  "actual": {
+    "bytes": 1358,
+    "sha256": "8fc00b42a7b4b7587b0c2d39b38584bea4d205379cadfa57aa74ed63b450d62b",
+    "raw_git_blob": "8a0d684b96c0aa24dd02b9fa9452ec88b9564bb6",
+    "eol": {
+      "CRLF": 0,
+      "LF": 20,
+      "CR": 0
+    }
+  },
+  "equals_intended": true,
+  "immediate_source_authority": {
+    "source_identities": 122,
+    "authority_identities": 10,
+    "authority_batch_sha256": "0b47d6e18c8d425ce491f75f3d12311875fb9a88f9eca636e1d35fa2c050609e",
+    "attachment_sha256": "c3b0580ad155738e2db99b38577df3477fddafa0078fb5f4d256ce94d87b41cb"
+  }
+}

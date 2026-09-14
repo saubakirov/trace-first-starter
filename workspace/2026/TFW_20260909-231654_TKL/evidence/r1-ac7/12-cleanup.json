@@ -1,0 +1,8 @@
+{
+  "observed_at": "2026-09-13T18:36:35.648040+00:00",
+  "source_staging_retained": "C:\\Users\\c0rpa\\AppData\\Local\\Temp\\TFW_TKL_NATIVE_01a09a0c\\self-adoption-r1\\.tfw\\.upstream",
+  "site_retained": "C:\\Users\\c0rpa\\AppData\\Local\\Temp\\TFW_TKL_NATIVE_01a09a0c\\self-adoption-r1\\site",
+  "receiver_retained": "C:\\Users\\c0rpa\\AppData\\Local\\Temp\\TFW_TKL_NATIVE_01a09a0c\\self-adoption-r1",
+  "reason": "Isolated evidence custody for the same independent Reviewer; retained paths disclosed, no unsafe cleanup or project deletion.",
+  "source_and_site_are_not_published": true
+}

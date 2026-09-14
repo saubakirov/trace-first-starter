@@ -1,0 +1,41 @@
+{
+  "recorded_at": "2026-09-13T22:57:01.022328+00:00",
+  "authority": {
+    "LEAD_commit": "accdb3378fe5fd42df282ba037c4d1a285fb9c29",
+    "LEAD_event": "../../journal/20260914-034547__dispatch__d3c8.md",
+    "LEAD_event_sha256": "1283069a984cdcc1bfe7d2f845606f4353256e35f5bf6abe4fd8116f7eaf4088",
+    "Coordinator_dispatch": "43a55292579e4ad9ec37866926a78a8bae036ef3",
+    "Coordinator_event": "../../journal/20260914-034741__dispatch__f00f.md"
+  },
+  "documentary_intake_started_at": "2026-09-13T22:50:02.777402+00:00",
+  "observed_index": {
+    "commit": "ea73981a0dafa1d8396e48f764cc5220946a6444",
+    "path": "../coordinator-r3-stop/observed-index.json",
+    "sha256": "f91dbad16fbb28ccc1b74ab00d5e20a3cc7abd4b74a22930cb68fd460046b501"
+  },
+  "raw_manifest_sha256": "93e7f6b79c70e40bf9545788641044e873082c6ddc7f9f980cf5b1bf9eb4ddb8",
+  "late_raw_commit": {
+    "commit": "fc7497279ef3f70e2fcae5bb342e605a4cc7673e",
+    "parent": "22c75aae5ce1a0a6aed5a7b867277a304dd3ee6e",
+    "started_at": "2026-09-13T22:51:10.418723+00:00",
+    "completed_at": "2026-09-13T22:51:11.876309+00:00",
+    "exact_paths": 122,
+    "physical_rawGit_index_match_Coordinator": true,
+    "committed_raw_blobs_match": true,
+    "no_edit_normalization_regeneration_restage_from_other_source": true,
+    "no_native_validator_or_raw_diffcheck_repeated": true
+  },
+  "authority_merge": {
+    "commit": "bc03aa784f360631491fdd169fd4a45284fbe378",
+    "parents": [
+      "fc7497279ef3f70e2fcae5bb342e605a4cc7673e",
+      "43a55292579e4ad9ec37866926a78a8bae036ef3"
+    ],
+    "started_at": "2026-09-13T22:51:47.084426+00:00",
+    "completed_at": "2026-09-13T22:51:47.532581+00:00",
+    "Coordinator_only_TRACE_paths": 5,
+    "conflicts": false
+  },
+  "native_status_not_cured": "STOPPED24/24; late commit explicitly outside the original window, not a replacement native epoch",
+  "receiver_access": false
+}

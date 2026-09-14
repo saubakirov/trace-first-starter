@@ -71,7 +71,9 @@ to report, not a basis for guessing which value wins.
 
 ### knowledge
 
-No inline copies. Knowledge workflows read `tfw.knowledge` directly from project config.
+Retired live settings: `tfw.knowledge.interval`, `gate_mode`, `max_facts_per_topic`,
+`max_topic_files` and obsolete inventory limits. The pinned `migrations/knowledge-lifecycle.md`
+owns preservation and removal; do not sync them into current workflows or recreate a gate.
 
 ### review
 

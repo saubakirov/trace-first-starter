@@ -1,0 +1,201 @@
+{
+  "observed_at": "2026-09-14T00:07:29.547858+00:00",
+  "candidate": "a6c48949c2cec3443c914fb57a74be6dcd66d274",
+  "site_dir": "E:\\TEMP\\TFW_TKL_CAPTURE_a6c48949_cfzs4axh\\site",
+  "entry": "knowledge-index/index.html",
+  "actual_added_rows": [
+    {
+      "text": "TFW_20260909-231654_TKL Team knowledge lifecycle RF ; independent REVIEW rev4 ; EV Retains the stable knowledge entry and legacy meaning; replaces global bookkeeping with producing-role handovers, selected qualification, independent records and current-use relation checks. Owner architecture selection and implementation acceptance remain separate, with bounded native evidence and its recorded limits.",
+      "links": [
+        {
+          "href": "../tasks/2026/TFW_20260909-231654_TKL/HL-TFW_20260909-231654_TKL/",
+          "label": "TFW_20260909-231654_TKL"
+        },
+        {
+          "href": "../tasks/2026/TFW_20260909-231654_TKL/RF__TFW_20260909-231654_TKL/",
+          "label": "RF"
+        },
+        {
+          "href": "../tasks/2026/TFW_20260909-231654_TKL/REVIEW__TFW_20260909-231654_TKL__rev4/",
+          "label": "independent REVIEW rev4"
+        },
+        {
+          "href": "../tasks/2026/TFW_20260909-231654_TKL/evidence/EV__TFW_20260909-231654_TKL/",
+          "label": "EV"
+        },
+        {
+          "href": "../knowledge/records/TKL-20260913-01/",
+          "label": "Owner architecture selection"
+        }
+      ]
+    },
+    {
+      "text": "Global pending/digest Knowledge Gate, maintained fact/record counts and inventory limits, newly processed markers and fresh knowledge-state scaffold Retired; existing state, source markers and legacy meaning remain inert history 2026-09-14; TKL Selected material obligations at handover, current use and existing PTTC close; source-bound qualification and independent records. Adoption preserves custom settings and historical bytes and requires the applicable SLC prerequisite to be completed; unresolved input refuses cutover. Scoped owner decision ; knowledge lifecycle migration ; independent REVIEW rev4",
+      "links": [
+        {
+          "href": "../knowledge/records/TKL-20260913-01/",
+          "label": "Scoped owner decision"
+        },
+        {
+          "href": ".tfw/migrations/knowledge-lifecycle.md",
+          "label": "knowledge lifecycle migration"
+        },
+        {
+          "href": "../tasks/2026/TFW_20260909-231654_TKL/REVIEW__TFW_20260909-231654_TKL__rev4/",
+          "label": "independent REVIEW rev4"
+        }
+      ]
+    }
+  ],
+  "resolved_links": [
+    {
+      "href": "../tasks/2026/TFW_20260909-231654_TKL/HL-TFW_20260909-231654_TKL/",
+      "label": "TFW_20260909-231654_TKL",
+      "destination": "tasks/2026/TFW_20260909-231654_TKL/HL-TFW_20260909-231654_TKL/index.html",
+      "exists": true,
+      "fragment": "",
+      "bytes": 118510,
+      "sha256": "abe5752e55c23ced56cd57fa34decd269cd38e9ee812f1a049aebd54838b51ea",
+      "fragment_exists": true
+    },
+    {
+      "href": "../tasks/2026/TFW_20260909-231654_TKL/RF__TFW_20260909-231654_TKL/",
+      "label": "RF",
+      "destination": "tasks/2026/TFW_20260909-231654_TKL/RF__TFW_20260909-231654_TKL/index.html",
+      "exists": true,
+      "fragment": "",
+      "bytes": 128814,
+      "sha256": "630fab9eda820551eab455fee133c4c46a02371eb97bfecffefbeb6938b1a424",
+      "fragment_exists": true
+    },
+    {
+      "href": "../tasks/2026/TFW_20260909-231654_TKL/REVIEW__TFW_20260909-231654_TKL__rev4/",
+      "label": "independent REVIEW rev4",
+      "destination": "tasks/2026/TFW_20260909-231654_TKL/REVIEW__TFW_20260909-231654_TKL__rev4/index.html",
+      "exists": true,
+      "fragment": "",
+      "bytes": 71759,
+      "sha256": "8a1fb6bdcdcfdca98e99b14d76d2ac4a75585eafaa3b3a2b9ba6282cf19c492a",
+      "fragment_exists": true
+    },
+    {
+      "href": "../tasks/2026/TFW_20260909-231654_TKL/evidence/EV__TFW_20260909-231654_TKL/",
+      "label": "EV",
+      "destination": "tasks/2026/TFW_20260909-231654_TKL/evidence/EV__TFW_20260909-231654_TKL/index.html",
+      "exists": true,
+      "fragment": "",
+      "bytes": 103620,
+      "sha256": "c981924d1b172741a5b9ac261fefb7d12d2394c78b88fb7ebe7f05038785b990",
+      "fragment_exists": true
+    },
+    {
+      "href": "../knowledge/records/TKL-20260913-01/",
+      "label": "Owner architecture selection",
+      "destination": "knowledge/records/TKL-20260913-01/index.html",
+      "exists": true,
+      "fragment": "",
+      "bytes": 51686,
+      "sha256": "08cc642b87b4fd35d4d36070486fe1420946392e2e164dc2966c10959efe6fea",
+      "fragment_exists": true
+    },
+    {
+      "href": "../knowledge/records/TKL-20260913-01/",
+      "label": "Scoped owner decision",
+      "destination": "knowledge/records/TKL-20260913-01/index.html",
+      "exists": true,
+      "fragment": "",
+      "bytes": 51686,
+      "sha256": "08cc642b87b4fd35d4d36070486fe1420946392e2e164dc2966c10959efe6fea",
+      "fragment_exists": true
+    },
+    {
+      "href": ".tfw/migrations/knowledge-lifecycle.md",
+      "label": "knowledge lifecycle migration",
+      "destination": "knowledge-index/.tfw/migrations/knowledge-lifecycle.md/index.html",
+      "exists": false,
+      "fragment": ""
+    },
+    {
+      "href": "../tasks/2026/TFW_20260909-231654_TKL/REVIEW__TFW_20260909-231654_TKL__rev4/",
+      "label": "independent REVIEW rev4",
+      "destination": "tasks/2026/TFW_20260909-231654_TKL/REVIEW__TFW_20260909-231654_TKL__rev4/index.html",
+      "exists": true,
+      "fragment": "",
+      "bytes": 71759,
+      "sha256": "8a1fb6bdcdcfdca98e99b14d76d2ac4a75585eafaa3b3a2b9ba6282cf19c492a",
+      "fragment_exists": true
+    }
+  ],
+  "opened_pages": [
+    {
+      "path": "knowledge-index/index.html",
+      "bytes": 242812,
+      "sha256": "032b8735da3b4ca7c87cebd39ff386c2e67dbe9bbe69cc7827d2e184ddfe734e",
+      "observed_body_snippets": [
+        "s, don't copy their contents. Current knowledge use \u00b6 Governing instructions and the approved task contract retain authority. This entry preserves the architecture/reference map, legacy D/topic meaning and important source routes. New qualified records are under knowledge/records/ ; no index se",
+        " the sync engine Pattern B ( D17 ) broke agent enforcement of scope budgets \u2014 agents stopped reading indirection. RESEARCH-12 warned (R3/C1); user override proved costly. research.md Limits table (already Pattern A) = working proof. External research: inline = only enforcement for AI prompts TF",
+        "ndovers, selected human/technical qualification and current-use relation checks; new independent records retain legacy D/topic sources. The global pending/digest gate is retired, and existing state is inert history; ordinary Full operation needs no receiver runtime KNOWLEDGE.md , knowledge/ , k",
+        " TKL Selected material obligations at handover, current use and existing PTTC close; source-bound qualification and independent records. Adoption preserves custom settings and historical bytes and requires the applicable SLC prerequisite to be completed; unresolved input refuses cutover. Scoped",
+        "ndependent records and current-use relation checks. Owner architecture selection and implementation acceptance remain separate, with bounded native evidence and its recorded limits. 3. Legacy & Deprecation \u00b6 Item Status When Replacement Source Global pending/digest Knowledge Gate, maintained fa"
+      ]
+    },
+    {
+      "path": "knowledge/records/TKL-20260913-01/index.html",
+      "bytes": 51686,
+      "sha256": "08cc642b87b4fd35d4d36070486fe1420946392e2e164dc2966c10959efe6fea",
+      "observed_body_snippets": [
+        "e actual owner mixed-C3 architecture selection from TKL's initial TS/VALUE decision; no implementation/release acceptance Kind technical-reference decision Statement Retain legacy topic/D meaning and the stable KNOWLEDGE entry; use existing role/stage handovers and independent qualified records",
+        "advantage, universal capture/retrieval or G8 reliability is established. Disposition accepted architecture selection; implementation and release acceptance are separate later acts Source Approval commit 2794cbdb40f6c4f3a7d4bce1f8d4eb949d9e6913 , owner decision , HL decision context ; exact TS b",
+        "ng PTTC close. Applicability Full TFW, self receiver and portable adoption under the approved TKL TS; Light, Assisted, OTR and external publication are excluded. Grounds and uncertainty Owner selected mixed C3 after two research iterations and exact cost. Separate paths reduce overlapping publi",
+        "opic/D meaning and the stable KNOWLEDGE entry; use existing role/stage handovers and independent qualified records for new knowledge/technical decisions; replace the global planning count with material obligations at handover, use and existing PTTC close. Applicability Full TFW, self receiver a"
+      ]
+    },
+    {
+      "path": "tasks/2026/TFW_20260909-231654_TKL/HL-TFW_20260909-231654_TKL/index.html",
+      "bytes": 118510,
+      "sha256": "abe5752e55c23ced56cd57fa34decd269cd38e9ee812f1a049aebd54838b51ea",
+      "observed_body_snippets": [
+        " Codex in the Coordinator role Title : Team Knowledge Lifecycle Abbreviation : TKL \u2014 approved with the title on 2026-09-09 Status : \ud83d\udfe1 TS_DRAFT \u2014 two research iterations complete; Phase A architecture and exact TS/VALUE await the owner Contract : \ud83d\udd12 FROZEN \u2014 approved by saubakirov 2026-09-12 Froz",
+        "k cannot silently omit its knowledge handover, while unrelated planning is no longer stopped by a count of changed historical sections. Parallel teams preserve sources, distinguish accepted knowledge from observations, and find what currently applies without maintaining shared bookkeeping for i",
+        "ere falsely included when a disposable calculation omitted the legacy \u00a7 prefix; PTTC independently reported the same trap Correct source selection reproduces their saved digests. A calculation in this session also overcounted TFW-42 until paths were sorted as POSIX paths rather than Windows str"
+      ]
+    },
+    {
+      "path": "tasks/2026/TFW_20260909-231654_TKL/REVIEW__TFW_20260909-231654_TKL__rev4/index.html",
+      "bytes": 71759,
+      "sha256": "8a1fb6bdcdcfdca98e99b14d76d2ac4a75585eafaa3b3a2b9ba6282cf19c492a",
+      "observed_body_snippets": [
+        "cc0-9916-fd6d04c91481 Selected LEAD: 01a08161-79d3-7472-a01e-8cdc957ee951 Verdict: \u2705 APPROVE Predecessor: REVIEW revision 3 Governing return: cumulative R3 RF commit 3971b80cb6422e358c613a52dde3a2d0cca257ab Review input: 869efcd9feb9d59b1e91235206b35fdc3214d911 Late raw custody: fc7497279ef3f70",
+        "ndent final controls; it does not change the encompassing native attempt's permanent STOPPED 24/24 outcome, convert late documentary custody into an in-bound commit, reconstruct the missing invocation-23 stdout or claim any release/publication effect. 1. Map \u00b6 R3 used the unchanged approved Can",
+        "L : Team Knowledge Lifecycle \u2014 R3 revision 4 \u00b6 Date: 2026-09-14 Author: robert, same independent Reviewer task 01a09aaf-9af3-7d13-8ef8-59d3bc84d5e7 , for saubakirov Direct parent: sole Coordinator 01a09974-6716-7cc0-9916-fd6d04c91481 Selected LEAD: 01a08161-79d3-7472-a01e-8cdc957ee951 Verdict: ",
+        "ations 21/23 fail; invocation 24 returns within clock; no post-stop receiver access; late custody remains late V7 Source/output applicability VERIFIED with limit exact changed source text/AST guard; one 1,924-file build; exactly two affected current pages opened; no final-report render claim V8",
+        "nal controls; it does not change the encompassing native attempt's permanent STOPPED 24/24 outcome, convert late documentary custody into an in-bound commit, reconstruct the missing invocation-23 stdout or claim any release/publication effect. 1. Map \u00b6 R3 used the unchanged approved Candidate a"
+      ]
+    },
+    {
+      "path": "tasks/2026/TFW_20260909-231654_TKL/RF__TFW_20260909-231654_TKL/index.html",
+      "bytes": 128814,
+      "sha256": "630fab9eda820551eab455fee133c4c46a02371eb97bfecffefbeb6938b1a424",
+      "observed_body_snippets": [
+        "e; overall acceptance BLOCKED Parent HL : Frozen Team Knowledge Lifecycle TS : Exact approved Phase A TS , blob f69fd4099a21a07ae2d17e6b5108b04ac94f107e 1. What Was Done \u00b6 Implemented the approved mixed C3 lifecycle on the complete literal selector: producing-role material handover, selected qu",
+        "ights (Execution) 9. Diagrams Material handover at this return Correction round R3 \u2014 stopped native observations and late documentary custody, 2026-09-14 1. What Was Done Actual Value-Bearing Accounting New and modified files 2. Key Decisions 3. Acceptance Criteria 4. Verification 5. Evidence 6",
+        "complete literal selector: producing-role material handover, selected qualification, independently addressable records, incoming-relation/current-use reading, finite close/retry and compatible adoption. Existing legacy D/topic/source meaning remains; the live pending/digest gate and new-state s",
+        "NB/RF/EV; status and one new event Separate post-native TRACE, both failures/24tail, late custody, complete inventory and actual RF return Actual receiver site and source staging 1924 DERIVED site files and3036 staged Candidate source files, retained with complete maps; no deployment 2. Key Dec",
+        "a seal ended22:33:09.547541Z. Actual native bound was22:13:37Z\u201322:43:37Z,0deductions,24/24underlyingcalls. The producer reported completed direct return22:40:54.492Z,1637.492seconds; provider whole-turn completion independently bounds it at22:41:13Z,1656seconds. Both failures occurred before th"
+      ]
+    },
+    {
+      "path": "tasks/2026/TFW_20260909-231654_TKL/evidence/EV__TFW_20260909-231654_TKL/index.html",
+      "bytes": 103620,
+      "sha256": "c981924d1b172741a5b9ac261fefb7d12d2394c78b88fb7ebe7f05038785b990",
+      "observed_body_snippets": [
+        ", for saubakirov Task : TFW_20260909-231654_TKL ; sole phase at task root TS : Exact approved TS , blob f69fd4099a21a07ae2d17e6b5108b04ac94f107e Epoch : Final Executor evidence return under 5ebc; complete report, overall acceptance BLOCKED Original complete initial rows/report at 1f04b67224058b",
+        "vironment Evidence Verdict and limits Attachments R2 cumulative corrected evidence \u2014 stopped affected-native observation Environment Evidence Verdict and limits Attachments R3 cumulative evidence \u2014 native STOP and explicitly late custody Environment and epochs Evidence Verdict and limits Attach",
+        "d/time/streams retained Evidence \u00b6 These are bounded Executor evidence statuses, not independent acceptance. New actual AC7 and AC10 sources originate from the named Coordinator/Researcher/Reviewer and were ingested under final dispatch 5ebc . Source object selection is exact; no whole Coordina",
+        "e Verdict and limits Attachments R3 cumulative evidence \u2014 native STOP and explicitly late custody Environment and epochs Evidence Verdict and limits Attachments EV \u2014 TFW_20260909-231654_TKL / Phase A: Complete team knowledge lifecycle \u00b6 Date : 2026-09-13 Author : robert, Executor 01a09a0c-c9e2-",
+        "re not accessed. One native build, no deployment/runtime installation. Native STOPPED24/24; late122-path custody at fc7497279ef3f70e2fcae5bb342e605a4cc7673e and authority mergebc03aa784f360631491fdd169fd4a45284fbe378 are explicitly post-native. This documentary stage reads task evidence only an"
+      ]
+    }
+  ],
+  "observation": "Read actual generated HTML bytes and parsed the two actual table rows; resolved and opened each new destination. This is compiled-file observation, not a browser/native/owner-comprehension trial."
+}

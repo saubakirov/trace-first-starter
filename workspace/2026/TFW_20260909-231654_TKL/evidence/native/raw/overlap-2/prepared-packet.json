@@ -1,0 +1,168 @@
+{
+  "preparation_started": "2026-09-13T11:57:25.306000+00:00",
+  "prepared_at": "2026-09-13T11:58:40.642393+00:00",
+  "candidate": "27cdb701b91c5b45b9f54b3e98c9ad67635b3e30",
+  "base": "e00ca51d05f4e451441cb9fc267579a7f9e4d4ce",
+  "ruling": "f70037d94c975fe889eaab9bf17ee18e26608137",
+  "first_epoch": "Preserved unchanged in sibling concurrent-repo/executor/coordinator/capture/recovery; no first originals copied into fresh source/record outputs.",
+  "holders": {
+    "executor": {
+      "worktree": "C:/Users/c0rpa/AppData/Local/Temp/TFW_TKL_NATIVE_01a09a0c/overlap-2/executor",
+      "branch": "codex/tkl-native-executor-2",
+      "head": "e00ca51d05f4e451441cb9fc267579a7f9e4d4ce",
+      "permitted_two_paths": [
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/executor-handover-2.md",
+        "knowledge/records/TKL-NATIVE-EXEC-2.md"
+      ],
+      "clean": true,
+      "all_four_outputs_absent": true,
+      "original_22_input_hashes_equal": true
+    },
+    "coordinator": {
+      "worktree": "C:/Users/c0rpa/AppData/Local/Temp/TFW_TKL_NATIVE_01a09a0c/overlap-2/coordinator",
+      "branch": "codex/tkl-native-coordinator-2",
+      "head": "e00ca51d05f4e451441cb9fc267579a7f9e4d4ce",
+      "permitted_two_paths": [
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/coordinator-source-2.md",
+        "knowledge/records/TKL-NATIVE-COORD-2.md"
+      ],
+      "clean": true,
+      "all_four_outputs_absent": true,
+      "original_22_input_hashes_equal": true
+    }
+  },
+  "commands": [
+    {
+      "argv": [
+        "git",
+        "-c",
+        "core.longpaths=true",
+        "init"
+      ],
+      "cwd": "C:\\Users\\c0rpa\\AppData\\Local\\Temp\\TFW_TKL_NATIVE_01a09a0c\\overlap-2\\concurrent-repo",
+      "started": "2026-09-13T11:58:32.664578+00:00",
+      "finished": "2026-09-13T11:58:32.732686+00:00",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "git",
+        "-c",
+        "core.longpaths=true",
+        "fetch",
+        "--depth=2",
+        "C:\\Users\\c0rpa\\AppData\\Local\\Temp\\TFW_TKL_NATIVE_01a09a0c\\concurrent-repo",
+        "e00ca51d05f4e451441cb9fc267579a7f9e4d4ce"
+      ],
+      "cwd": "C:\\Users\\c0rpa\\AppData\\Local\\Temp\\TFW_TKL_NATIVE_01a09a0c\\overlap-2\\concurrent-repo",
+      "started": "2026-09-13T11:58:32.732718+00:00",
+      "finished": "2026-09-13T11:58:33.812779+00:00",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "git",
+        "-c",
+        "core.longpaths=true",
+        "checkout",
+        "--detach",
+        "e00ca51d05f4e451441cb9fc267579a7f9e4d4ce"
+      ],
+      "cwd": "C:\\Users\\c0rpa\\AppData\\Local\\Temp\\TFW_TKL_NATIVE_01a09a0c\\overlap-2\\concurrent-repo",
+      "started": "2026-09-13T11:58:33.812793+00:00",
+      "finished": "2026-09-13T11:58:35.658652+00:00",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "git",
+        "-c",
+        "core.longpaths=true",
+        "worktree",
+        "add",
+        "-b",
+        "codex/tkl-native-executor-2",
+        "C:\\Users\\c0rpa\\AppData\\Local\\Temp\\TFW_TKL_NATIVE_01a09a0c\\overlap-2\\executor",
+        "e00ca51d05f4e451441cb9fc267579a7f9e4d4ce"
+      ],
+      "cwd": "C:\\Users\\c0rpa\\AppData\\Local\\Temp\\TFW_TKL_NATIVE_01a09a0c\\overlap-2\\concurrent-repo",
+      "started": "2026-09-13T11:58:35.659145+00:00",
+      "finished": "2026-09-13T11:58:37.553190+00:00",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "git",
+        "-c",
+        "core.longpaths=true",
+        "rev-parse",
+        "HEAD"
+      ],
+      "cwd": "C:\\Users\\c0rpa\\AppData\\Local\\Temp\\TFW_TKL_NATIVE_01a09a0c\\overlap-2\\executor",
+      "started": "2026-09-13T11:58:37.553202+00:00",
+      "finished": "2026-09-13T11:58:37.587224+00:00",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "git",
+        "-c",
+        "core.longpaths=true",
+        "status",
+        "--porcelain"
+      ],
+      "cwd": "C:\\Users\\c0rpa\\AppData\\Local\\Temp\\TFW_TKL_NATIVE_01a09a0c\\overlap-2\\executor",
+      "started": "2026-09-13T11:58:37.587238+00:00",
+      "finished": "2026-09-13T11:58:37.974039+00:00",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "git",
+        "-c",
+        "core.longpaths=true",
+        "worktree",
+        "add",
+        "-b",
+        "codex/tkl-native-coordinator-2",
+        "C:\\Users\\c0rpa\\AppData\\Local\\Temp\\TFW_TKL_NATIVE_01a09a0c\\overlap-2\\coordinator",
+        "e00ca51d05f4e451441cb9fc267579a7f9e4d4ce"
+      ],
+      "cwd": "C:\\Users\\c0rpa\\AppData\\Local\\Temp\\TFW_TKL_NATIVE_01a09a0c\\overlap-2\\concurrent-repo",
+      "started": "2026-09-13T11:58:38.139286+00:00",
+      "finished": "2026-09-13T11:58:39.928428+00:00",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "git",
+        "-c",
+        "core.longpaths=true",
+        "rev-parse",
+        "HEAD"
+      ],
+      "cwd": "C:\\Users\\c0rpa\\AppData\\Local\\Temp\\TFW_TKL_NATIVE_01a09a0c\\overlap-2\\coordinator",
+      "started": "2026-09-13T11:58:39.928441+00:00",
+      "finished": "2026-09-13T11:58:39.963479+00:00",
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "git",
+        "-c",
+        "core.longpaths=true",
+        "status",
+        "--porcelain"
+      ],
+      "cwd": "C:\\Users\\c0rpa\\AppData\\Local\\Temp\\TFW_TKL_NATIVE_01a09a0c\\overlap-2\\coordinator",
+      "started": "2026-09-13T11:58:39.963495+00:00",
+      "finished": "2026-09-13T11:58:40.523508+00:00",
+      "exit_code": 0
+    }
+  ],
+  "original_prepared_manifest_sha256": "ae25e7219db94200c3e2c110a98769da155a6460d4803947992b576f8096b47d",
+  "input_interpretation": "Same immutable 22-file e00 input package. Direct 6f91 Coordinator dispatch changes only fresh physical root, branch and assigned output names to the exact -2 paths here; the prior input documents remain byte-exact, not silently rewritten. All source, observed-only, independence and no-acceptance semantics remain.",
+  "barrier_received": false,
+  "source_or_record_written": false,
+  "limits": "Preparation <=15 active minutes, post-barrier <=15 active minutes excluding scheduler wait. Exactly one second attempt; no third attempt if no overlap. Actual intervals only, no artificial delay. Same existing native holders and source package. Each own original sealed before sibling visibility."
+}

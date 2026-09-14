@@ -1,0 +1,14 @@
+{
+  "argv": [
+    "E:\\TEMP\\pttc-phase-a-b9b5\\venv\\Scripts\\python.exe",
+    "C:\\Users\\c0rpa\\.codex\\worktrees\\f3f3\\steps-framework\\workspace\\2026\\TFW_20260909-231654_TKL\\evidence\\r3-preflight\\observer.py",
+    "preflight"
+  ],
+  "cwd": "C:\\Users\\c0rpa\\.codex\\worktrees\\f3f3\\steps-framework",
+  "started_at": "2026-09-13T21:51:22.055956+00:00",
+  "completed_at": "2026-09-13T21:51:23.289712+00:00",
+  "exit_code": 0,
+  "observer_sha256": "515fa7513171ba663f784982df23a994e3052370081381022cdf808fd0e5dd48",
+  "underlying_preflight_operation": 3,
+  "internal_subprocesses": "One observer process, whose three read-only git show calls bind existing input files. No receiver subprocess or access."
+}

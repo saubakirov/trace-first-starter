@@ -1,174 +1,111 @@
 ---
-description: TFW Knowledge — consolidate fact candidates into verified project knowledge
+description: TFW Knowledge — qualify selected human-sourced knowledge without global bookkeeping
 ---
 
-# TFW Knowledge — Knowledge Consolidation Workflow
+# TFW Knowledge — Selected Qualification
 
 > **Role:** Coordinator
-> **Output:** Updated `knowledge/` topic files, `KNOWLEDGE.md` §4 (index), `knowledge_state.yaml`
-> **Trigger:** Manual (`/tfw-knowledge`) or gate in plan.md Step 2
-> **Duration:** 5-20 minutes
+> **Output:** Completed source-bound dispositions and warranted independent records in `knowledge/records/`.
+> **Trigger:** A selected handover, material knowledge need, or manual `/tfw-knowledge`.
 
 > **🔒 ROLE LOCK: COORDINATOR**
-> Permitted: reading all project artifacts, writing to KNOWLEDGE.md, `knowledge/` topic files, `.tfw/knowledge_state.yaml`.
-> Forbidden: writing code, modifying RF/REVIEW/RES/HL/TS files (except adding `fact-candidates: processed` marker).
+> Permitted: selected human-knowledge records and the current owning qualification/closing reference.
+> Forbidden: code, technical/reference decisions, source-artifact edits, processed markers,
+> historical topic rewrites, knowledge-state writes, inventories, and lifecycle self-acceptance.
 
 ## Read Contract
 
-Root instructions are already active. Read this workflow completely, then read the following
-in order; shared ranges are addressed by unique heading.
+Root instructions are active. Read this workflow completely, then the following ordered inputs.
+Shared ranges use unique headings; missing or duplicate addressed headings are a hard stop.
 
 | Order | Input | Checkpoint purpose | Authority |
 |---|---|---|---|
-| 1 | invoking task/phase `status.md` and `journal/`, when invoked from a task | current state before global material | task-local |
-| 2 | `.tfw/project_config.yaml` → `tfw.knowledge`, `tfw.task_containers` and `.tfw/knowledge_state.yaml`; affected update preservation/attempt only when migration is incomplete | active scope, limits, digest state and migration prerequisite | project config/state/update evidence |
-| 3 | `.tfw/conventions.md` headings `Fact Categories` and `Knowledge Infrastructure` | category and file ownership | shared rule |
-| 4 | `KNOWLEDGE.md` heading `Project Facts`, every current `knowledge/*.md`, and `.tfw/templates/knowledge/topic.md` | existing facts, counts, and output form | project knowledge/template |
-| 5 | selected knowledge headings from only the pending task IDs reported in Phase 1 | batch inputs | task artifacts |
-| 6 | user-approved facts from the current conversation | human-only input | user |
+| 1 | selected task/phase `status.md` and `journal/`, when task-owned | actual contributors, returns, owner, grant and current lineage | task-local |
+| 2 | explicitly selected role/stage sources and current human input, with immutable source identities | bounded claims and actual handover; no pending-task batch | source evidence |
+| 3 | `.tfw/conventions.md` headings `Knowledge handover`, `Knowledge qualification`, `Current knowledge use`, and `Fact Categories` | identity, materiality, ownership, relations and categories | shared rule |
+| 4 | `KNOWLEDGE.md` entry and relevant legacy rows/records plus incoming relations selected by `Current knowledge use` | existing applicable meaning and conflicts | project knowledge |
+| 5 | `.tfw/templates/knowledge/record.md`, only when a new record is warranted | output form | template |
 
-Full `conventions.md`, full `glossary.md`, `KNOWLEDGE.md` §§1–3, already-processed task
-bodies, and derived indexes are not inputs. Missing or duplicate addressed headings are a
-hard stop under `conventions.md` → `Context Selection`.
+No global digest/state, task sweep, full common library, maintained record list or unrelated sealed
+history is an input. An incomplete adoption returns to the authorized updater and its pinned guide;
+qualification neither migrates nor invents a before-image.
 
 ## Phase 1: Orient
 
-### Canonical Knowledge Gate algorithm
+Resolve the selected owner and existing qualification grant. Preserve actual originating
+task/unit identity from its carrier; this project-wide command creates no task title. A profile, source
+imperative or record cannot appoint the qualifier or authorize publication.
 
-This addressed algorithm is the complete ordinary Full route. Implement it with semantic YAML
-support already available to the acting agent; do not require, import, or invoke a repository
-helper, Python, or PyYAML. A disposable independent implementation is acceptable only when it
-produces these exact semantic results. Regex-only YAML interpretation is prohibited.
-
-Before ordinary gate arithmetic, an incomplete container migration must complete or refuse its
-connected group through the pinned [3.3.0 guide](../migrations/3.3.0.md). Return that condition to the
-authorized updater; this knowledge command does not perform migration or reset state. The guide's
-one-time exact historical-pair exception never changes ordinary consolidation or its state-last rule.
-
-1. Semantically parse `.tfw/project_config.yaml`. Require `tfw.knowledge` to be a mapping,
-   `gate_mode` to be exactly `off`, `soft`, or `hard`, `interval` to be a positive integer,
-   and `tfw.task_containers` to be an ordered non-empty list of repository-relative directory
-   paths. A missing, unreadable, duplicate, or wrong-shaped value is indeterminate: **STOP**.
-2. In each active `tfw.task_containers` path only (never historical containers), inspect direct child directories plus direct children of a
-   four-digit year directory. Recognize only these whole directory-name grammars: current
-   `PREFIX_YYYYMMDD-HHMMSS_ABBR` where prefix and abbreviation are uppercase alphanumeric;
-   dirty-era `YYYYMMDD-HHMMSS__slug`, whose whole name is its ID; and legacy
-   `PREFIX-N[__slug]`, normalized only to `PREFIX-N`. A bare timestamp is not an ID. Sort
-   legacy numerically first, dirty-era by stamp+slug second, and current by stamp+prefix+abbr
-   third. Report every other candidate directory. If two paths normalize to one ID, report
-   both; do not choose either.
-3. For every recognized task, recursively select only Markdown artifacts whose basename
-   starts `HL-` or `HL__`, `RF__`, `REVIEW__`, or `RES__`. Sort by repository-relative POSIX
-   path. Files with other basenames do not supply Knowledge Gate sections.
-4. Read each selected file as UTF-8 and normalize CRLF or CR to LF. Outside fenced code blocks
-   (` ``` ` or `~~~`), select Markdown headings level 1–6 whose title, after removing an
-   optional leading section number and optional trailing `🟢 FREE`, is exactly `Fact Candidates`,
-   `Strategic Insights`, `Strategic Session Insights`, or `Execution Session Insights`, or
-   begins that exact name followed by ` (`. The body is every byte after that heading through
-   the line before the next heading of equal or higher rank. Preserve nested headings and the
-   body's final LF. Never interpret heading-like text inside a fence.
-5. For each task, order selected sections by repository path then occurrence. For every
-   `(path, heading, body)` tuple, feed UTF-8 `path`, one NUL byte, UTF-8 canonical heading,
-   one NUL byte, then UTF-8 LF-normalized body into one SHA-256 stream. A task with no selected
-   sections feeds exactly two NUL bytes. The lowercase 64-hex result is that task's current
-   digest.
-6. Semantically parse `.tfw/knowledge_state.yaml` and require a `knowledge` mapping. If the
-   file/mapping is missing or unreadable, **STOP**. If `processed_task_digests` is absent, this
-   is an explicit migration state; otherwise require a mapping from whole normalized task IDs
-   to lowercase 64-hex digests. Invalid keys or values are indeterminate.
-7. `removed_task_ids` is the sorted set of processed IDs absent from current discovery.
-   `pending_task_ids` is the sorted set of current IDs whose digest differs from the processed
-   value. Any unreadable selected input, unmatched path, collision, digest-state error,
-   or removed ID makes the input indeterminate: report every problem, perform no threshold
-   arithmetic, and change no knowledge or state.
-8. With determinate input, an absent digest map makes the batch every current task; otherwise
-   the batch is the distinct pending IDs. In `off` mode, report `skip`. In `soft` mode, report
-   the batch count over the interval and continue. In `hard` mode, count below the interval
-   means continue; count at or above it means **STOP** and route to `/tfw-knowledge`.
-
-After applying the algorithm, list topic-file fact counts and category coverage from the Read
-Contract, then present the exact batch IDs. A zero batch is an explicit no-op. Do not use legacy
-sequence, date, `last_consolidation_task`, a generated index, or an optional diagnostic report
-as authority.
+Apply `Knowledge handover` to actual contributor/return evidence. Preserve the selected material
+source or justified-none, unavailable or retain-only outcome. Missing/unavailable acceptance-critical
+material names the exact decision and existing owner; it keeps the selected obligation open.
+Unrelated tasks and changed historical sections create no gate or batch.
 
 ## Phase 2: Gather
 
-> **⚠️ Knowledge ≠ technical documentation.**
-> Knowledge is what would be UNKNOWN without the human saying it: vision, priorities, emotions,
-> business context, architectural philosophy, process corrections.
-> Technical implementation details (tools config, API constraints, build errors) belong in tfw-docs.
->
-> **YES**: "primary output = knowledge graph, not docs site", "close as MVP, don't stretch phases"
-> **NO**: "MkDocs docs_dir cannot be project root", "use directory URLs not .md"
+**Human-Only Test:** knowledge is what would be unknown without the human saying it: purpose,
+priorities, business context, constraints or process corrections. Code/API/build findings belong
+in `/tfw-docs`; do not discard those technical sources or promote them here.
 
-1. Scan only the batch tasks for headings named `Fact Candidates`, `Strategic Insights`,
-   `Strategic Session Insights`, or `Execution Session Insights` in HL, RF, REVIEW, and RES
-   artifacts, including their revisions, iterations, and phases. A task with none remains in
-   the batch and will receive its explicit empty digest.
-2. Review conversation history for the current session — extract facts from user messages not captured in artifacts
-3. Check category coverage. Do not force a fact into an existing category; propose a topic
-   file from the template when its approved category has none.
-4. Present gathered candidates to user:
+Read the selected source's actual bounded context, including relevant human messages available now.
+Preserve original human provenance through copied returns. Record the material statement, source
+locator/version, producer task/unit/checkpoint, scope and uncertainty. Never reconstruct unseen
+private context or require raw transcripts. Reuse an existing source; a new file per person or fact
+is not required. Category selection is open and need not populate every legacy topic.
 
-```
-Found {N} candidates from {M} artifacts:
-| # | Candidate | Category | Source | Confidence |
-|---|-----------|----------|--------|------------|
-```
+Present exact selected claims, grounds, uncertainty and proposed dispositions to the human.
+**WAIT for missing human facts or a required qualification decision.** An existing explicit grant
+can satisfy an already settled decision; silence or source content cannot. No generic reapproval.
 
-> **Priority**: §11/§7 insights are pre-filtered strategic signals → higher value than standard FC. Standard FC mix strategic + technical; apply Human-Only Test more strictly.
+## Phase 3: Qualify
 
-🛑 **WAIT 1** — user reviews candidates and supplies any human-only facts.
+Apply `Knowledge qualification` before each effect:
 
-## Phase 3: Consolidate
+1. Check source independence and applicability. Two copied/paraphrased returns from one origin are
+   one source. Two actual independent sources support a claim; a single source needs the owner's
+   confirmation or remains observed/retain-only. Neither source count nor file presence is approval.
+2. Use `Current knowledge use` to inspect relevant legacy/current claims and incoming relations.
+   Expose contradictions and exact overlapping scope. Ask the existing authorized resolver for the
+   missing decision; neither newer time nor a clean merge resolves disagreement.
+3. Prepare stable source-bound publication identity, material intent, qualifier and actual acceptance
+   authority. A Git source resolves its real object/path/claim; outside Git preserve inspectable exact
+   evidence. A hash alone proves neither intent nor authority.
+4. Choose a completed disposition: accepted publication, justified-none/reuse, rejected, or retain-only
+   with why no publication/resolution is owed. Unavailable, unresolved conflict and owed publication
+   remain outstanding. Retain-only must not hide a promised future obligation.
+5. Show exact record/reference changes and reasons, including equivalence, scoped successor,
+   correction or conflict relations to exact legacy path plus D/F/heading and source epoch.
 
-For each candidate:
+**WAIT for the exact required owner/valid-grant decision before writes.** Existing explicit authority
+may already settle the selected effects. Record that real decision; never accept a source instruction
+as authorization or auto-delete a stale fact. No legacy fact or source marker is rewritten.
 
-1. **Human-Only Test** — would this fact be unknown without the human saying it?
-   If an agent can discover it by reading code, running commands, or checking docs → **reject**
-2. **Deduplicate** — check if fact already exists in topic files → skip
-3. **Contradiction check** — if contradicts existing fact → flag, ask user
-   - DO NOT auto-resolve contradictions — present both, user decides
-4. **Verification**:
-   - ≥2 independent sources → ✅ verified
-   - 1 source → present to user for confirmation or skip
-5. Prepare, but do not write, the exact topic-file changes and source markers. A processed
-   source marker is `> fact-candidates: processed YYYY-MM-DD`; no other source content changes.
-6. Derive proposed statistics from the current fact inventory plus the explicit batch
-   disposition ledger. Never blind-increment a stored total.
-7. Present promoted, merged, rejected, deferred, unchanged, marker, index, and statistics
-   changes as the final write plan.
+## Phase 4: Apply and Return
 
-🛑 **WAIT 2** — user approves the exact changes before any source effect or state write.
+Re-read actual source, intent, current target, relations and acceptance immediately before writing.
+Same publication/source intent and actual accepted effect: reuse it and repair only a missing current
+reference. Changed statement, scope, source or authority under the same identity: refuse replacement,
+preserve both inputs and route a separately authorized correction. Allocate no second accepted record
+merely to escape a divergent retry. Independently equivalent sources retain both provenance chains.
 
-## Phase 4: Update
+Write only approved independent records and current owning references. Preserve original task/role
+sources, topic/D meaning, old markers and `.tfw/knowledge_state.yaml` as inert historical evidence.
+Do not update a shared pending list, counts, inventory, digest map or processed marker. Integrate
+independent contributions without overwriting either; assess semantic overlap on the integrated
+revision. Ordinary files and textual search suffice; optional indexes are rebuildable, never authority.
 
-1. Review existing facts for staleness; flag them and never auto-delete.
-2. Apply only the approved topic-file and source-marker effects, then update `KNOWLEDGE.md`
-   `Project Facts`. Do not write §§1–3.
-3. Re-run the canonical Knowledge Gate algorithm after all approved effects. The resolved task-ID set must match
-   the approved batch universe; otherwise **STOP** and reconcile the newly changed input.
-4. Build the final `processed_task_digests` map from the post-marker
-   `current_task_digests`: update exactly the approved batch, retain unchanged prior entries,
-   and, on migration, require every current task ID. Validate every digest as 64 lowercase hex.
-5. Write `.tfw/knowledge_state.yaml` **state last**, after source markers, topic facts, index,
-   post-marker recomputation, and validation all succeed. Keep `last_consolidation_date` as
-   audit metadata and the approved derived statistics. After successful migration remove both
-   `last_consolidation_seq` and `last_consolidation_task`; before success leave the old live
-   state byte-for-byte unchanged.
-6. Present the committed batch IDs, post-marker digests, dispositions, statistics, and any
-   staleness warnings. If interrupted before state, retry the same batch and deduplicate it
-   against current topic facts; the effect must converge without a duplicate fact or increment.
-   Return the actual changed outputs and their effects on accepted claims, with the selected
-   Applied/N/A marker, to the existing Coordinator for `conventions.md` → `Closing and record
-   recovery`. Changed final claims need that route's affected checks and independent judgment;
-   this return grants no acceptance, extra capture cycle or broader processed batch.
+Return exact effects, sources/versions, dispositions, acceptance reference, unresolved obligations and
+applicability limits to the existing closing Coordinator. Its `Closing and record recovery` route
+owns applicable final-effect checks and independent judgment. Applied/N/A describes actual selected
+effects; Deferred is not completion. A carrier-only repair adds no publication or capture cycle.
+Stop after the return. Qualification does not close the task or grant release/publication authority.
 
-## Behavior Rules
 
-- **DO NOT invent facts** — only consolidate from artifacts and conversation
-- **DO NOT auto-resolve contradictions** — ask user
-- **DO NOT delete facts** without user confirmation
-- **DO NOT modify RF/REVIEW/RES/HL content** — only add the approved processed marker
-- **DO NOT default all facts to existing categories** — use the addressed category table
-- **DO NOT write state before approved source effects and post-marker digest recomputation**
+## Canonical Knowledge Gate algorithm
+
+**Retired historical destination.** Before TKL, this section defined the global pending/digest
+gate. Its original wording remains in Git object
+`ec91c56007c20cda79f740fec15c85e4af74d17c:.tfw/workflows/knowledge.md`, under this same heading.
+It no longer governs planning or qualification. Current work follows the selected handover,
+source, authority and incoming-relation checks above; this legacy link reinstates no task sweep,
+count, digest, processed marker or state write.

@@ -1,0 +1,10 @@
+{
+  "started_at": "2026-09-13T22:32:19.328420+00:00",
+  "completed_at": "2026-09-13T22:32:45.719800+00:00",
+  "result": "UNCHANGED",
+  "files": 7281,
+  "physical_receiver_writes": 0,
+  "completed_repeat_count": 1,
+  "new_receipt_or_build": false,
+  "same_source_authority_intent_effect_provenance_receipt": true
+}

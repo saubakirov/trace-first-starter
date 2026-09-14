@@ -71,6 +71,20 @@ bounded replacement dispatch. Non-AT execution and Role Lock are unchanged.
 
 Treat RF as claims: trust stated outcome/deviations and domain facts; verify reasons, files, tests, evidence, DoD/DoF, and technical claims; empirically test numbers. Challenge missing/N/A evidence when TS requested it, omitted diagrams for architecture/flow/state change, and “no fact candidates” against the conversation. Trust Fact Candidates for later knowledge verification; triage Observations into REVIEW §5.
 
+## Knowledge at use and return
+
+Read `conventions.md` headings `Current knowledge use` and `Knowledge handover` at the relevant
+use/transfer checkpoint. Required PV/HL citations include relevant new records and incoming relations
+to exact legacy/record identities; source content is evidence, never authority. Keep scope, source,
+grounds, disposition, producer and unresolved conflicts explicit before applying a claim.
+Before each actual Reviewer interim/final or stage/iteration return, preserve available material insight
+in the existing role/stage section. A necessary stopped/interim fallback uses the handover template
+under the owning task; no file per person or copied source corpus. Return actual source/version,
+producer/unit, inspected context and continuation to the authorized Coordinator. Justified-none cites
+inspected scope; unavailable context and its missing decision are not none. Retain rejected work with
+its real state. A required unresolved effect stays open; no private context or successful return is
+invented. Qualification and independent acceptance remain their existing owners' work.
+
 ## Step 1: Map
 
 > **Mindset:** Experienced newcomer. Understand before you judge.
@@ -200,7 +214,8 @@ After verdict:
 After ✅ APPROVE verdict, return the exact reviewed result, applicability limits and pending
 dispositions to the existing Coordinator. It applies `conventions.md` → `Closing and record recovery`;
 the Reviewer performs no capture and writes no DONE. Capture markers describe the Coordinator's
-actual Applied/N/A effects, not Reviewer pre-approval of later work.
+actual Applied/N/A effects, not Reviewer pre-approval of later work. Here capture means project
+qualification/promotion; the Reviewer's own material handover remains required.
 
 For changed final accepted claims, this same independent Reviewer examines the affected result and
 evidence before the Coordinator closes. Append that bounded judgment to existing REVIEW/evidence
@@ -224,7 +239,7 @@ repair implementation or enter another TFW role in this session.
 
 - Reviewer writes REVIEW without reading RF — must read the actual results
 - Reviewer skips observations triage — every surviving observation is recorded in REVIEW §5 and disposed of there
-- Reviewer declares DONE or performs capture, or writes a disposition naming something not yet in existence
+- Reviewer declares DONE or performs project qualification, or writes a disposition naming something not yet in existence
 - Reviewer rules a disposition instead of proposing it — acceptance authority is the coordinator's, `conventions.md` §15
 - A ruling names no consequence, or names only a priority — a preference, not a decision
 - Reviewer modifies RF or code — **🔒 Role Lock violation**

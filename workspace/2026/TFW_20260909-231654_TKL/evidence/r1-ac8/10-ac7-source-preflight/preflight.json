@@ -1,0 +1,4733 @@
+{
+  "observed_at": "2026-09-13T17:58:12.729414+00:00",
+  "purpose": "Source-only checkpoint for Coordinator pin; no receiver preparation, checkout, replay start clock or application performed.",
+  "baseline": "ec91c56007c20cda79f740fec15c85e4af74d17c",
+  "candidate": "65c3c94b2347c69f6d21ac2e2664a39ef46b3ae2",
+  "receiver": "C:\\Users\\c0rpa\\AppData\\Local\\Temp\\TFW_TKL_NATIVE_01a09a0c\\self-adoption-r1",
+  "receiver_absent": true,
+  "replay_started": false,
+  "conditional_elapsed_limit_minutes": 45,
+  "authority": [
+    {
+      "role": "owner_approval",
+      "commit": "2794cbdb40f6c4f3a7d4bce1f8d4eb949d9e6913",
+      "path": "workspace/2026/TFW_20260909-231654_TKL/TS__TFW_20260909-231654_TKL.md",
+      "archive_path": "authority/owner_approval/workspace/2026/TFW_20260909-231654_TKL/TS__TFW_20260909-231654_TKL.md",
+      "blob": "f69fd4099a21a07ae2d17e6b5108b04ac94f107e",
+      "bytes": 55220,
+      "sha256": "6929b45c6ec0908933a2d7e9088707dd317c56a1089895cac9fc31a1b3f8c48c",
+      "eol": {
+        "CRLF": 0,
+        "LF": 377,
+        "CR": 0
+      }
+    },
+    {
+      "role": "owner_approval_event",
+      "commit": "2794cbdb40f6c4f3a7d4bce1f8d4eb949d9e6913",
+      "path": "workspace/2026/TFW_20260909-231654_TKL/journal/20260913-141400__handoff__8c2a.md",
+      "archive_path": "authority/owner_approval_event/workspace/2026/TFW_20260909-231654_TKL/journal/20260913-141400__handoff__8c2a.md",
+      "blob": "8f0e29189af9983f3a1dffe2efb2b7daaf0686cd",
+      "bytes": 1716,
+      "sha256": "acc3de13384fec670614eeaa8758d9997f97f5396c796a2f88ddc46fa8f87102",
+      "eol": {
+        "CRLF": 0,
+        "LF": 19,
+        "CR": 0
+      }
+    },
+    {
+      "role": "lead_conditional_bound",
+      "commit": "9336fc882719e1aacdefca0f7e6ab1fc3d5b6da7",
+      "path": "workspace/2026/TFW_20260909-231654_TKL/journal/20260913-222750__dispatch__a7a8.md",
+      "archive_path": "authority/lead_conditional_bound/workspace/2026/TFW_20260909-231654_TKL/journal/20260913-222750__dispatch__a7a8.md",
+      "blob": "856203c5af4c4707ebf3cfc5fb22e0bd92da8a16",
+      "bytes": 5342,
+      "sha256": "0c91116ea0b5372eba7b4562dd2768d8d14f4dd6cd208b51d5395fb020dc8e6a",
+      "eol": {
+        "CRLF": 0,
+        "LF": 29,
+        "CR": 0
+      }
+    },
+    {
+      "role": "coordinator_checkpoint_dispatch",
+      "commit": "5d189778d2e2ca9168d3487d1d838bf17d74756b",
+      "path": "workspace/2026/TFW_20260909-231654_TKL/journal/20260913-223311__dispatch__8019.md",
+      "archive_path": "authority/coordinator_checkpoint_dispatch/workspace/2026/TFW_20260909-231654_TKL/journal/20260913-223311__dispatch__8019.md",
+      "blob": "1d669821b2bcb9ec4b153a6ad35e9f7d8f8600d7",
+      "bytes": 2436,
+      "sha256": "b441199318b15198b65b8f3bbd52f06e8a6fdb08db7a30d155818fbc940c3dbc",
+      "eol": {
+        "CRLF": 0,
+        "LF": 21,
+        "CR": 0
+      }
+    },
+    {
+      "role": "ruled_review",
+      "commit": "5d189778d2e2ca9168d3487d1d838bf17d74756b",
+      "path": "workspace/2026/TFW_20260909-231654_TKL/REVIEW__TFW_20260909-231654_TKL.md",
+      "archive_path": "authority/ruled_review/workspace/2026/TFW_20260909-231654_TKL/REVIEW__TFW_20260909-231654_TKL.md",
+      "blob": "61eea27d0c10f8c76dccaf5c39972b733b6c3d5b",
+      "bytes": 18132,
+      "sha256": "3be376c8edc3fa28369034b65adc669a446fe98276ef7fa37a043327d841857a",
+      "eol": {
+        "CRLF": 0,
+        "LF": 137,
+        "CR": 0
+      }
+    },
+    {
+      "role": "reviewer_clarification",
+      "commit": "a644c996e67bd01f677709140f51563bd17f5334",
+      "path": "workspace/2026/TFW_20260909-231654_TKL/review/evidence-clarification-20260913.md",
+      "archive_path": "authority/reviewer_clarification/workspace/2026/TFW_20260909-231654_TKL/review/evidence-clarification-20260913.md",
+      "blob": "6942f2a96e53fa505761f18a44b52d5f09507c13",
+      "bytes": 14742,
+      "sha256": "37c717c05e8f68ad7a2c0541c8f22a3e817b3cb98bb8c5a50efe3b43cf8fa4fe",
+      "eol": {
+        "CRLF": 0,
+        "LF": 185,
+        "CR": 0
+      }
+    },
+    {
+      "role": "slc_accepted_review",
+      "commit": "99198f133c0047568c1e8411bfae849239b352b1",
+      "path": "workspace/2026/TFW_20260907-020729_SLC/REVIEW__TFW_20260907-020729_SLC.md",
+      "archive_path": "authority/slc_accepted_review/workspace/2026/TFW_20260907-020729_SLC/REVIEW__TFW_20260907-020729_SLC.md",
+      "blob": "8c119df9349c80d42a6ea52f8dd9a773b7ee39f8",
+      "bytes": 47859,
+      "sha256": "5e24416d70866cf1372e56bf7ae0e8be2ad129b54d6054c4408ef0a15d7dbdce",
+      "eol": {
+        "CRLF": 0,
+        "LF": 205,
+        "CR": 0
+      }
+    },
+    {
+      "role": "slc_completed_status",
+      "commit": "c51ee0c0d7891fd165d105f3565e0e54512c1040",
+      "path": "workspace/2026/TFW_20260907-020729_SLC/status.md",
+      "archive_path": "authority/slc_completed_status/workspace/2026/TFW_20260907-020729_SLC/status.md",
+      "blob": "87488f50931e9284e382fc41ec7abc1d94a6e0c2",
+      "bytes": 792,
+      "sha256": "c4bc55418a480f6fc7bb4277c656abe149ca6a262c5903a80296aa3f0b8e7875",
+      "eol": {
+        "CRLF": 0,
+        "LF": 14,
+        "CR": 0
+      }
+    }
+  ],
+  "source_identities": [
+    {
+      "path": ".agents/rules/tfw.md",
+      "identities": {
+        "baseline": {
+          "git_object": "ec91c56007c20cda79f740fec15c85e4af74d17c:.agents/rules/tfw.md",
+          "blob": "b70ce73ec7a2ef31f8a685d33ae0db63c7a4d241",
+          "bytes": 742,
+          "sha256": "0b03c98d0fe2b5f1cfe5d3b6ede9b62e058a1b3d5cfdd5b74e27b91d4d23a603",
+          "eol": {
+            "CRLF": 0,
+            "LF": 22,
+            "CR": 0
+          }
+        },
+        "candidate": {
+          "git_object": "65c3c94b2347c69f6d21ac2e2664a39ef46b3ae2:.agents/rules/tfw.md",
+          "blob": "b70ce73ec7a2ef31f8a685d33ae0db63c7a4d241",
+          "bytes": 742,
+          "sha256": "0b03c98d0fe2b5f1cfe5d3b6ede9b62e058a1b3d5cfdd5b74e27b91d4d23a603",
+          "eol": {
+            "CRLF": 0,
+            "LF": 22,
+            "CR": 0
+          }
+        }
+      },
+      "current_source_working_raw": {
+        "bytes": 742,
+        "sha256": "0b03c98d0fe2b5f1cfe5d3b6ede9b62e058a1b3d5cfdd5b74e27b91d4d23a603",
+        "eol": {
+          "CRLF": 0,
+          "LF": 22,
+          "CR": 0
+        }
+      }
+    },
+    {
+      "path": ".agents/skills/tfw-config/SKILL.md",
+      "identities": {
+        "baseline": {
+          "git_object": "ec91c56007c20cda79f740fec15c85e4af74d17c:.agents/skills/tfw-config/SKILL.md",
+          "blob": "af2eca738845e00e99e0c668cf71bb72c6309981",
+          "bytes": 1019,
+          "sha256": "a8e3ba99a592e3a6dba9fbea550fd9bc59159fa4b291df08519472a987be8036",
+          "eol": {
+            "CRLF": 0,
+            "LF": 18,
+            "CR": 0
+          }
+        },
+        "candidate": {
+          "git_object": "65c3c94b2347c69f6d21ac2e2664a39ef46b3ae2:.agents/skills/tfw-config/SKILL.md",
+          "blob": "af2eca738845e00e99e0c668cf71bb72c6309981",
+          "bytes": 1019,
+          "sha256": "a8e3ba99a592e3a6dba9fbea550fd9bc59159fa4b291df08519472a987be8036",
+          "eol": {
+            "CRLF": 0,
+            "LF": 18,
+            "CR": 0
+          }
+        }
+      },
+      "current_source_working_raw": {
+        "bytes": 1019,
+        "sha256": "a8e3ba99a592e3a6dba9fbea550fd9bc59159fa4b291df08519472a987be8036",
+        "eol": {
+          "CRLF": 0,
+          "LF": 18,
+          "CR": 0
+        }
+      }
+    },
+    {
+      "path": ".agents/skills/tfw-docs/SKILL.md",
+      "identities": {
+        "baseline": {
+          "git_object": "ec91c56007c20cda79f740fec15c85e4af74d17c:.agents/skills/tfw-docs/SKILL.md",
+          "blob": "d6fb8ac69842dec34b77dc0391864dee34995004",
+          "bytes": 918,
+          "sha256": "989d1cad59fd3309f60d761df8854a2bbf6251f12dd02239353f56a41e1079cf",
+          "eol": {
+            "CRLF": 0,
+            "LF": 18,
+            "CR": 0
+          }
+        },
+        "candidate": {
+          "git_object": "65c3c94b2347c69f6d21ac2e2664a39ef46b3ae2:.agents/skills/tfw-docs/SKILL.md",
+          "blob": "788f49cb721ca0c095ef757154f1b7c37d859214",
+          "bytes": 992,
+          "sha256": "8fbe734b43a4acf2e8b1b61a623a497322a11b2c6c35b2a16abedb26e2e566f5",
+          "eol": {
+            "CRLF": 0,
+            "LF": 18,
+            "CR": 0
+          }
+        }
+      },
+      "current_source_working_raw": {
+        "bytes": 992,
+        "sha256": "8fbe734b43a4acf2e8b1b61a623a497322a11b2c6c35b2a16abedb26e2e566f5",
+        "eol": {
+          "CRLF": 0,
+          "LF": 18,
+          "CR": 0
+        }
+      }
+    },
+    {
+      "path": ".agents/skills/tfw-handoff/SKILL.md",
+      "identities": {
+        "baseline": {
+          "git_object": "ec91c56007c20cda79f740fec15c85e4af74d17c:.agents/skills/tfw-handoff/SKILL.md",
+          "blob": "b988f23a0165d04ac1bbc6237ef9bf52bcacb1d0",
+          "bytes": 1175,
+          "sha256": "c62df85f6fe546dc0266cab6f67ecaa4330963cbc581a72efbb86d3fbfe9b366",
+          "eol": {
+            "CRLF": 0,
+            "LF": 21,
+            "CR": 0
+          }
+        },
+        "candidate": {
+          "git_object": "65c3c94b2347c69f6d21ac2e2664a39ef46b3ae2:.agents/skills/tfw-handoff/SKILL.md",
+          "blob": "b988f23a0165d04ac1bbc6237ef9bf52bcacb1d0",
+          "bytes": 1175,
+          "sha256": "c62df85f6fe546dc0266cab6f67ecaa4330963cbc581a72efbb86d3fbfe9b366",
+          "eol": {
+            "CRLF": 0,
+            "LF": 21,
+            "CR": 0
+          }
+        }
+      },
+      "current_source_working_raw": {
+        "bytes": 1175,
+        "sha256": "c62df85f6fe546dc0266cab6f67ecaa4330963cbc581a72efbb86d3fbfe9b366",
+        "eol": {
+          "CRLF": 0,
+          "LF": 21,
+          "CR": 0
+        }
+      }
+    },
+    {
+      "path": ".agents/skills/tfw-init/SKILL.md",
+      "identities": {
+        "baseline": {
+          "git_object": "ec91c56007c20cda79f740fec15c85e4af74d17c:.agents/skills/tfw-init/SKILL.md",
+          "blob": "776a87de04ed4b30a71067e7089e3ee34a69ee0d",
+          "bytes": 1210,
+          "sha256": "5644ecedb871b15992352becb56dfaeda6b7ab814865100eee4388c3e1bc3fc2",
+          "eol": {
+            "CRLF": 0,
+            "LF": 18,
+            "CR": 0
+          }
+        },
+        "candidate": {
+          "git_object": "65c3c94b2347c69f6d21ac2e2664a39ef46b3ae2:.agents/skills/tfw-init/SKILL.md",
+          "blob": "776a87de04ed4b30a71067e7089e3ee34a69ee0d",
+          "bytes": 1210,
+          "sha256": "5644ecedb871b15992352becb56dfaeda6b7ab814865100eee4388c3e1bc3fc2",
+          "eol": {
+            "CRLF": 0,
+            "LF": 18,
+            "CR": 0
+          }
+        }
+      },
+      "current_source_working_raw": {
+        "bytes": 1210,
+        "sha256": "5644ecedb871b15992352becb56dfaeda6b7ab814865100eee4388c3e1bc3fc2",
+        "eol": {
+          "CRLF": 0,
+          "LF": 18,
+          "CR": 0
+        }
+      }
+    },
+    {
+      "path": ".agents/skills/tfw-knowledge/SKILL.md",
+      "identities": {
+        "baseline": {
+          "git_object": "ec91c56007c20cda79f740fec15c85e4af74d17c:.agents/skills/tfw-knowledge/SKILL.md",
+          "blob": "db83c018241e6385adcfec5da1adcc1ff31fb2b8",
+          "bytes": 1119,
+          "sha256": "484e5ef9732f1a494ff6390669fc9099266fea20ca93bb173ba93215225172a8",
+          "eol": {
+            "CRLF": 0,
+            "LF": 19,
+            "CR": 0
+          }
+        },
+        "candidate": {
+          "git_object": "65c3c94b2347c69f6d21ac2e2664a39ef46b3ae2:.agents/skills/tfw-knowledge/SKILL.md",
+          "blob": "b6884efab82ca8118a633066dc2cccfae49d379d",
+          "bytes": 1264,
+          "sha256": "f5bea3e0deea8a8fa9b3d28b5979778fa869d62537d8c41d0ffe9b1a220f88b0",
+          "eol": {
+            "CRLF": 0,
+            "LF": 19,
+            "CR": 0
+          }
+        }
+      },
+      "current_source_working_raw": {
+        "bytes": 1264,
+        "sha256": "f5bea3e0deea8a8fa9b3d28b5979778fa869d62537d8c41d0ffe9b1a220f88b0",
+        "eol": {
+          "CRLF": 0,
+          "LF": 19,
+          "CR": 0
+        }
+      }
+    },
+    {
+      "path": ".agents/skills/tfw-plan/SKILL.md",
+      "identities": {
+        "baseline": {
+          "git_object": "ec91c56007c20cda79f740fec15c85e4af74d17c:.agents/skills/tfw-plan/SKILL.md",
+          "blob": "8373f3e71f13522e56b28cda8133c876c436e1c6",
+          "bytes": 1003,
+          "sha256": "813b219286bf7fb6521b836cf3a802806fdc38760aaf9a55c75c49a0d5be7cfe",
+          "eol": {
+            "CRLF": 0,
+            "LF": 20,
+            "CR": 0
+          }
+        },
+        "candidate": {
+          "git_object": "65c3c94b2347c69f6d21ac2e2664a39ef46b3ae2:.agents/skills/tfw-plan/SKILL.md",
+          "blob": "8373f3e71f13522e56b28cda8133c876c436e1c6",
+          "bytes": 1003,
+          "sha256": "813b219286bf7fb6521b836cf3a802806fdc38760aaf9a55c75c49a0d5be7cfe",
+          "eol": {
+            "CRLF": 0,
+            "LF": 20,
+            "CR": 0
+          }
+        }
+      },
+      "current_source_working_raw": {
+        "bytes": 1003,
+        "sha256": "813b219286bf7fb6521b836cf3a802806fdc38760aaf9a55c75c49a0d5be7cfe",
+        "eol": {
+          "CRLF": 0,
+          "LF": 20,
+          "CR": 0
+        }
+      }
+    },
+    {
+      "path": ".agents/skills/tfw-release/SKILL.md",
+      "identities": {
+        "baseline": {
+          "git_object": "ec91c56007c20cda79f740fec15c85e4af74d17c:.agents/skills/tfw-release/SKILL.md",
+          "blob": "fb5f6c7cf2200469544a9d01cebe18172aaa6bf0",
+          "bytes": 1269,
+          "sha256": "c38361a6a188b9888d91c80e3d0d653ee2b15a1d1698f35252e154fbe55153c4",
+          "eol": {
+            "CRLF": 0,
+            "LF": 20,
+            "CR": 0
+          }
+        },
+        "candidate": {
+          "git_object": "65c3c94b2347c69f6d21ac2e2664a39ef46b3ae2:.agents/skills/tfw-release/SKILL.md",
+          "blob": "fb5f6c7cf2200469544a9d01cebe18172aaa6bf0",
+          "bytes": 1269,
+          "sha256": "c38361a6a188b9888d91c80e3d0d653ee2b15a1d1698f35252e154fbe55153c4",
+          "eol": {
+            "CRLF": 0,
+            "LF": 20,
+            "CR": 0
+          }
+        }
+      },
+      "current_source_working_raw": {
+        "bytes": 1269,
+        "sha256": "c38361a6a188b9888d91c80e3d0d653ee2b15a1d1698f35252e154fbe55153c4",
+        "eol": {
+          "CRLF": 0,
+          "LF": 20,
+          "CR": 0
+        }
+      }
+    },
+    {
+      "path": ".agents/skills/tfw-research/SKILL.md",
+      "identities": {
+        "baseline": {
+          "git_object": "ec91c56007c20cda79f740fec15c85e4af74d17c:.agents/skills/tfw-research/SKILL.md",
+          "blob": "fac0b0c27b91d916dbf36f02d4850e0aba206f2d",
+          "bytes": 1090,
+          "sha256": "53e734bceb0ddcbc49fe565382c847c88010f0591ab65e3b5925cd37f5e374a0",
+          "eol": {
+            "CRLF": 0,
+            "LF": 22,
+            "CR": 0
+          }
+        },
+        "candidate": {
+          "git_object": "65c3c94b2347c69f6d21ac2e2664a39ef46b3ae2:.agents/skills/tfw-research/SKILL.md",
+          "blob": "fac0b0c27b91d916dbf36f02d4850e0aba206f2d",
+          "bytes": 1090,
+          "sha256": "53e734bceb0ddcbc49fe565382c847c88010f0591ab65e3b5925cd37f5e374a0",
+          "eol": {
+            "CRLF": 0,
+            "LF": 22,
+            "CR": 0
+          }
+        }
+      },
+      "current_source_working_raw": {
+        "bytes": 1090,
+        "sha256": "53e734bceb0ddcbc49fe565382c847c88010f0591ab65e3b5925cd37f5e374a0",
+        "eol": {
+          "CRLF": 0,
+          "LF": 22,
+          "CR": 0
+        }
+      }
+    },
+    {
+      "path": ".agents/skills/tfw-resume/SKILL.md",
+      "identities": {
+        "baseline": {
+          "git_object": "ec91c56007c20cda79f740fec15c85e4af74d17c:.agents/skills/tfw-resume/SKILL.md",
+          "blob": "356e856a811c22f04fce2f1af9c9d7e5ed814146",
+          "bytes": 1204,
+          "sha256": "ccd7a8d3151c64cff7b5e7032a8f0f6b64095fa6f82a993ac88a6cc39fe214cc",
+          "eol": {
+            "CRLF": 0,
+            "LF": 19,
+            "CR": 0
+          }
+        },
+        "candidate": {
+          "git_object": "65c3c94b2347c69f6d21ac2e2664a39ef46b3ae2:.agents/skills/tfw-resume/SKILL.md",
+          "blob": "356e856a811c22f04fce2f1af9c9d7e5ed814146",
+          "bytes": 1204,
+          "sha256": "ccd7a8d3151c64cff7b5e7032a8f0f6b64095fa6f82a993ac88a6cc39fe214cc",
+          "eol": {
+            "CRLF": 0,
+            "LF": 19,
+            "CR": 0
+          }
+        }
+      },
+      "current_source_working_raw": {
+        "bytes": 1204,
+        "sha256": "ccd7a8d3151c64cff7b5e7032a8f0f6b64095fa6f82a993ac88a6cc39fe214cc",
+        "eol": {
+          "CRLF": 0,
+          "LF": 19,
+          "CR": 0
+        }
+      }
+    },
+    {
+      "path": ".agents/skills/tfw-review/SKILL.md",
+      "identities": {
+        "baseline": {
+          "git_object": "ec91c56007c20cda79f740fec15c85e4af74d17c:.agents/skills/tfw-review/SKILL.md",
+          "blob": "06f230592c1399f40c3acd281e1fa1e81d800fb1",
+          "bytes": 1243,
+          "sha256": "33d90cb17965fe904054024815e927f91bde31b99e9e48df2cc78a478218f21e",
+          "eol": {
+            "CRLF": 0,
+            "LF": 22,
+            "CR": 0
+          }
+        },
+        "candidate": {
+          "git_object": "65c3c94b2347c69f6d21ac2e2664a39ef46b3ae2:.agents/skills/tfw-review/SKILL.md",
+          "blob": "06f230592c1399f40c3acd281e1fa1e81d800fb1",
+          "bytes": 1243,
+          "sha256": "33d90cb17965fe904054024815e927f91bde31b99e9e48df2cc78a478218f21e",
+          "eol": {
+            "CRLF": 0,
+            "LF": 22,
+            "CR": 0
+          }
+        }
+      },
+      "current_source_working_raw": {
+        "bytes": 1243,
+        "sha256": "33d90cb17965fe904054024815e927f91bde31b99e9e48df2cc78a478218f21e",
+        "eol": {
+          "CRLF": 0,
+          "LF": 22,
+          "CR": 0
+        }
+      }
+    },
+    {
+      "path": ".agents/skills/tfw-update/SKILL.md",
+      "identities": {
+        "baseline": {
+          "git_object": "ec91c56007c20cda79f740fec15c85e4af74d17c:.agents/skills/tfw-update/SKILL.md",
+          "blob": "d844792d7e37001d3e13871ea14e97c5db7b7053",
+          "bytes": 1006,
+          "sha256": "be6ea4a42871a70e9bb3cdebf8de295438c46e7a4b6bc356221a054c461b6cc7",
+          "eol": {
+            "CRLF": 0,
+            "LF": 18,
+            "CR": 0
+          }
+        },
+        "candidate": {
+          "git_object": "65c3c94b2347c69f6d21ac2e2664a39ef46b3ae2:.agents/skills/tfw-update/SKILL.md",
+          "blob": "d844792d7e37001d3e13871ea14e97c5db7b7053",
+          "bytes": 1006,
+          "sha256": "be6ea4a42871a70e9bb3cdebf8de295438c46e7a4b6bc356221a054c461b6cc7",
+          "eol": {
+            "CRLF": 0,
+            "LF": 18,
+            "CR": 0
+          }
+        }
+      },
+      "current_source_working_raw": {
+        "bytes": 1006,
+        "sha256": "be6ea4a42871a70e9bb3cdebf8de295438c46e7a4b6bc356221a054c461b6cc7",
+        "eol": {
+          "CRLF": 0,
+          "LF": 18,
+          "CR": 0
+        }
+      }
+    },
+    {
+      "path": ".agents/workflows/tfw-config.md",
+      "identities": {
+        "baseline": {
+          "git_object": "ec91c56007c20cda79f740fec15c85e4af74d17c:.agents/workflows/tfw-config.md",
+          "blob": "c9d2f65c9022e6261c73c462caf4df36eedd9c6a",
+          "bytes": 4966,
+          "sha256": "8f0b9e9b499ea90f91b8bb5643f4848c024ede83c7a289dea0260de2d5daece6",
+          "eol": {
+            "CRLF": 0,
+            "LF": 101,
+            "CR": 0
+          }
+        },
+        "candidate": {
+          "git_object": "65c3c94b2347c69f6d21ac2e2664a39ef46b3ae2:.agents/workflows/tfw-config.md",
+          "blob": "1ff72982150befcc100cf9dba575e284fbcb51fe",
+          "bytes": 5149,
+          "sha256": "5aa4d56d0ad801c499aeac2d20a9a41b5dd66c0f027dea300b5d3a008879b190",
+          "eol": {
+            "CRLF": 0,
+            "LF": 103,
+            "CR": 0
+          }
+        }
+      },
+      "current_source_working_raw": {
+        "bytes": 5149,
+        "sha256": "5aa4d56d0ad801c499aeac2d20a9a41b5dd66c0f027dea300b5d3a008879b190",
+        "eol": {
+          "CRLF": 0,
+          "LF": 103,
+          "CR": 0
+        }
+      }
+    },
+    {
+      "path": ".agents/workflows/tfw-docs.md",
+      "identities": {
+        "baseline": {
+          "git_object": "ec91c56007c20cda79f740fec15c85e4af74d17c:.agents/workflows/tfw-docs.md",
+          "blob": "367befc86f16fe3a255663c3b174ef887e0e2903",
+          "bytes": 3202,
+          "sha256": "c3d72162e7084fcdda327b456edcc8a4cd50a0af50dcc578597e2519a75475b6",
+          "eol": {
+            "CRLF": 0,
+            "LF": 76,
+            "CR": 0
+          }
+        },
+        "candidate": {
+          "git_object": "65c3c94b2347c69f6d21ac2e2664a39ef46b3ae2:.agents/workflows/tfw-docs.md",
+          "blob": "26b80dbb58c2f1406afef90ea5639f9dced246b7",
+          "bytes": 4917,
+          "sha256": "46fb7316afdb4c8ceb7e7c5986332781f44d678fbd224baa4846a4e38c133271",
+          "eol": {
+            "CRLF": 0,
+            "LF": 75,
+            "CR": 0
+          }
+        }
+      },
+      "current_source_working_raw": {
+        "bytes": 4992,
+        "sha256": "3863e69a77371a084156dd295e38dd0b3f9788f4ddd632961e99808da464e176",
+        "eol": {
+          "CRLF": 75,
+          "LF": 0,
+          "CR": 0
+        }
+      }
+    },
+    {
+      "path": ".agents/workflows/tfw-handoff.md",
+      "identities": {
+        "baseline": {
+          "git_object": "ec91c56007c20cda79f740fec15c85e4af74d17c:.agents/workflows/tfw-handoff.md",
+          "blob": "62d0e89fb28f20ff5fa104a2ba6177c1fba05068",
+          "bytes": 15030,
+          "sha256": "9837227aab58ab190519a33eee278a7e1d6d53c407b289f9154338de3d29213a",
+          "eol": {
+            "CRLF": 0,
+            "LF": 234,
+            "CR": 0
+          }
+        },
+        "candidate": {
+          "git_object": "65c3c94b2347c69f6d21ac2e2664a39ef46b3ae2:.agents/workflows/tfw-handoff.md",
+          "blob": "299d5215dd0f957ca4efcc2e89837872fdeff525",
+          "bytes": 16144,
+          "sha256": "0950b8bdd25bcaf43691c92c5ae00904311abf58637e80d4bb03c12c649aaf4c",
+          "eol": {
+            "CRLF": 0,
+            "LF": 248,
+            "CR": 0
+          }
+        }
+      },
+      "current_source_working_raw": {
+        "bytes": 16144,
+        "sha256": "0950b8bdd25bcaf43691c92c5ae00904311abf58637e80d4bb03c12c649aaf4c",
+        "eol": {
+          "CRLF": 0,
+          "LF": 248,
+          "CR": 0
+        }
+      }
+    },
+    {
+      "path": ".agents/workflows/tfw-init.md",
+      "identities": {
+        "baseline": {
+          "git_object": "ec91c56007c20cda79f740fec15c85e4af74d17c:.agents/workflows/tfw-init.md",
+          "blob": "80f541614311aa006e630d951df50c570f58b451",
+          "bytes": 8128,
+          "sha256": "7ec919af5ec2c905f81d9b697bdfca41bc531d09d72dd37e3259e2852c134ef4",
+          "eol": {
+            "CRLF": 0,
+            "LF": 140,
+            "CR": 0
+          }
+        },
+        "candidate": {
+          "git_object": "65c3c94b2347c69f6d21ac2e2664a39ef46b3ae2:.agents/workflows/tfw-init.md",
+          "blob": "bedc73b1fa13eb698ac3c7b3d6325ef4c66a9113",
+          "bytes": 8677,
+          "sha256": "6fcbad17fb5a7bc52f5fcb36edf8f2fd5802a593dfa7cd02c9fa874f38a1e2cc",
+          "eol": {
+            "CRLF": 0,
+            "LF": 145,
+            "CR": 0
+          }
+        }
+      },
+      "current_source_working_raw": {
+        "bytes": 8677,
+        "sha256": "6fcbad17fb5a7bc52f5fcb36edf8f2fd5802a593dfa7cd02c9fa874f38a1e2cc",
+        "eol": {
+          "CRLF": 0,
+          "LF": 145,
+          "CR": 0
+        }
+      }
+    },
+    {
+      "path": ".agents/workflows/tfw-knowledge.md",
+      "identities": {
+        "baseline": {
+          "git_object": "ec91c56007c20cda79f740fec15c85e4af74d17c:.agents/workflows/tfw-knowledge.md",
+          "blob": "b3910e0823d59eefba14d7178ed921c3da8b8f85",
+          "bytes": 11616,
+          "sha256": "119a419db124e45fded4722b38d46ac5f7aa46cf928431df0585421336b608ef",
+          "eol": {
+            "CRLF": 0,
+            "LF": 174,
+            "CR": 0
+          }
+        },
+        "candidate": {
+          "git_object": "65c3c94b2347c69f6d21ac2e2664a39ef46b3ae2:.agents/workflows/tfw-knowledge.md",
+          "blob": "86a7bd094264b37b5c49e5377d08aa18bb914e9f",
+          "bytes": 7524,
+          "sha256": "7af2fe71f1ad2fc15475fb425c64687c4cc6b64a50ff7bb5249e755774973a71",
+          "eol": {
+            "CRLF": 0,
+            "LF": 111,
+            "CR": 0
+          }
+        }
+      },
+      "current_source_working_raw": {
+        "bytes": 7524,
+        "sha256": "7af2fe71f1ad2fc15475fb425c64687c4cc6b64a50ff7bb5249e755774973a71",
+        "eol": {
+          "CRLF": 0,
+          "LF": 111,
+          "CR": 0
+        }
+      }
+    },
+    {
+      "path": ".agents/workflows/tfw-plan.md",
+      "identities": {
+        "baseline": {
+          "git_object": "ec91c56007c20cda79f740fec15c85e4af74d17c:.agents/workflows/tfw-plan.md",
+          "blob": "81f7d78bd7f270871bc4ee325789a3f457059812",
+          "bytes": 14416,
+          "sha256": "775e53088428f1ee117ae2b1adcb79d79bfc01b74401c89ee497365e52abd0e1",
+          "eol": {
+            "CRLF": 0,
+            "LF": 219,
+            "CR": 0
+          }
+        },
+        "candidate": {
+          "git_object": "65c3c94b2347c69f6d21ac2e2664a39ef46b3ae2:.agents/workflows/tfw-plan.md",
+          "blob": "4bac62104137d722f3d971a2c4ea425adbdd6fcd",
+          "bytes": 14839,
+          "sha256": "8967783329c291602639aca02a7d387e23dfc98a808497724c08d6a845fc1720",
+          "eol": {
+            "CRLF": 0,
+            "LF": 224,
+            "CR": 0
+          }
+        }
+      },
+      "current_source_working_raw": {
+        "bytes": 14839,
+        "sha256": "8967783329c291602639aca02a7d387e23dfc98a808497724c08d6a845fc1720",
+        "eol": {
+          "CRLF": 0,
+          "LF": 224,
+          "CR": 0
+        }
+      }
+    },
+    {
+      "path": ".agents/workflows/tfw-release.md",
+      "identities": {
+        "baseline": {
+          "git_object": "ec91c56007c20cda79f740fec15c85e4af74d17c:.agents/workflows/tfw-release.md",
+          "blob": "a5878686ec83f4b13b60cf34c1cebea80972fd3d",
+          "bytes": 4493,
+          "sha256": "e91eb6f389ece06bbdc89d29300777ce5ecf486f17d601f07217f50094bf06a7",
+          "eol": {
+            "CRLF": 0,
+            "LF": 77,
+            "CR": 0
+          }
+        },
+        "candidate": {
+          "git_object": "65c3c94b2347c69f6d21ac2e2664a39ef46b3ae2:.agents/workflows/tfw-release.md",
+          "blob": "a5878686ec83f4b13b60cf34c1cebea80972fd3d",
+          "bytes": 4493,
+          "sha256": "e91eb6f389ece06bbdc89d29300777ce5ecf486f17d601f07217f50094bf06a7",
+          "eol": {
+            "CRLF": 0,
+            "LF": 77,
+            "CR": 0
+          }
+        }
+      },
+      "current_source_working_raw": {
+        "bytes": 4493,
+        "sha256": "e91eb6f389ece06bbdc89d29300777ce5ecf486f17d601f07217f50094bf06a7",
+        "eol": {
+          "CRLF": 0,
+          "LF": 77,
+          "CR": 0
+        }
+      }
+    },
+    {
+      "path": ".agents/workflows/tfw-research.md",
+      "identities": {
+        "baseline": {
+          "git_object": "ec91c56007c20cda79f740fec15c85e4af74d17c:.agents/workflows/tfw-research.md",
+          "blob": "7c65caeea35e70284ceb145b4758c89d295c08d6",
+          "bytes": 7905,
+          "sha256": "f1d62fbb0d8de05942c1f70ba6a9efb74045a73b1443040379742d025ffaf8b9",
+          "eol": {
+            "CRLF": 0,
+            "LF": 147,
+            "CR": 0
+          }
+        },
+        "candidate": {
+          "git_object": "65c3c94b2347c69f6d21ac2e2664a39ef46b3ae2:.agents/workflows/tfw-research.md",
+          "blob": "197514a9a193930e785ee08b89212c511d0f4c5e",
+          "bytes": 9021,
+          "sha256": "b5bdeb054182e3981bd2cdc034c27d6a512245a0922b96700e4342da1a520d5d",
+          "eol": {
+            "CRLF": 0,
+            "LF": 161,
+            "CR": 0
+          }
+        }
+      },
+      "current_source_working_raw": {
+        "bytes": 9021,
+        "sha256": "b5bdeb054182e3981bd2cdc034c27d6a512245a0922b96700e4342da1a520d5d",
+        "eol": {
+          "CRLF": 0,
+          "LF": 161,
+          "CR": 0
+        }
+      }
+    },
+    {
+      "path": ".agents/workflows/tfw-resume.md",
+      "identities": {
+        "baseline": {
+          "git_object": "ec91c56007c20cda79f740fec15c85e4af74d17c:.agents/workflows/tfw-resume.md",
+          "blob": "31f31594e0b2146c1df71132c4481a3b711ea508",
+          "bytes": 5093,
+          "sha256": "1ce3b2e1ee30f1f5be9cfd62af3cd400022a34ba106295978c426e26e46be5e3",
+          "eol": {
+            "CRLF": 0,
+            "LF": 83,
+            "CR": 0
+          }
+        },
+        "candidate": {
+          "git_object": "65c3c94b2347c69f6d21ac2e2664a39ef46b3ae2:.agents/workflows/tfw-resume.md",
+          "blob": "5bc68ab5d3f9de4a52b1bb06b671a50c60a2d044",
+          "bytes": 5740,
+          "sha256": "86e84db9dc66139579e80881b591f4e7f9fd970b56ec0b058f2b0576631e08fa",
+          "eol": {
+            "CRLF": 0,
+            "LF": 90,
+            "CR": 0
+          }
+        }
+      },
+      "current_source_working_raw": {
+        "bytes": 5740,
+        "sha256": "86e84db9dc66139579e80881b591f4e7f9fd970b56ec0b058f2b0576631e08fa",
+        "eol": {
+          "CRLF": 0,
+          "LF": 90,
+          "CR": 0
+        }
+      }
+    },
+    {
+      "path": ".agents/workflows/tfw-review.md",
+      "identities": {
+        "baseline": {
+          "git_object": "ec91c56007c20cda79f740fec15c85e4af74d17c:.agents/workflows/tfw-review.md",
+          "blob": "f324292d57cf593587e2162bdee8c14320ffa6b9",
+          "bytes": 15244,
+          "sha256": "951d3053baf1efdcb40409bac970f4daeea4977d4bb82e20a1f01340879d089d",
+          "eol": {
+            "CRLF": 0,
+            "LF": 233,
+            "CR": 0
+          }
+        },
+        "candidate": {
+          "git_object": "65c3c94b2347c69f6d21ac2e2664a39ef46b3ae2:.agents/workflows/tfw-review.md",
+          "blob": "a389ae6f619d28d5a2a18745fd2eb73531208f5d",
+          "bytes": 16479,
+          "sha256": "6ba0bd35cece81760270e23de42cf14c030ac9450e6eac12c15123527a4ca2f6",
+          "eol": {
+            "CRLF": 0,
+            "LF": 248,
+            "CR": 0
+          }
+        }
+      },
+      "current_source_working_raw": {
+        "bytes": 16727,
+        "sha256": "c9c63ad961e70e66a3a480dc646586e0f27fa2bf61fc76b20689f876bef6e492",
+        "eol": {
+          "CRLF": 248,
+          "LF": 0,
+          "CR": 0
+        }
+      }
+    },
+    {
+      "path": ".agents/workflows/tfw-update.md",
+      "identities": {
+        "baseline": {
+          "git_object": "ec91c56007c20cda79f740fec15c85e4af74d17c:.agents/workflows/tfw-update.md",
+          "blob": "fc081bdef381bd96556ed26afa3b00e6d4235eec",
+          "bytes": 17645,
+          "sha256": "677f98c2ba61dcec1f59a5847ec12c782bf85132437194d291dcab3061707b1d",
+          "eol": {
+            "CRLF": 0,
+            "LF": 262,
+            "CR": 0
+          }
+        },
+        "candidate": {
+          "git_object": "65c3c94b2347c69f6d21ac2e2664a39ef46b3ae2:.agents/workflows/tfw-update.md",
+          "blob": "a4187ba20b1ad36576a552fd3cb85730769eddb4",
+          "bytes": 18922,
+          "sha256": "4df00bea1d0eb8e229e830e974b9de5c72e2c9bd41bc808cdb0d348a6ea1379a",
+          "eol": {
+            "CRLF": 0,
+            "LF": 279,
+            "CR": 0
+          }
+        }
+      },
+      "current_source_working_raw": {
+        "bytes": 18922,
+        "sha256": "4df00bea1d0eb8e229e830e974b9de5c72e2c9bd41bc808cdb0d348a6ea1379a",
+        "eol": {
+          "CRLF": 0,
+          "LF": 279,
+          "CR": 0
+        }
+      }
+    },
+    {
+      "path": ".claude/commands/tfw-config.md",
+      "identities": {
+        "baseline": {
+          "git_object": "ec91c56007c20cda79f740fec15c85e4af74d17c:.claude/commands/tfw-config.md",
+          "blob": "c9d2f65c9022e6261c73c462caf4df36eedd9c6a",
+          "bytes": 4966,
+          "sha256": "8f0b9e9b499ea90f91b8bb5643f4848c024ede83c7a289dea0260de2d5daece6",
+          "eol": {
+            "CRLF": 0,
+            "LF": 101,
+            "CR": 0
+          }
+        },
+        "candidate": {
+          "git_object": "65c3c94b2347c69f6d21ac2e2664a39ef46b3ae2:.claude/commands/tfw-config.md",
+          "blob": "1ff72982150befcc100cf9dba575e284fbcb51fe",
+          "bytes": 5149,
+          "sha256": "5aa4d56d0ad801c499aeac2d20a9a41b5dd66c0f027dea300b5d3a008879b190",
+          "eol": {
+            "CRLF": 0,
+            "LF": 103,
+            "CR": 0
+          }
+        }
+      },
+      "current_source_working_raw": {
+        "bytes": 5149,
+        "sha256": "5aa4d56d0ad801c499aeac2d20a9a41b5dd66c0f027dea300b5d3a008879b190",
+        "eol": {
+          "CRLF": 0,
+          "LF": 103,
+          "CR": 0
+        }
+      }
+    },
+    {
+      "path": ".claude/commands/tfw-docs.md",
+      "identities": {
+        "baseline": {
+          "git_object": "ec91c56007c20cda79f740fec15c85e4af74d17c:.claude/commands/tfw-docs.md",
+          "blob": "367befc86f16fe3a255663c3b174ef887e0e2903",
+          "bytes": 3202,
+          "sha256": "c3d72162e7084fcdda327b456edcc8a4cd50a0af50dcc578597e2519a75475b6",
+          "eol": {
+            "CRLF": 0,
+            "LF": 76,
+            "CR": 0
+          }
+        },
+        "candidate": {
+          "git_object": "65c3c94b2347c69f6d21ac2e2664a39ef46b3ae2:.claude/commands/tfw-docs.md",
+          "blob": "26b80dbb58c2f1406afef90ea5639f9dced246b7",
+          "bytes": 4917,
+          "sha256": "46fb7316afdb4c8ceb7e7c5986332781f44d678fbd224baa4846a4e38c133271",
+          "eol": {
+            "CRLF": 0,
+            "LF": 75,
+            "CR": 0
+          }
+        }
+      },
+      "current_source_working_raw": {
+        "bytes": 4992,
+        "sha256": "3863e69a77371a084156dd295e38dd0b3f9788f4ddd632961e99808da464e176",
+        "eol": {
+          "CRLF": 75,
+          "LF": 0,
+          "CR": 0
+        }
+      }
+    },
+    {
+      "path": ".claude/commands/tfw-handoff.md",
+      "identities": {
+        "baseline": {
+          "git_object": "ec91c56007c20cda79f740fec15c85e4af74d17c:.claude/commands/tfw-handoff.md",
+          "blob": "62d0e89fb28f20ff5fa104a2ba6177c1fba05068",
+          "bytes": 15030,
+          "sha256": "9837227aab58ab190519a33eee278a7e1d6d53c407b289f9154338de3d29213a",
+          "eol": {
+            "CRLF": 0,
+            "LF": 234,
+            "CR": 0
+          }
+        },
+        "candidate": {
+          "git_object": "65c3c94b2347c69f6d21ac2e2664a39ef46b3ae2:.claude/commands/tfw-handoff.md",
+          "blob": "299d5215dd0f957ca4efcc2e89837872fdeff525",
+          "bytes": 16144,
+          "sha256": "0950b8bdd25bcaf43691c92c5ae00904311abf58637e80d4bb03c12c649aaf4c",
+          "eol": {
+            "CRLF": 0,
+            "LF": 248,
+            "CR": 0
+          }
+        }
+      },
+      "current_source_working_raw": {
+        "bytes": 16144,
+        "sha256": "0950b8bdd25bcaf43691c92c5ae00904311abf58637e80d4bb03c12c649aaf4c",
+        "eol": {
+          "CRLF": 0,
+          "LF": 248,
+          "CR": 0
+        }
+      }
+    },
+    {
+      "path": ".claude/commands/tfw-init.md",
+      "identities": {
+        "baseline": {
+          "git_object": "ec91c56007c20cda79f740fec15c85e4af74d17c:.claude/commands/tfw-init.md",
+          "blob": "80f541614311aa006e630d951df50c570f58b451",
+          "bytes": 8128,
+          "sha256": "7ec919af5ec2c905f81d9b697bdfca41bc531d09d72dd37e3259e2852c134ef4",
+          "eol": {
+            "CRLF": 0,
+            "LF": 140,
+            "CR": 0
+          }
+        },
+        "candidate": {
+          "git_object": "65c3c94b2347c69f6d21ac2e2664a39ef46b3ae2:.claude/commands/tfw-init.md",
+          "blob": "bedc73b1fa13eb698ac3c7b3d6325ef4c66a9113",
+          "bytes": 8677,
+          "sha256": "6fcbad17fb5a7bc52f5fcb36edf8f2fd5802a593dfa7cd02c9fa874f38a1e2cc",
+          "eol": {
+            "CRLF": 0,
+            "LF": 145,
+            "CR": 0
+          }
+        }
+      },
+      "current_source_working_raw": {
+        "bytes": 8677,
+        "sha256": "6fcbad17fb5a7bc52f5fcb36edf8f2fd5802a593dfa7cd02c9fa874f38a1e2cc",
+        "eol": {
+          "CRLF": 0,
+          "LF": 145,
+          "CR": 0
+        }
+      }
+    },
+    {
+      "path": ".claude/commands/tfw-knowledge.md",
+      "identities": {
+        "baseline": {
+          "git_object": "ec91c56007c20cda79f740fec15c85e4af74d17c:.claude/commands/tfw-knowledge.md",
+          "blob": "b3910e0823d59eefba14d7178ed921c3da8b8f85",
+          "bytes": 11616,
+          "sha256": "119a419db124e45fded4722b38d46ac5f7aa46cf928431df0585421336b608ef",
+          "eol": {
+            "CRLF": 0,
+            "LF": 174,
+            "CR": 0
+          }
+        },
+        "candidate": {
+          "git_object": "65c3c94b2347c69f6d21ac2e2664a39ef46b3ae2:.claude/commands/tfw-knowledge.md",
+          "blob": "86a7bd094264b37b5c49e5377d08aa18bb914e9f",
+          "bytes": 7524,
+          "sha256": "7af2fe71f1ad2fc15475fb425c64687c4cc6b64a50ff7bb5249e755774973a71",
+          "eol": {
+            "CRLF": 0,
+            "LF": 111,
+            "CR": 0
+          }
+        }
+      },
+      "current_source_working_raw": {
+        "bytes": 7524,
+        "sha256": "7af2fe71f1ad2fc15475fb425c64687c4cc6b64a50ff7bb5249e755774973a71",
+        "eol": {
+          "CRLF": 0,
+          "LF": 111,
+          "CR": 0
+        }
+      }
+    },
+    {
+      "path": ".claude/commands/tfw-plan.md",
+      "identities": {
+        "baseline": {
+          "git_object": "ec91c56007c20cda79f740fec15c85e4af74d17c:.claude/commands/tfw-plan.md",
+          "blob": "81f7d78bd7f270871bc4ee325789a3f457059812",
+          "bytes": 14416,
+          "sha256": "775e53088428f1ee117ae2b1adcb79d79bfc01b74401c89ee497365e52abd0e1",
+          "eol": {
+            "CRLF": 0,
+            "LF": 219,
+            "CR": 0
+          }
+        },
+        "candidate": {
+          "git_object": "65c3c94b2347c69f6d21ac2e2664a39ef46b3ae2:.claude/commands/tfw-plan.md",
+          "blob": "4bac62104137d722f3d971a2c4ea425adbdd6fcd",
+          "bytes": 14839,
+          "sha256": "8967783329c291602639aca02a7d387e23dfc98a808497724c08d6a845fc1720",
+          "eol": {
+            "CRLF": 0,
+            "LF": 224,
+            "CR": 0
+          }
+        }
+      },
+      "current_source_working_raw": {
+        "bytes": 14839,
+        "sha256": "8967783329c291602639aca02a7d387e23dfc98a808497724c08d6a845fc1720",
+        "eol": {
+          "CRLF": 0,
+          "LF": 224,
+          "CR": 0
+        }
+      }
+    },
+    {
+      "path": ".claude/commands/tfw-release.md",
+      "identities": {
+        "baseline": {
+          "git_object": "ec91c56007c20cda79f740fec15c85e4af74d17c:.claude/commands/tfw-release.md",
+          "blob": "a5878686ec83f4b13b60cf34c1cebea80972fd3d",
+          "bytes": 4493,
+          "sha256": "e91eb6f389ece06bbdc89d29300777ce5ecf486f17d601f07217f50094bf06a7",
+          "eol": {
+            "CRLF": 0,
+            "LF": 77,
+            "CR": 0
+          }
+        },
+        "candidate": {
+          "git_object": "65c3c94b2347c69f6d21ac2e2664a39ef46b3ae2:.claude/commands/tfw-release.md",
+          "blob": "a5878686ec83f4b13b60cf34c1cebea80972fd3d",
+          "bytes": 4493,
+          "sha256": "e91eb6f389ece06bbdc89d29300777ce5ecf486f17d601f07217f50094bf06a7",
+          "eol": {
+            "CRLF": 0,
+            "LF": 77,
+            "CR": 0
+          }
+        }
+      },
+      "current_source_working_raw": {
+        "bytes": 4493,
+        "sha256": "e91eb6f389ece06bbdc89d29300777ce5ecf486f17d601f07217f50094bf06a7",
+        "eol": {
+          "CRLF": 0,
+          "LF": 77,
+          "CR": 0
+        }
+      }
+    },
+    {
+      "path": ".claude/commands/tfw-research.md",
+      "identities": {
+        "baseline": {
+          "git_object": "ec91c56007c20cda79f740fec15c85e4af74d17c:.claude/commands/tfw-research.md",
+          "blob": "7c65caeea35e70284ceb145b4758c89d295c08d6",
+          "bytes": 7905,
+          "sha256": "f1d62fbb0d8de05942c1f70ba6a9efb74045a73b1443040379742d025ffaf8b9",
+          "eol": {
+            "CRLF": 0,
+            "LF": 147,
+            "CR": 0
+          }
+        },
+        "candidate": {
+          "git_object": "65c3c94b2347c69f6d21ac2e2664a39ef46b3ae2:.claude/commands/tfw-research.md",
+          "blob": "197514a9a193930e785ee08b89212c511d0f4c5e",
+          "bytes": 9021,
+          "sha256": "b5bdeb054182e3981bd2cdc034c27d6a512245a0922b96700e4342da1a520d5d",
+          "eol": {
+            "CRLF": 0,
+            "LF": 161,
+            "CR": 0
+          }
+        }
+      },
+      "current_source_working_raw": {
+        "bytes": 9021,
+        "sha256": "b5bdeb054182e3981bd2cdc034c27d6a512245a0922b96700e4342da1a520d5d",
+        "eol": {
+          "CRLF": 0,
+          "LF": 161,
+          "CR": 0
+        }
+      }
+    },
+    {
+      "path": ".claude/commands/tfw-resume.md",
+      "identities": {
+        "baseline": {
+          "git_object": "ec91c56007c20cda79f740fec15c85e4af74d17c:.claude/commands/tfw-resume.md",
+          "blob": "31f31594e0b2146c1df71132c4481a3b711ea508",
+          "bytes": 5093,
+          "sha256": "1ce3b2e1ee30f1f5be9cfd62af3cd400022a34ba106295978c426e26e46be5e3",
+          "eol": {
+            "CRLF": 0,
+            "LF": 83,
+            "CR": 0
+          }
+        },
+        "candidate": {
+          "git_object": "65c3c94b2347c69f6d21ac2e2664a39ef46b3ae2:.claude/commands/tfw-resume.md",
+          "blob": "5bc68ab5d3f9de4a52b1bb06b671a50c60a2d044",
+          "bytes": 5740,
+          "sha256": "86e84db9dc66139579e80881b591f4e7f9fd970b56ec0b058f2b0576631e08fa",
+          "eol": {
+            "CRLF": 0,
+            "LF": 90,
+            "CR": 0
+          }
+        }
+      },
+      "current_source_working_raw": {
+        "bytes": 5740,
+        "sha256": "86e84db9dc66139579e80881b591f4e7f9fd970b56ec0b058f2b0576631e08fa",
+        "eol": {
+          "CRLF": 0,
+          "LF": 90,
+          "CR": 0
+        }
+      }
+    },
+    {
+      "path": ".claude/commands/tfw-review.md",
+      "identities": {
+        "baseline": {
+          "git_object": "ec91c56007c20cda79f740fec15c85e4af74d17c:.claude/commands/tfw-review.md",
+          "blob": "f324292d57cf593587e2162bdee8c14320ffa6b9",
+          "bytes": 15244,
+          "sha256": "951d3053baf1efdcb40409bac970f4daeea4977d4bb82e20a1f01340879d089d",
+          "eol": {
+            "CRLF": 0,
+            "LF": 233,
+            "CR": 0
+          }
+        },
+        "candidate": {
+          "git_object": "65c3c94b2347c69f6d21ac2e2664a39ef46b3ae2:.claude/commands/tfw-review.md",
+          "blob": "a389ae6f619d28d5a2a18745fd2eb73531208f5d",
+          "bytes": 16479,
+          "sha256": "6ba0bd35cece81760270e23de42cf14c030ac9450e6eac12c15123527a4ca2f6",
+          "eol": {
+            "CRLF": 0,
+            "LF": 248,
+            "CR": 0
+          }
+        }
+      },
+      "current_source_working_raw": {
+        "bytes": 16727,
+        "sha256": "c9c63ad961e70e66a3a480dc646586e0f27fa2bf61fc76b20689f876bef6e492",
+        "eol": {
+          "CRLF": 248,
+          "LF": 0,
+          "CR": 0
+        }
+      }
+    },
+    {
+      "path": ".claude/commands/tfw-update.md",
+      "identities": {
+        "baseline": {
+          "git_object": "ec91c56007c20cda79f740fec15c85e4af74d17c:.claude/commands/tfw-update.md",
+          "blob": "fc081bdef381bd96556ed26afa3b00e6d4235eec",
+          "bytes": 17645,
+          "sha256": "677f98c2ba61dcec1f59a5847ec12c782bf85132437194d291dcab3061707b1d",
+          "eol": {
+            "CRLF": 0,
+            "LF": 262,
+            "CR": 0
+          }
+        },
+        "candidate": {
+          "git_object": "65c3c94b2347c69f6d21ac2e2664a39ef46b3ae2:.claude/commands/tfw-update.md",
+          "blob": "a4187ba20b1ad36576a552fd3cb85730769eddb4",
+          "bytes": 18922,
+          "sha256": "4df00bea1d0eb8e229e830e974b9de5c72e2c9bd41bc808cdb0d348a6ea1379a",
+          "eol": {
+            "CRLF": 0,
+            "LF": 279,
+            "CR": 0
+          }
+        }
+      },
+      "current_source_working_raw": {
+        "bytes": 18922,
+        "sha256": "4df00bea1d0eb8e229e830e974b9de5c72e2c9bd41bc808cdb0d348a6ea1379a",
+        "eol": {
+          "CRLF": 0,
+          "LF": 279,
+          "CR": 0
+        }
+      }
+    },
+    {
+      "path": ".cursor/commands/tfw-config.md",
+      "identities": {
+        "baseline": {
+          "absent": true
+        },
+        "candidate": {
+          "absent": true
+        }
+      }
+    },
+    {
+      "path": ".cursor/commands/tfw-docs.md",
+      "identities": {
+        "baseline": {
+          "absent": true
+        },
+        "candidate": {
+          "absent": true
+        }
+      }
+    },
+    {
+      "path": ".cursor/commands/tfw-handoff.md",
+      "identities": {
+        "baseline": {
+          "absent": true
+        },
+        "candidate": {
+          "absent": true
+        }
+      }
+    },
+    {
+      "path": ".cursor/commands/tfw-init.md",
+      "identities": {
+        "baseline": {
+          "absent": true
+        },
+        "candidate": {
+          "absent": true
+        }
+      }
+    },
+    {
+      "path": ".cursor/commands/tfw-knowledge.md",
+      "identities": {
+        "baseline": {
+          "absent": true
+        },
+        "candidate": {
+          "absent": true
+        }
+      }
+    },
+    {
+      "path": ".cursor/commands/tfw-plan.md",
+      "identities": {
+        "baseline": {
+          "absent": true
+        },
+        "candidate": {
+          "absent": true
+        }
+      }
+    },
+    {
+      "path": ".cursor/commands/tfw-release.md",
+      "identities": {
+        "baseline": {
+          "absent": true
+        },
+        "candidate": {
+          "absent": true
+        }
+      }
+    },
+    {
+      "path": ".cursor/commands/tfw-research.md",
+      "identities": {
+        "baseline": {
+          "absent": true
+        },
+        "candidate": {
+          "absent": true
+        }
+      }
+    },
+    {
+      "path": ".cursor/commands/tfw-resume.md",
+      "identities": {
+        "baseline": {
+          "absent": true
+        },
+        "candidate": {
+          "absent": true
+        }
+      }
+    },
+    {
+      "path": ".cursor/commands/tfw-review.md",
+      "identities": {
+        "baseline": {
+          "absent": true
+        },
+        "candidate": {
+          "absent": true
+        }
+      }
+    },
+    {
+      "path": ".cursor/commands/tfw-update.md",
+      "identities": {
+        "baseline": {
+          "absent": true
+        },
+        "candidate": {
+          "absent": true
+        }
+      }
+    },
+    {
+      "path": ".cursor/rules/tfw.mdc",
+      "identities": {
+        "baseline": {
+          "absent": true
+        },
+        "candidate": {
+          "absent": true
+        }
+      }
+    },
+    {
+      "path": ".tfw/adapters/antigravity/tfw-rules.md.template",
+      "identities": {
+        "baseline": {
+          "git_object": "ec91c56007c20cda79f740fec15c85e4af74d17c:.tfw/adapters/antigravity/tfw-rules.md.template",
+          "blob": "b70ce73ec7a2ef31f8a685d33ae0db63c7a4d241",
+          "bytes": 742,
+          "sha256": "0b03c98d0fe2b5f1cfe5d3b6ede9b62e058a1b3d5cfdd5b74e27b91d4d23a603",
+          "eol": {
+            "CRLF": 0,
+            "LF": 22,
+            "CR": 0
+          }
+        },
+        "candidate": {
+          "git_object": "65c3c94b2347c69f6d21ac2e2664a39ef46b3ae2:.tfw/adapters/antigravity/tfw-rules.md.template",
+          "blob": "b70ce73ec7a2ef31f8a685d33ae0db63c7a4d241",
+          "bytes": 742,
+          "sha256": "0b03c98d0fe2b5f1cfe5d3b6ede9b62e058a1b3d5cfdd5b74e27b91d4d23a603",
+          "eol": {
+            "CRLF": 0,
+            "LF": 22,
+            "CR": 0
+          }
+        }
+      },
+      "current_source_working_raw": {
+        "bytes": 742,
+        "sha256": "0b03c98d0fe2b5f1cfe5d3b6ede9b62e058a1b3d5cfdd5b74e27b91d4d23a603",
+        "eol": {
+          "CRLF": 0,
+          "LF": 22,
+          "CR": 0
+        }
+      }
+    },
+    {
+      "path": ".tfw/adapters/claude-code/CLAUDE.md.template",
+      "identities": {
+        "baseline": {
+          "git_object": "ec91c56007c20cda79f740fec15c85e4af74d17c:.tfw/adapters/claude-code/CLAUDE.md.template",
+          "blob": "257b276a2d8a4f221a37df6adefb9608c0d18265",
+          "bytes": 2859,
+          "sha256": "c0544b5b019505c02e1c108f884f5fc4ab54ad7fab26299906b0028f747726db",
+          "eol": {
+            "CRLF": 0,
+            "LF": 57,
+            "CR": 0
+          }
+        },
+        "candidate": {
+          "git_object": "65c3c94b2347c69f6d21ac2e2664a39ef46b3ae2:.tfw/adapters/claude-code/CLAUDE.md.template",
+          "blob": "257b276a2d8a4f221a37df6adefb9608c0d18265",
+          "bytes": 2859,
+          "sha256": "c0544b5b019505c02e1c108f884f5fc4ab54ad7fab26299906b0028f747726db",
+          "eol": {
+            "CRLF": 0,
+            "LF": 57,
+            "CR": 0
+          }
+        }
+      },
+      "current_source_working_raw": {
+        "bytes": 2859,
+        "sha256": "c0544b5b019505c02e1c108f884f5fc4ab54ad7fab26299906b0028f747726db",
+        "eol": {
+          "CRLF": 0,
+          "LF": 57,
+          "CR": 0
+        }
+      }
+    },
+    {
+      "path": ".tfw/adapters/codex/AGENTS.md.template",
+      "identities": {
+        "baseline": {
+          "git_object": "ec91c56007c20cda79f740fec15c85e4af74d17c:.tfw/adapters/codex/AGENTS.md.template",
+          "blob": "1514078347dc4c0d7e1bb4745acdefaab4a9f52d",
+          "bytes": 1870,
+          "sha256": "7a4c495cec70f2e9c5ba4361549404745a9ffc43a23fba2edcd2533f81898f71",
+          "eol": {
+            "CRLF": 0,
+            "LF": 31,
+            "CR": 0
+          }
+        },
+        "candidate": {
+          "git_object": "65c3c94b2347c69f6d21ac2e2664a39ef46b3ae2:.tfw/adapters/codex/AGENTS.md.template",
+          "blob": "1514078347dc4c0d7e1bb4745acdefaab4a9f52d",
+          "bytes": 1870,
+          "sha256": "7a4c495cec70f2e9c5ba4361549404745a9ffc43a23fba2edcd2533f81898f71",
+          "eol": {
+            "CRLF": 0,
+            "LF": 31,
+            "CR": 0
+          }
+        }
+      },
+      "current_source_working_raw": {
+        "bytes": 1870,
+        "sha256": "7a4c495cec70f2e9c5ba4361549404745a9ffc43a23fba2edcd2533f81898f71",
+        "eol": {
+          "CRLF": 0,
+          "LF": 31,
+          "CR": 0
+        }
+      }
+    },
+    {
+      "path": ".tfw/adapters/codex/skills/tfw-config/SKILL.md",
+      "identities": {
+        "baseline": {
+          "git_object": "ec91c56007c20cda79f740fec15c85e4af74d17c:.tfw/adapters/codex/skills/tfw-config/SKILL.md",
+          "blob": "af2eca738845e00e99e0c668cf71bb72c6309981",
+          "bytes": 1019,
+          "sha256": "a8e3ba99a592e3a6dba9fbea550fd9bc59159fa4b291df08519472a987be8036",
+          "eol": {
+            "CRLF": 0,
+            "LF": 18,
+            "CR": 0
+          }
+        },
+        "candidate": {
+          "git_object": "65c3c94b2347c69f6d21ac2e2664a39ef46b3ae2:.tfw/adapters/codex/skills/tfw-config/SKILL.md",
+          "blob": "af2eca738845e00e99e0c668cf71bb72c6309981",
+          "bytes": 1019,
+          "sha256": "a8e3ba99a592e3a6dba9fbea550fd9bc59159fa4b291df08519472a987be8036",
+          "eol": {
+            "CRLF": 0,
+            "LF": 18,
+            "CR": 0
+          }
+        }
+      },
+      "current_source_working_raw": {
+        "bytes": 1019,
+        "sha256": "a8e3ba99a592e3a6dba9fbea550fd9bc59159fa4b291df08519472a987be8036",
+        "eol": {
+          "CRLF": 0,
+          "LF": 18,
+          "CR": 0
+        }
+      }
+    },
+    {
+      "path": ".tfw/adapters/codex/skills/tfw-docs/SKILL.md",
+      "identities": {
+        "baseline": {
+          "git_object": "ec91c56007c20cda79f740fec15c85e4af74d17c:.tfw/adapters/codex/skills/tfw-docs/SKILL.md",
+          "blob": "d6fb8ac69842dec34b77dc0391864dee34995004",
+          "bytes": 918,
+          "sha256": "989d1cad59fd3309f60d761df8854a2bbf6251f12dd02239353f56a41e1079cf",
+          "eol": {
+            "CRLF": 0,
+            "LF": 18,
+            "CR": 0
+          }
+        },
+        "candidate": {
+          "git_object": "65c3c94b2347c69f6d21ac2e2664a39ef46b3ae2:.tfw/adapters/codex/skills/tfw-docs/SKILL.md",
+          "blob": "788f49cb721ca0c095ef757154f1b7c37d859214",
+          "bytes": 992,
+          "sha256": "8fbe734b43a4acf2e8b1b61a623a497322a11b2c6c35b2a16abedb26e2e566f5",
+          "eol": {
+            "CRLF": 0,
+            "LF": 18,
+            "CR": 0
+          }
+        }
+      },
+      "current_source_working_raw": {
+        "bytes": 992,
+        "sha256": "8fbe734b43a4acf2e8b1b61a623a497322a11b2c6c35b2a16abedb26e2e566f5",
+        "eol": {
+          "CRLF": 0,
+          "LF": 18,
+          "CR": 0
+        }
+      }
+    },
+    {
+      "path": ".tfw/adapters/codex/skills/tfw-handoff/SKILL.md",
+      "identities": {
+        "baseline": {
+          "git_object": "ec91c56007c20cda79f740fec15c85e4af74d17c:.tfw/adapters/codex/skills/tfw-handoff/SKILL.md",
+          "blob": "b988f23a0165d04ac1bbc6237ef9bf52bcacb1d0",
+          "bytes": 1175,
+          "sha256": "c62df85f6fe546dc0266cab6f67ecaa4330963cbc581a72efbb86d3fbfe9b366",
+          "eol": {
+            "CRLF": 0,
+            "LF": 21,
+            "CR": 0
+          }
+        },
+        "candidate": {
+          "git_object": "65c3c94b2347c69f6d21ac2e2664a39ef46b3ae2:.tfw/adapters/codex/skills/tfw-handoff/SKILL.md",
+          "blob": "b988f23a0165d04ac1bbc6237ef9bf52bcacb1d0",
+          "bytes": 1175,
+          "sha256": "c62df85f6fe546dc0266cab6f67ecaa4330963cbc581a72efbb86d3fbfe9b366",
+          "eol": {
+            "CRLF": 0,
+            "LF": 21,
+            "CR": 0
+          }
+        }
+      },
+      "current_source_working_raw": {
+        "bytes": 1175,
+        "sha256": "c62df85f6fe546dc0266cab6f67ecaa4330963cbc581a72efbb86d3fbfe9b366",
+        "eol": {
+          "CRLF": 0,
+          "LF": 21,
+          "CR": 0
+        }
+      }
+    },
+    {
+      "path": ".tfw/adapters/codex/skills/tfw-init/SKILL.md",
+      "identities": {
+        "baseline": {
+          "git_object": "ec91c56007c20cda79f740fec15c85e4af74d17c:.tfw/adapters/codex/skills/tfw-init/SKILL.md",
+          "blob": "776a87de04ed4b30a71067e7089e3ee34a69ee0d",
+          "bytes": 1210,
+          "sha256": "5644ecedb871b15992352becb56dfaeda6b7ab814865100eee4388c3e1bc3fc2",
+          "eol": {
+            "CRLF": 0,
+            "LF": 18,
+            "CR": 0
+          }
+        },
+        "candidate": {
+          "git_object": "65c3c94b2347c69f6d21ac2e2664a39ef46b3ae2:.tfw/adapters/codex/skills/tfw-init/SKILL.md",
+          "blob": "776a87de04ed4b30a71067e7089e3ee34a69ee0d",
+          "bytes": 1210,
+          "sha256": "5644ecedb871b15992352becb56dfaeda6b7ab814865100eee4388c3e1bc3fc2",
+          "eol": {
+            "CRLF": 0,
+            "LF": 18,
+            "CR": 0
+          }
+        }
+      },
+      "current_source_working_raw": {
+        "bytes": 1210,
+        "sha256": "5644ecedb871b15992352becb56dfaeda6b7ab814865100eee4388c3e1bc3fc2",
+        "eol": {
+          "CRLF": 0,
+          "LF": 18,
+          "CR": 0
+        }
+      }
+    },
+    {
+      "path": ".tfw/adapters/codex/skills/tfw-knowledge/SKILL.md",
+      "identities": {
+        "baseline": {
+          "git_object": "ec91c56007c20cda79f740fec15c85e4af74d17c:.tfw/adapters/codex/skills/tfw-knowledge/SKILL.md",
+          "blob": "db83c018241e6385adcfec5da1adcc1ff31fb2b8",
+          "bytes": 1119,
+          "sha256": "484e5ef9732f1a494ff6390669fc9099266fea20ca93bb173ba93215225172a8",
+          "eol": {
+            "CRLF": 0,
+            "LF": 19,
+            "CR": 0
+          }
+        },
+        "candidate": {
+          "git_object": "65c3c94b2347c69f6d21ac2e2664a39ef46b3ae2:.tfw/adapters/codex/skills/tfw-knowledge/SKILL.md",
+          "blob": "b6884efab82ca8118a633066dc2cccfae49d379d",
+          "bytes": 1264,
+          "sha256": "f5bea3e0deea8a8fa9b3d28b5979778fa869d62537d8c41d0ffe9b1a220f88b0",
+          "eol": {
+            "CRLF": 0,
+            "LF": 19,
+            "CR": 0
+          }
+        }
+      },
+      "current_source_working_raw": {
+        "bytes": 1264,
+        "sha256": "f5bea3e0deea8a8fa9b3d28b5979778fa869d62537d8c41d0ffe9b1a220f88b0",
+        "eol": {
+          "CRLF": 0,
+          "LF": 19,
+          "CR": 0
+        }
+      }
+    },
+    {
+      "path": ".tfw/adapters/codex/skills/tfw-plan/SKILL.md",
+      "identities": {
+        "baseline": {
+          "git_object": "ec91c56007c20cda79f740fec15c85e4af74d17c:.tfw/adapters/codex/skills/tfw-plan/SKILL.md",
+          "blob": "8373f3e71f13522e56b28cda8133c876c436e1c6",
+          "bytes": 1003,
+          "sha256": "813b219286bf7fb6521b836cf3a802806fdc38760aaf9a55c75c49a0d5be7cfe",
+          "eol": {
+            "CRLF": 0,
+            "LF": 20,
+            "CR": 0
+          }
+        },
+        "candidate": {
+          "git_object": "65c3c94b2347c69f6d21ac2e2664a39ef46b3ae2:.tfw/adapters/codex/skills/tfw-plan/SKILL.md",
+          "blob": "8373f3e71f13522e56b28cda8133c876c436e1c6",
+          "bytes": 1003,
+          "sha256": "813b219286bf7fb6521b836cf3a802806fdc38760aaf9a55c75c49a0d5be7cfe",
+          "eol": {
+            "CRLF": 0,
+            "LF": 20,
+            "CR": 0
+          }
+        }
+      },
+      "current_source_working_raw": {
+        "bytes": 1003,
+        "sha256": "813b219286bf7fb6521b836cf3a802806fdc38760aaf9a55c75c49a0d5be7cfe",
+        "eol": {
+          "CRLF": 0,
+          "LF": 20,
+          "CR": 0
+        }
+      }
+    },
+    {
+      "path": ".tfw/adapters/codex/skills/tfw-release/SKILL.md",
+      "identities": {
+        "baseline": {
+          "git_object": "ec91c56007c20cda79f740fec15c85e4af74d17c:.tfw/adapters/codex/skills/tfw-release/SKILL.md",
+          "blob": "fb5f6c7cf2200469544a9d01cebe18172aaa6bf0",
+          "bytes": 1269,
+          "sha256": "c38361a6a188b9888d91c80e3d0d653ee2b15a1d1698f35252e154fbe55153c4",
+          "eol": {
+            "CRLF": 0,
+            "LF": 20,
+            "CR": 0
+          }
+        },
+        "candidate": {
+          "git_object": "65c3c94b2347c69f6d21ac2e2664a39ef46b3ae2:.tfw/adapters/codex/skills/tfw-release/SKILL.md",
+          "blob": "fb5f6c7cf2200469544a9d01cebe18172aaa6bf0",
+          "bytes": 1269,
+          "sha256": "c38361a6a188b9888d91c80e3d0d653ee2b15a1d1698f35252e154fbe55153c4",
+          "eol": {
+            "CRLF": 0,
+            "LF": 20,
+            "CR": 0
+          }
+        }
+      },
+      "current_source_working_raw": {
+        "bytes": 1269,
+        "sha256": "c38361a6a188b9888d91c80e3d0d653ee2b15a1d1698f35252e154fbe55153c4",
+        "eol": {
+          "CRLF": 0,
+          "LF": 20,
+          "CR": 0
+        }
+      }
+    },
+    {
+      "path": ".tfw/adapters/codex/skills/tfw-research/SKILL.md",
+      "identities": {
+        "baseline": {
+          "git_object": "ec91c56007c20cda79f740fec15c85e4af74d17c:.tfw/adapters/codex/skills/tfw-research/SKILL.md",
+          "blob": "fac0b0c27b91d916dbf36f02d4850e0aba206f2d",
+          "bytes": 1090,
+          "sha256": "53e734bceb0ddcbc49fe565382c847c88010f0591ab65e3b5925cd37f5e374a0",
+          "eol": {
+            "CRLF": 0,
+            "LF": 22,
+            "CR": 0
+          }
+        },
+        "candidate": {
+          "git_object": "65c3c94b2347c69f6d21ac2e2664a39ef46b3ae2:.tfw/adapters/codex/skills/tfw-research/SKILL.md",
+          "blob": "fac0b0c27b91d916dbf36f02d4850e0aba206f2d",
+          "bytes": 1090,
+          "sha256": "53e734bceb0ddcbc49fe565382c847c88010f0591ab65e3b5925cd37f5e374a0",
+          "eol": {
+            "CRLF": 0,
+            "LF": 22,
+            "CR": 0
+          }
+        }
+      },
+      "current_source_working_raw": {
+        "bytes": 1090,
+        "sha256": "53e734bceb0ddcbc49fe565382c847c88010f0591ab65e3b5925cd37f5e374a0",
+        "eol": {
+          "CRLF": 0,
+          "LF": 22,
+          "CR": 0
+        }
+      }
+    },
+    {
+      "path": ".tfw/adapters/codex/skills/tfw-resume/SKILL.md",
+      "identities": {
+        "baseline": {
+          "git_object": "ec91c56007c20cda79f740fec15c85e4af74d17c:.tfw/adapters/codex/skills/tfw-resume/SKILL.md",
+          "blob": "356e856a811c22f04fce2f1af9c9d7e5ed814146",
+          "bytes": 1204,
+          "sha256": "ccd7a8d3151c64cff7b5e7032a8f0f6b64095fa6f82a993ac88a6cc39fe214cc",
+          "eol": {
+            "CRLF": 0,
+            "LF": 19,
+            "CR": 0
+          }
+        },
+        "candidate": {
+          "git_object": "65c3c94b2347c69f6d21ac2e2664a39ef46b3ae2:.tfw/adapters/codex/skills/tfw-resume/SKILL.md",
+          "blob": "356e856a811c22f04fce2f1af9c9d7e5ed814146",
+          "bytes": 1204,
+          "sha256": "ccd7a8d3151c64cff7b5e7032a8f0f6b64095fa6f82a993ac88a6cc39fe214cc",
+          "eol": {
+            "CRLF": 0,
+            "LF": 19,
+            "CR": 0
+          }
+        }
+      },
+      "current_source_working_raw": {
+        "bytes": 1204,
+        "sha256": "ccd7a8d3151c64cff7b5e7032a8f0f6b64095fa6f82a993ac88a6cc39fe214cc",
+        "eol": {
+          "CRLF": 0,
+          "LF": 19,
+          "CR": 0
+        }
+      }
+    },
+    {
+      "path": ".tfw/adapters/codex/skills/tfw-review/SKILL.md",
+      "identities": {
+        "baseline": {
+          "git_object": "ec91c56007c20cda79f740fec15c85e4af74d17c:.tfw/adapters/codex/skills/tfw-review/SKILL.md",
+          "blob": "06f230592c1399f40c3acd281e1fa1e81d800fb1",
+          "bytes": 1243,
+          "sha256": "33d90cb17965fe904054024815e927f91bde31b99e9e48df2cc78a478218f21e",
+          "eol": {
+            "CRLF": 0,
+            "LF": 22,
+            "CR": 0
+          }
+        },
+        "candidate": {
+          "git_object": "65c3c94b2347c69f6d21ac2e2664a39ef46b3ae2:.tfw/adapters/codex/skills/tfw-review/SKILL.md",
+          "blob": "06f230592c1399f40c3acd281e1fa1e81d800fb1",
+          "bytes": 1243,
+          "sha256": "33d90cb17965fe904054024815e927f91bde31b99e9e48df2cc78a478218f21e",
+          "eol": {
+            "CRLF": 0,
+            "LF": 22,
+            "CR": 0
+          }
+        }
+      },
+      "current_source_working_raw": {
+        "bytes": 1243,
+        "sha256": "33d90cb17965fe904054024815e927f91bde31b99e9e48df2cc78a478218f21e",
+        "eol": {
+          "CRLF": 0,
+          "LF": 22,
+          "CR": 0
+        }
+      }
+    },
+    {
+      "path": ".tfw/adapters/codex/skills/tfw-update/SKILL.md",
+      "identities": {
+        "baseline": {
+          "git_object": "ec91c56007c20cda79f740fec15c85e4af74d17c:.tfw/adapters/codex/skills/tfw-update/SKILL.md",
+          "blob": "d844792d7e37001d3e13871ea14e97c5db7b7053",
+          "bytes": 1006,
+          "sha256": "be6ea4a42871a70e9bb3cdebf8de295438c46e7a4b6bc356221a054c461b6cc7",
+          "eol": {
+            "CRLF": 0,
+            "LF": 18,
+            "CR": 0
+          }
+        },
+        "candidate": {
+          "git_object": "65c3c94b2347c69f6d21ac2e2664a39ef46b3ae2:.tfw/adapters/codex/skills/tfw-update/SKILL.md",
+          "blob": "d844792d7e37001d3e13871ea14e97c5db7b7053",
+          "bytes": 1006,
+          "sha256": "be6ea4a42871a70e9bb3cdebf8de295438c46e7a4b6bc356221a054c461b6cc7",
+          "eol": {
+            "CRLF": 0,
+            "LF": 18,
+            "CR": 0
+          }
+        }
+      },
+      "current_source_working_raw": {
+        "bytes": 1006,
+        "sha256": "be6ea4a42871a70e9bb3cdebf8de295438c46e7a4b6bc356221a054c461b6cc7",
+        "eol": {
+          "CRLF": 0,
+          "LF": 18,
+          "CR": 0
+        }
+      }
+    },
+    {
+      "path": ".tfw/adapters/cursor/tfw.mdc.template",
+      "identities": {
+        "baseline": {
+          "git_object": "ec91c56007c20cda79f740fec15c85e4af74d17c:.tfw/adapters/cursor/tfw.mdc.template",
+          "blob": "cde694f527311cbeefbfd1749c9c40b281974903",
+          "bytes": 835,
+          "sha256": "b4e1208e1cd60d94c219b6cc343035e60edd3fbcdb0cfe58be58c7e204528101",
+          "eol": {
+            "CRLF": 0,
+            "LF": 23,
+            "CR": 0
+          }
+        },
+        "candidate": {
+          "git_object": "65c3c94b2347c69f6d21ac2e2664a39ef46b3ae2:.tfw/adapters/cursor/tfw.mdc.template",
+          "blob": "cde694f527311cbeefbfd1749c9c40b281974903",
+          "bytes": 835,
+          "sha256": "b4e1208e1cd60d94c219b6cc343035e60edd3fbcdb0cfe58be58c7e204528101",
+          "eol": {
+            "CRLF": 0,
+            "LF": 23,
+            "CR": 0
+          }
+        }
+      },
+      "current_source_working_raw": {
+        "bytes": 835,
+        "sha256": "b4e1208e1cd60d94c219b6cc343035e60edd3fbcdb0cfe58be58c7e204528101",
+        "eol": {
+          "CRLF": 0,
+          "LF": 23,
+          "CR": 0
+        }
+      }
+    },
+    {
+      "path": ".tfw/adapters/manifest.yaml",
+      "identities": {
+        "baseline": {
+          "git_object": "ec91c56007c20cda79f740fec15c85e4af74d17c:.tfw/adapters/manifest.yaml",
+          "blob": "752e22ae03c9d1d85949a09111b019f3ec192d0e",
+          "bytes": 2179,
+          "sha256": "db11326ea8089069ea54880063fea07ec42d8bd2084fdb1604c63d67cbe2beb1",
+          "eol": {
+            "CRLF": 0,
+            "LF": 86,
+            "CR": 0
+          }
+        },
+        "candidate": {
+          "git_object": "65c3c94b2347c69f6d21ac2e2664a39ef46b3ae2:.tfw/adapters/manifest.yaml",
+          "blob": "752e22ae03c9d1d85949a09111b019f3ec192d0e",
+          "bytes": 2179,
+          "sha256": "db11326ea8089069ea54880063fea07ec42d8bd2084fdb1604c63d67cbe2beb1",
+          "eol": {
+            "CRLF": 0,
+            "LF": 86,
+            "CR": 0
+          }
+        }
+      },
+      "current_source_working_raw": {
+        "bytes": 2179,
+        "sha256": "db11326ea8089069ea54880063fea07ec42d8bd2084fdb1604c63d67cbe2beb1",
+        "eol": {
+          "CRLF": 0,
+          "LF": 86,
+          "CR": 0
+        }
+      }
+    },
+    {
+      "path": ".tfw/compilable_contract.md",
+      "identities": {
+        "baseline": {
+          "git_object": "ec91c56007c20cda79f740fec15c85e4af74d17c:.tfw/compilable_contract.md",
+          "blob": "52e7657ac265102de6bd50292aa00fdc70d57f11",
+          "bytes": 7382,
+          "sha256": "b7e464e5500ef5fca56a3b320adfaef98179f644c35a325f17d14af46a3523bf",
+          "eol": {
+            "CRLF": 0,
+            "LF": 125,
+            "CR": 0
+          }
+        },
+        "candidate": {
+          "git_object": "65c3c94b2347c69f6d21ac2e2664a39ef46b3ae2:.tfw/compilable_contract.md",
+          "blob": "32dd370071d9ad9edfd24cd91af34a992427cfa5",
+          "bytes": 8292,
+          "sha256": "7eeee2c32fd39fd19e2831a0387f9c4c46cabeeed8b6b698eb5783d00b85ac34",
+          "eol": {
+            "CRLF": 0,
+            "LF": 137,
+            "CR": 0
+          }
+        }
+      },
+      "current_source_working_raw": {
+        "bytes": 8292,
+        "sha256": "7eeee2c32fd39fd19e2831a0387f9c4c46cabeeed8b6b698eb5783d00b85ac34",
+        "eol": {
+          "CRLF": 0,
+          "LF": 137,
+          "CR": 0
+        }
+      }
+    },
+    {
+      "path": ".tfw/conventions.md",
+      "identities": {
+        "baseline": {
+          "git_object": "ec91c56007c20cda79f740fec15c85e4af74d17c:.tfw/conventions.md",
+          "blob": "dd9f547b0048dbedaa6368e40bece2b9bbdf7cca",
+          "bytes": 91812,
+          "sha256": "09d248e997cf19bae1cef53f64423af343c8640d3b270a804e7986ffb874f9d2",
+          "eol": {
+            "CRLF": 0,
+            "LF": 1354,
+            "CR": 0
+          }
+        },
+        "candidate": {
+          "git_object": "65c3c94b2347c69f6d21ac2e2664a39ef46b3ae2:.tfw/conventions.md",
+          "blob": "ab5504f898e972fc02d3827665070cbede9cf60c",
+          "bytes": 98870,
+          "sha256": "fb05c43570cf65b512e620c97633d0115daa8b733e9649e4a3c426e566b8cf21",
+          "eol": {
+            "CRLF": 0,
+            "LF": 1436,
+            "CR": 0
+          }
+        }
+      },
+      "current_source_working_raw": {
+        "bytes": 100306,
+        "sha256": "97cb69402892b42fc3f05646586d57d0f962d8f3b0a94ac285865b6fc96636ea",
+        "eol": {
+          "CRLF": 1436,
+          "LF": 0,
+          "CR": 0
+        }
+      }
+    },
+    {
+      "path": ".tfw/glossary.md",
+      "identities": {
+        "baseline": {
+          "git_object": "ec91c56007c20cda79f740fec15c85e4af74d17c:.tfw/glossary.md",
+          "blob": "0d98f16c6266a91f1909279f3865013ef4c8c938",
+          "bytes": 23811,
+          "sha256": "bb72f99c8ce76497bdb70b566be92bab8613f611b5e1b0f092576edf31365ac8",
+          "eol": {
+            "CRLF": 0,
+            "LF": 397,
+            "CR": 0
+          }
+        },
+        "candidate": {
+          "git_object": "65c3c94b2347c69f6d21ac2e2664a39ef46b3ae2:.tfw/glossary.md",
+          "blob": "4d85446b53e43d88dc98eb483698a4e9f3b45285",
+          "bytes": 25096,
+          "sha256": "ea581d4889d4f1ff6f5932033e0d57e4fb4ba88aee26b03fe45a43bb63ad2852",
+          "eol": {
+            "CRLF": 0,
+            "LF": 419,
+            "CR": 0
+          }
+        }
+      },
+      "current_source_working_raw": {
+        "bytes": 25096,
+        "sha256": "ea581d4889d4f1ff6f5932033e0d57e4fb4ba88aee26b03fe45a43bb63ad2852",
+        "eol": {
+          "CRLF": 0,
+          "LF": 419,
+          "CR": 0
+        }
+      }
+    },
+    {
+      "path": ".tfw/knowledge_state.yaml",
+      "identities": {
+        "baseline": {
+          "git_object": "ec91c56007c20cda79f740fec15c85e4af74d17c:.tfw/knowledge_state.yaml",
+          "blob": "a127d845907521e03f2bea7d7aff5f57e0e1c6f4",
+          "bytes": 1825,
+          "sha256": "668da37c5c42afe2dd5e8d67f2894f4252e842745afc05f37b9e365e7c56569d",
+          "eol": {
+            "CRLF": 0,
+            "LF": 25,
+            "CR": 0
+          }
+        },
+        "candidate": {
+          "git_object": "65c3c94b2347c69f6d21ac2e2664a39ef46b3ae2:.tfw/knowledge_state.yaml",
+          "blob": "a127d845907521e03f2bea7d7aff5f57e0e1c6f4",
+          "bytes": 1825,
+          "sha256": "668da37c5c42afe2dd5e8d67f2894f4252e842745afc05f37b9e365e7c56569d",
+          "eol": {
+            "CRLF": 0,
+            "LF": 25,
+            "CR": 0
+          }
+        }
+      },
+      "current_source_working_raw": {
+        "bytes": 1825,
+        "sha256": "668da37c5c42afe2dd5e8d67f2894f4252e842745afc05f37b9e365e7c56569d",
+        "eol": {
+          "CRLF": 0,
+          "LF": 25,
+          "CR": 0
+        }
+      }
+    },
+    {
+      "path": ".tfw/migrations/3.3.0.md",
+      "identities": {
+        "baseline": {
+          "git_object": "ec91c56007c20cda79f740fec15c85e4af74d17c:.tfw/migrations/3.3.0.md",
+          "blob": "8a8c8cc1c3f2054ff71d5b119a3a6a8e494e75e4",
+          "bytes": 11783,
+          "sha256": "d544442538eef8000885700ac379ee4f9fbf3d112757aa8bcf21a46ac969e44c",
+          "eol": {
+            "CRLF": 0,
+            "LF": 141,
+            "CR": 0
+          }
+        },
+        "candidate": {
+          "git_object": "65c3c94b2347c69f6d21ac2e2664a39ef46b3ae2:.tfw/migrations/3.3.0.md",
+          "blob": "8a8c8cc1c3f2054ff71d5b119a3a6a8e494e75e4",
+          "bytes": 11783,
+          "sha256": "d544442538eef8000885700ac379ee4f9fbf3d112757aa8bcf21a46ac969e44c",
+          "eol": {
+            "CRLF": 0,
+            "LF": 141,
+            "CR": 0
+          }
+        }
+      },
+      "current_source_working_raw": {
+        "bytes": 11783,
+        "sha256": "d544442538eef8000885700ac379ee4f9fbf3d112757aa8bcf21a46ac969e44c",
+        "eol": {
+          "CRLF": 0,
+          "LF": 141,
+          "CR": 0
+        }
+      }
+    },
+    {
+      "path": ".tfw/migrations/knowledge-lifecycle.md",
+      "identities": {
+        "baseline": {
+          "absent": true
+        },
+        "candidate": {
+          "git_object": "65c3c94b2347c69f6d21ac2e2664a39ef46b3ae2:.tfw/migrations/knowledge-lifecycle.md",
+          "blob": "03a5ba4e6cd08cd0c25e7cb7b09bcbd724fe43d8",
+          "bytes": 8858,
+          "sha256": "2ce771e0415aab0c63b011d44d613304566fdeb41dfd97954f45dc34da3c8da3",
+          "eol": {
+            "CRLF": 0,
+            "LF": 111,
+            "CR": 0
+          }
+        }
+      },
+      "current_source_working_raw": {
+        "bytes": 8858,
+        "sha256": "2ce771e0415aab0c63b011d44d613304566fdeb41dfd97954f45dc34da3c8da3",
+        "eol": {
+          "CRLF": 0,
+          "LF": 111,
+          "CR": 0
+        }
+      }
+    },
+    {
+      "path": ".tfw/project_config.yaml",
+      "identities": {
+        "baseline": {
+          "git_object": "ec91c56007c20cda79f740fec15c85e4af74d17c:.tfw/project_config.yaml",
+          "blob": "08eb4f39dbedc7beb86d1ea7e7c498b46ea7d257",
+          "bytes": 4531,
+          "sha256": "2a36ce8ed4514b7e552438082bb8ea1f12c889b1c7d0817753acb9d95785c4c2",
+          "eol": {
+            "CRLF": 0,
+            "LF": 129,
+            "CR": 0
+          }
+        },
+        "candidate": {
+          "git_object": "65c3c94b2347c69f6d21ac2e2664a39ef46b3ae2:.tfw/project_config.yaml",
+          "blob": "d821fe17a0f2fc9aba03b3f87ebab27b241743e3",
+          "bytes": 4334,
+          "sha256": "c6e86611751ad123c4139e1203098fa0f7635b54b33c2a6c0b9040cb25753f7c",
+          "eol": {
+            "CRLF": 0,
+            "LF": 123,
+            "CR": 0
+          }
+        }
+      },
+      "current_source_working_raw": {
+        "bytes": 4334,
+        "sha256": "c6e86611751ad123c4139e1203098fa0f7635b54b33c2a6c0b9040cb25753f7c",
+        "eol": {
+          "CRLF": 0,
+          "LF": 123,
+          "CR": 0
+        }
+      }
+    },
+    {
+      "path": ".tfw/quickstart.md",
+      "identities": {
+        "baseline": {
+          "git_object": "ec91c56007c20cda79f740fec15c85e4af74d17c:.tfw/quickstart.md",
+          "blob": "65b43451f3b2c2763deb365443eab6c530d46aa4",
+          "bytes": 4201,
+          "sha256": "ad66adac58fc7d5b2da907caeae9982188313155cdd2776cb0ab031ff4e6dd40",
+          "eol": {
+            "CRLF": 0,
+            "LF": 87,
+            "CR": 0
+          }
+        },
+        "candidate": {
+          "git_object": "65c3c94b2347c69f6d21ac2e2664a39ef46b3ae2:.tfw/quickstart.md",
+          "blob": "6b71012a76a7648b32febfdb37d0827bd8dadbd1",
+          "bytes": 4634,
+          "sha256": "031c5fcbecccb6f17705c4ba494d2b72f8940450635d5190cf3c0abd07f72cf6",
+          "eol": {
+            "CRLF": 0,
+            "LF": 92,
+            "CR": 0
+          }
+        }
+      },
+      "current_source_working_raw": {
+        "bytes": 4634,
+        "sha256": "031c5fcbecccb6f17705c4ba494d2b72f8940450635d5190cf3c0abd07f72cf6",
+        "eol": {
+          "CRLF": 0,
+          "LF": 92,
+          "CR": 0
+        }
+      }
+    },
+    {
+      "path": ".tfw/templates/HL.md",
+      "identities": {
+        "baseline": {
+          "git_object": "ec91c56007c20cda79f740fec15c85e4af74d17c:.tfw/templates/HL.md",
+          "blob": "6b27518058f8d39af79df366eaa177b6d8567a40",
+          "bytes": 15133,
+          "sha256": "62d0ba2d0f4ebca89ea8be8dacb2ba7ecb9ca4a790bbe5398eea8ba32d595d2b",
+          "eol": {
+            "CRLF": 0,
+            "LF": 309,
+            "CR": 0
+          }
+        },
+        "candidate": {
+          "git_object": "65c3c94b2347c69f6d21ac2e2664a39ef46b3ae2:.tfw/templates/HL.md",
+          "blob": "c1555f631aef910ef4aae8fb3c46a4750197380c",
+          "bytes": 15759,
+          "sha256": "bf52f991cb21c06d6675a058e5616560be30365e124fd2e21acf96bfa06721cd",
+          "eol": {
+            "CRLF": 0,
+            "LF": 318,
+            "CR": 0
+          }
+        }
+      },
+      "current_source_working_raw": {
+        "bytes": 15759,
+        "sha256": "bf52f991cb21c06d6675a058e5616560be30365e124fd2e21acf96bfa06721cd",
+        "eol": {
+          "CRLF": 0,
+          "LF": 318,
+          "CR": 0
+        }
+      }
+    },
+    {
+      "path": ".tfw/templates/KNOWLEDGE.md",
+      "identities": {
+        "baseline": {
+          "git_object": "ec91c56007c20cda79f740fec15c85e4af74d17c:.tfw/templates/KNOWLEDGE.md",
+          "blob": "a38f7722afb494435f3dc80ecd7600bb4605282d",
+          "bytes": 1856,
+          "sha256": "812799df2d202d30cedea4666be055cbfd3ab40dc3b987bff421f2fa4bb6cab5",
+          "eol": {
+            "CRLF": 0,
+            "LF": 69,
+            "CR": 0
+          }
+        },
+        "candidate": {
+          "git_object": "65c3c94b2347c69f6d21ac2e2664a39ef46b3ae2:.tfw/templates/KNOWLEDGE.md",
+          "blob": "938f8524436e2e39cd3c47c506424ba0d627ae2d",
+          "bytes": 2208,
+          "sha256": "fe8cdc199c8b314548198b3104c47755df7f9f17c8a12869b604b97614a01541",
+          "eol": {
+            "CRLF": 0,
+            "LF": 42,
+            "CR": 0
+          }
+        }
+      },
+      "current_source_working_raw": {
+        "bytes": 2208,
+        "sha256": "fe8cdc199c8b314548198b3104c47755df7f9f17c8a12869b604b97614a01541",
+        "eol": {
+          "CRLF": 0,
+          "LF": 42,
+          "CR": 0
+        }
+      }
+    },
+    {
+      "path": ".tfw/templates/ONB.md",
+      "identities": {
+        "baseline": {
+          "git_object": "ec91c56007c20cda79f740fec15c85e4af74d17c:.tfw/templates/ONB.md",
+          "blob": "c4b492b1e29846b60548a47461715cfc9c9fd7fb",
+          "bytes": 1568,
+          "sha256": "99f3c3185f389ce8b956fd760bc3288467497cda6833513584a835867c8e7a12",
+          "eol": {
+            "CRLF": 0,
+            "LF": 49,
+            "CR": 0
+          }
+        },
+        "candidate": {
+          "git_object": "65c3c94b2347c69f6d21ac2e2664a39ef46b3ae2:.tfw/templates/ONB.md",
+          "blob": "24f599b584a1491151b0d20180bdfb2c77a10c9b",
+          "bytes": 2194,
+          "sha256": "825ad460c2e411427e0c1c13b3c8638e8df9a089eaa686520bfc2334adfbb507",
+          "eol": {
+            "CRLF": 0,
+            "LF": 58,
+            "CR": 0
+          }
+        }
+      },
+      "current_source_working_raw": {
+        "bytes": 2194,
+        "sha256": "825ad460c2e411427e0c1c13b3c8638e8df9a089eaa686520bfc2334adfbb507",
+        "eol": {
+          "CRLF": 0,
+          "LF": 58,
+          "CR": 0
+        }
+      }
+    },
+    {
+      "path": ".tfw/templates/RES.md",
+      "identities": {
+        "baseline": {
+          "git_object": "ec91c56007c20cda79f740fec15c85e4af74d17c:.tfw/templates/RES.md",
+          "blob": "7b83ce16267454f0c9d2e2dcf00f4680856a3c52",
+          "bytes": 5452,
+          "sha256": "f5da77cf7054b4a2a20d0471ec321fdd851ae5cff214fd23a4bab24f71f0ab90",
+          "eol": {
+            "CRLF": 0,
+            "LF": 134,
+            "CR": 0
+          }
+        },
+        "candidate": {
+          "git_object": "65c3c94b2347c69f6d21ac2e2664a39ef46b3ae2:.tfw/templates/RES.md",
+          "blob": "dd6cf70f1f141a6f9f8a39fd9bd6b1d9e4b0096e",
+          "bytes": 6078,
+          "sha256": "ae742e4465c2f54c77f98ca3f2eb1232a0343c5605d264dd4bbfe34e7feb5a6e",
+          "eol": {
+            "CRLF": 0,
+            "LF": 143,
+            "CR": 0
+          }
+        }
+      },
+      "current_source_working_raw": {
+        "bytes": 6078,
+        "sha256": "ae742e4465c2f54c77f98ca3f2eb1232a0343c5605d264dd4bbfe34e7feb5a6e",
+        "eol": {
+          "CRLF": 0,
+          "LF": 143,
+          "CR": 0
+        }
+      }
+    },
+    {
+      "path": ".tfw/templates/REVIEW.md",
+      "identities": {
+        "baseline": {
+          "git_object": "ec91c56007c20cda79f740fec15c85e4af74d17c:.tfw/templates/REVIEW.md",
+          "blob": "95e9da25f9b9af46f2302a342ce2b4354d61ff1b",
+          "bytes": 4680,
+          "sha256": "c2ac9c15d456a1a5a3f0cf813091e633995f7a4e2277ffd0739e7147157ede1e",
+          "eol": {
+            "CRLF": 0,
+            "LF": 113,
+            "CR": 0
+          }
+        },
+        "candidate": {
+          "git_object": "65c3c94b2347c69f6d21ac2e2664a39ef46b3ae2:.tfw/templates/REVIEW.md",
+          "blob": "4b9752f88671469107789f0813ce2c080677563c",
+          "bytes": 5306,
+          "sha256": "bfe71d82233174ae8c4f0fa846593a5abdcd93b75824a1024a015b3b5de0407e",
+          "eol": {
+            "CRLF": 0,
+            "LF": 122,
+            "CR": 0
+          }
+        }
+      },
+      "current_source_working_raw": {
+        "bytes": 5306,
+        "sha256": "bfe71d82233174ae8c4f0fa846593a5abdcd93b75824a1024a015b3b5de0407e",
+        "eol": {
+          "CRLF": 0,
+          "LF": 122,
+          "CR": 0
+        }
+      }
+    },
+    {
+      "path": ".tfw/templates/RF.md",
+      "identities": {
+        "baseline": {
+          "git_object": "ec91c56007c20cda79f740fec15c85e4af74d17c:.tfw/templates/RF.md",
+          "blob": "775e5c06594b9810dd3343863e38807f59091064",
+          "bytes": 2499,
+          "sha256": "d2e50b8238ece45c1090928a8b08de0f1512bafa156aa01108fce33496b897ce",
+          "eol": {
+            "CRLF": 0,
+            "LF": 94,
+            "CR": 0
+          }
+        },
+        "candidate": {
+          "git_object": "65c3c94b2347c69f6d21ac2e2664a39ef46b3ae2:.tfw/templates/RF.md",
+          "blob": "fe1d6585d98aefce662f1fefdae399d805e7f628",
+          "bytes": 3125,
+          "sha256": "d514940a78912e02ad2fb4884fb8a3596b0d6126c8bb98adb57b42a67e80153e",
+          "eol": {
+            "CRLF": 0,
+            "LF": 103,
+            "CR": 0
+          }
+        }
+      },
+      "current_source_working_raw": {
+        "bytes": 3125,
+        "sha256": "d514940a78912e02ad2fb4884fb8a3596b0d6126c8bb98adb57b42a67e80153e",
+        "eol": {
+          "CRLF": 0,
+          "LF": 103,
+          "CR": 0
+        }
+      }
+    },
+    {
+      "path": ".tfw/templates/knowledge/handover.md",
+      "identities": {
+        "baseline": {
+          "absent": true
+        },
+        "candidate": {
+          "git_object": "65c3c94b2347c69f6d21ac2e2664a39ef46b3ae2:.tfw/templates/knowledge/handover.md",
+          "blob": "8a0d684b96c0aa24dd02b9fa9452ec88b9564bb6",
+          "bytes": 1358,
+          "sha256": "8fc00b42a7b4b7587b0c2d39b38584bea4d205379cadfa57aa74ed63b450d62b",
+          "eol": {
+            "CRLF": 0,
+            "LF": 20,
+            "CR": 0
+          }
+        }
+      },
+      "current_source_working_raw": {
+        "bytes": 1358,
+        "sha256": "8fc00b42a7b4b7587b0c2d39b38584bea4d205379cadfa57aa74ed63b450d62b",
+        "eol": {
+          "CRLF": 0,
+          "LF": 20,
+          "CR": 0
+        }
+      }
+    },
+    {
+      "path": ".tfw/templates/knowledge/record.md",
+      "identities": {
+        "baseline": {
+          "absent": true
+        },
+        "candidate": {
+          "git_object": "65c3c94b2347c69f6d21ac2e2664a39ef46b3ae2:.tfw/templates/knowledge/record.md",
+          "blob": "2f879c27b40e469ff71188de9798d18884df6d95",
+          "bytes": 2548,
+          "sha256": "d0615f7582e15280f4c69ef0350294daf9e1b32b5de0d2fba964dc9a4db0d6b0",
+          "eol": {
+            "CRLF": 0,
+            "LF": 41,
+            "CR": 0
+          }
+        }
+      },
+      "current_source_working_raw": {
+        "bytes": 2548,
+        "sha256": "d0615f7582e15280f4c69ef0350294daf9e1b32b5de0d2fba964dc9a4db0d6b0",
+        "eol": {
+          "CRLF": 0,
+          "LF": 41,
+          "CR": 0
+        }
+      }
+    },
+    {
+      "path": ".tfw/templates/knowledge/topic.md",
+      "identities": {
+        "baseline": {
+          "git_object": "ec91c56007c20cda79f740fec15c85e4af74d17c:.tfw/templates/knowledge/topic.md",
+          "blob": "524caef69f9b13748dc693ab0037c35bf33dbff1",
+          "bytes": 389,
+          "sha256": "0b529ed50c0c0dc794b9506395d522d76309095780f2c9de5cc78d61d673b2f2",
+          "eol": {
+            "CRLF": 0,
+            "LF": 10,
+            "CR": 0
+          }
+        },
+        "candidate": {
+          "git_object": "65c3c94b2347c69f6d21ac2e2664a39ef46b3ae2:.tfw/templates/knowledge/topic.md",
+          "blob": "2dc67828ac5afefdffefb55e1bd5378d634ff7df",
+          "bytes": 675,
+          "sha256": "8a2531fbe8e596d34e33d09bf713746f97cefbe1f6f1054fa49124bf67680221",
+          "eol": {
+            "CRLF": 0,
+            "LF": 14,
+            "CR": 0
+          }
+        }
+      },
+      "current_source_working_raw": {
+        "bytes": 675,
+        "sha256": "8a2531fbe8e596d34e33d09bf713746f97cefbe1f6f1054fa49124bf67680221",
+        "eol": {
+          "CRLF": 0,
+          "LF": 14,
+          "CR": 0
+        }
+      }
+    },
+    {
+      "path": ".tfw/templates/knowledge_state.yaml",
+      "identities": {
+        "baseline": {
+          "git_object": "ec91c56007c20cda79f740fec15c85e4af74d17c:.tfw/templates/knowledge_state.yaml",
+          "blob": "c542b7d7f79de078f4ed92aec5e486bcf64d9b63",
+          "bytes": 436,
+          "sha256": "87dc168186d7f781f55301519d73aece1a3f5dd2d082df04d68ccf808c38a113",
+          "eol": {
+            "CRLF": 0,
+            "LF": 13,
+            "CR": 0
+          }
+        },
+        "candidate": {
+          "absent": true
+        }
+      }
+    },
+    {
+      "path": ".tfw/templates/project_config.yaml",
+      "identities": {
+        "baseline": {
+          "git_object": "ec91c56007c20cda79f740fec15c85e4af74d17c:.tfw/templates/project_config.yaml",
+          "blob": "6a913a2619dfd300e097f932bc9cdac15191a5db",
+          "bytes": 5955,
+          "sha256": "b7587c459c91003a5487f99a4c138385644ec791a4ef8eeb8406f735b057ec4c",
+          "eol": {
+            "CRLF": 0,
+            "LF": 145,
+            "CR": 0
+          }
+        },
+        "candidate": {
+          "git_object": "65c3c94b2347c69f6d21ac2e2664a39ef46b3ae2:.tfw/templates/project_config.yaml",
+          "blob": "1bfd5edf4051a9c3ed5bcb7f759d500fd7bd1b90",
+          "bytes": 5790,
+          "sha256": "a0284513c177a2b3ff149fcc3a74027178b81b97f5154d1e4ce2910f043e3ea4",
+          "eol": {
+            "CRLF": 0,
+            "LF": 139,
+            "CR": 0
+          }
+        }
+      },
+      "current_source_working_raw": {
+        "bytes": 5790,
+        "sha256": "a0284513c177a2b3ff149fcc3a74027178b81b97f5154d1e4ce2910f043e3ea4",
+        "eol": {
+          "CRLF": 0,
+          "LF": 139,
+          "CR": 0
+        }
+      }
+    },
+    {
+      "path": ".tfw/templates/review/verify.md",
+      "identities": {
+        "baseline": {
+          "git_object": "ec91c56007c20cda79f740fec15c85e4af74d17c:.tfw/templates/review/verify.md",
+          "blob": "de5605d78272fbdd58df2498d4dceed1b2eb61fe",
+          "bytes": 5115,
+          "sha256": "2ab66c7d1ba71195da123df496cb36664da7ae5ddb770d8438a572c3073b3082",
+          "eol": {
+            "CRLF": 0,
+            "LF": 92,
+            "CR": 0
+          }
+        },
+        "candidate": {
+          "git_object": "65c3c94b2347c69f6d21ac2e2664a39ef46b3ae2:.tfw/templates/review/verify.md",
+          "blob": "b576a9d89990a40a6b197f647e6ed1adaa595b7d",
+          "bytes": 5642,
+          "sha256": "06875d2b31341f55e5c15ebc61a582d83d9da25bb2d1803b0a74b86b5389e232",
+          "eol": {
+            "CRLF": 0,
+            "LF": 100,
+            "CR": 0
+          }
+        }
+      },
+      "current_source_working_raw": {
+        "bytes": 5642,
+        "sha256": "06875d2b31341f55e5c15ebc61a582d83d9da25bb2d1803b0a74b86b5389e232",
+        "eol": {
+          "CRLF": 0,
+          "LF": 100,
+          "CR": 0
+        }
+      }
+    },
+    {
+      "path": ".tfw/workflows/config.md",
+      "identities": {
+        "baseline": {
+          "git_object": "ec91c56007c20cda79f740fec15c85e4af74d17c:.tfw/workflows/config.md",
+          "blob": "c9d2f65c9022e6261c73c462caf4df36eedd9c6a",
+          "bytes": 4966,
+          "sha256": "8f0b9e9b499ea90f91b8bb5643f4848c024ede83c7a289dea0260de2d5daece6",
+          "eol": {
+            "CRLF": 0,
+            "LF": 101,
+            "CR": 0
+          }
+        },
+        "candidate": {
+          "git_object": "65c3c94b2347c69f6d21ac2e2664a39ef46b3ae2:.tfw/workflows/config.md",
+          "blob": "1ff72982150befcc100cf9dba575e284fbcb51fe",
+          "bytes": 5149,
+          "sha256": "5aa4d56d0ad801c499aeac2d20a9a41b5dd66c0f027dea300b5d3a008879b190",
+          "eol": {
+            "CRLF": 0,
+            "LF": 103,
+            "CR": 0
+          }
+        }
+      },
+      "current_source_working_raw": {
+        "bytes": 5149,
+        "sha256": "5aa4d56d0ad801c499aeac2d20a9a41b5dd66c0f027dea300b5d3a008879b190",
+        "eol": {
+          "CRLF": 0,
+          "LF": 103,
+          "CR": 0
+        }
+      }
+    },
+    {
+      "path": ".tfw/workflows/docs.md",
+      "identities": {
+        "baseline": {
+          "git_object": "ec91c56007c20cda79f740fec15c85e4af74d17c:.tfw/workflows/docs.md",
+          "blob": "367befc86f16fe3a255663c3b174ef887e0e2903",
+          "bytes": 3202,
+          "sha256": "c3d72162e7084fcdda327b456edcc8a4cd50a0af50dcc578597e2519a75475b6",
+          "eol": {
+            "CRLF": 0,
+            "LF": 76,
+            "CR": 0
+          }
+        },
+        "candidate": {
+          "git_object": "65c3c94b2347c69f6d21ac2e2664a39ef46b3ae2:.tfw/workflows/docs.md",
+          "blob": "26b80dbb58c2f1406afef90ea5639f9dced246b7",
+          "bytes": 4917,
+          "sha256": "46fb7316afdb4c8ceb7e7c5986332781f44d678fbd224baa4846a4e38c133271",
+          "eol": {
+            "CRLF": 0,
+            "LF": 75,
+            "CR": 0
+          }
+        }
+      },
+      "current_source_working_raw": {
+        "bytes": 4992,
+        "sha256": "3863e69a77371a084156dd295e38dd0b3f9788f4ddd632961e99808da464e176",
+        "eol": {
+          "CRLF": 75,
+          "LF": 0,
+          "CR": 0
+        }
+      }
+    },
+    {
+      "path": ".tfw/workflows/handoff.md",
+      "identities": {
+        "baseline": {
+          "git_object": "ec91c56007c20cda79f740fec15c85e4af74d17c:.tfw/workflows/handoff.md",
+          "blob": "62d0e89fb28f20ff5fa104a2ba6177c1fba05068",
+          "bytes": 15030,
+          "sha256": "9837227aab58ab190519a33eee278a7e1d6d53c407b289f9154338de3d29213a",
+          "eol": {
+            "CRLF": 0,
+            "LF": 234,
+            "CR": 0
+          }
+        },
+        "candidate": {
+          "git_object": "65c3c94b2347c69f6d21ac2e2664a39ef46b3ae2:.tfw/workflows/handoff.md",
+          "blob": "299d5215dd0f957ca4efcc2e89837872fdeff525",
+          "bytes": 16144,
+          "sha256": "0950b8bdd25bcaf43691c92c5ae00904311abf58637e80d4bb03c12c649aaf4c",
+          "eol": {
+            "CRLF": 0,
+            "LF": 248,
+            "CR": 0
+          }
+        }
+      },
+      "current_source_working_raw": {
+        "bytes": 16144,
+        "sha256": "0950b8bdd25bcaf43691c92c5ae00904311abf58637e80d4bb03c12c649aaf4c",
+        "eol": {
+          "CRLF": 0,
+          "LF": 248,
+          "CR": 0
+        }
+      }
+    },
+    {
+      "path": ".tfw/workflows/init.md",
+      "identities": {
+        "baseline": {
+          "git_object": "ec91c56007c20cda79f740fec15c85e4af74d17c:.tfw/workflows/init.md",
+          "blob": "80f541614311aa006e630d951df50c570f58b451",
+          "bytes": 8128,
+          "sha256": "7ec919af5ec2c905f81d9b697bdfca41bc531d09d72dd37e3259e2852c134ef4",
+          "eol": {
+            "CRLF": 0,
+            "LF": 140,
+            "CR": 0
+          }
+        },
+        "candidate": {
+          "git_object": "65c3c94b2347c69f6d21ac2e2664a39ef46b3ae2:.tfw/workflows/init.md",
+          "blob": "bedc73b1fa13eb698ac3c7b3d6325ef4c66a9113",
+          "bytes": 8677,
+          "sha256": "6fcbad17fb5a7bc52f5fcb36edf8f2fd5802a593dfa7cd02c9fa874f38a1e2cc",
+          "eol": {
+            "CRLF": 0,
+            "LF": 145,
+            "CR": 0
+          }
+        }
+      },
+      "current_source_working_raw": {
+        "bytes": 8677,
+        "sha256": "6fcbad17fb5a7bc52f5fcb36edf8f2fd5802a593dfa7cd02c9fa874f38a1e2cc",
+        "eol": {
+          "CRLF": 0,
+          "LF": 145,
+          "CR": 0
+        }
+      }
+    },
+    {
+      "path": ".tfw/workflows/knowledge.md",
+      "identities": {
+        "baseline": {
+          "git_object": "ec91c56007c20cda79f740fec15c85e4af74d17c:.tfw/workflows/knowledge.md",
+          "blob": "b3910e0823d59eefba14d7178ed921c3da8b8f85",
+          "bytes": 11616,
+          "sha256": "119a419db124e45fded4722b38d46ac5f7aa46cf928431df0585421336b608ef",
+          "eol": {
+            "CRLF": 0,
+            "LF": 174,
+            "CR": 0
+          }
+        },
+        "candidate": {
+          "git_object": "65c3c94b2347c69f6d21ac2e2664a39ef46b3ae2:.tfw/workflows/knowledge.md",
+          "blob": "86a7bd094264b37b5c49e5377d08aa18bb914e9f",
+          "bytes": 7524,
+          "sha256": "7af2fe71f1ad2fc15475fb425c64687c4cc6b64a50ff7bb5249e755774973a71",
+          "eol": {
+            "CRLF": 0,
+            "LF": 111,
+            "CR": 0
+          }
+        }
+      },
+      "current_source_working_raw": {
+        "bytes": 7524,
+        "sha256": "7af2fe71f1ad2fc15475fb425c64687c4cc6b64a50ff7bb5249e755774973a71",
+        "eol": {
+          "CRLF": 0,
+          "LF": 111,
+          "CR": 0
+        }
+      }
+    },
+    {
+      "path": ".tfw/workflows/plan.md",
+      "identities": {
+        "baseline": {
+          "git_object": "ec91c56007c20cda79f740fec15c85e4af74d17c:.tfw/workflows/plan.md",
+          "blob": "81f7d78bd7f270871bc4ee325789a3f457059812",
+          "bytes": 14416,
+          "sha256": "775e53088428f1ee117ae2b1adcb79d79bfc01b74401c89ee497365e52abd0e1",
+          "eol": {
+            "CRLF": 0,
+            "LF": 219,
+            "CR": 0
+          }
+        },
+        "candidate": {
+          "git_object": "65c3c94b2347c69f6d21ac2e2664a39ef46b3ae2:.tfw/workflows/plan.md",
+          "blob": "4bac62104137d722f3d971a2c4ea425adbdd6fcd",
+          "bytes": 14839,
+          "sha256": "8967783329c291602639aca02a7d387e23dfc98a808497724c08d6a845fc1720",
+          "eol": {
+            "CRLF": 0,
+            "LF": 224,
+            "CR": 0
+          }
+        }
+      },
+      "current_source_working_raw": {
+        "bytes": 14839,
+        "sha256": "8967783329c291602639aca02a7d387e23dfc98a808497724c08d6a845fc1720",
+        "eol": {
+          "CRLF": 0,
+          "LF": 224,
+          "CR": 0
+        }
+      }
+    },
+    {
+      "path": ".tfw/workflows/release.md",
+      "identities": {
+        "baseline": {
+          "git_object": "ec91c56007c20cda79f740fec15c85e4af74d17c:.tfw/workflows/release.md",
+          "blob": "a5878686ec83f4b13b60cf34c1cebea80972fd3d",
+          "bytes": 4493,
+          "sha256": "e91eb6f389ece06bbdc89d29300777ce5ecf486f17d601f07217f50094bf06a7",
+          "eol": {
+            "CRLF": 0,
+            "LF": 77,
+            "CR": 0
+          }
+        },
+        "candidate": {
+          "git_object": "65c3c94b2347c69f6d21ac2e2664a39ef46b3ae2:.tfw/workflows/release.md",
+          "blob": "a5878686ec83f4b13b60cf34c1cebea80972fd3d",
+          "bytes": 4493,
+          "sha256": "e91eb6f389ece06bbdc89d29300777ce5ecf486f17d601f07217f50094bf06a7",
+          "eol": {
+            "CRLF": 0,
+            "LF": 77,
+            "CR": 0
+          }
+        }
+      },
+      "current_source_working_raw": {
+        "bytes": 4493,
+        "sha256": "e91eb6f389ece06bbdc89d29300777ce5ecf486f17d601f07217f50094bf06a7",
+        "eol": {
+          "CRLF": 0,
+          "LF": 77,
+          "CR": 0
+        }
+      }
+    },
+    {
+      "path": ".tfw/workflows/research/base.md",
+      "identities": {
+        "baseline": {
+          "git_object": "ec91c56007c20cda79f740fec15c85e4af74d17c:.tfw/workflows/research/base.md",
+          "blob": "7c65caeea35e70284ceb145b4758c89d295c08d6",
+          "bytes": 7905,
+          "sha256": "f1d62fbb0d8de05942c1f70ba6a9efb74045a73b1443040379742d025ffaf8b9",
+          "eol": {
+            "CRLF": 0,
+            "LF": 147,
+            "CR": 0
+          }
+        },
+        "candidate": {
+          "git_object": "65c3c94b2347c69f6d21ac2e2664a39ef46b3ae2:.tfw/workflows/research/base.md",
+          "blob": "197514a9a193930e785ee08b89212c511d0f4c5e",
+          "bytes": 9021,
+          "sha256": "b5bdeb054182e3981bd2cdc034c27d6a512245a0922b96700e4342da1a520d5d",
+          "eol": {
+            "CRLF": 0,
+            "LF": 161,
+            "CR": 0
+          }
+        }
+      },
+      "current_source_working_raw": {
+        "bytes": 9021,
+        "sha256": "b5bdeb054182e3981bd2cdc034c27d6a512245a0922b96700e4342da1a520d5d",
+        "eol": {
+          "CRLF": 0,
+          "LF": 161,
+          "CR": 0
+        }
+      }
+    },
+    {
+      "path": ".tfw/workflows/resume.md",
+      "identities": {
+        "baseline": {
+          "git_object": "ec91c56007c20cda79f740fec15c85e4af74d17c:.tfw/workflows/resume.md",
+          "blob": "31f31594e0b2146c1df71132c4481a3b711ea508",
+          "bytes": 5093,
+          "sha256": "1ce3b2e1ee30f1f5be9cfd62af3cd400022a34ba106295978c426e26e46be5e3",
+          "eol": {
+            "CRLF": 0,
+            "LF": 83,
+            "CR": 0
+          }
+        },
+        "candidate": {
+          "git_object": "65c3c94b2347c69f6d21ac2e2664a39ef46b3ae2:.tfw/workflows/resume.md",
+          "blob": "5bc68ab5d3f9de4a52b1bb06b671a50c60a2d044",
+          "bytes": 5740,
+          "sha256": "86e84db9dc66139579e80881b591f4e7f9fd970b56ec0b058f2b0576631e08fa",
+          "eol": {
+            "CRLF": 0,
+            "LF": 90,
+            "CR": 0
+          }
+        }
+      },
+      "current_source_working_raw": {
+        "bytes": 5740,
+        "sha256": "86e84db9dc66139579e80881b591f4e7f9fd970b56ec0b058f2b0576631e08fa",
+        "eol": {
+          "CRLF": 0,
+          "LF": 90,
+          "CR": 0
+        }
+      }
+    },
+    {
+      "path": ".tfw/workflows/review.md",
+      "identities": {
+        "baseline": {
+          "git_object": "ec91c56007c20cda79f740fec15c85e4af74d17c:.tfw/workflows/review.md",
+          "blob": "f324292d57cf593587e2162bdee8c14320ffa6b9",
+          "bytes": 15244,
+          "sha256": "951d3053baf1efdcb40409bac970f4daeea4977d4bb82e20a1f01340879d089d",
+          "eol": {
+            "CRLF": 0,
+            "LF": 233,
+            "CR": 0
+          }
+        },
+        "candidate": {
+          "git_object": "65c3c94b2347c69f6d21ac2e2664a39ef46b3ae2:.tfw/workflows/review.md",
+          "blob": "a389ae6f619d28d5a2a18745fd2eb73531208f5d",
+          "bytes": 16479,
+          "sha256": "6ba0bd35cece81760270e23de42cf14c030ac9450e6eac12c15123527a4ca2f6",
+          "eol": {
+            "CRLF": 0,
+            "LF": 248,
+            "CR": 0
+          }
+        }
+      },
+      "current_source_working_raw": {
+        "bytes": 16727,
+        "sha256": "c9c63ad961e70e66a3a480dc646586e0f27fa2bf61fc76b20689f876bef6e492",
+        "eol": {
+          "CRLF": 248,
+          "LF": 0,
+          "CR": 0
+        }
+      }
+    },
+    {
+      "path": ".tfw/workflows/update.md",
+      "identities": {
+        "baseline": {
+          "git_object": "ec91c56007c20cda79f740fec15c85e4af74d17c:.tfw/workflows/update.md",
+          "blob": "fc081bdef381bd96556ed26afa3b00e6d4235eec",
+          "bytes": 17645,
+          "sha256": "677f98c2ba61dcec1f59a5847ec12c782bf85132437194d291dcab3061707b1d",
+          "eol": {
+            "CRLF": 0,
+            "LF": 262,
+            "CR": 0
+          }
+        },
+        "candidate": {
+          "git_object": "65c3c94b2347c69f6d21ac2e2664a39ef46b3ae2:.tfw/workflows/update.md",
+          "blob": "a4187ba20b1ad36576a552fd3cb85730769eddb4",
+          "bytes": 18922,
+          "sha256": "4df00bea1d0eb8e229e830e974b9de5c72e2c9bd41bc808cdb0d348a6ea1379a",
+          "eol": {
+            "CRLF": 0,
+            "LF": 279,
+            "CR": 0
+          }
+        }
+      },
+      "current_source_working_raw": {
+        "bytes": 18922,
+        "sha256": "4df00bea1d0eb8e229e830e974b9de5c72e2c9bd41bc808cdb0d348a6ea1379a",
+        "eol": {
+          "CRLF": 0,
+          "LF": 279,
+          "CR": 0
+        }
+      }
+    },
+    {
+      "path": "AGENTS.md",
+      "identities": {
+        "baseline": {
+          "git_object": "ec91c56007c20cda79f740fec15c85e4af74d17c:AGENTS.md",
+          "blob": "b3a1e178fd7ec8b25eae00a744f2d0756ba3fcf6",
+          "bytes": 3300,
+          "sha256": "6f7c4e7d1c418aabc6fb4ebdf8c45f7d7c7334042208d1a33e401b8d83f75d74",
+          "eol": {
+            "CRLF": 0,
+            "LF": 57,
+            "CR": 0
+          }
+        },
+        "candidate": {
+          "git_object": "65c3c94b2347c69f6d21ac2e2664a39ef46b3ae2:AGENTS.md",
+          "blob": "b3a1e178fd7ec8b25eae00a744f2d0756ba3fcf6",
+          "bytes": 3300,
+          "sha256": "6f7c4e7d1c418aabc6fb4ebdf8c45f7d7c7334042208d1a33e401b8d83f75d74",
+          "eol": {
+            "CRLF": 0,
+            "LF": 57,
+            "CR": 0
+          }
+        }
+      },
+      "current_source_working_raw": {
+        "bytes": 3300,
+        "sha256": "6f7c4e7d1c418aabc6fb4ebdf8c45f7d7c7334042208d1a33e401b8d83f75d74",
+        "eol": {
+          "CRLF": 0,
+          "LF": 57,
+          "CR": 0
+        }
+      }
+    },
+    {
+      "path": "CLAUDE.md",
+      "identities": {
+        "baseline": {
+          "git_object": "ec91c56007c20cda79f740fec15c85e4af74d17c:CLAUDE.md",
+          "blob": "5d6082e590d2bbec08068c4950a79d24aadb3b97",
+          "bytes": 3092,
+          "sha256": "33f8aaf00a961971dbdc364c250593e709218675c62ef53b1f28e898a4982423",
+          "eol": {
+            "CRLF": 0,
+            "LF": 51,
+            "CR": 0
+          }
+        },
+        "candidate": {
+          "git_object": "65c3c94b2347c69f6d21ac2e2664a39ef46b3ae2:CLAUDE.md",
+          "blob": "5d6082e590d2bbec08068c4950a79d24aadb3b97",
+          "bytes": 3092,
+          "sha256": "33f8aaf00a961971dbdc364c250593e709218675c62ef53b1f28e898a4982423",
+          "eol": {
+            "CRLF": 0,
+            "LF": 51,
+            "CR": 0
+          }
+        }
+      },
+      "current_source_working_raw": {
+        "bytes": 3092,
+        "sha256": "33f8aaf00a961971dbdc364c250593e709218675c62ef53b1f28e898a4982423",
+        "eol": {
+          "CRLF": 0,
+          "LF": 51,
+          "CR": 0
+        }
+      }
+    },
+    {
+      "path": "KNOWLEDGE.md",
+      "identities": {
+        "baseline": {
+          "git_object": "ec91c56007c20cda79f740fec15c85e4af74d17c:KNOWLEDGE.md",
+          "blob": "4f3a90aea1280981edadbd09d24f2e9c72bbe5ba",
+          "bytes": 134291,
+          "sha256": "a2d82e20092a361319d80f5f7db63360957a84a8eb36415461567323fc0b797f",
+          "eol": {
+            "CRLF": 0,
+            "LF": 290,
+            "CR": 0
+          }
+        },
+        "candidate": {
+          "git_object": "65c3c94b2347c69f6d21ac2e2664a39ef46b3ae2:KNOWLEDGE.md",
+          "blob": "f39123f6c4842f0d5a49151c9318849d26a3881e",
+          "bytes": 135267,
+          "sha256": "3fa4a662613e9c4409cc87a92237eeaf5cbf36291067badd2630f8d933609b21",
+          "eol": {
+            "CRLF": 0,
+            "LF": 303,
+            "CR": 0
+          }
+        }
+      },
+      "current_source_working_raw": {
+        "bytes": 135267,
+        "sha256": "3fa4a662613e9c4409cc87a92237eeaf5cbf36291067badd2630f8d933609b21",
+        "eol": {
+          "CRLF": 0,
+          "LF": 303,
+          "CR": 0
+        }
+      }
+    },
+    {
+      "path": "docs/scripts/gen_docs.py",
+      "identities": {
+        "baseline": {
+          "git_object": "ec91c56007c20cda79f740fec15c85e4af74d17c:docs/scripts/gen_docs.py",
+          "blob": "72d1c9c42cce297c2e0f568c359f93ee4a6e1dd9",
+          "bytes": 33471,
+          "sha256": "475d88e709f0fa8c63a65d27d339cbba850e50ab9cb964d6fe4e64f5f88c5af2",
+          "eol": {
+            "CRLF": 0,
+            "LF": 804,
+            "CR": 0
+          }
+        },
+        "candidate": {
+          "git_object": "65c3c94b2347c69f6d21ac2e2664a39ef46b3ae2:docs/scripts/gen_docs.py",
+          "blob": "7294707db5722c206dd1031bea48d8adfcd2f179",
+          "bytes": 35546,
+          "sha256": "e123b0f72ea618948915fa63fda7367a3f8ca4816a181f83f4d97f94ffc2b037",
+          "eol": {
+            "CRLF": 0,
+            "LF": 844,
+            "CR": 0
+          }
+        }
+      },
+      "current_source_working_raw": {
+        "bytes": 35546,
+        "sha256": "e123b0f72ea618948915fa63fda7367a3f8ca4816a181f83f4d97f94ffc2b037",
+        "eol": {
+          "CRLF": 0,
+          "LF": 844,
+          "CR": 0
+        }
+      }
+    },
+    {
+      "path": "docs/scripts/test_gen_docs.py",
+      "identities": {
+        "baseline": {
+          "git_object": "ec91c56007c20cda79f740fec15c85e4af74d17c:docs/scripts/test_gen_docs.py",
+          "blob": "0c224c07c35b0cc4f3548914c74fe9fec0977566",
+          "bytes": 31316,
+          "sha256": "4b710e45471c6264cb09d61efa3f80913aac7d4b839d76f6c4b54dbf23536dfe",
+          "eol": {
+            "CRLF": 0,
+            "LF": 752,
+            "CR": 0
+          }
+        },
+        "candidate": {
+          "git_object": "65c3c94b2347c69f6d21ac2e2664a39ef46b3ae2:docs/scripts/test_gen_docs.py",
+          "blob": "93b8f70ea5b782191a00075b02a4a3621e21e685",
+          "bytes": 33827,
+          "sha256": "9e6af27e7cac79485e5c6119d976cb947193e5725ae5714e4d12a324077ef25a",
+          "eol": {
+            "CRLF": 0,
+            "LF": 798,
+            "CR": 0
+          }
+        }
+      },
+      "current_source_working_raw": {
+        "bytes": 33827,
+        "sha256": "9e6af27e7cac79485e5c6119d976cb947193e5725ae5714e4d12a324077ef25a",
+        "eol": {
+          "CRLF": 0,
+          "LF": 798,
+          "CR": 0
+        }
+      }
+    },
+    {
+      "path": "docs/scripts/test_integration.py",
+      "identities": {
+        "baseline": {
+          "git_object": "ec91c56007c20cda79f740fec15c85e4af74d17c:docs/scripts/test_integration.py",
+          "blob": "03f1f7676e38295a40c24eb802e7365d3acea355",
+          "bytes": 11652,
+          "sha256": "62358f7cfd0e4af5b8343b33cb878c18dff443a80b27bfa1977370cefeec6407",
+          "eol": {
+            "CRLF": 0,
+            "LF": 268,
+            "CR": 0
+          }
+        },
+        "candidate": {
+          "git_object": "65c3c94b2347c69f6d21ac2e2664a39ef46b3ae2:docs/scripts/test_integration.py",
+          "blob": "d3b1aa8b2c8eab78c97322b3ce3607b1e7046519",
+          "bytes": 16902,
+          "sha256": "8c1dd9bfdde78c4b93a1c156e4618d3d8acf465a28c1647861aa563781014fc3",
+          "eol": {
+            "CRLF": 0,
+            "LF": 372,
+            "CR": 0
+          }
+        }
+      },
+      "current_source_working_raw": {
+        "bytes": 16902,
+        "sha256": "8c1dd9bfdde78c4b93a1c156e4618d3d8acf465a28c1647861aa563781014fc3",
+        "eol": {
+          "CRLF": 0,
+          "LF": 372,
+          "CR": 0
+        }
+      }
+    },
+    {
+      "path": "docs/scripts/test_repository_contracts.py",
+      "identities": {
+        "baseline": {
+          "git_object": "ec91c56007c20cda79f740fec15c85e4af74d17c:docs/scripts/test_repository_contracts.py",
+          "blob": "8ce57786995f9e8e7561f1c3760617d23543286e",
+          "bytes": 151868,
+          "sha256": "32b161dd3d4a23dec8d4c6ea46ecdc0f355d83e292a73b570a9084a593176ede",
+          "eol": {
+            "CRLF": 0,
+            "LF": 2903,
+            "CR": 0
+          }
+        },
+        "candidate": {
+          "git_object": "65c3c94b2347c69f6d21ac2e2664a39ef46b3ae2:docs/scripts/test_repository_contracts.py",
+          "blob": "39cc634adc264701063d22fe9ef4d09e21d9abfe",
+          "bytes": 155891,
+          "sha256": "d38b87acf020ffebaf5d0f5a06df4df026208c4080f7cd514e4c8782f74caabf",
+          "eol": {
+            "CRLF": 0,
+            "LF": 2963,
+            "CR": 0
+          }
+        }
+      },
+      "current_source_working_raw": {
+        "bytes": 158854,
+        "sha256": "eb3b8c82a80e27df9a11bfd37214216b1add5573fef3aff5d02ad708eec73aa6",
+        "eol": {
+          "CRLF": 2963,
+          "LF": 0,
+          "CR": 0
+        }
+      }
+    },
+    {
+      "path": "docs/scripts/test_runtime_context.py",
+      "identities": {
+        "baseline": {
+          "git_object": "ec91c56007c20cda79f740fec15c85e4af74d17c:docs/scripts/test_runtime_context.py",
+          "blob": "84d9d4a8d828b8eabf816de0dede32f2164bba60",
+          "bytes": 328325,
+          "sha256": "a2b2a2c8b80050c5daf1014a6f6a93a4efe4c1361c6cb39845f36eb250b41ffc",
+          "eol": {
+            "CRLF": 0,
+            "LF": 5742,
+            "CR": 0
+          }
+        },
+        "candidate": {
+          "git_object": "65c3c94b2347c69f6d21ac2e2664a39ef46b3ae2:docs/scripts/test_runtime_context.py",
+          "blob": "8ed34b4b08d2cd15e4655dc1be99f861cba80729",
+          "bytes": 343135,
+          "sha256": "b79fa316708373cd9654d0018874f813adc35ce3ba349c7506c032fb3b9454de",
+          "eol": {
+            "CRLF": 0,
+            "LF": 5993,
+            "CR": 0
+          }
+        }
+      },
+      "current_source_working_raw": {
+        "bytes": 349128,
+        "sha256": "037444a785d6876f174679173414a4b7cd0ca2855c73eecc9d3861f71ea988b3",
+        "eol": {
+          "CRLF": 5993,
+          "LF": 0,
+          "CR": 0
+        }
+      }
+    },
+    {
+      "path": "docs/scripts/test_update_experience.py",
+      "identities": {
+        "baseline": {
+          "git_object": "ec91c56007c20cda79f740fec15c85e4af74d17c:docs/scripts/test_update_experience.py",
+          "blob": "5be6eba760b80c2937826d0b19ca25c6c45a38d7",
+          "bytes": 39714,
+          "sha256": "28d138358ffc39ca4c32dc6f763d68c8fe8b1769b34f853b7f95f6f69d7170e8",
+          "eol": {
+            "CRLF": 0,
+            "LF": 755,
+            "CR": 0
+          }
+        },
+        "candidate": {
+          "git_object": "65c3c94b2347c69f6d21ac2e2664a39ef46b3ae2:docs/scripts/test_update_experience.py",
+          "blob": "1fe7e94ce132e2283316112291daae0c752d7363",
+          "bytes": 43776,
+          "sha256": "3dca74177301669346dedee52f792c5ab255bf0b3d4daf28270747e55ca3846d",
+          "eol": {
+            "CRLF": 0,
+            "LF": 824,
+            "CR": 0
+          }
+        }
+      },
+      "current_source_working_raw": {
+        "bytes": 44600,
+        "sha256": "5ddb7e4ac43ed3511cf6f0d62c2be48364b3382f8a9af584c911faf45b1d14e8",
+        "eol": {
+          "CRLF": 824,
+          "LF": 0,
+          "CR": 0
+        }
+      }
+    },
+    {
+      "path": "knowledge/constraint.md",
+      "identities": {
+        "baseline": {
+          "git_object": "ec91c56007c20cda79f740fec15c85e4af74d17c:knowledge/constraint.md",
+          "blob": "657f9269ec0e2a5e1d1b68968b4fd609cdf21704",
+          "bytes": 7476,
+          "sha256": "3dfa47693223ed476b56a94ff4a9978d1e178f2cbe2e27c149614e9b9d360331",
+          "eol": {
+            "CRLF": 0,
+            "LF": 23,
+            "CR": 0
+          }
+        },
+        "candidate": {
+          "git_object": "65c3c94b2347c69f6d21ac2e2664a39ef46b3ae2:knowledge/constraint.md",
+          "blob": "657f9269ec0e2a5e1d1b68968b4fd609cdf21704",
+          "bytes": 7476,
+          "sha256": "3dfa47693223ed476b56a94ff4a9978d1e178f2cbe2e27c149614e9b9d360331",
+          "eol": {
+            "CRLF": 0,
+            "LF": 23,
+            "CR": 0
+          }
+        }
+      },
+      "current_source_working_raw": {
+        "bytes": 7476,
+        "sha256": "3dfa47693223ed476b56a94ff4a9978d1e178f2cbe2e27c149614e9b9d360331",
+        "eol": {
+          "CRLF": 0,
+          "LF": 23,
+          "CR": 0
+        }
+      }
+    },
+    {
+      "path": "knowledge/context.md",
+      "identities": {
+        "baseline": {
+          "git_object": "ec91c56007c20cda79f740fec15c85e4af74d17c:knowledge/context.md",
+          "blob": "f98aa782c98c5fddc6efb330fb73eb1986db0e35",
+          "bytes": 1169,
+          "sha256": "c72f33c1a1ba9cc9a4c402f3d6a4f213af3cd46872b5d38dbe0ea4a9184c91a4",
+          "eol": {
+            "CRLF": 0,
+            "LF": 11,
+            "CR": 0
+          }
+        },
+        "candidate": {
+          "git_object": "65c3c94b2347c69f6d21ac2e2664a39ef46b3ae2:knowledge/context.md",
+          "blob": "f98aa782c98c5fddc6efb330fb73eb1986db0e35",
+          "bytes": 1169,
+          "sha256": "c72f33c1a1ba9cc9a4c402f3d6a4f213af3cd46872b5d38dbe0ea4a9184c91a4",
+          "eol": {
+            "CRLF": 0,
+            "LF": 11,
+            "CR": 0
+          }
+        }
+      },
+      "current_source_working_raw": {
+        "bytes": 1169,
+        "sha256": "c72f33c1a1ba9cc9a4c402f3d6a4f213af3cd46872b5d38dbe0ea4a9184c91a4",
+        "eol": {
+          "CRLF": 0,
+          "LF": 11,
+          "CR": 0
+        }
+      }
+    },
+    {
+      "path": "knowledge/convention.md",
+      "identities": {
+        "baseline": {
+          "git_object": "ec91c56007c20cda79f740fec15c85e4af74d17c:knowledge/convention.md",
+          "blob": "9feb78c08ae04382af6f66c5e4139f06e050cb58",
+          "bytes": 7883,
+          "sha256": "ae1ea33146275fa60881a39e1b5066adf9eb192d199c692fbb266c8b1051e39a",
+          "eol": {
+            "CRLF": 0,
+            "LF": 30,
+            "CR": 0
+          }
+        },
+        "candidate": {
+          "git_object": "65c3c94b2347c69f6d21ac2e2664a39ef46b3ae2:knowledge/convention.md",
+          "blob": "9feb78c08ae04382af6f66c5e4139f06e050cb58",
+          "bytes": 7883,
+          "sha256": "ae1ea33146275fa60881a39e1b5066adf9eb192d199c692fbb266c8b1051e39a",
+          "eol": {
+            "CRLF": 0,
+            "LF": 30,
+            "CR": 0
+          }
+        }
+      },
+      "current_source_working_raw": {
+        "bytes": 7883,
+        "sha256": "ae1ea33146275fa60881a39e1b5066adf9eb192d199c692fbb266c8b1051e39a",
+        "eol": {
+          "CRLF": 0,
+          "LF": 30,
+          "CR": 0
+        }
+      }
+    },
+    {
+      "path": "knowledge/domain.md",
+      "identities": {
+        "baseline": {
+          "git_object": "ec91c56007c20cda79f740fec15c85e4af74d17c:knowledge/domain.md",
+          "blob": "1037783ddb6796a8bc3fa82ff998bd88486ee619",
+          "bytes": 1937,
+          "sha256": "d3637a0049aacf32d79f65ba75ab9ed7b1885bf0a09936abad156d8585ad47e3",
+          "eol": {
+            "CRLF": 0,
+            "LF": 12,
+            "CR": 0
+          }
+        },
+        "candidate": {
+          "git_object": "65c3c94b2347c69f6d21ac2e2664a39ef46b3ae2:knowledge/domain.md",
+          "blob": "1037783ddb6796a8bc3fa82ff998bd88486ee619",
+          "bytes": 1937,
+          "sha256": "d3637a0049aacf32d79f65ba75ab9ed7b1885bf0a09936abad156d8585ad47e3",
+          "eol": {
+            "CRLF": 0,
+            "LF": 12,
+            "CR": 0
+          }
+        }
+      },
+      "current_source_working_raw": {
+        "bytes": 1937,
+        "sha256": "d3637a0049aacf32d79f65ba75ab9ed7b1885bf0a09936abad156d8585ad47e3",
+        "eol": {
+          "CRLF": 0,
+          "LF": 12,
+          "CR": 0
+        }
+      }
+    },
+    {
+      "path": "knowledge/environment.md",
+      "identities": {
+        "baseline": {
+          "git_object": "ec91c56007c20cda79f740fec15c85e4af74d17c:knowledge/environment.md",
+          "blob": "340df6400b4e3a84862b7d8d768125d7f5e41352",
+          "bytes": 3285,
+          "sha256": "c67b41021a9b2e79c0e40340abf194560e60bc5b2362558b1a3e829a079c4fb0",
+          "eol": {
+            "CRLF": 0,
+            "LF": 13,
+            "CR": 0
+          }
+        },
+        "candidate": {
+          "git_object": "65c3c94b2347c69f6d21ac2e2664a39ef46b3ae2:knowledge/environment.md",
+          "blob": "340df6400b4e3a84862b7d8d768125d7f5e41352",
+          "bytes": 3285,
+          "sha256": "c67b41021a9b2e79c0e40340abf194560e60bc5b2362558b1a3e829a079c4fb0",
+          "eol": {
+            "CRLF": 0,
+            "LF": 13,
+            "CR": 0
+          }
+        }
+      },
+      "current_source_working_raw": {
+        "bytes": 3285,
+        "sha256": "c67b41021a9b2e79c0e40340abf194560e60bc5b2362558b1a3e829a079c4fb0",
+        "eol": {
+          "CRLF": 0,
+          "LF": 13,
+          "CR": 0
+        }
+      }
+    },
+    {
+      "path": "knowledge/philosophy.md",
+      "identities": {
+        "baseline": {
+          "git_object": "ec91c56007c20cda79f740fec15c85e4af74d17c:knowledge/philosophy.md",
+          "blob": "f7a582eef9268f44c592580d64575a73b1f14b26",
+          "bytes": 21457,
+          "sha256": "2a76d8821e34da49219e832013a8642dd1d65c4063a397e1ff9fa07d51db864d",
+          "eol": {
+            "CRLF": 0,
+            "LF": 54,
+            "CR": 0
+          }
+        },
+        "candidate": {
+          "git_object": "65c3c94b2347c69f6d21ac2e2664a39ef46b3ae2:knowledge/philosophy.md",
+          "blob": "f7a582eef9268f44c592580d64575a73b1f14b26",
+          "bytes": 21457,
+          "sha256": "2a76d8821e34da49219e832013a8642dd1d65c4063a397e1ff9fa07d51db864d",
+          "eol": {
+            "CRLF": 0,
+            "LF": 54,
+            "CR": 0
+          }
+        }
+      },
+      "current_source_working_raw": {
+        "bytes": 21457,
+        "sha256": "2a76d8821e34da49219e832013a8642dd1d65c4063a397e1ff9fa07d51db864d",
+        "eol": {
+          "CRLF": 0,
+          "LF": 54,
+          "CR": 0
+        }
+      }
+    },
+    {
+      "path": "knowledge/process.md",
+      "identities": {
+        "baseline": {
+          "git_object": "ec91c56007c20cda79f740fec15c85e4af74d17c:knowledge/process.md",
+          "blob": "79f8d4cfb119a8811cc2881aabb1ae874c2cbe9a",
+          "bytes": 28842,
+          "sha256": "e994410bca1f6aa11903f8f26e558a37be16444205200492379cb6ad6a0ea587",
+          "eol": {
+            "CRLF": 0,
+            "LF": 58,
+            "CR": 0
+          }
+        },
+        "candidate": {
+          "git_object": "65c3c94b2347c69f6d21ac2e2664a39ef46b3ae2:knowledge/process.md",
+          "blob": "79f8d4cfb119a8811cc2881aabb1ae874c2cbe9a",
+          "bytes": 28842,
+          "sha256": "e994410bca1f6aa11903f8f26e558a37be16444205200492379cb6ad6a0ea587",
+          "eol": {
+            "CRLF": 0,
+            "LF": 58,
+            "CR": 0
+          }
+        }
+      },
+      "current_source_working_raw": {
+        "bytes": 28842,
+        "sha256": "e994410bca1f6aa11903f8f26e558a37be16444205200492379cb6ad6a0ea587",
+        "eol": {
+          "CRLF": 0,
+          "LF": 58,
+          "CR": 0
+        }
+      }
+    },
+    {
+      "path": "knowledge/records/TKL-20260913-01.md",
+      "identities": {
+        "baseline": {
+          "absent": true
+        },
+        "candidate": {
+          "git_object": "65c3c94b2347c69f6d21ac2e2664a39ef46b3ae2:knowledge/records/TKL-20260913-01.md",
+          "blob": "c22dbcc910ccddf8c3a96c012cfa3bb3f4f257a8",
+          "bytes": 3764,
+          "sha256": "d13918a5d99569332a971d35dd56461565d27533463b20e4336cd3db2f20b7b0",
+          "eol": {
+            "CRLF": 0,
+            "LF": 38,
+            "CR": 0
+          }
+        }
+      },
+      "current_source_working_raw": {
+        "bytes": 3802,
+        "sha256": "affb020c75e91b5e1d90b06cb94ff4d838d09a4bc6239fc6d6681ba833ee27c7",
+        "eol": {
+          "CRLF": 38,
+          "LF": 0,
+          "CR": 0
+        }
+      }
+    },
+    {
+      "path": "knowledge/risk.md",
+      "identities": {
+        "baseline": {
+          "git_object": "ec91c56007c20cda79f740fec15c85e4af74d17c:knowledge/risk.md",
+          "blob": "a61718e88fb83a33c99dc632301893bc9fbcd2b4",
+          "bytes": 2597,
+          "sha256": "9df74b1b83c5485e32b33bb206ac11e98cb7c2cc65ef7b2beef519e4b9905c91",
+          "eol": {
+            "CRLF": 0,
+            "LF": 11,
+            "CR": 0
+          }
+        },
+        "candidate": {
+          "git_object": "65c3c94b2347c69f6d21ac2e2664a39ef46b3ae2:knowledge/risk.md",
+          "blob": "a61718e88fb83a33c99dc632301893bc9fbcd2b4",
+          "bytes": 2597,
+          "sha256": "9df74b1b83c5485e32b33bb206ac11e98cb7c2cc65ef7b2beef519e4b9905c91",
+          "eol": {
+            "CRLF": 0,
+            "LF": 11,
+            "CR": 0
+          }
+        }
+      },
+      "current_source_working_raw": {
+        "bytes": 2597,
+        "sha256": "9df74b1b83c5485e32b33bb206ac11e98cb7c2cc65ef7b2beef519e4b9905c91",
+        "eol": {
+          "CRLF": 0,
+          "LF": 11,
+          "CR": 0
+        }
+      }
+    },
+    {
+      "path": "knowledge/stakeholder.md",
+      "identities": {
+        "baseline": {
+          "git_object": "ec91c56007c20cda79f740fec15c85e4af74d17c:knowledge/stakeholder.md",
+          "blob": "692822f36de7dc9a2ca699ce99ee2959dd3bba89",
+          "bytes": 11263,
+          "sha256": "31dcfc5c377340fb25a5d670d39c4ecf6d326bdb9561e2a314f3115eb83b4978",
+          "eol": {
+            "CRLF": 0,
+            "LF": 26,
+            "CR": 0
+          }
+        },
+        "candidate": {
+          "git_object": "65c3c94b2347c69f6d21ac2e2664a39ef46b3ae2:knowledge/stakeholder.md",
+          "blob": "692822f36de7dc9a2ca699ce99ee2959dd3bba89",
+          "bytes": 11263,
+          "sha256": "31dcfc5c377340fb25a5d670d39c4ecf6d326bdb9561e2a314f3115eb83b4978",
+          "eol": {
+            "CRLF": 0,
+            "LF": 26,
+            "CR": 0
+          }
+        }
+      },
+      "current_source_working_raw": {
+        "bytes": 11263,
+        "sha256": "31dcfc5c377340fb25a5d670d39c4ecf6d326bdb9561e2a314f3115eb83b4978",
+        "eol": {
+          "CRLF": 0,
+          "LF": 26,
+          "CR": 0
+        }
+      }
+    },
+    {
+      "path": "tools/README.md",
+      "identities": {
+        "baseline": {
+          "git_object": "ec91c56007c20cda79f740fec15c85e4af74d17c:tools/README.md",
+          "blob": "2fdf930de8d974d47961b7fbd0708afe51520dd5",
+          "bytes": 6671,
+          "sha256": "b6aaf60d939cd91c6bfd9d6980e50fbeced97992f27a3d6c62d7a51db411631f",
+          "eol": {
+            "CRLF": 0,
+            "LF": 90,
+            "CR": 0
+          }
+        },
+        "candidate": {
+          "git_object": "65c3c94b2347c69f6d21ac2e2664a39ef46b3ae2:tools/README.md",
+          "blob": "b59d62b761a2d65971a588de3536600ddd357a9a",
+          "bytes": 6859,
+          "sha256": "e422216c97a16b122c8038372d54bc292193c4bc0a932baba78b4c3ea338bc2b",
+          "eol": {
+            "CRLF": 0,
+            "LF": 92,
+            "CR": 0
+          }
+        }
+      },
+      "current_source_working_raw": {
+        "bytes": 6859,
+        "sha256": "e422216c97a16b122c8038372d54bc292193c4bc0a932baba78b4c3ea338bc2b",
+        "eol": {
+          "CRLF": 0,
+          "LF": 92,
+          "CR": 0
+        }
+      }
+    },
+    {
+      "path": "tools/tests/test_tfw_doctor.py",
+      "identities": {
+        "baseline": {
+          "git_object": "ec91c56007c20cda79f740fec15c85e4af74d17c:tools/tests/test_tfw_doctor.py",
+          "blob": "febd973276222aae071fa163eee2eeb757655a42",
+          "bytes": 6019,
+          "sha256": "463f128b3a10f0db43e9e35eef684b6e8cc8274985fec1d4a6718e4f1806e4d2",
+          "eol": {
+            "CRLF": 0,
+            "LF": 168,
+            "CR": 0
+          }
+        },
+        "candidate": {
+          "git_object": "65c3c94b2347c69f6d21ac2e2664a39ef46b3ae2:tools/tests/test_tfw_doctor.py",
+          "blob": "7337605de47c47f51c7b29403c224d75d99be28c",
+          "bytes": 6957,
+          "sha256": "d9c2d0e0610ee5d0792391a8f8c6963695fa6c9c7cd71dabebc97ee904af6276",
+          "eol": {
+            "CRLF": 0,
+            "LF": 187,
+            "CR": 0
+          }
+        }
+      },
+      "current_source_working_raw": {
+        "bytes": 7144,
+        "sha256": "0f4692285a1e2144e505d77ea24e726bd8e28ec704babb9cde3120f09d581104",
+        "eol": {
+          "CRLF": 187,
+          "LF": 0,
+          "CR": 0
+        }
+      }
+    },
+    {
+      "path": "tools/tests/test_tfw_state.py",
+      "identities": {
+        "baseline": {
+          "git_object": "ec91c56007c20cda79f740fec15c85e4af74d17c:tools/tests/test_tfw_state.py",
+          "blob": "548eb515992e718a10d057682f87648e4d28e7c2",
+          "bytes": 14262,
+          "sha256": "c3e8eade2dabe6c75a559b33f80752cb767067fd2ba65eb1958facda406b3b5e",
+          "eol": {
+            "CRLF": 0,
+            "LF": 351,
+            "CR": 0
+          }
+        },
+        "candidate": {
+          "git_object": "65c3c94b2347c69f6d21ac2e2664a39ef46b3ae2:tools/tests/test_tfw_state.py",
+          "blob": "c2beb0f1ac4468c0ca23d470d174a8ece241cc0b",
+          "bytes": 14806,
+          "sha256": "0ce88f3e7fa56ee2f328d93712298617d947f858cfeb45eaf3f4d93dd9072fac",
+          "eol": {
+            "CRLF": 0,
+            "LF": 362,
+            "CR": 0
+          }
+        }
+      },
+      "current_source_working_raw": {
+        "bytes": 15168,
+        "sha256": "3037ff3a31823374b2f34b883e8d3c0a5cc6267301005b092051080350a12e2d",
+        "eol": {
+          "CRLF": 362,
+          "LF": 0,
+          "CR": 0
+        }
+      }
+    },
+    {
+      "path": "tools/tfw_doctor.py",
+      "identities": {
+        "baseline": {
+          "git_object": "ec91c56007c20cda79f740fec15c85e4af74d17c:tools/tfw_doctor.py",
+          "blob": "888d2b519e5fe03076297a0098f7322e16d388f2",
+          "bytes": 12686,
+          "sha256": "05a6bc358d868605b83b4b8c7fe74f4560e1c2ead5d53d9dfbc21742ba1e005d",
+          "eol": {
+            "CRLF": 0,
+            "LF": 326,
+            "CR": 0
+          }
+        },
+        "candidate": {
+          "git_object": "65c3c94b2347c69f6d21ac2e2664a39ef46b3ae2:tools/tfw_doctor.py",
+          "blob": "d486cc9653e1861f6f5bfea33d85c9052285bf4e",
+          "bytes": 12313,
+          "sha256": "f1ca05812b2b83ba2fdc41d281b977e96ac5ef0c26c04614ceda961b046b41c3",
+          "eol": {
+            "CRLF": 0,
+            "LF": 315,
+            "CR": 0
+          }
+        }
+      },
+      "current_source_working_raw": {
+        "bytes": 12313,
+        "sha256": "f1ca05812b2b83ba2fdc41d281b977e96ac5ef0c26c04614ceda961b046b41c3",
+        "eol": {
+          "CRLF": 0,
+          "LF": 315,
+          "CR": 0
+        }
+      }
+    },
+    {
+      "path": "tools/tfw_state.py",
+      "identities": {
+        "baseline": {
+          "git_object": "ec91c56007c20cda79f740fec15c85e4af74d17c:tools/tfw_state.py",
+          "blob": "32612f9bf977dff74362dff3b228944913990872",
+          "bytes": 51016,
+          "sha256": "7b32ef4d6af70aaaa6ddee690072debd82cf513f1a119267075c736e6293682b",
+          "eol": {
+            "CRLF": 0,
+            "LF": 1107,
+            "CR": 0
+          }
+        },
+        "candidate": {
+          "git_object": "65c3c94b2347c69f6d21ac2e2664a39ef46b3ae2:tools/tfw_state.py",
+          "blob": "2ce2f2bd9cb510bc1467a29ae8ffdd22354cabc6",
+          "bytes": 42782,
+          "sha256": "ca4f93b188d139a1115855d4c500edfe4db7bbd8afbef10465bd9eab50dec3d4",
+          "eol": {
+            "CRLF": 0,
+            "LF": 913,
+            "CR": 0
+          }
+        }
+      },
+      "current_source_working_raw": {
+        "bytes": 42782,
+        "sha256": "ca4f93b188d139a1115855d4c500edfe4db7bbd8afbef10465bd9eab50dec3d4",
+        "eol": {
+          "CRLF": 0,
+          "LF": 913,
+          "CR": 0
+        }
+      }
+    },
+    {
+      "path": "workspace/2026/TFW_20260907-020729_SLC/REVIEW__TFW_20260907-020729_SLC.md",
+      "identities": {
+        "baseline": {
+          "git_object": "ec91c56007c20cda79f740fec15c85e4af74d17c:workspace/2026/TFW_20260907-020729_SLC/REVIEW__TFW_20260907-020729_SLC.md",
+          "blob": "1e994a3d0002abe38166e4f3ba5e38f63fca9e24",
+          "bytes": 51134,
+          "sha256": "d12f56812b4f3f242601799b1dd6f13d53336715db0f9bd8d9386cbe0b73c481",
+          "eol": {
+            "CRLF": 0,
+            "LF": 217,
+            "CR": 0
+          }
+        },
+        "candidate": {
+          "git_object": "65c3c94b2347c69f6d21ac2e2664a39ef46b3ae2:workspace/2026/TFW_20260907-020729_SLC/REVIEW__TFW_20260907-020729_SLC.md",
+          "blob": "1e994a3d0002abe38166e4f3ba5e38f63fca9e24",
+          "bytes": 51134,
+          "sha256": "d12f56812b4f3f242601799b1dd6f13d53336715db0f9bd8d9386cbe0b73c481",
+          "eol": {
+            "CRLF": 0,
+            "LF": 217,
+            "CR": 0
+          }
+        }
+      },
+      "current_source_working_raw": {
+        "bytes": 51134,
+        "sha256": "d12f56812b4f3f242601799b1dd6f13d53336715db0f9bd8d9386cbe0b73c481",
+        "eol": {
+          "CRLF": 0,
+          "LF": 217,
+          "CR": 0
+        }
+      }
+    },
+    {
+      "path": "workspace/2026/TFW_20260907-020729_SLC/RF__TFW_20260907-020729_SLC.md",
+      "identities": {
+        "baseline": {
+          "git_object": "ec91c56007c20cda79f740fec15c85e4af74d17c:workspace/2026/TFW_20260907-020729_SLC/RF__TFW_20260907-020729_SLC.md",
+          "blob": "9309628d1f7d8439dd80d67a208105005779d7ff",
+          "bytes": 28959,
+          "sha256": "6c3340a7b23928feb8a70e7f02438015549e9ba66a96a331144d45ac058804f7",
+          "eol": {
+            "CRLF": 0,
+            "LF": 212,
+            "CR": 0
+          }
+        },
+        "candidate": {
+          "git_object": "65c3c94b2347c69f6d21ac2e2664a39ef46b3ae2:workspace/2026/TFW_20260907-020729_SLC/RF__TFW_20260907-020729_SLC.md",
+          "blob": "9309628d1f7d8439dd80d67a208105005779d7ff",
+          "bytes": 28959,
+          "sha256": "6c3340a7b23928feb8a70e7f02438015549e9ba66a96a331144d45ac058804f7",
+          "eol": {
+            "CRLF": 0,
+            "LF": 212,
+            "CR": 0
+          }
+        }
+      },
+      "current_source_working_raw": {
+        "bytes": 28959,
+        "sha256": "6c3340a7b23928feb8a70e7f02438015549e9ba66a96a331144d45ac058804f7",
+        "eol": {
+          "CRLF": 0,
+          "LF": 212,
+          "CR": 0
+        }
+      }
+    },
+    {
+      "path": "workspace/2026/TFW_20260907-020729_SLC/status.md",
+      "identities": {
+        "baseline": {
+          "git_object": "ec91c56007c20cda79f740fec15c85e4af74d17c:workspace/2026/TFW_20260907-020729_SLC/status.md",
+          "blob": "87488f50931e9284e382fc41ec7abc1d94a6e0c2",
+          "bytes": 792,
+          "sha256": "c4bc55418a480f6fc7bb4277c656abe149ca6a262c5903a80296aa3f0b8e7875",
+          "eol": {
+            "CRLF": 0,
+            "LF": 14,
+            "CR": 0
+          }
+        },
+        "candidate": {
+          "git_object": "65c3c94b2347c69f6d21ac2e2664a39ef46b3ae2:workspace/2026/TFW_20260907-020729_SLC/status.md",
+          "blob": "87488f50931e9284e382fc41ec7abc1d94a6e0c2",
+          "bytes": 792,
+          "sha256": "c4bc55418a480f6fc7bb4277c656abe149ca6a262c5903a80296aa3f0b8e7875",
+          "eol": {
+            "CRLF": 0,
+            "LF": 14,
+            "CR": 0
+          }
+        }
+      },
+      "current_source_working_raw": {
+        "bytes": 792,
+        "sha256": "c4bc55418a480f6fc7bb4277c656abe149ca6a262c5903a80296aa3f0b8e7875",
+        "eol": {
+          "CRLF": 0,
+          "LF": 14,
+          "CR": 0
+        }
+      }
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/HL-TFW_20260909-231654_TKL.md",
+      "identities": {
+        "baseline": {
+          "git_object": "ec91c56007c20cda79f740fec15c85e4af74d17c:workspace/2026/TFW_20260909-231654_TKL/HL-TFW_20260909-231654_TKL.md",
+          "blob": "fbf2423fa68d5e47db5d4f1574d1ac075d2d391e",
+          "bytes": 44859,
+          "sha256": "0d5543fbb242b7da8a088ae658dc023cc131a159a04c6f466ccaf05928cfe43d",
+          "eol": {
+            "CRLF": 0,
+            "LF": 289,
+            "CR": 0
+          }
+        },
+        "candidate": {
+          "git_object": "65c3c94b2347c69f6d21ac2e2664a39ef46b3ae2:workspace/2026/TFW_20260909-231654_TKL/HL-TFW_20260909-231654_TKL.md",
+          "blob": "c2e14bfebaac53495eb32772d381bfdc93f51e41",
+          "bytes": 55629,
+          "sha256": "cb1e21259e6fa8263aa21d3f56facf73a0f5c932cbc8faf8ae692de63157e6f8",
+          "eol": {
+            "CRLF": 0,
+            "LF": 303,
+            "CR": 0
+          }
+        }
+      },
+      "current_source_working_raw": {
+        "bytes": 55629,
+        "sha256": "cb1e21259e6fa8263aa21d3f56facf73a0f5c932cbc8faf8ae692de63157e6f8",
+        "eol": {
+          "CRLF": 0,
+          "LF": 303,
+          "CR": 0
+        }
+      }
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/TS__TFW_20260909-231654_TKL.md",
+      "identities": {
+        "baseline": {
+          "absent": true
+        },
+        "candidate": {
+          "git_object": "65c3c94b2347c69f6d21ac2e2664a39ef46b3ae2:workspace/2026/TFW_20260909-231654_TKL/TS__TFW_20260909-231654_TKL.md",
+          "blob": "f69fd4099a21a07ae2d17e6b5108b04ac94f107e",
+          "bytes": 55220,
+          "sha256": "6929b45c6ec0908933a2d7e9088707dd317c56a1089895cac9fc31a1b3f8c48c",
+          "eol": {
+            "CRLF": 0,
+            "LF": 377,
+            "CR": 0
+          }
+        }
+      },
+      "current_source_working_raw": {
+        "bytes": 55220,
+        "sha256": "6929b45c6ec0908933a2d7e9088707dd317c56a1089895cac9fc31a1b3f8c48c",
+        "eol": {
+          "CRLF": 0,
+          "LF": 377,
+          "CR": 0
+        }
+      }
+    }
+  ],
+  "guide_paths": [
+    ".tfw/migrations/knowledge-lifecycle.md",
+    ".tfw/workflows/update.md",
+    ".tfw/migrations/3.3.0.md",
+    ".tfw/adapters/manifest.yaml",
+    ".tfw/conventions.md",
+    ".tfw/project_config.yaml",
+    ".tfw/knowledge_state.yaml",
+    "KNOWLEDGE.md"
+  ],
+  "adapter_selection": [
+    {
+      "provider": "codex",
+      "kind": "persistent",
+      "command": null,
+      "source": ".tfw/adapters/codex/AGENTS.md.template",
+      "target": "AGENTS.md",
+      "strategy": "managed_block",
+      "selected_installed_provider": true,
+      "baseline_target_present": true,
+      "candidate_target_present": true
+    },
+    {
+      "provider": "codex",
+      "kind": "commands",
+      "command": "plan",
+      "source": ".tfw/adapters/codex/skills/tfw-plan/SKILL.md",
+      "target": ".agents/skills/tfw-plan/SKILL.md",
+      "strategy": "copy",
+      "selected_installed_provider": true,
+      "baseline_target_present": true,
+      "candidate_target_present": true
+    },
+    {
+      "provider": "codex",
+      "kind": "commands",
+      "command": "research",
+      "source": ".tfw/adapters/codex/skills/tfw-research/SKILL.md",
+      "target": ".agents/skills/tfw-research/SKILL.md",
+      "strategy": "copy",
+      "selected_installed_provider": true,
+      "baseline_target_present": true,
+      "candidate_target_present": true
+    },
+    {
+      "provider": "codex",
+      "kind": "commands",
+      "command": "handoff",
+      "source": ".tfw/adapters/codex/skills/tfw-handoff/SKILL.md",
+      "target": ".agents/skills/tfw-handoff/SKILL.md",
+      "strategy": "copy",
+      "selected_installed_provider": true,
+      "baseline_target_present": true,
+      "candidate_target_present": true
+    },
+    {
+      "provider": "codex",
+      "kind": "commands",
+      "command": "review",
+      "source": ".tfw/adapters/codex/skills/tfw-review/SKILL.md",
+      "target": ".agents/skills/tfw-review/SKILL.md",
+      "strategy": "copy",
+      "selected_installed_provider": true,
+      "baseline_target_present": true,
+      "candidate_target_present": true
+    },
+    {
+      "provider": "codex",
+      "kind": "commands",
+      "command": "resume",
+      "source": ".tfw/adapters/codex/skills/tfw-resume/SKILL.md",
+      "target": ".agents/skills/tfw-resume/SKILL.md",
+      "strategy": "copy",
+      "selected_installed_provider": true,
+      "baseline_target_present": true,
+      "candidate_target_present": true
+    },
+    {
+      "provider": "codex",
+      "kind": "commands",
+      "command": "docs",
+      "source": ".tfw/adapters/codex/skills/tfw-docs/SKILL.md",
+      "target": ".agents/skills/tfw-docs/SKILL.md",
+      "strategy": "copy",
+      "selected_installed_provider": true,
+      "baseline_target_present": true,
+      "candidate_target_present": true
+    },
+    {
+      "provider": "codex",
+      "kind": "commands",
+      "command": "knowledge",
+      "source": ".tfw/adapters/codex/skills/tfw-knowledge/SKILL.md",
+      "target": ".agents/skills/tfw-knowledge/SKILL.md",
+      "strategy": "copy",
+      "selected_installed_provider": true,
+      "baseline_target_present": true,
+      "candidate_target_present": true
+    },
+    {
+      "provider": "codex",
+      "kind": "commands",
+      "command": "release",
+      "source": ".tfw/adapters/codex/skills/tfw-release/SKILL.md",
+      "target": ".agents/skills/tfw-release/SKILL.md",
+      "strategy": "copy",
+      "selected_installed_provider": true,
+      "baseline_target_present": true,
+      "candidate_target_present": true
+    },
+    {
+      "provider": "codex",
+      "kind": "commands",
+      "command": "update",
+      "source": ".tfw/adapters/codex/skills/tfw-update/SKILL.md",
+      "target": ".agents/skills/tfw-update/SKILL.md",
+      "strategy": "copy",
+      "selected_installed_provider": true,
+      "baseline_target_present": true,
+      "candidate_target_present": true
+    },
+    {
+      "provider": "codex",
+      "kind": "commands",
+      "command": "config",
+      "source": ".tfw/adapters/codex/skills/tfw-config/SKILL.md",
+      "target": ".agents/skills/tfw-config/SKILL.md",
+      "strategy": "copy",
+      "selected_installed_provider": true,
+      "baseline_target_present": true,
+      "candidate_target_present": true
+    },
+    {
+      "provider": "codex",
+      "kind": "commands",
+      "command": "init",
+      "source": ".tfw/adapters/codex/skills/tfw-init/SKILL.md",
+      "target": ".agents/skills/tfw-init/SKILL.md",
+      "strategy": "copy",
+      "selected_installed_provider": true,
+      "baseline_target_present": true,
+      "candidate_target_present": true
+    },
+    {
+      "provider": "claude-code",
+      "kind": "persistent",
+      "command": null,
+      "source": ".tfw/adapters/claude-code/CLAUDE.md.template",
+      "target": "CLAUDE.md",
+      "strategy": "managed_block",
+      "selected_installed_provider": true,
+      "baseline_target_present": true,
+      "candidate_target_present": true
+    },
+    {
+      "provider": "claude-code",
+      "kind": "commands",
+      "command": "plan",
+      "source": ".tfw/workflows/plan.md",
+      "target": ".claude/commands/tfw-plan.md",
+      "strategy": "copy",
+      "selected_installed_provider": true,
+      "baseline_target_present": true,
+      "candidate_target_present": true
+    },
+    {
+      "provider": "claude-code",
+      "kind": "commands",
+      "command": "research",
+      "source": ".tfw/workflows/research/base.md",
+      "target": ".claude/commands/tfw-research.md",
+      "strategy": "copy",
+      "selected_installed_provider": true,
+      "baseline_target_present": true,
+      "candidate_target_present": true
+    },
+    {
+      "provider": "claude-code",
+      "kind": "commands",
+      "command": "handoff",
+      "source": ".tfw/workflows/handoff.md",
+      "target": ".claude/commands/tfw-handoff.md",
+      "strategy": "copy",
+      "selected_installed_provider": true,
+      "baseline_target_present": true,
+      "candidate_target_present": true
+    },
+    {
+      "provider": "claude-code",
+      "kind": "commands",
+      "command": "review",
+      "source": ".tfw/workflows/review.md",
+      "target": ".claude/commands/tfw-review.md",
+      "strategy": "copy",
+      "selected_installed_provider": true,
+      "baseline_target_present": true,
+      "candidate_target_present": true
+    },
+    {
+      "provider": "claude-code",
+      "kind": "commands",
+      "command": "resume",
+      "source": ".tfw/workflows/resume.md",
+      "target": ".claude/commands/tfw-resume.md",
+      "strategy": "copy",
+      "selected_installed_provider": true,
+      "baseline_target_present": true,
+      "candidate_target_present": true
+    },
+    {
+      "provider": "claude-code",
+      "kind": "commands",
+      "command": "docs",
+      "source": ".tfw/workflows/docs.md",
+      "target": ".claude/commands/tfw-docs.md",
+      "strategy": "copy",
+      "selected_installed_provider": true,
+      "baseline_target_present": true,
+      "candidate_target_present": true
+    },
+    {
+      "provider": "claude-code",
+      "kind": "commands",
+      "command": "knowledge",
+      "source": ".tfw/workflows/knowledge.md",
+      "target": ".claude/commands/tfw-knowledge.md",
+      "strategy": "copy",
+      "selected_installed_provider": true,
+      "baseline_target_present": true,
+      "candidate_target_present": true
+    },
+    {
+      "provider": "claude-code",
+      "kind": "commands",
+      "command": "release",
+      "source": ".tfw/workflows/release.md",
+      "target": ".claude/commands/tfw-release.md",
+      "strategy": "copy",
+      "selected_installed_provider": true,
+      "baseline_target_present": true,
+      "candidate_target_present": true
+    },
+    {
+      "provider": "claude-code",
+      "kind": "commands",
+      "command": "update",
+      "source": ".tfw/workflows/update.md",
+      "target": ".claude/commands/tfw-update.md",
+      "strategy": "copy",
+      "selected_installed_provider": true,
+      "baseline_target_present": true,
+      "candidate_target_present": true
+    },
+    {
+      "provider": "claude-code",
+      "kind": "commands",
+      "command": "config",
+      "source": ".tfw/workflows/config.md",
+      "target": ".claude/commands/tfw-config.md",
+      "strategy": "copy",
+      "selected_installed_provider": true,
+      "baseline_target_present": true,
+      "candidate_target_present": true
+    },
+    {
+      "provider": "claude-code",
+      "kind": "commands",
+      "command": "init",
+      "source": ".tfw/workflows/init.md",
+      "target": ".claude/commands/tfw-init.md",
+      "strategy": "copy",
+      "selected_installed_provider": true,
+      "baseline_target_present": true,
+      "candidate_target_present": true
+    },
+    {
+      "provider": "cursor",
+      "kind": "persistent",
+      "command": null,
+      "source": ".tfw/adapters/cursor/tfw.mdc.template",
+      "target": ".cursor/rules/tfw.mdc",
+      "strategy": "copy",
+      "selected_installed_provider": false,
+      "baseline_target_present": false,
+      "candidate_target_present": false
+    },
+    {
+      "provider": "cursor",
+      "kind": "commands",
+      "command": "plan",
+      "source": ".tfw/workflows/plan.md",
+      "target": ".cursor/commands/tfw-plan.md",
+      "strategy": "copy",
+      "selected_installed_provider": false,
+      "baseline_target_present": false,
+      "candidate_target_present": false
+    },
+    {
+      "provider": "cursor",
+      "kind": "commands",
+      "command": "research",
+      "source": ".tfw/workflows/research/base.md",
+      "target": ".cursor/commands/tfw-research.md",
+      "strategy": "copy",
+      "selected_installed_provider": false,
+      "baseline_target_present": false,
+      "candidate_target_present": false
+    },
+    {
+      "provider": "cursor",
+      "kind": "commands",
+      "command": "handoff",
+      "source": ".tfw/workflows/handoff.md",
+      "target": ".cursor/commands/tfw-handoff.md",
+      "strategy": "copy",
+      "selected_installed_provider": false,
+      "baseline_target_present": false,
+      "candidate_target_present": false
+    },
+    {
+      "provider": "cursor",
+      "kind": "commands",
+      "command": "review",
+      "source": ".tfw/workflows/review.md",
+      "target": ".cursor/commands/tfw-review.md",
+      "strategy": "copy",
+      "selected_installed_provider": false,
+      "baseline_target_present": false,
+      "candidate_target_present": false
+    },
+    {
+      "provider": "cursor",
+      "kind": "commands",
+      "command": "resume",
+      "source": ".tfw/workflows/resume.md",
+      "target": ".cursor/commands/tfw-resume.md",
+      "strategy": "copy",
+      "selected_installed_provider": false,
+      "baseline_target_present": false,
+      "candidate_target_present": false
+    },
+    {
+      "provider": "cursor",
+      "kind": "commands",
+      "command": "docs",
+      "source": ".tfw/workflows/docs.md",
+      "target": ".cursor/commands/tfw-docs.md",
+      "strategy": "copy",
+      "selected_installed_provider": false,
+      "baseline_target_present": false,
+      "candidate_target_present": false
+    },
+    {
+      "provider": "cursor",
+      "kind": "commands",
+      "command": "knowledge",
+      "source": ".tfw/workflows/knowledge.md",
+      "target": ".cursor/commands/tfw-knowledge.md",
+      "strategy": "copy",
+      "selected_installed_provider": false,
+      "baseline_target_present": false,
+      "candidate_target_present": false
+    },
+    {
+      "provider": "cursor",
+      "kind": "commands",
+      "command": "release",
+      "source": ".tfw/workflows/release.md",
+      "target": ".cursor/commands/tfw-release.md",
+      "strategy": "copy",
+      "selected_installed_provider": false,
+      "baseline_target_present": false,
+      "candidate_target_present": false
+    },
+    {
+      "provider": "cursor",
+      "kind": "commands",
+      "command": "update",
+      "source": ".tfw/workflows/update.md",
+      "target": ".cursor/commands/tfw-update.md",
+      "strategy": "copy",
+      "selected_installed_provider": false,
+      "baseline_target_present": false,
+      "candidate_target_present": false
+    },
+    {
+      "provider": "cursor",
+      "kind": "commands",
+      "command": "config",
+      "source": ".tfw/workflows/config.md",
+      "target": ".cursor/commands/tfw-config.md",
+      "strategy": "copy",
+      "selected_installed_provider": false,
+      "baseline_target_present": false,
+      "candidate_target_present": false
+    },
+    {
+      "provider": "cursor",
+      "kind": "commands",
+      "command": "init",
+      "source": ".tfw/workflows/init.md",
+      "target": ".cursor/commands/tfw-init.md",
+      "strategy": "copy",
+      "selected_installed_provider": false,
+      "baseline_target_present": false,
+      "candidate_target_present": false
+    },
+    {
+      "provider": "antigravity",
+      "kind": "persistent",
+      "command": null,
+      "source": ".tfw/adapters/antigravity/tfw-rules.md.template",
+      "target": ".agents/rules/tfw.md",
+      "strategy": "copy",
+      "selected_installed_provider": true,
+      "baseline_target_present": true,
+      "candidate_target_present": true
+    },
+    {
+      "provider": "antigravity",
+      "kind": "commands",
+      "command": "plan",
+      "source": ".tfw/workflows/plan.md",
+      "target": ".agents/workflows/tfw-plan.md",
+      "strategy": "copy",
+      "selected_installed_provider": true,
+      "baseline_target_present": true,
+      "candidate_target_present": true
+    },
+    {
+      "provider": "antigravity",
+      "kind": "commands",
+      "command": "research",
+      "source": ".tfw/workflows/research/base.md",
+      "target": ".agents/workflows/tfw-research.md",
+      "strategy": "copy",
+      "selected_installed_provider": true,
+      "baseline_target_present": true,
+      "candidate_target_present": true
+    },
+    {
+      "provider": "antigravity",
+      "kind": "commands",
+      "command": "handoff",
+      "source": ".tfw/workflows/handoff.md",
+      "target": ".agents/workflows/tfw-handoff.md",
+      "strategy": "copy",
+      "selected_installed_provider": true,
+      "baseline_target_present": true,
+      "candidate_target_present": true
+    },
+    {
+      "provider": "antigravity",
+      "kind": "commands",
+      "command": "review",
+      "source": ".tfw/workflows/review.md",
+      "target": ".agents/workflows/tfw-review.md",
+      "strategy": "copy",
+      "selected_installed_provider": true,
+      "baseline_target_present": true,
+      "candidate_target_present": true
+    },
+    {
+      "provider": "antigravity",
+      "kind": "commands",
+      "command": "resume",
+      "source": ".tfw/workflows/resume.md",
+      "target": ".agents/workflows/tfw-resume.md",
+      "strategy": "copy",
+      "selected_installed_provider": true,
+      "baseline_target_present": true,
+      "candidate_target_present": true
+    },
+    {
+      "provider": "antigravity",
+      "kind": "commands",
+      "command": "docs",
+      "source": ".tfw/workflows/docs.md",
+      "target": ".agents/workflows/tfw-docs.md",
+      "strategy": "copy",
+      "selected_installed_provider": true,
+      "baseline_target_present": true,
+      "candidate_target_present": true
+    },
+    {
+      "provider": "antigravity",
+      "kind": "commands",
+      "command": "knowledge",
+      "source": ".tfw/workflows/knowledge.md",
+      "target": ".agents/workflows/tfw-knowledge.md",
+      "strategy": "copy",
+      "selected_installed_provider": true,
+      "baseline_target_present": true,
+      "candidate_target_present": true
+    },
+    {
+      "provider": "antigravity",
+      "kind": "commands",
+      "command": "release",
+      "source": ".tfw/workflows/release.md",
+      "target": ".agents/workflows/tfw-release.md",
+      "strategy": "copy",
+      "selected_installed_provider": true,
+      "baseline_target_present": true,
+      "candidate_target_present": true
+    },
+    {
+      "provider": "antigravity",
+      "kind": "commands",
+      "command": "update",
+      "source": ".tfw/workflows/update.md",
+      "target": ".agents/workflows/tfw-update.md",
+      "strategy": "copy",
+      "selected_installed_provider": true,
+      "baseline_target_present": true,
+      "candidate_target_present": true
+    },
+    {
+      "provider": "antigravity",
+      "kind": "commands",
+      "command": "config",
+      "source": ".tfw/workflows/config.md",
+      "target": ".agents/workflows/tfw-config.md",
+      "strategy": "copy",
+      "selected_installed_provider": true,
+      "baseline_target_present": true,
+      "candidate_target_present": true
+    },
+    {
+      "provider": "antigravity",
+      "kind": "commands",
+      "command": "init",
+      "source": ".tfw/workflows/init.md",
+      "target": ".agents/workflows/tfw-init.md",
+      "strategy": "copy",
+      "selected_installed_provider": true,
+      "baseline_target_present": true,
+      "candidate_target_present": true
+    }
+  ],
+  "selected_providers": [
+    "codex",
+    "claude-code",
+    "antigravity"
+  ],
+  "unselected_provider": "cursor: absent and must not be installed",
+  "archive_sha256": "d473aca916a90f2a73c09439c1cf81258f1cb88219f873c8a63defc735bbd121",
+  "slc_source_basis": {
+    "status": "DONE",
+    "accepted_review": "99198f133c0047568c1e8411bfae849239b352b1",
+    "close": "c51ee0c0d7891fd165d105f3565e0e54512c1040",
+    "both_ancestors_of_baseline": true,
+    "rf_review_status_unchanged_baseline_candidate": true,
+    "limit": "Source basis only. Future faithful checkout must verify determinate completed SLC from retained authority before applying; unknown or incomplete refuses without another SLC migration."
+  },
+  "frozen_preservation": {
+    "selected_tkl_hl_ts_slc_paths_unchanged": [
+      "workspace/2026/TFW_20260907-020729_SLC/status.md",
+      "workspace/2026/TFW_20260907-020729_SLC/RF__TFW_20260907-020729_SLC.md",
+      "workspace/2026/TFW_20260907-020729_SLC/REVIEW__TFW_20260907-020729_SLC.md",
+      "workspace/2026/TFW_20260909-231654_TKL/HL-TFW_20260909-231654_TKL.md",
+      "workspace/2026/TFW_20260909-231654_TKL/TS__TFW_20260909-231654_TKL.md"
+    ],
+    "prior_onb_is_exact_git_byte_prefix": true
+  },
+  "limits": [
+    "Exact Git source bytes and current source-working bytes are separate observations; neither is a future receiver physical before-image.",
+    "No new accepted project record is authorized by update permission. The 58 VALUE /7 ASSURANCE source list is cost/identity scope, not a blanket replay write plan.",
+    "Future application requires its own actual physical old/intended/absence/EOL/Git preservation for every selected effect, sealed before every write, and current source/authority revalidation.",
+    "Only one future prepared reader-only cut and continuation, unchanged repeat and prepared affected-field-Z refusal with unrelated later note are conditionally authorized; no outcome is asserted.",
+    "Original Q3 gap and all old evidence/acceptance epochs remain unchanged. No new SLC/init/research/AC9/AC10 run or extra provider/root."
+  ]
+}

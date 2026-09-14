@@ -1,0 +1,20 @@
+{
+  "argv": [
+    "E:/TEMP/pttc-phase-a-b9b5/venv/Scripts/python.exe",
+    "-m",
+    "mkdocs",
+    "build",
+    "--config-file",
+    "docs/mkdocs.yml",
+    "--site-dir",
+    "C:\\Users\\c0rpa\\AppData\\Local\\Temp\\TFW_TKL_NATIVE_01a09a0c\\self-adoption-r1\\site"
+  ],
+  "cwd": "C:\\Users\\c0rpa\\AppData\\Local\\Temp\\TFW_TKL_NATIVE_01a09a0c\\self-adoption-r1",
+  "started_at": "2026-09-13T18:27:16.274244+00:00",
+  "finished_at": "2026-09-13T18:31:00.996921+00:00",
+  "exit": 0,
+  "stdout_sha256": "434d5d63b8c6a23468b3f644d661c048edb81aab8b1525a23d2fd53da5d5e023",
+  "stderr_sha256": "54b6ffe72a2c86f2d979a5b4b3eae493878ef956a6e0a4c8ea8824686b3c96dc",
+  "capture": "raw pipe bytes",
+  "source": "03-baseline-physical.json plus exact 55 reader effects and 56/57 semantic writes; no upstream project memory or ASSURANCE transplant"
+}

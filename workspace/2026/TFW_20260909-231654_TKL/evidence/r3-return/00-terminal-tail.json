@@ -1,0 +1,43 @@
+{
+  "recorded_at": "2026-09-13T22:57:01.021479+00:00",
+  "kind": "Post-native documentary tail; no new receiver observation",
+  "native_start": "2026-09-13T22:13:37Z",
+  "native_deadline": "2026-09-13T22:43:37Z",
+  "native_outcome": "STOPPED",
+  "actual_underlying_invocations": 24,
+  "deductions_seconds": 0,
+  "retry": false,
+  "first_failure": {
+    "operator": 21,
+    "event": "exec-20f33ae6-ce1c-46e9-bed8-1ee4ea8f14d7",
+    "exit": 1,
+    "cause": "assert len(phase_records)==14 against13 actual driver phases, before that invocation wrote or staged evidence"
+  },
+  "first_failure_artifact": "../r3-native/21-original-failure.json",
+  "second_failure": {
+    "operator": 23,
+    "event": "exec-4c94fc45-c650-4b37-a3fa-ec52d4f9c091",
+    "exit": 1,
+    "cause": "targeted git diff --cached --check exit2 after staging and before commit",
+    "original_stdout": "Not returned by helper; no original diagnostic reconstructed",
+    "readonly_byte_inspection": "native.py ends in two LF bytes and has no trailing-space lines. Other five targeted JSON files have no trailing spaces and end in one LF. This is a later source observation, not the original diff diagnostic. No byte was normalized."
+  },
+  "direct_return": {
+    "operator": 24,
+    "event": "exec-8950fe5b-2ed8-4080-8a4d-ef966514a357",
+    "status": "completed",
+    "provider_duration_ms": 69,
+    "producer_reported_elapsed_seconds": 1637.492,
+    "provider_whole_turn_completed_at": "2026-09-13T22:41:13Z",
+    "independent_elapsed_upper_bound_seconds": 1656,
+    "exact_send_milliseconds": "producer-reported only; upper bound is independently supplied API completion",
+    "producer_runtime_started_at": "2026-09-13T22:40:54.381Z",
+    "producer_runtime_completed_at": "2026-09-13T22:40:54.492Z"
+  },
+  "preserved_pre_stop_observations": "../r3-native/18-native-result.json;13 recorded phases exit0,4 effects,one native build and one completed zero-write repeat before bookkeeping failures",
+  "raw_commit_not_created_in_bound": true,
+  "source_for_API_events": "../coordinator-r3-stop/tool-observations.json",
+  "old_raw_records_mutated": false,
+  "receiver_access_after_first_failure": false,
+  "interpretation": "Neither the pre-stop observation result nor later custody is a bounded-success claim or independent acceptance."
+}

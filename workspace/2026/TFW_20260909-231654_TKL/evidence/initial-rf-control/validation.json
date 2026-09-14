@@ -1,0 +1,18 @@
+{
+  "observed_at": "2026-09-13T16:55:24+05:00",
+  "candidate": "27cdb701b91c5b45b9f54b3e98c9ad67635b3e30",
+  "before_lifecycle": "ONB",
+  "after_lifecycle": "RF",
+  "event_path": "workspace/2026/TFW_20260909-231654_TKL/journal/20260913-165524__transition__7108.md",
+  "event_sha256": "a03c1a75fe63903055c0c7153f9cc8aea6a179549bb3c0cd7c306b85fd87a627",
+  "status_before_sha256": "f29b29a2d61ac9e933d90ad2680c08ff5cdb18597c23936ad4963a28deeaeacf",
+  "status_after_sha256": "f4c514f6d42cdd08a1e8d304e882308ae142e41dd852430dd28620181c51012c",
+  "prewrite_complete_status_owner_authority_body_refs_errors": [],
+  "prewrite_event_errors": [],
+  "rf_mandatory_sections": 9,
+  "ev_rows": 12,
+  "ev_verified": 4,
+  "ev_blocked": 8,
+  "status_body_preserved": true,
+  "no_terminal_outcome": true
+}

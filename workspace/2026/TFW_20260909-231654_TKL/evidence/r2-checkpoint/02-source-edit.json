@@ -1,0 +1,29 @@
+{
+  "observed_at": "2026-09-13T20:01:33.615173+00:00",
+  "line_endings": [
+    {
+      "path": ".tfw/conventions.md",
+      "before_sha256": "9b850297cce91db28bf97e4996ff1501c52a9bda6cee70688619ef049e3050d5",
+      "before_CRLF": 1434,
+      "after_sha256": "ac688a8edfacfb98528b740621982065cb3269115725ace842a30772f3318fbf",
+      "after_CRLF": 0,
+      "purpose": "Keep intended product Git LF identity; remove mixed checkout line endings introduced around the patch. No raw evidence or historical Git object changed."
+    },
+    {
+      "path": "docs/scripts/test_repository_contracts.py",
+      "before_sha256": "c305017df563987e511f40780a773f6b8d281a52542bd91d2ccc8009f8ea0d08",
+      "before_CRLF": 2958,
+      "after_sha256": "7fcd70aa4092edfe8b7794f8a9968b5c5c99161c3c86fed498b5cac2ad87f1c0",
+      "after_CRLF": 0,
+      "purpose": "Keep intended product Git LF identity; remove mixed checkout line endings introduced around the patch. No raw evidence or historical Git object changed."
+    }
+  ],
+  "tool_executable_AST_unchanged": true,
+  "implementation_paths": [
+    "KNOWLEDGE.md",
+    ".tfw/conventions.md",
+    "tools/tfw_state.py",
+    "docs/scripts/test_repository_contracts.py"
+  ],
+  "native_started": false
+}

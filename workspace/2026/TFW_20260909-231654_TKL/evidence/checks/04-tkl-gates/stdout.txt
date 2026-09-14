@@ -1,0 +1,18 @@
+................................F                                        [100%]
+================================== FAILURES ===================================
+_ test_tkl_nested_record_destination_and_source_links_are_exact_and_idempotent _
+
+    def test_tkl_nested_record_destination_and_source_links_are_exact_and_idempotent():
+        from gen_docs import BASE_GLOB_SOURCES
+        assert ("knowledge/**/*.md", "knowledge/", False) in BASE_GLOB_SOURCES
+>       assert _glob_output_path(Path("knowledge/records/scoped/R1.md"), Path("knowledge"), "knowledge") == "knowledge/records/scoped/R1.md"
+E       AssertionError: assert 'knowledgerec.../scoped/R1.md' == 'knowledge/re.../scoped/R1.md'
+E         
+E         - knowledge/records/scoped/R1.md
+E         ?          -
+E         + knowledgerecords/scoped/R1.md
+
+docs\scripts\test_gen_docs.py:759: AssertionError
+=========================== short test summary info ===========================
+FAILED docs/scripts/test_gen_docs.py::test_tkl_nested_record_destination_and_source_links_are_exact_and_idempotent
+1 failed, 32 passed, 476 deselected in 2.71s

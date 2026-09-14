@@ -1,0 +1,18 @@
+{
+  "actual_start_clock": "2026-09-13 21:49:18 UTC",
+  "start_utc": "2026-09-13T21:49:18Z",
+  "deadline_utc": "2026-09-13T21:59:18Z",
+  "elapsed_minutes_ceiling": 10,
+  "underlying_invocations_ceiling": 12,
+  "deductions_seconds": 0,
+  "native_started": false,
+  "separate_intake": {
+    "first_observed_at": "2026-09-13T21:45:05.595232+00:00",
+    "control_committed_at": "2026-09-13T21:49:10.955142+00:00",
+    "elapsed_seconds": 245.35991,
+    "underlying_invocations": 13,
+    "observer_or_archive_processing": false,
+    "receiver_access": false,
+    "preflight_gap_seconds": 7.044858
+  }
+}

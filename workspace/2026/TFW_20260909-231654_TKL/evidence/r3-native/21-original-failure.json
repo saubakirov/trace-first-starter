@@ -1,0 +1,16 @@
+{
+  "invocation": 21,
+  "tool": "exec_command",
+  "chunk": "7536f1",
+  "exit_code": 1,
+  "traceback": "Traceback (most recent call last):\n  File \"<stdin>\", line 11, in <module>\nAssertionError\n",
+  "failed_statement": "steps=sorted(e.glob('*.step.json'));assert len(steps)==14",
+  "incorrect_expected_count": 14,
+  "actual_phase_record_count": 13,
+  "meaning": "Bookkeeping validator expected14 while the written driver has13 actual named phases. This failed before its archive verification, metadata writes, staging or commit. It cannot be retried under this native grant.",
+  "exact_failure_time": "not captured by that command before assertion; bounded before immediate STOP notification at22:37:02.412Z",
+  "immediate_STOP_notification": "2026-09-13T22:37:02.412Z",
+  "receiver_access_in_failed_invocation": false,
+  "receiver_actions_after_failure": 0,
+  "original_command_custody": "Full operator input remains in original tool call; this record transcribes the executed failing statement and original traceback, not a fabricated raw process stream."
+}

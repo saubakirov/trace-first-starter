@@ -44,6 +44,15 @@
 
 > **Cross-references**: use Reference Format (e.g. `RF TFW-18`, `D24`, `TD-72`). See compilable_contract.md §2. Build script resolves to hyperlinks.
 
+### Material handover at this return
+
+Use this existing source first; no duplicate file or fact is required. Name the actual producer/unit,
+bounded inspected context and source epoch, material knowledge or justified-none, uncertainty and
+continuation. Keep human provenance and technical findings distinct. Unavailable context is not none;
+name the exact missing decision and existing owner. Retain-only needs an authorized completed reason
+why no publication/resolution is owed; otherwise the obligation remains open. An empty section or
+checkbox cannot cover a missing producer. Preserve original sources after the return.
+
 ---
 
 *ONB — {ID} / Phase {X}: {Title} | YYYY-MM-DD*

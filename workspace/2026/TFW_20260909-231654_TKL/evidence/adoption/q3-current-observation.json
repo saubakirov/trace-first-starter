@@ -1,0 +1,3533 @@
+{
+  "kind": "CURRENT supplemental observation, Q3; procedural deviation remains for independent Reviewer",
+  "observed_at": "2026-09-13T11:20:28.507492+00:00",
+  "author_unit": "01a09a0c-c9e2-7d01-af4e-64931af967ed",
+  "principal": "robert",
+  "baseline": "ec91c56007c20cda79f740fec15c85e4af74d17c",
+  "candidate": "27cdb701b91c5b45b9f54b3e98c9ad67635b3e30",
+  "approval": "2794cbdb40f6c4f3a7d4bce1f8d4eb949d9e6913",
+  "ts_blob": "f69fd4099a21a07ae2d17e6b5108b04ac94f107e",
+  "ruling": "144e3e651382330afba4d7131a562d05e7f515f9",
+  "direct_dispatch": "bb3c2803e610bd5fe1cc6eed040b73a6cb2a40aa",
+  "original_attachment": {
+    "path": ".tfw/update_receipts/knowledge-lifecycle/0a435729c93141639ada55fb77a7508d47d0d1b9c159d50b6e05bdfb364ebacf/preservation.json",
+    "sha256": "0a435729c93141639ada55fb77a7508d47d0d1b9c159d50b6e05bdfb364ebacf",
+    "preserved_raw_commit": "9c05a0d44d53cf99d07f2ab4eecd8c45369713de",
+    "unchanged_now": true
+  },
+  "deviation": "The original preservation attachment omitted the separate old/intended reader/adapter identity map. This omission is not repaired or retrospectively sealed by this current observation.",
+  "unknown": [
+    "Pre-application working-tree reader/adapter bytes and their line endings",
+    "Contemporaneous reader-map sealing, which the original attachment did not record",
+    "Per-reader installation times"
+  ],
+  "observation_limits": [
+    "Baseline Git objects establish reconstructable old source identities, not the unknown checkout/timing facts.",
+    "Initial source snapshot was taken during the first affected test run at 2026-09-13T10:20:40.956326+00:00, not before adoption or that run.",
+    "Each later source-before snapshot describes its own actual test-input generation.",
+    "Neither Executor nor Coordinator accepts the reconstruction or adoption/provenance completeness; independent Reviewer judges the remaining defect.",
+    "Prospective established adoption will establish only its own procedure and cannot rewrite this self-adoption history."
+  ],
+  "original_intended": {
+    ".tfw/project_config.yaml": "c6e86611751ad123c4139e1203098fa0f7635b54b33c2a6c0b9040cb25753f7c",
+    "KNOWLEDGE.md": "c633bb3e7a0d622285bc7ecd2ce5a011350e8d4a5e8967d0db223046f6c061ad"
+  },
+  "final_entry_generation": {
+    "observed_utc": "2026-09-13T11:03:22.011560+00:00",
+    "scope": "approved whole KNOWLEDGE.md VALUE path; correct current Architecture Map Knowledge row before first Candidate",
+    "old_sha256": "c633bb3e7a0d622285bc7ecd2ce5a011350e8d4a5e8967d0db223046f6c061ad",
+    "new_sha256": "3fa4a662613e9c4409cc87a92237eeaf5cbf36291067badd2630f8d933609b21",
+    "initial_preservation": "original unchanged; initial intended entry is now a prior working generation, not silently rebound",
+    "source_epoch": "11-full/source-before.json and zip preserve preceding bytes",
+    "legacy": "No D row/topic/source or inert state changed",
+    "authority": "exact approved TKL TS f69fd4099a21a07ae2d17e6b5108b04ac94f107e; ordinary implementation correction, not new acceptance"
+  },
+  "final_config_raw_sha256": "c6e86611751ad123c4139e1203098fa0f7635b54b33c2a6c0b9040cb25753f7c",
+  "final_entry_raw_sha256": "3fa4a662613e9c4409cc87a92237eeaf5cbf36291067badd2630f8d933609b21",
+  "map_scope": "All 58 approved VALUE paths, including canonical readers, installed copies, routers, role forms and associated implementation; explicit absence for create/delete generations.",
+  "identities": {
+    ".tfw/conventions.md": {
+      "ec91c56007c20cda79f740fec15c85e4af74d17c": {
+        "git_blob": "dd9f547b0048dbedaa6368e40bece2b9bbdf7cca",
+        "git_bytes_sha256": "09d248e997cf19bae1cef53f64423af343c8640d3b270a804e7986ffb874f9d2"
+      },
+      "27cdb701b91c5b45b9f54b3e98c9ad67635b3e30": {
+        "git_blob": "ab5504f898e972fc02d3827665070cbede9cf60c",
+        "git_bytes_sha256": "fb05c43570cf65b512e620c97633d0115daa8b733e9649e4a3c426e566b8cf21"
+      },
+      "observed_working_snapshots": {
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/03-current-contracts/source-before.json": {
+          "bytes": 100306,
+          "sha256": "97cb69402892b42fc3f05646586d57d0f962d8f3b0a94ac285865b6fc96636ea"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/04-tkl-gates/source-before.json": {
+          "bytes": 100306,
+          "sha256": "97cb69402892b42fc3f05646586d57d0f962d8f3b0a94ac285865b6fc96636ea"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/05-collection/source-before.json": {
+          "bytes": 100306,
+          "sha256": "97cb69402892b42fc3f05646586d57d0f962d8f3b0a94ac285865b6fc96636ea"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/06-full/source-before.json": {
+          "bytes": 100306,
+          "sha256": "97cb69402892b42fc3f05646586d57d0f962d8f3b0a94ac285865b6fc96636ea"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/07-collection/source-before.json": {
+          "bytes": 100306,
+          "sha256": "97cb69402892b42fc3f05646586d57d0f962d8f3b0a94ac285865b6fc96636ea"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/08-full/source-before.json": {
+          "bytes": 100306,
+          "sha256": "97cb69402892b42fc3f05646586d57d0f962d8f3b0a94ac285865b6fc96636ea"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/09-remaining-gates/source-before.json": {
+          "bytes": 100306,
+          "sha256": "97cb69402892b42fc3f05646586d57d0f962d8f3b0a94ac285865b6fc96636ea"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/10-collection/source-before.json": {
+          "bytes": 100306,
+          "sha256": "97cb69402892b42fc3f05646586d57d0f962d8f3b0a94ac285865b6fc96636ea"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/11-full/source-before.json": {
+          "bytes": 100306,
+          "sha256": "97cb69402892b42fc3f05646586d57d0f962d8f3b0a94ac285865b6fc96636ea"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/12-collection/source-before.json": {
+          "bytes": 100306,
+          "sha256": "97cb69402892b42fc3f05646586d57d0f962d8f3b0a94ac285865b6fc96636ea"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/13-full/source-before.json": {
+          "bytes": 100306,
+          "sha256": "97cb69402892b42fc3f05646586d57d0f962d8f3b0a94ac285865b6fc96636ea"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/01-02-source-before-corrections.json": {
+          "bytes": 98486,
+          "sha256": "06613e5d814d2499198aa6252df777be843d6a6a5aa417ca3183b47ea932bb84"
+        }
+      }
+    },
+    ".tfw/glossary.md": {
+      "ec91c56007c20cda79f740fec15c85e4af74d17c": {
+        "git_blob": "0d98f16c6266a91f1909279f3865013ef4c8c938",
+        "git_bytes_sha256": "bb72f99c8ce76497bdb70b566be92bab8613f611b5e1b0f092576edf31365ac8"
+      },
+      "27cdb701b91c5b45b9f54b3e98c9ad67635b3e30": {
+        "git_blob": "4d85446b53e43d88dc98eb483698a4e9f3b45285",
+        "git_bytes_sha256": "ea581d4889d4f1ff6f5932033e0d57e4fb4ba88aee26b03fe45a43bb63ad2852"
+      },
+      "observed_working_snapshots": {
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/03-current-contracts/source-before.json": {
+          "bytes": 25096,
+          "sha256": "ea581d4889d4f1ff6f5932033e0d57e4fb4ba88aee26b03fe45a43bb63ad2852"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/04-tkl-gates/source-before.json": {
+          "bytes": 25096,
+          "sha256": "ea581d4889d4f1ff6f5932033e0d57e4fb4ba88aee26b03fe45a43bb63ad2852"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/05-collection/source-before.json": {
+          "bytes": 25096,
+          "sha256": "ea581d4889d4f1ff6f5932033e0d57e4fb4ba88aee26b03fe45a43bb63ad2852"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/06-full/source-before.json": {
+          "bytes": 25096,
+          "sha256": "ea581d4889d4f1ff6f5932033e0d57e4fb4ba88aee26b03fe45a43bb63ad2852"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/07-collection/source-before.json": {
+          "bytes": 25096,
+          "sha256": "ea581d4889d4f1ff6f5932033e0d57e4fb4ba88aee26b03fe45a43bb63ad2852"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/08-full/source-before.json": {
+          "bytes": 25096,
+          "sha256": "ea581d4889d4f1ff6f5932033e0d57e4fb4ba88aee26b03fe45a43bb63ad2852"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/09-remaining-gates/source-before.json": {
+          "bytes": 25096,
+          "sha256": "ea581d4889d4f1ff6f5932033e0d57e4fb4ba88aee26b03fe45a43bb63ad2852"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/10-collection/source-before.json": {
+          "bytes": 25096,
+          "sha256": "ea581d4889d4f1ff6f5932033e0d57e4fb4ba88aee26b03fe45a43bb63ad2852"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/11-full/source-before.json": {
+          "bytes": 25096,
+          "sha256": "ea581d4889d4f1ff6f5932033e0d57e4fb4ba88aee26b03fe45a43bb63ad2852"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/12-collection/source-before.json": {
+          "bytes": 25096,
+          "sha256": "ea581d4889d4f1ff6f5932033e0d57e4fb4ba88aee26b03fe45a43bb63ad2852"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/13-full/source-before.json": {
+          "bytes": 25096,
+          "sha256": "ea581d4889d4f1ff6f5932033e0d57e4fb4ba88aee26b03fe45a43bb63ad2852"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/01-02-source-before-corrections.json": {
+          "bytes": 25096,
+          "sha256": "ea581d4889d4f1ff6f5932033e0d57e4fb4ba88aee26b03fe45a43bb63ad2852"
+        }
+      }
+    },
+    ".tfw/compilable_contract.md": {
+      "ec91c56007c20cda79f740fec15c85e4af74d17c": {
+        "git_blob": "52e7657ac265102de6bd50292aa00fdc70d57f11",
+        "git_bytes_sha256": "b7e464e5500ef5fca56a3b320adfaef98179f644c35a325f17d14af46a3523bf"
+      },
+      "27cdb701b91c5b45b9f54b3e98c9ad67635b3e30": {
+        "git_blob": "5ec54030e650a68954e979798ed1a4d72a79ba76",
+        "git_bytes_sha256": "171566776eeeb548b7d2a340a45d3ac835d359d157f22146ea97786ef39ae12c"
+      },
+      "observed_working_snapshots": {
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/03-current-contracts/source-before.json": {
+          "bytes": 7898,
+          "sha256": "171566776eeeb548b7d2a340a45d3ac835d359d157f22146ea97786ef39ae12c"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/04-tkl-gates/source-before.json": {
+          "bytes": 7898,
+          "sha256": "171566776eeeb548b7d2a340a45d3ac835d359d157f22146ea97786ef39ae12c"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/05-collection/source-before.json": {
+          "bytes": 7898,
+          "sha256": "171566776eeeb548b7d2a340a45d3ac835d359d157f22146ea97786ef39ae12c"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/06-full/source-before.json": {
+          "bytes": 7898,
+          "sha256": "171566776eeeb548b7d2a340a45d3ac835d359d157f22146ea97786ef39ae12c"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/07-collection/source-before.json": {
+          "bytes": 7898,
+          "sha256": "171566776eeeb548b7d2a340a45d3ac835d359d157f22146ea97786ef39ae12c"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/08-full/source-before.json": {
+          "bytes": 7898,
+          "sha256": "171566776eeeb548b7d2a340a45d3ac835d359d157f22146ea97786ef39ae12c"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/09-remaining-gates/source-before.json": {
+          "bytes": 7898,
+          "sha256": "171566776eeeb548b7d2a340a45d3ac835d359d157f22146ea97786ef39ae12c"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/10-collection/source-before.json": {
+          "bytes": 7898,
+          "sha256": "171566776eeeb548b7d2a340a45d3ac835d359d157f22146ea97786ef39ae12c"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/11-full/source-before.json": {
+          "bytes": 7898,
+          "sha256": "171566776eeeb548b7d2a340a45d3ac835d359d157f22146ea97786ef39ae12c"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/12-collection/source-before.json": {
+          "bytes": 7898,
+          "sha256": "171566776eeeb548b7d2a340a45d3ac835d359d157f22146ea97786ef39ae12c"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/13-full/source-before.json": {
+          "bytes": 7898,
+          "sha256": "171566776eeeb548b7d2a340a45d3ac835d359d157f22146ea97786ef39ae12c"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/01-02-source-before-corrections.json": {
+          "bytes": 7898,
+          "sha256": "171566776eeeb548b7d2a340a45d3ac835d359d157f22146ea97786ef39ae12c"
+        }
+      }
+    },
+    ".tfw/project_config.yaml": {
+      "ec91c56007c20cda79f740fec15c85e4af74d17c": {
+        "git_blob": "08eb4f39dbedc7beb86d1ea7e7c498b46ea7d257",
+        "git_bytes_sha256": "2a36ce8ed4514b7e552438082bb8ea1f12c889b1c7d0817753acb9d95785c4c2"
+      },
+      "27cdb701b91c5b45b9f54b3e98c9ad67635b3e30": {
+        "git_blob": "d821fe17a0f2fc9aba03b3f87ebab27b241743e3",
+        "git_bytes_sha256": "c6e86611751ad123c4139e1203098fa0f7635b54b33c2a6c0b9040cb25753f7c"
+      },
+      "observed_working_snapshots": {
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/03-current-contracts/source-before.json": {
+          "bytes": 4334,
+          "sha256": "c6e86611751ad123c4139e1203098fa0f7635b54b33c2a6c0b9040cb25753f7c"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/04-tkl-gates/source-before.json": {
+          "bytes": 4334,
+          "sha256": "c6e86611751ad123c4139e1203098fa0f7635b54b33c2a6c0b9040cb25753f7c"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/05-collection/source-before.json": {
+          "bytes": 4334,
+          "sha256": "c6e86611751ad123c4139e1203098fa0f7635b54b33c2a6c0b9040cb25753f7c"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/06-full/source-before.json": {
+          "bytes": 4334,
+          "sha256": "c6e86611751ad123c4139e1203098fa0f7635b54b33c2a6c0b9040cb25753f7c"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/07-collection/source-before.json": {
+          "bytes": 4334,
+          "sha256": "c6e86611751ad123c4139e1203098fa0f7635b54b33c2a6c0b9040cb25753f7c"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/08-full/source-before.json": {
+          "bytes": 4334,
+          "sha256": "c6e86611751ad123c4139e1203098fa0f7635b54b33c2a6c0b9040cb25753f7c"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/09-remaining-gates/source-before.json": {
+          "bytes": 4334,
+          "sha256": "c6e86611751ad123c4139e1203098fa0f7635b54b33c2a6c0b9040cb25753f7c"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/10-collection/source-before.json": {
+          "bytes": 4334,
+          "sha256": "c6e86611751ad123c4139e1203098fa0f7635b54b33c2a6c0b9040cb25753f7c"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/11-full/source-before.json": {
+          "bytes": 4334,
+          "sha256": "c6e86611751ad123c4139e1203098fa0f7635b54b33c2a6c0b9040cb25753f7c"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/12-collection/source-before.json": {
+          "bytes": 4334,
+          "sha256": "c6e86611751ad123c4139e1203098fa0f7635b54b33c2a6c0b9040cb25753f7c"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/13-full/source-before.json": {
+          "bytes": 4334,
+          "sha256": "c6e86611751ad123c4139e1203098fa0f7635b54b33c2a6c0b9040cb25753f7c"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/01-02-source-before-corrections.json": {
+          "bytes": 4334,
+          "sha256": "c6e86611751ad123c4139e1203098fa0f7635b54b33c2a6c0b9040cb25753f7c"
+        }
+      }
+    },
+    ".tfw/templates/project_config.yaml": {
+      "ec91c56007c20cda79f740fec15c85e4af74d17c": {
+        "git_blob": "6a913a2619dfd300e097f932bc9cdac15191a5db",
+        "git_bytes_sha256": "b7587c459c91003a5487f99a4c138385644ec791a4ef8eeb8406f735b057ec4c"
+      },
+      "27cdb701b91c5b45b9f54b3e98c9ad67635b3e30": {
+        "git_blob": "1bfd5edf4051a9c3ed5bcb7f759d500fd7bd1b90",
+        "git_bytes_sha256": "a0284513c177a2b3ff149fcc3a74027178b81b97f5154d1e4ce2910f043e3ea4"
+      },
+      "observed_working_snapshots": {
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/03-current-contracts/source-before.json": {
+          "bytes": 5790,
+          "sha256": "a0284513c177a2b3ff149fcc3a74027178b81b97f5154d1e4ce2910f043e3ea4"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/04-tkl-gates/source-before.json": {
+          "bytes": 5790,
+          "sha256": "a0284513c177a2b3ff149fcc3a74027178b81b97f5154d1e4ce2910f043e3ea4"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/05-collection/source-before.json": {
+          "bytes": 5790,
+          "sha256": "a0284513c177a2b3ff149fcc3a74027178b81b97f5154d1e4ce2910f043e3ea4"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/06-full/source-before.json": {
+          "bytes": 5790,
+          "sha256": "a0284513c177a2b3ff149fcc3a74027178b81b97f5154d1e4ce2910f043e3ea4"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/07-collection/source-before.json": {
+          "bytes": 5790,
+          "sha256": "a0284513c177a2b3ff149fcc3a74027178b81b97f5154d1e4ce2910f043e3ea4"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/08-full/source-before.json": {
+          "bytes": 5790,
+          "sha256": "a0284513c177a2b3ff149fcc3a74027178b81b97f5154d1e4ce2910f043e3ea4"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/09-remaining-gates/source-before.json": {
+          "bytes": 5790,
+          "sha256": "a0284513c177a2b3ff149fcc3a74027178b81b97f5154d1e4ce2910f043e3ea4"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/10-collection/source-before.json": {
+          "bytes": 5790,
+          "sha256": "a0284513c177a2b3ff149fcc3a74027178b81b97f5154d1e4ce2910f043e3ea4"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/11-full/source-before.json": {
+          "bytes": 5790,
+          "sha256": "a0284513c177a2b3ff149fcc3a74027178b81b97f5154d1e4ce2910f043e3ea4"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/12-collection/source-before.json": {
+          "bytes": 5790,
+          "sha256": "a0284513c177a2b3ff149fcc3a74027178b81b97f5154d1e4ce2910f043e3ea4"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/13-full/source-before.json": {
+          "bytes": 5790,
+          "sha256": "a0284513c177a2b3ff149fcc3a74027178b81b97f5154d1e4ce2910f043e3ea4"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/01-02-source-before-corrections.json": {
+          "bytes": 5790,
+          "sha256": "a0284513c177a2b3ff149fcc3a74027178b81b97f5154d1e4ce2910f043e3ea4"
+        }
+      }
+    },
+    ".tfw/quickstart.md": {
+      "ec91c56007c20cda79f740fec15c85e4af74d17c": {
+        "git_blob": "65b43451f3b2c2763deb365443eab6c530d46aa4",
+        "git_bytes_sha256": "ad66adac58fc7d5b2da907caeae9982188313155cdd2776cb0ab031ff4e6dd40"
+      },
+      "27cdb701b91c5b45b9f54b3e98c9ad67635b3e30": {
+        "git_blob": "6b71012a76a7648b32febfdb37d0827bd8dadbd1",
+        "git_bytes_sha256": "031c5fcbecccb6f17705c4ba494d2b72f8940450635d5190cf3c0abd07f72cf6"
+      },
+      "observed_working_snapshots": {
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/03-current-contracts/source-before.json": {
+          "bytes": 4634,
+          "sha256": "031c5fcbecccb6f17705c4ba494d2b72f8940450635d5190cf3c0abd07f72cf6"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/04-tkl-gates/source-before.json": {
+          "bytes": 4634,
+          "sha256": "031c5fcbecccb6f17705c4ba494d2b72f8940450635d5190cf3c0abd07f72cf6"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/05-collection/source-before.json": {
+          "bytes": 4634,
+          "sha256": "031c5fcbecccb6f17705c4ba494d2b72f8940450635d5190cf3c0abd07f72cf6"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/06-full/source-before.json": {
+          "bytes": 4634,
+          "sha256": "031c5fcbecccb6f17705c4ba494d2b72f8940450635d5190cf3c0abd07f72cf6"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/07-collection/source-before.json": {
+          "bytes": 4634,
+          "sha256": "031c5fcbecccb6f17705c4ba494d2b72f8940450635d5190cf3c0abd07f72cf6"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/08-full/source-before.json": {
+          "bytes": 4634,
+          "sha256": "031c5fcbecccb6f17705c4ba494d2b72f8940450635d5190cf3c0abd07f72cf6"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/09-remaining-gates/source-before.json": {
+          "bytes": 4634,
+          "sha256": "031c5fcbecccb6f17705c4ba494d2b72f8940450635d5190cf3c0abd07f72cf6"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/10-collection/source-before.json": {
+          "bytes": 4634,
+          "sha256": "031c5fcbecccb6f17705c4ba494d2b72f8940450635d5190cf3c0abd07f72cf6"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/11-full/source-before.json": {
+          "bytes": 4634,
+          "sha256": "031c5fcbecccb6f17705c4ba494d2b72f8940450635d5190cf3c0abd07f72cf6"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/12-collection/source-before.json": {
+          "bytes": 4634,
+          "sha256": "031c5fcbecccb6f17705c4ba494d2b72f8940450635d5190cf3c0abd07f72cf6"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/13-full/source-before.json": {
+          "bytes": 4634,
+          "sha256": "031c5fcbecccb6f17705c4ba494d2b72f8940450635d5190cf3c0abd07f72cf6"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/01-02-source-before-corrections.json": {
+          "bytes": 4634,
+          "sha256": "031c5fcbecccb6f17705c4ba494d2b72f8940450635d5190cf3c0abd07f72cf6"
+        }
+      }
+    },
+    ".tfw/templates/KNOWLEDGE.md": {
+      "ec91c56007c20cda79f740fec15c85e4af74d17c": {
+        "git_blob": "a38f7722afb494435f3dc80ecd7600bb4605282d",
+        "git_bytes_sha256": "812799df2d202d30cedea4666be055cbfd3ab40dc3b987bff421f2fa4bb6cab5"
+      },
+      "27cdb701b91c5b45b9f54b3e98c9ad67635b3e30": {
+        "git_blob": "938f8524436e2e39cd3c47c506424ba0d627ae2d",
+        "git_bytes_sha256": "fe8cdc199c8b314548198b3104c47755df7f9f17c8a12869b604b97614a01541"
+      },
+      "observed_working_snapshots": {
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/03-current-contracts/source-before.json": {
+          "bytes": 2208,
+          "sha256": "fe8cdc199c8b314548198b3104c47755df7f9f17c8a12869b604b97614a01541"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/04-tkl-gates/source-before.json": {
+          "bytes": 2208,
+          "sha256": "fe8cdc199c8b314548198b3104c47755df7f9f17c8a12869b604b97614a01541"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/05-collection/source-before.json": {
+          "bytes": 2208,
+          "sha256": "fe8cdc199c8b314548198b3104c47755df7f9f17c8a12869b604b97614a01541"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/06-full/source-before.json": {
+          "bytes": 2208,
+          "sha256": "fe8cdc199c8b314548198b3104c47755df7f9f17c8a12869b604b97614a01541"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/07-collection/source-before.json": {
+          "bytes": 2208,
+          "sha256": "fe8cdc199c8b314548198b3104c47755df7f9f17c8a12869b604b97614a01541"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/08-full/source-before.json": {
+          "bytes": 2208,
+          "sha256": "fe8cdc199c8b314548198b3104c47755df7f9f17c8a12869b604b97614a01541"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/09-remaining-gates/source-before.json": {
+          "bytes": 2208,
+          "sha256": "fe8cdc199c8b314548198b3104c47755df7f9f17c8a12869b604b97614a01541"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/10-collection/source-before.json": {
+          "bytes": 2208,
+          "sha256": "fe8cdc199c8b314548198b3104c47755df7f9f17c8a12869b604b97614a01541"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/11-full/source-before.json": {
+          "bytes": 2208,
+          "sha256": "fe8cdc199c8b314548198b3104c47755df7f9f17c8a12869b604b97614a01541"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/12-collection/source-before.json": {
+          "bytes": 2208,
+          "sha256": "fe8cdc199c8b314548198b3104c47755df7f9f17c8a12869b604b97614a01541"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/13-full/source-before.json": {
+          "bytes": 2208,
+          "sha256": "fe8cdc199c8b314548198b3104c47755df7f9f17c8a12869b604b97614a01541"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/01-02-source-before-corrections.json": {
+          "bytes": 2208,
+          "sha256": "fe8cdc199c8b314548198b3104c47755df7f9f17c8a12869b604b97614a01541"
+        }
+      }
+    },
+    ".tfw/templates/knowledge/topic.md": {
+      "ec91c56007c20cda79f740fec15c85e4af74d17c": {
+        "git_blob": "524caef69f9b13748dc693ab0037c35bf33dbff1",
+        "git_bytes_sha256": "0b529ed50c0c0dc794b9506395d522d76309095780f2c9de5cc78d61d673b2f2"
+      },
+      "27cdb701b91c5b45b9f54b3e98c9ad67635b3e30": {
+        "git_blob": "2dc67828ac5afefdffefb55e1bd5378d634ff7df",
+        "git_bytes_sha256": "8a2531fbe8e596d34e33d09bf713746f97cefbe1f6f1054fa49124bf67680221"
+      },
+      "observed_working_snapshots": {
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/03-current-contracts/source-before.json": {
+          "bytes": 675,
+          "sha256": "8a2531fbe8e596d34e33d09bf713746f97cefbe1f6f1054fa49124bf67680221"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/04-tkl-gates/source-before.json": {
+          "bytes": 675,
+          "sha256": "8a2531fbe8e596d34e33d09bf713746f97cefbe1f6f1054fa49124bf67680221"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/05-collection/source-before.json": {
+          "bytes": 675,
+          "sha256": "8a2531fbe8e596d34e33d09bf713746f97cefbe1f6f1054fa49124bf67680221"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/06-full/source-before.json": {
+          "bytes": 675,
+          "sha256": "8a2531fbe8e596d34e33d09bf713746f97cefbe1f6f1054fa49124bf67680221"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/07-collection/source-before.json": {
+          "bytes": 675,
+          "sha256": "8a2531fbe8e596d34e33d09bf713746f97cefbe1f6f1054fa49124bf67680221"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/08-full/source-before.json": {
+          "bytes": 675,
+          "sha256": "8a2531fbe8e596d34e33d09bf713746f97cefbe1f6f1054fa49124bf67680221"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/09-remaining-gates/source-before.json": {
+          "bytes": 675,
+          "sha256": "8a2531fbe8e596d34e33d09bf713746f97cefbe1f6f1054fa49124bf67680221"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/10-collection/source-before.json": {
+          "bytes": 675,
+          "sha256": "8a2531fbe8e596d34e33d09bf713746f97cefbe1f6f1054fa49124bf67680221"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/11-full/source-before.json": {
+          "bytes": 675,
+          "sha256": "8a2531fbe8e596d34e33d09bf713746f97cefbe1f6f1054fa49124bf67680221"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/12-collection/source-before.json": {
+          "bytes": 675,
+          "sha256": "8a2531fbe8e596d34e33d09bf713746f97cefbe1f6f1054fa49124bf67680221"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/13-full/source-before.json": {
+          "bytes": 675,
+          "sha256": "8a2531fbe8e596d34e33d09bf713746f97cefbe1f6f1054fa49124bf67680221"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/01-02-source-before-corrections.json": {
+          "bytes": 675,
+          "sha256": "8a2531fbe8e596d34e33d09bf713746f97cefbe1f6f1054fa49124bf67680221"
+        }
+      }
+    },
+    ".tfw/templates/knowledge_state.yaml": {
+      "ec91c56007c20cda79f740fec15c85e4af74d17c": {
+        "git_blob": "c542b7d7f79de078f4ed92aec5e486bcf64d9b63",
+        "git_bytes_sha256": "87dc168186d7f781f55301519d73aece1a3f5dd2d082df04d68ccf808c38a113"
+      },
+      "27cdb701b91c5b45b9f54b3e98c9ad67635b3e30": {
+        "absent": true
+      },
+      "observed_working_snapshots": {
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/03-current-contracts/source-before.json": {
+          "absent": true
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/04-tkl-gates/source-before.json": {
+          "absent": true
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/05-collection/source-before.json": {
+          "absent": true
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/06-full/source-before.json": {
+          "absent": true
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/07-collection/source-before.json": {
+          "absent": true
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/08-full/source-before.json": {
+          "absent": true
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/09-remaining-gates/source-before.json": {
+          "absent": true
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/10-collection/source-before.json": {
+          "absent": true
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/11-full/source-before.json": {
+          "absent": true
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/12-collection/source-before.json": {
+          "absent": true
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/13-full/source-before.json": {
+          "absent": true
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/01-02-source-before-corrections.json": {
+          "absent": true
+        }
+      }
+    },
+    ".tfw/templates/knowledge/record.md": {
+      "ec91c56007c20cda79f740fec15c85e4af74d17c": {
+        "absent": true
+      },
+      "27cdb701b91c5b45b9f54b3e98c9ad67635b3e30": {
+        "git_blob": "2f879c27b40e469ff71188de9798d18884df6d95",
+        "git_bytes_sha256": "d0615f7582e15280f4c69ef0350294daf9e1b32b5de0d2fba964dc9a4db0d6b0"
+      },
+      "observed_working_snapshots": {
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/03-current-contracts/source-before.json": {
+          "bytes": 2548,
+          "sha256": "d0615f7582e15280f4c69ef0350294daf9e1b32b5de0d2fba964dc9a4db0d6b0"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/04-tkl-gates/source-before.json": {
+          "bytes": 2548,
+          "sha256": "d0615f7582e15280f4c69ef0350294daf9e1b32b5de0d2fba964dc9a4db0d6b0"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/05-collection/source-before.json": {
+          "bytes": 2548,
+          "sha256": "d0615f7582e15280f4c69ef0350294daf9e1b32b5de0d2fba964dc9a4db0d6b0"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/06-full/source-before.json": {
+          "bytes": 2548,
+          "sha256": "d0615f7582e15280f4c69ef0350294daf9e1b32b5de0d2fba964dc9a4db0d6b0"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/07-collection/source-before.json": {
+          "bytes": 2548,
+          "sha256": "d0615f7582e15280f4c69ef0350294daf9e1b32b5de0d2fba964dc9a4db0d6b0"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/08-full/source-before.json": {
+          "bytes": 2548,
+          "sha256": "d0615f7582e15280f4c69ef0350294daf9e1b32b5de0d2fba964dc9a4db0d6b0"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/09-remaining-gates/source-before.json": {
+          "bytes": 2548,
+          "sha256": "d0615f7582e15280f4c69ef0350294daf9e1b32b5de0d2fba964dc9a4db0d6b0"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/10-collection/source-before.json": {
+          "bytes": 2548,
+          "sha256": "d0615f7582e15280f4c69ef0350294daf9e1b32b5de0d2fba964dc9a4db0d6b0"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/11-full/source-before.json": {
+          "bytes": 2548,
+          "sha256": "d0615f7582e15280f4c69ef0350294daf9e1b32b5de0d2fba964dc9a4db0d6b0"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/12-collection/source-before.json": {
+          "bytes": 2548,
+          "sha256": "d0615f7582e15280f4c69ef0350294daf9e1b32b5de0d2fba964dc9a4db0d6b0"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/13-full/source-before.json": {
+          "bytes": 2548,
+          "sha256": "d0615f7582e15280f4c69ef0350294daf9e1b32b5de0d2fba964dc9a4db0d6b0"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/01-02-source-before-corrections.json": {
+          "bytes": 2548,
+          "sha256": "d0615f7582e15280f4c69ef0350294daf9e1b32b5de0d2fba964dc9a4db0d6b0"
+        }
+      }
+    },
+    ".tfw/templates/knowledge/handover.md": {
+      "ec91c56007c20cda79f740fec15c85e4af74d17c": {
+        "absent": true
+      },
+      "27cdb701b91c5b45b9f54b3e98c9ad67635b3e30": {
+        "git_blob": "8a0d684b96c0aa24dd02b9fa9452ec88b9564bb6",
+        "git_bytes_sha256": "8fc00b42a7b4b7587b0c2d39b38584bea4d205379cadfa57aa74ed63b450d62b"
+      },
+      "observed_working_snapshots": {
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/03-current-contracts/source-before.json": {
+          "bytes": 1358,
+          "sha256": "8fc00b42a7b4b7587b0c2d39b38584bea4d205379cadfa57aa74ed63b450d62b"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/04-tkl-gates/source-before.json": {
+          "bytes": 1358,
+          "sha256": "8fc00b42a7b4b7587b0c2d39b38584bea4d205379cadfa57aa74ed63b450d62b"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/05-collection/source-before.json": {
+          "bytes": 1358,
+          "sha256": "8fc00b42a7b4b7587b0c2d39b38584bea4d205379cadfa57aa74ed63b450d62b"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/06-full/source-before.json": {
+          "bytes": 1358,
+          "sha256": "8fc00b42a7b4b7587b0c2d39b38584bea4d205379cadfa57aa74ed63b450d62b"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/07-collection/source-before.json": {
+          "bytes": 1358,
+          "sha256": "8fc00b42a7b4b7587b0c2d39b38584bea4d205379cadfa57aa74ed63b450d62b"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/08-full/source-before.json": {
+          "bytes": 1358,
+          "sha256": "8fc00b42a7b4b7587b0c2d39b38584bea4d205379cadfa57aa74ed63b450d62b"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/09-remaining-gates/source-before.json": {
+          "bytes": 1358,
+          "sha256": "8fc00b42a7b4b7587b0c2d39b38584bea4d205379cadfa57aa74ed63b450d62b"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/10-collection/source-before.json": {
+          "bytes": 1358,
+          "sha256": "8fc00b42a7b4b7587b0c2d39b38584bea4d205379cadfa57aa74ed63b450d62b"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/11-full/source-before.json": {
+          "bytes": 1358,
+          "sha256": "8fc00b42a7b4b7587b0c2d39b38584bea4d205379cadfa57aa74ed63b450d62b"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/12-collection/source-before.json": {
+          "bytes": 1358,
+          "sha256": "8fc00b42a7b4b7587b0c2d39b38584bea4d205379cadfa57aa74ed63b450d62b"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/13-full/source-before.json": {
+          "bytes": 1358,
+          "sha256": "8fc00b42a7b4b7587b0c2d39b38584bea4d205379cadfa57aa74ed63b450d62b"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/01-02-source-before-corrections.json": {
+          "bytes": 1358,
+          "sha256": "8fc00b42a7b4b7587b0c2d39b38584bea4d205379cadfa57aa74ed63b450d62b"
+        }
+      }
+    },
+    ".tfw/templates/HL.md": {
+      "ec91c56007c20cda79f740fec15c85e4af74d17c": {
+        "git_blob": "6b27518058f8d39af79df366eaa177b6d8567a40",
+        "git_bytes_sha256": "62d0ba2d0f4ebca89ea8be8dacb2ba7ecb9ca4a790bbe5398eea8ba32d595d2b"
+      },
+      "27cdb701b91c5b45b9f54b3e98c9ad67635b3e30": {
+        "git_blob": "c1555f631aef910ef4aae8fb3c46a4750197380c",
+        "git_bytes_sha256": "bf52f991cb21c06d6675a058e5616560be30365e124fd2e21acf96bfa06721cd"
+      },
+      "observed_working_snapshots": {
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/03-current-contracts/source-before.json": {
+          "bytes": 15759,
+          "sha256": "bf52f991cb21c06d6675a058e5616560be30365e124fd2e21acf96bfa06721cd"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/04-tkl-gates/source-before.json": {
+          "bytes": 15759,
+          "sha256": "bf52f991cb21c06d6675a058e5616560be30365e124fd2e21acf96bfa06721cd"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/05-collection/source-before.json": {
+          "bytes": 15759,
+          "sha256": "bf52f991cb21c06d6675a058e5616560be30365e124fd2e21acf96bfa06721cd"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/06-full/source-before.json": {
+          "bytes": 15759,
+          "sha256": "bf52f991cb21c06d6675a058e5616560be30365e124fd2e21acf96bfa06721cd"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/07-collection/source-before.json": {
+          "bytes": 15759,
+          "sha256": "bf52f991cb21c06d6675a058e5616560be30365e124fd2e21acf96bfa06721cd"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/08-full/source-before.json": {
+          "bytes": 15759,
+          "sha256": "bf52f991cb21c06d6675a058e5616560be30365e124fd2e21acf96bfa06721cd"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/09-remaining-gates/source-before.json": {
+          "bytes": 15759,
+          "sha256": "bf52f991cb21c06d6675a058e5616560be30365e124fd2e21acf96bfa06721cd"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/10-collection/source-before.json": {
+          "bytes": 15759,
+          "sha256": "bf52f991cb21c06d6675a058e5616560be30365e124fd2e21acf96bfa06721cd"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/11-full/source-before.json": {
+          "bytes": 15759,
+          "sha256": "bf52f991cb21c06d6675a058e5616560be30365e124fd2e21acf96bfa06721cd"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/12-collection/source-before.json": {
+          "bytes": 15759,
+          "sha256": "bf52f991cb21c06d6675a058e5616560be30365e124fd2e21acf96bfa06721cd"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/13-full/source-before.json": {
+          "bytes": 15759,
+          "sha256": "bf52f991cb21c06d6675a058e5616560be30365e124fd2e21acf96bfa06721cd"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/01-02-source-before-corrections.json": {
+          "bytes": 15759,
+          "sha256": "bf52f991cb21c06d6675a058e5616560be30365e124fd2e21acf96bfa06721cd"
+        }
+      }
+    },
+    ".tfw/templates/ONB.md": {
+      "ec91c56007c20cda79f740fec15c85e4af74d17c": {
+        "git_blob": "c4b492b1e29846b60548a47461715cfc9c9fd7fb",
+        "git_bytes_sha256": "99f3c3185f389ce8b956fd760bc3288467497cda6833513584a835867c8e7a12"
+      },
+      "27cdb701b91c5b45b9f54b3e98c9ad67635b3e30": {
+        "git_blob": "24f599b584a1491151b0d20180bdfb2c77a10c9b",
+        "git_bytes_sha256": "825ad460c2e411427e0c1c13b3c8638e8df9a089eaa686520bfc2334adfbb507"
+      },
+      "observed_working_snapshots": {
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/03-current-contracts/source-before.json": {
+          "bytes": 2194,
+          "sha256": "825ad460c2e411427e0c1c13b3c8638e8df9a089eaa686520bfc2334adfbb507"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/04-tkl-gates/source-before.json": {
+          "bytes": 2194,
+          "sha256": "825ad460c2e411427e0c1c13b3c8638e8df9a089eaa686520bfc2334adfbb507"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/05-collection/source-before.json": {
+          "bytes": 2194,
+          "sha256": "825ad460c2e411427e0c1c13b3c8638e8df9a089eaa686520bfc2334adfbb507"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/06-full/source-before.json": {
+          "bytes": 2194,
+          "sha256": "825ad460c2e411427e0c1c13b3c8638e8df9a089eaa686520bfc2334adfbb507"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/07-collection/source-before.json": {
+          "bytes": 2194,
+          "sha256": "825ad460c2e411427e0c1c13b3c8638e8df9a089eaa686520bfc2334adfbb507"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/08-full/source-before.json": {
+          "bytes": 2194,
+          "sha256": "825ad460c2e411427e0c1c13b3c8638e8df9a089eaa686520bfc2334adfbb507"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/09-remaining-gates/source-before.json": {
+          "bytes": 2194,
+          "sha256": "825ad460c2e411427e0c1c13b3c8638e8df9a089eaa686520bfc2334adfbb507"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/10-collection/source-before.json": {
+          "bytes": 2194,
+          "sha256": "825ad460c2e411427e0c1c13b3c8638e8df9a089eaa686520bfc2334adfbb507"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/11-full/source-before.json": {
+          "bytes": 2194,
+          "sha256": "825ad460c2e411427e0c1c13b3c8638e8df9a089eaa686520bfc2334adfbb507"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/12-collection/source-before.json": {
+          "bytes": 2194,
+          "sha256": "825ad460c2e411427e0c1c13b3c8638e8df9a089eaa686520bfc2334adfbb507"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/13-full/source-before.json": {
+          "bytes": 2194,
+          "sha256": "825ad460c2e411427e0c1c13b3c8638e8df9a089eaa686520bfc2334adfbb507"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/01-02-source-before-corrections.json": {
+          "bytes": 2194,
+          "sha256": "825ad460c2e411427e0c1c13b3c8638e8df9a089eaa686520bfc2334adfbb507"
+        }
+      }
+    },
+    ".tfw/templates/RF.md": {
+      "ec91c56007c20cda79f740fec15c85e4af74d17c": {
+        "git_blob": "775e5c06594b9810dd3343863e38807f59091064",
+        "git_bytes_sha256": "d2e50b8238ece45c1090928a8b08de0f1512bafa156aa01108fce33496b897ce"
+      },
+      "27cdb701b91c5b45b9f54b3e98c9ad67635b3e30": {
+        "git_blob": "fe1d6585d98aefce662f1fefdae399d805e7f628",
+        "git_bytes_sha256": "d514940a78912e02ad2fb4884fb8a3596b0d6126c8bb98adb57b42a67e80153e"
+      },
+      "observed_working_snapshots": {
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/03-current-contracts/source-before.json": {
+          "bytes": 3125,
+          "sha256": "d514940a78912e02ad2fb4884fb8a3596b0d6126c8bb98adb57b42a67e80153e"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/04-tkl-gates/source-before.json": {
+          "bytes": 3125,
+          "sha256": "d514940a78912e02ad2fb4884fb8a3596b0d6126c8bb98adb57b42a67e80153e"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/05-collection/source-before.json": {
+          "bytes": 3125,
+          "sha256": "d514940a78912e02ad2fb4884fb8a3596b0d6126c8bb98adb57b42a67e80153e"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/06-full/source-before.json": {
+          "bytes": 3125,
+          "sha256": "d514940a78912e02ad2fb4884fb8a3596b0d6126c8bb98adb57b42a67e80153e"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/07-collection/source-before.json": {
+          "bytes": 3125,
+          "sha256": "d514940a78912e02ad2fb4884fb8a3596b0d6126c8bb98adb57b42a67e80153e"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/08-full/source-before.json": {
+          "bytes": 3125,
+          "sha256": "d514940a78912e02ad2fb4884fb8a3596b0d6126c8bb98adb57b42a67e80153e"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/09-remaining-gates/source-before.json": {
+          "bytes": 3125,
+          "sha256": "d514940a78912e02ad2fb4884fb8a3596b0d6126c8bb98adb57b42a67e80153e"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/10-collection/source-before.json": {
+          "bytes": 3125,
+          "sha256": "d514940a78912e02ad2fb4884fb8a3596b0d6126c8bb98adb57b42a67e80153e"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/11-full/source-before.json": {
+          "bytes": 3125,
+          "sha256": "d514940a78912e02ad2fb4884fb8a3596b0d6126c8bb98adb57b42a67e80153e"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/12-collection/source-before.json": {
+          "bytes": 3125,
+          "sha256": "d514940a78912e02ad2fb4884fb8a3596b0d6126c8bb98adb57b42a67e80153e"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/13-full/source-before.json": {
+          "bytes": 3125,
+          "sha256": "d514940a78912e02ad2fb4884fb8a3596b0d6126c8bb98adb57b42a67e80153e"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/01-02-source-before-corrections.json": {
+          "bytes": 3125,
+          "sha256": "d514940a78912e02ad2fb4884fb8a3596b0d6126c8bb98adb57b42a67e80153e"
+        }
+      }
+    },
+    ".tfw/templates/RES.md": {
+      "ec91c56007c20cda79f740fec15c85e4af74d17c": {
+        "git_blob": "7b83ce16267454f0c9d2e2dcf00f4680856a3c52",
+        "git_bytes_sha256": "f5da77cf7054b4a2a20d0471ec321fdd851ae5cff214fd23a4bab24f71f0ab90"
+      },
+      "27cdb701b91c5b45b9f54b3e98c9ad67635b3e30": {
+        "git_blob": "dd6cf70f1f141a6f9f8a39fd9bd6b1d9e4b0096e",
+        "git_bytes_sha256": "ae742e4465c2f54c77f98ca3f2eb1232a0343c5605d264dd4bbfe34e7feb5a6e"
+      },
+      "observed_working_snapshots": {
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/03-current-contracts/source-before.json": {
+          "bytes": 6078,
+          "sha256": "ae742e4465c2f54c77f98ca3f2eb1232a0343c5605d264dd4bbfe34e7feb5a6e"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/04-tkl-gates/source-before.json": {
+          "bytes": 6078,
+          "sha256": "ae742e4465c2f54c77f98ca3f2eb1232a0343c5605d264dd4bbfe34e7feb5a6e"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/05-collection/source-before.json": {
+          "bytes": 6078,
+          "sha256": "ae742e4465c2f54c77f98ca3f2eb1232a0343c5605d264dd4bbfe34e7feb5a6e"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/06-full/source-before.json": {
+          "bytes": 6078,
+          "sha256": "ae742e4465c2f54c77f98ca3f2eb1232a0343c5605d264dd4bbfe34e7feb5a6e"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/07-collection/source-before.json": {
+          "bytes": 6078,
+          "sha256": "ae742e4465c2f54c77f98ca3f2eb1232a0343c5605d264dd4bbfe34e7feb5a6e"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/08-full/source-before.json": {
+          "bytes": 6078,
+          "sha256": "ae742e4465c2f54c77f98ca3f2eb1232a0343c5605d264dd4bbfe34e7feb5a6e"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/09-remaining-gates/source-before.json": {
+          "bytes": 6078,
+          "sha256": "ae742e4465c2f54c77f98ca3f2eb1232a0343c5605d264dd4bbfe34e7feb5a6e"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/10-collection/source-before.json": {
+          "bytes": 6078,
+          "sha256": "ae742e4465c2f54c77f98ca3f2eb1232a0343c5605d264dd4bbfe34e7feb5a6e"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/11-full/source-before.json": {
+          "bytes": 6078,
+          "sha256": "ae742e4465c2f54c77f98ca3f2eb1232a0343c5605d264dd4bbfe34e7feb5a6e"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/12-collection/source-before.json": {
+          "bytes": 6078,
+          "sha256": "ae742e4465c2f54c77f98ca3f2eb1232a0343c5605d264dd4bbfe34e7feb5a6e"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/13-full/source-before.json": {
+          "bytes": 6078,
+          "sha256": "ae742e4465c2f54c77f98ca3f2eb1232a0343c5605d264dd4bbfe34e7feb5a6e"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/01-02-source-before-corrections.json": {
+          "bytes": 6078,
+          "sha256": "ae742e4465c2f54c77f98ca3f2eb1232a0343c5605d264dd4bbfe34e7feb5a6e"
+        }
+      }
+    },
+    ".tfw/templates/REVIEW.md": {
+      "ec91c56007c20cda79f740fec15c85e4af74d17c": {
+        "git_blob": "95e9da25f9b9af46f2302a342ce2b4354d61ff1b",
+        "git_bytes_sha256": "c2ac9c15d456a1a5a3f0cf813091e633995f7a4e2277ffd0739e7147157ede1e"
+      },
+      "27cdb701b91c5b45b9f54b3e98c9ad67635b3e30": {
+        "git_blob": "4b9752f88671469107789f0813ce2c080677563c",
+        "git_bytes_sha256": "bfe71d82233174ae8c4f0fa846593a5abdcd93b75824a1024a015b3b5de0407e"
+      },
+      "observed_working_snapshots": {
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/03-current-contracts/source-before.json": {
+          "bytes": 5306,
+          "sha256": "bfe71d82233174ae8c4f0fa846593a5abdcd93b75824a1024a015b3b5de0407e"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/04-tkl-gates/source-before.json": {
+          "bytes": 5306,
+          "sha256": "bfe71d82233174ae8c4f0fa846593a5abdcd93b75824a1024a015b3b5de0407e"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/05-collection/source-before.json": {
+          "bytes": 5306,
+          "sha256": "bfe71d82233174ae8c4f0fa846593a5abdcd93b75824a1024a015b3b5de0407e"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/06-full/source-before.json": {
+          "bytes": 5306,
+          "sha256": "bfe71d82233174ae8c4f0fa846593a5abdcd93b75824a1024a015b3b5de0407e"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/07-collection/source-before.json": {
+          "bytes": 5306,
+          "sha256": "bfe71d82233174ae8c4f0fa846593a5abdcd93b75824a1024a015b3b5de0407e"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/08-full/source-before.json": {
+          "bytes": 5306,
+          "sha256": "bfe71d82233174ae8c4f0fa846593a5abdcd93b75824a1024a015b3b5de0407e"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/09-remaining-gates/source-before.json": {
+          "bytes": 5306,
+          "sha256": "bfe71d82233174ae8c4f0fa846593a5abdcd93b75824a1024a015b3b5de0407e"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/10-collection/source-before.json": {
+          "bytes": 5306,
+          "sha256": "bfe71d82233174ae8c4f0fa846593a5abdcd93b75824a1024a015b3b5de0407e"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/11-full/source-before.json": {
+          "bytes": 5306,
+          "sha256": "bfe71d82233174ae8c4f0fa846593a5abdcd93b75824a1024a015b3b5de0407e"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/12-collection/source-before.json": {
+          "bytes": 5306,
+          "sha256": "bfe71d82233174ae8c4f0fa846593a5abdcd93b75824a1024a015b3b5de0407e"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/13-full/source-before.json": {
+          "bytes": 5306,
+          "sha256": "bfe71d82233174ae8c4f0fa846593a5abdcd93b75824a1024a015b3b5de0407e"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/01-02-source-before-corrections.json": {
+          "bytes": 5306,
+          "sha256": "bfe71d82233174ae8c4f0fa846593a5abdcd93b75824a1024a015b3b5de0407e"
+        }
+      }
+    },
+    ".tfw/templates/review/verify.md": {
+      "ec91c56007c20cda79f740fec15c85e4af74d17c": {
+        "git_blob": "de5605d78272fbdd58df2498d4dceed1b2eb61fe",
+        "git_bytes_sha256": "2ab66c7d1ba71195da123df496cb36664da7ae5ddb770d8438a572c3073b3082"
+      },
+      "27cdb701b91c5b45b9f54b3e98c9ad67635b3e30": {
+        "git_blob": "b576a9d89990a40a6b197f647e6ed1adaa595b7d",
+        "git_bytes_sha256": "06875d2b31341f55e5c15ebc61a582d83d9da25bb2d1803b0a74b86b5389e232"
+      },
+      "observed_working_snapshots": {
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/03-current-contracts/source-before.json": {
+          "bytes": 5642,
+          "sha256": "06875d2b31341f55e5c15ebc61a582d83d9da25bb2d1803b0a74b86b5389e232"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/04-tkl-gates/source-before.json": {
+          "bytes": 5642,
+          "sha256": "06875d2b31341f55e5c15ebc61a582d83d9da25bb2d1803b0a74b86b5389e232"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/05-collection/source-before.json": {
+          "bytes": 5642,
+          "sha256": "06875d2b31341f55e5c15ebc61a582d83d9da25bb2d1803b0a74b86b5389e232"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/06-full/source-before.json": {
+          "bytes": 5642,
+          "sha256": "06875d2b31341f55e5c15ebc61a582d83d9da25bb2d1803b0a74b86b5389e232"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/07-collection/source-before.json": {
+          "bytes": 5642,
+          "sha256": "06875d2b31341f55e5c15ebc61a582d83d9da25bb2d1803b0a74b86b5389e232"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/08-full/source-before.json": {
+          "bytes": 5642,
+          "sha256": "06875d2b31341f55e5c15ebc61a582d83d9da25bb2d1803b0a74b86b5389e232"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/09-remaining-gates/source-before.json": {
+          "bytes": 5642,
+          "sha256": "06875d2b31341f55e5c15ebc61a582d83d9da25bb2d1803b0a74b86b5389e232"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/10-collection/source-before.json": {
+          "bytes": 5642,
+          "sha256": "06875d2b31341f55e5c15ebc61a582d83d9da25bb2d1803b0a74b86b5389e232"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/11-full/source-before.json": {
+          "bytes": 5642,
+          "sha256": "06875d2b31341f55e5c15ebc61a582d83d9da25bb2d1803b0a74b86b5389e232"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/12-collection/source-before.json": {
+          "bytes": 5642,
+          "sha256": "06875d2b31341f55e5c15ebc61a582d83d9da25bb2d1803b0a74b86b5389e232"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/13-full/source-before.json": {
+          "bytes": 5642,
+          "sha256": "06875d2b31341f55e5c15ebc61a582d83d9da25bb2d1803b0a74b86b5389e232"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/01-02-source-before-corrections.json": {
+          "bytes": 5642,
+          "sha256": "06875d2b31341f55e5c15ebc61a582d83d9da25bb2d1803b0a74b86b5389e232"
+        }
+      }
+    },
+    ".tfw/workflows/plan.md": {
+      "ec91c56007c20cda79f740fec15c85e4af74d17c": {
+        "git_blob": "81f7d78bd7f270871bc4ee325789a3f457059812",
+        "git_bytes_sha256": "775e53088428f1ee117ae2b1adcb79d79bfc01b74401c89ee497365e52abd0e1"
+      },
+      "27cdb701b91c5b45b9f54b3e98c9ad67635b3e30": {
+        "git_blob": "4bac62104137d722f3d971a2c4ea425adbdd6fcd",
+        "git_bytes_sha256": "8967783329c291602639aca02a7d387e23dfc98a808497724c08d6a845fc1720"
+      },
+      "observed_working_snapshots": {
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/03-current-contracts/source-before.json": {
+          "bytes": 14839,
+          "sha256": "8967783329c291602639aca02a7d387e23dfc98a808497724c08d6a845fc1720"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/04-tkl-gates/source-before.json": {
+          "bytes": 14839,
+          "sha256": "8967783329c291602639aca02a7d387e23dfc98a808497724c08d6a845fc1720"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/05-collection/source-before.json": {
+          "bytes": 14839,
+          "sha256": "8967783329c291602639aca02a7d387e23dfc98a808497724c08d6a845fc1720"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/06-full/source-before.json": {
+          "bytes": 14839,
+          "sha256": "8967783329c291602639aca02a7d387e23dfc98a808497724c08d6a845fc1720"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/07-collection/source-before.json": {
+          "bytes": 14839,
+          "sha256": "8967783329c291602639aca02a7d387e23dfc98a808497724c08d6a845fc1720"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/08-full/source-before.json": {
+          "bytes": 14839,
+          "sha256": "8967783329c291602639aca02a7d387e23dfc98a808497724c08d6a845fc1720"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/09-remaining-gates/source-before.json": {
+          "bytes": 14839,
+          "sha256": "8967783329c291602639aca02a7d387e23dfc98a808497724c08d6a845fc1720"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/10-collection/source-before.json": {
+          "bytes": 14839,
+          "sha256": "8967783329c291602639aca02a7d387e23dfc98a808497724c08d6a845fc1720"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/11-full/source-before.json": {
+          "bytes": 14839,
+          "sha256": "8967783329c291602639aca02a7d387e23dfc98a808497724c08d6a845fc1720"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/12-collection/source-before.json": {
+          "bytes": 14839,
+          "sha256": "8967783329c291602639aca02a7d387e23dfc98a808497724c08d6a845fc1720"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/13-full/source-before.json": {
+          "bytes": 14839,
+          "sha256": "8967783329c291602639aca02a7d387e23dfc98a808497724c08d6a845fc1720"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/01-02-source-before-corrections.json": {
+          "bytes": 14839,
+          "sha256": "8967783329c291602639aca02a7d387e23dfc98a808497724c08d6a845fc1720"
+        }
+      }
+    },
+    ".tfw/workflows/research/base.md": {
+      "ec91c56007c20cda79f740fec15c85e4af74d17c": {
+        "git_blob": "7c65caeea35e70284ceb145b4758c89d295c08d6",
+        "git_bytes_sha256": "f1d62fbb0d8de05942c1f70ba6a9efb74045a73b1443040379742d025ffaf8b9"
+      },
+      "27cdb701b91c5b45b9f54b3e98c9ad67635b3e30": {
+        "git_blob": "197514a9a193930e785ee08b89212c511d0f4c5e",
+        "git_bytes_sha256": "b5bdeb054182e3981bd2cdc034c27d6a512245a0922b96700e4342da1a520d5d"
+      },
+      "observed_working_snapshots": {
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/03-current-contracts/source-before.json": {
+          "bytes": 9021,
+          "sha256": "b5bdeb054182e3981bd2cdc034c27d6a512245a0922b96700e4342da1a520d5d"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/04-tkl-gates/source-before.json": {
+          "bytes": 9021,
+          "sha256": "b5bdeb054182e3981bd2cdc034c27d6a512245a0922b96700e4342da1a520d5d"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/05-collection/source-before.json": {
+          "bytes": 9021,
+          "sha256": "b5bdeb054182e3981bd2cdc034c27d6a512245a0922b96700e4342da1a520d5d"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/06-full/source-before.json": {
+          "bytes": 9021,
+          "sha256": "b5bdeb054182e3981bd2cdc034c27d6a512245a0922b96700e4342da1a520d5d"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/07-collection/source-before.json": {
+          "bytes": 9021,
+          "sha256": "b5bdeb054182e3981bd2cdc034c27d6a512245a0922b96700e4342da1a520d5d"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/08-full/source-before.json": {
+          "bytes": 9021,
+          "sha256": "b5bdeb054182e3981bd2cdc034c27d6a512245a0922b96700e4342da1a520d5d"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/09-remaining-gates/source-before.json": {
+          "bytes": 9021,
+          "sha256": "b5bdeb054182e3981bd2cdc034c27d6a512245a0922b96700e4342da1a520d5d"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/10-collection/source-before.json": {
+          "bytes": 9021,
+          "sha256": "b5bdeb054182e3981bd2cdc034c27d6a512245a0922b96700e4342da1a520d5d"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/11-full/source-before.json": {
+          "bytes": 9021,
+          "sha256": "b5bdeb054182e3981bd2cdc034c27d6a512245a0922b96700e4342da1a520d5d"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/12-collection/source-before.json": {
+          "bytes": 9021,
+          "sha256": "b5bdeb054182e3981bd2cdc034c27d6a512245a0922b96700e4342da1a520d5d"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/13-full/source-before.json": {
+          "bytes": 9021,
+          "sha256": "b5bdeb054182e3981bd2cdc034c27d6a512245a0922b96700e4342da1a520d5d"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/01-02-source-before-corrections.json": {
+          "bytes": 9021,
+          "sha256": "b5bdeb054182e3981bd2cdc034c27d6a512245a0922b96700e4342da1a520d5d"
+        }
+      }
+    },
+    ".tfw/workflows/handoff.md": {
+      "ec91c56007c20cda79f740fec15c85e4af74d17c": {
+        "git_blob": "62d0e89fb28f20ff5fa104a2ba6177c1fba05068",
+        "git_bytes_sha256": "9837227aab58ab190519a33eee278a7e1d6d53c407b289f9154338de3d29213a"
+      },
+      "27cdb701b91c5b45b9f54b3e98c9ad67635b3e30": {
+        "git_blob": "299d5215dd0f957ca4efcc2e89837872fdeff525",
+        "git_bytes_sha256": "0950b8bdd25bcaf43691c92c5ae00904311abf58637e80d4bb03c12c649aaf4c"
+      },
+      "observed_working_snapshots": {
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/03-current-contracts/source-before.json": {
+          "bytes": 16144,
+          "sha256": "0950b8bdd25bcaf43691c92c5ae00904311abf58637e80d4bb03c12c649aaf4c"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/04-tkl-gates/source-before.json": {
+          "bytes": 16144,
+          "sha256": "0950b8bdd25bcaf43691c92c5ae00904311abf58637e80d4bb03c12c649aaf4c"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/05-collection/source-before.json": {
+          "bytes": 16144,
+          "sha256": "0950b8bdd25bcaf43691c92c5ae00904311abf58637e80d4bb03c12c649aaf4c"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/06-full/source-before.json": {
+          "bytes": 16144,
+          "sha256": "0950b8bdd25bcaf43691c92c5ae00904311abf58637e80d4bb03c12c649aaf4c"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/07-collection/source-before.json": {
+          "bytes": 16144,
+          "sha256": "0950b8bdd25bcaf43691c92c5ae00904311abf58637e80d4bb03c12c649aaf4c"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/08-full/source-before.json": {
+          "bytes": 16144,
+          "sha256": "0950b8bdd25bcaf43691c92c5ae00904311abf58637e80d4bb03c12c649aaf4c"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/09-remaining-gates/source-before.json": {
+          "bytes": 16144,
+          "sha256": "0950b8bdd25bcaf43691c92c5ae00904311abf58637e80d4bb03c12c649aaf4c"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/10-collection/source-before.json": {
+          "bytes": 16144,
+          "sha256": "0950b8bdd25bcaf43691c92c5ae00904311abf58637e80d4bb03c12c649aaf4c"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/11-full/source-before.json": {
+          "bytes": 16144,
+          "sha256": "0950b8bdd25bcaf43691c92c5ae00904311abf58637e80d4bb03c12c649aaf4c"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/12-collection/source-before.json": {
+          "bytes": 16144,
+          "sha256": "0950b8bdd25bcaf43691c92c5ae00904311abf58637e80d4bb03c12c649aaf4c"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/13-full/source-before.json": {
+          "bytes": 16144,
+          "sha256": "0950b8bdd25bcaf43691c92c5ae00904311abf58637e80d4bb03c12c649aaf4c"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/01-02-source-before-corrections.json": {
+          "bytes": 16144,
+          "sha256": "0950b8bdd25bcaf43691c92c5ae00904311abf58637e80d4bb03c12c649aaf4c"
+        }
+      }
+    },
+    ".tfw/workflows/review.md": {
+      "ec91c56007c20cda79f740fec15c85e4af74d17c": {
+        "git_blob": "f324292d57cf593587e2162bdee8c14320ffa6b9",
+        "git_bytes_sha256": "951d3053baf1efdcb40409bac970f4daeea4977d4bb82e20a1f01340879d089d"
+      },
+      "27cdb701b91c5b45b9f54b3e98c9ad67635b3e30": {
+        "git_blob": "a389ae6f619d28d5a2a18745fd2eb73531208f5d",
+        "git_bytes_sha256": "6ba0bd35cece81760270e23de42cf14c030ac9450e6eac12c15123527a4ca2f6"
+      },
+      "observed_working_snapshots": {
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/03-current-contracts/source-before.json": {
+          "bytes": 16727,
+          "sha256": "c9c63ad961e70e66a3a480dc646586e0f27fa2bf61fc76b20689f876bef6e492"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/04-tkl-gates/source-before.json": {
+          "bytes": 16727,
+          "sha256": "c9c63ad961e70e66a3a480dc646586e0f27fa2bf61fc76b20689f876bef6e492"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/05-collection/source-before.json": {
+          "bytes": 16727,
+          "sha256": "c9c63ad961e70e66a3a480dc646586e0f27fa2bf61fc76b20689f876bef6e492"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/06-full/source-before.json": {
+          "bytes": 16727,
+          "sha256": "c9c63ad961e70e66a3a480dc646586e0f27fa2bf61fc76b20689f876bef6e492"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/07-collection/source-before.json": {
+          "bytes": 16727,
+          "sha256": "c9c63ad961e70e66a3a480dc646586e0f27fa2bf61fc76b20689f876bef6e492"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/08-full/source-before.json": {
+          "bytes": 16727,
+          "sha256": "c9c63ad961e70e66a3a480dc646586e0f27fa2bf61fc76b20689f876bef6e492"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/09-remaining-gates/source-before.json": {
+          "bytes": 16727,
+          "sha256": "c9c63ad961e70e66a3a480dc646586e0f27fa2bf61fc76b20689f876bef6e492"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/10-collection/source-before.json": {
+          "bytes": 16727,
+          "sha256": "c9c63ad961e70e66a3a480dc646586e0f27fa2bf61fc76b20689f876bef6e492"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/11-full/source-before.json": {
+          "bytes": 16727,
+          "sha256": "c9c63ad961e70e66a3a480dc646586e0f27fa2bf61fc76b20689f876bef6e492"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/12-collection/source-before.json": {
+          "bytes": 16727,
+          "sha256": "c9c63ad961e70e66a3a480dc646586e0f27fa2bf61fc76b20689f876bef6e492"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/13-full/source-before.json": {
+          "bytes": 16727,
+          "sha256": "c9c63ad961e70e66a3a480dc646586e0f27fa2bf61fc76b20689f876bef6e492"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/01-02-source-before-corrections.json": {
+          "bytes": 16358,
+          "sha256": "f8d505f9c483015d505758512387bac63a9905983d966f4e05b389d7ef0adbf3"
+        }
+      }
+    },
+    ".tfw/workflows/resume.md": {
+      "ec91c56007c20cda79f740fec15c85e4af74d17c": {
+        "git_blob": "31f31594e0b2146c1df71132c4481a3b711ea508",
+        "git_bytes_sha256": "1ce3b2e1ee30f1f5be9cfd62af3cd400022a34ba106295978c426e26e46be5e3"
+      },
+      "27cdb701b91c5b45b9f54b3e98c9ad67635b3e30": {
+        "git_blob": "5bc68ab5d3f9de4a52b1bb06b671a50c60a2d044",
+        "git_bytes_sha256": "86e84db9dc66139579e80881b591f4e7f9fd970b56ec0b058f2b0576631e08fa"
+      },
+      "observed_working_snapshots": {
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/03-current-contracts/source-before.json": {
+          "bytes": 5740,
+          "sha256": "86e84db9dc66139579e80881b591f4e7f9fd970b56ec0b058f2b0576631e08fa"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/04-tkl-gates/source-before.json": {
+          "bytes": 5740,
+          "sha256": "86e84db9dc66139579e80881b591f4e7f9fd970b56ec0b058f2b0576631e08fa"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/05-collection/source-before.json": {
+          "bytes": 5740,
+          "sha256": "86e84db9dc66139579e80881b591f4e7f9fd970b56ec0b058f2b0576631e08fa"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/06-full/source-before.json": {
+          "bytes": 5740,
+          "sha256": "86e84db9dc66139579e80881b591f4e7f9fd970b56ec0b058f2b0576631e08fa"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/07-collection/source-before.json": {
+          "bytes": 5740,
+          "sha256": "86e84db9dc66139579e80881b591f4e7f9fd970b56ec0b058f2b0576631e08fa"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/08-full/source-before.json": {
+          "bytes": 5740,
+          "sha256": "86e84db9dc66139579e80881b591f4e7f9fd970b56ec0b058f2b0576631e08fa"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/09-remaining-gates/source-before.json": {
+          "bytes": 5740,
+          "sha256": "86e84db9dc66139579e80881b591f4e7f9fd970b56ec0b058f2b0576631e08fa"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/10-collection/source-before.json": {
+          "bytes": 5740,
+          "sha256": "86e84db9dc66139579e80881b591f4e7f9fd970b56ec0b058f2b0576631e08fa"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/11-full/source-before.json": {
+          "bytes": 5740,
+          "sha256": "86e84db9dc66139579e80881b591f4e7f9fd970b56ec0b058f2b0576631e08fa"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/12-collection/source-before.json": {
+          "bytes": 5740,
+          "sha256": "86e84db9dc66139579e80881b591f4e7f9fd970b56ec0b058f2b0576631e08fa"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/13-full/source-before.json": {
+          "bytes": 5740,
+          "sha256": "86e84db9dc66139579e80881b591f4e7f9fd970b56ec0b058f2b0576631e08fa"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/01-02-source-before-corrections.json": {
+          "bytes": 5740,
+          "sha256": "86e84db9dc66139579e80881b591f4e7f9fd970b56ec0b058f2b0576631e08fa"
+        }
+      }
+    },
+    ".tfw/workflows/docs.md": {
+      "ec91c56007c20cda79f740fec15c85e4af74d17c": {
+        "git_blob": "367befc86f16fe3a255663c3b174ef887e0e2903",
+        "git_bytes_sha256": "c3d72162e7084fcdda327b456edcc8a4cd50a0af50dcc578597e2519a75475b6"
+      },
+      "27cdb701b91c5b45b9f54b3e98c9ad67635b3e30": {
+        "git_blob": "26b80dbb58c2f1406afef90ea5639f9dced246b7",
+        "git_bytes_sha256": "46fb7316afdb4c8ceb7e7c5986332781f44d678fbd224baa4846a4e38c133271"
+      },
+      "observed_working_snapshots": {
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/03-current-contracts/source-before.json": {
+          "bytes": 4992,
+          "sha256": "3863e69a77371a084156dd295e38dd0b3f9788f4ddd632961e99808da464e176"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/04-tkl-gates/source-before.json": {
+          "bytes": 4992,
+          "sha256": "3863e69a77371a084156dd295e38dd0b3f9788f4ddd632961e99808da464e176"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/05-collection/source-before.json": {
+          "bytes": 4992,
+          "sha256": "3863e69a77371a084156dd295e38dd0b3f9788f4ddd632961e99808da464e176"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/06-full/source-before.json": {
+          "bytes": 4992,
+          "sha256": "3863e69a77371a084156dd295e38dd0b3f9788f4ddd632961e99808da464e176"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/07-collection/source-before.json": {
+          "bytes": 4992,
+          "sha256": "3863e69a77371a084156dd295e38dd0b3f9788f4ddd632961e99808da464e176"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/08-full/source-before.json": {
+          "bytes": 4992,
+          "sha256": "3863e69a77371a084156dd295e38dd0b3f9788f4ddd632961e99808da464e176"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/09-remaining-gates/source-before.json": {
+          "bytes": 4992,
+          "sha256": "3863e69a77371a084156dd295e38dd0b3f9788f4ddd632961e99808da464e176"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/10-collection/source-before.json": {
+          "bytes": 4992,
+          "sha256": "3863e69a77371a084156dd295e38dd0b3f9788f4ddd632961e99808da464e176"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/11-full/source-before.json": {
+          "bytes": 4992,
+          "sha256": "3863e69a77371a084156dd295e38dd0b3f9788f4ddd632961e99808da464e176"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/12-collection/source-before.json": {
+          "bytes": 4992,
+          "sha256": "3863e69a77371a084156dd295e38dd0b3f9788f4ddd632961e99808da464e176"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/13-full/source-before.json": {
+          "bytes": 4992,
+          "sha256": "3863e69a77371a084156dd295e38dd0b3f9788f4ddd632961e99808da464e176"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/01-02-source-before-corrections.json": {
+          "bytes": 4867,
+          "sha256": "5b84619a0341a77fd0ffc91315a08968de90f29ae7d5af9609f989fcaf2baca3"
+        }
+      }
+    },
+    ".tfw/workflows/knowledge.md": {
+      "ec91c56007c20cda79f740fec15c85e4af74d17c": {
+        "git_blob": "b3910e0823d59eefba14d7178ed921c3da8b8f85",
+        "git_bytes_sha256": "119a419db124e45fded4722b38d46ac5f7aa46cf928431df0585421336b608ef"
+      },
+      "27cdb701b91c5b45b9f54b3e98c9ad67635b3e30": {
+        "git_blob": "48b6a1547ddd4cee3291240b10939375bd16763e",
+        "git_bytes_sha256": "8fc4ebd2a220155967a460465ac1a49f80273562bd6e0a9d5db09c3d2757d61c"
+      },
+      "observed_working_snapshots": {
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/03-current-contracts/source-before.json": {
+          "bytes": 7106,
+          "sha256": "1701035491afd0eb2558f9c0d818b5295bee247eb9443d1f394fc00ec09f0520"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/04-tkl-gates/source-before.json": {
+          "bytes": 7106,
+          "sha256": "1701035491afd0eb2558f9c0d818b5295bee247eb9443d1f394fc00ec09f0520"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/05-collection/source-before.json": {
+          "bytes": 7106,
+          "sha256": "1701035491afd0eb2558f9c0d818b5295bee247eb9443d1f394fc00ec09f0520"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/06-full/source-before.json": {
+          "bytes": 7106,
+          "sha256": "1701035491afd0eb2558f9c0d818b5295bee247eb9443d1f394fc00ec09f0520"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/07-collection/source-before.json": {
+          "bytes": 7106,
+          "sha256": "1701035491afd0eb2558f9c0d818b5295bee247eb9443d1f394fc00ec09f0520"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/08-full/source-before.json": {
+          "bytes": 7106,
+          "sha256": "1701035491afd0eb2558f9c0d818b5295bee247eb9443d1f394fc00ec09f0520"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/09-remaining-gates/source-before.json": {
+          "bytes": 7106,
+          "sha256": "1701035491afd0eb2558f9c0d818b5295bee247eb9443d1f394fc00ec09f0520"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/10-collection/source-before.json": {
+          "bytes": 7106,
+          "sha256": "1701035491afd0eb2558f9c0d818b5295bee247eb9443d1f394fc00ec09f0520"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/11-full/source-before.json": {
+          "bytes": 7106,
+          "sha256": "1701035491afd0eb2558f9c0d818b5295bee247eb9443d1f394fc00ec09f0520"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/12-collection/source-before.json": {
+          "bytes": 7106,
+          "sha256": "1701035491afd0eb2558f9c0d818b5295bee247eb9443d1f394fc00ec09f0520"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/13-full/source-before.json": {
+          "bytes": 7106,
+          "sha256": "1701035491afd0eb2558f9c0d818b5295bee247eb9443d1f394fc00ec09f0520"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/01-02-source-before-corrections.json": {
+          "bytes": 7025,
+          "sha256": "55ab9b189434b0080b3fa3e9507a352b22ca974ccc1c05a5879e73906c9584f5"
+        }
+      }
+    },
+    ".tfw/workflows/init.md": {
+      "ec91c56007c20cda79f740fec15c85e4af74d17c": {
+        "git_blob": "80f541614311aa006e630d951df50c570f58b451",
+        "git_bytes_sha256": "7ec919af5ec2c905f81d9b697bdfca41bc531d09d72dd37e3259e2852c134ef4"
+      },
+      "27cdb701b91c5b45b9f54b3e98c9ad67635b3e30": {
+        "git_blob": "bedc73b1fa13eb698ac3c7b3d6325ef4c66a9113",
+        "git_bytes_sha256": "6fcbad17fb5a7bc52f5fcb36edf8f2fd5802a593dfa7cd02c9fa874f38a1e2cc"
+      },
+      "observed_working_snapshots": {
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/03-current-contracts/source-before.json": {
+          "bytes": 8677,
+          "sha256": "6fcbad17fb5a7bc52f5fcb36edf8f2fd5802a593dfa7cd02c9fa874f38a1e2cc"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/04-tkl-gates/source-before.json": {
+          "bytes": 8677,
+          "sha256": "6fcbad17fb5a7bc52f5fcb36edf8f2fd5802a593dfa7cd02c9fa874f38a1e2cc"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/05-collection/source-before.json": {
+          "bytes": 8677,
+          "sha256": "6fcbad17fb5a7bc52f5fcb36edf8f2fd5802a593dfa7cd02c9fa874f38a1e2cc"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/06-full/source-before.json": {
+          "bytes": 8677,
+          "sha256": "6fcbad17fb5a7bc52f5fcb36edf8f2fd5802a593dfa7cd02c9fa874f38a1e2cc"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/07-collection/source-before.json": {
+          "bytes": 8677,
+          "sha256": "6fcbad17fb5a7bc52f5fcb36edf8f2fd5802a593dfa7cd02c9fa874f38a1e2cc"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/08-full/source-before.json": {
+          "bytes": 8677,
+          "sha256": "6fcbad17fb5a7bc52f5fcb36edf8f2fd5802a593dfa7cd02c9fa874f38a1e2cc"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/09-remaining-gates/source-before.json": {
+          "bytes": 8677,
+          "sha256": "6fcbad17fb5a7bc52f5fcb36edf8f2fd5802a593dfa7cd02c9fa874f38a1e2cc"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/10-collection/source-before.json": {
+          "bytes": 8677,
+          "sha256": "6fcbad17fb5a7bc52f5fcb36edf8f2fd5802a593dfa7cd02c9fa874f38a1e2cc"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/11-full/source-before.json": {
+          "bytes": 8677,
+          "sha256": "6fcbad17fb5a7bc52f5fcb36edf8f2fd5802a593dfa7cd02c9fa874f38a1e2cc"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/12-collection/source-before.json": {
+          "bytes": 8677,
+          "sha256": "6fcbad17fb5a7bc52f5fcb36edf8f2fd5802a593dfa7cd02c9fa874f38a1e2cc"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/13-full/source-before.json": {
+          "bytes": 8677,
+          "sha256": "6fcbad17fb5a7bc52f5fcb36edf8f2fd5802a593dfa7cd02c9fa874f38a1e2cc"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/01-02-source-before-corrections.json": {
+          "bytes": 8677,
+          "sha256": "6fcbad17fb5a7bc52f5fcb36edf8f2fd5802a593dfa7cd02c9fa874f38a1e2cc"
+        }
+      }
+    },
+    ".tfw/workflows/update.md": {
+      "ec91c56007c20cda79f740fec15c85e4af74d17c": {
+        "git_blob": "fc081bdef381bd96556ed26afa3b00e6d4235eec",
+        "git_bytes_sha256": "677f98c2ba61dcec1f59a5847ec12c782bf85132437194d291dcab3061707b1d"
+      },
+      "27cdb701b91c5b45b9f54b3e98c9ad67635b3e30": {
+        "git_blob": "a4187ba20b1ad36576a552fd3cb85730769eddb4",
+        "git_bytes_sha256": "4df00bea1d0eb8e229e830e974b9de5c72e2c9bd41bc808cdb0d348a6ea1379a"
+      },
+      "observed_working_snapshots": {
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/03-current-contracts/source-before.json": {
+          "bytes": 18922,
+          "sha256": "4df00bea1d0eb8e229e830e974b9de5c72e2c9bd41bc808cdb0d348a6ea1379a"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/04-tkl-gates/source-before.json": {
+          "bytes": 18922,
+          "sha256": "4df00bea1d0eb8e229e830e974b9de5c72e2c9bd41bc808cdb0d348a6ea1379a"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/05-collection/source-before.json": {
+          "bytes": 18922,
+          "sha256": "4df00bea1d0eb8e229e830e974b9de5c72e2c9bd41bc808cdb0d348a6ea1379a"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/06-full/source-before.json": {
+          "bytes": 18922,
+          "sha256": "4df00bea1d0eb8e229e830e974b9de5c72e2c9bd41bc808cdb0d348a6ea1379a"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/07-collection/source-before.json": {
+          "bytes": 18922,
+          "sha256": "4df00bea1d0eb8e229e830e974b9de5c72e2c9bd41bc808cdb0d348a6ea1379a"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/08-full/source-before.json": {
+          "bytes": 18922,
+          "sha256": "4df00bea1d0eb8e229e830e974b9de5c72e2c9bd41bc808cdb0d348a6ea1379a"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/09-remaining-gates/source-before.json": {
+          "bytes": 18922,
+          "sha256": "4df00bea1d0eb8e229e830e974b9de5c72e2c9bd41bc808cdb0d348a6ea1379a"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/10-collection/source-before.json": {
+          "bytes": 18922,
+          "sha256": "4df00bea1d0eb8e229e830e974b9de5c72e2c9bd41bc808cdb0d348a6ea1379a"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/11-full/source-before.json": {
+          "bytes": 18922,
+          "sha256": "4df00bea1d0eb8e229e830e974b9de5c72e2c9bd41bc808cdb0d348a6ea1379a"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/12-collection/source-before.json": {
+          "bytes": 18922,
+          "sha256": "4df00bea1d0eb8e229e830e974b9de5c72e2c9bd41bc808cdb0d348a6ea1379a"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/13-full/source-before.json": {
+          "bytes": 18922,
+          "sha256": "4df00bea1d0eb8e229e830e974b9de5c72e2c9bd41bc808cdb0d348a6ea1379a"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/01-02-source-before-corrections.json": {
+          "bytes": 18922,
+          "sha256": "4df00bea1d0eb8e229e830e974b9de5c72e2c9bd41bc808cdb0d348a6ea1379a"
+        }
+      }
+    },
+    ".tfw/workflows/config.md": {
+      "ec91c56007c20cda79f740fec15c85e4af74d17c": {
+        "git_blob": "c9d2f65c9022e6261c73c462caf4df36eedd9c6a",
+        "git_bytes_sha256": "8f0b9e9b499ea90f91b8bb5643f4848c024ede83c7a289dea0260de2d5daece6"
+      },
+      "27cdb701b91c5b45b9f54b3e98c9ad67635b3e30": {
+        "git_blob": "1ff72982150befcc100cf9dba575e284fbcb51fe",
+        "git_bytes_sha256": "5aa4d56d0ad801c499aeac2d20a9a41b5dd66c0f027dea300b5d3a008879b190"
+      },
+      "observed_working_snapshots": {
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/03-current-contracts/source-before.json": {
+          "bytes": 5149,
+          "sha256": "5aa4d56d0ad801c499aeac2d20a9a41b5dd66c0f027dea300b5d3a008879b190"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/04-tkl-gates/source-before.json": {
+          "bytes": 5149,
+          "sha256": "5aa4d56d0ad801c499aeac2d20a9a41b5dd66c0f027dea300b5d3a008879b190"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/05-collection/source-before.json": {
+          "bytes": 5149,
+          "sha256": "5aa4d56d0ad801c499aeac2d20a9a41b5dd66c0f027dea300b5d3a008879b190"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/06-full/source-before.json": {
+          "bytes": 5149,
+          "sha256": "5aa4d56d0ad801c499aeac2d20a9a41b5dd66c0f027dea300b5d3a008879b190"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/07-collection/source-before.json": {
+          "bytes": 5149,
+          "sha256": "5aa4d56d0ad801c499aeac2d20a9a41b5dd66c0f027dea300b5d3a008879b190"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/08-full/source-before.json": {
+          "bytes": 5149,
+          "sha256": "5aa4d56d0ad801c499aeac2d20a9a41b5dd66c0f027dea300b5d3a008879b190"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/09-remaining-gates/source-before.json": {
+          "bytes": 5149,
+          "sha256": "5aa4d56d0ad801c499aeac2d20a9a41b5dd66c0f027dea300b5d3a008879b190"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/10-collection/source-before.json": {
+          "bytes": 5149,
+          "sha256": "5aa4d56d0ad801c499aeac2d20a9a41b5dd66c0f027dea300b5d3a008879b190"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/11-full/source-before.json": {
+          "bytes": 5149,
+          "sha256": "5aa4d56d0ad801c499aeac2d20a9a41b5dd66c0f027dea300b5d3a008879b190"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/12-collection/source-before.json": {
+          "bytes": 5149,
+          "sha256": "5aa4d56d0ad801c499aeac2d20a9a41b5dd66c0f027dea300b5d3a008879b190"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/13-full/source-before.json": {
+          "bytes": 5149,
+          "sha256": "5aa4d56d0ad801c499aeac2d20a9a41b5dd66c0f027dea300b5d3a008879b190"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/01-02-source-before-corrections.json": {
+          "bytes": 5149,
+          "sha256": "5aa4d56d0ad801c499aeac2d20a9a41b5dd66c0f027dea300b5d3a008879b190"
+        }
+      }
+    },
+    ".agents/workflows/tfw-plan.md": {
+      "ec91c56007c20cda79f740fec15c85e4af74d17c": {
+        "git_blob": "81f7d78bd7f270871bc4ee325789a3f457059812",
+        "git_bytes_sha256": "775e53088428f1ee117ae2b1adcb79d79bfc01b74401c89ee497365e52abd0e1"
+      },
+      "27cdb701b91c5b45b9f54b3e98c9ad67635b3e30": {
+        "git_blob": "4bac62104137d722f3d971a2c4ea425adbdd6fcd",
+        "git_bytes_sha256": "8967783329c291602639aca02a7d387e23dfc98a808497724c08d6a845fc1720"
+      },
+      "observed_working_snapshots": {
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/03-current-contracts/source-before.json": {
+          "bytes": 14839,
+          "sha256": "8967783329c291602639aca02a7d387e23dfc98a808497724c08d6a845fc1720"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/04-tkl-gates/source-before.json": {
+          "bytes": 14839,
+          "sha256": "8967783329c291602639aca02a7d387e23dfc98a808497724c08d6a845fc1720"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/05-collection/source-before.json": {
+          "bytes": 14839,
+          "sha256": "8967783329c291602639aca02a7d387e23dfc98a808497724c08d6a845fc1720"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/06-full/source-before.json": {
+          "bytes": 14839,
+          "sha256": "8967783329c291602639aca02a7d387e23dfc98a808497724c08d6a845fc1720"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/07-collection/source-before.json": {
+          "bytes": 14839,
+          "sha256": "8967783329c291602639aca02a7d387e23dfc98a808497724c08d6a845fc1720"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/08-full/source-before.json": {
+          "bytes": 14839,
+          "sha256": "8967783329c291602639aca02a7d387e23dfc98a808497724c08d6a845fc1720"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/09-remaining-gates/source-before.json": {
+          "bytes": 14839,
+          "sha256": "8967783329c291602639aca02a7d387e23dfc98a808497724c08d6a845fc1720"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/10-collection/source-before.json": {
+          "bytes": 14839,
+          "sha256": "8967783329c291602639aca02a7d387e23dfc98a808497724c08d6a845fc1720"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/11-full/source-before.json": {
+          "bytes": 14839,
+          "sha256": "8967783329c291602639aca02a7d387e23dfc98a808497724c08d6a845fc1720"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/12-collection/source-before.json": {
+          "bytes": 14839,
+          "sha256": "8967783329c291602639aca02a7d387e23dfc98a808497724c08d6a845fc1720"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/13-full/source-before.json": {
+          "bytes": 14839,
+          "sha256": "8967783329c291602639aca02a7d387e23dfc98a808497724c08d6a845fc1720"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/01-02-source-before-corrections.json": {
+          "bytes": 14839,
+          "sha256": "8967783329c291602639aca02a7d387e23dfc98a808497724c08d6a845fc1720"
+        }
+      }
+    },
+    ".claude/commands/tfw-plan.md": {
+      "ec91c56007c20cda79f740fec15c85e4af74d17c": {
+        "git_blob": "81f7d78bd7f270871bc4ee325789a3f457059812",
+        "git_bytes_sha256": "775e53088428f1ee117ae2b1adcb79d79bfc01b74401c89ee497365e52abd0e1"
+      },
+      "27cdb701b91c5b45b9f54b3e98c9ad67635b3e30": {
+        "git_blob": "4bac62104137d722f3d971a2c4ea425adbdd6fcd",
+        "git_bytes_sha256": "8967783329c291602639aca02a7d387e23dfc98a808497724c08d6a845fc1720"
+      },
+      "observed_working_snapshots": {
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/03-current-contracts/source-before.json": {
+          "bytes": 14839,
+          "sha256": "8967783329c291602639aca02a7d387e23dfc98a808497724c08d6a845fc1720"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/04-tkl-gates/source-before.json": {
+          "bytes": 14839,
+          "sha256": "8967783329c291602639aca02a7d387e23dfc98a808497724c08d6a845fc1720"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/05-collection/source-before.json": {
+          "bytes": 14839,
+          "sha256": "8967783329c291602639aca02a7d387e23dfc98a808497724c08d6a845fc1720"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/06-full/source-before.json": {
+          "bytes": 14839,
+          "sha256": "8967783329c291602639aca02a7d387e23dfc98a808497724c08d6a845fc1720"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/07-collection/source-before.json": {
+          "bytes": 14839,
+          "sha256": "8967783329c291602639aca02a7d387e23dfc98a808497724c08d6a845fc1720"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/08-full/source-before.json": {
+          "bytes": 14839,
+          "sha256": "8967783329c291602639aca02a7d387e23dfc98a808497724c08d6a845fc1720"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/09-remaining-gates/source-before.json": {
+          "bytes": 14839,
+          "sha256": "8967783329c291602639aca02a7d387e23dfc98a808497724c08d6a845fc1720"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/10-collection/source-before.json": {
+          "bytes": 14839,
+          "sha256": "8967783329c291602639aca02a7d387e23dfc98a808497724c08d6a845fc1720"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/11-full/source-before.json": {
+          "bytes": 14839,
+          "sha256": "8967783329c291602639aca02a7d387e23dfc98a808497724c08d6a845fc1720"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/12-collection/source-before.json": {
+          "bytes": 14839,
+          "sha256": "8967783329c291602639aca02a7d387e23dfc98a808497724c08d6a845fc1720"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/13-full/source-before.json": {
+          "bytes": 14839,
+          "sha256": "8967783329c291602639aca02a7d387e23dfc98a808497724c08d6a845fc1720"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/01-02-source-before-corrections.json": {
+          "bytes": 14839,
+          "sha256": "8967783329c291602639aca02a7d387e23dfc98a808497724c08d6a845fc1720"
+        }
+      }
+    },
+    ".agents/workflows/tfw-research.md": {
+      "ec91c56007c20cda79f740fec15c85e4af74d17c": {
+        "git_blob": "7c65caeea35e70284ceb145b4758c89d295c08d6",
+        "git_bytes_sha256": "f1d62fbb0d8de05942c1f70ba6a9efb74045a73b1443040379742d025ffaf8b9"
+      },
+      "27cdb701b91c5b45b9f54b3e98c9ad67635b3e30": {
+        "git_blob": "197514a9a193930e785ee08b89212c511d0f4c5e",
+        "git_bytes_sha256": "b5bdeb054182e3981bd2cdc034c27d6a512245a0922b96700e4342da1a520d5d"
+      },
+      "observed_working_snapshots": {
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/03-current-contracts/source-before.json": {
+          "bytes": 9021,
+          "sha256": "b5bdeb054182e3981bd2cdc034c27d6a512245a0922b96700e4342da1a520d5d"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/04-tkl-gates/source-before.json": {
+          "bytes": 9021,
+          "sha256": "b5bdeb054182e3981bd2cdc034c27d6a512245a0922b96700e4342da1a520d5d"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/05-collection/source-before.json": {
+          "bytes": 9021,
+          "sha256": "b5bdeb054182e3981bd2cdc034c27d6a512245a0922b96700e4342da1a520d5d"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/06-full/source-before.json": {
+          "bytes": 9021,
+          "sha256": "b5bdeb054182e3981bd2cdc034c27d6a512245a0922b96700e4342da1a520d5d"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/07-collection/source-before.json": {
+          "bytes": 9021,
+          "sha256": "b5bdeb054182e3981bd2cdc034c27d6a512245a0922b96700e4342da1a520d5d"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/08-full/source-before.json": {
+          "bytes": 9021,
+          "sha256": "b5bdeb054182e3981bd2cdc034c27d6a512245a0922b96700e4342da1a520d5d"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/09-remaining-gates/source-before.json": {
+          "bytes": 9021,
+          "sha256": "b5bdeb054182e3981bd2cdc034c27d6a512245a0922b96700e4342da1a520d5d"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/10-collection/source-before.json": {
+          "bytes": 9021,
+          "sha256": "b5bdeb054182e3981bd2cdc034c27d6a512245a0922b96700e4342da1a520d5d"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/11-full/source-before.json": {
+          "bytes": 9021,
+          "sha256": "b5bdeb054182e3981bd2cdc034c27d6a512245a0922b96700e4342da1a520d5d"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/12-collection/source-before.json": {
+          "bytes": 9021,
+          "sha256": "b5bdeb054182e3981bd2cdc034c27d6a512245a0922b96700e4342da1a520d5d"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/13-full/source-before.json": {
+          "bytes": 9021,
+          "sha256": "b5bdeb054182e3981bd2cdc034c27d6a512245a0922b96700e4342da1a520d5d"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/01-02-source-before-corrections.json": {
+          "bytes": 9021,
+          "sha256": "b5bdeb054182e3981bd2cdc034c27d6a512245a0922b96700e4342da1a520d5d"
+        }
+      }
+    },
+    ".claude/commands/tfw-research.md": {
+      "ec91c56007c20cda79f740fec15c85e4af74d17c": {
+        "git_blob": "7c65caeea35e70284ceb145b4758c89d295c08d6",
+        "git_bytes_sha256": "f1d62fbb0d8de05942c1f70ba6a9efb74045a73b1443040379742d025ffaf8b9"
+      },
+      "27cdb701b91c5b45b9f54b3e98c9ad67635b3e30": {
+        "git_blob": "197514a9a193930e785ee08b89212c511d0f4c5e",
+        "git_bytes_sha256": "b5bdeb054182e3981bd2cdc034c27d6a512245a0922b96700e4342da1a520d5d"
+      },
+      "observed_working_snapshots": {
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/03-current-contracts/source-before.json": {
+          "bytes": 9021,
+          "sha256": "b5bdeb054182e3981bd2cdc034c27d6a512245a0922b96700e4342da1a520d5d"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/04-tkl-gates/source-before.json": {
+          "bytes": 9021,
+          "sha256": "b5bdeb054182e3981bd2cdc034c27d6a512245a0922b96700e4342da1a520d5d"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/05-collection/source-before.json": {
+          "bytes": 9021,
+          "sha256": "b5bdeb054182e3981bd2cdc034c27d6a512245a0922b96700e4342da1a520d5d"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/06-full/source-before.json": {
+          "bytes": 9021,
+          "sha256": "b5bdeb054182e3981bd2cdc034c27d6a512245a0922b96700e4342da1a520d5d"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/07-collection/source-before.json": {
+          "bytes": 9021,
+          "sha256": "b5bdeb054182e3981bd2cdc034c27d6a512245a0922b96700e4342da1a520d5d"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/08-full/source-before.json": {
+          "bytes": 9021,
+          "sha256": "b5bdeb054182e3981bd2cdc034c27d6a512245a0922b96700e4342da1a520d5d"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/09-remaining-gates/source-before.json": {
+          "bytes": 9021,
+          "sha256": "b5bdeb054182e3981bd2cdc034c27d6a512245a0922b96700e4342da1a520d5d"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/10-collection/source-before.json": {
+          "bytes": 9021,
+          "sha256": "b5bdeb054182e3981bd2cdc034c27d6a512245a0922b96700e4342da1a520d5d"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/11-full/source-before.json": {
+          "bytes": 9021,
+          "sha256": "b5bdeb054182e3981bd2cdc034c27d6a512245a0922b96700e4342da1a520d5d"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/12-collection/source-before.json": {
+          "bytes": 9021,
+          "sha256": "b5bdeb054182e3981bd2cdc034c27d6a512245a0922b96700e4342da1a520d5d"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/13-full/source-before.json": {
+          "bytes": 9021,
+          "sha256": "b5bdeb054182e3981bd2cdc034c27d6a512245a0922b96700e4342da1a520d5d"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/01-02-source-before-corrections.json": {
+          "bytes": 9021,
+          "sha256": "b5bdeb054182e3981bd2cdc034c27d6a512245a0922b96700e4342da1a520d5d"
+        }
+      }
+    },
+    ".agents/workflows/tfw-handoff.md": {
+      "ec91c56007c20cda79f740fec15c85e4af74d17c": {
+        "git_blob": "62d0e89fb28f20ff5fa104a2ba6177c1fba05068",
+        "git_bytes_sha256": "9837227aab58ab190519a33eee278a7e1d6d53c407b289f9154338de3d29213a"
+      },
+      "27cdb701b91c5b45b9f54b3e98c9ad67635b3e30": {
+        "git_blob": "299d5215dd0f957ca4efcc2e89837872fdeff525",
+        "git_bytes_sha256": "0950b8bdd25bcaf43691c92c5ae00904311abf58637e80d4bb03c12c649aaf4c"
+      },
+      "observed_working_snapshots": {
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/03-current-contracts/source-before.json": {
+          "bytes": 16144,
+          "sha256": "0950b8bdd25bcaf43691c92c5ae00904311abf58637e80d4bb03c12c649aaf4c"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/04-tkl-gates/source-before.json": {
+          "bytes": 16144,
+          "sha256": "0950b8bdd25bcaf43691c92c5ae00904311abf58637e80d4bb03c12c649aaf4c"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/05-collection/source-before.json": {
+          "bytes": 16144,
+          "sha256": "0950b8bdd25bcaf43691c92c5ae00904311abf58637e80d4bb03c12c649aaf4c"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/06-full/source-before.json": {
+          "bytes": 16144,
+          "sha256": "0950b8bdd25bcaf43691c92c5ae00904311abf58637e80d4bb03c12c649aaf4c"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/07-collection/source-before.json": {
+          "bytes": 16144,
+          "sha256": "0950b8bdd25bcaf43691c92c5ae00904311abf58637e80d4bb03c12c649aaf4c"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/08-full/source-before.json": {
+          "bytes": 16144,
+          "sha256": "0950b8bdd25bcaf43691c92c5ae00904311abf58637e80d4bb03c12c649aaf4c"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/09-remaining-gates/source-before.json": {
+          "bytes": 16144,
+          "sha256": "0950b8bdd25bcaf43691c92c5ae00904311abf58637e80d4bb03c12c649aaf4c"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/10-collection/source-before.json": {
+          "bytes": 16144,
+          "sha256": "0950b8bdd25bcaf43691c92c5ae00904311abf58637e80d4bb03c12c649aaf4c"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/11-full/source-before.json": {
+          "bytes": 16144,
+          "sha256": "0950b8bdd25bcaf43691c92c5ae00904311abf58637e80d4bb03c12c649aaf4c"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/12-collection/source-before.json": {
+          "bytes": 16144,
+          "sha256": "0950b8bdd25bcaf43691c92c5ae00904311abf58637e80d4bb03c12c649aaf4c"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/13-full/source-before.json": {
+          "bytes": 16144,
+          "sha256": "0950b8bdd25bcaf43691c92c5ae00904311abf58637e80d4bb03c12c649aaf4c"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/01-02-source-before-corrections.json": {
+          "bytes": 16144,
+          "sha256": "0950b8bdd25bcaf43691c92c5ae00904311abf58637e80d4bb03c12c649aaf4c"
+        }
+      }
+    },
+    ".claude/commands/tfw-handoff.md": {
+      "ec91c56007c20cda79f740fec15c85e4af74d17c": {
+        "git_blob": "62d0e89fb28f20ff5fa104a2ba6177c1fba05068",
+        "git_bytes_sha256": "9837227aab58ab190519a33eee278a7e1d6d53c407b289f9154338de3d29213a"
+      },
+      "27cdb701b91c5b45b9f54b3e98c9ad67635b3e30": {
+        "git_blob": "299d5215dd0f957ca4efcc2e89837872fdeff525",
+        "git_bytes_sha256": "0950b8bdd25bcaf43691c92c5ae00904311abf58637e80d4bb03c12c649aaf4c"
+      },
+      "observed_working_snapshots": {
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/03-current-contracts/source-before.json": {
+          "bytes": 16144,
+          "sha256": "0950b8bdd25bcaf43691c92c5ae00904311abf58637e80d4bb03c12c649aaf4c"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/04-tkl-gates/source-before.json": {
+          "bytes": 16144,
+          "sha256": "0950b8bdd25bcaf43691c92c5ae00904311abf58637e80d4bb03c12c649aaf4c"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/05-collection/source-before.json": {
+          "bytes": 16144,
+          "sha256": "0950b8bdd25bcaf43691c92c5ae00904311abf58637e80d4bb03c12c649aaf4c"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/06-full/source-before.json": {
+          "bytes": 16144,
+          "sha256": "0950b8bdd25bcaf43691c92c5ae00904311abf58637e80d4bb03c12c649aaf4c"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/07-collection/source-before.json": {
+          "bytes": 16144,
+          "sha256": "0950b8bdd25bcaf43691c92c5ae00904311abf58637e80d4bb03c12c649aaf4c"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/08-full/source-before.json": {
+          "bytes": 16144,
+          "sha256": "0950b8bdd25bcaf43691c92c5ae00904311abf58637e80d4bb03c12c649aaf4c"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/09-remaining-gates/source-before.json": {
+          "bytes": 16144,
+          "sha256": "0950b8bdd25bcaf43691c92c5ae00904311abf58637e80d4bb03c12c649aaf4c"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/10-collection/source-before.json": {
+          "bytes": 16144,
+          "sha256": "0950b8bdd25bcaf43691c92c5ae00904311abf58637e80d4bb03c12c649aaf4c"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/11-full/source-before.json": {
+          "bytes": 16144,
+          "sha256": "0950b8bdd25bcaf43691c92c5ae00904311abf58637e80d4bb03c12c649aaf4c"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/12-collection/source-before.json": {
+          "bytes": 16144,
+          "sha256": "0950b8bdd25bcaf43691c92c5ae00904311abf58637e80d4bb03c12c649aaf4c"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/13-full/source-before.json": {
+          "bytes": 16144,
+          "sha256": "0950b8bdd25bcaf43691c92c5ae00904311abf58637e80d4bb03c12c649aaf4c"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/01-02-source-before-corrections.json": {
+          "bytes": 16144,
+          "sha256": "0950b8bdd25bcaf43691c92c5ae00904311abf58637e80d4bb03c12c649aaf4c"
+        }
+      }
+    },
+    ".agents/workflows/tfw-review.md": {
+      "ec91c56007c20cda79f740fec15c85e4af74d17c": {
+        "git_blob": "f324292d57cf593587e2162bdee8c14320ffa6b9",
+        "git_bytes_sha256": "951d3053baf1efdcb40409bac970f4daeea4977d4bb82e20a1f01340879d089d"
+      },
+      "27cdb701b91c5b45b9f54b3e98c9ad67635b3e30": {
+        "git_blob": "a389ae6f619d28d5a2a18745fd2eb73531208f5d",
+        "git_bytes_sha256": "6ba0bd35cece81760270e23de42cf14c030ac9450e6eac12c15123527a4ca2f6"
+      },
+      "observed_working_snapshots": {
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/03-current-contracts/source-before.json": {
+          "bytes": 16727,
+          "sha256": "c9c63ad961e70e66a3a480dc646586e0f27fa2bf61fc76b20689f876bef6e492"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/04-tkl-gates/source-before.json": {
+          "bytes": 16727,
+          "sha256": "c9c63ad961e70e66a3a480dc646586e0f27fa2bf61fc76b20689f876bef6e492"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/05-collection/source-before.json": {
+          "bytes": 16727,
+          "sha256": "c9c63ad961e70e66a3a480dc646586e0f27fa2bf61fc76b20689f876bef6e492"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/06-full/source-before.json": {
+          "bytes": 16727,
+          "sha256": "c9c63ad961e70e66a3a480dc646586e0f27fa2bf61fc76b20689f876bef6e492"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/07-collection/source-before.json": {
+          "bytes": 16727,
+          "sha256": "c9c63ad961e70e66a3a480dc646586e0f27fa2bf61fc76b20689f876bef6e492"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/08-full/source-before.json": {
+          "bytes": 16727,
+          "sha256": "c9c63ad961e70e66a3a480dc646586e0f27fa2bf61fc76b20689f876bef6e492"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/09-remaining-gates/source-before.json": {
+          "bytes": 16727,
+          "sha256": "c9c63ad961e70e66a3a480dc646586e0f27fa2bf61fc76b20689f876bef6e492"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/10-collection/source-before.json": {
+          "bytes": 16727,
+          "sha256": "c9c63ad961e70e66a3a480dc646586e0f27fa2bf61fc76b20689f876bef6e492"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/11-full/source-before.json": {
+          "bytes": 16727,
+          "sha256": "c9c63ad961e70e66a3a480dc646586e0f27fa2bf61fc76b20689f876bef6e492"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/12-collection/source-before.json": {
+          "bytes": 16727,
+          "sha256": "c9c63ad961e70e66a3a480dc646586e0f27fa2bf61fc76b20689f876bef6e492"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/13-full/source-before.json": {
+          "bytes": 16727,
+          "sha256": "c9c63ad961e70e66a3a480dc646586e0f27fa2bf61fc76b20689f876bef6e492"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/01-02-source-before-corrections.json": {
+          "bytes": 16358,
+          "sha256": "f8d505f9c483015d505758512387bac63a9905983d966f4e05b389d7ef0adbf3"
+        }
+      }
+    },
+    ".claude/commands/tfw-review.md": {
+      "ec91c56007c20cda79f740fec15c85e4af74d17c": {
+        "git_blob": "f324292d57cf593587e2162bdee8c14320ffa6b9",
+        "git_bytes_sha256": "951d3053baf1efdcb40409bac970f4daeea4977d4bb82e20a1f01340879d089d"
+      },
+      "27cdb701b91c5b45b9f54b3e98c9ad67635b3e30": {
+        "git_blob": "a389ae6f619d28d5a2a18745fd2eb73531208f5d",
+        "git_bytes_sha256": "6ba0bd35cece81760270e23de42cf14c030ac9450e6eac12c15123527a4ca2f6"
+      },
+      "observed_working_snapshots": {
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/03-current-contracts/source-before.json": {
+          "bytes": 16727,
+          "sha256": "c9c63ad961e70e66a3a480dc646586e0f27fa2bf61fc76b20689f876bef6e492"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/04-tkl-gates/source-before.json": {
+          "bytes": 16727,
+          "sha256": "c9c63ad961e70e66a3a480dc646586e0f27fa2bf61fc76b20689f876bef6e492"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/05-collection/source-before.json": {
+          "bytes": 16727,
+          "sha256": "c9c63ad961e70e66a3a480dc646586e0f27fa2bf61fc76b20689f876bef6e492"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/06-full/source-before.json": {
+          "bytes": 16727,
+          "sha256": "c9c63ad961e70e66a3a480dc646586e0f27fa2bf61fc76b20689f876bef6e492"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/07-collection/source-before.json": {
+          "bytes": 16727,
+          "sha256": "c9c63ad961e70e66a3a480dc646586e0f27fa2bf61fc76b20689f876bef6e492"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/08-full/source-before.json": {
+          "bytes": 16727,
+          "sha256": "c9c63ad961e70e66a3a480dc646586e0f27fa2bf61fc76b20689f876bef6e492"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/09-remaining-gates/source-before.json": {
+          "bytes": 16727,
+          "sha256": "c9c63ad961e70e66a3a480dc646586e0f27fa2bf61fc76b20689f876bef6e492"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/10-collection/source-before.json": {
+          "bytes": 16727,
+          "sha256": "c9c63ad961e70e66a3a480dc646586e0f27fa2bf61fc76b20689f876bef6e492"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/11-full/source-before.json": {
+          "bytes": 16727,
+          "sha256": "c9c63ad961e70e66a3a480dc646586e0f27fa2bf61fc76b20689f876bef6e492"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/12-collection/source-before.json": {
+          "bytes": 16727,
+          "sha256": "c9c63ad961e70e66a3a480dc646586e0f27fa2bf61fc76b20689f876bef6e492"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/13-full/source-before.json": {
+          "bytes": 16727,
+          "sha256": "c9c63ad961e70e66a3a480dc646586e0f27fa2bf61fc76b20689f876bef6e492"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/01-02-source-before-corrections.json": {
+          "bytes": 16358,
+          "sha256": "f8d505f9c483015d505758512387bac63a9905983d966f4e05b389d7ef0adbf3"
+        }
+      }
+    },
+    ".agents/workflows/tfw-resume.md": {
+      "ec91c56007c20cda79f740fec15c85e4af74d17c": {
+        "git_blob": "31f31594e0b2146c1df71132c4481a3b711ea508",
+        "git_bytes_sha256": "1ce3b2e1ee30f1f5be9cfd62af3cd400022a34ba106295978c426e26e46be5e3"
+      },
+      "27cdb701b91c5b45b9f54b3e98c9ad67635b3e30": {
+        "git_blob": "5bc68ab5d3f9de4a52b1bb06b671a50c60a2d044",
+        "git_bytes_sha256": "86e84db9dc66139579e80881b591f4e7f9fd970b56ec0b058f2b0576631e08fa"
+      },
+      "observed_working_snapshots": {
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/03-current-contracts/source-before.json": {
+          "bytes": 5740,
+          "sha256": "86e84db9dc66139579e80881b591f4e7f9fd970b56ec0b058f2b0576631e08fa"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/04-tkl-gates/source-before.json": {
+          "bytes": 5740,
+          "sha256": "86e84db9dc66139579e80881b591f4e7f9fd970b56ec0b058f2b0576631e08fa"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/05-collection/source-before.json": {
+          "bytes": 5740,
+          "sha256": "86e84db9dc66139579e80881b591f4e7f9fd970b56ec0b058f2b0576631e08fa"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/06-full/source-before.json": {
+          "bytes": 5740,
+          "sha256": "86e84db9dc66139579e80881b591f4e7f9fd970b56ec0b058f2b0576631e08fa"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/07-collection/source-before.json": {
+          "bytes": 5740,
+          "sha256": "86e84db9dc66139579e80881b591f4e7f9fd970b56ec0b058f2b0576631e08fa"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/08-full/source-before.json": {
+          "bytes": 5740,
+          "sha256": "86e84db9dc66139579e80881b591f4e7f9fd970b56ec0b058f2b0576631e08fa"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/09-remaining-gates/source-before.json": {
+          "bytes": 5740,
+          "sha256": "86e84db9dc66139579e80881b591f4e7f9fd970b56ec0b058f2b0576631e08fa"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/10-collection/source-before.json": {
+          "bytes": 5740,
+          "sha256": "86e84db9dc66139579e80881b591f4e7f9fd970b56ec0b058f2b0576631e08fa"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/11-full/source-before.json": {
+          "bytes": 5740,
+          "sha256": "86e84db9dc66139579e80881b591f4e7f9fd970b56ec0b058f2b0576631e08fa"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/12-collection/source-before.json": {
+          "bytes": 5740,
+          "sha256": "86e84db9dc66139579e80881b591f4e7f9fd970b56ec0b058f2b0576631e08fa"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/13-full/source-before.json": {
+          "bytes": 5740,
+          "sha256": "86e84db9dc66139579e80881b591f4e7f9fd970b56ec0b058f2b0576631e08fa"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/01-02-source-before-corrections.json": {
+          "bytes": 5740,
+          "sha256": "86e84db9dc66139579e80881b591f4e7f9fd970b56ec0b058f2b0576631e08fa"
+        }
+      }
+    },
+    ".claude/commands/tfw-resume.md": {
+      "ec91c56007c20cda79f740fec15c85e4af74d17c": {
+        "git_blob": "31f31594e0b2146c1df71132c4481a3b711ea508",
+        "git_bytes_sha256": "1ce3b2e1ee30f1f5be9cfd62af3cd400022a34ba106295978c426e26e46be5e3"
+      },
+      "27cdb701b91c5b45b9f54b3e98c9ad67635b3e30": {
+        "git_blob": "5bc68ab5d3f9de4a52b1bb06b671a50c60a2d044",
+        "git_bytes_sha256": "86e84db9dc66139579e80881b591f4e7f9fd970b56ec0b058f2b0576631e08fa"
+      },
+      "observed_working_snapshots": {
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/03-current-contracts/source-before.json": {
+          "bytes": 5740,
+          "sha256": "86e84db9dc66139579e80881b591f4e7f9fd970b56ec0b058f2b0576631e08fa"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/04-tkl-gates/source-before.json": {
+          "bytes": 5740,
+          "sha256": "86e84db9dc66139579e80881b591f4e7f9fd970b56ec0b058f2b0576631e08fa"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/05-collection/source-before.json": {
+          "bytes": 5740,
+          "sha256": "86e84db9dc66139579e80881b591f4e7f9fd970b56ec0b058f2b0576631e08fa"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/06-full/source-before.json": {
+          "bytes": 5740,
+          "sha256": "86e84db9dc66139579e80881b591f4e7f9fd970b56ec0b058f2b0576631e08fa"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/07-collection/source-before.json": {
+          "bytes": 5740,
+          "sha256": "86e84db9dc66139579e80881b591f4e7f9fd970b56ec0b058f2b0576631e08fa"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/08-full/source-before.json": {
+          "bytes": 5740,
+          "sha256": "86e84db9dc66139579e80881b591f4e7f9fd970b56ec0b058f2b0576631e08fa"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/09-remaining-gates/source-before.json": {
+          "bytes": 5740,
+          "sha256": "86e84db9dc66139579e80881b591f4e7f9fd970b56ec0b058f2b0576631e08fa"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/10-collection/source-before.json": {
+          "bytes": 5740,
+          "sha256": "86e84db9dc66139579e80881b591f4e7f9fd970b56ec0b058f2b0576631e08fa"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/11-full/source-before.json": {
+          "bytes": 5740,
+          "sha256": "86e84db9dc66139579e80881b591f4e7f9fd970b56ec0b058f2b0576631e08fa"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/12-collection/source-before.json": {
+          "bytes": 5740,
+          "sha256": "86e84db9dc66139579e80881b591f4e7f9fd970b56ec0b058f2b0576631e08fa"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/13-full/source-before.json": {
+          "bytes": 5740,
+          "sha256": "86e84db9dc66139579e80881b591f4e7f9fd970b56ec0b058f2b0576631e08fa"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/01-02-source-before-corrections.json": {
+          "bytes": 5740,
+          "sha256": "86e84db9dc66139579e80881b591f4e7f9fd970b56ec0b058f2b0576631e08fa"
+        }
+      }
+    },
+    ".agents/workflows/tfw-docs.md": {
+      "ec91c56007c20cda79f740fec15c85e4af74d17c": {
+        "git_blob": "367befc86f16fe3a255663c3b174ef887e0e2903",
+        "git_bytes_sha256": "c3d72162e7084fcdda327b456edcc8a4cd50a0af50dcc578597e2519a75475b6"
+      },
+      "27cdb701b91c5b45b9f54b3e98c9ad67635b3e30": {
+        "git_blob": "26b80dbb58c2f1406afef90ea5639f9dced246b7",
+        "git_bytes_sha256": "46fb7316afdb4c8ceb7e7c5986332781f44d678fbd224baa4846a4e38c133271"
+      },
+      "observed_working_snapshots": {
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/03-current-contracts/source-before.json": {
+          "bytes": 4992,
+          "sha256": "3863e69a77371a084156dd295e38dd0b3f9788f4ddd632961e99808da464e176"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/04-tkl-gates/source-before.json": {
+          "bytes": 4992,
+          "sha256": "3863e69a77371a084156dd295e38dd0b3f9788f4ddd632961e99808da464e176"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/05-collection/source-before.json": {
+          "bytes": 4992,
+          "sha256": "3863e69a77371a084156dd295e38dd0b3f9788f4ddd632961e99808da464e176"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/06-full/source-before.json": {
+          "bytes": 4992,
+          "sha256": "3863e69a77371a084156dd295e38dd0b3f9788f4ddd632961e99808da464e176"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/07-collection/source-before.json": {
+          "bytes": 4992,
+          "sha256": "3863e69a77371a084156dd295e38dd0b3f9788f4ddd632961e99808da464e176"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/08-full/source-before.json": {
+          "bytes": 4992,
+          "sha256": "3863e69a77371a084156dd295e38dd0b3f9788f4ddd632961e99808da464e176"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/09-remaining-gates/source-before.json": {
+          "bytes": 4992,
+          "sha256": "3863e69a77371a084156dd295e38dd0b3f9788f4ddd632961e99808da464e176"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/10-collection/source-before.json": {
+          "bytes": 4992,
+          "sha256": "3863e69a77371a084156dd295e38dd0b3f9788f4ddd632961e99808da464e176"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/11-full/source-before.json": {
+          "bytes": 4992,
+          "sha256": "3863e69a77371a084156dd295e38dd0b3f9788f4ddd632961e99808da464e176"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/12-collection/source-before.json": {
+          "bytes": 4992,
+          "sha256": "3863e69a77371a084156dd295e38dd0b3f9788f4ddd632961e99808da464e176"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/13-full/source-before.json": {
+          "bytes": 4992,
+          "sha256": "3863e69a77371a084156dd295e38dd0b3f9788f4ddd632961e99808da464e176"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/01-02-source-before-corrections.json": {
+          "bytes": 4867,
+          "sha256": "5b84619a0341a77fd0ffc91315a08968de90f29ae7d5af9609f989fcaf2baca3"
+        }
+      }
+    },
+    ".claude/commands/tfw-docs.md": {
+      "ec91c56007c20cda79f740fec15c85e4af74d17c": {
+        "git_blob": "367befc86f16fe3a255663c3b174ef887e0e2903",
+        "git_bytes_sha256": "c3d72162e7084fcdda327b456edcc8a4cd50a0af50dcc578597e2519a75475b6"
+      },
+      "27cdb701b91c5b45b9f54b3e98c9ad67635b3e30": {
+        "git_blob": "26b80dbb58c2f1406afef90ea5639f9dced246b7",
+        "git_bytes_sha256": "46fb7316afdb4c8ceb7e7c5986332781f44d678fbd224baa4846a4e38c133271"
+      },
+      "observed_working_snapshots": {
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/03-current-contracts/source-before.json": {
+          "bytes": 4992,
+          "sha256": "3863e69a77371a084156dd295e38dd0b3f9788f4ddd632961e99808da464e176"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/04-tkl-gates/source-before.json": {
+          "bytes": 4992,
+          "sha256": "3863e69a77371a084156dd295e38dd0b3f9788f4ddd632961e99808da464e176"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/05-collection/source-before.json": {
+          "bytes": 4992,
+          "sha256": "3863e69a77371a084156dd295e38dd0b3f9788f4ddd632961e99808da464e176"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/06-full/source-before.json": {
+          "bytes": 4992,
+          "sha256": "3863e69a77371a084156dd295e38dd0b3f9788f4ddd632961e99808da464e176"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/07-collection/source-before.json": {
+          "bytes": 4992,
+          "sha256": "3863e69a77371a084156dd295e38dd0b3f9788f4ddd632961e99808da464e176"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/08-full/source-before.json": {
+          "bytes": 4992,
+          "sha256": "3863e69a77371a084156dd295e38dd0b3f9788f4ddd632961e99808da464e176"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/09-remaining-gates/source-before.json": {
+          "bytes": 4992,
+          "sha256": "3863e69a77371a084156dd295e38dd0b3f9788f4ddd632961e99808da464e176"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/10-collection/source-before.json": {
+          "bytes": 4992,
+          "sha256": "3863e69a77371a084156dd295e38dd0b3f9788f4ddd632961e99808da464e176"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/11-full/source-before.json": {
+          "bytes": 4992,
+          "sha256": "3863e69a77371a084156dd295e38dd0b3f9788f4ddd632961e99808da464e176"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/12-collection/source-before.json": {
+          "bytes": 4992,
+          "sha256": "3863e69a77371a084156dd295e38dd0b3f9788f4ddd632961e99808da464e176"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/13-full/source-before.json": {
+          "bytes": 4992,
+          "sha256": "3863e69a77371a084156dd295e38dd0b3f9788f4ddd632961e99808da464e176"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/01-02-source-before-corrections.json": {
+          "bytes": 4867,
+          "sha256": "5b84619a0341a77fd0ffc91315a08968de90f29ae7d5af9609f989fcaf2baca3"
+        }
+      }
+    },
+    ".agents/workflows/tfw-knowledge.md": {
+      "ec91c56007c20cda79f740fec15c85e4af74d17c": {
+        "git_blob": "b3910e0823d59eefba14d7178ed921c3da8b8f85",
+        "git_bytes_sha256": "119a419db124e45fded4722b38d46ac5f7aa46cf928431df0585421336b608ef"
+      },
+      "27cdb701b91c5b45b9f54b3e98c9ad67635b3e30": {
+        "git_blob": "48b6a1547ddd4cee3291240b10939375bd16763e",
+        "git_bytes_sha256": "8fc4ebd2a220155967a460465ac1a49f80273562bd6e0a9d5db09c3d2757d61c"
+      },
+      "observed_working_snapshots": {
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/03-current-contracts/source-before.json": {
+          "bytes": 7106,
+          "sha256": "1701035491afd0eb2558f9c0d818b5295bee247eb9443d1f394fc00ec09f0520"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/04-tkl-gates/source-before.json": {
+          "bytes": 7106,
+          "sha256": "1701035491afd0eb2558f9c0d818b5295bee247eb9443d1f394fc00ec09f0520"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/05-collection/source-before.json": {
+          "bytes": 7106,
+          "sha256": "1701035491afd0eb2558f9c0d818b5295bee247eb9443d1f394fc00ec09f0520"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/06-full/source-before.json": {
+          "bytes": 7106,
+          "sha256": "1701035491afd0eb2558f9c0d818b5295bee247eb9443d1f394fc00ec09f0520"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/07-collection/source-before.json": {
+          "bytes": 7106,
+          "sha256": "1701035491afd0eb2558f9c0d818b5295bee247eb9443d1f394fc00ec09f0520"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/08-full/source-before.json": {
+          "bytes": 7106,
+          "sha256": "1701035491afd0eb2558f9c0d818b5295bee247eb9443d1f394fc00ec09f0520"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/09-remaining-gates/source-before.json": {
+          "bytes": 7106,
+          "sha256": "1701035491afd0eb2558f9c0d818b5295bee247eb9443d1f394fc00ec09f0520"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/10-collection/source-before.json": {
+          "bytes": 7106,
+          "sha256": "1701035491afd0eb2558f9c0d818b5295bee247eb9443d1f394fc00ec09f0520"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/11-full/source-before.json": {
+          "bytes": 7106,
+          "sha256": "1701035491afd0eb2558f9c0d818b5295bee247eb9443d1f394fc00ec09f0520"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/12-collection/source-before.json": {
+          "bytes": 7106,
+          "sha256": "1701035491afd0eb2558f9c0d818b5295bee247eb9443d1f394fc00ec09f0520"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/13-full/source-before.json": {
+          "bytes": 7106,
+          "sha256": "1701035491afd0eb2558f9c0d818b5295bee247eb9443d1f394fc00ec09f0520"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/01-02-source-before-corrections.json": {
+          "bytes": 7025,
+          "sha256": "55ab9b189434b0080b3fa3e9507a352b22ca974ccc1c05a5879e73906c9584f5"
+        }
+      }
+    },
+    ".claude/commands/tfw-knowledge.md": {
+      "ec91c56007c20cda79f740fec15c85e4af74d17c": {
+        "git_blob": "b3910e0823d59eefba14d7178ed921c3da8b8f85",
+        "git_bytes_sha256": "119a419db124e45fded4722b38d46ac5f7aa46cf928431df0585421336b608ef"
+      },
+      "27cdb701b91c5b45b9f54b3e98c9ad67635b3e30": {
+        "git_blob": "48b6a1547ddd4cee3291240b10939375bd16763e",
+        "git_bytes_sha256": "8fc4ebd2a220155967a460465ac1a49f80273562bd6e0a9d5db09c3d2757d61c"
+      },
+      "observed_working_snapshots": {
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/03-current-contracts/source-before.json": {
+          "bytes": 7106,
+          "sha256": "1701035491afd0eb2558f9c0d818b5295bee247eb9443d1f394fc00ec09f0520"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/04-tkl-gates/source-before.json": {
+          "bytes": 7106,
+          "sha256": "1701035491afd0eb2558f9c0d818b5295bee247eb9443d1f394fc00ec09f0520"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/05-collection/source-before.json": {
+          "bytes": 7106,
+          "sha256": "1701035491afd0eb2558f9c0d818b5295bee247eb9443d1f394fc00ec09f0520"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/06-full/source-before.json": {
+          "bytes": 7106,
+          "sha256": "1701035491afd0eb2558f9c0d818b5295bee247eb9443d1f394fc00ec09f0520"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/07-collection/source-before.json": {
+          "bytes": 7106,
+          "sha256": "1701035491afd0eb2558f9c0d818b5295bee247eb9443d1f394fc00ec09f0520"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/08-full/source-before.json": {
+          "bytes": 7106,
+          "sha256": "1701035491afd0eb2558f9c0d818b5295bee247eb9443d1f394fc00ec09f0520"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/09-remaining-gates/source-before.json": {
+          "bytes": 7106,
+          "sha256": "1701035491afd0eb2558f9c0d818b5295bee247eb9443d1f394fc00ec09f0520"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/10-collection/source-before.json": {
+          "bytes": 7106,
+          "sha256": "1701035491afd0eb2558f9c0d818b5295bee247eb9443d1f394fc00ec09f0520"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/11-full/source-before.json": {
+          "bytes": 7106,
+          "sha256": "1701035491afd0eb2558f9c0d818b5295bee247eb9443d1f394fc00ec09f0520"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/12-collection/source-before.json": {
+          "bytes": 7106,
+          "sha256": "1701035491afd0eb2558f9c0d818b5295bee247eb9443d1f394fc00ec09f0520"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/13-full/source-before.json": {
+          "bytes": 7106,
+          "sha256": "1701035491afd0eb2558f9c0d818b5295bee247eb9443d1f394fc00ec09f0520"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/01-02-source-before-corrections.json": {
+          "bytes": 7025,
+          "sha256": "55ab9b189434b0080b3fa3e9507a352b22ca974ccc1c05a5879e73906c9584f5"
+        }
+      }
+    },
+    ".agents/workflows/tfw-init.md": {
+      "ec91c56007c20cda79f740fec15c85e4af74d17c": {
+        "git_blob": "80f541614311aa006e630d951df50c570f58b451",
+        "git_bytes_sha256": "7ec919af5ec2c905f81d9b697bdfca41bc531d09d72dd37e3259e2852c134ef4"
+      },
+      "27cdb701b91c5b45b9f54b3e98c9ad67635b3e30": {
+        "git_blob": "bedc73b1fa13eb698ac3c7b3d6325ef4c66a9113",
+        "git_bytes_sha256": "6fcbad17fb5a7bc52f5fcb36edf8f2fd5802a593dfa7cd02c9fa874f38a1e2cc"
+      },
+      "observed_working_snapshots": {
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/03-current-contracts/source-before.json": {
+          "bytes": 8677,
+          "sha256": "6fcbad17fb5a7bc52f5fcb36edf8f2fd5802a593dfa7cd02c9fa874f38a1e2cc"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/04-tkl-gates/source-before.json": {
+          "bytes": 8677,
+          "sha256": "6fcbad17fb5a7bc52f5fcb36edf8f2fd5802a593dfa7cd02c9fa874f38a1e2cc"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/05-collection/source-before.json": {
+          "bytes": 8677,
+          "sha256": "6fcbad17fb5a7bc52f5fcb36edf8f2fd5802a593dfa7cd02c9fa874f38a1e2cc"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/06-full/source-before.json": {
+          "bytes": 8677,
+          "sha256": "6fcbad17fb5a7bc52f5fcb36edf8f2fd5802a593dfa7cd02c9fa874f38a1e2cc"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/07-collection/source-before.json": {
+          "bytes": 8677,
+          "sha256": "6fcbad17fb5a7bc52f5fcb36edf8f2fd5802a593dfa7cd02c9fa874f38a1e2cc"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/08-full/source-before.json": {
+          "bytes": 8677,
+          "sha256": "6fcbad17fb5a7bc52f5fcb36edf8f2fd5802a593dfa7cd02c9fa874f38a1e2cc"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/09-remaining-gates/source-before.json": {
+          "bytes": 8677,
+          "sha256": "6fcbad17fb5a7bc52f5fcb36edf8f2fd5802a593dfa7cd02c9fa874f38a1e2cc"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/10-collection/source-before.json": {
+          "bytes": 8677,
+          "sha256": "6fcbad17fb5a7bc52f5fcb36edf8f2fd5802a593dfa7cd02c9fa874f38a1e2cc"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/11-full/source-before.json": {
+          "bytes": 8677,
+          "sha256": "6fcbad17fb5a7bc52f5fcb36edf8f2fd5802a593dfa7cd02c9fa874f38a1e2cc"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/12-collection/source-before.json": {
+          "bytes": 8677,
+          "sha256": "6fcbad17fb5a7bc52f5fcb36edf8f2fd5802a593dfa7cd02c9fa874f38a1e2cc"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/13-full/source-before.json": {
+          "bytes": 8677,
+          "sha256": "6fcbad17fb5a7bc52f5fcb36edf8f2fd5802a593dfa7cd02c9fa874f38a1e2cc"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/01-02-source-before-corrections.json": {
+          "bytes": 8677,
+          "sha256": "6fcbad17fb5a7bc52f5fcb36edf8f2fd5802a593dfa7cd02c9fa874f38a1e2cc"
+        }
+      }
+    },
+    ".claude/commands/tfw-init.md": {
+      "ec91c56007c20cda79f740fec15c85e4af74d17c": {
+        "git_blob": "80f541614311aa006e630d951df50c570f58b451",
+        "git_bytes_sha256": "7ec919af5ec2c905f81d9b697bdfca41bc531d09d72dd37e3259e2852c134ef4"
+      },
+      "27cdb701b91c5b45b9f54b3e98c9ad67635b3e30": {
+        "git_blob": "bedc73b1fa13eb698ac3c7b3d6325ef4c66a9113",
+        "git_bytes_sha256": "6fcbad17fb5a7bc52f5fcb36edf8f2fd5802a593dfa7cd02c9fa874f38a1e2cc"
+      },
+      "observed_working_snapshots": {
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/03-current-contracts/source-before.json": {
+          "bytes": 8677,
+          "sha256": "6fcbad17fb5a7bc52f5fcb36edf8f2fd5802a593dfa7cd02c9fa874f38a1e2cc"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/04-tkl-gates/source-before.json": {
+          "bytes": 8677,
+          "sha256": "6fcbad17fb5a7bc52f5fcb36edf8f2fd5802a593dfa7cd02c9fa874f38a1e2cc"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/05-collection/source-before.json": {
+          "bytes": 8677,
+          "sha256": "6fcbad17fb5a7bc52f5fcb36edf8f2fd5802a593dfa7cd02c9fa874f38a1e2cc"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/06-full/source-before.json": {
+          "bytes": 8677,
+          "sha256": "6fcbad17fb5a7bc52f5fcb36edf8f2fd5802a593dfa7cd02c9fa874f38a1e2cc"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/07-collection/source-before.json": {
+          "bytes": 8677,
+          "sha256": "6fcbad17fb5a7bc52f5fcb36edf8f2fd5802a593dfa7cd02c9fa874f38a1e2cc"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/08-full/source-before.json": {
+          "bytes": 8677,
+          "sha256": "6fcbad17fb5a7bc52f5fcb36edf8f2fd5802a593dfa7cd02c9fa874f38a1e2cc"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/09-remaining-gates/source-before.json": {
+          "bytes": 8677,
+          "sha256": "6fcbad17fb5a7bc52f5fcb36edf8f2fd5802a593dfa7cd02c9fa874f38a1e2cc"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/10-collection/source-before.json": {
+          "bytes": 8677,
+          "sha256": "6fcbad17fb5a7bc52f5fcb36edf8f2fd5802a593dfa7cd02c9fa874f38a1e2cc"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/11-full/source-before.json": {
+          "bytes": 8677,
+          "sha256": "6fcbad17fb5a7bc52f5fcb36edf8f2fd5802a593dfa7cd02c9fa874f38a1e2cc"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/12-collection/source-before.json": {
+          "bytes": 8677,
+          "sha256": "6fcbad17fb5a7bc52f5fcb36edf8f2fd5802a593dfa7cd02c9fa874f38a1e2cc"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/13-full/source-before.json": {
+          "bytes": 8677,
+          "sha256": "6fcbad17fb5a7bc52f5fcb36edf8f2fd5802a593dfa7cd02c9fa874f38a1e2cc"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/01-02-source-before-corrections.json": {
+          "bytes": 8677,
+          "sha256": "6fcbad17fb5a7bc52f5fcb36edf8f2fd5802a593dfa7cd02c9fa874f38a1e2cc"
+        }
+      }
+    },
+    ".agents/workflows/tfw-update.md": {
+      "ec91c56007c20cda79f740fec15c85e4af74d17c": {
+        "git_blob": "fc081bdef381bd96556ed26afa3b00e6d4235eec",
+        "git_bytes_sha256": "677f98c2ba61dcec1f59a5847ec12c782bf85132437194d291dcab3061707b1d"
+      },
+      "27cdb701b91c5b45b9f54b3e98c9ad67635b3e30": {
+        "git_blob": "a4187ba20b1ad36576a552fd3cb85730769eddb4",
+        "git_bytes_sha256": "4df00bea1d0eb8e229e830e974b9de5c72e2c9bd41bc808cdb0d348a6ea1379a"
+      },
+      "observed_working_snapshots": {
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/03-current-contracts/source-before.json": {
+          "bytes": 18922,
+          "sha256": "4df00bea1d0eb8e229e830e974b9de5c72e2c9bd41bc808cdb0d348a6ea1379a"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/04-tkl-gates/source-before.json": {
+          "bytes": 18922,
+          "sha256": "4df00bea1d0eb8e229e830e974b9de5c72e2c9bd41bc808cdb0d348a6ea1379a"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/05-collection/source-before.json": {
+          "bytes": 18922,
+          "sha256": "4df00bea1d0eb8e229e830e974b9de5c72e2c9bd41bc808cdb0d348a6ea1379a"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/06-full/source-before.json": {
+          "bytes": 18922,
+          "sha256": "4df00bea1d0eb8e229e830e974b9de5c72e2c9bd41bc808cdb0d348a6ea1379a"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/07-collection/source-before.json": {
+          "bytes": 18922,
+          "sha256": "4df00bea1d0eb8e229e830e974b9de5c72e2c9bd41bc808cdb0d348a6ea1379a"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/08-full/source-before.json": {
+          "bytes": 18922,
+          "sha256": "4df00bea1d0eb8e229e830e974b9de5c72e2c9bd41bc808cdb0d348a6ea1379a"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/09-remaining-gates/source-before.json": {
+          "bytes": 18922,
+          "sha256": "4df00bea1d0eb8e229e830e974b9de5c72e2c9bd41bc808cdb0d348a6ea1379a"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/10-collection/source-before.json": {
+          "bytes": 18922,
+          "sha256": "4df00bea1d0eb8e229e830e974b9de5c72e2c9bd41bc808cdb0d348a6ea1379a"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/11-full/source-before.json": {
+          "bytes": 18922,
+          "sha256": "4df00bea1d0eb8e229e830e974b9de5c72e2c9bd41bc808cdb0d348a6ea1379a"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/12-collection/source-before.json": {
+          "bytes": 18922,
+          "sha256": "4df00bea1d0eb8e229e830e974b9de5c72e2c9bd41bc808cdb0d348a6ea1379a"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/13-full/source-before.json": {
+          "bytes": 18922,
+          "sha256": "4df00bea1d0eb8e229e830e974b9de5c72e2c9bd41bc808cdb0d348a6ea1379a"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/01-02-source-before-corrections.json": {
+          "bytes": 18922,
+          "sha256": "4df00bea1d0eb8e229e830e974b9de5c72e2c9bd41bc808cdb0d348a6ea1379a"
+        }
+      }
+    },
+    ".claude/commands/tfw-update.md": {
+      "ec91c56007c20cda79f740fec15c85e4af74d17c": {
+        "git_blob": "fc081bdef381bd96556ed26afa3b00e6d4235eec",
+        "git_bytes_sha256": "677f98c2ba61dcec1f59a5847ec12c782bf85132437194d291dcab3061707b1d"
+      },
+      "27cdb701b91c5b45b9f54b3e98c9ad67635b3e30": {
+        "git_blob": "a4187ba20b1ad36576a552fd3cb85730769eddb4",
+        "git_bytes_sha256": "4df00bea1d0eb8e229e830e974b9de5c72e2c9bd41bc808cdb0d348a6ea1379a"
+      },
+      "observed_working_snapshots": {
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/03-current-contracts/source-before.json": {
+          "bytes": 18922,
+          "sha256": "4df00bea1d0eb8e229e830e974b9de5c72e2c9bd41bc808cdb0d348a6ea1379a"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/04-tkl-gates/source-before.json": {
+          "bytes": 18922,
+          "sha256": "4df00bea1d0eb8e229e830e974b9de5c72e2c9bd41bc808cdb0d348a6ea1379a"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/05-collection/source-before.json": {
+          "bytes": 18922,
+          "sha256": "4df00bea1d0eb8e229e830e974b9de5c72e2c9bd41bc808cdb0d348a6ea1379a"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/06-full/source-before.json": {
+          "bytes": 18922,
+          "sha256": "4df00bea1d0eb8e229e830e974b9de5c72e2c9bd41bc808cdb0d348a6ea1379a"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/07-collection/source-before.json": {
+          "bytes": 18922,
+          "sha256": "4df00bea1d0eb8e229e830e974b9de5c72e2c9bd41bc808cdb0d348a6ea1379a"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/08-full/source-before.json": {
+          "bytes": 18922,
+          "sha256": "4df00bea1d0eb8e229e830e974b9de5c72e2c9bd41bc808cdb0d348a6ea1379a"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/09-remaining-gates/source-before.json": {
+          "bytes": 18922,
+          "sha256": "4df00bea1d0eb8e229e830e974b9de5c72e2c9bd41bc808cdb0d348a6ea1379a"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/10-collection/source-before.json": {
+          "bytes": 18922,
+          "sha256": "4df00bea1d0eb8e229e830e974b9de5c72e2c9bd41bc808cdb0d348a6ea1379a"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/11-full/source-before.json": {
+          "bytes": 18922,
+          "sha256": "4df00bea1d0eb8e229e830e974b9de5c72e2c9bd41bc808cdb0d348a6ea1379a"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/12-collection/source-before.json": {
+          "bytes": 18922,
+          "sha256": "4df00bea1d0eb8e229e830e974b9de5c72e2c9bd41bc808cdb0d348a6ea1379a"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/13-full/source-before.json": {
+          "bytes": 18922,
+          "sha256": "4df00bea1d0eb8e229e830e974b9de5c72e2c9bd41bc808cdb0d348a6ea1379a"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/01-02-source-before-corrections.json": {
+          "bytes": 18922,
+          "sha256": "4df00bea1d0eb8e229e830e974b9de5c72e2c9bd41bc808cdb0d348a6ea1379a"
+        }
+      }
+    },
+    ".agents/workflows/tfw-config.md": {
+      "ec91c56007c20cda79f740fec15c85e4af74d17c": {
+        "git_blob": "c9d2f65c9022e6261c73c462caf4df36eedd9c6a",
+        "git_bytes_sha256": "8f0b9e9b499ea90f91b8bb5643f4848c024ede83c7a289dea0260de2d5daece6"
+      },
+      "27cdb701b91c5b45b9f54b3e98c9ad67635b3e30": {
+        "git_blob": "1ff72982150befcc100cf9dba575e284fbcb51fe",
+        "git_bytes_sha256": "5aa4d56d0ad801c499aeac2d20a9a41b5dd66c0f027dea300b5d3a008879b190"
+      },
+      "observed_working_snapshots": {
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/03-current-contracts/source-before.json": {
+          "bytes": 5149,
+          "sha256": "5aa4d56d0ad801c499aeac2d20a9a41b5dd66c0f027dea300b5d3a008879b190"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/04-tkl-gates/source-before.json": {
+          "bytes": 5149,
+          "sha256": "5aa4d56d0ad801c499aeac2d20a9a41b5dd66c0f027dea300b5d3a008879b190"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/05-collection/source-before.json": {
+          "bytes": 5149,
+          "sha256": "5aa4d56d0ad801c499aeac2d20a9a41b5dd66c0f027dea300b5d3a008879b190"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/06-full/source-before.json": {
+          "bytes": 5149,
+          "sha256": "5aa4d56d0ad801c499aeac2d20a9a41b5dd66c0f027dea300b5d3a008879b190"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/07-collection/source-before.json": {
+          "bytes": 5149,
+          "sha256": "5aa4d56d0ad801c499aeac2d20a9a41b5dd66c0f027dea300b5d3a008879b190"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/08-full/source-before.json": {
+          "bytes": 5149,
+          "sha256": "5aa4d56d0ad801c499aeac2d20a9a41b5dd66c0f027dea300b5d3a008879b190"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/09-remaining-gates/source-before.json": {
+          "bytes": 5149,
+          "sha256": "5aa4d56d0ad801c499aeac2d20a9a41b5dd66c0f027dea300b5d3a008879b190"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/10-collection/source-before.json": {
+          "bytes": 5149,
+          "sha256": "5aa4d56d0ad801c499aeac2d20a9a41b5dd66c0f027dea300b5d3a008879b190"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/11-full/source-before.json": {
+          "bytes": 5149,
+          "sha256": "5aa4d56d0ad801c499aeac2d20a9a41b5dd66c0f027dea300b5d3a008879b190"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/12-collection/source-before.json": {
+          "bytes": 5149,
+          "sha256": "5aa4d56d0ad801c499aeac2d20a9a41b5dd66c0f027dea300b5d3a008879b190"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/13-full/source-before.json": {
+          "bytes": 5149,
+          "sha256": "5aa4d56d0ad801c499aeac2d20a9a41b5dd66c0f027dea300b5d3a008879b190"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/01-02-source-before-corrections.json": {
+          "bytes": 5149,
+          "sha256": "5aa4d56d0ad801c499aeac2d20a9a41b5dd66c0f027dea300b5d3a008879b190"
+        }
+      }
+    },
+    ".claude/commands/tfw-config.md": {
+      "ec91c56007c20cda79f740fec15c85e4af74d17c": {
+        "git_blob": "c9d2f65c9022e6261c73c462caf4df36eedd9c6a",
+        "git_bytes_sha256": "8f0b9e9b499ea90f91b8bb5643f4848c024ede83c7a289dea0260de2d5daece6"
+      },
+      "27cdb701b91c5b45b9f54b3e98c9ad67635b3e30": {
+        "git_blob": "1ff72982150befcc100cf9dba575e284fbcb51fe",
+        "git_bytes_sha256": "5aa4d56d0ad801c499aeac2d20a9a41b5dd66c0f027dea300b5d3a008879b190"
+      },
+      "observed_working_snapshots": {
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/03-current-contracts/source-before.json": {
+          "bytes": 5149,
+          "sha256": "5aa4d56d0ad801c499aeac2d20a9a41b5dd66c0f027dea300b5d3a008879b190"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/04-tkl-gates/source-before.json": {
+          "bytes": 5149,
+          "sha256": "5aa4d56d0ad801c499aeac2d20a9a41b5dd66c0f027dea300b5d3a008879b190"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/05-collection/source-before.json": {
+          "bytes": 5149,
+          "sha256": "5aa4d56d0ad801c499aeac2d20a9a41b5dd66c0f027dea300b5d3a008879b190"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/06-full/source-before.json": {
+          "bytes": 5149,
+          "sha256": "5aa4d56d0ad801c499aeac2d20a9a41b5dd66c0f027dea300b5d3a008879b190"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/07-collection/source-before.json": {
+          "bytes": 5149,
+          "sha256": "5aa4d56d0ad801c499aeac2d20a9a41b5dd66c0f027dea300b5d3a008879b190"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/08-full/source-before.json": {
+          "bytes": 5149,
+          "sha256": "5aa4d56d0ad801c499aeac2d20a9a41b5dd66c0f027dea300b5d3a008879b190"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/09-remaining-gates/source-before.json": {
+          "bytes": 5149,
+          "sha256": "5aa4d56d0ad801c499aeac2d20a9a41b5dd66c0f027dea300b5d3a008879b190"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/10-collection/source-before.json": {
+          "bytes": 5149,
+          "sha256": "5aa4d56d0ad801c499aeac2d20a9a41b5dd66c0f027dea300b5d3a008879b190"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/11-full/source-before.json": {
+          "bytes": 5149,
+          "sha256": "5aa4d56d0ad801c499aeac2d20a9a41b5dd66c0f027dea300b5d3a008879b190"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/12-collection/source-before.json": {
+          "bytes": 5149,
+          "sha256": "5aa4d56d0ad801c499aeac2d20a9a41b5dd66c0f027dea300b5d3a008879b190"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/13-full/source-before.json": {
+          "bytes": 5149,
+          "sha256": "5aa4d56d0ad801c499aeac2d20a9a41b5dd66c0f027dea300b5d3a008879b190"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/01-02-source-before-corrections.json": {
+          "bytes": 5149,
+          "sha256": "5aa4d56d0ad801c499aeac2d20a9a41b5dd66c0f027dea300b5d3a008879b190"
+        }
+      }
+    },
+    ".tfw/adapters/codex/skills/tfw-docs/SKILL.md": {
+      "ec91c56007c20cda79f740fec15c85e4af74d17c": {
+        "git_blob": "d6fb8ac69842dec34b77dc0391864dee34995004",
+        "git_bytes_sha256": "989d1cad59fd3309f60d761df8854a2bbf6251f12dd02239353f56a41e1079cf"
+      },
+      "27cdb701b91c5b45b9f54b3e98c9ad67635b3e30": {
+        "git_blob": "788f49cb721ca0c095ef757154f1b7c37d859214",
+        "git_bytes_sha256": "8fbe734b43a4acf2e8b1b61a623a497322a11b2c6c35b2a16abedb26e2e566f5"
+      },
+      "observed_working_snapshots": {
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/03-current-contracts/source-before.json": {
+          "bytes": 992,
+          "sha256": "8fbe734b43a4acf2e8b1b61a623a497322a11b2c6c35b2a16abedb26e2e566f5"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/04-tkl-gates/source-before.json": {
+          "bytes": 992,
+          "sha256": "8fbe734b43a4acf2e8b1b61a623a497322a11b2c6c35b2a16abedb26e2e566f5"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/05-collection/source-before.json": {
+          "bytes": 992,
+          "sha256": "8fbe734b43a4acf2e8b1b61a623a497322a11b2c6c35b2a16abedb26e2e566f5"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/06-full/source-before.json": {
+          "bytes": 992,
+          "sha256": "8fbe734b43a4acf2e8b1b61a623a497322a11b2c6c35b2a16abedb26e2e566f5"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/07-collection/source-before.json": {
+          "bytes": 992,
+          "sha256": "8fbe734b43a4acf2e8b1b61a623a497322a11b2c6c35b2a16abedb26e2e566f5"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/08-full/source-before.json": {
+          "bytes": 992,
+          "sha256": "8fbe734b43a4acf2e8b1b61a623a497322a11b2c6c35b2a16abedb26e2e566f5"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/09-remaining-gates/source-before.json": {
+          "bytes": 992,
+          "sha256": "8fbe734b43a4acf2e8b1b61a623a497322a11b2c6c35b2a16abedb26e2e566f5"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/10-collection/source-before.json": {
+          "bytes": 992,
+          "sha256": "8fbe734b43a4acf2e8b1b61a623a497322a11b2c6c35b2a16abedb26e2e566f5"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/11-full/source-before.json": {
+          "bytes": 992,
+          "sha256": "8fbe734b43a4acf2e8b1b61a623a497322a11b2c6c35b2a16abedb26e2e566f5"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/12-collection/source-before.json": {
+          "bytes": 992,
+          "sha256": "8fbe734b43a4acf2e8b1b61a623a497322a11b2c6c35b2a16abedb26e2e566f5"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/13-full/source-before.json": {
+          "bytes": 992,
+          "sha256": "8fbe734b43a4acf2e8b1b61a623a497322a11b2c6c35b2a16abedb26e2e566f5"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/01-02-source-before-corrections.json": {
+          "bytes": 992,
+          "sha256": "8fbe734b43a4acf2e8b1b61a623a497322a11b2c6c35b2a16abedb26e2e566f5"
+        }
+      }
+    },
+    ".agents/skills/tfw-docs/SKILL.md": {
+      "ec91c56007c20cda79f740fec15c85e4af74d17c": {
+        "git_blob": "d6fb8ac69842dec34b77dc0391864dee34995004",
+        "git_bytes_sha256": "989d1cad59fd3309f60d761df8854a2bbf6251f12dd02239353f56a41e1079cf"
+      },
+      "27cdb701b91c5b45b9f54b3e98c9ad67635b3e30": {
+        "git_blob": "788f49cb721ca0c095ef757154f1b7c37d859214",
+        "git_bytes_sha256": "8fbe734b43a4acf2e8b1b61a623a497322a11b2c6c35b2a16abedb26e2e566f5"
+      },
+      "observed_working_snapshots": {
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/03-current-contracts/source-before.json": {
+          "bytes": 992,
+          "sha256": "8fbe734b43a4acf2e8b1b61a623a497322a11b2c6c35b2a16abedb26e2e566f5"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/04-tkl-gates/source-before.json": {
+          "bytes": 992,
+          "sha256": "8fbe734b43a4acf2e8b1b61a623a497322a11b2c6c35b2a16abedb26e2e566f5"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/05-collection/source-before.json": {
+          "bytes": 992,
+          "sha256": "8fbe734b43a4acf2e8b1b61a623a497322a11b2c6c35b2a16abedb26e2e566f5"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/06-full/source-before.json": {
+          "bytes": 992,
+          "sha256": "8fbe734b43a4acf2e8b1b61a623a497322a11b2c6c35b2a16abedb26e2e566f5"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/07-collection/source-before.json": {
+          "bytes": 992,
+          "sha256": "8fbe734b43a4acf2e8b1b61a623a497322a11b2c6c35b2a16abedb26e2e566f5"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/08-full/source-before.json": {
+          "bytes": 992,
+          "sha256": "8fbe734b43a4acf2e8b1b61a623a497322a11b2c6c35b2a16abedb26e2e566f5"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/09-remaining-gates/source-before.json": {
+          "bytes": 992,
+          "sha256": "8fbe734b43a4acf2e8b1b61a623a497322a11b2c6c35b2a16abedb26e2e566f5"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/10-collection/source-before.json": {
+          "bytes": 992,
+          "sha256": "8fbe734b43a4acf2e8b1b61a623a497322a11b2c6c35b2a16abedb26e2e566f5"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/11-full/source-before.json": {
+          "bytes": 992,
+          "sha256": "8fbe734b43a4acf2e8b1b61a623a497322a11b2c6c35b2a16abedb26e2e566f5"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/12-collection/source-before.json": {
+          "bytes": 992,
+          "sha256": "8fbe734b43a4acf2e8b1b61a623a497322a11b2c6c35b2a16abedb26e2e566f5"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/13-full/source-before.json": {
+          "bytes": 992,
+          "sha256": "8fbe734b43a4acf2e8b1b61a623a497322a11b2c6c35b2a16abedb26e2e566f5"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/01-02-source-before-corrections.json": {
+          "bytes": 992,
+          "sha256": "8fbe734b43a4acf2e8b1b61a623a497322a11b2c6c35b2a16abedb26e2e566f5"
+        }
+      }
+    },
+    ".tfw/adapters/codex/skills/tfw-knowledge/SKILL.md": {
+      "ec91c56007c20cda79f740fec15c85e4af74d17c": {
+        "git_blob": "db83c018241e6385adcfec5da1adcc1ff31fb2b8",
+        "git_bytes_sha256": "484e5ef9732f1a494ff6390669fc9099266fea20ca93bb173ba93215225172a8"
+      },
+      "27cdb701b91c5b45b9f54b3e98c9ad67635b3e30": {
+        "git_blob": "b6884efab82ca8118a633066dc2cccfae49d379d",
+        "git_bytes_sha256": "f5bea3e0deea8a8fa9b3d28b5979778fa869d62537d8c41d0ffe9b1a220f88b0"
+      },
+      "observed_working_snapshots": {
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/03-current-contracts/source-before.json": {
+          "bytes": 1264,
+          "sha256": "f5bea3e0deea8a8fa9b3d28b5979778fa869d62537d8c41d0ffe9b1a220f88b0"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/04-tkl-gates/source-before.json": {
+          "bytes": 1264,
+          "sha256": "f5bea3e0deea8a8fa9b3d28b5979778fa869d62537d8c41d0ffe9b1a220f88b0"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/05-collection/source-before.json": {
+          "bytes": 1264,
+          "sha256": "f5bea3e0deea8a8fa9b3d28b5979778fa869d62537d8c41d0ffe9b1a220f88b0"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/06-full/source-before.json": {
+          "bytes": 1264,
+          "sha256": "f5bea3e0deea8a8fa9b3d28b5979778fa869d62537d8c41d0ffe9b1a220f88b0"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/07-collection/source-before.json": {
+          "bytes": 1264,
+          "sha256": "f5bea3e0deea8a8fa9b3d28b5979778fa869d62537d8c41d0ffe9b1a220f88b0"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/08-full/source-before.json": {
+          "bytes": 1264,
+          "sha256": "f5bea3e0deea8a8fa9b3d28b5979778fa869d62537d8c41d0ffe9b1a220f88b0"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/09-remaining-gates/source-before.json": {
+          "bytes": 1264,
+          "sha256": "f5bea3e0deea8a8fa9b3d28b5979778fa869d62537d8c41d0ffe9b1a220f88b0"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/10-collection/source-before.json": {
+          "bytes": 1264,
+          "sha256": "f5bea3e0deea8a8fa9b3d28b5979778fa869d62537d8c41d0ffe9b1a220f88b0"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/11-full/source-before.json": {
+          "bytes": 1264,
+          "sha256": "f5bea3e0deea8a8fa9b3d28b5979778fa869d62537d8c41d0ffe9b1a220f88b0"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/12-collection/source-before.json": {
+          "bytes": 1264,
+          "sha256": "f5bea3e0deea8a8fa9b3d28b5979778fa869d62537d8c41d0ffe9b1a220f88b0"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/13-full/source-before.json": {
+          "bytes": 1264,
+          "sha256": "f5bea3e0deea8a8fa9b3d28b5979778fa869d62537d8c41d0ffe9b1a220f88b0"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/01-02-source-before-corrections.json": {
+          "bytes": 1264,
+          "sha256": "f5bea3e0deea8a8fa9b3d28b5979778fa869d62537d8c41d0ffe9b1a220f88b0"
+        }
+      }
+    },
+    ".agents/skills/tfw-knowledge/SKILL.md": {
+      "ec91c56007c20cda79f740fec15c85e4af74d17c": {
+        "git_blob": "db83c018241e6385adcfec5da1adcc1ff31fb2b8",
+        "git_bytes_sha256": "484e5ef9732f1a494ff6390669fc9099266fea20ca93bb173ba93215225172a8"
+      },
+      "27cdb701b91c5b45b9f54b3e98c9ad67635b3e30": {
+        "git_blob": "b6884efab82ca8118a633066dc2cccfae49d379d",
+        "git_bytes_sha256": "f5bea3e0deea8a8fa9b3d28b5979778fa869d62537d8c41d0ffe9b1a220f88b0"
+      },
+      "observed_working_snapshots": {
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/03-current-contracts/source-before.json": {
+          "bytes": 1264,
+          "sha256": "f5bea3e0deea8a8fa9b3d28b5979778fa869d62537d8c41d0ffe9b1a220f88b0"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/04-tkl-gates/source-before.json": {
+          "bytes": 1264,
+          "sha256": "f5bea3e0deea8a8fa9b3d28b5979778fa869d62537d8c41d0ffe9b1a220f88b0"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/05-collection/source-before.json": {
+          "bytes": 1264,
+          "sha256": "f5bea3e0deea8a8fa9b3d28b5979778fa869d62537d8c41d0ffe9b1a220f88b0"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/06-full/source-before.json": {
+          "bytes": 1264,
+          "sha256": "f5bea3e0deea8a8fa9b3d28b5979778fa869d62537d8c41d0ffe9b1a220f88b0"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/07-collection/source-before.json": {
+          "bytes": 1264,
+          "sha256": "f5bea3e0deea8a8fa9b3d28b5979778fa869d62537d8c41d0ffe9b1a220f88b0"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/08-full/source-before.json": {
+          "bytes": 1264,
+          "sha256": "f5bea3e0deea8a8fa9b3d28b5979778fa869d62537d8c41d0ffe9b1a220f88b0"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/09-remaining-gates/source-before.json": {
+          "bytes": 1264,
+          "sha256": "f5bea3e0deea8a8fa9b3d28b5979778fa869d62537d8c41d0ffe9b1a220f88b0"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/10-collection/source-before.json": {
+          "bytes": 1264,
+          "sha256": "f5bea3e0deea8a8fa9b3d28b5979778fa869d62537d8c41d0ffe9b1a220f88b0"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/11-full/source-before.json": {
+          "bytes": 1264,
+          "sha256": "f5bea3e0deea8a8fa9b3d28b5979778fa869d62537d8c41d0ffe9b1a220f88b0"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/12-collection/source-before.json": {
+          "bytes": 1264,
+          "sha256": "f5bea3e0deea8a8fa9b3d28b5979778fa869d62537d8c41d0ffe9b1a220f88b0"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/13-full/source-before.json": {
+          "bytes": 1264,
+          "sha256": "f5bea3e0deea8a8fa9b3d28b5979778fa869d62537d8c41d0ffe9b1a220f88b0"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/01-02-source-before-corrections.json": {
+          "bytes": 1264,
+          "sha256": "f5bea3e0deea8a8fa9b3d28b5979778fa869d62537d8c41d0ffe9b1a220f88b0"
+        }
+      }
+    },
+    ".tfw/migrations/knowledge-lifecycle.md": {
+      "ec91c56007c20cda79f740fec15c85e4af74d17c": {
+        "absent": true
+      },
+      "27cdb701b91c5b45b9f54b3e98c9ad67635b3e30": {
+        "git_blob": "03a5ba4e6cd08cd0c25e7cb7b09bcbd724fe43d8",
+        "git_bytes_sha256": "2ce771e0415aab0c63b011d44d613304566fdeb41dfd97954f45dc34da3c8da3"
+      },
+      "observed_working_snapshots": {
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/03-current-contracts/source-before.json": {
+          "bytes": 8858,
+          "sha256": "2ce771e0415aab0c63b011d44d613304566fdeb41dfd97954f45dc34da3c8da3"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/04-tkl-gates/source-before.json": {
+          "bytes": 8858,
+          "sha256": "2ce771e0415aab0c63b011d44d613304566fdeb41dfd97954f45dc34da3c8da3"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/05-collection/source-before.json": {
+          "bytes": 8858,
+          "sha256": "2ce771e0415aab0c63b011d44d613304566fdeb41dfd97954f45dc34da3c8da3"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/06-full/source-before.json": {
+          "bytes": 8858,
+          "sha256": "2ce771e0415aab0c63b011d44d613304566fdeb41dfd97954f45dc34da3c8da3"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/07-collection/source-before.json": {
+          "bytes": 8858,
+          "sha256": "2ce771e0415aab0c63b011d44d613304566fdeb41dfd97954f45dc34da3c8da3"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/08-full/source-before.json": {
+          "bytes": 8858,
+          "sha256": "2ce771e0415aab0c63b011d44d613304566fdeb41dfd97954f45dc34da3c8da3"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/09-remaining-gates/source-before.json": {
+          "bytes": 8858,
+          "sha256": "2ce771e0415aab0c63b011d44d613304566fdeb41dfd97954f45dc34da3c8da3"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/10-collection/source-before.json": {
+          "bytes": 8858,
+          "sha256": "2ce771e0415aab0c63b011d44d613304566fdeb41dfd97954f45dc34da3c8da3"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/11-full/source-before.json": {
+          "bytes": 8858,
+          "sha256": "2ce771e0415aab0c63b011d44d613304566fdeb41dfd97954f45dc34da3c8da3"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/12-collection/source-before.json": {
+          "bytes": 8858,
+          "sha256": "2ce771e0415aab0c63b011d44d613304566fdeb41dfd97954f45dc34da3c8da3"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/13-full/source-before.json": {
+          "bytes": 8858,
+          "sha256": "2ce771e0415aab0c63b011d44d613304566fdeb41dfd97954f45dc34da3c8da3"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/01-02-source-before-corrections.json": {
+          "bytes": 8858,
+          "sha256": "2ce771e0415aab0c63b011d44d613304566fdeb41dfd97954f45dc34da3c8da3"
+        }
+      }
+    },
+    "KNOWLEDGE.md": {
+      "ec91c56007c20cda79f740fec15c85e4af74d17c": {
+        "git_blob": "4f3a90aea1280981edadbd09d24f2e9c72bbe5ba",
+        "git_bytes_sha256": "a2d82e20092a361319d80f5f7db63360957a84a8eb36415461567323fc0b797f"
+      },
+      "27cdb701b91c5b45b9f54b3e98c9ad67635b3e30": {
+        "git_blob": "f39123f6c4842f0d5a49151c9318849d26a3881e",
+        "git_bytes_sha256": "3fa4a662613e9c4409cc87a92237eeaf5cbf36291067badd2630f8d933609b21"
+      },
+      "observed_working_snapshots": {
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/03-current-contracts/source-before.json": {
+          "bytes": 135222,
+          "sha256": "c633bb3e7a0d622285bc7ecd2ce5a011350e8d4a5e8967d0db223046f6c061ad"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/04-tkl-gates/source-before.json": {
+          "bytes": 135222,
+          "sha256": "c633bb3e7a0d622285bc7ecd2ce5a011350e8d4a5e8967d0db223046f6c061ad"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/05-collection/source-before.json": {
+          "bytes": 135222,
+          "sha256": "c633bb3e7a0d622285bc7ecd2ce5a011350e8d4a5e8967d0db223046f6c061ad"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/06-full/source-before.json": {
+          "bytes": 135222,
+          "sha256": "c633bb3e7a0d622285bc7ecd2ce5a011350e8d4a5e8967d0db223046f6c061ad"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/07-collection/source-before.json": {
+          "bytes": 135222,
+          "sha256": "c633bb3e7a0d622285bc7ecd2ce5a011350e8d4a5e8967d0db223046f6c061ad"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/08-full/source-before.json": {
+          "bytes": 135222,
+          "sha256": "c633bb3e7a0d622285bc7ecd2ce5a011350e8d4a5e8967d0db223046f6c061ad"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/09-remaining-gates/source-before.json": {
+          "bytes": 135222,
+          "sha256": "c633bb3e7a0d622285bc7ecd2ce5a011350e8d4a5e8967d0db223046f6c061ad"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/10-collection/source-before.json": {
+          "bytes": 135222,
+          "sha256": "c633bb3e7a0d622285bc7ecd2ce5a011350e8d4a5e8967d0db223046f6c061ad"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/11-full/source-before.json": {
+          "bytes": 135222,
+          "sha256": "c633bb3e7a0d622285bc7ecd2ce5a011350e8d4a5e8967d0db223046f6c061ad"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/12-collection/source-before.json": {
+          "bytes": 135267,
+          "sha256": "3fa4a662613e9c4409cc87a92237eeaf5cbf36291067badd2630f8d933609b21"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/13-full/source-before.json": {
+          "bytes": 135267,
+          "sha256": "3fa4a662613e9c4409cc87a92237eeaf5cbf36291067badd2630f8d933609b21"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/01-02-source-before-corrections.json": {
+          "bytes": 135222,
+          "sha256": "c633bb3e7a0d622285bc7ecd2ce5a011350e8d4a5e8967d0db223046f6c061ad"
+        }
+      }
+    },
+    "knowledge/records/TKL-20260913-01.md": {
+      "ec91c56007c20cda79f740fec15c85e4af74d17c": {
+        "absent": true
+      },
+      "27cdb701b91c5b45b9f54b3e98c9ad67635b3e30": {
+        "git_blob": "c22dbcc910ccddf8c3a96c012cfa3bb3f4f257a8",
+        "git_bytes_sha256": "d13918a5d99569332a971d35dd56461565d27533463b20e4336cd3db2f20b7b0"
+      },
+      "observed_working_snapshots": {
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/03-current-contracts/source-before.json": {
+          "bytes": 3802,
+          "sha256": "affb020c75e91b5e1d90b06cb94ff4d838d09a4bc6239fc6d6681ba833ee27c7"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/04-tkl-gates/source-before.json": {
+          "bytes": 3802,
+          "sha256": "affb020c75e91b5e1d90b06cb94ff4d838d09a4bc6239fc6d6681ba833ee27c7"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/05-collection/source-before.json": {
+          "bytes": 3802,
+          "sha256": "affb020c75e91b5e1d90b06cb94ff4d838d09a4bc6239fc6d6681ba833ee27c7"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/06-full/source-before.json": {
+          "bytes": 3802,
+          "sha256": "affb020c75e91b5e1d90b06cb94ff4d838d09a4bc6239fc6d6681ba833ee27c7"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/07-collection/source-before.json": {
+          "bytes": 3802,
+          "sha256": "affb020c75e91b5e1d90b06cb94ff4d838d09a4bc6239fc6d6681ba833ee27c7"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/08-full/source-before.json": {
+          "bytes": 3802,
+          "sha256": "affb020c75e91b5e1d90b06cb94ff4d838d09a4bc6239fc6d6681ba833ee27c7"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/09-remaining-gates/source-before.json": {
+          "bytes": 3802,
+          "sha256": "affb020c75e91b5e1d90b06cb94ff4d838d09a4bc6239fc6d6681ba833ee27c7"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/10-collection/source-before.json": {
+          "bytes": 3802,
+          "sha256": "affb020c75e91b5e1d90b06cb94ff4d838d09a4bc6239fc6d6681ba833ee27c7"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/11-full/source-before.json": {
+          "bytes": 3802,
+          "sha256": "affb020c75e91b5e1d90b06cb94ff4d838d09a4bc6239fc6d6681ba833ee27c7"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/12-collection/source-before.json": {
+          "bytes": 3802,
+          "sha256": "affb020c75e91b5e1d90b06cb94ff4d838d09a4bc6239fc6d6681ba833ee27c7"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/13-full/source-before.json": {
+          "bytes": 3802,
+          "sha256": "affb020c75e91b5e1d90b06cb94ff4d838d09a4bc6239fc6d6681ba833ee27c7"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/01-02-source-before-corrections.json": {
+          "bytes": 3785,
+          "sha256": "30f6780995414b54e25e811613747043dd57069bce88cccbd86eccaf8bba937b"
+        }
+      }
+    },
+    "tools/tfw_state.py": {
+      "ec91c56007c20cda79f740fec15c85e4af74d17c": {
+        "git_blob": "32612f9bf977dff74362dff3b228944913990872",
+        "git_bytes_sha256": "7b32ef4d6af70aaaa6ddee690072debd82cf513f1a119267075c736e6293682b"
+      },
+      "27cdb701b91c5b45b9f54b3e98c9ad67635b3e30": {
+        "git_blob": "2ce2f2bd9cb510bc1467a29ae8ffdd22354cabc6",
+        "git_bytes_sha256": "ca4f93b188d139a1115855d4c500edfe4db7bbd8afbef10465bd9eab50dec3d4"
+      },
+      "observed_working_snapshots": {
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/03-current-contracts/source-before.json": {
+          "bytes": 42782,
+          "sha256": "ca4f93b188d139a1115855d4c500edfe4db7bbd8afbef10465bd9eab50dec3d4"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/04-tkl-gates/source-before.json": {
+          "bytes": 42782,
+          "sha256": "ca4f93b188d139a1115855d4c500edfe4db7bbd8afbef10465bd9eab50dec3d4"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/05-collection/source-before.json": {
+          "bytes": 42782,
+          "sha256": "ca4f93b188d139a1115855d4c500edfe4db7bbd8afbef10465bd9eab50dec3d4"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/06-full/source-before.json": {
+          "bytes": 42782,
+          "sha256": "ca4f93b188d139a1115855d4c500edfe4db7bbd8afbef10465bd9eab50dec3d4"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/07-collection/source-before.json": {
+          "bytes": 42782,
+          "sha256": "ca4f93b188d139a1115855d4c500edfe4db7bbd8afbef10465bd9eab50dec3d4"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/08-full/source-before.json": {
+          "bytes": 42782,
+          "sha256": "ca4f93b188d139a1115855d4c500edfe4db7bbd8afbef10465bd9eab50dec3d4"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/09-remaining-gates/source-before.json": {
+          "bytes": 42782,
+          "sha256": "ca4f93b188d139a1115855d4c500edfe4db7bbd8afbef10465bd9eab50dec3d4"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/10-collection/source-before.json": {
+          "bytes": 42782,
+          "sha256": "ca4f93b188d139a1115855d4c500edfe4db7bbd8afbef10465bd9eab50dec3d4"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/11-full/source-before.json": {
+          "bytes": 42782,
+          "sha256": "ca4f93b188d139a1115855d4c500edfe4db7bbd8afbef10465bd9eab50dec3d4"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/12-collection/source-before.json": {
+          "bytes": 42782,
+          "sha256": "ca4f93b188d139a1115855d4c500edfe4db7bbd8afbef10465bd9eab50dec3d4"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/13-full/source-before.json": {
+          "bytes": 42782,
+          "sha256": "ca4f93b188d139a1115855d4c500edfe4db7bbd8afbef10465bd9eab50dec3d4"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/01-02-source-before-corrections.json": {
+          "bytes": 42782,
+          "sha256": "ca4f93b188d139a1115855d4c500edfe4db7bbd8afbef10465bd9eab50dec3d4"
+        }
+      }
+    },
+    "tools/tfw_doctor.py": {
+      "ec91c56007c20cda79f740fec15c85e4af74d17c": {
+        "git_blob": "888d2b519e5fe03076297a0098f7322e16d388f2",
+        "git_bytes_sha256": "05a6bc358d868605b83b4b8c7fe74f4560e1c2ead5d53d9dfbc21742ba1e005d"
+      },
+      "27cdb701b91c5b45b9f54b3e98c9ad67635b3e30": {
+        "git_blob": "d486cc9653e1861f6f5bfea33d85c9052285bf4e",
+        "git_bytes_sha256": "f1ca05812b2b83ba2fdc41d281b977e96ac5ef0c26c04614ceda961b046b41c3"
+      },
+      "observed_working_snapshots": {
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/03-current-contracts/source-before.json": {
+          "bytes": 12313,
+          "sha256": "f1ca05812b2b83ba2fdc41d281b977e96ac5ef0c26c04614ceda961b046b41c3"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/04-tkl-gates/source-before.json": {
+          "bytes": 12313,
+          "sha256": "f1ca05812b2b83ba2fdc41d281b977e96ac5ef0c26c04614ceda961b046b41c3"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/05-collection/source-before.json": {
+          "bytes": 12313,
+          "sha256": "f1ca05812b2b83ba2fdc41d281b977e96ac5ef0c26c04614ceda961b046b41c3"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/06-full/source-before.json": {
+          "bytes": 12313,
+          "sha256": "f1ca05812b2b83ba2fdc41d281b977e96ac5ef0c26c04614ceda961b046b41c3"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/07-collection/source-before.json": {
+          "bytes": 12313,
+          "sha256": "f1ca05812b2b83ba2fdc41d281b977e96ac5ef0c26c04614ceda961b046b41c3"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/08-full/source-before.json": {
+          "bytes": 12313,
+          "sha256": "f1ca05812b2b83ba2fdc41d281b977e96ac5ef0c26c04614ceda961b046b41c3"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/09-remaining-gates/source-before.json": {
+          "bytes": 12313,
+          "sha256": "f1ca05812b2b83ba2fdc41d281b977e96ac5ef0c26c04614ceda961b046b41c3"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/10-collection/source-before.json": {
+          "bytes": 12313,
+          "sha256": "f1ca05812b2b83ba2fdc41d281b977e96ac5ef0c26c04614ceda961b046b41c3"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/11-full/source-before.json": {
+          "bytes": 12313,
+          "sha256": "f1ca05812b2b83ba2fdc41d281b977e96ac5ef0c26c04614ceda961b046b41c3"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/12-collection/source-before.json": {
+          "bytes": 12313,
+          "sha256": "f1ca05812b2b83ba2fdc41d281b977e96ac5ef0c26c04614ceda961b046b41c3"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/13-full/source-before.json": {
+          "bytes": 12313,
+          "sha256": "f1ca05812b2b83ba2fdc41d281b977e96ac5ef0c26c04614ceda961b046b41c3"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/01-02-source-before-corrections.json": {
+          "bytes": 12313,
+          "sha256": "f1ca05812b2b83ba2fdc41d281b977e96ac5ef0c26c04614ceda961b046b41c3"
+        }
+      }
+    },
+    "tools/README.md": {
+      "ec91c56007c20cda79f740fec15c85e4af74d17c": {
+        "git_blob": "2fdf930de8d974d47961b7fbd0708afe51520dd5",
+        "git_bytes_sha256": "b6aaf60d939cd91c6bfd9d6980e50fbeced97992f27a3d6c62d7a51db411631f"
+      },
+      "27cdb701b91c5b45b9f54b3e98c9ad67635b3e30": {
+        "git_blob": "b59d62b761a2d65971a588de3536600ddd357a9a",
+        "git_bytes_sha256": "e422216c97a16b122c8038372d54bc292193c4bc0a932baba78b4c3ea338bc2b"
+      },
+      "observed_working_snapshots": {
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/03-current-contracts/source-before.json": {
+          "bytes": 6859,
+          "sha256": "e422216c97a16b122c8038372d54bc292193c4bc0a932baba78b4c3ea338bc2b"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/04-tkl-gates/source-before.json": {
+          "bytes": 6859,
+          "sha256": "e422216c97a16b122c8038372d54bc292193c4bc0a932baba78b4c3ea338bc2b"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/05-collection/source-before.json": {
+          "bytes": 6859,
+          "sha256": "e422216c97a16b122c8038372d54bc292193c4bc0a932baba78b4c3ea338bc2b"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/06-full/source-before.json": {
+          "bytes": 6859,
+          "sha256": "e422216c97a16b122c8038372d54bc292193c4bc0a932baba78b4c3ea338bc2b"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/07-collection/source-before.json": {
+          "bytes": 6859,
+          "sha256": "e422216c97a16b122c8038372d54bc292193c4bc0a932baba78b4c3ea338bc2b"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/08-full/source-before.json": {
+          "bytes": 6859,
+          "sha256": "e422216c97a16b122c8038372d54bc292193c4bc0a932baba78b4c3ea338bc2b"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/09-remaining-gates/source-before.json": {
+          "bytes": 6859,
+          "sha256": "e422216c97a16b122c8038372d54bc292193c4bc0a932baba78b4c3ea338bc2b"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/10-collection/source-before.json": {
+          "bytes": 6859,
+          "sha256": "e422216c97a16b122c8038372d54bc292193c4bc0a932baba78b4c3ea338bc2b"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/11-full/source-before.json": {
+          "bytes": 6859,
+          "sha256": "e422216c97a16b122c8038372d54bc292193c4bc0a932baba78b4c3ea338bc2b"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/12-collection/source-before.json": {
+          "bytes": 6859,
+          "sha256": "e422216c97a16b122c8038372d54bc292193c4bc0a932baba78b4c3ea338bc2b"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/13-full/source-before.json": {
+          "bytes": 6859,
+          "sha256": "e422216c97a16b122c8038372d54bc292193c4bc0a932baba78b4c3ea338bc2b"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/01-02-source-before-corrections.json": {
+          "bytes": 6859,
+          "sha256": "e422216c97a16b122c8038372d54bc292193c4bc0a932baba78b4c3ea338bc2b"
+        }
+      }
+    },
+    "docs/scripts/gen_docs.py": {
+      "ec91c56007c20cda79f740fec15c85e4af74d17c": {
+        "git_blob": "72d1c9c42cce297c2e0f568c359f93ee4a6e1dd9",
+        "git_bytes_sha256": "475d88e709f0fa8c63a65d27d339cbba850e50ab9cb964d6fe4e64f5f88c5af2"
+      },
+      "27cdb701b91c5b45b9f54b3e98c9ad67635b3e30": {
+        "git_blob": "4a474226cc4f2b48f5a9e36e8ccfc87f4e74c588",
+        "git_bytes_sha256": "74f2e6f4ca8c5e51f2e0adb058f11113b75f83b8bcfffd3d725f18a01fb1bb82"
+      },
+      "observed_working_snapshots": {
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/03-current-contracts/source-before.json": {
+          "bytes": 33838,
+          "sha256": "74f2e6f4ca8c5e51f2e0adb058f11113b75f83b8bcfffd3d725f18a01fb1bb82"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/04-tkl-gates/source-before.json": {
+          "bytes": 33838,
+          "sha256": "74f2e6f4ca8c5e51f2e0adb058f11113b75f83b8bcfffd3d725f18a01fb1bb82"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/05-collection/source-before.json": {
+          "bytes": 33838,
+          "sha256": "74f2e6f4ca8c5e51f2e0adb058f11113b75f83b8bcfffd3d725f18a01fb1bb82"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/06-full/source-before.json": {
+          "bytes": 33838,
+          "sha256": "74f2e6f4ca8c5e51f2e0adb058f11113b75f83b8bcfffd3d725f18a01fb1bb82"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/07-collection/source-before.json": {
+          "bytes": 33838,
+          "sha256": "74f2e6f4ca8c5e51f2e0adb058f11113b75f83b8bcfffd3d725f18a01fb1bb82"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/08-full/source-before.json": {
+          "bytes": 33838,
+          "sha256": "74f2e6f4ca8c5e51f2e0adb058f11113b75f83b8bcfffd3d725f18a01fb1bb82"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/09-remaining-gates/source-before.json": {
+          "bytes": 33838,
+          "sha256": "74f2e6f4ca8c5e51f2e0adb058f11113b75f83b8bcfffd3d725f18a01fb1bb82"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/10-collection/source-before.json": {
+          "bytes": 33838,
+          "sha256": "74f2e6f4ca8c5e51f2e0adb058f11113b75f83b8bcfffd3d725f18a01fb1bb82"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/11-full/source-before.json": {
+          "bytes": 33838,
+          "sha256": "74f2e6f4ca8c5e51f2e0adb058f11113b75f83b8bcfffd3d725f18a01fb1bb82"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/12-collection/source-before.json": {
+          "bytes": 33838,
+          "sha256": "74f2e6f4ca8c5e51f2e0adb058f11113b75f83b8bcfffd3d725f18a01fb1bb82"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/13-full/source-before.json": {
+          "bytes": 33838,
+          "sha256": "74f2e6f4ca8c5e51f2e0adb058f11113b75f83b8bcfffd3d725f18a01fb1bb82"
+        },
+        "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/01-02-source-before-corrections.json": {
+          "bytes": 33838,
+          "sha256": "74f2e6f4ca8c5e51f2e0adb058f11113b75f83b8bcfffd3d725f18a01fb1bb82"
+        }
+      }
+    }
+  },
+  "snapshot_manifest_hashes": {
+    "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/01-02-source-before-corrections.json": "24974fca503154acbf10bcd605932cb74ebac0f13101e5b3ff8bdecd25ab4bc7",
+    "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/03-current-contracts/source-before.json": "fdeb753af4f2e5e5c730d95ae865ddb0f8e9d986320198413d3f818b720c4351",
+    "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/04-tkl-gates/source-before.json": "3ffe62b16eaf75b0fb59576bb2086afa9f0acd235457cbc5da40e90d096a6298",
+    "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/05-collection/source-before.json": "da3d0d3d2c2f38cf3264e018973977043b9f1652f910ca7517f94abc531b2cfe",
+    "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/06-full/source-before.json": "da3d0d3d2c2f38cf3264e018973977043b9f1652f910ca7517f94abc531b2cfe",
+    "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/07-collection/source-before.json": "baf87744f91aa0459fcef0a5551fb5a10f7292b30c3cf55e0267c4f75ce38195",
+    "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/08-full/source-before.json": "baf87744f91aa0459fcef0a5551fb5a10f7292b30c3cf55e0267c4f75ce38195",
+    "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/09-remaining-gates/source-before.json": "62a7eec4309d9cdd191bdb9f0520958d1bebc52099db4fc46c108767ec4018db",
+    "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/10-collection/source-before.json": "62a7eec4309d9cdd191bdb9f0520958d1bebc52099db4fc46c108767ec4018db",
+    "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/11-full/source-before.json": "62a7eec4309d9cdd191bdb9f0520958d1bebc52099db4fc46c108767ec4018db",
+    "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/12-collection/source-before.json": "df9e78d4f54468f585115deef4bfe7657fef476862722331ead477f8d8d31633",
+    "workspace/2026/TFW_20260909-231654_TKL/evidence/checks/13-full/source-before.json": "df9e78d4f54468f585115deef4bfe7657fef476862722331ead477f8d8d31633"
+  },
+  "assembly_correction": {
+    "at": "2026-09-13T11:26:16.009235+00:00",
+    "unsealed_generator_output_sha256": "5afb91d322f305df52413f45cb820cc8de4f18b86d4f88e2b02f28186eb9c51f",
+    "preserved_at": "workspace/2026/TFW_20260909-231654_TKL/evidence/adoption/raw/q3-unsealed-generator-output.json",
+    "reason": "Initial snapshot uses a paths wrapper, unlike later bare manifests; expanded its already-cited observations into the single current map before delivery. This assembly correction supplies no new historical observation or seal."
+  }
+}

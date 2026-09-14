@@ -108,6 +108,15 @@ the result and stop. Distinguish reviewed, landed and published; state any remai
 
 If empty: `No fact candidates.`
 
+### Material handover at this return
+
+Use this existing source first; no duplicate file or fact is required. Name the actual producer/unit,
+bounded inspected context and source epoch, material knowledge or justified-none, uncertainty and
+continuation. Keep human provenance and technical findings distinct. Unavailable context is not none;
+name the exact missing decision and existing owner. Retain-only needs an authorized completed reason
+why no publication/resolution is owed; otherwise the obligation remains open. An empty section or
+checkbox cannot cover a missing producer. Preserve original sources after the return.
+
 ---
 
 *REVIEW — {ID} / Phase {X}: {Title} | YYYY-MM-DD*

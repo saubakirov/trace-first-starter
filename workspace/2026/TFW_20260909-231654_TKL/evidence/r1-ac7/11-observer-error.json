@@ -1,0 +1,13 @@
+{
+  "observed_at": "2026-09-13T18:35:32.134507+00:00",
+  "raw_stderr": "Traceback (most recent call last):\n  File \"<stdin>\", line 78, in <module>\nAssertionError\n",
+  "operation": "First native receiver HTML observation after build exit 0",
+  "incorrect_oracle": "Expected three later-Candidate TKL HL fragment hrefs in unchanged Baseline HL.",
+  "actual": "Faithful Baseline HL contains only the canonical-gate fragment. Later SLC C2 citation rows are task history outside the selected payload and were correctly not transplanted. All four target IDs and D37 had passed before this assertion.",
+  "source_path": "workspace/2026/TFW_20260909-231654_TKL/HL-TFW_20260909-231654_TKL.md",
+  "source_sha256": "0d5543fbb242b7da8a088ae658dc023cc131a159a04c6f466ccaf05928cfe43d",
+  "html_path": "tasks/2026/TFW_20260909-231654_TKL/HL-TFW_20260909-231654_TKL/index.html",
+  "html_sha256": "4c180ebeefc2337a09423db30115cc75a1146915d806f2323f91ee035a27f27d",
+  "effect": "No native write from this command; provenance/receipt not yet completed. No prerequisite or source mismatch observed.",
+  "continuation": "Correct only observation oracle to actual unchanged Baseline source; retain original command/error/HTML. One same positive attempt, no product correction, second build or extra case."
+}

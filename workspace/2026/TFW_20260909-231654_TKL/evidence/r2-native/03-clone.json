@@ -1,0 +1,20 @@
+{
+  "argv": [
+    "git",
+    "-c",
+    "core.longpaths=true",
+    "-c",
+    "core.autocrlf=false",
+    "clone",
+    "--no-checkout",
+    "--shared",
+    "D:/projects/research/steps-framework/.git",
+    "C:\\Users\\c0rpa\\AppData\\Local\\Temp\\TFW_TKL_NATIVE_01a09a0c\\self-adoption-r2"
+  ],
+  "cwd": "C:\\Users\\c0rpa\\.codex\\worktrees\\f3f3\\steps-framework",
+  "started_at": "2026-09-13T20:29:23.404158+00:00",
+  "finished_at": "2026-09-13T20:29:23.711457+00:00",
+  "exit": 0,
+  "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stderr_sha256": "dcddf3dcae68bf90136fd757aba0a05cdca454c5534b0a5e0b35ae0e814bff0b"
+}

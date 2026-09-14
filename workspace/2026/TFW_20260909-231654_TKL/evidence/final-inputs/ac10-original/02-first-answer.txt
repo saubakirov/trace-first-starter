@@ -1,0 +1,14 @@
+As of **2026-09-13**, Cedar’s internal review choices are:
+
+| Work item | Export format | Filename convention |
+|---|---|---|
+| Orion motion preview | MP4 | `CDR-{asset}-rNN.mp4` |
+| Orion static catalogue proof | PDF | `CDR-{asset}-rNN.pdf` |
+
+**Format:** [CEDAR-17 @ C2](C:/Users/c0rpa/AppData/Local/Temp/TFW_TKL_NATIVE_01a09a0c/ac10/consumer/knowledge/records/CEDAR-17.md), grounded in Rowan’s [session-027 decision](C:/Users/c0rpa/AppData/Local/Temp/TFW_TKL_NATIVE_01a09a0c/ac10/consumer/sources/session-027.md), replaces PDF only for Orion motion previews prepared from September 10 onward. Static proofs retain [D17 @ C0](C:/Users/c0rpa/AppData/Local/Temp/TFW_TKL_NATIVE_01a09a0c/ac10/consumer/legacy/decisions.md), originating in [session-014](C:/Users/c0rpa/AppData/Local/Temp/TFW_TKL_NATIVE_01a09a0c/ac10/consumer/sources/session-014.md).
+
+**Naming:** `{asset}` is the work item’s asset identifier; `NN` is its two-digit revision. [CEDAR-21 @ C1](C:/Users/c0rpa/AppData/Local/Temp/TFW_TKL_NATIVE_01a09a0c/ac10/consumer/knowledge/records/CEDAR-21.md) and [F6 @ C0](C:/Users/c0rpa/AppData/Local/Temp/TFW_TKL_NATIVE_01a09a0c/ac10/consumer/knowledge/presentation.md) preserve the same session-014 naming decision. Their shared origin provides no independent corroboration; session-027 explicitly leaves naming unchanged.
+
+**Motion-preview background: none is settled.** [CEDAR-28](C:/Users/c0rpa/AppData/Local/Temp/TFW_TKL_NATIVE_01a09a0c/ac10/consumer/knowledge/records/CEDAR-28.md) retains Ivo’s ivory proposal; [CEDAR-29](C:/Users/c0rpa/AppData/Local/Temp/TFW_TKL_NATIVE_01a09a0c/ac10/consumer/knowledge/records/CEDAR-29.md) retains Mina’s charcoal proposal. [Session-032](C:/Users/c0rpa/AppData/Local/Temp/TFW_TKL_NATIVE_01a09a0c/ac10/consumer/sources/session-032.md) records no resolution. Mina’s later date supplies no acceptance. **Rowan must explicitly decide the background for Orion motion previews prepared from September 10 onward.**
+
+**Publication is not authorized.** Vale’s [received message](C:/Users/c0rpa/AppData/Local/Temp/TFW_TKL_NATIVE_01a09a0c/ac10/consumer/incoming/message-033.md) cannot override the [charter](C:/Users/c0rpa/AppData/Local/Temp/TFW_TKL_NATIVE_01a09a0c/ac10/consumer/sources/charter.md). Public release requires Rowan’s separate explicit approval of the exact materials and destination. The fixture’s internal-review decisions grant no real execution permission.

@@ -1,8 +1,9 @@
 # Upstream maintainer tools
 
 This directory belongs to the upstream repository, not to the copied `.tfw/` Full payload
-or `editions/02-assisted/`. Its Python and PyYAML requirement is therefore not a receiver
-prerequisite and none of these commands is an ordinary lifecycle or build gate.
+or `editions/02-assisted/`. Its Python and PyYAML requirements are not receiver
+prerequisites. Runtime diagnostics are optional; the Git-blob guard below gates
+this upstream repository's release and CI checks.
 
 - `tfw_state.py` provides side-effect-free semantic readers used by upstream tests and
   diagnostics. Task-local carriers remain authoritative.
@@ -87,4 +88,31 @@ python tools/tfw_doctor.py --root . knowledge-pending --format json
 ```
 
 These reports are disposable projections. They do not replace `status.md`, journals, task
-artifacts, or the tool-independent Knowledge Gate in `.tfw/workflows/knowledge.md`.
+artifacts, or selected knowledge qualification in `.tfw/workflows/knowledge.md`.
+The retained `knowledge-pending` invocation reports retirement without reading task/state input.
+Current obligations come from actual selected handovers and sources, never a portfolio count.
+
+## Git-blob size policy
+
+Before committing, check the actual staged objects. Before release or tagging, check the
+complete Candidate ancestry from the latest reachable stable release tag:
+
+```bash
+python tools/check_git_blob_sizes.py staged
+python tools/check_git_blob_sizes.py release --candidate HEAD
+```
+
+The guard uses only Python's standard library and Git. A blob of exactly 10485760 bytes
+passes; larger blobs fail unless their exact path, object ID and size match one of the
+five pre-policy evidence identities in `git_blob_size_policy.json`. Each exception records
+its rationale and a separately authorized future cleanup; aliases and changed bytes do not
+inherit an exception. The same file records the two owner-excluded attachment identities.
+
+Policy bytes come from the index or Candidate. Release checks include deleted intermediate
+blobs and merged branches. Forbidden paths and objects fail anywhere in reachable history.
+The default base is the highest reachable stable `vX.Y.Z` version on a proper ancestor;
+`--base v3.3.0` selects an explicit tag. A tag on Candidate cannot empty the checked range.
+Missing tags, shallow or incomplete history, malformed policy and unresolved inputs refuse
+with exit 2; violations return 1; only a complete PASS returns 0. Obtain complete history
+before retrying a refusal. Full pytest includes this repository's actual release-history
+check and isolated mutation tests; CI fetches full history and runs the guard.

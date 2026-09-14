@@ -51,10 +51,17 @@ Before writing resolve handle: one profile, valid binding, or one question. Neve
    Act before Matrix/question/stop.
 
 For an explicitly selected closing/recovery request, resolve the actual Coordinator mandate and
-follow `Closing and record recovery` now. Report the completed effect or exact unresolved gap, then
+follow `Closing and record recovery` now. Read `Knowledge handover` for actual contributing-role
+returns and completed dispositions; use `Current knowledge use` for relevant changed claims. Report the completed effect or exact unresolved gap, then
 stop. This route needs no matrix, new planning selection or fresh bootstrap; it grants no missing
 authority and does not turn an unselected request into automatic phase choice. Read a malformed
 carrier as an error to reconstruct under that contract, never as permission to guess its state.
+
+Missing producer, unavailable acceptance-critical context or owed publication keeps the selected
+close nonterminal; a checkbox or unrelated global zero supplies no handover. For record-only recovery,
+inspect actual accepted effect/source/authority before changing a current carrier. Restore only an
+expected old/intended field; a third value refuses that write and preserves unrelated later work.
+Preserve original events, use no invented past transition, and stop after valid carrier-only repair.
 
 ## 2. Build the Matrix
 

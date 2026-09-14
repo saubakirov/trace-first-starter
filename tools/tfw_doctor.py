@@ -239,21 +239,10 @@ def check_project(root: Path) -> dict:
 
 def knowledge_pending(root: Path) -> dict:
     result = report("knowledge-pending", root)
-    try:
-        data = state.knowledge_pending(root)
-    except (OSError, UnicodeError, ValueError, yaml.YAMLError) as exc:
-        result["indeterminate_findings"].append(f"knowledge inputs are unreadable: {exc}")
-        return result
-    result["records"] = [
-        {"id": identifier, "digest": digest}
-        for identifier, digest in sorted(data["current_task_digests"].items())
-    ]
-    result["inputs"].update({
-        "pending_task_ids": data["pending_task_ids"],
-        "removed_task_ids": data["removed_task_ids"],
-        "migration_required": data["migration_required"],
-    })
-    result["indeterminate_findings"].extend(data["problems"])
+    result["compatibility_notes"].append(
+        "knowledge-pending is retired; no corpus or knowledge-state input was read.")
+    result["advice"].append(
+        "Start at KNOWLEDGE.md; use /tfw-knowledge for a selected material handover or claim.")
     return result
 
 
@@ -295,7 +284,7 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     for name in ("tasks", "project"):
         leaf = check_commands.add_parser(name)
         _add_format(leaf)
-    pending = commands.add_parser("knowledge-pending", help="report exact Knowledge Gate inputs")
+    pending = commands.add_parser("knowledge-pending", help="report retirement and the selected knowledge route without scanning")
     _add_format(pending)
     return parser.parse_args(argv)
 

@@ -1,0 +1,9 @@
+{
+  "seq": 3,
+  "label": "03 prepare exact positive repository",
+  "failed_at": "2026-09-13T20:29:53.549973+00:00",
+  "exception": "AssertionError",
+  "message": ".tfw/update_receipts/knowledge-lifecycle/c3b0580ad155738e2db99b38577df3477fddafa0078fb5f4d256ce94d87b41cb/old-intended.zip",
+  "traceback": "Traceback (most recent call last):\n  File \"<stdin>\", line 73, in perform\n  File \"<stdin>\", line 113, in body\nAssertionError: .tfw/update_receipts/knowledge-lifecycle/c3b0580ad155738e2db99b38577df3477fddafa0078fb5f4d256ce94d87b41cb/old-intended.zip\n",
+  "required_action": "STOP; no retry or further native effects; preserve and return"
+}

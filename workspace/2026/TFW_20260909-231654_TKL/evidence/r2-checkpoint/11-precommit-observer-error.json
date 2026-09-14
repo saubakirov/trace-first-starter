@@ -1,0 +1,11 @@
+{
+  "observed_at": "2026-09-13T20:16:05.703925+00:00",
+  "tool_output": "f25297",
+  "type": "AssertionError",
+  "exact_short_exception": "Traceback (most recent call last):\n  File \"<stdin>\", line 6, in <module>\nAssertionError",
+  "stage": "Source-only checkpoint validation before native start/preparation",
+  "cause": "Mistook the original repeat map comparison digest62ce8e... for raw JSON-file SHA256. Actual immutable raw map is f0377bc0d2bbc3f4a420b712733e8df042c1356535468139295f64635759c45c, already correctly recorded by06-native-feasibility.json.",
+  "effect": "Assertion stopped before source-pin write, receiver access or other validation effects. Correct current uncommitted proposal/checkpoint reference; preserve original accepted digest and raw evidence.",
+  "native_preparation": false,
+  "native_clock": null
+}

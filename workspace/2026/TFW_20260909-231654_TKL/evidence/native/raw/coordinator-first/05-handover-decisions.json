@@ -1,0 +1,38 @@
+{
+  "observed_at": "2026-09-13T11:44:41.732385+00:00",
+  "author": "robert",
+  "unit": "01a09974-6716-7cc0-9916-fd6d04c91481",
+  "integrated_commit": "7d036298eb416b5cf5061c990874b44202a264f3",
+  "kind": "actual first Coordinator decisions on prepared cases and actual returns; no review acceptance",
+  "decisions": [
+    {
+      "case": "material",
+      "decision": "Both actually sealed returns inspected, sources retained; no acceptance is supplied for either observed record. Coordinator fallback source 8cb0c89d4994b524a9e1279c2e6444a3823990d1 and Executor interim source fe7f9915f4c9d80689245402d52842b925e35548 describe technical observations and unsupported sample assertions. Both producers are covered within these bounded inputs only."
+    },
+    {
+      "case": "missing-b",
+      "decision": "REFUSE selected close: prepared view provides historical Researcher A RES iter2 blob bfe6e6ffbca958473c08d01cd8fa7c3c783224ab, but omits actual expected Executor B 01a09a0c-c9e2-7d01-af4e-64931af967ed return. Existing Executor must provide its selected material source; historical A cannot attest absent B context. No real crash or fresh Researcher execution is claimed."
+    },
+    {
+      "case": "justified-none",
+      "decision": "ACCEPT SCOPED NONE for additional human knowledge in exactly seven MODIFY/ASSURANCE rows of approved TS section 4, blob f69fd4099a21a07ae2d17e6b5108b04ac94f107e. Read actual Executor post-seal return e38b53fa5d76fa5fd8ca8153987d53412a7c05956b84529c1b666579e16f9823 and inspected these rows. They give test-path technical coverage; obligations remain reusable in TS. No claim about rest of TS, ONB, owner conversation or unseen context."
+    },
+    {
+      "case": "unavailable",
+      "decision": "OPEN: sample mode-alpha/mode-beta unresolved in identical scope. Missing is accountable owner saubakirov decision, through existing LEAD authority route when a real selected decision is required. Neither author can invent it; uncertainty is not none. No resolver or preference was supplied."
+    },
+    {
+      "case": "retain-only",
+      "decision": "RETAIN the two unsupported sample assertions and exact source provenance as ASSURANCE only. Q1 ruling dedf8527ff110fa160358239bbf45ebb498838dd forbids accepting either new record and promises no live sample-policy publication; therefore this observation owes no live publication or resolution. This completed scoped reason does not waive any other owed effect."
+    },
+    {
+      "case": "owed-publication",
+      "decision": "REFUSE retain-only as terminal payment in the prepared promised-publication countercase. Existing closing Coordinator 01a09974-6716-7cc0-9916-fd6d04c91481 must retain the selected obligation OPEN until authorized completed publication and applicable independent acceptance exist. Fixture supplies neither effect nor actual project-publication grant."
+    }
+  ],
+  "semantic_relation": {
+    "actual_observations": "Distinct holders independently authored their first sources and records before reading sibling outputs. Both technical observations derive from the same Candidate conventions; shared origin is not independent corroboration. Preserve both original source blobs and each observed boundary.",
+    "sample_conflict": "mode-alpha and mode-beta overlap in scope and conflict, with no accepted human origin or resolver. Neither recency nor integration chooses a winner. No supersession or independent acceptance is recorded.",
+    "concurrency": "Temporal overlap zero; Executor started 27.461981 seconds after Coordinator seal. Sequential independent writes only. No AC temporal-concurrency PASS."
+  }
+}

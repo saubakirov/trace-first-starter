@@ -1,0 +1,20 @@
+[
+  {
+    "path": "ONB__TFW_20260909-231654_TKL.md",
+    "epoch": "bc03aa784f360631491fdd169fd4a45284fbe378",
+    "bytes": 79703,
+    "sha256": "5ffa47874813c4531050be96468e2d149311ace6c80f88df2ad35be975b88416"
+  },
+  {
+    "path": "RF__TFW_20260909-231654_TKL.md",
+    "epoch": "bc03aa784f360631491fdd169fd4a45284fbe378",
+    "bytes": 47230,
+    "sha256": "b26e99bc55322fe3ff59fb650fb5cc26bec078bb86e590e541a3f6b1e6887c54"
+  },
+  {
+    "path": "evidence/EV__TFW_20260909-231654_TKL.md",
+    "epoch": "bc03aa784f360631491fdd169fd4a45284fbe378",
+    "bytes": 33111,
+    "sha256": "b9e0667bc9cc8bf202a0e24ef6b5e853ec7b301f6fa86c217883e69fed10e389"
+  }
+]

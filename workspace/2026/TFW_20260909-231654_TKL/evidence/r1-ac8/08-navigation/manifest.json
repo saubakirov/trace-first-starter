@@ -1,0 +1,90 @@
+{
+  "observed_at": "2026-09-13T17:53:38.534453+00:00",
+  "site": "C:\\Users\\c0rpa\\AppData\\Local\\Temp\\TFW_TKL_NATIVE_01a09a0c\\ac8-r1-site",
+  "build_receipt": "../06-integration-tests/build/receipt.json",
+  "input": "../03-input/source-before.json",
+  "original_custody": "../../coordinator-review-output/custody.json",
+  "pages": [
+    {
+      "path": "tasks/2026/TFW_20260909-231654_TKL/HL-TFW_20260909-231654_TKL/index.html",
+      "bytes": 118510,
+      "sha256": "abe5752e55c23ced56cd57fa34decd269cd38e9ee812f1a049aebd54838b51ea",
+      "original_sha256": "abe5752e55c23ced56cd57fa34decd269cd38e9ee812f1a049aebd54838b51ea"
+    },
+    {
+      "path": "tasks/2026/TFW_20260909-231654_TKL/ONB__TFW_20260909-231654_TKL/index.html",
+      "bytes": 105932,
+      "sha256": "e78d7646e642ee2a5af848a8ab4c015984843092d37127816e20391488035fc0",
+      "original_sha256": "938e5543ab097ff5e10e3a8dd4d7df161c67562f02c6f0c1139ef7ef74071368"
+    },
+    {
+      "path": "tasks/2026/TFW_20260907-020729_SLC/RF__TFW_20260907-020729_SLC/index.html",
+      "bytes": 88626,
+      "sha256": "1023b509d9171670bd11a3b218e6ed41fbae5053dc0d5618ec9c4ff606c0af33",
+      "original_sha256": "c636634f11f814d93e72976fa669b317445a37f4710e666d6882568d7848f540"
+    },
+    {
+      "path": "tasks/2026/TFW_20260907-020729_SLC/REVIEW__TFW_20260907-020729_SLC/index.html",
+      "bytes": 110935,
+      "sha256": "9a8effd15fd4d9b83ad8d45fced510fd328354c7723c1805e091f24b4b1bb4f5",
+      "original_sha256": "dbe812b0d7630d08ea54f6f8b6ffbbaa1c751f0a6f8c598818681f81438f8472"
+    },
+    {
+      "path": "reference/workflows/knowledge/index.html",
+      "bytes": 56149,
+      "sha256": "cb98d79ec33357e8c27e9cebf4c7d3ebd6f4b2f3e2ab287ad05d1c8a9d5d2f8c",
+      "original_sha256": "78fe70c862d87632fe78ddbb4b2df9cb466df9b8ea58a6a13580b958bff34ec8"
+    }
+  ],
+  "five_occurrences": [
+    {
+      "occurrence": "HL:31",
+      "source_html": "tasks/2026/TFW_20260909-231654_TKL/HL-TFW_20260909-231654_TKL/index.html",
+      "unchanged_original_href": "../../../../reference/workflows/knowledge/#canonical-knowledge-gate-algorithm",
+      "target_html": "reference/workflows/knowledge/index.html",
+      "fragment": "canonical-knowledge-gate-algorithm",
+      "original_id_count": 0,
+      "new_id_count": 1
+    },
+    {
+      "occurrence": "HL:190 RF",
+      "source_html": "tasks/2026/TFW_20260909-231654_TKL/HL-TFW_20260909-231654_TKL/index.html",
+      "unchanged_original_href": "../../TFW_20260907-020729_SLC/RF__TFW_20260907-020729_SLC/#11-correction-round-c2--exact-link-preservation",
+      "target_html": "tasks/2026/TFW_20260907-020729_SLC/RF__TFW_20260907-020729_SLC/index.html",
+      "fragment": "11-correction-round-c2--exact-link-preservation",
+      "original_id_count": 0,
+      "new_id_count": 1
+    },
+    {
+      "occurrence": "HL:190 REVIEW",
+      "source_html": "tasks/2026/TFW_20260909-231654_TKL/HL-TFW_20260909-231654_TKL/index.html",
+      "unchanged_original_href": "../../TFW_20260907-020729_SLC/REVIEW__TFW_20260907-020729_SLC/#c2-bounded-acceptance--2026-09-10",
+      "target_html": "tasks/2026/TFW_20260907-020729_SLC/REVIEW__TFW_20260907-020729_SLC/index.html",
+      "fragment": "c2-bounded-acceptance--2026-09-10",
+      "original_id_count": 0,
+      "new_id_count": 1
+    },
+    {
+      "occurrence": "ONB:81 RF",
+      "source_html": "tasks/2026/TFW_20260909-231654_TKL/ONB__TFW_20260909-231654_TKL/index.html",
+      "unchanged_original_href": "../../TFW_20260907-020729_SLC/RF__TFW_20260907-020729_SLC/#11-correction-round-c2--exact-link-preservation",
+      "target_html": "tasks/2026/TFW_20260907-020729_SLC/RF__TFW_20260907-020729_SLC/index.html",
+      "fragment": "11-correction-round-c2--exact-link-preservation",
+      "original_id_count": 0,
+      "new_id_count": 1
+    },
+    {
+      "occurrence": "ONB:81 REVIEW",
+      "source_html": "tasks/2026/TFW_20260909-231654_TKL/ONB__TFW_20260909-231654_TKL/index.html",
+      "unchanged_original_href": "../../TFW_20260907-020729_SLC/REVIEW__TFW_20260907-020729_SLC/#independent-c2-return-and-closure-boundary--2026-09-10",
+      "target_html": "tasks/2026/TFW_20260907-020729_SLC/REVIEW__TFW_20260907-020729_SLC/index.html",
+      "fragment": "independent-c2-return-and-closure-boundary--2026-09-10",
+      "original_id_count": 0,
+      "new_id_count": 1
+    }
+  ],
+  "old_slc_ids_preserved": true,
+  "archive_sha256": "4333950220e32432d0ff8607fd8248f2a65f3f66be84a3ec4302949fde676951",
+  "derived_inventory_files": 2040,
+  "limitations": "Five HTML pages archived, complete site hashes listed. Build streams are complete subprocess decoded-text captures (not raw pipe bytes); pytest outer streams are raw pipe bytes. Later TRACE additions are not represented by this build. Browser observations cover five original link clicks and headings, not a general visual audit."
+}

@@ -1,0 +1,43 @@
+{
+  "approval": "2794cbdb40f6c4f3a7d4bce1f8d4eb949d9e6913",
+  "baseline": "ec91c56007c20cda79f740fec15c85e4af74d17c",
+  "candidate": "not yet created; actual Baseline/approval and proposed hashes bind self-adoption",
+  "containers": {
+    "historical_containers": [
+      "tasks"
+    ],
+    "task_containers": [
+      "workspace"
+    ]
+  },
+  "guide_sha256": "2ce771e0415aab0c63b011d44d613304566fdeb41dfd97954f45dc34da3c8da3",
+  "intended": {
+    ".tfw/project_config.yaml": "c6e86611751ad123c4139e1203098fa0f7635b54b33c2a6c0b9040cb25753f7c",
+    "KNOWLEDGE.md": "c633bb3e7a0d622285bc7ecd2ce5a011350e8d4a5e8967d0db223046f6c061ad"
+  },
+  "intended_knowledge_fields": "absent; no custom child keys present",
+  "kind": "TKL self-adoption preservation",
+  "old": {
+    ".tfw/knowledge_state.yaml": "668da37c5c42afe2dd5e8d67f2894f4252e842745afc05f37b9e365e7c56569d",
+    ".tfw/project_config.yaml": "2a36ce8ed4514b7e552438082bb8ea1f12c889b1c7d0817753acb9d95785c4c2",
+    "KNOWLEDGE.md": "a2d82e20092a361319d80f5f7db63360957a84a8eb36415461567323fc0b797f"
+  },
+  "old_knowledge_fields": {
+    "gate_mode": "hard",
+    "interval": 5,
+    "max_facts_per_topic": 100,
+    "max_topic_files": 13
+  },
+  "retained_topics": {
+    "knowledge/constraint.md": "3dfa47693223ed476b56a94ff4a9978d1e178f2cbe2e27c149614e9b9d360331",
+    "knowledge/context.md": "c72f33c1a1ba9cc9a4c402f3d6a4f213af3cd46872b5d38dbe0ea4a9184c91a4",
+    "knowledge/convention.md": "ae1ea33146275fa60881a39e1b5066adf9eb192d199c692fbb266c8b1051e39a",
+    "knowledge/domain.md": "d3637a0049aacf32d79f65ba75ab9ed7b1885bf0a09936abad156d8585ad47e3",
+    "knowledge/environment.md": "c67b41021a9b2e79c0e40340abf194560e60bc5b2362558b1a3e829a079c4fb0",
+    "knowledge/philosophy.md": "2a76d8821e34da49219e832013a8642dd1d65c4063a397e1ff9fa07d51db864d",
+    "knowledge/process.md": "e994410bca1f6aa11903f8f26e558a37be16444205200492379cb6ad6a0ea587",
+    "knowledge/risk.md": "9df74b1b83c5485e32b33bb206ac11e98cb7c2cc65ef7b2beef519e4b9905c91",
+    "knowledge/stakeholder.md": "31dcfc5c377340fb25a5d670d39c4ecf6d326bdb9561e2a314f3115eb83b4978"
+  },
+  "ts_blob": "f69fd4099a21a07ae2d17e6b5108b04ac94f107e"
+}

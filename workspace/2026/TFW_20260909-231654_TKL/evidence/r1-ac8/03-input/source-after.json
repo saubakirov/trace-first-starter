@@ -1,0 +1,8 @@
+{
+  "observed_at": "2026-09-13T17:53:39.375612+00:00",
+  "before_sha256": "57219734c8b1f46363177a88970fcdab87d84f7fd7e7aa6fd261bc1096fcfebb",
+  "archive_sha256": "6555dacade7f22ac4b494ebbd27267b63186088edbee545bcbce8c408c797f9b",
+  "compared_files": 2793,
+  "raw_drift": [],
+  "checked_before_candidate_commit": true
+}

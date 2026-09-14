@@ -1,0 +1,14 @@
+{
+  "observed_at": "2026-09-13T12:04:57.805846+00:00",
+  "unit": "01a09974-6716-7cc0-9916-fd6d04c91481",
+  "integrated_revision": "f679483cf11007f6f214e4d24aae5cbabd0b263e",
+  "actual_post_seal_sources": {
+    "executor_source": "dc598d9671beb4028080fd97e93f8a09be252e24",
+    "executor_record": "2f72dd6972b1ae8e786e05f3fd9e53a8d06036c0",
+    "coordinator_source": "e83310c9c28e4a750f6a1d0e21164118845accc3",
+    "coordinator_record": "328e00ae548b144d986ce2c8ea92e67d0a827586"
+  },
+  "independence": "Both actual distinct native holders independently authored their own second sources before sibling visibility, with85.583887s overlapping read/author/seal work. Prior first-epoch exposure is explicitly disclosed by both; no globally unprimed claim. Both draw from same Candidate rule; this is shared-origin compatible technical observation, not independent corroboration.",
+  "semantic_decision": "Preserve both original records as observed ASSURANCE and both producer-specific contexts. Common source/acceptance separation is semantically compatible. The separately prepared mode-alpha/mode-beta assertions overlap in Q1 sample decision / review mode and conflict; neither has accepted human grounds. Keep conflict unresolved, neither newer record nor clean merge wins. A real selected resolution would require existing accountable owner saubakirov through its authorized LEAD route. This finite observation grants no live sample-policy publication and owes none; do not generalize that reason to another owed effect.",
+  "effect_boundary": "No original modified after seal, no shared inventory/state/event/acceptance write, no third attempt. This is bounded observation for later independent Reviewer, not Coordinator APPROVE."
+}

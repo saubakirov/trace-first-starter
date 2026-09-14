@@ -1,0 +1,277 @@
+{
+  "observed_at": "2026-09-13T20:17:28.501485+00:00",
+  "candidate": "a99ba6cd756a7db444f217aef4e5a0eb83faee51",
+  "candidate_committed_at": "2026-09-13T20:08:24.345193Z",
+  "dispatch_commit": "16bc29cd4238a8a8e185eab80c84001cff41d2d8",
+  "baseline": "ec91c56007c20cda79f740fec15c85e4af74d17c",
+  "all_checks_pass": true,
+  "source_tests": {
+    "passed": 25,
+    "receipt": "04-source-checks/receipt.json",
+    "new_guard": "Current selected claims reject three source-era statements and mixed active/retired sentences; preserve historical D82/D87 and explicit retirement."
+  },
+  "docs": {
+    "builds": 1,
+    "exit": 0,
+    "receipt": "05-docs-build/receipt.json",
+    "actual_output_observation": "07-output-observation.json",
+    "opened_pages": 8,
+    "derived_files": 2053,
+    "native_or_browser_click_claim": false
+  },
+  "tested_binding": {
+    "tracked_physical_inputs": 3036,
+    "through_candidate_drift": [],
+    "changed_selected_product_Git_bytes_equal_tested": true,
+    "later_checkpoint_drift": [
+      "workspace/2026/TFW_20260909-231654_TKL/ONB__TFW_20260909-231654_TKL.md"
+    ],
+    "meaning": "Only own R2 ONB trace changes after build; prior build is applicable to unchanged VALUE/current prose/legacy targets, not later report rendering."
+  },
+  "ONB": {
+    "preserved_complete_pre_R2_prefix_commit": "16bc29cd4238a8a8e185eab80c84001cff41d2d8",
+    "prefix_bytes": 56488,
+    "prefix_sha256": "69af75d3c1e6d563741a7787db6c504b0542ec539b21c0490006ffef2f122c72",
+    "current_sha256": "9bf30adae577e7d8ac691d3afba78e369ab7b0ace139b78e4adfb0ff69774f70",
+    "current_R2_correction": "Only section15.1 owned link fragment corrected from triple-hyphen to actual rendered ID; original8ca/090fa/Candidate epoch and actual build warning remain in Git/evidence. Section16 appended.",
+    "candidate_epoch_sha256": "8159795778fbc00a8957a859c2ce6f001fa2672447ce166fba1d7ff8016111ec"
+  },
+  "authority": {
+    "approved_TS_and_HL_unchanged": true,
+    "all22_source_authority_identity_rows_revalidated": true,
+    "reviewer_files_unchanged": true,
+    "final_RF_EV_unchanged": true
+  },
+  "control": {
+    "lifecycle": "ONB",
+    "handoff_event": "journal/20260914-005756__handoff__2383.md",
+    "schema_errors": [],
+    "no_new_control_at_checkpoint": true
+  },
+  "native": {
+    "receiver_preparation": false,
+    "clock_started": false,
+    "proposal": "10-native-proposal.md",
+    "pending": "Exact Coordinator tested pin and accepted receiver/operation definition; then one independently bounded affected observation."
+  },
+  "accounting": "08-accounting/accounting.json",
+  "inventory": "11-inventory.json",
+  "inventory_sha256": "ac21344b75f546f9b0ee59191e11a0a9cee612ecfde135b23d32e2d701fdc205",
+  "links": [
+    {
+      "source": "workspace/2026/TFW_20260909-231654_TKL/ONB__TFW_20260909-231654_TKL.md",
+      "href": "REVIEW__TFW_20260909-231654_TKL__rev2.md#coordinator-ruling-r2-2026-09-14"
+    },
+    {
+      "source": "workspace/2026/TFW_20260909-231654_TKL/ONB__TFW_20260909-231654_TKL.md",
+      "href": "journal/20260914-005021__dispatch__4491.md"
+    },
+    {
+      "source": "workspace/2026/TFW_20260909-231654_TKL/ONB__TFW_20260909-231654_TKL.md",
+      "href": "evidence/r2-checkpoint/00-intake.json"
+    },
+    {
+      "source": "workspace/2026/TFW_20260909-231654_TKL/ONB__TFW_20260909-231654_TKL.md",
+      "href": "evidence/r2-checkpoint/08-accounting/accounting.json"
+    },
+    {
+      "source": "workspace/2026/TFW_20260909-231654_TKL/ONB__TFW_20260909-231654_TKL.md",
+      "href": "evidence/r2-checkpoint/04-source-checks/receipt.json"
+    },
+    {
+      "source": "workspace/2026/TFW_20260909-231654_TKL/ONB__TFW_20260909-231654_TKL.md",
+      "href": "evidence/r2-checkpoint/05-docs-build/receipt.json"
+    },
+    {
+      "source": "workspace/2026/TFW_20260909-231654_TKL/ONB__TFW_20260909-231654_TKL.md",
+      "href": "evidence/r2-checkpoint/07-output-observation.json"
+    },
+    {
+      "source": "workspace/2026/TFW_20260909-231654_TKL/ONB__TFW_20260909-231654_TKL.md",
+      "href": "evidence/r2-checkpoint/09-source-pin-proposal.json"
+    },
+    {
+      "source": "workspace/2026/TFW_20260909-231654_TKL/ONB__TFW_20260909-231654_TKL.md",
+      "href": "evidence/r2-checkpoint/10-native-proposal.md"
+    },
+    {
+      "source": "workspace/2026/TFW_20260909-231654_TKL/evidence/r2-checkpoint/10-native-proposal.md",
+      "href": "09-source-pin-proposal.json"
+    },
+    {
+      "source": "workspace/2026/TFW_20260909-231654_TKL/evidence/r2-checkpoint/10-native-proposal.md",
+      "href": "../r1-ac7/14-repeat-before-map.json"
+    },
+    {
+      "source": "workspace/2026/TFW_20260909-231654_TKL/evidence/r2-checkpoint/10-native-proposal.md",
+      "href": "06-native-feasibility.json"
+    }
+  ],
+  "authored_current_diff_check_exit": 0,
+  "full_raw_diff_check": "Not rerun or recursively expanded; O3 and all earlier raw diagnostics remain intact.",
+  "files": [
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/ONB__TFW_20260909-231654_TKL.md",
+      "class": "TRACE",
+      "bytes": 67893,
+      "sha256": "9bf30adae577e7d8ac691d3afba78e369ab7b0ace139b78e4adfb0ff69774f70"
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/r2-checkpoint/02-source-edit.json",
+      "class": "TRACE",
+      "bytes": 1230,
+      "sha256": "283542b14830318c55a4dcf95b5f85c8e43794af6226e99bfb4d7cc031396746"
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/r2-checkpoint/03-tested-inputs.json",
+      "class": "TRACE",
+      "bytes": 954753,
+      "sha256": "d2d1ac7f05b3c8fb0596b57671de81ca855ed055499fddb8ffe0e9676fcb6863"
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/r2-checkpoint/03-tested-selected-sources.zip",
+      "class": "TRACE",
+      "bytes": 7399617,
+      "sha256": "517130c066636563bb2ae52f8c9922dcdfa0479e285baf925b6edf65c7cdee1b"
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/r2-checkpoint/04-source-checks/receipt.json",
+      "class": "TRACE",
+      "bytes": 1305,
+      "sha256": "1aacb01e287352d7c1fb051d91c6c894adcba260e25a26bd31fdb4c834b85e3f"
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/r2-checkpoint/04-source-checks/stderr.raw",
+      "class": "TRACE",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/r2-checkpoint/04-source-checks/stdout.raw",
+      "class": "TRACE",
+      "bytes": 101,
+      "sha256": "0c2ebcf3b138db7adc9be84b431807c035d8b2bddd4ffd19d1a38fe338eacf95"
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/r2-checkpoint/05-docs-build/receipt.json",
+      "class": "TRACE",
+      "bytes": 873,
+      "sha256": "a095fe0b331ca5402097d5b99c17b53cc45ad0b81a49973d3e5440264f568382"
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/r2-checkpoint/05-docs-build/stderr.raw",
+      "class": "TRACE",
+      "bytes": 1039891,
+      "sha256": "30a392d09b43664aa0fca8a95546ea83112a3dd0feca1d422c6f6e933a4ba4d0"
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/r2-checkpoint/05-docs-build/stdout.raw",
+      "class": "TRACE",
+      "bytes": 10039,
+      "sha256": "14dcaa6e7f188830d55645fd255486d2755f2619e8ed090b9227b25c6d82599c"
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/r2-checkpoint/06-native-feasibility.json",
+      "class": "TRACE",
+      "bytes": 1628251,
+      "sha256": "b7578665e7ac48cfe23623261f2d811eb6af1ccf10616f490c818a1e2269f758"
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/r2-checkpoint/07-opened-output.zip",
+      "class": "TRACE",
+      "bytes": 240020,
+      "sha256": "4a6ec38e8a29f9e3463345bb3703976a7762f5971e0df51a4d88dd682e276cd3"
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/r2-checkpoint/07-output-observation.json",
+      "class": "TRACE",
+      "bytes": 500598,
+      "sha256": "96fd7438771de798260ee7fafbe2c16f70ad338d71fa53e361e51017ac6b82e8"
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/r2-checkpoint/08-accounting/accounting.json",
+      "class": "TRACE",
+      "bytes": 146693,
+      "sha256": "aea49abd810b4d60a2319e4031f95e4ba933e54c8cb68fc7f77f12f2adbdb73c"
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/r2-checkpoint/08-accounting/all-name-status.stderr.raw",
+      "class": "TRACE",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/r2-checkpoint/08-accounting/all-name-status.z",
+      "class": "TRACE",
+      "bytes": 66625,
+      "sha256": "8faf0013cd9b47421c24a787cdc31aad04c9762fe821e44d00a07b3994607a10"
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/r2-checkpoint/08-accounting/value-name-status.stderr.raw",
+      "class": "TRACE",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/r2-checkpoint/08-accounting/value-name-status.z",
+      "class": "TRACE",
+      "bytes": 1793,
+      "sha256": "b0f9d3f781caa5717a017a2b92838fd78b8108bf88f1883ba4a89daa3b1a8f3a"
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/r2-checkpoint/08-accounting/value-numstat.stderr.raw",
+      "class": "TRACE",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/r2-checkpoint/08-accounting/value-numstat.z",
+      "class": "TRACE",
+      "bytes": 1960,
+      "sha256": "20af28b988360518a848cc1268eb9385cf6e038f484d38a35f85eee3803201fe"
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/r2-checkpoint/09-source-pin-proposal.json",
+      "class": "TRACE",
+      "bytes": 13653,
+      "sha256": "10669c6422ba9b3568543b4e602aac5b2bff0d846321feeb82285be0a5d3b2a6"
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/r2-checkpoint/10-native-proposal.md",
+      "class": "TRACE",
+      "bytes": 9410,
+      "sha256": "2a33ebf770b59e874af8517c1a2936f5125455acacd95cc3876ea66035de6dd9"
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/r2-checkpoint/11-inventory.json",
+      "class": "TRACE",
+      "bytes": 131052,
+      "sha256": "ac21344b75f546f9b0ee59191e11a0a9cee612ecfde135b23d32e2d701fdc205"
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/r2-checkpoint/11-precommit-cached.raw",
+      "class": "TRACE",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/r2-checkpoint/11-precommit-observer-error.json",
+      "class": "TRACE",
+      "bytes": 832,
+      "sha256": "e4f3b7988ab349773c019045a5a216ea9884effe170e95a9d79a142013839011"
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/r2-checkpoint/11-precommit-status.raw",
+      "class": "TRACE",
+      "bytes": 2147,
+      "sha256": "7d181a7d119417a0701fdd0515c759338303f80130549231ef4c6248f21c0f89"
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/r2-checkpoint/11-validation.json",
+      "class": "TRACE",
+      "identity": "Committed Git blob for this validation file"
+    }
+  ],
+  "authored_staged_md_json_diff_check_exit": 0,
+  "authored_staged_observed_at": "2026-09-13T20:18:13.956814+00:00"
+}

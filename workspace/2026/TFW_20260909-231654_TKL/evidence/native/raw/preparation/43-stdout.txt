@@ -1,0 +1,24 @@
+[detached HEAD e00ca51] [codex/TFW_20260909-231654_TKL/assurance/executor] seal prepared Q1 inputs
+ 22 files changed, 10072 insertions(+)
+ create mode 100644 workspace/2026/TFW_20260909-231654_TKL/evidence/q1-inputs/common.md
+ create mode 100644 workspace/2026/TFW_20260909-231654_TKL/evidence/q1-inputs/coordinator.md
+ create mode 100644 workspace/2026/TFW_20260909-231654_TKL/evidence/q1-inputs/executor.md
+ create mode 100644 workspace/2026/TFW_20260909-231654_TKL/evidence/q1-inputs/handover-cases.json
+ create mode 100644 workspace/2026/TFW_20260909-231654_TKL/evidence/q1-inputs/source-identities.json
+ create mode 100644 workspace/2026/TFW_20260909-231654_TKL/evidence/q1-inputs/sources/144e3e651382330afba4d7131a562d05e7f515f9/workspace/2026/TFW_20260909-231654_TKL/journal/20260913-154545__dispatch__0173.md
+ create mode 100644 workspace/2026/TFW_20260909-231654_TKL/evidence/q1-inputs/sources/2794cbdb40f6c4f3a7d4bce1f8d4eb949d9e6913/workspace/2026/TFW_20260909-231654_TKL/TS__TFW_20260909-231654_TKL.md
+ create mode 100644 workspace/2026/TFW_20260909-231654_TKL/evidence/q1-inputs/sources/27cdb701b91c5b45b9f54b3e98c9ad67635b3e30/workspace/2026/TFW_20260909-231654_TKL/ONB__TFW_20260909-231654_TKL.md
+ create mode 100644 workspace/2026/TFW_20260909-231654_TKL/evidence/q1-inputs/sources/27cdb701b91c5b45b9f54b3e98c9ad67635b3e30/workspace/2026/TFW_20260909-231654_TKL/research/iter2/RES.md
+ create mode 100644 workspace/2026/TFW_20260909-231654_TKL/evidence/q1-inputs/sources/99198f133c0047568c1e8411bfae849239b352b1/workspace/2026/TFW_20260907-020729_SLC/REVIEW__TFW_20260907-020729_SLC.md
+ create mode 100644 workspace/2026/TFW_20260909-231654_TKL/evidence/q1-inputs/sources/99198f133c0047568c1e8411bfae849239b352b1/workspace/2026/TFW_20260907-020729_SLC/evidence/review-c2-final/accounting-result.json
+ create mode 100644 workspace/2026/TFW_20260909-231654_TKL/evidence/q1-inputs/sources/99198f133c0047568c1e8411bfae849239b352b1/workspace/2026/TFW_20260907-020729_SLC/evidence/review-c2-final/executor-evidence-verification.json
+ create mode 100644 workspace/2026/TFW_20260909-231654_TKL/evidence/q1-inputs/sources/99198f133c0047568c1e8411bfae849239b352b1/workspace/2026/TFW_20260907-020729_SLC/evidence/review-c2-final/opened-output.json
+ create mode 100644 workspace/2026/TFW_20260909-231654_TKL/evidence/q1-inputs/sources/bb3c2803e610bd5fe1cc6eed040b73a6cb2a40aa/workspace/2026/TFW_20260909-231654_TKL/journal/20260913-154924__dispatch__580a.md
+ create mode 100644 workspace/2026/TFW_20260909-231654_TKL/evidence/q1-inputs/sources/c51ee0c0d7891fd165d105f3565e0e54512c1040/KNOWLEDGE.md
+ create mode 100644 workspace/2026/TFW_20260909-231654_TKL/evidence/q1-inputs/sources/c51ee0c0d7891fd165d105f3565e0e54512c1040/workspace/2026/TFW_20260907-020729_SLC/HL-TFW_20260907-020729_SLC.md
+ create mode 100644 workspace/2026/TFW_20260909-231654_TKL/evidence/q1-inputs/sources/c51ee0c0d7891fd165d105f3565e0e54512c1040/workspace/2026/TFW_20260907-020729_SLC/RF__TFW_20260907-020729_SLC.md
+ create mode 100644 workspace/2026/TFW_20260909-231654_TKL/evidence/q1-inputs/sources/c51ee0c0d7891fd165d105f3565e0e54512c1040/workspace/2026/TFW_20260907-020729_SLC/TS__TFW_20260907-020729_SLC.md
+ create mode 100644 workspace/2026/TFW_20260909-231654_TKL/evidence/q1-inputs/sources/c51ee0c0d7891fd165d105f3565e0e54512c1040/workspace/2026/TFW_20260907-020729_SLC/journal/20260910-132537__transition__803f.md
+ create mode 100644 workspace/2026/TFW_20260909-231654_TKL/evidence/q1-inputs/sources/c51ee0c0d7891fd165d105f3565e0e54512c1040/workspace/2026/TFW_20260907-020729_SLC/status.md
+ create mode 100644 workspace/2026/TFW_20260909-231654_TKL/evidence/q1-inputs/sources/dedf8527ff110fa160358239bbf45ebb498838dd/workspace/2026/TFW_20260909-231654_TKL/journal/20260913-145904__dispatch__3328.md
+ create mode 100644 workspace/2026/TFW_20260909-231654_TKL/evidence/q1-inputs/sources/e6f1c2ef8d90941c3020bd4f0bd85cacce7cd6d0/workspace/2026/TFW_20260909-231654_TKL/journal/20260913-150051__dispatch__5df5.md

@@ -1,0 +1,19 @@
+{
+  "argv": [
+    "E:\\TEMP\\pttc-phase-a-b9b5\\venv\\Scripts\\python.exe",
+    "-m",
+    "pytest",
+    "docs/scripts/test_gen_docs.py",
+    "-q"
+  ],
+  "cwd": "C:\\Users\\c0rpa\\.codex\\worktrees\\f3f3\\steps-framework",
+  "started_at": "2026-09-13T17:43:17.126040+00:00",
+  "finished_at": "2026-09-13T17:43:19.535579+00:00",
+  "exit": 0,
+  "input": "../03-input/source-before.json",
+  "base_head": "add496c0bea9980314741071510f8726d29631ca",
+  "streams": {
+    "stdout.txt": "5a4851f570466edf0e6b09d3ff0b6c54539a61b3d53cc49883218edf68ff223d",
+    "stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+}

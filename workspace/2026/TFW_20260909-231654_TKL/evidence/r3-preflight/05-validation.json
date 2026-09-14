@@ -1,0 +1,97 @@
+{
+  "observed_at": "2026-09-13T21:56:35.777719+00:00",
+  "outcome": "Successful receiver-free observer preflight; native not started",
+  "observer_unchanged_after_one_run": true,
+  "all2317_and_binary_witness_pass": true,
+  "complete_map_persisted": true,
+  "all15_sources_13_authority_4_targets_verified": true,
+  "old65_VALUE_ASSURANCE_unchanged": true,
+  "all_prior_ONB_bytes_preserved": true,
+  "lifecycle": "ONB",
+  "new_receiver_access": false,
+  "new_source_test_build_or_native_run": false,
+  "clock_bound_rechecked_before_seal": true,
+  "operations_at_seal": 6,
+  "future_tail_not_claimed": "Exact actual commit/verify/direct-return time and operation tail are in the direct task tools/message",
+  "counts": {
+    "VALUE": 58,
+    "ASSURANCE": 8,
+    "TRACE": 814
+  },
+  "files": [
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/ONB__TFW_20260909-231654_TKL.md",
+      "bytes": 79703,
+      "sha256": "5ffa47874813c4531050be96468e2d149311ace6c80f88df2ad35be975b88416"
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/r3-preflight/00-clock.json",
+      "bytes": 596,
+      "sha256": "ffc3b772445e70e396393816a61a9d904ab85a9da0cd30359a9e8a17c7559ca8"
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/r3-preflight/02-all-files.json",
+      "bytes": 738514,
+      "sha256": "2b2f3041af30c68d1e33b1ba73b90f42b972d2f9ae8285546be75aa3368d1db9"
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/r3-preflight/02-launch.json",
+      "bytes": 716,
+      "sha256": "afe95446788ca423663358a6764f5ef0051a01fa5b5d9de6a569daa2f4fa5ab1"
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/r3-preflight/02-result.json",
+      "bytes": 1553,
+      "sha256": "b073cbf6bedb71d88310a902a376d46dc7f2baa4f7fa3a51152590e6bbdb77d3"
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/r3-preflight/02-stderr.raw",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/r3-preflight/02-stdout.raw",
+      "bytes": 686,
+      "sha256": "4b90a46d40b94244cfd4f26ebe24f3cb32c6e685e8da7506c69f6497116b4cd0"
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/r3-preflight/02-witness.json",
+      "bytes": 455,
+      "sha256": "94d6811ef4c860596cedd95c4ad55f64955bacde4f491eb438f59f228d5d0830"
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/r3-preflight/03-launch.md",
+      "bytes": 1355,
+      "sha256": "6b2273df28b585778bcc0f5955a486c9b63de2b74ebeb9aaae6a33e2b036b354"
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/r3-preflight/03-observation-schema.json",
+      "bytes": 10619,
+      "sha256": "dbdb04cd142bb29fac3ce7c74cd7b37ffbac4ec34012325066152ec7735a3b38"
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/r3-preflight/03-source-authority-target.json",
+      "bytes": 26396,
+      "sha256": "dd6dfe034ee4ab6a0c1d32300f81ce038ea7f381f6ec9e592c2cc1cb68655c8e"
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/r3-preflight/04-operations.json",
+      "bytes": 2866,
+      "sha256": "002a642e127800fcf219c62f68c14d99bd2d265f8a1e401747b6928c672c318b"
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/r3-preflight/05-inventory.json",
+      "bytes": 180091,
+      "sha256": "d6c963115b53d4c5ef2f3c34df1d091d13829e3cb7028ff1dbfec7b9e12c651e"
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/r3-preflight/05-validation.json",
+      "identity": "Committed Git blob for self"
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/r3-preflight/observer.py",
+      "bytes": 6164,
+      "sha256": "515fa7513171ba663f784982df23a994e3052370081381022cdf808fd0e5dd48"
+    }
+  ]
+}

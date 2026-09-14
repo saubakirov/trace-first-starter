@@ -1,0 +1,3217 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="A structured methodology where products preserve knowledge about themselves — purpose, decisions, history, and meaning.">
+      
+      
+      
+        <link rel="canonical" href="https://tfw.saubakirov.kz/knowledge/process/">
+      
+      
+        <link rel="prev" href="../philosophy/">
+      
+      
+        <link rel="next" href="../risk/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../brand/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Knowledge: Process - Trace-First Workflow</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Inter";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../overrides/stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="teal">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#knowledge-process" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Trace-First Workflow" class="md-header__button md-logo" aria-label="Trace-First Workflow" data-md-component="logo">
+      
+  <img src="../../brand/logo_header.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Trace-First Workflow
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Knowledge: Process
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="teal"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent="teal"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/saubakirov/trace-first-starter" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Trace-First Workflow" class="md-nav__button md-logo" aria-label="Trace-First Workflow" data-md-component="logo">
+      
+  <img src="../../brand/logo_header.png" alt="logo">
+
+    </a>
+    Trace-First Workflow
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/saubakirov/trace-first-starter" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting Started
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Concepts
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Concepts
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concepts/philosophy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Philosophy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Knowledge
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Knowledge
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../knowledge-index/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Architecture & Decisions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Topics
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Topics
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../constraint/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Constraint
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../context/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Context
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../convention/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Convention
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../domain/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Domain
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../environment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Environment
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../philosophy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Philosophy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Process
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../risk/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Risk
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../stakeholder/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Stakeholder
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Records
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Records
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../records/TKL-20260913-01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TKL-20260913-01
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reference
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Reference
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/conventions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Conventions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/glossary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Glossary
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/changelog/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Changelog
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/release/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Release
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_5" id="__nav_5_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Workflows
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Workflows
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/workflows/config/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Config
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/workflows/docs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Docs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/workflows/handoff/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Handoff
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/workflows/init/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Init
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/workflows/knowledge/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Knowledge
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/workflows/plan/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Plan
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/workflows/release/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Release
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_5_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_5_8" id="__nav_5_5_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Research
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_5_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_5_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Research
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/workflows/research/base/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Base
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/workflows/research/deep/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deep
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/workflows/research/focused/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Focused
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/workflows/resume/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Resume
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/workflows/review/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Review
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/workflows/update/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Update
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_6" id="__nav_5_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Templates
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Templates
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/templates/briefing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Briefing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_6_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_6_2" id="__nav_5_6_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Evidence
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_6_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_6_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Evidence
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/templates/evidence/EV/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ev
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/templates/HL/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hl
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_6_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_6_4" id="__nav_5_6_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Journal
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_6_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_6_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Journal
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/templates/journal/event/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Event
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_6_5" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../reference/templates/KNOWLEDGE/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Knowledge
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5_6_5" id="__nav_5_6_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_6_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_6_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Knowledge
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/templates/knowledge/handover/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Handover
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/templates/knowledge/record/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Record
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/templates/knowledge/topic/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Topic
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/templates/ONB/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Onb
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/templates/RELEASE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Release
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/templates/RES/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Res
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_6_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_6_9" id="__nav_5_6_9_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Research
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_6_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_6_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Research
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/templates/research/1_briefing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1 Briefing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/templates/research/2_gather/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2 Gather
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/templates/research/3_extract/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3 Extract
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/templates/research/4_challenge/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4 Challenge
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_6_10" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../reference/templates/REVIEW/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Review
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5_6_10" id="__nav_5_6_10_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_6_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_6_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Review
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/templates/review/judge/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Judge
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/templates/review/map/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Map
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/templates/review/verify/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Verify
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/templates/RF/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Rf
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/templates/status/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Status
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_6_13" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_6_13" id="__nav_5_6_13_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Team
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_6_13_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_6_13">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Team
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/templates/team/profile/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Profile
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/templates/TS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/templates/update_receipt/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Update Receipt
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="knowledge-process">Knowledge: Process<a class="headerlink" href="#knowledge-process" title="Permanent link">&para;</a></h1>
+<blockquote>
+<p>Topic file for <code>process</code> facts. Updated by <code>/tfw-knowledge</code>.
+See KNOWLEDGE.md §4 for the index.</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Fact</th>
+<th>Verified</th>
+<th>Source(s)</th>
+<th>Added</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>F1</td>
+<td>TFW = teamwork. The framework's purpose is to enable collaboration between multiple agents and humans</td>
+<td>⚠️ 1 source</td>
+<td>Chat <a href="../../tasks/TFW-18__knowledge_consolidation/HL-TFW-18__knowledge_consolidation/">TFW-18</a> (user)</td>
+<td>2026-04-03</td>
+</tr>
+<tr>
+<td>F2</td>
+<td>The best fact candidates come from user emotions and frustration in chat, not from structured artifact sections. When the user is angry, excited, or sharing insights during research — that's the primary signal for strategic knowledge</td>
+<td>⚠️ 1 source</td>
+<td>REVIEW-18B FC#2, chat TFW-18B</td>
+<td>2026-04-03</td>
+</tr>
+<tr>
+<td>F3</td>
+<td>Naming creates behavior in AI agents more effectively than explanation. Right terminology triggers right associations. «Маленький промпт + точные термины &gt; длинный промпт с объяснениями». Claude «dreaming» = 1 word replacing paragraphs. TFW adopted: OODA, Sufficiency Verdict, Trust Protocol, Progressive Disclosure</td>
+<td>✅ verified</td>
+<td><a href="../../tasks/TFW-22__coordinator_research_enrichment/RES__TFW-22__coordinator_research_enrichment/">RES TFW-22</a> FC#2, <a href="../../tasks/TFW-22__coordinator_research_enrichment/REVIEW__TFW-22__coordinator_research_enrichment/">REVIEW TFW-22</a> FC#2</td>
+<td>2026-04-04</td>
+</tr>
+<tr>
+<td>F4</td>
+<td>AI agents follow numbered steps + gates perfectly but lose focus in prose workflows. Workflow = algorithm (steps + gates + refs), not info dump. Observed: executor doesn't deviate from TS steps. Confirmed across <a href="../../tasks/TFW-22__coordinator_research_enrichment/HL-TFW-22__coordinator_research_enrichment/">TFW-22</a> and prior tasks</td>
+<td>✅ verified</td>
+<td><a href="../../tasks/TFW-22__coordinator_research_enrichment/RES__TFW-22__coordinator_research_enrichment/">RES TFW-22</a> FC#3, <a href="../../tasks/TFW-22__coordinator_research_enrichment/REVIEW__TFW-22__coordinator_research_enrichment/">REVIEW TFW-22</a> FC#3</td>
+<td>2026-04-04</td>
+</tr>
+<tr>
+<td>F5</td>
+<td>AI should write findings to file FIRST, then summary to chat. Protects against session interruption/death. Adds ~10-15% tokens, not 100%</td>
+<td>✅ verified</td>
+<td><a href="../../tasks/TFW-22__coordinator_research_enrichment/RES__TFW-22__coordinator_research_enrichment/">RES TFW-22</a> FC#5, <a href="../../tasks/TFW-22__coordinator_research_enrichment/REVIEW__TFW-22__coordinator_research_enrichment/">REVIEW TFW-22</a> FC#6</td>
+<td>2026-04-04</td>
+</tr>
+<tr>
+<td>F6</td>
+<td>Coordinator without visionary oversight drifts into scope explosion. Phase A coordinator added tasks/, reference resolver, workflows/templates — all beyond master HL. Need lead coordinator with veto authority across sessions, or at minimum strong HL constraints</td>
+<td>⚠️ 1 source</td>
+<td><a href="../../tasks/TFW-26__documentation_site/HL-TFW-26__documentation_site/">TFW-26</a> coordinator review session</td>
+<td>2026-04-05</td>
+</tr>
+<tr>
+<td>F7</td>
+<td>Agents in different chat sessions lose strategic decisions context. User had to re-explain coordinator decisions from one chat to another. §11 Strategic Insights helps, but information loss between sessions is a systemic TFW problem</td>
+<td>⚠️ 1 source</td>
+<td>User, <a href="../../tasks/TFW-26__documentation_site/HL-TFW-26__documentation_site/">TFW-26</a> session: "пришлось заново объяснить координатору"</td>
+<td>2026-04-05</td>
+</tr>
+<tr>
+<td>F8</td>
+<td>Executor role lacks explicit session fact capture step. Coordinator has §11 in HL template + plan.md Step 4b trigger. Executor sees user reactions live during testing but has no mechanism to record them. Insights are lost without explicit capture</td>
+<td>⚠️ 1 source</td>
+<td><a href="../../tasks/TFW-26__documentation_site/PhaseB/RF__PhaseB__gen_docs_implementation/">RF TFW-26/B</a> obs. #9, executor self-report</td>
+<td>2026-04-05</td>
+</tr>
+<tr>
+<td>F9</td>
+<td>CTA (star, share, recommend) goes after value delivery, not during onboarding. User gets value first → then call-to-action. Standard marketing pattern applied to TFW init: star recommendation at Phase 5 Verify, after project is set up and first task closed</td>
+<td>⚠️ 1 source</td>
+<td>User insight, <a href="../../tasks/TFW-31__quick_start_agent_first/HL-TFW-31__quick_start_agent_first/">TFW-31</a> (marketing timing)</td>
+<td>2026-04-09</td>
+</tr>
+<tr>
+<td>F10</td>
+<td>User's actual TFW init pattern: point agent at .tfw/ folder + describe business context in natural language. «Мы начинаем новый проект. [контекст]. Сделай инициализацию.» Agent gets file access + business context + instruction to initialize</td>
+<td>⚠️ 1 source</td>
+<td><a href="../../tasks/TFW-31__quick_start_agent_first/RES__TFW-31__quick_start_agent_first/">RES TFW-31</a> FC3 (user interview)</td>
+<td>2026-04-09</td>
+</tr>
+<tr>
+<td>F11</td>
+<td>Organic emergence → formalization = reliable pattern for discovering workflow improvements. If agents invent a pattern independently across iterations (e.g., Iteration Status + Open Threads in <a href="../../tasks/TFW-32__methodology_and_positioning/HL-TFW-32__methodology_and_positioning/">TFW-32</a> RES3-4), it should be codified</td>
+<td>⚠️ 1 source</td>
+<td><a href="../../tasks/TFW-32__methodology_and_positioning/PhaseC/REVIEW__PhaseC__multi_iteration_research/">REVIEW TFW-32/C</a> FC#1</td>
+<td>2026-04-10</td>
+</tr>
+<tr>
+<td>F12</td>
+<td>Analytical phases (positioning specs, improvement direction) have structurally different deliverables — no code, no tests, no modified files. The 9-point review checklist's code-centric items all evaluate to N/A. A lighter review template for analytical phases could reduce friction</td>
+<td>⚠️ 1 source</td>
+<td><a href="../../tasks/TFW-32__methodology_and_positioning/PhaseD/REVIEW__PhaseD__positioning_and_messaging/">REVIEW TFW-32/D</a> FC#2</td>
+<td>2026-04-10</td>
+</tr>
+<tr>
+<td>F13</td>
+<td>Every research iteration needs a SPECIFIC trigger — «just run another iteration» without trigger = waste. Trigger taxonomy: error correction, gap filling, depth on specific finding, user-injected new direction. Observed across 6 iterations (cross-project: 4 + 2)</td>
+<td>⚠️ 1 source</td>
+<td>RES3 FC15 (cross-project pattern)</td>
+<td>2026-04-10</td>
+</tr>
+<tr>
+<td>F14</td>
+<td>Without YAML control files or explicit statuses, agents fast-run every time. «Agents always want to finish faster.» Structural enforcement (YAML + gate + min_iterations) is required for any iterative AI workflow</td>
+<td>⚠️ 1 source</td>
+<td>RES2 SS2 (user principle)</td>
+<td>2026-04-10</td>
+</tr>
+<tr>
+<td>F15</td>
+<td>Section names in templates = prompts for writers, not tags for collectors. Collection algorithm reads full artifacts — doesn't need standardized names to find content. «не проблема заставить агента заглянуть в каждый раздел»</td>
+<td>⚠️ 1 source</td>
+<td>RES4 SS10 (user insight)</td>
+<td>2026-04-10</td>
+</tr>
+<tr>
+<td>F16</td>
+<td>AI-generated citations propagate through TFW role transitions without verification — "fabrication chain." In <a href="../../tasks/TFW-36__content_marketing_blog_series/">TFW-36</a> Phase A: (1) "55 verified facts" (actual: 18 verified of 55 total), (2) "0.38% context quality" attributed to Anthropic (fabricated — real 0.38% is about jailbreak refusal rates), (3) "85% AI projects fail" attributed to McKinsey (actual source: Gartner 2019). All three traversed Researcher → Coordinator → Executor → Reviewer (4 roles, 8+ documents). Code tasks have compilers to catch this; content tasks need a Source Audit gate — mandatory citation register with verified URLs before RF status</td>
+<td>⚠️ 1 source</td>
+<td><a href="../../tasks/TFW-36__content_marketing_blog_series/">TFW-36</a> Phase A incidents, REVIEW §2</td>
+<td>2026-04-13</td>
+</tr>
+<tr>
+<td>F17</td>
+<td>Template-based state file creation came from user insight, not framework analysis. User suggested "template for init" as the solution to knowledge_state.yaml contamination — before any structured investigation. Validates P2 (process.md): best insights come from user's direct experience with the problem</td>
+<td>⚠️ 1 source</td>
+<td><a href="../../tasks/TFW-40__state_separation/HL-TFW-40__state_separation/">HL TFW-40</a> §11 S3 (user, initial report)</td>
+<td>2026-04-15</td>
+</tr>
+<tr>
+<td>F18</td>
+<td>When TS ACs target an existing template for modification, section numbering drifts if ACs reference sections by number ("§4 should be AC") and a later AC adds a new section before it. Coordinators should specify section headings, not positional numbers, in template-modification ACs</td>
+<td>⚠️ 1 source</td>
+<td><a href="../../tasks/TFW-41__execution_quality_gates/PhaseA/RF__PhaseA__templates_and_conventions/">RF TFW-41/A</a> §6 FC1 (executor observation)</td>
+<td>2026-04-20</td>
+</tr>
+<tr>
+<td>F19</td>
+<td>~~<code>review.md</code> has a non-standard Step 0 (Select Review Mode)~~ <strong>No longer true since 2026-08-13</strong> — the step was deleted and Step 0 is now Session Naming, like every other workflow. What remains true: a workflow renumbered once will be renumbered again, and external pointers to its step numbers go stale silently</td>
+<td>⚠️ 1 source</td>
+<td><a href="../../tasks/TFW-41__execution_quality_gates/PhaseB/RF__PhaseB__workflow_gates/">RF TFW-41/B</a> §6 FC1; corrected by <a href="../../tasks/TFW-56__review_mode_removal/HL-TFW-56__review_mode_removal/">TFW-56</a></td>
+<td>2026-04-20, revised 2026-08-13</td>
+</tr>
+<tr>
+<td>F20</td>
+<td>When HL deliverables list and TS AC checklist diverge (e.g., HL lists 15 terms, TS AC says 14), resolution = ask user. HL = vision (authoritative on WHAT), TS = spec (authoritative on HOW to verify). Neither auto-wins — user decides which is the actual contract</td>
+<td>⚠️ 1 source</td>
+<td><a href="../../tasks/TFW-41__execution_quality_gates/PhaseD/RF__PhaseD__glossary_and_adapters/">RF TFW-41/D</a> §6 FC1 (user resolution of ONB Q)</td>
+<td>2026-04-20</td>
+</tr>
+<tr>
+<td>F21</td>
+<td>In multi-iteration research, all iteration dependencies are linear-sequential — iteration N reads only iteration N-1 RES. No DAG patterns observed across 8 iterations with 3 agents (a multi-phase project). Iteration number = dependency order. <code>depends_on</code> field in iterations.yaml is redundant</td>
+<td>⚠️ 1 source</td>
+<td>RES <a href="../../tasks/TFW-42__research_cycle_restructure/HL-TFW-42__research_cycle_restructure/">TFW-42</a> iter1 FC2 (empirical data)</td>
+<td>2026-04-30</td>
+</tr>
+<tr>
+<td>F22</td>
+<td>Generic capability guidance tables (e.g., "web research needs web search") are tautological overhead — removed by user as valueless. When agent field already provides traceability, adding a guidance matrix that doesn't name specific tools adds noise without helping coordinators decide. Over-engineering research findings into framework conventions = anti-pattern</td>
+<td>⚠️ 1 source</td>
+<td>User decision, <a href="../../tasks/TFW-42__research_cycle_restructure/HL-TFW-42__research_cycle_restructure/">TFW-42</a> session (removed Agent selection guidance from conventions.md)</td>
+<td>2026-04-30</td>
+</tr>
+<tr>
+<td>F23</td>
+<td>Evidence complements synthetic testing, doesn't replace it. The mock→real transition is the breakpoint: «Ближе к концу [моки] пропадают и тут наступают проблемы.» Evidence captures this transition explicitly — the moment when real environment replaces test doubles</td>
+<td>⚠️ 1 source</td>
+<td><a href="../../tasks/TFW-46__evidence_layer/HL-TFW-46__evidence_layer/">HL TFW-46</a> §11 S4 (user, 2026-07-07)</td>
+<td>2026-07-07</td>
+</tr>
+<tr>
+<td>F24</td>
+<td><a href="../../tasks/TFW-45__multi_agent_workflows/HL-TFW-45__multi_agent_workflows/">TFW-45</a> (multi-agent/swarm workflows) officially frozen by user. Not abandoned — deprioritized in favor of Evidence Layer (<a href="../../tasks/TFW-46__evidence_layer/HL-TFW-46__evidence_layer/">TFW-46</a>)</td>
+<td>⚠️ 1 source</td>
+<td><a href="../../tasks/TFW-46__evidence_layer/HL-TFW-46__evidence_layer/">HL TFW-46</a> §11 S6 (user, 2026-07-07)</td>
+<td>2026-07-07</td>
+</tr>
+<tr>
+<td>F25</td>
+<td>Fabricated AI citation in <a href="../../tasks/TFW-36__content_marketing_blog_series/">TFW-36</a> traversed entire pipeline (Research→TS→Draft→RF) undetected — caught only by user. Reviewer self-assessed: "I did not verify numbers independently." Evidence that content tasks need source audit gates; code has compilers, content has nothing</td>
+<td>⚠️ 1 source</td>
+<td>RES <a href="../../tasks/TFW-46__evidence_layer/HL-TFW-46__evidence_layer/">TFW-46</a> iter1 FC3, <a href="../../tasks/TFW-36__content_marketing_blog_series/">TFW-36</a> RF §8, REVIEW</td>
+<td>2026-07-07</td>
+</tr>
+<tr>
+<td>F26</td>
+<td>Commit creation is not an Executor/handoff-only responsibility: any active canonical TFW role—Coordinator, Researcher, Executor, or Reviewer—may commit the work it owns.</td>
+<td>⚠️ 1 source</td>
+<td>User authority trace: <a href="../../tasks/TFW-50__minimal_agent_commit_attribution/HL-TFW-50__minimal_agent_commit_attribution/">HL TFW-50</a> §11 S8 → RES <a href="../../tasks/TFW-50__minimal_agent_commit_attribution/HL-TFW-50__minimal_agent_commit_attribution/">TFW-50</a> iter1 FC1 → <a href="../../tasks/TFW-50__minimal_agent_commit_attribution/RF__TFW-50__minimal_agent_commit_attribution/">RF TFW-50</a> §7 FC1 → <a href="../../tasks/TFW-50__minimal_agent_commit_attribution/REVIEW__TFW-50__minimal_agent_commit_attribution/">REVIEW TFW-50</a> §7; confirmed 2026-08-05</td>
+<td>2026-08-05</td>
+</tr>
+<tr>
+<td>F27</td>
+<td>Field use showed that agents retain the philosophy more reliably than routine discipline: task transitions, trace maintenance, and knowledge indexing are the recurring failure points.</td>
+<td>✅ verified</td>
+<td>Owner conversation 2026-08-08; owner-approved <a href="../../tasks/TFW-52__tfw_light_v1/HL-TFW-52__tfw_light_v1/">HL TFW-52</a> §11 S2</td>
+<td>2026-08-08</td>
+</tr>
+<tr>
+<td>F28</td>
+<td>Initialization must establish the actual project, the user, the goal, the desired effect, the success criteria, and the professional role plus mental model expected from the AI. A starter that skips this produces plausible generic context instead of a real project.</td>
+<td>✅ verified</td>
+<td>Owner feedback 2026-08-09; <a href="../../tasks/TFW-52__tfw_light_v1/phase-b/RF__phase-b__assisted/">RF TFW-52/B</a> FC#2</td>
+<td>2026-08-13</td>
+</tr>
+<tr>
+<td>F29</td>
+<td>Owner product acceptance and evidence completeness answer different questions. A useful MVP can be closed as successful while its BLOCKED and DEFERRED evidence is preserved verbatim — provided no unverified mechanism is relabelled as working.</td>
+<td>✅ verified</td>
+<td>Owner closure direction 2026-08-13; <a href="../../tasks/TFW-52__tfw_light_v1/phase-b/RF__phase-b__assisted/">RF TFW-52/B</a> S3</td>
+<td>2026-08-13</td>
+</tr>
+<tr>
+<td>F30</td>
+<td><strong>Capture without an enforcement site does not change behaviour.</strong> This project's own <a href="./"><code>knowledge/process.md</code></a> <strong>F6</strong> recorded the coordinator-drift failure in April 2026 — <em>"need lead coordinator with veto authority, or at minimum strong HL constraints"</em> — and nothing was built, so the failure recurred at 27,103 deleted lines. The same lesson the contract itself encodes: a rule with no enforcement site is decoration</td>
+<td>✅ verified</td>
+<td><a href="../../tasks/TFW-53__hl_contract_and_goal_defence/HL-TFW-53__hl_contract_and_goal_defence/">HL TFW-53</a> §11 S10 (coordinator PV scan); <a href="./"><code>knowledge/process.md</code></a> F6; <a href="../../tasks/TFW-53__hl_contract_and_goal_defence/HL-TFW-53__hl_contract_and_goal_defence/">HL TFW-53</a> §7 P3</td>
+<td>2026-08-18</td>
+</tr>
+<tr>
+<td>F31</td>
+<td><strong>Review is structurally blind to contract drift, and more rigour would not fix it.</strong> Seven REVIEW verdicts across TFW-48/49, six of them ✅ APPROVE, on work the owner then rejected wholesale — «получилась ерунда полная». The mandate was RF-vs-TS and every TS derived from an HL that had already moved, so each reviewer was correct and the outcome was still wrong. <strong>The reference point was wrong, not the checking</strong></td>
+<td>✅ verified</td>
+<td><a href="../../tasks/TFW-53__hl_contract_and_goal_defence/HL-TFW-53__hl_contract_and_goal_defence/">HL TFW-53</a> §11 S11, S14 (user + git <code>bc6779e</code>); REVIEW files TFW-48/49; <a href="../../knowledge-index/#architecture-decisions">D64</a></td>
+<td>2026-08-18</td>
+</tr>
+<tr>
+<td>F32</td>
+<td><strong>Three consecutive phases of one task were returned by review, and all three failures sat in the evidence record — never in the product.</strong> Phase C cut a citation mid-sentence and the truncation reversed its meaning; Phase D reported 12 diff hunks where the command returns 16; Phase E reported a 10-hit census where the command returns 12, missing exactly the two board rows the phase existed to create. One cause, provable in Phase E: nine <code>.tfw/</code> hits plus one README hit is precisely the reported ten — <strong>the figure was captured mid-execution and reported as final state</strong>. A number typed from memory of an earlier run is the same defect class as a quotation typed from memory of an earlier read. <strong>The fix is a step, not more care:</strong> re-take every count and every quotation with one command immediately before the RF is written, and put the raw output in the evidence file. Cost of not doing it: three full review cycles for work that was correct all three times</td>
+<td>✅ verified</td>
+<td><a href="../../tasks/TFW-53__hl_contract_and_goal_defence/HL-TFW-53__hl_contract_and_goal_defence/">HL TFW-53</a> §11 S40 (<strong>owner instruction, 2026-08-18</strong>, that this reach knowledge); <a href="../../tasks/TFW-53__hl_contract_and_goal_defence/phase-c/REVIEW__phase-c__goal_defence_in_review/">REVIEW TFW-53/C</a> <a href="../../knowledge-index/#architecture-decisions">D1</a>, <a href="../../tasks/TFW-53__hl_contract_and_goal_defence/phase-d/REVIEW__phase-d__glossary_adapters_version/">REVIEW TFW-53/D</a> E17, <a href="../../tasks/TFW-53__hl_contract_and_goal_defence/phase-e/REVIEW__phase-e__rejected_trace_restoration/">REVIEW TFW-53/E</a> <a href="../../knowledge-index/#architecture-decisions">D1</a></td>
+<td>2026-08-18</td>
+</tr>
+<tr>
+<td>F33</td>
+<td><strong>The owner treats a defect found in their own artifact as a result, not a cost.</strong> Both ONB blocking questions and four of five ONB risks were answered by changing the TS or the contract — <em>"it is a defect in what I wrote"</em>, <em>"your mitigation is better than my AC"</em> — including one owner amendment (A12) that <strong>removed</strong> a property the owner themselves had asked for two days earlier. The gate is used to find errors, not to confirm plans</td>
+<td>✅ verified</td>
+<td><a href="../../tasks/TFW-53__hl_contract_and_goal_defence/phase-a/RF__phase-a__contract_in_artifacts/">RF TFW-53/A</a> §7 FC2 (coordinator ONB rulings 2026-08-10); <a href="../../tasks/TFW-53__hl_contract_and_goal_defence/HL-TFW-53__hl_contract_and_goal_defence/">HL TFW-53</a> §12 A9/A11/A12; <a href="../../tasks/2026/TFW_20260902-112841_RDP/RF__TFW_20260902-112841_RDP/">RF TFW_20260902-112841_RDP</a> §7 candidate 4 (three of four blocking questions answered by changing the artifact rather than by ruling in the ONB table, 2026-09-02)</td>
+<td>2026-08-18</td>
+</tr>
+<tr>
+<td>F34</td>
+<td><strong>Close a located defect while the context is hot — with disclosure and an explicit scope limit — rather than deferring it to the phase that owns the file.</strong> «Делай правки, учитывая нашу философию». The mirror ruling: <strong>defer a pointer whose target another session is rewriting</strong>, because a correct-but-stale pointer is worse than a recorded intention. Both are the same trade priced honestly, not a general preference for either</td>
+<td>✅ verified</td>
+<td><a href="../../tasks/TFW-53__hl_contract_and_goal_defence/phase-b/RF__phase-b__enforcement_in_workflows/">RF TFW-53/B</a> §7 FC3, <a href="../../tasks/TFW-53__hl_contract_and_goal_defence/phase-c/RF__phase-c__goal_defence_in_review/">RF TFW-53/C</a> §7 FC2 (user rulings 2026-08-13)</td>
+<td>2026-08-18</td>
+</tr>
+<tr>
+<td>F35</td>
+<td><strong>Testing a capability whose subject is another project inside the repository that produces it is structural blindness, not a lapse of care.</strong> Four review rounds on this repository found none of the ten defects one external update found in an hour: the scripts already existed here, <code>team/</code> existed, the board sat where the parser looked, every legacy directory happened to use a double underscore, and <code>parents[2]</code> resolved correctly by coincidence. An external fixture is a different <em>kind</em> of test, not a stricter one; an unpushed pre-release is the cheapest fixture available; a rule that lives only in a test harness is not a shipped rule. DoD 19 states it so it cannot be argued away</td>
+<td>✅ verified</td>
+<td><a href="../../tasks/TFW-60__conflict_resistant_shared_workspace/HL-TFW-60__conflict_resistant_shared_workspace/">HL TFW-60</a> §11 S51–S53 (coordinator, from FIELD-REPORT <a href="../../tasks/TFW-60__conflict_resistant_shared_workspace/HL-TFW-60__conflict_resistant_shared_workspace/">TFW-60</a> first external update); RF TFW-60/AA §8 S2; <a href="../../tasks/TFW-60__conflict_resistant_shared_workspace/phase-a/RF__phase-a__task_state_and_coordination/">RF TFW-60/A</a> §7 FC4 (REVIEW F4)</td>
+<td>2026-08-30</td>
+</tr>
+<tr>
+<td>F36</td>
+<td><strong>Every phase releases something fully useful, and release order is value order.</strong> Canonical rules, workflows, adapters, migration guidance, documentation and evidence ship inside the phase that changes the behaviour; a horizontal «sync later» cleanup phase is prohibited because it leaves earlier capabilities incomplete. The owner ordered <a href="../../tasks/TFW-60__conflict_resistant_shared_workspace/HL-TFW-60__conflict_resistant_shared_workspace/">TFW-60</a> by value — task state first, debt second, knowledge last — and every corrective phase (AA, AB, AC) shipped as its own releasable tag</td>
+<td>✅ verified</td>
+<td><a href="../../tasks/TFW-60__conflict_resistant_shared_workspace/HL-TFW-60__conflict_resistant_shared_workspace/">HL TFW-60</a> §11 S4, S8 (owner 2026-08-19); <a href="../../tasks/TFW-60__conflict_resistant_shared_workspace/HL-TFW-60__conflict_resistant_shared_workspace/">HL TFW-60</a> §7 P10, §4 preamble; FIELD-REPORTS 1–5</td>
+<td>2026-08-30</td>
+</tr>
+<tr>
+<td>F37</td>
+<td><strong>A measurement without its method and its reference revision is a snapshot, not a measurement — and a count in shipped prose is a maintenance obligation.</strong> It recurred through five rounds of one task, in both halves — the count, and the revision the measurement was taken from. The discriminator that settles each case in one question: <strong>does the sentence still make its point without the number?</strong> <em>One journal event exceeds the ceiling</em> does, so the denominator goes; <em>the check exits 1</em> does, so the task count goes. Where the number <strong>is</strong> the point it stays and gains the command that re-derives it. Two competent readers measuring the same corpus figure got different answers — 114/117/118 against 118/119/120 — because the answer depends on which paths are swept and whether the commit or the working tree is read, and one denominator moved between two commands a minute apart when a neighbouring session's uncommitted event landed. The same rule governs a byte-identity claim: <em>identical</em> means identical to a <strong>named revision</strong>, and measured from the wrong revision four of one round's forbidden paths read as violated, while from the right one none did. A figure's cost is every site the same commit touched — one false count stood at six script sites, at consolidated knowledge and in the CHANGELOG entry, and only the entry has anyone whose job is to check it — which is why <strong>subtraction is the only repair that scales to sites nobody will revisit.</strong> The general rule: <strong>state the fact, name the command, quote no count a neighbour can move</strong></td>
+<td>✅ verified</td>
+<td><a href="../../tasks/2026/TFW_20260902-112841_RDP/RF__TFW_20260902-112841_RDP/">RF TFW_20260902-112841_RDP</a> §7 F13, F18, F19, F21, F22; <a href="../../tasks/2026/TFW_20260902-112841_RDP/REVIEW__TFW_20260902-112841_RDP/">REVIEW TFW_20260902-112841_RDP</a> §7 FC1 (rev2), FC1 (rev4), F26 (rev5)</td>
+<td>2026-09-03</td>
+</tr>
+<tr>
+<td>F38</td>
+<td><strong>A bound whose only reader runs after the act it governs cannot be complied with, and a bound with no reader at all is not a bound.</strong> The 120-code-point journal <code>summary</code> ceiling is read only by <code>gen_index.py --check</code>, so a three-character overrun written at 18:14 reddened the suite for the next session to run — and because a journal event is never edited or deleted, <strong>no compliant repair existed inside any task's contract</strong>. Two of one task's five rounds hit a limit this way in one evening: a word budget measured after drafting, then a summary measured after committing. <code>conventions.md</code> §4 already narrates the first instance of the class, the retired <code>actor</code> field, in the right words: <em>"the operators did not err. They followed the design, and the design contradicted itself."</em> The degenerate case sits in this project's own configuration — <code>tfw.knowledge.max_index_lines: 200</code> is read by <strong>no script at all</strong> (<code>grep -rn 'max_index_lines' .tfw docs/scripts site/scripts</code> returns two prose mentions and zero consumers) while <code>KNOWLEDGE.md</code> has stood above it. <strong>A bound on an immutable artifact is enforced at the moment of writing or not declared at all</strong>; the resolution shape already exists in §5's two-act table for <code>UNDECLARED</code> — a tool never, an accountable person yes, the correcting event being what makes it a trace. For journal prose, the owner chose behavioral brevity guidance and rejected a rigid ceiling; this evidence must not be used to restore a hard prose gate.</td>
+<td>✅ verified</td>
+<td><a href="../../tasks/2026/TFW_20260902-112841_RDP/RF__TFW_20260902-112841_RDP/">RF TFW_20260902-112841_RDP</a> §7 F12; REVIEW TFW_20260902-112841_RDP__rev3 §7 FC1; <a href="../../reference/conventions/"><code>.tfw/conventions.md</code></a> §4 (the retired <code>actor</code> field); the <code>max_index_lines</code> grep re-run at this task's KNW step; <a href="../../tasks/2026/TFW_20260902-222456_RTBO/HL-TFW_20260902-222456_RTBO/">HL TFW_20260902-222456_RTBO</a> §11 S2 (owner, 2026-09-06)</td>
+<td>2026-09-03; clarified 2026-09-07</td>
+</tr>
+<tr>
+<td>F39</td>
+<td><strong>The delivery set of a rule is a <code>grep</code> result, not a list — and a list built from <em>where the rule fires</em> omits three sites systematically:</strong> the file that <strong>defines</strong> the role, the file that <strong>tests</strong> the grammar, and the <strong>glossary</strong> that names the term. Measured four times across three rounds of one task — and a <strong>fifth</strong> site survived every round into this task's KNW step. Acceptance authority shipped to <code>conventions.md</code> §15, <code>review.md</code>, <code>templates/REVIEW.md</code>, <code>judge.md</code> and the frontmatter, and missed <code>glossary.md</code> — the one file every workflow loads <em>before</em> the workflow. <code>conventions.md</code> §4 was changed to admit <code>__rev{N}</code> in the same release in which <code>test_integration.py</code> was written to forbid it, and the check appeared in no Affected Files table. A renumbering repaired the two step citations someone had enumerated; <strong>four existed</strong>, the two missed being in a different file and a different phrasing (<em>"Phase 2 Step 8"</em>, <em>"handoff Step 11"</em>) — that fifth site is in <code>KNOWLEDGE.md</code> §2's <a href="../../tasks/TFW-46__evidence_layer/HL-TFW-46__evidence_layer/">TFW-46</a> row, where <code>handoff Step 11</code> had become step 10. <strong>The <code>grep</code> runs before the item is written</strong></td>
+<td>✅ verified</td>
+<td><a href="../../tasks/2026/TFW_20260902-112841_RDP/REVIEW__TFW_20260902-112841_RDP/">REVIEW TFW_20260902-112841_RDP</a> §7 FC1 (rev1), FC2 (rev2), FC2 (rev3); the fifth site found and repaired at this task's KNW step</td>
+<td>2026-09-03</td>
+</tr>
+<tr>
+<td>F40</td>
+<td><strong>A coordinator's own artifact can be unpassable or wrong as written, and the executor is the first role that can find out.</strong> Three acceptance criteria of one contract were amended after the ONB: one forbade the inline number <code>conventions.md</code> §11 mandates, one's <em>"zero added files anywhere"</em> was contradicted by the same TS's own evidence requirement, and one required a section starting at zero words to end no larger. A fourth set a target reachable only by cutting 43% of a file whose cuttable mass that same contract's DoF protected — <strong>an acceptance criterion stated in a unit the task does not control is unfalsifiable at planning time and fails at execution.</strong> And three of nine items in one round's order pointed at a section with no such table, at a superseded criterion, and at a rule forbidding the act the round required; the coordinator's own diagnosis was that <strong>the order had been written from the conversation rather than from the files.</strong> <em>No role guesses</em> and <em>the order is correct</em> are different properties. <strong>Two cheap checks, on no checklist:</strong> ask whether the number is reachable, and write the order against the files rather than against the discussion</td>
+<td>✅ verified</td>
+<td><a href="../../tasks/2026/TFW_20260902-112841_RDP/RF__TFW_20260902-112841_RDP/">RF TFW_20260902-112841_RDP</a> §7 candidate 2, F7; <a href="../../tasks/2026/TFW_20260902-112841_RDP/HL-TFW_20260902-112841_RDP/">HL TFW_20260902-112841_RDP</a> §11 S8; <a href="../../tasks/2026/TFW_20260902-112841_RDP/ONB__TFW_20260902-112841_RDP/">ONB TFW_20260902-112841_RDP</a> §§3–5, §8.2a</td>
+<td>2026-09-03</td>
+</tr>
+<tr>
+<td>F41</td>
+<td><strong>A bound is applied by its stated rationale, not by its wording — and the measure of a widening is new surfaces, not new work.</strong> A round's bound read <em>"no other locator in the entry is touched"</em> and two rounds later that wording nearly blocked removing a false figure; what settled it was not the word <code>locator</code> but the reason the bound had been written, <em>it protects locators the round did not write</em>. <strong>A bound carried forward without its rationale becomes a bound nobody can apply</strong>, and an executor's instinct to name a revertible hunk rather than argue is the correct behaviour when the rationale is missing. The same coordinator, asked to weigh three widenings at once rather than item by item, ruled on one number — <strong>files entering the round</strong>, which stayed at zero: more work inside files the order already opens is not creep; one more file is</td>
+<td>✅ verified</td>
+<td><a href="../../tasks/2026/TFW_20260902-112841_RDP/RF__TFW_20260902-112841_RDP/">RF TFW_20260902-112841_RDP</a> §7 F11; REVIEW TFW_20260902-112841_RDP__rev5 §7 F25; <code>review/rev5/judge.md</code> C1</td>
+<td>2026-09-03</td>
+</tr>
+<tr>
+<td>F42</td>
+<td><strong>An RF that names its own weakest point, quantifies it and identifies the revertible hunk converts a review from re-investigation into verification.</strong> One round left a single figure standing and printed the whole drift series against its own decision, which let the reviewer confirm the account in one command instead of reconstructing it. Five rounds ran on that task; <strong>this was the only one where the reviewer's audit cost less than the executor's disclosure.</strong> The general form: a reviewer's strongest evidence is the one the author published against themselves, and a round that supplies it should be read as stronger, not weaker</td>
+<td>⚠️ 1 source</td>
+<td>REVIEW TFW_20260902-112841_RDP__rev5 §7 F24; <a href="../../tasks/2026/TFW_20260902-112841_RDP/RF__TFW_20260902-112841_RDP/">RF TFW_20260902-112841_RDP</a> §2.5 decision 4</td>
+<td>2026-09-03</td>
+</tr>
+<tr>
+<td>F43</td>
+<td><strong>An absence that was deliberate must say so where a reader meets it, or it will be filed as a defect.</strong> <code>plan.md</code> has no Step 0 on purpose — the identifier does not exist until the directory is created — and it says so <em>in <code>plan.md</code></em>. The glossary, which is where a reader actually looks the convention up, instead asserted a false universal and cited the missing step; the false universal survived one round past the citations that pointed at it, because nobody had read the entry against all three files it cited. <strong>The reason has to live at the point of confusion, not only at the point of decision</strong></td>
+<td>⚠️ 1 source</td>
+<td><a href="../../tasks/2026/TFW_20260902-112841_RDP/RF__TFW_20260902-112841_RDP/">RF TFW_20260902-112841_RDP</a> §7 F23; <a href="../../reference/workflows/plan/"><code>.tfw/workflows/plan.md</code></a> (the Step 0 note); REVIEW TFW_20260902-112841_RDP__rev4 §7</td>
+<td>2026-09-03</td>
+</tr>
+<tr>
+<td>F44</td>
+<td><strong>An unexecuted proposal is invisible to planning, and this is the second measured occurrence.</strong> The owner described a failure on 2026-09-02 without reference to <code>PROPOSAL__TFW-58__revise_protocol</code>, which had been written from his own words three weeks earlier and never executed; <a href="../../tasks/TFW-57__artifact_growth_control/">TFW-57</a> was rediscovered the same way in the task before. <strong>Nothing in <code>/tfw-plan</code> reads the backlog of proposals</strong> — so a live proposal is found by coincidence rather than by procedure, and the same design gets paid for twice</td>
+<td>⚠️ 1 source</td>
+<td><a href="../../tasks/2026/TFW_20260902-112841_RDP/HL-TFW_20260902-112841_RDP/">HL TFW_20260902-112841_RDP</a> §11 S5</td>
+<td>2026-09-03</td>
+</tr>
+<tr>
+<td>F45</td>
+<td><strong>An ungated research run does not remove owner decisions, it batches them — and writing the contract down harder is what turns the batch from a price into an input.</strong> An iteration directed to proceed with <em>"no questions to me"</em> returned five amendment proposals against sections the owner had frozen the same day, one of them reporting that a criterion he had approved could not be met as written: the batch is larger and later than the questions would have been. The compensating discipline is that <strong>every withheld question is written into the Briefing rather than resolved silently.</strong> The owner's own response to that batch was structural rather than conversational — four verdicts applied, one refinement, two sections rewritten, two new risk rows naming the next iteration's own threads, and a control-file entry that ordered those threads and <em>forbade inventing an answer in order to avoid asking</em> — after which the next iteration derived its priority order from that document independently</td>
+<td>✅ verified</td>
+<td><a href="../../tasks/2026/TFW_20260902-112841_RDP/HL-TFW_20260902-112841_RDP/">HL TFW_20260902-112841_RDP</a> §11 S9, S10; research iterations 1–2 SS1, SS2</td>
+<td>2026-09-03</td>
+</tr>
+<tr>
+<td>F46</td>
+<td><strong>Known shared-file overlap is sequenced even when separate worktrees exist.</strong> The owner deliberately held CRATM while RCFR and VBSA occupied the same substrate and resumed it only after they should no longer interfere: isolation protects indexes, but it does not land a reviewed result or remove a known dependency</td>
+<td>⚠️ 1 source</td>
+<td><a href="../../tasks/2026/TFW_20260902-111644_CRATM/HL-TFW_20260902-111644_CRATM/">HL TFW_20260902-111644_CRATM</a> §11 S21 (owner, 2026-09-05)</td>
+<td>2026-09-05</td>
+</tr>
+<tr>
+<td>F47</td>
+<td><strong>The conservative autonomy boundary begins after research closes the questions.</strong> The owner accepts autonomy from an approved HL only as an explicit bounded exception for a small, familiar task with no new uncertainty; the boundary remains task-local rather than becoming a universal switch</td>
+<td>⚠️ 1 source</td>
+<td><a href="../../tasks/2026/TFW_20260902-111644_CRATM/HL-TFW_20260902-111644_CRATM/">HL TFW_20260902-111644_CRATM</a> §11 S25 (owner, 2026-09-05)</td>
+<td>2026-09-05</td>
+</tr>
+<tr>
+<td>F48</td>
+<td><strong>An evaluation ceiling is a pre-act guardrail, not a consumption target.</strong> When bounded pilot telemetry proves that an approved immutable denominator cannot fit the ceiling, stop further spend, preserve the denominator and raw partial evidence, report the result as incomplete, and require a separately approved feasible experiment before making comparative claims</td>
+<td>✅ verified</td>
+<td>Owner strategic STOP during <a href="../../tasks/2026/TFW_20260905-124029_RTPSN/HL-TFW_20260905-124029_RTPSN/">TFW_20260905-124029_RTPSN</a> Phase A, 2026-09-05; RF §7–§8; REVIEW §7</td>
+<td>2026-09-05</td>
+</tr>
+<tr>
+<td>F49</td>
+<td><strong>An uncertain design choice is a research hypothesis, not a menu for premature owner selection.</strong> The Coordinator records the uncertainty and sends it to research instead of presenting a preferred wording as if the choice were ready; the owner decides after the alternatives and evidence are visible</td>
+<td>✅ verified</td>
+<td><a href="../../tasks/2026/TFW_20260905-124029_RTPSN/HL-TFW_20260905-124029_RTPSN/">HL TFW_20260905-124029_RTPSN</a> §11 S3, S7 (owner correction, 2026-09-05); owner confirmation at consolidation</td>
+<td>2026-09-05</td>
+</tr>
+<tr>
+<td>F50</td>
+<td>Bidirectional evolution is asymmetric: a public release may update a field edition, while field practice returns only as a reviewed, privacy-safe generic candidate. The reverse direction is never blind synchronization.</td>
+<td>✅ verified</td>
+<td>Owner request, 2026-08-30, <a href="../../tasks/2026/TFW_20260830-114238_ASSISTED15/HL-TFW_20260830-114238_ASSISTED15/">HL TFW_20260830-114238_ASSISTED15</a> §11 S4/S8 and RF §6 F2; owner clarification, 2026-09-02, <a href="../../tasks/2026/TFW_20260830-202031_FA15ES/HL-TFW_20260830-202031_FA15ES/">HL TFW_20260830-202031_FA15ES</a> §11 S4</td>
+<td>2026-09-07</td>
+</tr>
+<tr>
+<td>F51</td>
+<td>Before a task closes, its debt is either eliminated in the current work or a named phase, promoted to a real separate task, or explicitly ruled not material. If a required owner ruling is unavailable, the task remains open rather than silently depositing an item in a generic backlog. When retiring an old registry, only safety-class entries are candidates for rescue and the user decides; this carve-out does not license deferring new ordinary defects. For that old-registry retirement, receiving projects get a rationale-bearing migration prompt, not direct edits by this project.</td>
+<td>⚠️ 1 source</td>
+<td><a href="../../tasks/2026/TFW_20260830-194027_TLD/HL-TFW_20260830-194027_TLD/">HL TFW_20260830-194027_TLD</a> §11 S6–S11 (owner decisions in the same 2026-09-01 exchange)</td>
+<td>2026-09-07</td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.sections", "navigation.expand", "navigation.indexes", "search.suggest", "search.highlight", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

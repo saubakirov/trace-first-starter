@@ -25,9 +25,9 @@ If the `.tfw/` directory is not already in the project, clone the starter:
 
 For a new receiver, copy only framework-owned `.tfw/` content from the selected source.
 Exclude its `project_config.yaml`, `knowledge_state.yaml`, `update_receipts/`, `.upstream/`
-and other project state; keep the clean config/state templates. Do not copy upstream task
+and other project state; keep the clean config and knowledge record/handover templates. Do not copy upstream task
 containers, `team/`, `knowledge/`, root project files or maintainer `tools/`/tests.
-Init creates receiver config/state from those templates and uses `workspace/` by default,
+Init creates receiver config and a clean `KNOWLEDGE.md` entry from templates and uses `workspace/` by default,
 without a container-choice question or historical scaffold. Honor an explicitly requested
 custom path. A complete starter clone is the framework's configured project, not a fresh receiver.
 
@@ -78,6 +78,11 @@ For an existing project, continue with the ordinary route named by the current n
 read `.tfw/workflows/update.md` before an upstream update, or `.tfw/workflows/release.md`
 before release preparation. Update attempts produce an immutable receipt; release work is
 project-defined and does not assume a universal versioning or publication policy.
+
+The stable `KNOWLEDGE.md` entry leads to relevant legacy topics and independent records. Read scope,
+grounds, source, disposition and incoming relations before applying knowledge. Capture material
+context at producing-role returns and check actual handovers at the existing close. There is no
+global pending-count gate, new knowledge-state scaffold, mandatory index or receiver runtime.
 
 ## Step 5: After setup
 

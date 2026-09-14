@@ -1,0 +1,19 @@
+{
+  "observed_at": "2026-09-13T18:38:51.208733+00:00",
+  "setup_attachment": ".tfw/update_receipts/knowledge-lifecycle/f87baa485b749da2476258a756bb20b6c612e8ee6f274dbca610e39bd6d860de",
+  "preservation_sha256": "f87baa485b749da2476258a756bb20b6c612e8ee6f274dbca610e39bd6d860de",
+  "config_actual": {
+    "bytes": 4563,
+    "sha256": "7c740adbfb517ab54b5fd0b0aec4835f6cb3ebd3c252f4c866a4aff0238242d6",
+    "raw_git_blob": "cbea8d924ead9a01d6bb361c788ab79cbf0aa9da",
+    "eol": {
+      "CRLF": 0,
+      "LF": 128,
+      "CR": 0
+    }
+  },
+  "prepared_setup": true,
+  "prepared_affected_field_writes": 1,
+  "source_authority_revalidated_immediately_before_write": true,
+  "unrelated_note_present": true
+}

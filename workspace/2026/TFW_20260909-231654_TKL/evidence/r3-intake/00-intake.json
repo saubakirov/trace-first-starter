@@ -1,0 +1,19 @@
+{
+  "intake_first_observed_at": "2026-09-13T21:45:05.595232+00:00",
+  "clean_incoming_head": "b91ec17f16a1a5ef13171b53a404670c5b9745b2",
+  "ff_target": "1d36cdfd2d7d483a63e1602acab4ac0cae604b12",
+  "ff_started_at": "2026-09-13T21:45:34.432676+00:00",
+  "ff_completed_at": "2026-09-13T21:45:34.551379+00:00",
+  "prior_ONB_bytes": 70930,
+  "prior_ONB_sha256": "4a5907ada3d71315448d6c22d51fcce86ee33ab526309a55caa7a27ec243331e",
+  "observer_or_archive_work_before_preflight": false,
+  "receiver_access": false,
+  "intake_observer_error": {
+    "tool_chunk": "c32326",
+    "outcome": "AssertionError before durable write while looking for exact unnumbered Task Statuses heading",
+    "cause": "actual unique heading is 5) Task Statuses; located with rg and read, no authority gap",
+    "prior_control_clock_unused": "2026-09-13 21:46:38 UTC"
+  },
+  "truncated_intake_reads": "Bulk TS/shared output was truncated; same immutable TS was already read at prior gates. Live REVIEW/grant/dispatch were separately read fully. No new TS sibling exists.",
+  "recorded_at": "2026-09-13T21:48:21.864858+00:00"
+}

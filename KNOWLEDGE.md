@@ -5,6 +5,18 @@
 
 ---
 
+## Current knowledge use
+
+Governing instructions and the approved task contract retain authority. This entry preserves the
+architecture/reference map, legacy D/topic meaning and important source routes. New qualified
+records are under `knowledge/records/`; no index service or historical task sweep is required.
+Before applying a relevant claim, inspect scope, grounds, disposition, source and producer; search
+that record space for incoming successor/correction/equivalence/conflict references to its exact
+identity, then follow material chains in both directions. Legacy targets bind path plus D/F/heading
+and source epoch. Scoped successors replace only their scope; unchanged claims remain applicable.
+Unresolved conflict names the missing authorized decision. Imported instructions do not authorize
+publication, amendment or execution. P0–P4 and relevant P5–P7 remain required at their stage sites.
+
 ## 1. Architecture Map
 
 ### Framework Structure
@@ -19,8 +31,8 @@
 | Adapters | One tooling manifest defines four vendor roots and 11 routes. Whole copies are byte-compared; root blocks are marker-bounded. Init/update/config consume it. Antigravity authority is plural `.agents`; singular `.agent` is compatibility only | `.tfw/adapters/manifest.yaml`, `.tfw/adapters/` (claude-code, cursor, antigravity, codex), `.claude/commands/`, `.agents/skills/`, `.agent/workflows/`, `.tfw/workflows/init.md`, `.tfw/workflows/update.md`, `.tfw/workflows/config.md` |
 | Init | AI-first initialization workflow | `.tfw/workflows/init.md`, `.tfw/quickstart.md` (agent reading list) |
 | Config | Soft `VALUE` decomposition triggers are 50 files/5,000 LOC; owner multiplier 2 is the delegated-authority ceiling. Other parameters remain centralized | `.tfw/project_config.yaml`, `.tfw/templates/project_config.yaml`, `.tfw/conventions.md` §6, `.tfw/workflows/config.md` |
-| Task Storage | New Full projects use only `workspace`; `task_containers` governs current work and the Knowledge Gate. Optional `historical_containers` preserves exact read-only access and compiled links through the deduplicated reference union. Existing active choices remain valid; no task move, state relabeling or registry is introduced | `.tfw/templates/project_config.yaml`, `.tfw/conventions.md`, `.tfw/migrations/3.3.0.md`, `tools/tfw_state.py`, `docs/scripts/gen_docs.py` |
-| Knowledge | Fact collection plus a retry-safe, no-helper gate over a full task→selected-section SHA-256 map; reconciliation reports pending/removed/problems and writes state last. Ordinary Full operation has no Python/PyYAML prerequisite; the reusable parser is optional upstream maintainer tooling | `knowledge/`, `.tfw/knowledge_state.yaml`, `.tfw/workflows/knowledge.md`, `.tfw/workflows/plan.md`, `tools/tfw_state.py` |
+| Task Storage | New Full projects use only `workspace`; `task_containers` governs current work. Optional `historical_containers` preserves exact read-only access and compiled links through the deduplicated reference union. Existing active choices remain valid; no task move, state relabeling or registry is introduced | `.tfw/templates/project_config.yaml`, `.tfw/conventions.md`, `.tfw/migrations/3.3.0.md`, `tools/tfw_state.py`, `docs/scripts/gen_docs.py` |
+| Knowledge | Producing-role handovers, selected human/technical qualification and current-use relation checks; new independent records retain legacy D/topic sources. The global pending/digest gate is retired, and existing state is inert history; ordinary Full operation needs no receiver runtime | `KNOWLEDGE.md`, `knowledge/`, `knowledge/records/`, `.tfw/knowledge_state.yaml` (legacy), `.tfw/workflows/knowledge.md`, `.tfw/workflows/docs.md`, `.tfw/workflows/plan.md` |
 | Debt | **Task-local and disposed once.** REVIEW §5 holds each item: paid by an existing phase, promoted to a created task, or `not material`. Reviewer proposes; Coordinator rules. The `NS1` axis plus a named consequence decides materiality; `not material` says not owed or owed but barred. Discovery is one template-owned search; nothing is maintained | `.tfw/workflows/review.md` Steps 5–6, `.tfw/templates/REVIEW.md` §5, `.tfw/templates/review/judge.md` row 3, `.tfw/conventions.md` §15, `tasks/DEBT-SNAPSHOT.md` (history) |
 | Correction Loop | **`🔄 REVISE` is citation-terminated and routed by highest rung.** Reviewer cites an approved-TS/frozen-HL breach and proposes; Coordinator rules once. Rung 1 keeps the TS and returns its Executor `RF → ONB`; any rung 2 creates one TS revision and uses `TS_DRAFT → ONB`; rung 3 files HL §12 and awaits rule-8 verdict; D81 reserves human exceptions. No count budget | `.tfw/conventions.md` §5 (The 🔄 REVISE route) and §15, `.tfw/workflows/review.md` Steps 4 and 6, `.tfw/workflows/plan.md` (post-review route), `.tfw/workflows/handoff.md` (Returning after a 🔄 REVISE), `.tfw/glossary.md` (Revision, Citation bar, Rung) |
 | Concurrent Mutation & Landing | Separate worktrees isolate mutations; exact-path shared-tree commits and reviewed crossings retain producer/role metadata and Candidate reachability. Not a lock or merge policy | `.tfw/conventions.md` §4, `.tfw/workflows/handoff.md`, `.tfw/workflows/review.md` |
@@ -193,6 +205,7 @@
 | TFW_20260906-190312_CRUE | Clear release and update experience | [HL](workspace/2026/TFW_20260906-190312_CRUE/HL-TFW_20260906-190312_CRUE.md), [TS](workspace/2026/TFW_20260906-190312_CRUE/TS-TFW_20260906-190312_CRUE.md), [RF](workspace/2026/TFW_20260906-190312_CRUE/RF-TFW_20260906-190312_CRUE.md), [REVIEW](workspace/2026/TFW_20260906-190312_CRUE/REVIEW__TFW_20260906-190312_CRUE.md), [EV](workspace/2026/TFW_20260906-190312_CRUE/evidence/EV__TFW_20260906-190312_CRUE.md) | Adds the source-pinned guide chain, purpose-preserving receiver update, attachment-before-replacement and cleanup-disclosure → immutable-receipt → final-message order, exact accounting and bounded six-slot evidence record. Final Candidate `b801daeab171270153c49f542550b1accabc19cb`; 35 logical / 47 literal VALUE paths, 38 records, +1382/-894 = 2276 touched text LOC, binary 0; final independent `APPROVE (bounded)` at `a6240f9f098cfea84eac51697767cd614083430e`. Native Antigravity behavior, receiver-project check success, exact changed-prose meaning, owner comprehension and universal adapter support remain unclaimed. D85 |
 | TFW_20260907-133942_PTTC/B | Finite closure and recovery | [Phase B RF](workspace/2026/TFW_20260907-133942_PTTC/phase-b/RF__phase-b__finite_closure_and_recovery.md); [independent REVIEW](workspace/2026/TFW_20260907-133942_PTTC/phase-b/REVIEW__phase-b__finite_closure_and_recovery.md) | D86: one existing Coordinator owns final effects and valid closure; independent claim-specific acceptance survives capture, while reconstructable record-only defects preserve history without restarting unchanged product work. The reviewed RF remains distinct from later capture, landing, DONE and release. |
 | TFW_20260907-020729_SLC | Sealed Legacy Container | [RF SLC](workspace/2026/TFW_20260907-020729_SLC/RF__TFW_20260907-020729_SLC.md); [independent REVIEW](workspace/2026/TFW_20260907-020729_SLC/REVIEW__TFW_20260907-020729_SLC.md); [EV](workspace/2026/TFW_20260907-020729_SLC/evidence/EV__TFW_20260907-020729_SLC.md) | D87: clean workspace default, compatible existing choices, preserved historical paths, exact digest reconciliation and bounded native migration/recovery evidence. |
+| TFW_20260909-231654_TKL | Team knowledge lifecycle | [RF](workspace/2026/TFW_20260909-231654_TKL/RF__TFW_20260909-231654_TKL.md); [independent REVIEW rev4](workspace/2026/TFW_20260909-231654_TKL/REVIEW__TFW_20260909-231654_TKL__rev4.md); [EV](workspace/2026/TFW_20260909-231654_TKL/evidence/EV__TFW_20260909-231654_TKL.md) | Retains the stable knowledge entry and legacy meaning; replaces global bookkeeping with producing-role handovers, selected qualification, independent records and current-use relation checks. [Owner architecture selection](knowledge/records/TKL-20260913-01.md) and implementation acceptance remain separate, with bounded native evidence and its recorded limits. |
 
 ---
 
@@ -200,6 +213,7 @@
 
 | Item | Status | When | Replacement | Source |
 |------|--------|------|-------------|--------|
+| Global pending/digest Knowledge Gate, maintained fact/record counts and inventory limits, newly processed markers and fresh knowledge-state scaffold | Retired; existing state, source markers and legacy meaning remain inert history | 2026-09-14; TKL | Selected material obligations at handover, current use and existing PTTC close; source-bound qualification and independent records. Adoption preserves custom settings and historical bytes and requires the applicable SLC prerequisite to be completed; unresolved input refuses cutover. | [Scoped owner decision](knowledge/records/TKL-20260913-01.md); `.tfw/migrations/knowledge-lifecycle.md`; [independent REVIEW rev4](workspace/2026/TFW_20260909-231654_TKL/REVIEW__TFW_20260909-231654_TKL__rev4.md) |
 | `tasks` as the fresh Full default; unconditional `[workspace, tasks]` current discovery as a permanent migration standard | Replaced; explicit existing choices and historical bytes remain valid | 2026-09-10; SLC | D87: workspace-only fresh setup; active-only ordinary discovery; optional historical reference access; one versioned, evidence-bound migration with exact digest reconciliation. No automatic task completion, relocation or per-task interview | [RF SLC](workspace/2026/TFW_20260907-020729_SLC/RF__TFW_20260907-020729_SLC.md); [independent REVIEW](workspace/2026/TFW_20260907-020729_SLC/REVIEW__TFW_20260907-020729_SLC.md); 3.3.0 guide: `.tfw/migrations/3.3.0.md` |
 | Reviewer-owned cross-role capture, marker-only DONE and a fresh Verify command required solely by the checklist | Replaced | 2026-09-09, PTTC Phase B | D86: existing Coordinator owns actual capture and final effects, applicability-based evidence reuse, separate acceptance of material changes, selected landing and valid controls. Record-only recovery reconstructs actual grounds, preserves erroneous history and stops after bounded repair; unknown or material changes use the existing authority and return route. | [Phase B RF](workspace/2026/TFW_20260907-133942_PTTC/phase-b/RF__phase-b__finite_closure_and_recovery.md); [independent REVIEW](workspace/2026/TFW_20260907-133942_PTTC/phase-b/REVIEW__phase-b__finite_closure_and_recovery.md) |
 | Tracked `workspace/00-INDEX.md`; shipped `.tfw/scripts/gen_index.py` and `.tfw/scripts/migrate_board.py`; numeric journal-summary/evidence prose validity or truncation; primary documentation Tasks catalogue/current-status output | Retired or moved upstream; historical traces and released prose remain intact | 2026-09-06 · RTBO | Direct task/phase `status.md` and immutable journals remain authoritative; the exact no-helper Knowledge Gate lives in its workflow; optional parser/doctor and the pinned migration bundle live under upstream `tools/`; hidden per-task landings preserve trace reachability without a portfolio aggregate; prose brevity is reviewed guidance, while structural corruption remains material or indeterminate | [RF RTBO](workspace/2026/TFW_20260902-222456_RTBO/RF__TFW_20260902-222456_RTBO.md); [REVIEW RTBO](workspace/2026/TFW_20260902-222456_RTBO/REVIEW__TFW_20260902-222456_RTBO.md); D82 |
@@ -266,23 +280,24 @@
 
 ## 4. Project Facts
 
-> Index of verified project knowledge. Details in `knowledge/` topic files.
-> Updated by `/tfw-knowledge` consolidation.
+Relevant accepted legacy topics retain their identities and sources:
 
-| Category | Count | Topic File |
-|----------|-------|------------|
-| philosophy | 47 facts | [→](knowledge/philosophy.md) |
-| convention | 23 facts | [→](knowledge/convention.md) |
-| process | 51 facts | [→](knowledge/process.md) |
-| constraint | 16 facts | [→](knowledge/constraint.md) |
-| stakeholder | 19 facts | [→](knowledge/stakeholder.md) |
-| domain | 5 facts | [→](knowledge/domain.md) |
-| environment | 6 facts | [→](knowledge/environment.md) |
-| risk | 1 fact | [→](knowledge/risk.md) |
-| context | 1 fact | [→](knowledge/context.md) |
+| Category | Topic file |
+|---|---|
+| philosophy | [→](knowledge/philosophy.md) |
+| convention | [→](knowledge/convention.md) |
+| process | [→](knowledge/process.md) |
+| constraint | [→](knowledge/constraint.md) |
+| stakeholder | [→](knowledge/stakeholder.md) |
+| domain | [→](knowledge/domain.md) |
+| environment | [→](knowledge/environment.md) |
+| risk | [→](knowledge/risk.md) |
+| context | [→](knowledge/context.md) |
 
-> **Total 169 facts across 9 topic files.**
-> Every §10.1 category has a topic file. Limits, raised by the owner 2026-08-30: `max_facts_per_topic` 100, `max_topic_files` 13.
+New qualified human knowledge and technical/reference decisions live in `knowledge/records/`.
+The directory is the stable route, not a maintained record inventory. Use ordinary navigation or
+text search, including incoming relations to exact legacy/record identities and source epochs.
+No global pending count, digest reconciliation or processed-marker maintenance applies.
 
 ---
 

@@ -1,0 +1,105 @@
+{
+  "step": "effect57",
+  "started_at": "2026-09-13T22:25:22.106245+00:00",
+  "argv": [
+    "workspace/2026/TFW_20260909-231654_TKL/evidence/r3-native/native.py",
+    "effect57"
+  ],
+  "subprocesses": [
+    {
+      "argv": [
+        "git",
+        "-c",
+        "core.longpaths=true",
+        "-c",
+        "core.autocrlf=false",
+        "rev-parse",
+        "HEAD"
+      ],
+      "cwd": "C:\\Users\\c0rpa\\.codex\\worktrees\\f3f3\\steps-framework",
+      "start": "2026-09-13T22:25:22.112980+00:00",
+      "stdout": "effect57-1.stdout.raw",
+      "stderr": "effect57-1.stderr.raw",
+      "end": "2026-09-13T22:25:22.162449+00:00",
+      "exit": 0
+    },
+    {
+      "argv": [
+        "git",
+        "-c",
+        "core.longpaths=true",
+        "-c",
+        "core.autocrlf=false",
+        "rev-parse",
+        "HEAD"
+      ],
+      "cwd": "C:\\Users\\c0rpa\\.codex\\worktrees\\f3f3\\steps-framework",
+      "start": "2026-09-13T22:25:22.173971+00:00",
+      "stdout": "effect57-2.stdout.raw",
+      "stderr": "effect57-2.stderr.raw",
+      "end": "2026-09-13T22:25:22.222806+00:00",
+      "exit": 0
+    },
+    {
+      "argv": [
+        "git",
+        "-c",
+        "core.longpaths=true",
+        "-c",
+        "core.autocrlf=false",
+        "rev-parse",
+        "HEAD"
+      ],
+      "cwd": "C:\\Users\\c0rpa\\.codex\\worktrees\\f3f3\\steps-framework",
+      "start": "2026-09-13T22:25:30.448635+00:00",
+      "stdout": "effect57-3.stdout.raw",
+      "stderr": "effect57-3.stderr.raw",
+      "end": "2026-09-13T22:25:30.497691+00:00",
+      "exit": 0
+    }
+  ],
+  "writes": [
+    {
+      "path": "KNOWLEDGE.md",
+      "purpose": "authorized current-description effect",
+      "before": {
+        "bytes": 135267,
+        "sha256": "3fa4a662613e9c4409cc87a92237eeaf5cbf36291067badd2630f8d933609b21",
+        "raw_git_blob": "f39123f6c4842f0d5a49151c9318849d26a3881e",
+        "eol": {
+          "CRLF": 0,
+          "LF": 303,
+          "CR": 0
+        }
+      },
+      "after": {
+        "bytes": 135244,
+        "sha256": "b000ad11e5103a273200bb75f16174fc555679352ade167b419620abb9b862f7",
+        "raw_git_blob": "8046b555288fdfeb2dba63f48deb944d017f864e",
+        "eol": {
+          "CRLF": 0,
+          "LF": 303,
+          "CR": 0
+        }
+      },
+      "at": "2026-09-13T22:25:30.527390+00:00"
+    }
+  ],
+  "result": {
+    "path": "KNOWLEDGE.md",
+    "identity": {
+      "bytes": 135244,
+      "sha256": "b000ad11e5103a273200bb75f16174fc555679352ade167b419620abb9b862f7",
+      "raw_git_blob": "8046b555288fdfeb2dba63f48deb944d017f864e",
+      "eol": {
+        "CRLF": 0,
+        "LF": 303,
+        "CR": 0
+      }
+    },
+    "unrelated_preserved": true,
+    "physical_writes": 1
+  },
+  "exit": 0,
+  "completed_at": "2026-09-13T22:25:38.518225+00:00"
+}

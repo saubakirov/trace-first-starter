@@ -1,0 +1,23 @@
+[
+  {
+    "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/q1-inputs/common.md",
+    "sha256": "1077d9965b05c62ad03f74fb1cb39c48dd496dfc981c9111978b2f5c71bb1773",
+    "read_at": "2026-09-13T12:01:38.461457+00:00"
+  },
+  {
+    "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/q1-inputs/coordinator.md",
+    "sha256": "4da242347e57027f08a4c9a4b9b4a9c9d9cc8cf7c16e08755537c93fee45f60b",
+    "read_at": "2026-09-13T12:01:38.461729+00:00"
+  },
+  {
+    "path": ".tfw/templates/knowledge/record.md",
+    "sha256": "d0615f7582e15280f4c69ef0350294daf9e1b32b5de0d2fba964dc9a4db0d6b0",
+    "read_at": "2026-09-13T12:01:38.469215+00:00"
+  },
+  {
+    "path": ".tfw/conventions.md",
+    "section": "Current knowledge use",
+    "sha256": "fb05c43570cf65b512e620c97633d0115daa8b733e9649e4a3c426e566b8cf21",
+    "read_at": "2026-09-13T12:01:38.477361+00:00"
+  }
+]

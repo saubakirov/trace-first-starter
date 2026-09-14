@@ -750,3 +750,49 @@ def test_a_path_reaches_a_string_only_through_as_posix():
     assert not offenders, (
         "a Path was turned into a string by hand — use Path.as_posix():\n" + "\n".join(offenders)
     )
+
+
+
+def test_tkl_nested_record_destination_and_source_links_are_exact_and_idempotent():
+    from gen_docs import BASE_GLOB_SOURCES
+    assert ("knowledge/**/*.md", "knowledge/", False) in BASE_GLOB_SOURCES
+    assert _glob_output_path(Path("knowledge/records/scoped/R1.md"), Path("knowledge"), "knowledge/") == "knowledge/records/scoped/R1.md"
+    mapping = {"knowledge/records/R1.md": "knowledge/records/R1.md",
+               "KNOWLEDGE.md": "knowledge-index.md"}
+    source = "[legacy D37](../../KNOWLEDGE.md#d37) [self](R1.md#claim)"
+    # Source rewriting, then resolver retries, must retain complete spans.
+    rewritten = rewrite_markdown_links(source, "knowledge/records/R1.md", mapping)
+    assert rewritten == "[legacy D37](../../knowledge-index.md#d37) [self](R1.md#claim)"
+    twice = resolve_references(resolve_references(rewritten))
+    assert twice == rewritten
+
+
+@pytest.mark.parametrize("filename, heading, legacy_id", [
+    ("RF__TFW_20260907-020729_SLC.md",
+     "### 1.1. Correction round C2 — exact link preservation",
+     "11-correction-round-c2--exact-link-preservation"),
+    ("REVIEW__TFW_20260907-020729_SLC.md",
+     "### C2 bounded acceptance — 2026-09-10",
+     "c2-bounded-acceptance--2026-09-10"),
+    ("REVIEW__TFW_20260907-020729_SLC.md",
+     "### Independent C2 return and closure boundary — 2026-09-10",
+     "independent-c2-return-and-closure-boundary--2026-09-10"),
+])
+def test_tkl_slc_alias_preserves_frozen_text_current_ids_and_retry(filename, heading, legacy_id):
+    import markdown
+    import re
+    from gen_docs import add_slc_c2_heading_aliases
+    source = f"workspace/2026/TFW_20260907-020729_SLC/{filename}"
+    original = (PROJECT_ROOT / source).read_text(encoding="utf-8")
+    rendered = add_slc_c2_heading_aliases(original, source)
+    assert f'<span id="{legacy_id}"></span>\n\n{heading}' in rendered
+    assert add_slc_c2_heading_aliases(rendered, source) == rendered
+    assert re.sub(r'<span id="[^"\n]+"></span>\n\n', '', rendered) == original
+    html = markdown.markdown(rendered, extensions=["toc"])
+    assert html.count(f'id="{legacy_id}"') == 1
+    assert f'id="{legacy_id.replace("--", "-")}"' in html
+    assert add_slc_c2_heading_aliases(original, "unrelated/" + filename) == original
+    for broken in (original.replace(heading, "### Missing", 1), original + "\n" + heading,
+                   f'<span id="{legacy_id}"></span>\n' + original):
+        with pytest.raises(ValueError):
+            add_slc_c2_heading_aliases(broken, source)

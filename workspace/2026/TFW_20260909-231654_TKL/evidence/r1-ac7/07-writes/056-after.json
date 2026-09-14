@@ -1,0 +1,22 @@
+{
+  "observed_at": "2026-09-13T18:27:13.236512+00:00",
+  "sequence": 56,
+  "path": ".tfw/project_config.yaml",
+  "actual": {
+    "bytes": 4334,
+    "sha256": "c6e86611751ad123c4139e1203098fa0f7635b54b33c2a6c0b9040cb25753f7c",
+    "raw_git_blob": "d821fe17a0f2fc9aba03b3f87ebab27b241743e3",
+    "eol": {
+      "CRLF": 0,
+      "LF": 123,
+      "CR": 0
+    }
+  },
+  "equals_intended": true,
+  "immediate_source_authority": {
+    "source_identities": 122,
+    "authority_identities": 10,
+    "authority_batch_sha256": "0b47d6e18c8d425ce491f75f3d12311875fb9a88f9eca636e1d35fa2c050609e",
+    "attachment_sha256": "c3b0580ad155738e2db99b38577df3477fddafa0078fb5f4d256ce94d87b41cb"
+  }
+}

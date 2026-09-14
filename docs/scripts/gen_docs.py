@@ -57,7 +57,7 @@ STATIC_SOURCES = [
 # Glob sources: (glob_pattern, output_prefix, required)
 # Active and historical containers both compile; ordinary task discovery stays active-only.
 BASE_GLOB_SOURCES = [
-    ("knowledge/*.md", "knowledge/", False),
+    ("knowledge/**/*.md", "knowledge/", False),
     (".tfw/workflows/**/*.md", "reference/workflows/", False),
     (".tfw/templates/**/*.md", "reference/templates/", False),
 ]
@@ -194,6 +194,40 @@ def add_table_anchors(content: str) -> str:
     return content
 
 
+# Frozen SLC C2 citations contain double-hyphen fragments. Keep those exact
+# destinations alongside MkDocs' heading IDs, without changing links or sources.
+_SLC_C2_HEADING_ALIASES = {
+    "RF__TFW_20260907-020729_SLC.md": {
+        "### 1.1. Correction round C2 — exact link preservation":
+            "11-correction-round-c2--exact-link-preservation",
+    },
+    "REVIEW__TFW_20260907-020729_SLC.md": {
+        "### C2 bounded acceptance — 2026-09-10":
+            "c2-bounded-acceptance--2026-09-10",
+        "### Independent C2 return and closure boundary — 2026-09-10":
+            "independent-c2-return-and-closure-boundary--2026-09-10",
+    },
+}
+
+
+def add_slc_c2_heading_aliases(content: str, source_path: str) -> str:
+    """Preserve only the three cited frozen SLC fragments; never rewrite a link."""
+    source = PurePosixPath(source_path)
+    if source.parent.name != "TFW_20260907-020729_SLC":
+        return content
+    for heading, anchor in _SLC_C2_HEADING_ALIASES.get(source.name, {}).items():
+        pattern = re.compile(r"^" + re.escape(heading) + r"$", re.MULTILINE)
+        if len(pattern.findall(content)) != 1:
+            raise ValueError(f"Missing or ambiguous SLC compatibility heading: {source_path}: {heading}")
+        marker = f'<span id="{anchor}"></span>'
+        if marker + "\n\n" + heading in content and content.count(f'id="{anchor}"') == 1:
+            continue
+        if f'id="{anchor}"' in content:
+            raise ValueError(f"Colliding SLC compatibility anchor: {source_path}: {anchor}")
+        content = pattern.sub(lambda match: marker + "\n\n" + match.group(0), content)
+    return content
+
+
 # --- Configuration ---
 
 def _read_task_prefix(root: Path) -> str:
@@ -282,6 +316,7 @@ def copy_with_frontmatter(
             r'![\2](\1)',
             result,
         )
+    result = add_slc_c2_heading_aliases(result, source_path)
     result = add_frontmatter(result, title, source_path)
     with mkdocs_gen_files.open(output_path, "w") as f:
         f.write(result)
@@ -707,6 +742,11 @@ def _generate_nav(root: Path) -> None:
     for path in sorted(root.glob("knowledge/*.md")):
         name = path.stem.replace("_", " ").title()
         nav["Knowledge", "Topics", name] = f"knowledge/{path.name}"
+    # Generated navigation is disposable; records retain their exact ordinary-file paths.
+    for path in sorted(root.glob("knowledge/records/**/*.md")):
+        relative = path.relative_to(root / "knowledge")
+        key = tuple(part for part in relative.with_suffix("").parts[1:])
+        nav[("Knowledge", "Records") + key] = f"knowledge/{relative.as_posix()}"
     # Reference
     nav["Reference", "Conventions"] = "reference/conventions.md"
     nav["Reference", "Glossary"] = "reference/glossary.md"

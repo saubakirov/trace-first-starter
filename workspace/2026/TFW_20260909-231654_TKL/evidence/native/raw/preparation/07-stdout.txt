@@ -1,0 +1,23 @@
+---
+time: '2026-09-13T15:00:51+05:00'
+kind: dispatch
+writer: robert
+on_behalf_of: saubakirov
+via: codex
+refs:
+- status.md
+- HL-TFW_20260909-231654_TKL.md
+- TS__TFW_20260909-231654_TKL.md
+- ONB__TFW_20260909-231654_TKL.md
+- journal/20260913-145904__dispatch__3328.md
+summary: Continue the same Executor after LEAD resolves ONB Q1 within approved assurance
+  scope.
+---
+
+Source and sole direct parent: operational Coordinator `01a09974-6716-7cc0-9916-fd6d04c91481`. Destination: existing Executor `01a09a0c-c9e2-7d01-af4e-64931af967ed`, host `local`, same isolated worktree `C:/Users/c0rpa/.codex/worktrees/f3f3/steps-framework`, through its native task address. Q1 origin remains `{principal: robert, unit: 01a09a0c-c9e2-7d01-af4e-64931af967ed}`. LEAD's executable assurance ruling is `dedf8527ff110fa160358239bbf45ebb498838dd` and the referenced 3328 dispatch. No amendment authority is forwarded.
+
+Adopt that exact ruling, record the resolved Q1 in your own ONB with its real source, and continue the approved handoff only when onboarding is blocker-free. The real ONB acceptance owns the truthful lifecycle transition; this dispatch does not assert it. The approved TS blob `f69fd4099a21a07ae2d17e6b5108b04ac94f107e`, Baseline `ec91c56007c20cda79f740fec15c85e4af74d17c`, 58 literal VALUE paths and 2,574 touched-LOC denominator remain unchanged. Existing before-write return triggers and role locks remain binding.
+
+Execute implementation, required checks, the first immutable Candidate, and the bounded native evidence route under the LEAD ruling. Before the two-holder operations, return the actual Candidate/base, prepared inputs, exact separate worktrees and holder-specific boundaries to this Coordinator for direct synchronized participation. Seal each holder's own original before access to the sibling source; measured intervals alone establish overlap. Neither holder accepts either isolated record. The SLC retry alias preserves true P/source/acceptance identities. AC-6 uses only the explicitly ruled disposable accepted-SLC status copy with outcome cut/restored and its refusal cases; preserve live files and original events. The historical Researcher-A case remains explicitly historical/prepared.
+
+Keep preparation and native-operation limits, preserve partial and failed observations, and report actual costs. Later prepare the separately bounded twelve-file AC-10 fixture and outside oracle, seal them before consumer dispatch and return their identities to this Coordinator. The existing Researcher receives only its read-only exercise through this Coordinator; no sibling contact or exposure is authorized. EV/RF follow actual evidence and Candidate. The one independent Reviewer remains after RF; no acceptance or completion is invented here. Continue autonomously on this resolved bound; return only actual dependencies or reserved thresholds.

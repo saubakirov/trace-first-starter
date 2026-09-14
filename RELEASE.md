@@ -37,6 +37,9 @@ obligations are ready. Unrelated open tasks and harmless trace-only arrivals do 
 - [ ] every quantitative claim is re-measured at the checked release source with its command;
 - [ ] the update section reaches every earlier supported tag and normative reversals quote the retired
       wording with a successor;
+- [ ] `python tools/check_git_blob_sizes.py staged` passes before committing;
+- [ ] `python tools/check_git_blob_sizes.py release --candidate HEAD` passes on the exact
+      release Candidate with complete history, including intermediate and merged commits;
 - [ ] configured pytest/MkDocs/package checks pass for the selected release composition;
 - [ ] no saved-master, original-project, production, credential, or publication effect is implied by
       preparation alone.
@@ -81,3 +84,18 @@ checks at the named §6 steps:
   topology against the exact release tree; do not rewrite VERSION/CHANGELOG after verification.
 - At §6.5, retain full source/commit lineage. Tag, push, publication, deployment, and notification stay
   separate effects requiring explicit authorization after the checked commit exists.
+
+## 8. Git-Blob Publication Boundary
+
+New Git blobs must not exceed 10485760 bytes. `tools/git_blob_size_policy.json` contains
+exact pre-policy evidence exceptions with rationale and future owner-cleanup disposition,
+plus the two excluded attachment identities. No path pattern, renamed copy or changed
+object inherits an exception. The guard checks staged bytes and complete release ancestry;
+deleting an oversized file at the tip does not remove its historical object. Forbidden
+paths and objects must be absent from every reachable commit, including before the base tag.
+
+The default release base is the highest reachable stable version on a proper ancestor.
+An explicit `--base v3.3.0` must resolve to an ancestor tag; a tag on Candidate cannot bypass
+the range. Shallow or incomplete history and unresolved inputs refuse the check. Read the
+JSON result and resolve its cause before continuing. CI uses full-history checkout.
+This repository policy adds no receiver runtime or receiving-project default.

@@ -1,0 +1,4 @@
+[codex/tkl-native-executor 56de4b2] [codex/TFW_20260909-231654_TKL/assurance/executor] preserve own independent Q1 return
+ 2 files changed, 81 insertions(+)
+ create mode 100644 knowledge/records/TKL-NATIVE-EXEC.md
+ create mode 100644 workspace/2026/TFW_20260909-231654_TKL/evidence/executor-handover.md

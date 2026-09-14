@@ -56,6 +56,10 @@ match, re-observe the receiver, verify the target identity, provenance, required
 state, and final-message state before reporting already-current. A version field or old success receipt
 alone never closes an interrupted update. At equal version, read the target version's changelog
 migration entry and applicable unfinished attempt/preservation refs from the pinned object/receiver.
+Every target carrying `migrations/knowledge-lifecycle.md` selects that guide as well, including equal
+version and unfinished attempts. Read its exact pinned bytes before any already-current return.
+Complete/refuse an unfinished SLC group first; completed SLC needs no repeat sweep for TKL.
+
 For 3.3.0 this always reaches `migrations/3.3.0.md` before any already-current return, including a
 config-first cut. Missing required preservation evidence refuses the affected group.
 
@@ -153,13 +157,26 @@ Re-entry always observes the present receiver before applying, repairing, refusi
 partial application, provenance write, past receipt, or equal version does not make final checks,
 cleanup, receipt, or owner communication complete.
 
+### Selected knowledge lifecycle adoption
+
+The pinned [knowledge lifecycle guide](../migrations/knowledge-lifecycle.md) owns the connected
+reader/adapter/config/entry group. Preserve immutable old/intended before-images before affected
+writes; install compatible mixed readers first, then retire only the named live gate/inventory keys
+and instructions. Existing knowledge-state, topic/D meaning, source links and markers remain inert
+historical evidence, not upstream payload or newly consolidated work. No every-fact conversion.
+Revalidate source/authority and each affected field immediately before writing; old/intended cuts
+may continue, a third value refuses the group and preserves unrelated later edits. An identical
+completed repeat verifies effects without another promotion, inventory write or question. Retain
+custom receiver intent; no whole-file/map rollback or guessed before-image. Receipt/cleanup/outcome
+remain owned by the existing update sequence below, not a second migration registry.
+
 ### Active/historical container migration
 
 Follow the pinned [3.3.0 guide](../migrations/3.3.0.md) as the single case/recovery authority. Before
 state/config/provenance effects, preserve its immutable before-image and exact membership/digest pairs
 under existing update receipts. Install compatible readers first, revalidate affected inputs, reconcile
 exact historical keys, then publish active/historical config. Complete or refuse this connected group
-before ordinary Knowledge Gate arithmetic or successful update reporting. Re-entry compares present
+before TKL adoption or successful update reporting. Re-entry compares present
 values to preserved old/intended values; it never restores a whole digest map or overwrites later work.
 
 ### Project-owned scope-budget migration

@@ -1,0 +1,115 @@
+{
+  "observed_at": "2026-09-13T20:23:57.353853+00:00",
+  "producer": {
+    "principal": "robert",
+    "unit": "01a09974-6716-7cc0-9916-fd6d04c91481",
+    "parent": "01a08161-79d3-7472-a01e-8cdc957ee951",
+    "for": "saubakirov"
+  },
+  "kind": "Coordinator custody and prospective continuation, not independent acceptance",
+  "checkpoint": "793cd97f71f484fcbe7c2e01dcfe7503148b402d",
+  "candidate": "a99ba6cd756a7db444f217aef4e5a0eb83faee51",
+  "baseline": "ec91c56007c20cda79f740fec15c85e4af74d17c",
+  "candidate_files": {
+    "VALUE": [
+      ".tfw/conventions.md",
+      "tools/tfw_state.py",
+      "KNOWLEDGE.md"
+    ],
+    "ASSURANCE": [
+      "docs/scripts/test_repository_contracts.py"
+    ]
+  },
+  "accounting": {
+    "paths": 58,
+    "additions": 1235,
+    "deletions": 1005,
+    "touched_LOC": 2240,
+    "actions": {
+      "M": 53,
+      "A": 4,
+      "D": 1
+    },
+    "numstat_sha256": "20af28b988360518a848cc1268eb9385cf6e038f484d38a35f85eee3803201fe",
+    "name_status_sha256": "b0f9d3f781caa5717a017a2b92838fd78b8108bf88f1883ba4a89daa3b1a8f3a",
+    "fixed_plan": [
+      58,
+      2574
+    ],
+    "boundaries": [
+      116,
+      5148
+    ]
+  },
+  "custody": {
+    "checkpoint_commit_paths": 27,
+    "all_physical_paths_equal_Git": true,
+    "declared_hashes_verified": 26,
+    "validation_identity": "separate exact committed blob; no recursive self-hash",
+    "full_checkpoint_inventory": 815,
+    "classes": {
+      "VALUE": 58,
+      "ASSURANCE": 7,
+      "TRACE": 750
+    },
+    "pre_R2_ONB_prefix_bytes": 56488,
+    "prefix_sha256": "69af75d3c1e6d563741a7787db6c504b0542ec539b21c0490006ffef2f122c72",
+    "tested_map_files": 3036,
+    "source_archive_members": 202,
+    "four_candidate_paths_equal_tested_map_and_archive": true,
+    "actual_25_checks_and_build_receipt_stream_hashes_verified": true,
+    "source_identity_rows_verified": 15,
+    "authority_identity_rows_verified": 7
+  },
+  "prospective_positive_receiver": {
+    "epoch": "6b0d5c748d51c55c7c22147799cdb70131c22049",
+    "positive_map_sha256": "f0377bc0d2bbc3f4a420b712733e8df042c1356535468139295f64635759c45c",
+    "feasibility_sha256": "b7578665e7ac48cfe23623261f2d811eb6af1ccf10616f490c818a1e2269f758",
+    "repository_files_verified_against_3_archives_and_positive_map": 2317,
+    "verification": [
+      "size",
+      "sha256",
+      "raw_Git_blob",
+      "EOL"
+    ],
+    "excluded_source_staging": 2793,
+    "excluded_generated_site": 1924,
+    "excluded_cache": 1,
+    "complete_7035_file_clone_claim": false,
+    "coordinator_materialized_or_mutated_receiver": false
+  },
+  "source_pin_proposal_sha256": "10669c6422ba9b3568543b4e602aac5b2bff0d846321feeb82285be0a5d3b2a6",
+  "native_proposal_sha256": "2a33ebf770b59e874af8517c1a2936f5125455acacd95cc3876ea66035de6dd9",
+  "copied_authority": [
+    {
+      "source_commit": "cb28b426bfb021ff3c0949d605cef6c54974c96c",
+      "path": "journal/20260914-004939__dispatch__r2p7.md",
+      "bytes": 2780,
+      "sha256": "e3c263e52cff8ea98ea945f4af82b8bcd805e0b8dfb06b42a841b4b09eed7693"
+    },
+    {
+      "source_commit": "89839fb912d78d99f41dae59959fdc32a8ee2b3a",
+      "path": "journal/20260914-005242__dispatch__a2f7.md",
+      "bytes": 1859,
+      "sha256": "7836e8e55f72212de2080154c0fbaf60b0cf606af77622be0aa08ebf58997229"
+    }
+  ],
+  "authority_limits": {
+    "elapsed_seconds": 1800,
+    "operator_operations": 24,
+    "deductions": 0,
+    "retries": 0,
+    "stop_on_any_observer_tool_failure": true,
+    "planned_invocations": 18
+  },
+  "retained_limits": [
+    "Original LEAD r2p7 event has non-hex token and its live REVIEW relative target was absent at cb28 epoch; unchanged current confirmation89839fb has all four verified refs and explicitly confirms the same grant.",
+    "Four Executor preliminary source observer errors, current ONB-link warning and corrected link remain in their actual pre-native epochs.",
+    "Later ONB/RF/EV rendering remains for the same Reviewer; the checkpoint build does not prove later reports.",
+    "Two Coordinator hash-admission reads first used a wrong manifest base then treated the declared self-row as a recursive hash, yielding AssertionError and KeyError before writes. Corrected root-relative/nonrecursive verification passes. Large JSON display reads were truncated; the stated admission relies on finite parsed byte checks, not an unseen complete display.",
+    "O1-O3 and all earlier source/raw/evidence limitations remain terminal and unchanged."
+  ],
+  "status": "ONB",
+  "native_clock_started": false,
+  "independent_verdict": false
+}

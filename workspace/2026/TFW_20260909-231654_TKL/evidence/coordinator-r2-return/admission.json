@@ -1,0 +1,85 @@
+{
+  "observed_at": "2026-09-13T20:53:08.228510+00:00",
+  "kind": "Coordinator returned-input custody, not independent verdict",
+  "producer": {
+    "principal": "robert",
+    "unit": "01a09974-6716-7cc0-9916-fd6d04c91481",
+    "parent": "01a08161-79d3-7472-a01e-8cdc957ee951",
+    "for": "saubakirov"
+  },
+  "final_return": "b91ec17f16a1a5ef13171b53a404670c5b9745b2",
+  "native_raw": "1a0a37c443fe0d762a1396f1354d93ac08391637",
+  "candidate": "a99ba6cd756a7db444f217aef4e5a0eb83faee51",
+  "checkpoint": "793cd97f71f484fcbe7c2e01dcfe7503148b402d",
+  "pin": "98a250d28679f43741e97c48556eb1804d812411",
+  "admission": {
+    "final_paths": 14,
+    "all_final_physical_bytes_equal_Git": true,
+    "final_declared_hashes_verified": 13,
+    "validation_self": "separate committed identity",
+    "unchanged_VALUE_ASSURANCE_after_Candidate": 65,
+    "complete_final_inventory": 849,
+    "classes": {
+      "VALUE": 58,
+      "ASSURANCE": 7,
+      "TRACE": 784
+    },
+    "prefixes_verified": 3,
+    "all_R2_RF_EV_ONB_appendices_read": true,
+    "control": "actual ONB-to-RF; owner/authority unchanged; no outcome; all eight event refs and status authority inspected",
+    "native_raw_paths": 20,
+    "native_raw_declared_hashes": 19,
+    "native_raw_physical_Git_equal": true,
+    "partial_archive_maps_and_bytes_verified": 2317,
+    "partial_byte_size_raw_Git_or_real_EOL_mismatches": 0,
+    "only_observer_LF_label_differences": 40,
+    "source_checks_and_accounting": "in exact prior coordinator-r2-pin admission; unchanged Candidate"
+  },
+  "native": {
+    "start": "2026-09-13T20:28:59Z",
+    "deadline": "2026-09-13T20:58:59Z",
+    "failed_at": "2026-09-13T20:29:53.549973Z",
+    "raw_commit_completed": "2026-09-13T20:34:12.701849Z",
+    "raw_elapsed_seconds": 313.701849,
+    "return_completed": "2026-09-13T20:35:33.937Z",
+    "actual_underlying_invocations": 10,
+    "ceiling": 24,
+    "deductions": 0,
+    "outcome": "STOPPED / affected evidence incomplete",
+    "new_target_effects": 0,
+    "new_target_staging": false,
+    "new_preservation": false,
+    "new_provenance": false,
+    "native_build": false,
+    "unchanged_repeat": false,
+    "retry_or_extension": false,
+    "partial_zip_sha256": "7ac460d99dbf9c39ca51d969ae03292d6652d2b6584c227fe2e8d45d795b2f42"
+  },
+  "diagnosis": {
+    "actual": "Failed observer counted total LF; original positive map and feasibility use bare LF excluding CRLF. Both expected and observed CR are bare CR; CRLF also agrees. All 2317 archived files reproduce; 40 binary metadata rows differ only in LF.",
+    "first_zip": {
+      "CRLF": 9,
+      "expected_bare_LF": 2134,
+      "observed_total_LF": 2143,
+      "bare_CR_both": 2236
+    },
+    "retained_error": "Original op6 CR explanation is false and remains immutable; op8 already marks explanation false, op9 and later counter clarification give LF. Coordinator initially relayed the preliminary CR hypothesis and then explicitly corrected it after the actual sealed comparison; no prior acceptance was changed.",
+    "secondary": "Stopped-seal op7 command envelope rejected with Windows os206 before process creation; op8 short task-custody seal/commit only, no receiver effects or native retry."
+  },
+  "review_record_observation": {
+    "path": "review/rev2/map.md",
+    "field": "Prior verdict",
+    "unresolvable_full_SHA": "de2abc53b873483fdd8deca7ca99ea8883461ff5",
+    "actual_R0_commit_verified": "de2abc53da88da3e990d83c3ec4efd0859da46ff",
+    "scope": "Same Reviewer to assess and clarify its own header in current return; preserve erroneous historical epoch and actual source. No product/native change follows from this observation."
+  },
+  "remaining": [
+    "Independent affected R2 judgment for current descriptions, source evidence and actual stopped native applicability.",
+    "Final changed-report rendering must be evaluated against actual report epoch; checkpoint build predates it.",
+    "Missing changed native effects/repeat has no continuation/retry authority under the completed grant.",
+    "O1-O3, original Q3, init limits, all observer/transport/link limitations and accepted prior epochs remain preserved."
+  ],
+  "lifecycle": "RF",
+  "native_or_product_actions_by_Coordinator": false,
+  "capture_close_release_effects": false
+}

@@ -1,0 +1,1 @@
+HEAD is now at e00ca51 [codex/TFW_20260909-231654_TKL/assurance/executor] seal prepared Q1 inputs

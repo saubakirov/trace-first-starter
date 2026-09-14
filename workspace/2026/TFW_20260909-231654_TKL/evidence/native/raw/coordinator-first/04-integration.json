@@ -1,0 +1,251 @@
+{
+  "started": "2026-09-13T11:37:42.644785+00:00",
+  "finished": "2026-09-13T11:37:43.501452+00:00",
+  "base": "e00ca51d05f4e451441cb9fc267579a7f9e4d4ce",
+  "coordinator_commit": "9d1e89ec71a8622d7afadfd7325525cb57548fa1",
+  "executor_commit": "56de4b23c5c8edbbf87426f578701bdb02b3a770",
+  "integration_commit": "7d036298eb416b5cf5061c990874b44202a264f3",
+  "all_four_original_blobs_preserved": true,
+  "changed_paths": [
+    "knowledge/records/TKL-NATIVE-COORD.md",
+    "knowledge/records/TKL-NATIVE-EXEC.md",
+    "workspace/2026/TFW_20260909-231654_TKL/evidence/coordinator-source.md",
+    "workspace/2026/TFW_20260909-231654_TKL/evidence/executor-handover.md"
+  ],
+  "shared_inventory_changed": false,
+  "temporal_overlap_seconds": 0,
+  "gap_seconds": 27.461981,
+  "classification": "sequential independent writes; concurrent producer-write evidence absent",
+  "commands": [
+    {
+      "argv": [
+        "git",
+        "-c",
+        "core.longpaths=true",
+        "rev-parse",
+        "HEAD"
+      ],
+      "started": "2026-09-13T11:37:42.531555+00:00",
+      "finished": "2026-09-13T11:37:42.568140+00:00",
+      "exit_code": 0,
+      "stdout": "9d1e89ec71a8622d7afadfd7325525cb57548fa1\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "-c",
+        "core.longpaths=true",
+        "status",
+        "--porcelain"
+      ],
+      "started": "2026-09-13T11:37:42.568160+00:00",
+      "finished": "2026-09-13T11:37:42.644766+00:00",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "-c",
+        "core.longpaths=true",
+        "rev-parse",
+        "9d1e89ec71a8622d7afadfd7325525cb57548fa1:workspace/2026/TFW_20260909-231654_TKL/evidence/coordinator-source.md"
+      ],
+      "started": "2026-09-13T11:37:42.644793+00:00",
+      "finished": "2026-09-13T11:37:42.682197+00:00",
+      "exit_code": 0,
+      "stdout": "8cb0c89d4994b524a9e1279c2e6444a3823990d1\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "-c",
+        "core.longpaths=true",
+        "rev-parse",
+        "9d1e89ec71a8622d7afadfd7325525cb57548fa1:knowledge/records/TKL-NATIVE-COORD.md"
+      ],
+      "started": "2026-09-13T11:37:42.682219+00:00",
+      "finished": "2026-09-13T11:37:42.722488+00:00",
+      "exit_code": 0,
+      "stdout": "d92ccbc89a31cc928b5b379fcc8b9c16c3a727fb\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "-c",
+        "core.longpaths=true",
+        "rev-parse",
+        "56de4b23c5c8edbbf87426f578701bdb02b3a770:workspace/2026/TFW_20260909-231654_TKL/evidence/executor-handover.md"
+      ],
+      "started": "2026-09-13T11:37:42.722516+00:00",
+      "finished": "2026-09-13T11:37:42.766409+00:00",
+      "exit_code": 0,
+      "stdout": "fe7f9915f4c9d80689245402d52842b925e35548\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "-c",
+        "core.longpaths=true",
+        "rev-parse",
+        "56de4b23c5c8edbbf87426f578701bdb02b3a770:knowledge/records/TKL-NATIVE-EXEC.md"
+      ],
+      "started": "2026-09-13T11:37:42.766435+00:00",
+      "finished": "2026-09-13T11:37:42.806459+00:00",
+      "exit_code": 0,
+      "stdout": "5c5828f1d70edf035615e8ba5d1ee8319eeb1ada\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "-c",
+        "core.longpaths=true",
+        "rev-parse",
+        "9d1e89ec71a8622d7afadfd7325525cb57548fa1^"
+      ],
+      "started": "2026-09-13T11:37:42.806481+00:00",
+      "finished": "2026-09-13T11:37:42.843043+00:00",
+      "exit_code": 0,
+      "stdout": "e00ca51d05f4e451441cb9fc267579a7f9e4d4ce\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "-c",
+        "core.longpaths=true",
+        "rev-parse",
+        "56de4b23c5c8edbbf87426f578701bdb02b3a770^"
+      ],
+      "started": "2026-09-13T11:37:42.843063+00:00",
+      "finished": "2026-09-13T11:37:42.880513+00:00",
+      "exit_code": 0,
+      "stdout": "e00ca51d05f4e451441cb9fc267579a7f9e4d4ce\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "-c",
+        "core.longpaths=true",
+        "merge",
+        "--no-ff",
+        "56de4b23c5c8edbbf87426f578701bdb02b3a770",
+        "-m",
+        "[codex/TFW_20260909-231654_TKL/q1/coordinator] integrate independently sealed observed records"
+      ],
+      "started": "2026-09-13T11:37:42.886974+00:00",
+      "finished": "2026-09-13T11:37:43.189995+00:00",
+      "exit_code": 0,
+      "stdout": "Merge made by the 'ort' strategy.\n knowledge/records/TKL-NATIVE-EXEC.md               | 42 ++++++++++++++++++++++\n .../evidence/executor-handover.md                  | 39 ++++++++++++++++++++\n 2 files changed, 81 insertions(+)\n create mode 100644 knowledge/records/TKL-NATIVE-EXEC.md\n create mode 100644 workspace/2026/TFW_20260909-231654_TKL/evidence/executor-handover.md\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "-c",
+        "core.longpaths=true",
+        "rev-parse",
+        "HEAD"
+      ],
+      "started": "2026-09-13T11:37:43.190016+00:00",
+      "finished": "2026-09-13T11:37:43.226592+00:00",
+      "exit_code": 0,
+      "stdout": "7d036298eb416b5cf5061c990874b44202a264f3\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "-c",
+        "core.longpaths=true",
+        "rev-parse",
+        "7d036298eb416b5cf5061c990874b44202a264f3:workspace/2026/TFW_20260909-231654_TKL/evidence/coordinator-source.md"
+      ],
+      "started": "2026-09-13T11:37:43.226616+00:00",
+      "finished": "2026-09-13T11:37:43.263251+00:00",
+      "exit_code": 0,
+      "stdout": "8cb0c89d4994b524a9e1279c2e6444a3823990d1\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "-c",
+        "core.longpaths=true",
+        "rev-parse",
+        "7d036298eb416b5cf5061c990874b44202a264f3:knowledge/records/TKL-NATIVE-COORD.md"
+      ],
+      "started": "2026-09-13T11:37:43.263270+00:00",
+      "finished": "2026-09-13T11:37:43.298152+00:00",
+      "exit_code": 0,
+      "stdout": "d92ccbc89a31cc928b5b379fcc8b9c16c3a727fb\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "-c",
+        "core.longpaths=true",
+        "rev-parse",
+        "7d036298eb416b5cf5061c990874b44202a264f3:workspace/2026/TFW_20260909-231654_TKL/evidence/executor-handover.md"
+      ],
+      "started": "2026-09-13T11:37:43.298174+00:00",
+      "finished": "2026-09-13T11:37:43.335862+00:00",
+      "exit_code": 0,
+      "stdout": "fe7f9915f4c9d80689245402d52842b925e35548\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "-c",
+        "core.longpaths=true",
+        "rev-parse",
+        "7d036298eb416b5cf5061c990874b44202a264f3:knowledge/records/TKL-NATIVE-EXEC.md"
+      ],
+      "started": "2026-09-13T11:37:43.335886+00:00",
+      "finished": "2026-09-13T11:37:43.375503+00:00",
+      "exit_code": 0,
+      "stdout": "5c5828f1d70edf035615e8ba5d1ee8319eeb1ada\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "-c",
+        "core.longpaths=true",
+        "diff",
+        "--name-only",
+        "-z",
+        "e00ca51d05f4e451441cb9fc267579a7f9e4d4ce",
+        "7d036298eb416b5cf5061c990874b44202a264f3"
+      ],
+      "started": "2026-09-13T11:37:43.375522+00:00",
+      "finished": "2026-09-13T11:37:43.419202+00:00",
+      "exit_code": 0,
+      "stdout": "knowledge/records/TKL-NATIVE-COORD.md\u0000knowledge/records/TKL-NATIVE-EXEC.md\u0000workspace/2026/TFW_20260909-231654_TKL/evidence/coordinator-source.md\u0000workspace/2026/TFW_20260909-231654_TKL/evidence/executor-handover.md\u0000",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "-c",
+        "core.longpaths=true",
+        "status",
+        "--porcelain"
+      ],
+      "started": "2026-09-13T11:37:43.419231+00:00",
+      "finished": "2026-09-13T11:37:43.501436+00:00",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    }
+  ]
+}

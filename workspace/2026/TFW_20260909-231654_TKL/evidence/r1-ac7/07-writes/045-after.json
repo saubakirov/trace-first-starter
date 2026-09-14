@@ -1,0 +1,22 @@
+{
+  "observed_at": "2026-09-13T18:25:37.512186+00:00",
+  "sequence": 45,
+  "path": ".tfw/workflows/init.md",
+  "actual": {
+    "bytes": 8677,
+    "sha256": "6fcbad17fb5a7bc52f5fcb36edf8f2fd5802a593dfa7cd02c9fa874f38a1e2cc",
+    "raw_git_blob": "bedc73b1fa13eb698ac3c7b3d6325ef4c66a9113",
+    "eol": {
+      "CRLF": 0,
+      "LF": 145,
+      "CR": 0
+    }
+  },
+  "equals_intended": true,
+  "immediate_source_authority": {
+    "source_identities": 122,
+    "authority_identities": 10,
+    "authority_batch_sha256": "0b47d6e18c8d425ce491f75f3d12311875fb9a88f9eca636e1d35fa2c050609e",
+    "attachment_sha256": "c3b0580ad155738e2db99b38577df3477fddafa0078fb5f4d256ce94d87b41cb"
+  }
+}

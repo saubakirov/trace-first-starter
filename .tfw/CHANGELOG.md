@@ -5,6 +5,43 @@ Format: [Keep a Changelog](https://keepachangelog.com/). Versioning: [Semantic V
 
 ## [Unreleased]
 
+## [3.4.0] — 2026-09-14
+
+TKL — Team Knowledge Lifecycle. Material knowledge follows the work that produced it and is
+qualified where it is needed. Planning no longer stops for an unrelated global pending-task count.
+
+### Changed
+
+- Producing roles preserve material insight in their existing handovers, including interrupted and
+  stopped work. Missing context, justified-none, retain-only and owed publication remain distinct.
+- Selected human knowledge and technical decisions use source-bound qualification and independent
+  records. Current use checks scope, authority and incoming correction/conflict relations.
+- The stable knowledge entry retains architecture/reference links, legacy topic and decision meaning.
+  Actual capture and independent acceptance of changed final claims remain part of the existing PTTC close.
+- Clean Full setup and bounded adoption use compatible readers before retiring the old gate and
+  settings. Existing custom choices, history and accumulated knowledge remain preserved.
+
+### Added
+
+- Upstream maintainers enforce a 10 MiB Git-blob limit on staged objects and complete release
+  history. Five exact pre-policy evidence objects are retained; two excluded attachment
+  identities are recorded in the policy manifest. This guard adds no receiver runtime.
+
+### Removed
+
+- The live global pending/digest Knowledge Gate, its interval/mode and maintained fact/inventory
+  limits, processed-marker/state writes and fresh knowledge-state scaffold. Existing state and
+  markers remain inert historical evidence; no new counter, registry or receiver runtime replaces them.
+
+### Compatibility and updating
+
+**Read `migrations/3.4.0.md`, including from 3.3.0 and at equal-version retry.**
+This release changes the live knowledge/configuration contract. Its entry reaches the earlier
+supported routes from the same pinned target and then `migrations/knowledge-lifecycle.md`.
+Complete any applicable SLC group before TKL effects; missing or conflicting preservation refuses
+the affected update. Do not reopen sealed tasks or manufacture completed consolidation.
+Full TFW is the selected scope; Light, Assisted, retrospective reporting and provider admission are unchanged.
+
 ## [3.3.0] — 2026-09-09
 
 SLC — Sealed Legacy Container. New Full projects start in `workspace`; existing projects retain

@@ -1,0 +1,38 @@
+{
+  "meaning": "Original complete report epochs retained as immutable Git objects. Final reports present one current matrix without changing historical claims or their original rows.",
+  "reports": [
+    {
+      "epoch": "initial",
+      "commit": "1f04b67224058bfb1f7ed5229bcc5ab5b3dd6385",
+      "path": "workspace/2026/TFW_20260909-231654_TKL/RF__TFW_20260909-231654_TKL.md",
+      "git_blob": "ed9a5f3ac47250bd650e47ad943ef34f3a954549",
+      "sha256": "a6265bad3777d0b3b9fec43e300529f53b38758b349aee83fa00ada3644c4e04",
+      "bytes": 23151
+    },
+    {
+      "epoch": "initial",
+      "commit": "1f04b67224058bfb1f7ed5229bcc5ab5b3dd6385",
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/EV__TFW_20260909-231654_TKL.md",
+      "git_blob": "c84d0241440b42753e92d835689aaa27e1cc0753",
+      "sha256": "686814b4f5cc0ae4f401ee2143c9d2b82a662e71ad26be407611f7d3501b5b0c",
+      "bytes": 12752
+    },
+    {
+      "epoch": "q1-second",
+      "commit": "cfddf387e6bcfae90e0ecd592b9b38db9d127282",
+      "path": "workspace/2026/TFW_20260909-231654_TKL/RF__TFW_20260909-231654_TKL.md",
+      "git_blob": "4c0c2ee9c5744904710ee47dde40d267bcd9dd8b",
+      "sha256": "301e5fb0edca3a42f4b5f60cf9bd81be81a3d9b77c20fcfa7f3150275b76949b",
+      "bytes": 25542
+    },
+    {
+      "epoch": "q1-second",
+      "commit": "cfddf387e6bcfae90e0ecd592b9b38db9d127282",
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/EV__TFW_20260909-231654_TKL.md",
+      "git_blob": "32234e97503a78cda58feba0ccb259748fadb7be",
+      "sha256": "9c4b9e808730a9902f8f8878981100358c7d8069e6c46900d701a7a6d50fd4ac",
+      "bytes": 14842
+    }
+  ],
+  "AC10_preparation_commit": "2a09956cffac6979dd90f63c6435c521d1fb38bc"
+}

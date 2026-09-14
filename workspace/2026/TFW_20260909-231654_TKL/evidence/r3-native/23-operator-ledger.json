@@ -1,0 +1,226 @@
+{
+  "start": "2026-09-13T22:13:37Z",
+  "deadline": "2026-09-13T22:43:37Z",
+  "deductions_seconds": 0,
+  "actual_invocations_started": 23,
+  "operations": [
+    {
+      "n": 1,
+      "purpose": "clock start"
+    },
+    {
+      "n": 2,
+      "purpose": "direct start message"
+    },
+    {
+      "n": 3,
+      "purpose": "first root/source/authority guard"
+    },
+    {
+      "n": 4,
+      "purpose": "bounded source/output metadata read"
+    },
+    {
+      "n": 5,
+      "purpose": "apply_patch native driver creation"
+    },
+    {
+      "n": 6,
+      "purpose": "exec prepare"
+    },
+    {
+      "n": 7,
+      "purpose": "poll prepare"
+    },
+    {
+      "n": 8,
+      "purpose": "poll prepare completion"
+    },
+    {
+      "n": 9,
+      "purpose": "exec stage then preserve"
+    },
+    {
+      "n": 10,
+      "purpose": "poll stage/preserve completion"
+    },
+    {
+      "n": 11,
+      "purpose": "exec effects26/55/57 then check"
+    },
+    {
+      "n": 12,
+      "purpose": "poll effects/check completion"
+    },
+    {
+      "n": 13,
+      "purpose": "exec one build"
+    },
+    {
+      "n": 14,
+      "purpose": "poll build"
+    },
+    {
+      "n": 15,
+      "purpose": "poll build"
+    },
+    {
+      "n": 16,
+      "purpose": "poll build"
+    },
+    {
+      "n": 17,
+      "purpose": "poll build completion"
+    },
+    {
+      "n": 18,
+      "purpose": "exec output/provenance/receipt/repeat/seal"
+    },
+    {
+      "n": 19,
+      "purpose": "poll partial phases"
+    },
+    {
+      "n": 20,
+      "purpose": "poll raw seal completion"
+    },
+    {
+      "n": 21,
+      "purpose": "exec raw-commit validator FAILED before durable writes"
+    },
+    {
+      "n": 22,
+      "purpose": "direct immediate STOP message"
+    },
+    {
+      "n": 23,
+      "purpose": "this task-custody-only stop seal/commit/verification"
+    }
+  ],
+  "fixed_underlying_definition": "Each actual clock,message,apply_patch,exec,poll/process-output tool counted once. functions.wait resumed pending wrapper promises without invoking another underlying operator; all elapsed time remains charged.",
+  "finite_phase_grouping": "Operations9/11/18 invoke the same finite file-based phases sequentially with individual guards,argv,writes,results and immediate exit on nonzero status. Grouping changed no target/scope/limit.",
+  "recorded_explicit_receiver_file_writes": 5362,
+  "driver_child_subprocesses": 38,
+  "first_guard_git_subprocesses": 48,
+  "phase_records": [
+    {
+      "path": "06-prepare.step.json",
+      "step": "prepare",
+      "started_at": "2026-09-13T22:21:43.001440+00:00",
+      "completed_at": "2026-09-13T22:22:41.706113+00:00",
+      "exit": 0,
+      "recorded_receiver_file_writes": 2318,
+      "subprocesses": 4
+    },
+    {
+      "path": "07-stage.step.json",
+      "step": "stage",
+      "started_at": "2026-09-13T22:23:16.424429+00:00",
+      "completed_at": "2026-09-13T22:24:05.613574+00:00",
+      "exit": 0,
+      "recorded_receiver_file_writes": 3036,
+      "subprocesses": 9
+    },
+    {
+      "path": "08-preserve.step.json",
+      "step": "preserve",
+      "started_at": "2026-09-13T22:24:05.860130+00:00",
+      "completed_at": "2026-09-13T22:24:22.060961+00:00",
+      "exit": 0,
+      "recorded_receiver_file_writes": 3,
+      "subprocesses": 2
+    },
+    {
+      "path": "09-effect26.step.json",
+      "step": "effect26",
+      "started_at": "2026-09-13T22:24:48.852770+00:00",
+      "completed_at": "2026-09-13T22:25:05.231608+00:00",
+      "exit": 0,
+      "recorded_receiver_file_writes": 1,
+      "subprocesses": 3
+    },
+    {
+      "path": "10-effect55.step.json",
+      "step": "effect55",
+      "started_at": "2026-09-13T22:25:05.487350+00:00",
+      "completed_at": "2026-09-13T22:25:21.889282+00:00",
+      "exit": 0,
+      "recorded_receiver_file_writes": 1,
+      "subprocesses": 3
+    },
+    {
+      "path": "11-effect57.step.json",
+      "step": "effect57",
+      "started_at": "2026-09-13T22:25:22.106245+00:00",
+      "completed_at": "2026-09-13T22:25:38.518225+00:00",
+      "exit": 0,
+      "recorded_receiver_file_writes": 1,
+      "subprocesses": 3
+    },
+    {
+      "path": "12-check.step.json",
+      "step": "check",
+      "started_at": "2026-09-13T22:25:38.802362+00:00",
+      "completed_at": "2026-09-13T22:25:54.896398+00:00",
+      "exit": 0,
+      "recorded_receiver_file_writes": 0,
+      "subprocesses": 2
+    },
+    {
+      "path": "13-build.step.json",
+      "step": "build",
+      "started_at": "2026-09-13T22:26:25.811253+00:00",
+      "completed_at": "2026-09-13T22:30:28.620209+00:00",
+      "exit": 0,
+      "recorded_receiver_file_writes": 0,
+      "subprocesses": 2
+    },
+    {
+      "path": "14-output.step.json",
+      "step": "output",
+      "started_at": "2026-09-13T22:31:13.317442+00:00",
+      "completed_at": "2026-09-13T22:31:25.905644+00:00",
+      "exit": 0,
+      "recorded_receiver_file_writes": 0,
+      "subprocesses": 1
+    },
+    {
+      "path": "15-provenance.step.json",
+      "step": "provenance",
+      "started_at": "2026-09-13T22:31:26.104054+00:00",
+      "completed_at": "2026-09-13T22:31:52.820339+00:00",
+      "exit": 0,
+      "recorded_receiver_file_writes": 1,
+      "subprocesses": 3
+    },
+    {
+      "path": "16-receipt.step.json",
+      "step": "receipt",
+      "started_at": "2026-09-13T22:31:53.119617+00:00",
+      "completed_at": "2026-09-13T22:32:19.159780+00:00",
+      "exit": 0,
+      "recorded_receiver_file_writes": 1,
+      "subprocesses": 2
+    },
+    {
+      "path": "17-repeat.step.json",
+      "step": "repeat",
+      "started_at": "2026-09-13T22:32:19.328420+00:00",
+      "completed_at": "2026-09-13T22:32:45.737993+00:00",
+      "exit": 0,
+      "recorded_receiver_file_writes": 0,
+      "subprocesses": 3
+    },
+    {
+      "path": "18-seal.step.json",
+      "step": "seal",
+      "started_at": "2026-09-13T22:32:45.959727+00:00",
+      "completed_at": "2026-09-13T22:33:09.559099+00:00",
+      "exit": 0,
+      "recorded_receiver_file_writes": 0,
+      "subprocesses": 1
+    }
+  ],
+  "raw_custody": "Driver child-process stdout/stderr and complete phase JSON are files. Outer tool projections are not raw streams; the displayed paragraph mark in output may be cp1252-transcoded while actual HTML/JSON stays UTF8.",
+  "actual_tail_not_yet_observed_at_seal": "Complete this stopped raw commit and direct return in invocation24, within the same deadline. Exact commit/verification/return tail is in this task tool channel; no future completion is claimed here."
+}

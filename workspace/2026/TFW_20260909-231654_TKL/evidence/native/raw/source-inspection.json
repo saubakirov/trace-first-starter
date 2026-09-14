@@ -1,0 +1,45 @@
+{
+  "observed_at": "2026-09-13T11:37:03.033723+00:00",
+  "candidate": "27cdb701b91c5b45b9f54b3e98c9ad67635b3e30",
+  "kind": "Actual Executor source inspection; not independent acceptance",
+  "sources": [
+    {
+      "commit": "9d1e89ec71a8622d7afadfd7325525cb57548fa1",
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/coordinator-source.md",
+      "blob": "8cb0c89d4994b524a9e1279c2e6444a3823990d1",
+      "sha256": "682b1220967e0997f57ee944b593ed9e29ebb66548f7522c8c42b8f7acf5b615",
+      "copy": "workspace/2026/TFW_20260909-231654_TKL/evidence/native/raw/inspected-sources/9d1e89ec71a8622d7afadfd7325525cb57548fa1/coordinator-source.md"
+    },
+    {
+      "commit": "9d1e89ec71a8622d7afadfd7325525cb57548fa1",
+      "path": "knowledge/records/TKL-NATIVE-COORD.md",
+      "blob": "d92ccbc89a31cc928b5b379fcc8b9c16c3a727fb",
+      "sha256": "352b0e640392ad7ae821618036e4e342de9cd22b1500f4f64554df0a3e0d422a",
+      "copy": "workspace/2026/TFW_20260909-231654_TKL/evidence/native/raw/inspected-sources/9d1e89ec71a8622d7afadfd7325525cb57548fa1/TKL-NATIVE-COORD.md"
+    },
+    {
+      "commit": "27cdb701b91c5b45b9f54b3e98c9ad67635b3e30",
+      "path": "knowledge/records/TKL-20260913-01.md",
+      "blob": "c22dbcc910ccddf8c3a96c012cfa3bb3f4f257a8",
+      "sha256": "d13918a5d99569332a971d35dd56461565d27533463b20e4336cd3db2f20b7b0",
+      "copy": "workspace/2026/TFW_20260909-231654_TKL/evidence/native/raw/inspected-sources/27cdb701b91c5b45b9f54b3e98c9ad67635b3e30/TKL-20260913-01.md"
+    },
+    {
+      "commit": "2794cbdb40f6c4f3a7d4bce1f8d4eb949d9e6913",
+      "path": "workspace/2026/TFW_20260909-231654_TKL/journal/20260913-141400__handoff__8c2a.md",
+      "blob": "8f0e29189af9983f3a1dffe2efb2b7daaf0686cd",
+      "sha256": "acc3de13384fec670614eeaa8758d9997f97f5396c796a2f88ddc46fa8f87102",
+      "copy": "workspace/2026/TFW_20260909-231654_TKL/evidence/native/raw/inspected-sources/2794cbdb40f6c4f3a7d4bce1f8d4eb949d9e6913/20260913-141400__handoff__8c2a.md"
+    }
+  ],
+  "findings": [
+    "The architecture record separates human owner architecture selection from implementation/release acceptance; actual owner event binds exact TS and cost decision, preserving originating Researcher/Coordinator/owner unit distinctions.",
+    "The actual native Coordinator source names its own context, role, shared-source basis, prepared mode-beta assertion, absent acceptance and later operations owed. It is a distinct source from Executor, not evidence of a distinct origin for the shared Candidate rule.",
+    "The actual source Git objects and paths resolve; raw copies preserve source bytes. Historical owner decision is inspected human-source evidence; no new human-source fact or new qualification is manufactured."
+  ],
+  "limits": [
+    "No new first consumer answer or actual clean initialization observed.",
+    "No universal current-use or capture claim.",
+    "Both native sources are sequential; original shared-source provenance does not constitute independent corroboration."
+  ]
+}

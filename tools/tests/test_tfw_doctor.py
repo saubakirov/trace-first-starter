@@ -166,3 +166,22 @@ def test_capability_is_bounded_and_absent_from_full_build():
     config = (root / ".tfw" / "project_config.yaml").read_text(encoding="utf-8")
     build = yaml.safe_load(config)["build"]
     assert all("tfw_doctor.py" not in command for command in build.values())
+
+
+def test_tkl_retired_pending_does_not_read_state_or_corpus(tmp_path, monkeypatch):
+    root = make_project(tmp_path)
+    (root / ".tfw/knowledge_state.yaml").write_bytes(b"malformed: [ inert history")
+    before = snapshot(root)
+    def forbidden(*args, **kwargs):
+        raise AssertionError("retired operation read repository inputs")
+    for name in ("iter_task_dirs", "task_containers", "read_project_config"):
+        if hasattr(state, name): monkeypatch.setattr(state, name, forbidden)
+    monkeypatch.setattr(Path, "read_text", forbidden)
+    monkeypatch.setattr(Path, "read_bytes", forbidden)
+    result = doctor.knowledge_pending(root)
+    assert "retired" in json.dumps(result) and "/tfw-knowledge" in json.dumps(result)
+    monkeypatch.undo()
+    assert snapshot(root) == before
+    native = run(root, "knowledge-pending")
+    assert native.returncode == 0 and "retired" in native.stdout
+    assert snapshot(root) == before

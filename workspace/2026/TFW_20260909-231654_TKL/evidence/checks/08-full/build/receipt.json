@@ -1,0 +1,18 @@
+{
+  "argv": [
+    "E:\\TEMP\\pttc-phase-a-b9b5\\venv\\Scripts\\python.exe",
+    "-m",
+    "mkdocs",
+    "build",
+    "--config-file",
+    "docs/mkdocs.yml"
+  ],
+  "started": "2026-09-13T10:43:26.525824+00:00",
+  "finished": "2026-09-13T10:45:55.797428+00:00",
+  "exit_code": 0,
+  "cwd": "C:\\Users\\c0rpa\\.codex\\worktrees\\f3f3\\steps-framework",
+  "streams": {
+    "stderr.txt": "e7ef17a1ea30b6a88369670544d6cae0e583be578b31831f56ddc36fd198e164",
+    "stdout.txt": "434d5d63b8c6a23468b3f644d661c048edb81aab8b1525a23d2fd53da5d5e023"
+  }
+}

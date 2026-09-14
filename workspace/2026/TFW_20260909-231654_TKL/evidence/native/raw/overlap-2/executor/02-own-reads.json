@@ -1,0 +1,34 @@
+{
+  "reads": [
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/q1-inputs/common.md",
+      "sha256": "1077d9965b05c62ad03f74fb1cb39c48dd496dfc981c9111978b2f5c71bb1773",
+      "headings": null,
+      "read_at": "2026-09-13T12:01:56.103538+00:00"
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/q1-inputs/executor.md",
+      "sha256": "44447097cc7f5a442be8e214cafbc9dad16553527226a6b6e9541f559f50a3ad",
+      "headings": null,
+      "read_at": "2026-09-13T12:01:56.103802+00:00"
+    },
+    {
+      "path": ".tfw/templates/knowledge/record.md",
+      "sha256": "d0615f7582e15280f4c69ef0350294daf9e1b32b5de0d2fba964dc9a4db0d6b0",
+      "headings": null,
+      "read_at": "2026-09-13T12:01:56.104679+00:00"
+    },
+    {
+      "path": ".tfw/conventions.md",
+      "sha256": "fb05c43570cf65b512e620c97633d0115daa8b733e9649e4a3c426e566b8cf21",
+      "headings": [
+        "Knowledge handover",
+        "Knowledge qualification"
+      ],
+      "read_at": "2026-09-13T12:01:56.112075+00:00"
+    }
+  ],
+  "incoming_search_exit": 1,
+  "current_sibling_new_output_read": false,
+  "prior_exposure": "Same holder participated in first sequential Q1 and read both first originals after seals. That exposure is disclosed; this is not a globally unprimed first trial. Current attempt sibling outputs remain unread."
+}

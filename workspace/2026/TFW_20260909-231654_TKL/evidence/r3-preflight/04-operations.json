@@ -1,0 +1,72 @@
+{
+  "start_utc": "2026-09-13T21:49:18Z",
+  "deadline_utc": "2026-09-13T21:59:18Z",
+  "actual_invocations_started_through_seal": 6,
+  "operations": [
+    {
+      "n": 1,
+      "tool": "clock__curr_time",
+      "result": "2026-09-13 21:49:18 UTC"
+    },
+    {
+      "n": 2,
+      "tool": "exec_command",
+      "chunk": "7843e0",
+      "exit_code": 0,
+      "purpose": "Read sealed feasibility/source-pin/map/result and prior proposal; no archive extraction or receiver access",
+      "limitation": "Diagnostic shape renderer printed full dictionary map; original output 194367 tokens was truncated to tool output budget. This is disclosed partial tool observation, not full persisted raw output or a failed archive verification."
+    },
+    {
+      "n": 3,
+      "tool": "exec_command",
+      "chunk": "3728f3",
+      "exit_code": 0,
+      "purpose": "Create exact observer; execute its short file launch once; archive/original-map/feasibility equality and witness PASS",
+      "receipt": "02-launch.json",
+      "raw_streams": [
+        "02-stdout.raw",
+        "02-stderr.raw"
+      ],
+      "observer_changed_after_run": false
+    },
+    {
+      "n": 4,
+      "tool": "exec_command",
+      "chunk": "ddf490",
+      "exit_code": 0,
+      "purpose": "Read finite source/authority/target proposal and exact migration/receipt contracts"
+    },
+    {
+      "n": 5,
+      "tool": "exec_command",
+      "chunk": "6b4567",
+      "exit_code": 0,
+      "purpose": "Bind 15 sources/13 authority rows, derive all four old/intended targets from sealed bytes, write complete finite schema; no native action",
+      "internal_readonly_git_calls": 31
+    },
+    {
+      "n": 6,
+      "tool": "exec_command",
+      "state_at_seal": "This actual invocation seals, stages, commits and reports; its completion time/SHA are supplied by the enclosing tool result",
+      "purpose": "Checkpoint metadata, cumulative ONB handover, complete semantic inventory and exact-path commit"
+    }
+  ],
+  "remaining_planned_not_observed_at_seal": [
+    {
+      "n": 7,
+      "tool": "exec_command",
+      "purpose": "Verify actual immutable checkpoint, bytes and clean tree only"
+    },
+    {
+      "n": 8,
+      "tool": "send_message_to_thread",
+      "purpose": "Direct actual checkpoint/count/timing return to sole Coordinator, then stop"
+    }
+  ],
+  "complete_tail_custody": "Actual commit, verification and direct-return results are in the same native task tool channel; no future success is asserted by this sealed file.",
+  "preflight_prepare_corrections": [
+    "Use bounded field/list selection after overlarge operation-2 diagnostic output.",
+    "Classify observer and any future finite verification drivers ASSURANCE by semantic purpose; receipts/maps remain TRACE. No observer code correction or second observer run occurred."
+  ],
+  "receiver_access_or_creation_or_mutation": false
+}

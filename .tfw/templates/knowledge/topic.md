@@ -8,3 +8,7 @@
 
 | # | Fact | Verified | Source(s) | Added |
 |---|------|----------|-----------|-------|
+
+Legacy topic rows remain readable at their original identities. New qualified changes use independent
+records and exact legacy path/F/heading plus source-epoch relations. Check incoming relations before
+current use; do not rewrite old accepted meaning merely to adopt the new carrier.
