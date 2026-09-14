@@ -409,6 +409,41 @@ Direct return: existing Coordinator unit `01a09a92-18fb-7da1-a639-6a86844bf147` 
 `01a09a32-367e-7ea1-a405-9501d17ba270`. **Start `/tfw-plan` to rule this one-proposal round.**
 Phase remains `KNW`; the Reviewer records no status or journal transition and stops.
 
+### 10.6 Coordinator ruling — closed Rung 1 evidence-only provenance return
+
+**Ruling authority and admission.** Coordinator unit
+`01a09a92-18fb-7da1-a639-6a86844bf147`, acting as principal `robert` for owner `saubakirov`
+inside the approved AT mandate, admits the landing affected-review return at producer
+`7d600cc4a0a3c3cd30023605e07c097e0d4580bd`. Reviewer unit
+`01a09b82-d0ed-78b1-9b72-42291fd8359e` remains the originating proposer. This section is the one
+Coordinator ruling for the single §10.4 proposal.
+
+The proposal is **accepted as proposed — rung 1, evidence only**. It corrects the durable
+accepted-parent provenance already required by TS AC-7, frozen master-HL DoD 17, and closing
+contract producer `f979eac49bc3acd0d0220591047ec8abccf49072`. It changes no product byte,
+Candidate identity, purpose, architecture, authority, literal 30 VALUE plus three ASSURANCE
+selector, immutable `30 VALUE files / 650 touched text LOC` denominator, HL claim, TS order, or G2
+boundary. Landing Candidate `3c354ba29d525ccb4e7683c5c477290682b90a5a` remains immutable,
+unaccepted, and unlanded. The defective historical receipt remains preserved; no TS sibling, HL
+amendment, new owner ruling, test restart, or scope expansion is authorized.
+
+| # | Coordinator disposition | Owner / independent return | Closed return bound / observable completion |
+|---|---|---|---|
+| 1 | **✅ ACCEPTED — rung 1, AC-7 / frozen DoD 17** | Same Executor `01a09b39-f0c0-70c0-9b53-6981647e72fb`; same Reviewer `01a09b82-d0ed-78b1-9b72-42291fd8359e` independently verifies the return | Append a new phase-local durable provenance receipt, without overwriting `phase-b-landing-candidate-boundary.txt`, using actual accepted parent `41a70febc6d33d369af125d7ad2ecf98a2de0761`. Parent/object lookup must fail closed. The receipt must resolve every literal product path across fresh master, actual accepted parent, accepted Candidate, and landing Candidate; record correct accepted-parent blobs and accepted actions `28 M + 5 D`; reproduce `19 CLEAN_PREIMAGE + 14 COMPOSITE`, including the three composite deletions; and match independent Git for 33/33 paths with zero missing or extra. Bind a focused check to this new durable table, prove an invalid parent is rejected, and append truthful affected RF/EV content that cites the correction without overstating the defective historical receipt. Reuse the recorded green regression receipts unless a tested dependency changes. |
+
+**Route.** Return execution uses `/tfw-handoff`, unchanged governing
+`TS__phase-b__resume_surface_retirement__rev2.md`, closing contract producer
+`f979eac49bc3acd0d0220591047ec8abccf49072`, and this
+ruling. It is limited to append-only Phase-B TRACE: the new provenance receipt, its receipt-bound
+focused check, cumulative RF/EV supplements, and the exact journal/handoff trace needed for the
+return. The Executor must not modify the existing landing Candidate, any product or assurance path,
+HL, TS, selector, denominator, prior immutable receipt, `master`, TKL, OTR, knowledge/digest state,
+G2, release metadata, or any external effect. Because this is a closing evidence-only return, Phase
+remains `KNW`; no fabricated `KNW → ONB` transition is permitted. After the Executor returns its
+exact TRACE producer, the same independent Reviewer must perform affected `/tfw-review`. C1 remains
+the fallback, and the Candidate cannot land until that Reviewer records `APPROVE`. Ruling/dispatch
+trace: [dispatch d807](journal/20260914-162415__dispatch__d807.md).
+
 ---
 
 *REVIEW — TFW_20260913-151442_RWNR / Phase B: Retire the public Resume surface | 2026-09-14*
