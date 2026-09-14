@@ -2,11 +2,12 @@
 
 > **Date**: 2026-09-14
 > **Author**: robert, Reviewer unit `01a09b82-d0ed-78b1-9b72-42291fd8359e`
-> **Verdict**: ✅ APPROVE — final affected Return Round 4
-> **RF**: [RF Phase B](RF__phase-b__resume_surface_retirement.md), governing return round §13
+> **Verdict**: 🔄 REVISE — landing composite affected review
+> **RF**: [RF Phase B](RF__phase-b__resume_surface_retirement.md), governing landing composite §14
 > **TS**: [TS Phase B revision 2](TS__phase-b__resume_surface_retirement__rev2.md)
 > **Stage files**: `review/map.md`, `review/verify.md`, `review/judge.md`
-> **Reviewed Candidate**: `51ea3015290393da001810629f305f5969f4c8b8` — independently accepted; remains unlanded
+> **Reviewed Candidate**: `3c354ba29d525ccb4e7683c5c477290682b90a5a` — not accepted; remains unlanded
+> **Prior accepted Candidate**: `51ea3015290393da001810629f305f5969f4c8b8`
 
 ---
 
@@ -316,6 +317,97 @@ Direct return: existing Coordinator unit `01a09a92-18fb-7da1-a639-6a86844bf147` 
 `01a09a32-367e-7ea1-a405-9501d17ba270`. Next act: Coordinator executes
 `Closing and record recovery`; this Reviewer remains available only for an affected independent
 assessment if a material accepted output or claim changes during capture or landing.
+
+## 10. Landing Composite — Affected Independent Judgment
+
+### 10.1 Identity, authority, and affected bound
+
+Principal `robert` acts for owner `saubakirov`. Reviewer unit
+`01a09b82-d0ed-78b1-9b72-42291fd8359e` is independent of Executor unit
+`01a09b39-f0c0-70c0-9b53-6981647e72fb`, Coordinator unit
+`01a09a92-18fb-7da1-a639-6a86844bf147`, and LEAD root
+`01a09a32-367e-7ea1-a405-9501d17ba270`. Shared principal attribution grants no repair, landing,
+closing, disposition, or amendment authority.
+
+This affected review is required by the final-effect contract, so its originating proposer is
+`none`. It reviews only the final landing claims added after accepted Candidate
+`51ea3015290393da001810629f305f5969f4c8b8` and accepted REVIEW producer
+`14da05a4f1b4a341f30b75fce4f572db2c367b2d`. The reviewed landing Candidate is
+`3c354ba29d525ccb4e7683c5c477290682b90a5a`, direct parent
+`3fd16fd1549a3f92006e8f37102df4a511b8aa55`, tree
+`7b61356eb8990ccec78cb9f4275dbae305948eb1`. It remains unlanded. Governing TS blob
+`8c06e15e3ad8211195f2d48314d055ad1f111979` is unchanged; phase lifecycle remains `KNW`.
+
+### 10.2 Verify
+
+| Check | Result | Independent evidence |
+|---|---|---|
+| Product composite | **VERIFIED** | Exact 33 paths, `28 M + 5 D`; independent Git recomputation gives 19 clean-preimage + 14 TKL-safe composites, zero afterimage mismatch, unchanged five-large-blob set, and no product change in TRACE. |
+| Exact-path Candidate process | **VERIFIED** | Boundary selector/staging is exact; producing-unit transcript confirms actual `git commit --only --` with all 33 literal pathspecs after exact fresh-master reread. |
+| Primary accepted-parent provenance | **BLOCKED** | `phase-b-landing-candidate-boundary.txt` names nonexistent `41a70b940…` instead of real `41a70feb…`; all 33 `accepted_parent` cells are `-`, and 28 surviving rows falsely derive action `A` instead of `M`. |
+| Evidence substitution | **BLOCKED** | External twin is byte-identical to the same defect; focused `1 passed` check does not validate receipt rows; no alternate durable, correctly labelled 33-row accepted-parent Git blob table exists. |
+| Existing gates and prior findings | **VERIFIED / unchanged** | Recorded `420`, `719`, `718+1`, `31`, `32`, and `1` receipts and their hashes agree with final audit; no tests were rerun. Prior product/oracle/authority/citation inputs remain applicable. |
+| TRACE and prohibited effects | **VERIFIED** | Exact TRACE is 48 phase-local paths, preserves accepted sources/RF-EV prefixes, and changes no product after Candidate. Candidate is not on master; no landing, release, G2, knowledge, digest, or external effect occurred. |
+
+The detailed 33/33 audit, hashes, applicability limits, and producing-unit explanation are recorded in
+[review/verify.md](review/verify.md#landing-composite-affected-verify).
+
+### 10.3 Judge
+
+| # | Check | Status | Landing affected judgment |
+|---|---|---|---|
+| 1 | DoD / all TS AC | ❌ | TS AC-7 and frozen DoD 17 fail for the claimed final provenance evidence. |
+| 2 | Purpose and design | ✅ | Product purpose and composition design remain aligned and sound; the defect is evidence-only. |
+| 3 | Debt disposed | ✅ | No debt exists; required correction is verdict-driving work. |
+| 4 | Style and standards | ❌ | Fail-soft lookup output was committed and represented as exact 33/33 provenance. |
+| 5 | Observations collected | ❌ | RF/EV disclose no defect and mark the false provenance claim VERIFIED. |
+| 6 | RF §7–§9 complete | ✅ | Required cumulative sections remain present and truthful outside the affected evidence claim. |
+| 7 | Evidence exists | ✅ | All named landing evidence artifacts resolve. |
+| 8 | Evidence is sufficient | ❌ | Existing artifacts do not establish the asserted accepted-parent Git blob chain. |
+| 9 | Backward compatibility | ✅ | Authorized product behavior and TKL additions remain compatible on exact inspected inputs. |
+| 10 | Safety | ❌ | Unlanded state prevents integration harm, but landing cannot be authorized from false fail-soft provenance. |
+
+Purpose remains aligned with frozen master HL §1: “The separate `/tfw-resume` command no longer
+exists because every behavior that protected continuation has an explicit, tested survivor route
+rather than a second overlapping entry point.” The concrete harm is ambiguity or destructive loss
+of inspectable continuation. Candidate product bytes serve that clause; the evidence defect blocks
+only the final landing claim.
+
+### 10.4 Binding verdict and proposal to Coordinator
+
+**🔄 REVISE.** Landing Candidate `3c354ba29d525ccb4e7683c5c477290682b90a5a` is not accepted and
+remains unlanded. The defect is repairable inside the existing approved TS and closing bound; this is
+one proposed **rung-1 evidence-only return**. The Reviewer proposes and stops.
+
+1. **Correct and durably reissue the landing provenance boundary without changing Candidate
+   `3c354ba…` or any product byte.** Use the real accepted parent
+   `41a70febc6d33d369af125d7ad2ecf98a2de0761`; make lookup failure fail closed; record correct
+   accepted-parent Git blob OIDs and accepted actions (`28 M + 5 D`) for all 33 literal paths;
+   recompute and retain the independently observed `19 CLEAN_PREIMAGE + 14 COMPOSITE` split; bind the
+   focused provenance check to the corrected durable table; and append truthful affected RF/EV
+   evidence without overwriting the defective historical receipt. Completion is observable when a
+   new phase-local receipt resolves every four-epoch row, rejects an invalid parent, matches independent
+   Git for 33/33 paths, and RF/EV cite it without overstatement. Reuse the existing green regression
+   receipts unless the correction changes a tested dependency; no product, HL, TS, status, journal,
+   master, TKL, knowledge, digest, G2, release, or external effect is authorized. — **Basis:** TS AC-7;
+   frozen master-HL DoD 17; closing contract producer
+   `f979eac49bc3acd0d0220591047ec8abccf49072` exact per-path provenance bound.
+
+The existing Coordinator owns the one ruling act. If accepted, the same Executor
+`01a09b39-f0c0-70c0-9b53-6981647e72fb` performs the bounded correction and this same Reviewer
+independently verifies the return.
+
+### 10.5 Trace and route
+
+- [x] One affected defect, proposal, governing claims, owner, and observable completion condition recorded.
+- [x] Product Candidate remains unchanged and unlanded; prior accepted Candidate remains distinguished.
+- [x] Evidence existence and sufficiency remain distinct; no false primary evidence was repaired by inference.
+- [x] No debt, Fact Candidate, knowledge publication, docs effect, lifecycle move, landing, or external effect added.
+- [x] Material handover: bounded landing Candidate, TRACE, primary receipt, all landing receipts, RF/EV §14/E40, closing contract, and producing-unit transcript were inspected; the reusable source is this cumulative REVIEW §10 and its Verify/Judge stages; uncertainty is fully localized to the false durable accepted-parent table; continuation is the Coordinator ruling above.
+
+Direct return: existing Coordinator unit `01a09a92-18fb-7da1-a639-6a86844bf147` and LEAD root
+`01a09a32-367e-7ea1-a405-9501d17ba270`. **Start `/tfw-plan` to rule this one-proposal round.**
+Phase remains `KNW`; the Reviewer records no status or journal transition and stops.
 
 ---
 

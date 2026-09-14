@@ -153,3 +153,62 @@ superseded by Verify V-R4.1.
 - [x] Knowledge capture remains an explicit later lifecycle effect; no Reviewer mutation occurred.
 
 Final affected Judge stage complete: **YES**
+
+## Landing Composite Affected Judge
+
+> **Verify input:** [Landing Composite Affected Verify](verify.md#landing-composite-affected-verify)
+> **Contract baseline reread:** master HL re-freeze `74e63242a1a713c8a2c4490edda24f84bfc68153`
+
+### Universal checklist
+
+| # | Check | Status | Landing affected evidence |
+|---|---|---|---|
+| 1 | DoD met? | ❌ | Product semantics and gates remain sound, but Verify V-L2/V-L3 disproves RF §14.1 / EV E40's 33/33 accepted-parent provenance. TS AC-7 and frozen DoD 17 therefore do not hold for final landing evidence. |
+| 2 | Purpose and design | ✅ | **(a) Purpose:** frozen HL §1 removes Resume only because every protected continuation behavior has an explicit tested survivor; the concrete harms are duplicate continuation choices or destructive loss of inspectable continuation. The 33-path composite serves that purpose with no excess. **(b) Design:** TKL-safe semantic composition, C1 recovery, exact-path isolation and product boundaries are sound; the defect is a repairable evidence-generation failure, not product design or contract conflict. |
+| 3 | Debt disposed | ✅ | REVIEW §5 has no debt. The false provenance table is verdict-driving required work, not deferrable debt. |
+| 4 | Style & standards | ❌ | A fail-soft evidence generator converted an invalid object into success-shaped `-`/`A` rows, while RF/EV declared exact 33/33 identities. This violates reproducible evidence and execution-honesty standards. |
+| 5 | Observations collected | ❌ | RF §14 reports no defect and EV marks E40 VERIFIED, but the primary artifact carries a material, systematic provenance error. The independent Review now records it; the producing record did not. |
+| 6 | RF §7–§9 complete | ✅ | The cumulative RF has the required Fact Candidates, Strategic Insights, and Diagram treatment; none changes this bounded evidence finding. |
+| 7 | Evidence completeness — exists? | ✅ | Every named landing receipt exists, including the internal/external boundary twins and focused provenance output. |
+| 8 | Evidence sufficiency — proves? | ❌ | The green focused test recomputes product semantics but does not validate the raw table; byte-identical twins preserve the same defect. No correctly labelled durable 33-row accepted-parent Git blob map establishes the claim. |
+| 9 | Backward compatibility | ✅ | The authorized Resume removal, survivor routes, adapters, histories, Phase-A continuation, and TKL additions remain semantically compatible on 33/33 product inspection and unchanged gate inputs. |
+| 10 | Safety | ❌ | The Candidate is still unlanded, so no integration harm occurred. Landing cannot be authorized with a non-resolving parent and fail-soft provenance rows because the evidence boundary intended to prevent unverifiable or partial integration is not trustworthy. |
+
+Rows 7 and 8 intentionally differ: all promised artifacts exist, but the primary artifact does not
+prove the exact accepted-parent lineage that RF/EV say it proves.
+
+### Independent Purpose Check
+
+**✅ Aligned; no purpose failure or contract defect.** The exact frozen clause served is: “The
+separate `/tfw-resume` command no longer exists because every behavior that protected continuation
+has an explicit, tested survivor route rather than a second overlapping entry point.” The material
+harm is an ambiguous continuation choice or destructive retirement that loses phase selection,
+recovery, role separation, history, or deterministic routing. Current NS1, NS2.2, NS2.5 and NS2.7
+support the inspected product result: continuity remains inspectable, delegation bounded, and
+assurance proportional to destructive risk. The evidence defect blocks landing acceptance; it does
+not make the product result purposeless.
+
+### Knowledge, citations, and prior-judgment applicability
+
+No current `KNOWLEDGE.md` record contradicts the product result or the finding. All 66 prior Project
+Values citations remain resolvable and applicable: the cited P3/P4 clauses survive the accepted-to-
+landing changes, while the new TKL knowledge-handover and current-use rules reinforce the need to
+preserve truthful provenance. All prior product judgments remain applicable; only the new final
+landing provenance/evidence claim is reopened.
+
+### Binding judgment
+
+**🔄 REVISE.** One rung-1 evidence-only proposal is required. Landing Candidate
+`3c354ba29d525ccb4e7683c5c477290682b90a5a` is not accepted and remains unlanded. Phase lifecycle
+remains `KNW`; this verdict authorizes no transition, implementation, evidence repair, landing,
+capture, G2, release, master, push, publish, deploy, notification, or other external effect.
+
+### Landing affected checkpoint
+
+- [x] Every checklist row has distinct evidence; no N/A row is used.
+- [x] Purpose and design are judged separately from evidence integrity.
+- [x] Evidence existence and sufficiency are separately adjudicated.
+- [x] The single finding names TS AC-7, frozen DoD 17, its owner, and an observable completion condition.
+- [x] No Reviewer repair, disposition ruling, lifecycle move, or landing occurred.
+
+Landing Composite Affected Judge stage complete: **YES**

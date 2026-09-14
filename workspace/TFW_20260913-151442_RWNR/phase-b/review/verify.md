@@ -387,3 +387,112 @@ without waiving proof. Resolved `66`, semantically verified `66`, irrelevant `0`
 - [x] Reconfirmed all 66 citation applications remain resolved and relevant on unchanged inputs.
 
 Final affected Verify stage complete: **YES**
+
+## Landing Composite Affected Verify
+
+> **Affected RF:** [landing composite §14](../RF__phase-b__resume_surface_retirement.md#14-landing-composite--fresh-master-candidate)
+> **Accepted product Candidate:** `51ea3015290393da001810629f305f5969f4c8b8`
+> **Landing Candidate:** `3c354ba29d525ccb4e7683c5c477290682b90a5a`
+> **Fresh-master parent:** `3fd16fd1549a3f92006e8f37102df4a511b8aa55`
+> **Landing Candidate tree:** `7b61356eb8990ccec78cb9f4275dbae305948eb1`
+> **Affected bound:** final landing-composition claims only. Existing test receipts were inspected but no test was rerun, as ordered by the LEAD.
+
+### V-L1 — immutable landing identity and product result
+
+- **RF claim:** one TKL-safe landing Candidate composes the accepted Phase-B result onto exact fresh
+  master without changing product scope, accepted accounting, or large-blob inventory.
+- **Actual:** Git resolves the exact direct parent, Candidate, and tree above. The Candidate contains
+  exactly the approved 33 product paths with `28 MODIFY + 5 DELETE`; no product path changes between
+  Candidate and TRACE producer `69decdbbc305e6fb3a0d91ccdf8e6af7ea6bc1fd`. Independent Git
+  recomputation against the real accepted parent
+  `41a70febc6d33d369af125d7ad2ecf98a2de0761` yields exactly 19 clean-preimage and 14 semantic-composite
+  paths, zero clean-afterimage mismatch, and the same five blobs at or above 10 MiB before and after.
+  All 33/33 product paths were opened or confirmed deleted. The 14 composites preserve the fresh-master
+  TKL additions while applying the accepted Resume retirement; no live non-test Resume surface remains.
+- **Match:** ✅ the immutable product result, transport membership, 19/14 classification, and TKL-safe
+  composition hold.
+
+### V-L2 — primary per-path provenance receipt
+
+- **RF/EV claim:** `phase-b-landing-candidate-boundary.txt` provides exact master, accepted-parent,
+  accepted-Candidate, and composite Git blob identities for all 33 paths; RF §14.1 and EV E40 rely on
+  that table as primary evidence.
+- **Actual:** line 8 records `accepted_parent` as
+  `41a70b94019b86b99d87bb48f3da653a51112050`, which does not resolve as a Git object. The real parent
+  of accepted Candidate `51ea301…` is `41a70febc6d33d369af125d7ad2ecf98a2de0761`.
+  Every one of the 33 rows consequently records `accepted_parent=-`; all 28 surviving paths also record
+  the false derived action `accepted_action=A` instead of `M`. The five `D` actions happen to remain
+  correct because their accepted-Candidate blob is absent. Executor transcript confirms that the receipt
+  generator contained the mistyped constant and converted every failed lookup to `-`.
+- **Match:** ❌ the claimed 33/33 accepted-parent provenance is false in the primary durable receipt.
+  The correct 19/14 totals are independently reproducible, but the receipt does not establish them by
+  the four-epoch identity chain it claims to preserve.
+
+### V-L3 — receipt twins, focused check, and alternate evidence
+
+- The internal and external boundary copies are byte-identical at 19,843 bytes and SHA-256
+  `dcaab1c0bf3657e8e2483f6fe053ed7efa34c7377d51026e8011927c64a101c3`. That proves faithful
+  preservation of the same defect, not truth of the accepted-parent rows.
+- `phase-b-landing-provenance-check.txt` records only `1 passed, 145 deselected`; the test recomputes
+  semantic properties from Git and does not validate the raw receipt fields. Its green result therefore
+  cannot bind RF §14.1 / EV E40 to the flawed table.
+- No other durable artifact contains a correctly labelled 33-row accepted-parent Git blob-OID map.
+  A pre-existing 33-path SHA-256 before-image map happens to match the real accepted-parent bytes, but it
+  is labelled for C1 ref `d09d5d49496d13b64552fe99a03821826ae435b6`, is not a Git blob map, and does not persist the
+  asserted accepted-parent relationship. Independent reconstruction cannot repair primary evidence.
+- **Match:** ❌ evidence existence is complete, but evidence sufficiency for the exact four-epoch
+  provenance claim fails.
+
+### V-L4 — exact-path command, regression receipts, TRACE, and prior applicability
+
+- Executor transcript confirms the actual landing Candidate command used `git commit --only --` with
+  all 33 literal product pathspecs after re-reading fresh master. The exact-path product receipt records
+  the same 33-path selector, empty initial index, zero missing/extra staging, and clean post-boundary.
+- Candidate-bound receipts remain internally consistent: targeted `420 passed`; collection `719`;
+  full `718 passed, 1 skipped`; focused command entry `31 passed`; state `32 passed`; all recorded exits
+  are zero and their hashes match the final audit. They were verified as existing receipts, not rerun.
+- Exact TRACE selection is 48 phase-local paths (`47 ADD + 1 MODIFY`), with no product change after the
+  landing Candidate. Thirty-four accepted trace blobs match their source exactly; RF and EV are truthful
+  append-only prefixes before the landing section. The final audit correctly proves selection and byte
+  preservation, but does not correct the false accepted-parent table.
+- Prior product, AC-1–AC-6/AC-8/AC-9, accounting, compatibility, and citation findings remain applicable.
+  The 66/66 Project Values citations remain resolved and relevant: changed P3/P4 sources retain the cited
+  clauses, and the added TKL knowledge-handover/current-use rules were inspected. The defect is confined
+  to the new landing provenance claim.
+- **Match:** ✅ product/process applicability holds; ❌ the new evidence claim remains unsupported.
+
+### Commands and evidence used
+
+| # | Read-only check | Result |
+|---|---|---|
+| L-1 | Git parent/tree/diff/ancestry and 33-path literal selector comparison | Exact parent `3fd16fd…`, tree `7b61356…`, `28 M + 5 D`, missing/extra `0`, no product diff Candidate→TRACE. |
+| L-2 | Independent per-path Git blob comparison using real accepted parent `41a70feb…` | 33/33 resolved; 19 clean-preimage, 14 composite, zero clean-afterimage mismatch; accepted actions `28 M + 5 D`. |
+| L-3 | Parse primary landing boundary and resolve its declared accepted parent | Declared object does not exist; `accepted_parent=-` on 33/33 rows; 28 false `A` actions. |
+| L-4 | Hash/byte comparison of internal and external boundary copies | Both 19,843 bytes; both SHA-256 `dcaab1c0…`; defect duplicated exactly. |
+| L-5 | Read all landing receipts and independently hash test receipts | Recorded `420`, `719`, `718+1`, `31`, `32`, and `1` outcomes with matching final-audit hashes; no rerun. |
+| L-6 | Exact TRACE selector/blob/prefix audit | 48 phase-local paths; outside-phase `0`; 34 exact accepted blobs; RF/EV append-only; product diff `0`. |
+| L-7 | Read-only Executor transcript clarification | Actual 33-path `commit --only` confirmed; wrong constant/fail-soft receipt cause confirmed; no alternate durable full accepted-parent Git blob table. |
+
+### Discrepancy and affected result
+
+The landing Candidate's product tree is acceptable on the inspected evidence, but the final landing
+claim is not. TS AC-7 requires reproducible immutable Candidate evidence, frozen master-HL DoD 17
+requires independently checkable evidence integrity, and closing-contract producer
+`f979eac49bc3acd0d0220591047ec8abccf49072` specifically requires exact per-path
+`fresh master → accepted Candidate/action → composite` provenance. A primary receipt whose parent does
+not exist and whose 33 parent cells are empty cannot satisfy that bound.
+
+This is one rung-1 evidence-only finding. Candidate `3c354ba…` remains unlanded; product files, tests,
+HL, TS, RF, EV, evidence, status, journal, master, TKL, knowledge, digest, G2, release, and external
+effects are not changed by this Reviewer.
+
+### Landing affected checkpoint
+
+- [x] Verified the complete 33-path landing product boundary and all 14 composites.
+- [x] Distinguished independently reproducible product truth from the false durable provenance receipt.
+- [x] Checked evidence existence and evidentiary sufficiency separately.
+- [x] Confirmed the actual exact-path commit from the producing unit without reconstructing it into evidence.
+- [x] Preserved all unaffected prior judgments only after input/oracle/authority/citation applicability checks.
+- [x] Reran no tests and performed no lifecycle, landing, repair, capture, or external effect.
+
+Landing Composite Affected Verify stage complete: **YES**
