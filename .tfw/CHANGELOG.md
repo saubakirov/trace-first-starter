@@ -5,6 +5,32 @@ Format: [Keep a Changelog](https://keepachangelog.com/). Versioning: [Semantic V
 
 ## [Unreleased]
 
+## [3.4.1] — 2026-09-14
+
+RWNR — Resume Without Resume. Returning and interrupted work now uses the existing `/tfw-plan`
+entry, which resolves task and phase state before selecting the next canonical workflow.
+
+### Changed
+
+- Planning is the single public entry for both new and existing work. It preserves the selected
+  task's authority, phase state, Role Lock, named AT principal/unit mandate and direct return route.
+- Init, update and adapter inventories expose the exact ten-command surface and propagate retirement
+  of an owned Resume installation without inventing a substitute command.
+
+### Removed
+
+- The public `/tfw-resume` command, canonical Resume workflow, installed Codex skill and generated
+  Claude/agent copies.
+- Two transient maintainer tests whose assertions were coupled to the temporary pre-landing position
+  of `master` rather than a stable framework contract.
+
+### Compatibility and updating
+
+**Read [Updating to TFW 3.4.1](migrations/3.4.1.md), including from 3.4.0 and at equal-version retry.**
+Refresh compatible planning/update readers before removing owned Resume files and registrations.
+Existing task state, phase state, journals, approvals and historical references remain readable;
+customized or ambiguous affected files refuse replacement instead of being silently deleted.
+
 ## [3.4.0] — 2026-09-14
 
 TKL — Team Knowledge Lifecycle. Material knowledge follows the work that produced it and is
