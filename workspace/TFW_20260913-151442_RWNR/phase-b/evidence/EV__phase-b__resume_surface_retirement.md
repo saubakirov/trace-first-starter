@@ -249,3 +249,48 @@ Candidate, where every required suite passed.
 ---
 
 *EV landing composite — TFW_20260913-151442_RWNR / Phase B | 2026-09-14*
+
+## Landing Provenance Return — Rung-1 Evidence Correction
+
+> **Coordinator producer**: `a3f54f4053d5b06502856914712c25c99d0e3fb4`
+> **Proposal origin**: Reviewer `{robert, 01a09b82-d0ed-78b1-9b72-42291fd8359e}`
+> **Closed bound**: live REVIEW §10.6, accepted rung 1
+> **Governing TS blob**: `8c06e15e3ad8211195f2d48314d055ad1f111979`
+> **Closing contract producer**: `f979eac49bc3acd0d0220591047ec8abccf49072`
+> **Immutable landing Candidate**: `3c354ba29d525ccb4e7683c5c477290682b90a5a`
+> **Disposition**: evidence correction complete; Candidate remains unaccepted and unlanded
+
+Earlier evidence remains openable and unchanged. In particular,
+`phase-b-landing-candidate-boundary.txt` remains the defective historical receipt whose mistyped
+nonexistent parent produced 33 fail-soft `accepted_parent=-` cells and false `A` actions on the 28
+surviving paths. Landing-composite E40 and the corresponding RF §14 provenance claim are not reused
+as sufficient evidence. The following rows correct that claim without relabeling the earlier epoch.
+
+| # | AC | What was verified | Environment | Result | Artifact |
+|---|---|---|---|---|---|
+| E46 | AC-7 / frozen DoD 17 | A new four-epoch table resolves every literal product path against fresh master `3fd16fd1549a3f92006e8f37102df4a511b8aa55`, actual accepted parent `41a70febc6d33d369af125d7ad2ecf98a2de0761`, accepted Candidate `51ea3015290393da001810629f305f5969f4c8b8`, and immutable landing Candidate `3c354ba29d525ccb4e7683c5c477290682b90a5a`. All 33 accepted-parent Git blob OIDs are present; accepted and landing actions are each exactly `28 M + 5 D`; selector missing/extra is zero. | Checked Git object plumbing in the existing clean landing worktree | VERIFIED | `phase-b-landing-provenance-correction.json` — SHA-256 `50029a652b5985f88984a18cd5ca37d28f5c908aa54e1582d76aee6a68be2977`, Git blob `da565f31bb41922011a407dd2fb327411e5b568d` |
+| E47 | AC-7 / closing provenance bound | An independent receipt-to-Git validator matched 33/33 rows, reproduced `19 CLEAN_PREIMAGE + 14 COMPOSITE`, including three composite deletions, and rejected invalid-parent mutant `41a70b94019b86b99d87bb48f3da653a51112050` with Git exit 128. Required commit and present-path lookup is fail-closed; only the five expected Candidate deletions may be absent. | Python 3.13 and Git object database; narrow evidence validator only | VERIFIED | `phase-b-landing-provenance-validation.txt` — SHA-256 `314f645c2448580ed4d67df9f57b5f0fae542854a9e61c0d9f22a780329ef738`, Git blob `5ef5d61dc8a3edc49d53a0f61038cfa1fb4224b9` |
+| E48 | AC-8 | Historical defective receipt blob `e9be20aeba899c3bba569086dfe502b0ddec2506` is unchanged; no product or ASSURANCE path changed, landing Candidate identity did not move, and phase status remains `KNW`. The focused validator observed zero tested-dependency changes. | Git status, object identity, and exact Phase-B TRACE scope | VERIFIED | Both new receipts; immutable Candidate and historical receipt objects |
+| E49 | AC-9 | No master landing, TKL/OTR mutation, knowledge/digest work, DONE, G2, release, tag, push, publish, deploy, notification, or external effect occurred. | Local append-only TRACE execution | N/A | Exact final status/index and commit selector audit in the Executor return |
+| E-accounting-provenance | AC-6 / rung-1 scope | The accepted `30 VALUE / 650 LOC` denominator and all product accounting remain unchanged. This return adds zero VALUE and zero ASSURANCE paths; its only mutations are the two new evidence files, this cumulative EV supplement, the cumulative RF supplement, and one handoff event. Existing green regression receipts are reused because tested dependency changes are exactly zero. | Coordinator producer `a3f54f4053d5b06502856914712c25c99d0e3fb4`; NUL-safe final TRACE selector audit | VERIFIED | `phase-b-landing-provenance-validation.txt`; final exact-path commit audit |
+
+### Rung-1 provenance verdict
+
+Evidence verdict: **4/5 VERIFIED, 0 DEFERRED, 0 BLOCKED, 1 N/A. Overall: READY FOR AFFECTED
+INDEPENDENT REVIEW; landing Candidate remains unaccepted and unlanded, and Phase B remains KNW.**
+
+The prior green regression receipts remain applicable: targeted 420 passed, collection 719, configured
+full 718 passed plus one skipped, focused command-entry 31 passed, and state 32 passed. They were not
+rerun because neither product, ASSURANCE, Candidate, command, oracle, runtime dependency, nor
+environment assumption changed. The only executed check was the new receipt-bound focused validator.
+
+### Rung-1 provenance attachments
+
+| File | Resolving content |
+|---|---|
+| `phase-b-landing-provenance-correction.json` | Correct 33-row four-epoch Git blob table, actions, classifications, selector checks, and fail-closed lookup policy |
+| `phase-b-landing-provenance-validation.txt` | Exact independent validator source and output; 33/33 match and invalid-parent rejection |
+
+---
+
+*EV landing provenance rung-1 return — TFW_20260913-151442_RWNR / Phase B | 2026-09-14*

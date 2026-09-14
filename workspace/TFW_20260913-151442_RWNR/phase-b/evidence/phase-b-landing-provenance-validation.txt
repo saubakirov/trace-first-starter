@@ -1,0 +1,163 @@
+TFW RWNR Phase B landing provenance correction — focused validation
+coordinator_producer: a3f54f4053d5b06502856914712c25c99d0e3fb4
+source_receipt: evidence/phase-b-landing-provenance-correction.json
+command: python - (exact independent validator source preserved below)
+exit_code: 0
+regression_suites: not rerun; no tested dependency changed
+
+VALIDATOR_SOURCE_BEGIN
+import hashlib, json, os, subprocess
+ROOT="workspace/TFW_20260913-151442_RWNR/phase-b"
+TABLE=f"{ROOT}/evidence/phase-b-landing-provenance-correction.json"
+HISTORICAL=f"{ROOT}/evidence/phase-b-landing-candidate-boundary.txt"
+HEAD="a3f54f4053d5b06502856914712c25c99d0e3fb4"
+FRESH="3fd16fd1549a3f92006e8f37102df4a511b8aa55"
+PARENT="41a70febc6d33d369af125d7ad2ecf98a2de0761"
+ACCEPTED="51ea3015290393da001810629f305f5969f4c8b8"
+LANDING="3c354ba29d525ccb4e7683c5c477290682b90a5a"
+INVALID_PARENT="41a70b94019b86b99d87bb48f3da653a51112050"
+SELECTOR=[
+".agent/rules/agents.md",".agents/rules/tfw.md",
+".agents/skills/tfw-resume/SKILL.md",".agents/workflows/tfw-init.md",
+".agents/workflows/tfw-resume.md",".agents/workflows/tfw-update.md",
+".claude/commands/tfw-init.md",".claude/commands/tfw-resume.md",
+".claude/commands/tfw-update.md",".tfw/adapters/README.md",
+".tfw/adapters/antigravity/README.md",".tfw/adapters/antigravity/tfw-rules.md.template",
+".tfw/adapters/claude-code/CLAUDE.md.template",".tfw/adapters/claude-code/README.md",
+".tfw/adapters/codex/AGENTS.md.template",".tfw/adapters/codex/README.md",
+".tfw/adapters/codex/skills/tfw-resume/SKILL.md",".tfw/adapters/cursor/tfw.mdc.template",
+".tfw/adapters/manifest.yaml",".tfw/conventions.md",".tfw/project_config.yaml",
+".tfw/templates/project_config.yaml",".tfw/workflows/init.md",".tfw/workflows/resume.md",
+".tfw/workflows/update.md","AGENTS.md","CLAUDE.md","README.kk.md","README.md",
+"README.ru.md","docs/scripts/command_entry_eval.py",
+"docs/scripts/test_repository_contracts.py","docs/scripts/test_runtime_context.py"]
+DELETED={".agents/skills/tfw-resume/SKILL.md",".agents/workflows/tfw-resume.md",
+".claude/commands/tfw-resume.md",".tfw/adapters/codex/skills/tfw-resume/SKILL.md",
+".tfw/workflows/resume.md"}
+def run(*args):
+ return subprocess.run(args,stdout=subprocess.PIPE,stderr=subprocess.PIPE,text=True)
+def require_commit(ref):
+ p=run("git","rev-parse","--verify",f"{ref}^{{commit}}")
+ if p.returncode or p.stdout.strip()!=ref:
+  raise RuntimeError(f"required commit does not resolve exactly: {ref}; rc={p.returncode}; stderr={p.stderr.strip()}")
+ return ref
+def blob(ref,path,absent=False):
+ p=run("git","rev-parse","--verify",f"{ref}:{path}")
+ if p.returncode:
+  if absent:return None
+  raise RuntimeError(f"required blob missing: {ref}:{path}; {p.stderr.strip()}")
+ oid=p.stdout.strip()
+ if run("git","cat-file","-t",oid).stdout.strip()!="blob":
+  raise RuntimeError(f"required path is not blob: {ref}:{path}")
+ if absent:raise RuntimeError(f"expected absent path is present: {ref}:{path}")
+ return oid
+def diff_paths(a,b):
+ p=subprocess.check_output(["git","diff","--name-only","-z",a,b])
+ return sorted(x.decode() for x in p.split(b"\0") if x)
+if subprocess.check_output(["git","rev-parse","HEAD"],text=True).strip()!=HEAD:
+ raise RuntimeError("validation checkout HEAD changed")
+with open(TABLE,encoding="utf-8") as f: record=json.load(f)
+for ref in (FRESH,PARENT,ACCEPTED,LANDING,HEAD):require_commit(ref)
+if record["literal_product_selector"]!=SELECTOR:raise RuntimeError("literal selector/order mismatch")
+if record["objects"]["accepted_parent"]["commit"]!=PARENT:raise RuntimeError("correct accepted parent not bound")
+if diff_paths(PARENT,ACCEPTED)!=sorted(SELECTOR):raise RuntimeError("accepted selector mismatch")
+if diff_paths(FRESH,LANDING)!=sorted(SELECTOR):raise RuntimeError("landing selector mismatch")
+matched=0
+classes={"CLEAN_PREIMAGE":0,"COMPOSITE":0}; actions={"M":0,"D":0}; composite_deletions=0
+for path,row in zip(SELECTOR,record["rows"],strict=True):
+ deleted=path in DELETED
+ mb=blob(FRESH,path); pb=blob(PARENT,path)
+ ab=blob(ACCEPTED,path,deleted); lb=blob(LANDING,path,deleted)
+ aa="D" if deleted else "M"
+ cls="CLEAN_PREIMAGE" if mb==pb else "COMPOSITE"
+ expected={"path":path,"classification":cls,"fresh_master_blob":mb,
+  "accepted_parent_blob":pb,"accepted_candidate_blob":ab,"landing_candidate_blob":lb,
+  "accepted_action":aa,"landing_action":aa,"clean_preimage":mb==pb,
+  "clean_afterimage":lb==ab,
+  "relation":("EXACT_ACCEPTED_AFTERIMAGE" if cls=="CLEAN_PREIMAGE" else
+              "DELETE_ON_DIVERGED_PREIMAGE" if deleted else
+              "SEMANTIC_COMPOSITE_DISTINCT_FROM_MASTER_AND_ACCEPTED")}
+ if row!=expected:raise RuntimeError(f"row mismatch: {path}")
+ matched+=1;classes[cls]+=1;actions[aa]+=1
+ composite_deletions+=int(cls=="COMPOSITE" and deleted)
+if (matched,actions,classes,composite_deletions)!=(33,{"M":28,"D":5},{"CLEAN_PREIMAGE":19,"COMPOSITE":14},3):
+ raise RuntimeError("aggregate mismatch")
+try:
+ require_commit(INVALID_PARENT)
+except RuntimeError as invalid_error:
+ invalid_parent_rejected=True
+ invalid_parent_error=str(invalid_error)
+else:
+ raise RuntimeError("invalid-parent mutant was accepted")
+bad=run("git","rev-parse","--verify",f"{INVALID_PARENT}^{{commit}}")
+historical_head_blob=subprocess.check_output(["git","rev-parse",f"HEAD:{HISTORICAL}"],text=True).strip()
+historical_worktree_blob=subprocess.check_output(["git","hash-object","--",HISTORICAL],text=True).strip()
+raw=open(TABLE,"rb").read()
+status=subprocess.check_output(["git","status","--porcelain=v1","-z","--untracked-files=all"])
+status_paths=[x[3:].decode() for x in status.split(b"\0") if x]
+tested_dependency_paths=[p for p in status_paths if not p.startswith(ROOT+"/")]
+result={
+ "validator":"independent focused receipt-to-Git validator v1",
+ "source_receipt":TABLE,
+ "source_receipt_bytes":len(raw),
+ "source_receipt_sha256":hashlib.sha256(raw).hexdigest(),
+ "source_receipt_git_blob_oid":subprocess.check_output(["git","hash-object","--",TABLE],text=True).strip(),
+ "independent_git_row_match_count":matched,
+ "accepted_parent_blob_count":sum(bool(r["accepted_parent_blob"]) for r in record["rows"]),
+ "accepted_action_counts":actions,
+ "classification_counts":classes,
+ "composite_deletion_count":composite_deletions,
+ "accepted_selector_missing":[],
+ "accepted_selector_extra":[],
+ "landing_selector_missing":[],
+ "landing_selector_extra":[],
+ "invalid_parent_mutant":INVALID_PARENT,
+ "invalid_parent_rejected":invalid_parent_rejected,
+ "invalid_parent_git_returncode":bad.returncode,
+ "invalid_parent_error":invalid_parent_error,
+ "historical_receipt_preserved":historical_head_blob==historical_worktree_blob,
+ "historical_receipt_blob":historical_head_blob,
+ "tested_dependency_change_count":len(tested_dependency_paths),
+ "tested_dependency_changes":tested_dependency_paths,
+ "regression_receipt_disposition":"REUSED_UNCHANGED__NO_TEST_RERUN",
+ "terminal_result":"PASS__33_OF_33__INVALID_PARENT_REJECTED",
+}
+if not result["historical_receipt_preserved"] or tested_dependency_paths:
+ raise RuntimeError("scope or historical-receipt mutation detected")
+print(json.dumps(result,ensure_ascii=False,indent=2))
+VALIDATOR_SOURCE_END
+
+OUTPUT_BEGIN
+{
+  "validator": "independent focused receipt-to-Git validator v1",
+  "source_receipt": "workspace/TFW_20260913-151442_RWNR/phase-b/evidence/phase-b-landing-provenance-correction.json",
+  "source_receipt_bytes": 22752,
+  "source_receipt_sha256": "50029a652b5985f88984a18cd5ca37d28f5c908aa54e1582d76aee6a68be2977",
+  "source_receipt_git_blob_oid": "da565f31bb41922011a407dd2fb327411e5b568d",
+  "independent_git_row_match_count": 33,
+  "accepted_parent_blob_count": 33,
+  "accepted_action_counts": {
+    "M": 28,
+    "D": 5
+  },
+  "classification_counts": {
+    "CLEAN_PREIMAGE": 19,
+    "COMPOSITE": 14
+  },
+  "composite_deletion_count": 3,
+  "accepted_selector_missing": [],
+  "accepted_selector_extra": [],
+  "landing_selector_missing": [],
+  "landing_selector_extra": [],
+  "invalid_parent_mutant": "41a70b94019b86b99d87bb48f3da653a51112050",
+  "invalid_parent_rejected": true,
+  "invalid_parent_git_returncode": 128,
+  "invalid_parent_error": "required commit does not resolve exactly: 41a70b94019b86b99d87bb48f3da653a51112050; rc=128; stderr=fatal: Needed a single revision",
+  "historical_receipt_preserved": true,
+  "historical_receipt_blob": "e9be20aeba899c3bba569086dfe502b0ddec2506",
+  "tested_dependency_change_count": 0,
+  "tested_dependency_changes": [],
+  "regression_receipt_disposition": "REUSED_UNCHANGED__NO_TEST_RERUN",
+  "terminal_result": "PASS__33_OF_33__INVALID_PARENT_REJECTED"
+}
+OUTPUT_END

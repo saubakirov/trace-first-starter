@@ -680,3 +680,154 @@ landing, DONE transition, docs/knowledge/consolidation work, release, G2, or ext
 ---
 
 *RF landing composite — TFW_20260913-151442_RWNR / Phase B | 2026-09-14*
+
+## 15. Landing Provenance Return — Closed Rung-1 Evidence Correction
+
+> **Date**: 2026-09-14
+> **Author**: robert, Executor unit `01a09b39-f0c0-70c0-9b53-6981647e72fb`
+> **Status**: RF complete; ready for affected review by the same independent Reviewer
+> **Coordinator producer**: `a3f54f4053d5b06502856914712c25c99d0e3fb4`
+> **Proposal origin**: Reviewer `{robert, 01a09b82-d0ed-78b1-9b72-42291fd8359e}`
+> **Governing TS blob**: `8c06e15e3ad8211195f2d48314d055ad1f111979`
+> **Closing contract producer**: `f979eac49bc3acd0d0220591047ec8abccf49072`
+> **Immutable landing Candidate**: `3c354ba29d525ccb4e7683c5c477290682b90a5a`
+
+### 15.1 What Was Done
+
+This return implements only the Coordinator-accepted evidence-only bound in live REVIEW §10.6.
+The existing landing branch was fast-forwarded without a merge commit from TRACE producer
+`69decdbbc305e6fb3a0d91ccdf8e6af7ea6bc1fd` to Coordinator producer
+`a3f54f4053d5b06502856914712c25c99d0e3fb4`. No product or ASSURANCE path changed.
+
+A new provenance receipt resolves all 33 literal product paths through four immutable Git epochs:
+
+1. fresh master `3fd16fd1549a3f92006e8f37102df4a511b8aa55`;
+2. actual accepted parent `41a70febc6d33d369af125d7ad2ecf98a2de0761`;
+3. accepted Candidate `51ea3015290393da001810629f305f5969f4c8b8`;
+4. immutable landing Candidate `3c354ba29d525ccb4e7683c5c477290682b90a5a`.
+
+Every required commit and present path is resolved with checked Git plumbing; a missing or mistyped
+required object aborts the operation. Only the five literal expected Candidate deletions may be absent.
+The table contains all 33 accepted-parent Git blob OIDs, exact accepted/landing actions
+`28 MODIFY + 5 DELETE`, selector missing/extra zero, and the independently reproduced
+`19 CLEAN_PREIMAGE + 14 COMPOSITE` split, including three composite deletions.
+
+The defective historical receipt
+`evidence/phase-b-landing-candidate-boundary.txt` remains byte-identical to its Coordinator-producer
+blob `e9be20aeba899c3bba569086dfe502b0ddec2506`. It is not overwritten or silently repaired. RF §14
+and EV E40 remain openable as the affected historical claims; this §15 and the new EV rows replace
+only their evidentiary basis for accepted-parent provenance.
+
+#### Actual Value-Bearing Accounting
+
+| Fact | Actual result |
+|---|---|
+| Authority | Coordinator producer `a3f54f4053d5b06502856914712c25c99d0e3fb4`; live REVIEW §10.6; unchanged TS blob `8c06e15e3ad8211195f2d48314d055ad1f111979`; closing producer `f979eac49bc3acd0d0220591047ec8abccf49072` |
+| Baseline / Candidate | Fresh master `3fd16fd1549a3f92006e8f37102df4a511b8aa55`; immutable landing Candidate `3c354ba29d525ccb4e7683c5c477290682b90a5a`; actual accepted parent `41a70febc6d33d369af125d7ad2ecf98a2de0761`; accepted Candidate `51ea3015290393da001810629f305f5969f4c8b8` |
+| VALUE membership | No VALUE path changed in this return. The accepted 30-path VALUE selector, classes, reasons, and product bytes remain unchanged. |
+| ASSURANCE membership | No ASSURANCE path changed in this return. |
+| TRACE membership | Two new evidence files, cumulative EV and RF supplements, and one new handoff event only |
+| Arithmetic | VALUE `0 + 0 = 0` touched LOC across 0 logical VALUE files; binary/non-text N/A |
+| Membership deviations | None. Historical defective receipt, status, product, ASSURANCE, HL, TS, REVIEW, master, TKL, OTR, and knowledge/digest state are unchanged by this Executor. |
+| Trigger disposition | Evidence-only rung 1; no decomposition trigger, denominator growth, or owner escalation applies |
+| Authority and timing | Closed bound existed at Coordinator producer before writes; immutable `30 VALUE / 650 LOC` denominator is not ratcheted |
+| Reproduction | New receipt records literal selector and four Git blobs per row; focused validator independently recomputes all rows and invalid-parent rejection |
+
+#### New Files
+
+| File | Description |
+|---|---|
+| `evidence/phase-b-landing-provenance-correction.json` | Correct fail-closed 33-row four-epoch Git blob table; SHA-256 `50029a652b5985f88984a18cd5ca37d28f5c908aa54e1582d76aee6a68be2977`, Git blob `da565f31bb41922011a407dd2fb327411e5b568d` |
+| `evidence/phase-b-landing-provenance-validation.txt` | Exact independent validator source and raw output; SHA-256 `314f645c2448580ed4d67df9f57b5f0fae542854a9e61c0d9f22a780329ef738`, Git blob `5ef5d61dc8a3edc49d53a0f61038cfa1fb4224b9` |
+
+#### Modified Files
+
+| File | Changes |
+|---|---|
+| `evidence/EV__phase-b__resume_surface_retirement.md` | Appended E46–E-accounting-provenance; preserved all earlier epochs and disclosed the exact historical defect |
+| `RF__phase-b__resume_surface_retirement.md` | Appended this §15 cumulative return only |
+
+### 15.2 Key Decisions
+
+1. Used the actual accepted parent commit as a required exact full SHA and made every required object
+   or present-path lookup fail closed instead of converting failure to an absence marker.
+2. Kept expected deletion handling explicit and path-bounded, so a missing surviving path is an error
+   while the five accepted deletions remain representable.
+3. Bound a second implementation-independent validator to the durable table hash and Git blob, then
+   proved the known invalid-parent mutant is rejected with Git exit 128.
+4. Preserved the defective receipt as immutable history and identified exactly which RF/EV claim it
+   cannot support; no inference or alternate SHA-256 map is substituted for the corrected Git table.
+5. Reused existing green regression receipts because the validator observed zero tested-dependency
+   changes. No test restart was performed.
+
+### 15.3 Acceptance Criteria
+
+- [x] AC-7 / DoD 17 — new receipt contains correct accepted-parent Git blobs and four-epoch identities for 33/33 literal paths.
+- [x] AC-7 / closing provenance — accepted actions are `28 M + 5 D`; missing/extra is zero.
+- [x] AC-7 / landing composition — classification is `19 CLEAN_PREIMAGE + 14 COMPOSITE`, including three composite deletions.
+- [x] AC-7 / evidence integrity — independent validation matches Git for 33/33 rows and rejects the invalid parent.
+- [x] AC-8 — Candidate and all product/ASSURANCE bytes remain immutable and unlanded; historical defective receipt is preserved.
+- [x] AC-9 — N/A for external effects; no prohibited effect occurred.
+
+### 15.4 Verification
+
+- Focused receipt-to-Git validator: **PASS — 33/33 rows matched; 33 accepted-parent blobs present;
+  actions 28 M + 5 D; classifications 19/14; three composite deletions; selector missing/extra 0**.
+- Invalid-parent mutant `41a70b94019b86b99d87bb48f3da653a51112050`:
+  **REJECTED**, `git rev-parse --verify <ref>^{commit}` exit **128**.
+- Historical receipt preservation: HEAD/worktree Git blob
+  `e9be20aeba899c3bba569086dfe502b0ddec2506` / same — **PASS**.
+- Tested-dependency changes: **0**. Existing recorded regressions are reused without rerun:
+  targeted 420; collection 719; full 718 + one skip; focused command-entry 31; state 32.
+- Current mutation scope before RF: only the two new Phase-B evidence files and cumulative EV/RF
+  append; product/ASSURANCE/status/HL/TS/REVIEW changes **0**.
+- `git diff --check`: **clean** before RF append.
+
+### 15.5 Evidence
+
+See [Phase B EV](evidence/EV__phase-b__resume_surface_retirement.md), especially E46–E49 and
+E-accounting-provenance.
+
+Evidence verdict: **4/5 VERIFIED, 0 DEFERRED, 0 BLOCKED, 1 N/A. Overall: READY FOR AFFECTED
+INDEPENDENT REVIEW; Candidate remains unaccepted and unlanded.**
+
+### 15.6 Observations
+
+No observations.
+
+### 15.7 Fact Candidates
+
+No fact candidates.
+
+### 15.8 Strategic Insights
+
+No strategic insights.
+
+### 15.9 Diagrams
+
+`defective historical receipt (preserved) → correct fail-closed 33-row table → independent 33/33 validation + invalid-parent rejection → RF → same Reviewer`
+
+### 15.10 Material Handover at This Return
+
+Use live REVIEW §10.6, Coordinator producer
+`a3f54f4053d5b06502856914712c25c99d0e3fb4`, the new correction JSON, this RF §15, and the new EV
+rows as the bounded source. The producing unit is Executor
+`01a09b39-f0c0-70c0-9b53-6981647e72fb`; the proposal originated from independent Reviewer
+`{robert, 01a09b82-d0ed-78b1-9b72-42291fd8359e}`. Material technical knowledge is the corrected
+33-row accepted-parent Git blob chain and fail-closed validator result. There is no new human-sourced
+fact or strategic insight. The only remaining uncertainty is the same Reviewer's independent
+judgment of this return; Candidate landing remains a separate later LEAD-controlled effect.
+
+### 15.11 Direct Return
+
+Return the exact TRACE producer directly to LEAD/root
+`01a09a32-367e-7ea1-a405-9501d17ba270` through Coordinator
+`01a09a92-18fb-7da1-a639-6a86844bf147`. The same independent Reviewer unit
+`01a09b82-d0ed-78b1-9b72-42291fd8359e` must run affected `/tfw-review` against immutable landing
+Candidate `3c354ba29d525ccb4e7683c5c477290682b90a5a` and this correction. Phase remains `KNW`.
+This Executor performs no REVIEW, status transition, master landing, DONE, TKL/OTR work,
+knowledge/digest work, release, G2, or external effect.
+
+---
+
+*RF landing provenance rung-1 return — TFW_20260913-151442_RWNR / Phase B | 2026-09-14*
