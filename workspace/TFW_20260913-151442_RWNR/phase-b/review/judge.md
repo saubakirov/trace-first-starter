@@ -212,3 +212,61 @@ capture, G2, release, master, push, publish, deploy, notification, or other exte
 - [x] No Reviewer repair, disposition ruling, lifecycle move, or landing occurred.
 
 Landing Composite Affected Judge stage complete: **YES**
+
+## Landing Provenance Correction Return — Affected Judge
+
+> **Verify input:** [Landing Provenance Correction Return — Affected Verify](verify.md#landing-provenance-correction-return--affected-verify)
+> **Contract baseline reread:** master HL re-freeze `74e63242a1a713c8a2c4490edda24f84bfc68153`
+
+### Universal checklist
+
+| # | Check | Status | Affected evidence |
+|---|---|---|---|
+| 1 | DoD met? | ✅ | Verify V-P1–V-P5 establishes the corrected 33-row evidence, strict lookup, truthful supersession, unchanged Candidate, and exact five-path return. TS AC-7 and frozen DoD 17 now hold for landing provenance; AC-8 remains applicable and AC-9 remains correctly N/A for forbidden effects. |
+| 2 | Purpose and design | ✅ | **(a) Purpose:** frozen HL §1 says Resume disappears because every protected continuation behavior has an explicit tested survivor; the concrete harms are duplicate continuation choices or destructive loss of inspectable continuity. Correct provenance restores inspectability without changing the already aligned product. **(b) Design:** append-only correction, fail-closed object/path lookup, independent negative validation, and immutable historical preservation are sound and proportionate. |
+| 3 | Debt disposed | ✅ | REVIEW §5 contains no debt. The sole §10.4 evidence defect was accepted in §10.6 and is now paid inside that exact bound; nothing is deferred or relabelled as debt. |
+| 4 | Style & standards | ✅ | Naming, Role Locks, append-only history, exact object identities, fail-closed validation, and exact-path five-file isolation hold. Transcript-only raw commit-command location is disclosed and sufficient under the closed TRACE-only bound. |
+| 5 | Observations collected | ✅ | RF §15 truthfully records no surviving defect; it explicitly discloses the prior defect, correction, reuse reason, and remaining independent-review uncertainty. |
+| 6 | RF §7–§9 complete | ✅ | RF §15.7–§15.9 are present and truthful: no Fact Candidate or Strategic Insight, and the diagram accurately shows preserved defect → correction → validation → review. |
+| 7 | Evidence completeness — exists? | ✅ | Both new receipts, cumulative RF/EV append, and handoff event resolve with the claimed immutable identities; prior regression receipts also remain available. |
+| 8 | Evidence sufficiency — proves? | ✅ | Independent 33-row Git replay, two strict negative lookups, matching receipt hashes/blobs, preserved historical blob, exact five-path commit, and unchanged dependency set collectively establish the corrected claim. |
+| 9 | Backward compatibility | ✅ | No product, interface, template anchor, historical receipt, or existing consumer is rewritten; the new evidence explicitly supersedes only the false accepted-parent claim. |
+| 10 | Safety | ✅ | Candidate remains off master and unlanded; strict lookup rejects invalid objects, only five named deletions may be absent, and the return contains no destructive, release, G2, secret, or external effect. |
+
+Rows 7 and 8 are independently supported: row 7 establishes that every promised carrier exists;
+row 8 establishes that independent Git and negative checks make those carriers probative.
+
+### Independent Purpose Check
+
+**✅ Aligned; no purpose failure or contract defect.** The exact frozen clause served is: “The
+separate `/tfw-resume` command no longer exists because every behavior that protected continuation
+has an explicit, tested survivor route rather than a second overlapping entry point.” The material
+harm is an ambiguous continuation choice or a destructive retirement whose result cannot be inspected
+and continued safely. Current NS1, NS2.2, NS2.4, NS2.5, and NS2.7 support the correction: it restores
+truthful selected Trace and proportionate assurance while adding no product or adjacent work.
+
+### Knowledge and prior-judgment applicability
+
+No applicable `KNOWLEDGE.md` item contradicts the correction. All prior product, compatibility,
+accounting, C1, citation, and purpose judgments remain applicable because the return changes only the
+five reviewed TRACE paths and no cited source or tested dependency. The prior §10 evidence finding is
+superseded only by the independently verified correction; the preserved defective receipt retains its
+historical meaning.
+
+### Binding judgment
+
+**✅ APPROVE.** The single rung-1 evidence defect is closed. Landing Candidate
+`3c354ba29d525ccb4e7683c5c477290682b90a5a` is independently accepted against the corrected
+provenance basis and remains unlanded. Phase already remains `KNW`, so this affected approval records
+no lifecycle transition and authorizes no Reviewer landing, master, TKL/OTR, knowledge/digest, G2,
+release, push, publish, deploy, notification, DONE, or external effect.
+
+### Affected checkpoint
+
+- [x] Every checklist row has specific Verify evidence and no bare N/A.
+- [x] Purpose uses the master-HL contract baseline and current North Star, not the TS or Phase HL.
+- [x] Purpose, design, evidence existence, and evidence sufficiency are answered separately.
+- [x] REVIEW §5 and RF §15 observations/fact/insight/diagram sections were checked for quality.
+- [x] No knowledge contradiction, debt, repair, lifecycle transition, or prohibited effect remains.
+
+Landing provenance correction affected Judge stage complete: **YES**

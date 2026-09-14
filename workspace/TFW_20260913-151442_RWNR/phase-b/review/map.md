@@ -158,3 +158,54 @@ the immutable Candidate tree/parent, literal selector, actual commit form and te
 - [x] Reserved all raw receipt and prior-finding applicability questions for Verify?
 
 Final affected Map stage complete: YES
+
+## Landing Provenance Correction Return — Affected Map
+
+### Understanding
+
+Live REVIEW §10.6 accepted one rung-1 correction limited to the false accepted-parent provenance
+reported by the preceding affected review. The same Executor preserved immutable landing Candidate
+`3c354ba29d525ccb4e7683c5c477290682b90a5a` and appended exactly five phase-local TRACE paths: RF §15,
+EV E46–E-accounting-provenance, a corrected 33-row four-epoch Git blob table, its focused validation
+receipt, and one handoff event. Product, ASSURANCE, historical receipt, status, HL, TS, master, TKL,
+OTR, knowledge/digest, G2, release, and external-effect surfaces are outside this return.
+
+The new table binds fresh master `3fd16fd…`, real accepted parent `41a70feb…`, accepted Candidate
+`51ea301…`, and landing Candidate `3c354ba…`. RF §15 claims all 33 parent blobs, actions `28 M + 5 D`,
+`19 CLEAN_PREIMAGE + 14 COMPOSITE`, three composite deletions, zero selector discrepancy, strict
+required-object/path lookup, invalid-parent rejection, preserved defective history, and unchanged
+regression dependencies.
+
+### Affected TS ↔ RF alignment
+
+| Requirement | RF §15 claim | Map result |
+|---|---|---|
+| AC-7 / frozen DoD 17 / closing provenance bound | Correct fail-closed 33-row four-epoch receipt plus independent validation and immutable hashes | Claimed; row identities, negative lookup, and receipt hashes reserved for Verify. |
+| AC-8 | Candidate/product/ASSURANCE remain byte-fixed and unlanded; prior defective receipt is preserved | Claimed; exact Git scope and object preservation reserved for Verify. |
+| AC-9 | No landing, G2, release, publication, or external effect | Claimed; shared-master ancestry and exact return scope reserved for Verify. |
+
+### Affected changed-file map
+
+| Class | Exact return membership | Role |
+|---|---:|---|
+| TRACE — cumulative | RF and EV | Append truthful supersession and corrected evidentiary basis without rewriting prior epochs. |
+| TRACE — new evidence | correction JSON and validation TXT | Preserve the correct four-epoch Git table, its hashes, strict validator source/output, and negative mutant. |
+| TRACE — handoff | `20260914-163510__handoff__ed61.md` | Return the exact evidence-only result to the same independent Reviewer. |
+| Product / ASSURANCE | 0 paths | Immutable inputs whose existing regression receipts may be reused only after Verify confirms unchanged dependencies. |
+
+### Deviations to verify
+
+No scope deviation is declared. RF records the final exact-path commit audit at summary level; the
+actual five-literal-path `commit --only` command and raw staging inventory exist in the producing-unit
+transcript rather than a dedicated phase-local receipt. Verify must decide whether the transcript plus
+immutable five-path commit is sufficient for this TRACE-only return; the closed §10.6 bound did not
+order a separate Candidate-boundary-style receipt for the correction commit itself.
+
+### Affected checkpoint
+
+- [x] Read live REVIEW §10.6, RF §15, EV correction rows, both new receipts, and the handoff event.
+- [x] Matched the exact five-path return to AC-7/DoD 17, AC-8 preservation, and AC-9 prohibition.
+- [x] Kept immutable product acceptance separate from the corrected evidence claim.
+- [x] Reserved every claimed identity, count, hash, lookup, reuse condition, and exact-path fact for Verify.
+
+Landing provenance correction affected Map stage complete: **YES**

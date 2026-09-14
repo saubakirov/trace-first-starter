@@ -496,3 +496,138 @@ effects are not changed by this Reviewer.
 - [x] Reran no tests and performed no lifecycle, landing, repair, capture, or external effect.
 
 Landing Composite Affected Verify stage complete: **YES**
+
+## Landing Provenance Correction Return — Affected Verify
+
+> **Closed bound:** live REVIEW §10.6 at Coordinator producer `a3f54f4053d5b06502856914712c25c99d0e3fb4`
+> **Executor return:** `81cb3ff9ec5635610460e8e8527d63212a2083c6`, direct parent `a3f54f4053d5b06502856914712c25c99d0e3fb4`
+> **Review dispatch:** `c03e944bc81bb8077752e19877369134f0745b3a`
+> **Immutable landing Candidate:** `3c354ba29d525ccb4e7683c5c477290682b90a5a`, still unlanded
+> **Verification depth:** 5/5 returned paths plus all 33/33 provenance rows. No regression suite was rerun.
+
+### V-P1 — corrected four-epoch Git table
+
+- **RF claim:** the correction JSON resolves every literal product path at fresh master `3fd16fd…`,
+  real accepted parent `41a70feb…`, accepted Candidate `51ea301…`, and landing Candidate `3c354ba…`.
+- **Actual:** an independent PowerShell/Git parser ignored the stored validation result and resolved each
+  row directly through `git rev-parse` plus `git cat-file`. All 33/33 row dictionaries match Git, all
+  33 accepted-parent blobs are present, and both accepted and landing selectors are exact 33-path sets.
+  Accepted and landing actions are each `28 M + 5 D`; classification is
+  `19 CLEAN_PREIMAGE + 14 COMPOSITE`; composite deletions are exactly
+  `.agents/workflows/tfw-resume.md`, `.claude/commands/tfw-resume.md`, and `.tfw/workflows/resume.md`.
+  Every stored object tree also equals the independently resolved commit tree.
+- **Match:** ✅ all row, object, action, classification, deletion, and selector claims hold.
+
+### V-P2 — strict lookup, negative mutant, and immutable receipt identities
+
+- **RF claim:** required commits and present paths fail closed, only the five expected Candidate deletions
+  may be absent, and the known mistyped parent is rejected.
+- **Actual:** the preserved validator source raises on any non-resolving exact commit or required blob;
+  absence is permitted only for the literal five-deletion set. Independent negative commands return
+  128 for both invalid parent `41a70b94019b86b99d87bb48f3da653a51112050` and a missing required
+  present path. The JSON records zero required lookup failure and terminal
+  `PASS__CORRECT_FOUR_EPOCH_GIT_BLOB_PROVENANCE`.
+- **Identity:** correction JSON is 22,752 bytes, SHA-256
+  `50029a652b5985f88984a18cd5ca37d28f5c908aa54e1582d76aee6a68be2977`, Git blob
+  `da565f31bb41922011a407dd2fb327411e5b568d`. Validation TXT is SHA-256
+  `314f645c2448580ed4d67df9f57b5f0fae542854a9e61c0d9f22a780329ef738`, Git blob
+  `5ef5d61dc8a3edc49d53a0f61038cfa1fb4224b9`. Independent hashes match RF §15 and EV E46/E47.
+- **Match:** ✅ strict lookup behavior, mutant rejection, and both immutable evidence identities hold.
+
+### V-P3 — historical preservation and truthful supersession
+
+- **RF claim:** the defective original receipt remains immutable and is superseded only for its false
+  accepted-parent provenance claim.
+- **Actual:** `phase-b-landing-candidate-boundary.txt` resolves to Git blob
+  `e9be20aeba899c3bba569086dfe502b0ddec2506` at both Coordinator parent and Executor return. RF §15
+  is a 151-line append and EV correction is a 45-line append, each with zero deletion from the prior
+  carrier. Both explicitly name the old false `accepted_parent=-`/`A` rows, refuse to reuse E40 as
+  sufficient evidence, and cite the new artifacts instead of relabelling history.
+- **Match:** ✅ historical truth is preserved and the supersession is narrow, explicit, and accurate.
+
+### V-P4 — exact five-path TRACE isolation and execution method
+
+- **RF claim:** the return changes only cumulative RF/EV, two new receipts, and one handoff event.
+- **Actual:** Git diff from direct parent `a3f54f…` to return `81cb3ff…` is exactly those five paths:
+  `2 MODIFY + 3 ADD`, all under the Phase-B TRACE root; product/ASSURANCE/outside-phase count is zero.
+  Candidate is an ancestor of the return but not of `refs/heads/master`; master remains exact fresh
+  parent `3fd16fd…`. No 33-path product/ASSURANCE blob differs from immutable Candidate through the
+  current dispatch.
+- **Exact-path method:** the producing-unit transcript preserves exact pre-status of those five paths,
+  an empty initial index, staged `2 M + 3 A`, missing/extra/unstaged/untracked zero, and the actual
+  `git commit --only -- <five literal paths>` command. The commit object independently confirms the
+  direct parent, subject, and final five-path result. No separate phase-local raw command receipt was
+  required by §10.6; transcript provenance plus the immutable commit is sufficient for this TRACE-only
+  process claim, and this limitation is recorded rather than hidden.
+- **Match:** ✅ exact isolation, ancestry, non-landing state, and exact-path execution hold.
+
+### V-P5 — regression-receipt applicability and prohibited effects
+
+- **RF claim:** existing targeted/collection/full/focused/state receipts remain applicable because no
+  tested dependency changed; no full suite was rerun.
+- **Actual:** the only return changes are the five TRACE paths above. Product, all three ASSURANCE paths,
+  Candidate identity, commands, oracles, and repository runtime dependencies are unchanged. The same
+  local environment reports Python 3.13.5 and Git 2.42.0.windows.1. Existing receipts retain their
+  prior independently checked hashes and results: targeted `420`, collection `719`, full `718 + 1`,
+  focused command-entry `31`, state `32`, and prior semantic provenance `1`, all exit zero.
+- **Prohibited effects:** status remains `KNW`; Candidate is not on master; the exact return has no
+  TKL/OTR, knowledge/digest, G2, release, tag, push, publish, deploy, notification, or external-effect path.
+- **Match:** ✅ reuse inputs and environment assumptions remain applicable; no test restart or prohibited
+  effect is present.
+
+### Commands executed and evidence reused
+
+| # | Read-only check | Result |
+|---|---|---|
+| P-1 | Independent 33-row JSON-to-Git parser | `33/33`; parent blobs 33; actions `28 M + 5 D`; classes `19 + 14`; composite deletions 3; failures 0. |
+| P-2 | Required commit/tree/blob resolution plus invalid-parent and missing-path negatives | All required objects exact; both negatives return 128. |
+| P-3 | SHA-256 and Git blob identity for both new receipts | `50029a…` / `da565f…` and `314f64…` / `5ef5d6…`, exact. |
+| P-4 | Parent→return diff, Candidate→dispatch product selector diff, master ancestry | Exact five TRACE paths; product diff 0; Candidate unlanded; master `3fd16fd…`. |
+| P-5 | RF/EV prefix-only diff and historical receipt blob at both epochs | RF `+151/-0`; EV `+45/-0`; historical blob unchanged `e9be20…`. |
+| P-6 | Existing receipt hashes/results and local runtime versions | All prior hashes/results unchanged; Python 3.13.5; Git 2.42.0.windows.1; no tests rerun. |
+| P-7 | Direct producing-unit transcript | Exact pre-stage/cached audit and actual five-literal-path `commit --only` confirmed. |
+
+### Claim and source checks
+
+| # | Claim checked | Primary source | Holds? |
+|---|---|---|---|
+| P-C1 | All 33 accepted-parent blobs and four-epoch rows are correct | Git object database independently compared with every correction-JSON row | ✅ |
+| P-C2 | Lookup is fail closed and rejects the known invalid parent | Validator source plus independent invalid-commit and missing-path Git calls | ✅ |
+| P-C3 | The old defective receipt remains truthful history while RF/EV use the new basis | Git blobs and append-only RF §15 / EV E46–E-accounting-provenance diffs | ✅ |
+| P-C4 | Regression evidence is reusable without rerun | Exact five-TRACE-path return, zero Candidate/product/ASSURANCE diff, stable receipts and environment | ✅ |
+
+### Evidence verification
+
+| Evidence | Exists? | Establishes the claim? |
+|---|---|---|
+| `phase-b-landing-provenance-correction.json` | ✅ | ✅ Complete 33-row table matches independent Git for every field. |
+| `phase-b-landing-provenance-validation.txt` | ✅ | ✅ Source and output bind the table, strict lookups, hashes, preserved history, and invalid-parent rejection. |
+| RF §15 | ✅ | ✅ Truthful append that names the prior defect and uses the corrected basis. |
+| EV E46–E-accounting-provenance | ✅ | ✅ Statuses and artifact references match actual evidence; E49 is justified N/A for forbidden effects. |
+| handoff `ed61` | ✅ | ✅ Correct units, origin, identities, bound, result, remaining review uncertainty, and KNW/no-effect state. |
+
+### Knowledge and citation applicability
+
+No knowledge/PV source, master/phase HL, ONB citation table, or product source changed in this
+evidence-only return. The prior full 66/66 citation review therefore remains applicable on exact
+source identity: resolved 66, semantically verified 66, irrelevant 0, hallucinated 0. The new RF/EV
+append introduces no new PV citation or human-sourced fact. Current-knowledge inspection finds no
+incoming correction/conflict affecting this narrow Git-provenance result.
+
+### Discrepancies and limits
+
+No discrepancy. The raw five-path staging/commit transcript is not duplicated in a dedicated
+phase-local receipt; §10.6 did not require that extra artifact, and direct producing-unit transcript
+plus immutable Git outcome independently establish the exact TRACE commit process and result. This
+is an explicit evidence-location limit, not an unresolved claim.
+
+### Affected checkpoint
+
+- [x] Verified all 5/5 returned files and all 33/33 correction rows.
+- [x] Independently established objects, actions, classes, hashes, strict negative behavior, and preservation.
+- [x] Checked evidence existence and sufficiency separately against RF §15 and EV.
+- [x] Proved every regression input/oracle/environment dependency unchanged before reusing receipts.
+- [x] Reconfirmed citation applicability on unchanged source identities.
+- [x] Ran no regression test and performed no repair, landing, lifecycle, or external effect.
+
+Landing provenance correction affected Verify stage complete: **YES**
