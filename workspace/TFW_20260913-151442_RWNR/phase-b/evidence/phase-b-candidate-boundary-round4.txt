@@ -1,0 +1,283 @@
+RAW_RECEIPT_VERSION=1
+PHASE=TFW_20260913-151442_RWNR/phase-b
+C1_BASELINE_COMMIT=41a70febc6d33d369af125d7ad2ecf98a2de0761
+REFERENCE_IMPLEMENTATION_CANDIDATE=a81e0c12ec982ee4f73639ebf15394ef53877294
+=== PRE_CANDIDATE_FULL_STATUS_COMMAND ===
+git status --short --untracked-files=all
+=== PRE_CANDIDATE_FULL_STATUS_OUTPUT ===
+ M .agent/rules/agents.md
+ M .agents/rules/tfw.md
+ D .agents/skills/tfw-resume/SKILL.md
+ M .agents/workflows/tfw-init.md
+ D .agents/workflows/tfw-resume.md
+ M .agents/workflows/tfw-update.md
+ M .claude/commands/tfw-init.md
+ D .claude/commands/tfw-resume.md
+ M .claude/commands/tfw-update.md
+ M .tfw/adapters/README.md
+ M .tfw/adapters/antigravity/README.md
+ M .tfw/adapters/antigravity/tfw-rules.md.template
+ M .tfw/adapters/claude-code/CLAUDE.md.template
+ M .tfw/adapters/claude-code/README.md
+ M .tfw/adapters/codex/AGENTS.md.template
+ M .tfw/adapters/codex/README.md
+ D .tfw/adapters/codex/skills/tfw-resume/SKILL.md
+ M .tfw/adapters/cursor/tfw.mdc.template
+ M .tfw/adapters/manifest.yaml
+ M .tfw/conventions.md
+ M .tfw/project_config.yaml
+ M .tfw/templates/project_config.yaml
+ M .tfw/workflows/init.md
+ D .tfw/workflows/resume.md
+ M .tfw/workflows/update.md
+ M AGENTS.md
+ M CLAUDE.md
+ M README.kk.md
+ M README.md
+ M README.ru.md
+ M docs/scripts/command_entry_eval.py
+ M docs/scripts/test_repository_contracts.py
+ M docs/scripts/test_runtime_context.py
+=== END PRE_CANDIDATE_FULL_STATUS_OUTPUT ===
+=== PRE_CANDIDATE_EMPTY_INDEX_COMMAND ===
+git diff --cached --name-only
+=== PRE_CANDIDATE_EMPTY_INDEX_OUTPUT ===
+=== END PRE_CANDIDATE_EMPTY_INDEX_OUTPUT ===
+=== LITERAL_33_PATH_SELECTOR ===
+.tfw/workflows/resume.md
+.tfw/adapters/codex/skills/tfw-resume/SKILL.md
+.agents/skills/tfw-resume/SKILL.md
+.agents/workflows/tfw-resume.md
+.claude/commands/tfw-resume.md
+.agent/rules/agents.md
+.agents/rules/tfw.md
+.tfw/adapters/antigravity/tfw-rules.md.template
+.tfw/adapters/claude-code/CLAUDE.md.template
+.tfw/adapters/codex/AGENTS.md.template
+.tfw/adapters/codex/README.md
+.tfw/adapters/cursor/tfw.mdc.template
+.tfw/adapters/manifest.yaml
+.tfw/conventions.md
+.tfw/project_config.yaml
+.tfw/templates/project_config.yaml
+AGENTS.md
+CLAUDE.md
+README.kk.md
+README.md
+README.ru.md
+.tfw/workflows/init.md
+.agents/workflows/tfw-init.md
+.claude/commands/tfw-init.md
+.tfw/workflows/update.md
+.agents/workflows/tfw-update.md
+.claude/commands/tfw-update.md
+.tfw/adapters/README.md
+.tfw/adapters/claude-code/README.md
+.tfw/adapters/antigravity/README.md
+docs/scripts/command_entry_eval.py
+docs/scripts/test_repository_contracts.py
+docs/scripts/test_runtime_context.py
+=== END LITERAL_33_PATH_SELECTOR ===
+=== EXACT_STAGING_COMMAND ===
+git add -- '.tfw/workflows/resume.md' '.tfw/adapters/codex/skills/tfw-resume/SKILL.md' '.agents/skills/tfw-resume/SKILL.md' '.agents/workflows/tfw-resume.md' '.claude/commands/tfw-resume.md' '.agent/rules/agents.md' '.agents/rules/tfw.md' '.tfw/adapters/antigravity/tfw-rules.md.template' '.tfw/adapters/claude-code/CLAUDE.md.template' '.tfw/adapters/codex/AGENTS.md.template' '.tfw/adapters/codex/README.md' '.tfw/adapters/cursor/tfw.mdc.template' '.tfw/adapters/manifest.yaml' '.tfw/conventions.md' '.tfw/project_config.yaml' '.tfw/templates/project_config.yaml' 'AGENTS.md' 'CLAUDE.md' 'README.kk.md' 'README.md' 'README.ru.md' '.tfw/workflows/init.md' '.agents/workflows/tfw-init.md' '.claude/commands/tfw-init.md' '.tfw/workflows/update.md' '.agents/workflows/tfw-update.md' '.claude/commands/tfw-update.md' '.tfw/adapters/README.md' '.tfw/adapters/claude-code/README.md' '.tfw/adapters/antigravity/README.md' 'docs/scripts/command_entry_eval.py' 'docs/scripts/test_repository_contracts.py' 'docs/scripts/test_runtime_context.py'
+=== END EXACT_STAGING_COMMAND ===
+=== STAGED_NAMES_COMMAND ===
+git diff --cached --name-only
+=== STAGED_NAMES_OUTPUT ===
+.agent/rules/agents.md
+.agents/rules/tfw.md
+.agents/skills/tfw-resume/SKILL.md
+.agents/workflows/tfw-init.md
+.agents/workflows/tfw-resume.md
+.agents/workflows/tfw-update.md
+.claude/commands/tfw-init.md
+.claude/commands/tfw-resume.md
+.claude/commands/tfw-update.md
+.tfw/adapters/README.md
+.tfw/adapters/antigravity/README.md
+.tfw/adapters/antigravity/tfw-rules.md.template
+.tfw/adapters/claude-code/CLAUDE.md.template
+.tfw/adapters/claude-code/README.md
+.tfw/adapters/codex/AGENTS.md.template
+.tfw/adapters/codex/README.md
+.tfw/adapters/codex/skills/tfw-resume/SKILL.md
+.tfw/adapters/cursor/tfw.mdc.template
+.tfw/adapters/manifest.yaml
+.tfw/conventions.md
+.tfw/project_config.yaml
+.tfw/templates/project_config.yaml
+.tfw/workflows/init.md
+.tfw/workflows/resume.md
+.tfw/workflows/update.md
+AGENTS.md
+CLAUDE.md
+README.kk.md
+README.md
+README.ru.md
+docs/scripts/command_entry_eval.py
+docs/scripts/test_repository_contracts.py
+docs/scripts/test_runtime_context.py
+=== END STAGED_NAMES_OUTPUT ===
+=== STAGED_ACTIONS_COMMAND ===
+git diff --cached --name-status
+=== STAGED_ACTIONS_OUTPUT ===
+M	.agent/rules/agents.md
+M	.agents/rules/tfw.md
+D	.agents/skills/tfw-resume/SKILL.md
+M	.agents/workflows/tfw-init.md
+D	.agents/workflows/tfw-resume.md
+M	.agents/workflows/tfw-update.md
+M	.claude/commands/tfw-init.md
+D	.claude/commands/tfw-resume.md
+M	.claude/commands/tfw-update.md
+M	.tfw/adapters/README.md
+M	.tfw/adapters/antigravity/README.md
+M	.tfw/adapters/antigravity/tfw-rules.md.template
+M	.tfw/adapters/claude-code/CLAUDE.md.template
+M	.tfw/adapters/claude-code/README.md
+M	.tfw/adapters/codex/AGENTS.md.template
+M	.tfw/adapters/codex/README.md
+D	.tfw/adapters/codex/skills/tfw-resume/SKILL.md
+M	.tfw/adapters/cursor/tfw.mdc.template
+M	.tfw/adapters/manifest.yaml
+M	.tfw/conventions.md
+M	.tfw/project_config.yaml
+M	.tfw/templates/project_config.yaml
+M	.tfw/workflows/init.md
+D	.tfw/workflows/resume.md
+M	.tfw/workflows/update.md
+M	AGENTS.md
+M	CLAUDE.md
+M	README.kk.md
+M	README.md
+M	README.ru.md
+M	docs/scripts/command_entry_eval.py
+M	docs/scripts/test_repository_contracts.py
+M	docs/scripts/test_runtime_context.py
+=== END STAGED_ACTIONS_OUTPUT ===
+=== STAGED_AUDIT_OUTPUT ===
+SELECTOR_COUNT=33
+STAGED_COUNT=33
+MISSING_COUNT=0
+EXTRA_COUNT=0
+=== END STAGED_AUDIT_OUTPUT ===
+=== STAGED_DIFF_CHECK_COMMAND ===
+git diff --cached --check
+=== STAGED_DIFF_CHECK_OUTPUT ===
+=== END STAGED_DIFF_CHECK_OUTPUT ===
+=== PLANNED_EXACT_CANDIDATE_COMMAND ===
+git commit -m '[codex/TFW_20260913-151442_RWNR/phase-b/executor] create exact-path Phase B Candidate' --only -- '.tfw/workflows/resume.md' '.tfw/adapters/codex/skills/tfw-resume/SKILL.md' '.agents/skills/tfw-resume/SKILL.md' '.agents/workflows/tfw-resume.md' '.claude/commands/tfw-resume.md' '.agent/rules/agents.md' '.agents/rules/tfw.md' '.tfw/adapters/antigravity/tfw-rules.md.template' '.tfw/adapters/claude-code/CLAUDE.md.template' '.tfw/adapters/codex/AGENTS.md.template' '.tfw/adapters/codex/README.md' '.tfw/adapters/cursor/tfw.mdc.template' '.tfw/adapters/manifest.yaml' '.tfw/conventions.md' '.tfw/project_config.yaml' '.tfw/templates/project_config.yaml' 'AGENTS.md' 'CLAUDE.md' 'README.kk.md' 'README.md' 'README.ru.md' '.tfw/workflows/init.md' '.agents/workflows/tfw-init.md' '.claude/commands/tfw-init.md' '.tfw/workflows/update.md' '.agents/workflows/tfw-update.md' '.claude/commands/tfw-update.md' '.tfw/adapters/README.md' '.tfw/adapters/claude-code/README.md' '.tfw/adapters/antigravity/README.md' 'docs/scripts/command_entry_eval.py' 'docs/scripts/test_repository_contracts.py' 'docs/scripts/test_runtime_context.py'
+=== END PLANNED_EXACT_CANDIDATE_COMMAND ===
+=== ACTUAL_CANDIDATE_COMMAND ===
+git commit -m '[codex/TFW_20260913-151442_RWNR/phase-b/executor] create exact-path Phase B Candidate' --only -- '.tfw/workflows/resume.md' '.tfw/adapters/codex/skills/tfw-resume/SKILL.md' '.agents/skills/tfw-resume/SKILL.md' '.agents/workflows/tfw-resume.md' '.claude/commands/tfw-resume.md' '.agent/rules/agents.md' '.agents/rules/tfw.md' '.tfw/adapters/antigravity/tfw-rules.md.template' '.tfw/adapters/claude-code/CLAUDE.md.template' '.tfw/adapters/codex/AGENTS.md.template' '.tfw/adapters/codex/README.md' '.tfw/adapters/cursor/tfw.mdc.template' '.tfw/adapters/manifest.yaml' '.tfw/conventions.md' '.tfw/project_config.yaml' '.tfw/templates/project_config.yaml' 'AGENTS.md' 'CLAUDE.md' 'README.kk.md' 'README.md' 'README.ru.md' '.tfw/workflows/init.md' '.agents/workflows/tfw-init.md' '.claude/commands/tfw-init.md' '.tfw/workflows/update.md' '.agents/workflows/tfw-update.md' '.claude/commands/tfw-update.md' '.tfw/adapters/README.md' '.tfw/adapters/claude-code/README.md' '.tfw/adapters/antigravity/README.md' 'docs/scripts/command_entry_eval.py' 'docs/scripts/test_repository_contracts.py' 'docs/scripts/test_runtime_context.py'
+=== END ACTUAL_CANDIDATE_COMMAND ===
+=== ACTUAL_CANDIDATE_COMMAND_OUTPUT ===
+[detached HEAD 51ea301] [codex/TFW_20260913-151442_RWNR/phase-b/executor] create exact-path Phase B Candidate
+ 33 files changed, 998 insertions(+), 436 deletions(-)
+ delete mode 100644 .agents/skills/tfw-resume/SKILL.md
+ delete mode 100644 .agents/workflows/tfw-resume.md
+ delete mode 100644 .claude/commands/tfw-resume.md
+ delete mode 100644 .tfw/adapters/codex/skills/tfw-resume/SKILL.md
+ delete mode 100644 .tfw/workflows/resume.md
+=== END ACTUAL_CANDIDATE_COMMAND_OUTPUT ===
+=== CANDIDATE_SHA_COMMAND ===
+git rev-parse HEAD
+=== CANDIDATE_SHA_OUTPUT ===
+51ea3015290393da001810629f305f5969f4c8b8
+=== END CANDIDATE_SHA_OUTPUT ===
+=== CANDIDATE_PARENT_COMMAND ===
+git rev-parse HEAD^
+=== CANDIDATE_PARENT_OUTPUT ===
+41a70febc6d33d369af125d7ad2ecf98a2de0761
+=== END CANDIDATE_PARENT_OUTPUT ===
+=== POST_CANDIDATE_FULL_STATUS_COMMAND ===
+git status --short --untracked-files=all
+=== POST_CANDIDATE_FULL_STATUS_OUTPUT ===
+=== END POST_CANDIDATE_FULL_STATUS_OUTPUT ===
+=== POST_CANDIDATE_CACHED_NAMES_COMMAND ===
+git diff --cached --name-only
+=== POST_CANDIDATE_CACHED_NAMES_OUTPUT ===
+=== END POST_CANDIDATE_CACHED_NAMES_OUTPUT ===
+=== EXACT_CANDIDATE_NAMES_COMMAND ===
+git diff --name-only HEAD^ HEAD
+=== EXACT_CANDIDATE_NAMES_OUTPUT ===
+.agent/rules/agents.md
+.agents/rules/tfw.md
+.agents/skills/tfw-resume/SKILL.md
+.agents/workflows/tfw-init.md
+.agents/workflows/tfw-resume.md
+.agents/workflows/tfw-update.md
+.claude/commands/tfw-init.md
+.claude/commands/tfw-resume.md
+.claude/commands/tfw-update.md
+.tfw/adapters/README.md
+.tfw/adapters/antigravity/README.md
+.tfw/adapters/antigravity/tfw-rules.md.template
+.tfw/adapters/claude-code/CLAUDE.md.template
+.tfw/adapters/claude-code/README.md
+.tfw/adapters/codex/AGENTS.md.template
+.tfw/adapters/codex/README.md
+.tfw/adapters/codex/skills/tfw-resume/SKILL.md
+.tfw/adapters/cursor/tfw.mdc.template
+.tfw/adapters/manifest.yaml
+.tfw/conventions.md
+.tfw/project_config.yaml
+.tfw/templates/project_config.yaml
+.tfw/workflows/init.md
+.tfw/workflows/resume.md
+.tfw/workflows/update.md
+AGENTS.md
+CLAUDE.md
+README.kk.md
+README.md
+README.ru.md
+docs/scripts/command_entry_eval.py
+docs/scripts/test_repository_contracts.py
+docs/scripts/test_runtime_context.py
+=== END EXACT_CANDIDATE_NAMES_OUTPUT ===
+=== EXACT_CANDIDATE_ACTIONS_COMMAND ===
+git diff --name-status HEAD^ HEAD
+=== EXACT_CANDIDATE_ACTIONS_OUTPUT ===
+M	.agent/rules/agents.md
+M	.agents/rules/tfw.md
+D	.agents/skills/tfw-resume/SKILL.md
+M	.agents/workflows/tfw-init.md
+D	.agents/workflows/tfw-resume.md
+M	.agents/workflows/tfw-update.md
+M	.claude/commands/tfw-init.md
+D	.claude/commands/tfw-resume.md
+M	.claude/commands/tfw-update.md
+M	.tfw/adapters/README.md
+M	.tfw/adapters/antigravity/README.md
+M	.tfw/adapters/antigravity/tfw-rules.md.template
+M	.tfw/adapters/claude-code/CLAUDE.md.template
+M	.tfw/adapters/claude-code/README.md
+M	.tfw/adapters/codex/AGENTS.md.template
+M	.tfw/adapters/codex/README.md
+D	.tfw/adapters/codex/skills/tfw-resume/SKILL.md
+M	.tfw/adapters/cursor/tfw.mdc.template
+M	.tfw/adapters/manifest.yaml
+M	.tfw/conventions.md
+M	.tfw/project_config.yaml
+M	.tfw/templates/project_config.yaml
+M	.tfw/workflows/init.md
+D	.tfw/workflows/resume.md
+M	.tfw/workflows/update.md
+M	AGENTS.md
+M	CLAUDE.md
+M	README.kk.md
+M	README.md
+M	README.ru.md
+M	docs/scripts/command_entry_eval.py
+M	docs/scripts/test_repository_contracts.py
+M	docs/scripts/test_runtime_context.py
+=== END EXACT_CANDIDATE_ACTIONS_OUTPUT ===
+=== CANDIDATE_DIFF_CHECK_COMMAND ===
+git diff --check HEAD^ HEAD
+=== CANDIDATE_DIFF_CHECK_OUTPUT ===
+=== END CANDIDATE_DIFF_CHECK_OUTPUT ===
+=== REFERENCE_BYTE_IDENTITY_OUTPUT ===
+REFERENCE_CANDIDATE=a81e0c12ec982ee4f73639ebf15394ef53877294
+APPROVED_PATH_COUNT=33
+BYTE_MISMATCH_COUNT=0
+=== END REFERENCE_BYTE_IDENTITY_OUTPUT ===

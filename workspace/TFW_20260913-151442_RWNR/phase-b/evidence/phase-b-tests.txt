@@ -1,0 +1,333 @@
+RWNR Phase B test evidence
+Candidate: 6d3f3890ece2f357ab6353d4fd15a28fe4f3767c
+Candidate disposition: REJECTED / UNLANDED; C1 selected
+Superseded pre-Candidate-check commit: f17bdfb2c83e4eaf49459772122577b6a57fe9f9
+
+PASS — pre-freeze targeted gate
+python -m pytest docs/scripts/test_runtime_context.py docs/scripts/test_repository_contracts.py -q
+357 passed in 429.54s (0:07:09)
+
+PASS — state schema
+python -m pytest tools/tests/test_tfw_state.py -q
+32 passed in 0.25s
+
+PASS — immutable Candidate targeted gate
+python -m pytest docs/scripts/test_runtime_context.py docs/scripts/test_repository_contracts.py -q
+357 passed in 371.95s (0:06:11)
+
+PASS — configured collection
+python -m pytest tools/tests/ docs/scripts/ -q --collect-only
+627 tests collected in 0.20s
+
+BLOCKED — configured execution
+python -m pytest tools/tests/ docs/scripts/ -q
+19 failed, 607 passed, 1 skipped in 582.58s (0:09:42)
+
+All 19 failures have one root cause:
+docs/scripts/command_entry_eval.py:91-93 still requires the retired `resume` command and the
+exact 11-command contract. That file is not in the owner-approved 30 VALUE + 2 ASSURANCE
+selector, so the Executor did not mutate it or waive the gate.
+
+Focused reproduction:
+python -m pytest docs/scripts/test_command_entry_eval.py -q --tb=line
+19 failed, 12 passed in 0.37s
+
+Failed node IDs:
+- test_arm_builders_are_exact_bounded_and_keep_one_canonical_body
+- test_fixture_materialization_hashes_every_graded_input_and_cleans[current]
+- test_fixture_materialization_hashes_every_graded_input_and_cleans[strengthened]
+- test_fixture_materialization_hashes_every_graded_input_and_cleans[direct]
+- test_graders_accept_independently_constructed_observed_trace[current]
+- test_graders_accept_independently_constructed_observed_trace[strengthened]
+- test_graders_accept_independently_constructed_observed_trace[direct]
+- test_one_trace_mutant_per_read_and_route_grader_is_rejected[no_invocation-invocation]
+- test_one_trace_mutant_per_read_and_route_grader_is_rejected[no_load-complete_load]
+- test_one_trace_mutant_per_read_and_route_grader_is_rejected[reordered-read_contract_order]
+- test_one_trace_mutant_per_read_and_route_grader_is_rejected[wrong_route-final_route]
+- test_role_gate_and_required_write_mutants_are_rejected
+- test_parser_retains_raw_events_usage_and_rejects_unparsed_stdout
+- test_fake_runner_executes_one_attempt_without_network_and_captures_diff
+- test_fake_matrix_completes_exact_valid_denominator_and_summary_checks
+- test_token_ceiling_blocks_before_smaller_denominator_can_be_accepted
+- test_invalid_attempt_is_retained_then_same_schedule_item_is_rerun
+- test_finalize_stop_validates_raw_usage_basis_and_preserves_incomplete_denominator
+- test_dry_run_emits_schedule_without_materializing_a_fixture
+
+C1 consequence:
+- Candidate is not accepted or landed.
+- No G2/release action is authorized.
+- The live Resume surface is restored coherently in the Executor worktree.
+- The exact missing authority is approval to add and modify
+  docs/scripts/command_entry_eval.py (and, if its own tests require it,
+  docs/scripts/test_command_entry_eval.py) within a revised immutable selector.
+
+PASS — completed C1 restoration
+Restore commit: d09d5d49496d13b64552fe99a03821826ae435b6
+- python -m pytest docs/scripts/test_command_entry_eval.py -q
+  31 passed in 42.34s
+- python -m pytest tools/tests/test_tfw_state.py -q
+  32 passed in 0.33s
+- Manifest inventory is the exact accepted eleven-command list, including `resume`.
+- All five Resume artifacts exist.
+- Every one of the 30 VALUE and two ASSURANCE implementation paths is byte-identical
+  to pre-Candidate commit 589409c571916158e294659d6b90a74b758318fc.
+
+======================================================================
+REVISION 2 — fresh Candidate evidence
+Governing TS freeze: e5efd3e608975184995d254bc5eb84176b8b4451
+Governing TS blob: 8c06e15e3ad8211195f2d48314d055ad1f111979
+Isolated redispatch base: 5d3ed163b45fc64c54effb539e23099a9683dfca
+Fresh Candidate: 6d6d094ac5325377772f26ddf314b965c1dfd135
+Candidate parent: a1857064c14c72ad12996d808f0e810a432dbcf6
+Candidate disposition: TESTED / READY FOR INDEPENDENT REVIEW / UNLANDED
+
+PASS — pre-act restored-state and selector preflight
+- C1 restore d09d5d49496d13b64552fe99a03821826ae435b6 is an ancestor.
+- All 30 VALUE plus the two prior ASSURANCE paths matched the restored state before edits.
+- docs/scripts/command_entry_eval.py matched restored blob
+  b846b6c0f41bdbe47c0fe3f5105e235665c5ac5b and lines 89–93 were the exact
+  approved stale `resume` / eleven-command target.
+- Excluded docs/scripts/test_command_entry_eval.py matched restored blob
+  7f195b31c622ac8cdbd7dad0a0f2e9ae7fa7a539 and remained unchanged.
+- Every post-C1 pre-work change was under the Phase B TRACE prefix.
+- Phase A status remained DONE and all immutable Baseline/history/Phase A objects resolved.
+
+PASS — guard before destructive deletion
+python -m pytest docs/scripts/test_repository_contracts.py::test_rwnr_phase_a_resume_and_live_retirement_paths_are_unchanged -q
+1 passed in 0.55s
+
+EXPECTED ASSURANCE CORRECTION — first revision-2 targeted attempt
+python -m pytest docs/scripts/test_runtime_context.py docs/scripts/test_repository_contracts.py docs/scripts/test_command_entry_eval.py -q
+1 failed, 387 passed in 397.72s
+The sole failure was `implementation_scope_exact`: the reused Phase B oracle still named the
+revision-1 two-ASSURANCE selector. The fix stayed inside approved
+docs/scripts/test_repository_contracts.py, bound the frozen revision-2 TS/blob, added the exact
+third ASSURANCE path, asserted evaluator semantics, and asserted excluded-test byte identity.
+
+PASS — corrected isolated rev2 scope oracle
+python -m pytest docs/scripts/test_repository_contracts.py::test_rwnr_phase_b_surface_selector_manifest_absence_and_mutants_are_exact -q
+1 passed in 14.70s
+
+PASS — corrected pre-freeze targeted gate
+python -m pytest docs/scripts/test_runtime_context.py docs/scripts/test_repository_contracts.py docs/scripts/test_command_entry_eval.py -q
+388 passed in 407.67s (0:06:47)
+
+PASS — pre-freeze configured collection
+python -m pytest tools/tests/ docs/scripts/ -q --collect-only
+627 tests collected in 0.19s
+
+PASS — pre-freeze configured full gate
+python -m pytest tools/tests/ docs/scripts/ -q
+626 passed, 1 skipped in 644.22s (0:10:44)
+
+PASS — pre-freeze focused/state confirmation
+python -m pytest docs/scripts/test_command_entry_eval.py -q
+31 passed in 50.24s
+python -m pytest tools/tests/test_tfw_state.py -q
+32 passed in 0.41s
+
+PASS — immutable Candidate exact scope
+- Candidate contains exactly 33 implementation paths: 30 VALUE + three ASSURANCE.
+- VALUE actions are exactly five DELETE + 25 MODIFY.
+- Assurance paths are exactly command_entry_eval.py, test_repository_contracts.py,
+  and test_runtime_context.py.
+- Excluded test_command_entry_eval.py is absent from Candidate diff and has exact restored blob.
+- No TKL/shared-master or unrelated OTR path is present.
+
+PASS — immutable Candidate targeted gate
+python -m pytest docs/scripts/test_runtime_context.py docs/scripts/test_repository_contracts.py docs/scripts/test_command_entry_eval.py -q
+388 passed in 468.15s (0:07:48)
+
+PASS — immutable Candidate configured collection
+python -m pytest tools/tests/ docs/scripts/ -q --collect-only
+627 tests collected in 0.24s
+
+PASS — immutable Candidate configured full gate
+python -m pytest tools/tests/ docs/scripts/ -q
+626 passed, 1 skipped in 823.51s (0:13:43)
+
+PASS — immutable Candidate focused/state confirmation
+python -m pytest docs/scripts/test_command_entry_eval.py -q
+31 passed in 65.17s (0:01:05)
+python -m pytest tools/tests/test_tfw_state.py -q
+32 passed in 0.42s
+
+PASS — immutable Candidate accounting and surface summary
+- 30 logical VALUE files; 25 additions + 326 deletions = 351 touched text LOC.
+- Plan = 1,199 words; C = 1,523; B = 2,737; no unclassified instruction change.
+- 206 Candidate Git Resume-related path/content matches were classified; zero are LIVE.
+- Manifest and evaluator both contain the exact ten-command contract.
+- Detailed receiver/history/accounting receipts are reused only where all 30 relevant VALUE
+  inputs are byte-identical to rejected Candidate 6d3f3890ece2f357ab6353d4fd15a28fe4f3767c;
+  their Candidate-bound oracles passed in both targeted and full runs.
+
+PASS — independent LEAD corroboration (read-only, same revision-2 content)
+- targeted: 388 passed
+- configured full: 626 passed, 1 skipped in 720.18s
+- collect-only: 627 tests
+- focused command-entry: 31 passed
+- state: 32 passed
+- git diff --check: clean
+
+NON-GATE TRACE NOTE
+A post-test convenience serializer ran the same proof functions but prefixed stdout with a warning;
+its JSON wrapper rejected the non-JSON prefix. It changed no file and supplied no PASS claim.
+Structured receipts instead preserve the detailed revision-1 epoch and append explicit revision-2
+validation bound to the immutable Candidate, exact Git scans, relevant-input parity, and the green
+Candidate-bound test receipts above.
+
+======================================================================
+RETURN ROUND 3 - REAL AC-8 RECOVERY MODELS
+Governing TS blob: 8c06e15e3ad8211195f2d48314d055ad1f111979
+Returned-round base: 8209049faaa2fca443ca503999cac5c2764a521b
+Independent REVIEW producer: efa7cdd2ad66856d2be5e5799a82ba67e4c1b7cc
+C1 coherent restore commit in this lineage: 5cfca7abfa51fe3f565295ca4fc8be81c74c474f
+Fresh Candidate: a81e0c12ec982ee4f73639ebf15394ef53877294
+Candidate parent: 5cfca7abfa51fe3f565295ca4fc8be81c74c474f
+Rejected prior Candidate: 6d6d094ac5325377772f26ddf314b965c1dfd135
+Rejected prior Candidate disposition: UNACCEPTED / UNLANDED / NOT REUSED FOR ACCEPTANCE
+
+PASS - isolated real C1 model and mutants
+python -m pytest docs/scripts/test_repository_contracts.py -q -k "rwnr_phase_b_c1"
+5 passed, 133 deselected in 9.20s
+- Four temporary-tree scenarios derive and compare the full 30 VALUE + 3 ASSURANCE
+  path/SHA-256 map with the C1 before-image d09d5d49496d13b64552fe99a03821826ae435b6.
+- The injected mid-application case performs one real connected-group deletion before failure.
+- Preflight failure, mid-application failure, Reviewer rejection, and
+  landing/integrated mismatch all restore 33/33 paths and observe no release route/effect.
+- Altered-path, one-deletion-left-applied, and emitted-release-route mutants all fail the oracle.
+
+OBSERVED FAILURE - first pre-freeze targeted attempt
+python -m pytest docs/scripts/test_runtime_context.py docs/scripts/test_repository_contracts.py docs/scripts/test_command_entry_eval.py -q
+1 failed, 391 passed in 417.37s (0:06:57)
+Cause: the worktree scope helper treated the preceding exact-33-path restore commit as a Candidate
+and measured its parent. The correction stayed in approved assurance path
+docs/scripts/test_repository_contracts.py and selects HEAD-to-worktree while a working delta exists,
+then Candidate-parent-to-Candidate after freeze.
+
+PASS - corrected selector/C1 isolation
+python -m pytest docs/scripts/test_repository_contracts.py -q -k "rwnr_phase_b_surface_selector or rwnr_phase_b_c1"
+6 passed, 132 deselected in 22.77s
+
+PASS - corrected pre-freeze targeted gate
+python -m pytest docs/scripts/test_runtime_context.py docs/scripts/test_repository_contracts.py docs/scripts/test_command_entry_eval.py -q
+392 passed in 395.39s (0:06:35)
+
+PASS - corrected pre-freeze configured collection
+python -m pytest tools/tests/ docs/scripts/ -q --collect-only
+631 tests collected in 0.23s
+
+PASS - corrected pre-freeze configured full gate
+python -m pytest tools/tests/ docs/scripts/ -q
+630 passed, 1 skipped in 639.02s (0:10:39)
+
+PASS - corrected pre-freeze focused/state confirmation
+python -m pytest docs/scripts/test_command_entry_eval.py -q
+31 passed in 44.49s
+python -m pytest tools/tests/test_tfw_state.py -q
+32 passed in 0.23s
+
+PASS - exact Candidate boundary
+- Full `git status --short --untracked-files=all` named only the approved 33 paths.
+- Pre-stage `git diff --cached --name-only` was empty.
+- Literal staging audit: selector 33; staged 33; missing 0; extra 0.
+- Staged actions: 5 DELETE + 28 MODIFY overall; VALUE subset 5 DELETE + 25 MODIFY.
+- Excluded docs/scripts/test_command_entry_eval.py retained exact C1 blob
+  7f195b31c622ac8cdbd7dad0a0f2e9ae7fa7a539.
+- VALUE accounting: 30 files; 25 additions + 326 deletions = 351 touched text LOC;
+  Plan 1,199 words; C=1,523 < B=2,737; no unclassified instruction path.
+- `git diff --cached --check` clean.
+
+PASS - immutable Candidate exact scope
+- Candidate a81e0c12ec982ee4f73639ebf15394ef53877294 contains exactly 33 paths.
+- Candidate parent is the coherent C1 implementation baseline 5cfca7abfa51fe3f565295ca4fc8be81c74c474f.
+- Post-Candidate full status was empty.
+
+PASS - immutable Candidate targeted gate
+python -m pytest docs/scripts/test_runtime_context.py docs/scripts/test_repository_contracts.py docs/scripts/test_command_entry_eval.py -q
+392 passed in 426.20s (0:07:06)
+
+PASS - immutable Candidate configured collection
+python -m pytest tools/tests/ docs/scripts/ -q --collect-only
+631 tests collected in 0.21s
+
+PASS - immutable Candidate configured full gate
+python -m pytest tools/tests/ docs/scripts/ -q
+630 passed, 1 skipped in 701.40s (0:11:41)
+
+PASS - immutable Candidate focused/state confirmation
+python -m pytest docs/scripts/test_command_entry_eval.py -q
+31 passed in 45.13s
+python -m pytest tools/tests/test_tfw_state.py -q
+32 passed in 0.28s
+
+PASS - immutable Candidate Git/accounting confirmation
+- `git diff --check HEAD^ HEAD`: clean.
+- Candidate path count: 33.
+- Structured C1 receipt: each of four scenarios records a complete 33-path SHA-256 map,
+  matches before-image digest 1a2d5d271b7ae2cf5c246f0b1344b71a0cbb1143a00c8204c8d853fcb292c666,
+  and has oracle_pass=true; all three hostile mutants have oracle_pass=false.
+- No release route, metadata mutation, external effect, TKL/shared-history import, knowledge/digest
+  mutation, landing, merge, rebase, or cherry-pick occurred.
+
+======================================================================
+RETURN ROUND 4 - EXACT-PATH CANDIDATE PROCESS AND DURABLE RAW RECEIPTS
+Governing TS blob: 8c06e15e3ad8211195f2d48314d055ad1f111979
+Binding REVIEW producer: 9eaf775cc0ff3a28e3c989e4018d34b3b707eb57
+Closed ruling: live REVIEW section 8.7
+C1 coherent implementation baseline: 41a70febc6d33d369af125d7ad2ecf98a2de0761
+Fresh Candidate: 51ea3015290393da001810629f305f5969f4c8b8
+Candidate parent: 41a70febc6d33d369af125d7ad2ecf98a2de0761
+Reference implementation Candidate: a81e0c12ec982ee4f73639ebf15394ef53877294
+Reference implementation disposition: UNACCEPTED / UNLANDED / EVIDENCE ONLY
+
+PASS - durable exact Candidate boundary
+- `phase-b-candidate-boundary-round4.txt` is a byte-identical copy of the outside-repository
+  pre/post-Candidate receipt; SHA-256
+  `4c3350df1a496af6de502c10f2dd9ca773a4872167ca53d573008831bc476530`.
+- It preserves the verbatim full pre-Candidate status, empty cached inventory, literal ordered
+  33-path selector, literal staging command, staged names/actions, selector/staged counts of 33,
+  missing 0, extra 0, the planned and actual exact Candidate commands, commit result, full
+  post-Candidate status, post-Candidate cached inventory, immutable names/actions, and clean diff.
+- The actual Candidate command used
+  `git commit -m <message> --only -- <all 33 literal approved pathspecs>`.
+- Candidate has exactly 33 implementation paths: 30 VALUE + three ASSURANCE; overall actions are
+  5 DELETE + 28 MODIFY, and VALUE actions are 5 DELETE + 25 MODIFY.
+- Candidate bytes over all 33 approved paths are identical to reference implementation Candidate
+  a81e0c12ec982ee4f73639ebf15394ef53877294: mismatch count 0.
+- No raw evidence path entered Candidate; the receipt was copied into phase-local evidence only
+  after Candidate freeze.
+
+PASS - immutable Candidate targeted gate (raw receipt)
+python -m pytest docs/scripts/test_runtime_context.py docs/scripts/test_repository_contracts.py docs/scripts/test_command_entry_eval.py -q
+392 passed in 428.13s (0:07:08)
+Raw receipt: phase-b-targeted-round4.txt; SHA-256
+bfd9410246c865506f31017e318214b34a961142d4e281f3001f8bf769a7cd22
+
+PASS - immutable Candidate configured collection
+python -m pytest tools/tests/ docs/scripts/ -q --collect-only
+631 tests collected in 0.23s
+
+PASS - immutable Candidate configured full gate (raw receipt)
+python -m pytest tools/tests/ docs/scripts/ -q
+630 passed, 1 skipped in 743.11s (0:12:23)
+Raw receipt: phase-b-full-round4.txt; SHA-256
+ef612a1d155d9d37ce88809567faece9a1c17561a4512d7516751b5f9efff60a
+
+PASS - immutable Candidate focused/state confirmation
+python -m pytest docs/scripts/test_command_entry_eval.py -q
+31 passed in 53.41s
+python -m pytest tools/tests/test_tfw_state.py -q
+32 passed in 0.32s
+
+PASS - immutable Candidate Git/accounting confirmation
+- `git diff --check 51ea301^ 51ea301`: clean.
+- Candidate path count: 33.
+- Excluded docs/scripts/test_command_entry_eval.py has exact blob
+  7f195b31c622ac8cdbd7dad0a0f2e9ae7fa7a539 at Candidate and C1 parent.
+- Exact VALUE accounting: 30 logical files; 25 additions + 326 deletions = 351 touched text LOC.
+- Immutable denominator: 30 VALUE files / 650 touched text LOC; no ratchet.
+- Plan = 1,199 words; C = 1,523; B = 2,737; no unclassified instruction change.
+- Generated-copy parity and managed-block parity are all true.
+- No product semantic change, release route, metadata mutation, external effect, TKL/shared-history
+  import, knowledge/digest mutation, landing, merge, rebase, or cherry-pick occurred.

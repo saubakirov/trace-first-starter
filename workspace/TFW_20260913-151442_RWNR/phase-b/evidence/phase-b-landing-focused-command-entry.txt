@@ -1,0 +1,12 @@
+TFW RWNR Phase B landing Candidate-bound focused command-entry verification
+verification_checkout: C:\Users\c0rpa\.codex\worktrees\1923\rwnr-candidate-verify
+candidate: 3c354ba29d525ccb4e7683c5c477290682b90a5a
+checkout_status: clean
+command: python -m pytest docs/scripts/test_command_entry_eval.py -q
+exit_code: 0
+
+OUTPUT_BEGIN
+...............................                                          [100%]
+31 passed in 47.91s
+
+OUTPUT_END

@@ -1,0 +1,258 @@
+TFW RWNR Phase B landing Candidate pre-commit boundary
+captured_utc: 2026-09-14T09:59:52.072811+00:00
+worktree: C:\Users\c0rpa\.codex\worktrees\1923\rwnr-landing
+branch: codex/TFW_20260913-151442_RWNR/phase-b/landing
+master_expected: 3fd16fd1549a3f92006e8f37102df4a511b8aa55
+master_observed: 3fd16fd1549a3f92006e8f37102df4a511b8aa55
+head_observed: 3fd16fd1549a3f92006e8f37102df4a511b8aa55
+accepted_parent: 41a70b94019b86b99d87bb48f3da653a51112050
+accepted_candidate: 51ea3015290393da001810629f305f5969f4c8b8
+accepted_rf_producer: fd795babc5d22608c95e8afb0b0cb3540f2c9e9b
+accepted_review_producer: 14da05a4f1b4a341f30b75fce4f572db2c367b2d
+contract_producer: f979eac49bc3acd0d0220591047ec8abccf49072
+governing_ts_blob: 8c06e15e3ad8211195f2d48314d055ad1f111979
+product_selector_count: 33
+clean_preimage_count: 19
+composite_count: 14
+status_count: 33
+selector_missing: []
+selector_extra: []
+cached_paths_before: []
+diff_check_before_rc: 0
+diff_check_before_stdout:
+diff_check_before_stderr:
+
+STATUS_BEGIN
+ M .agent/rules/agents.md
+ M .agents/rules/tfw.md
+ D .agents/skills/tfw-resume/SKILL.md
+ M .agents/workflows/tfw-init.md
+ D .agents/workflows/tfw-resume.md
+ M .agents/workflows/tfw-update.md
+ M .claude/commands/tfw-init.md
+ D .claude/commands/tfw-resume.md
+ M .claude/commands/tfw-update.md
+ M .tfw/adapters/README.md
+ M .tfw/adapters/antigravity/README.md
+ M .tfw/adapters/antigravity/tfw-rules.md.template
+ M .tfw/adapters/claude-code/CLAUDE.md.template
+ M .tfw/adapters/claude-code/README.md
+ M .tfw/adapters/codex/AGENTS.md.template
+ M .tfw/adapters/codex/README.md
+ D .tfw/adapters/codex/skills/tfw-resume/SKILL.md
+ M .tfw/adapters/cursor/tfw.mdc.template
+ M .tfw/adapters/manifest.yaml
+ M .tfw/conventions.md
+ M .tfw/project_config.yaml
+ M .tfw/templates/project_config.yaml
+ M .tfw/workflows/init.md
+ D .tfw/workflows/resume.md
+ M .tfw/workflows/update.md
+ M AGENTS.md
+ M CLAUDE.md
+ M README.kk.md
+ M README.md
+ M README.ru.md
+ M docs/scripts/command_entry_eval.py
+ M docs/scripts/test_repository_contracts.py
+ M docs/scripts/test_runtime_context.py
+STATUS_END
+
+SELECTOR_BEGIN
+01	.agent/rules/agents.md
+02	.agents/rules/tfw.md
+03	.agents/skills/tfw-resume/SKILL.md
+04	.agents/workflows/tfw-init.md
+05	.agents/workflows/tfw-resume.md
+06	.agents/workflows/tfw-update.md
+07	.claude/commands/tfw-init.md
+08	.claude/commands/tfw-resume.md
+09	.claude/commands/tfw-update.md
+10	.tfw/adapters/README.md
+11	.tfw/adapters/antigravity/README.md
+12	.tfw/adapters/antigravity/tfw-rules.md.template
+13	.tfw/adapters/claude-code/CLAUDE.md.template
+14	.tfw/adapters/claude-code/README.md
+15	.tfw/adapters/codex/AGENTS.md.template
+16	.tfw/adapters/codex/README.md
+17	.tfw/adapters/codex/skills/tfw-resume/SKILL.md
+18	.tfw/adapters/cursor/tfw.mdc.template
+19	.tfw/adapters/manifest.yaml
+20	.tfw/conventions.md
+21	.tfw/project_config.yaml
+22	.tfw/templates/project_config.yaml
+23	.tfw/workflows/init.md
+24	.tfw/workflows/resume.md
+25	.tfw/workflows/update.md
+26	AGENTS.md
+27	CLAUDE.md
+28	README.kk.md
+29	README.md
+30	README.ru.md
+31	docs/scripts/command_entry_eval.py
+32	docs/scripts/test_repository_contracts.py
+33	docs/scripts/test_runtime_context.py
+SELECTOR_END
+
+PROVENANCE_BEGIN
+.agent/rules/agents.md	class=CLEAN_PREIMAGE	master=335751931cc3cc98f2e2b0715d3689046ded0a5f	accepted_parent=-	accepted_candidate=2ac4a1d64650ae404349ba55558f37e77461aa6e	accepted_action=A	composite=2ac4a1d64650ae404349ba55558f37e77461aa6e	observed_action=M	clean_afterimage=True
+.agents/rules/tfw.md	class=CLEAN_PREIMAGE	master=b70ce73ec7a2ef31f8a685d33ae0db63c7a4d241	accepted_parent=-	accepted_candidate=65d96a263b51dcd74e71e44fdb1bfa9d6c2fac32	accepted_action=A	composite=65d96a263b51dcd74e71e44fdb1bfa9d6c2fac32	observed_action=M	clean_afterimage=True
+.agents/skills/tfw-resume/SKILL.md	class=CLEAN_PREIMAGE	master=356e856a811c22f04fce2f1af9c9d7e5ed814146	accepted_parent=-	accepted_candidate=-	accepted_action=D	composite=-	observed_action=D	clean_afterimage=True
+.agents/workflows/tfw-init.md	class=COMPOSITE	master=bedc73b1fa13eb698ac3c7b3d6325ef4c66a9113	accepted_parent=-	accepted_candidate=96e2eeb124effa4e1db927271919dcad42039b18	accepted_action=A	composite=0d1623ba7d1ccbd3034b2b2ef7ab87d572f8a62f	observed_action=M	clean_afterimage=n/a
+.agents/workflows/tfw-resume.md	class=COMPOSITE	master=5bc68ab5d3f9de4a52b1bb06b671a50c60a2d044	accepted_parent=-	accepted_candidate=-	accepted_action=D	composite=-	observed_action=D	clean_afterimage=n/a
+.agents/workflows/tfw-update.md	class=COMPOSITE	master=7a22885e4e63b086d04cf01c5d4aa8e7952c6312	accepted_parent=-	accepted_candidate=da038d5f86bc2c491bf0b0cfdd3b6f452075d642	accepted_action=A	composite=2ea7392b1e12b4a554dbbe52f73679137577aeb4	observed_action=M	clean_afterimage=n/a
+.claude/commands/tfw-init.md	class=COMPOSITE	master=bedc73b1fa13eb698ac3c7b3d6325ef4c66a9113	accepted_parent=-	accepted_candidate=96e2eeb124effa4e1db927271919dcad42039b18	accepted_action=A	composite=0d1623ba7d1ccbd3034b2b2ef7ab87d572f8a62f	observed_action=M	clean_afterimage=n/a
+.claude/commands/tfw-resume.md	class=COMPOSITE	master=5bc68ab5d3f9de4a52b1bb06b671a50c60a2d044	accepted_parent=-	accepted_candidate=-	accepted_action=D	composite=-	observed_action=D	clean_afterimage=n/a
+.claude/commands/tfw-update.md	class=COMPOSITE	master=7a22885e4e63b086d04cf01c5d4aa8e7952c6312	accepted_parent=-	accepted_candidate=da038d5f86bc2c491bf0b0cfdd3b6f452075d642	accepted_action=A	composite=2ea7392b1e12b4a554dbbe52f73679137577aeb4	observed_action=M	clean_afterimage=n/a
+.tfw/adapters/README.md	class=CLEAN_PREIMAGE	master=5f22970de320fc4a2e20b08efc777cbd05ed343a	accepted_parent=-	accepted_candidate=5f9ba955961c38f3d87156d3407cfe44f2f71aa3	accepted_action=A	composite=5f9ba955961c38f3d87156d3407cfe44f2f71aa3	observed_action=M	clean_afterimage=True
+.tfw/adapters/antigravity/README.md	class=CLEAN_PREIMAGE	master=f9d942f5a77d4712a81ffe4d4681cbbbdfd278cb	accepted_parent=-	accepted_candidate=ff2379a95d18edd84a3be9aa084f3619b6d9b73f	accepted_action=A	composite=ff2379a95d18edd84a3be9aa084f3619b6d9b73f	observed_action=M	clean_afterimage=True
+.tfw/adapters/antigravity/tfw-rules.md.template	class=CLEAN_PREIMAGE	master=b70ce73ec7a2ef31f8a685d33ae0db63c7a4d241	accepted_parent=-	accepted_candidate=65d96a263b51dcd74e71e44fdb1bfa9d6c2fac32	accepted_action=A	composite=65d96a263b51dcd74e71e44fdb1bfa9d6c2fac32	observed_action=M	clean_afterimage=True
+.tfw/adapters/claude-code/CLAUDE.md.template	class=CLEAN_PREIMAGE	master=257b276a2d8a4f221a37df6adefb9608c0d18265	accepted_parent=-	accepted_candidate=49495cb7981cb9bdf91c85fbce617adbfa19df58	accepted_action=A	composite=49495cb7981cb9bdf91c85fbce617adbfa19df58	observed_action=M	clean_afterimage=True
+.tfw/adapters/claude-code/README.md	class=CLEAN_PREIMAGE	master=024ecb4619916ab15d00e5897caeb651c3c7f67b	accepted_parent=-	accepted_candidate=84bac509279c2098d97f03ca4a707c930dc562f0	accepted_action=A	composite=84bac509279c2098d97f03ca4a707c930dc562f0	observed_action=M	clean_afterimage=True
+.tfw/adapters/codex/AGENTS.md.template	class=CLEAN_PREIMAGE	master=1514078347dc4c0d7e1bb4745acdefaab4a9f52d	accepted_parent=-	accepted_candidate=48ea87d070ea846a1b30b7fd5c87ee3d7e27c86a	accepted_action=A	composite=48ea87d070ea846a1b30b7fd5c87ee3d7e27c86a	observed_action=M	clean_afterimage=True
+.tfw/adapters/codex/README.md	class=CLEAN_PREIMAGE	master=9db17110e00cc5381e0db110e7bd461bccbeb5db	accepted_parent=-	accepted_candidate=fcea79a88e3113b313ef864f6b5e2675220a6a9e	accepted_action=A	composite=fcea79a88e3113b313ef864f6b5e2675220a6a9e	observed_action=M	clean_afterimage=True
+.tfw/adapters/codex/skills/tfw-resume/SKILL.md	class=CLEAN_PREIMAGE	master=356e856a811c22f04fce2f1af9c9d7e5ed814146	accepted_parent=-	accepted_candidate=-	accepted_action=D	composite=-	observed_action=D	clean_afterimage=True
+.tfw/adapters/cursor/tfw.mdc.template	class=CLEAN_PREIMAGE	master=cde694f527311cbeefbfd1749c9c40b281974903	accepted_parent=-	accepted_candidate=679f6ad550da66a120af778f68c4f2f8f18b0388	accepted_action=A	composite=679f6ad550da66a120af778f68c4f2f8f18b0388	observed_action=M	clean_afterimage=True
+.tfw/adapters/manifest.yaml	class=CLEAN_PREIMAGE	master=752e22ae03c9d1d85949a09111b019f3ec192d0e	accepted_parent=-	accepted_candidate=bdb61da08e89dfaa7202b4ef3660f9cbbb598d52	accepted_action=A	composite=bdb61da08e89dfaa7202b4ef3660f9cbbb598d52	observed_action=M	clean_afterimage=True
+.tfw/conventions.md	class=COMPOSITE	master=47d64213d923792efe782057241156a3cac41873	accepted_parent=-	accepted_candidate=973cac6a6bd0534065cb6262b37559dd177ed00a	accepted_action=A	composite=8d258dff68caae3f03adf3b135982e4ab7cd1fb6	observed_action=M	clean_afterimage=n/a
+.tfw/project_config.yaml	class=COMPOSITE	master=5b3b8fb8bb35f68b529540d8bf14efa3cd7f8fed	accepted_parent=-	accepted_candidate=7e270829c3572c4742912ba70824c67dbf9de4f0	accepted_action=A	composite=d6bf196d927e708631a58f9266cfbd6fbd79c9ec	observed_action=M	clean_afterimage=n/a
+.tfw/templates/project_config.yaml	class=COMPOSITE	master=4009f897b3ca9dc3067bdd66e4d98e264d37ea32	accepted_parent=-	accepted_candidate=c625e3d67e3e9056dfa222e361b05cb57bc1f32c	accepted_action=A	composite=ddeb48a7c1b7690d38f4cdf6f61d39caca1bf794	observed_action=M	clean_afterimage=n/a
+.tfw/workflows/init.md	class=COMPOSITE	master=bedc73b1fa13eb698ac3c7b3d6325ef4c66a9113	accepted_parent=-	accepted_candidate=96e2eeb124effa4e1db927271919dcad42039b18	accepted_action=A	composite=0d1623ba7d1ccbd3034b2b2ef7ab87d572f8a62f	observed_action=M	clean_afterimage=n/a
+.tfw/workflows/resume.md	class=COMPOSITE	master=5bc68ab5d3f9de4a52b1bb06b671a50c60a2d044	accepted_parent=-	accepted_candidate=-	accepted_action=D	composite=-	observed_action=D	clean_afterimage=n/a
+.tfw/workflows/update.md	class=COMPOSITE	master=7a22885e4e63b086d04cf01c5d4aa8e7952c6312	accepted_parent=-	accepted_candidate=da038d5f86bc2c491bf0b0cfdd3b6f452075d642	accepted_action=A	composite=2ea7392b1e12b4a554dbbe52f73679137577aeb4	observed_action=M	clean_afterimage=n/a
+AGENTS.md	class=CLEAN_PREIMAGE	master=b3a1e178fd7ec8b25eae00a744f2d0756ba3fcf6	accepted_parent=-	accepted_candidate=ce6a31c010663349f95435a616955804feac28ba	accepted_action=A	composite=ce6a31c010663349f95435a616955804feac28ba	observed_action=M	clean_afterimage=True
+CLAUDE.md	class=CLEAN_PREIMAGE	master=5d6082e590d2bbec08068c4950a79d24aadb3b97	accepted_parent=-	accepted_candidate=f71bc49e32eebd9321a9de43d126568b7bf3a2d9	accepted_action=A	composite=f71bc49e32eebd9321a9de43d126568b7bf3a2d9	observed_action=M	clean_afterimage=True
+README.kk.md	class=CLEAN_PREIMAGE	master=23030da52fed7707dd6f2c4f94cab26f0bc4cb8c	accepted_parent=-	accepted_candidate=d964f2574be14a7b69e43f2549c1484bc1e39ca8	accepted_action=A	composite=d964f2574be14a7b69e43f2549c1484bc1e39ca8	observed_action=M	clean_afterimage=True
+README.md	class=CLEAN_PREIMAGE	master=4981e3496c7ecba5e55fa8d5a188b42eb8f1aad4	accepted_parent=-	accepted_candidate=02899c437dba6f51359636bccc5c5f69732b84e7	accepted_action=A	composite=02899c437dba6f51359636bccc5c5f69732b84e7	observed_action=M	clean_afterimage=True
+README.ru.md	class=CLEAN_PREIMAGE	master=28ae8ed7e00baef72e765b543499a3fb483cecd8	accepted_parent=-	accepted_candidate=7cbc2cb6decf09e75da65fae811be3316c8cc65b	accepted_action=A	composite=7cbc2cb6decf09e75da65fae811be3316c8cc65b	observed_action=M	clean_afterimage=True
+docs/scripts/command_entry_eval.py	class=CLEAN_PREIMAGE	master=b846b6c0f41bdbe47c0fe3f5105e235665c5ac5b	accepted_parent=-	accepted_candidate=fb8c3f030d030547f470f5550280a262149422d5	accepted_action=A	composite=fb8c3f030d030547f470f5550280a262149422d5	observed_action=M	clean_afterimage=True
+docs/scripts/test_repository_contracts.py	class=COMPOSITE	master=ce714b612f68d7b3745b004039ac36926da68b5f	accepted_parent=-	accepted_candidate=5fc563b099121289a9ef457b275ca6f913b43d70	accepted_action=A	composite=a2be2c8bf00c431ccf5972f1ea322f9928dd3d2a	observed_action=M	clean_afterimage=n/a
+docs/scripts/test_runtime_context.py	class=COMPOSITE	master=73d75cdd9cab6a30f55c71d44c81db79c491323f	accepted_parent=-	accepted_candidate=18cca80ce2ebf09f9f45530324f9b949cd20892d	accepted_action=A	composite=61d9ac3ac1f8f3e4fb7ad779913ccb0c7fe920d2	observed_action=M	clean_afterimage=n/a
+PROVENANCE_END
+
+LARGE_BLOBS_MASTER_GE_10MIB_BEGIN
+workspace/2026/TFW_20260909-231654_TKL/evidence/capture-final/06-stopped-build-output.zip	5f7b427cf8f16a8df20c95d1239217a5a8d26881	34977746
+workspace/2026/TFW_20260909-231654_TKL/evidence/r1-ac7/03-baseline-physical.zip	ae2e294b0e8e16fda99f76e01853a510c7fc5057	31225273
+workspace/2026/TFW_20260909-231654_TKL/evidence/r1-ac8/03-input/source-before.zip	6032a97cc4289a61bd9af7a2b0d60457974b83ff	18722824
+workspace/2026/TFW_20260909-231654_TKL/evidence/r1-return/full-diff-check.stdout.raw	14aa41a84395a47b4071a1440f37d18f35f56404	57216329
+workspace/2026/TFW_20260909-231654_TKL/evidence/r2-native/06-partial-physical.zip	02a544a9275fabb7524e993bc88a4c0501d35b32	31840944
+LARGE_BLOBS_MASTER_GE_10MIB_COUNT: 5
+LARGE_BLOBS_MASTER_GE_10MIB_END
+
+PLANNED_STAGE_COMMAND_BEGIN
+git add -- '.agent/rules/agents.md' '.agents/rules/tfw.md' '.agents/skills/tfw-resume/SKILL.md' '.agents/workflows/tfw-init.md' '.agents/workflows/tfw-resume.md' '.agents/workflows/tfw-update.md' '.claude/commands/tfw-init.md' '.claude/commands/tfw-resume.md' '.claude/commands/tfw-update.md' '.tfw/adapters/README.md' '.tfw/adapters/antigravity/README.md' '.tfw/adapters/antigravity/tfw-rules.md.template' '.tfw/adapters/claude-code/CLAUDE.md.template' '.tfw/adapters/claude-code/README.md' '.tfw/adapters/codex/AGENTS.md.template' '.tfw/adapters/codex/README.md' '.tfw/adapters/codex/skills/tfw-resume/SKILL.md' '.tfw/adapters/cursor/tfw.mdc.template' '.tfw/adapters/manifest.yaml' '.tfw/conventions.md' '.tfw/project_config.yaml' '.tfw/templates/project_config.yaml' '.tfw/workflows/init.md' '.tfw/workflows/resume.md' '.tfw/workflows/update.md' 'AGENTS.md' 'CLAUDE.md' 'README.kk.md' 'README.md' 'README.ru.md' 'docs/scripts/command_entry_eval.py' 'docs/scripts/test_repository_contracts.py' 'docs/scripts/test_runtime_context.py'
+PLANNED_STAGE_COMMAND_END
+PLANNED_COMMIT_COMMAND_BEGIN
+git commit -m '[codex/TFW_20260913-151442_RWNR/phase-b/executor] create TKL-safe Phase B landing Candidate' --only -- '.agent/rules/agents.md' '.agents/rules/tfw.md' '.agents/skills/tfw-resume/SKILL.md' '.agents/workflows/tfw-init.md' '.agents/workflows/tfw-resume.md' '.agents/workflows/tfw-update.md' '.claude/commands/tfw-init.md' '.claude/commands/tfw-resume.md' '.claude/commands/tfw-update.md' '.tfw/adapters/README.md' '.tfw/adapters/antigravity/README.md' '.tfw/adapters/antigravity/tfw-rules.md.template' '.tfw/adapters/claude-code/CLAUDE.md.template' '.tfw/adapters/claude-code/README.md' '.tfw/adapters/codex/AGENTS.md.template' '.tfw/adapters/codex/README.md' '.tfw/adapters/codex/skills/tfw-resume/SKILL.md' '.tfw/adapters/cursor/tfw.mdc.template' '.tfw/adapters/manifest.yaml' '.tfw/conventions.md' '.tfw/project_config.yaml' '.tfw/templates/project_config.yaml' '.tfw/workflows/init.md' '.tfw/workflows/resume.md' '.tfw/workflows/update.md' 'AGENTS.md' 'CLAUDE.md' 'README.kk.md' 'README.md' 'README.ru.md' 'docs/scripts/command_entry_eval.py' 'docs/scripts/test_repository_contracts.py' 'docs/scripts/test_runtime_context.py'
+PLANNED_COMMIT_COMMAND_END
+
+STAGING_AUDIT_BEGIN
+STAGED_COUNT=33
+STAGED_MISSING_COUNT=0
+STAGED_EXTRA_COUNT=0
+MASTER_OBSERVED=3fd16fd1549a3f92006e8f37102df4a511b8aa55
+HEAD_OBSERVED=3fd16fd1549a3f92006e8f37102df4a511b8aa55
+DIFF_CACHED_CHECK_BEGIN
+DIFF_CACHED_CHECK_RC=0
+DIFF_CACHED_NAME_STATUS_BEGIN
+M	.agent/rules/agents.md
+M	.agents/rules/tfw.md
+D	.agents/skills/tfw-resume/SKILL.md
+M	.agents/workflows/tfw-init.md
+D	.agents/workflows/tfw-resume.md
+M	.agents/workflows/tfw-update.md
+M	.claude/commands/tfw-init.md
+D	.claude/commands/tfw-resume.md
+M	.claude/commands/tfw-update.md
+M	.tfw/adapters/README.md
+M	.tfw/adapters/antigravity/README.md
+M	.tfw/adapters/antigravity/tfw-rules.md.template
+M	.tfw/adapters/claude-code/CLAUDE.md.template
+M	.tfw/adapters/claude-code/README.md
+M	.tfw/adapters/codex/AGENTS.md.template
+M	.tfw/adapters/codex/README.md
+D	.tfw/adapters/codex/skills/tfw-resume/SKILL.md
+M	.tfw/adapters/cursor/tfw.mdc.template
+M	.tfw/adapters/manifest.yaml
+M	.tfw/conventions.md
+M	.tfw/project_config.yaml
+M	.tfw/templates/project_config.yaml
+M	.tfw/workflows/init.md
+D	.tfw/workflows/resume.md
+M	.tfw/workflows/update.md
+M	AGENTS.md
+M	CLAUDE.md
+M	README.kk.md
+M	README.md
+M	README.ru.md
+M	docs/scripts/command_entry_eval.py
+M	docs/scripts/test_repository_contracts.py
+M	docs/scripts/test_runtime_context.py
+DIFF_CACHED_NAME_STATUS_END
+
+STAGING_AUDIT_END
+
+POST_CANDIDATE_AUDIT_BEGIN
+captured_utc: 2026-09-14T10:01:12.169991+00:00
+master_observed: 3fd16fd1549a3f92006e8f37102df4a511b8aa55
+candidate: 3c354ba29d525ccb4e7683c5c477290682b90a5a
+candidate_parent: 3fd16fd1549a3f92006e8f37102df4a511b8aa55
+candidate_tree: 7b61356eb8990ccec78cb9f4275dbae305948eb1
+branch: codex/TFW_20260913-151442_RWNR/phase-b/landing
+candidate_subject: [codex/TFW_20260913-151442_RWNR/phase-b/executor] create TKL-safe Phase B landing Candidate
+candidate_path_count: 33
+candidate_modified_count: 28
+candidate_deleted_count: 5
+post_candidate_status: []
+post_candidate_cached: []
+candidate_diff_check_rc: 0
+candidate_paths_begin
+M	.agent/rules/agents.md
+M	.agents/rules/tfw.md
+D	.agents/skills/tfw-resume/SKILL.md
+M	.agents/workflows/tfw-init.md
+D	.agents/workflows/tfw-resume.md
+M	.agents/workflows/tfw-update.md
+M	.claude/commands/tfw-init.md
+D	.claude/commands/tfw-resume.md
+M	.claude/commands/tfw-update.md
+M	.tfw/adapters/README.md
+M	.tfw/adapters/antigravity/README.md
+M	.tfw/adapters/antigravity/tfw-rules.md.template
+M	.tfw/adapters/claude-code/CLAUDE.md.template
+M	.tfw/adapters/claude-code/README.md
+M	.tfw/adapters/codex/AGENTS.md.template
+M	.tfw/adapters/codex/README.md
+D	.tfw/adapters/codex/skills/tfw-resume/SKILL.md
+M	.tfw/adapters/cursor/tfw.mdc.template
+M	.tfw/adapters/manifest.yaml
+M	.tfw/conventions.md
+M	.tfw/project_config.yaml
+M	.tfw/templates/project_config.yaml
+M	.tfw/workflows/init.md
+D	.tfw/workflows/resume.md
+M	.tfw/workflows/update.md
+M	AGENTS.md
+M	CLAUDE.md
+M	README.kk.md
+M	README.md
+M	README.ru.md
+M	docs/scripts/command_entry_eval.py
+M	docs/scripts/test_repository_contracts.py
+M	docs/scripts/test_runtime_context.py
+candidate_paths_end
+large_blobs_master_count: 5
+master_large:	workspace/2026/TFW_20260909-231654_TKL/evidence/capture-final/06-stopped-build-output.zip	5f7b427cf8f16a8df20c95d1239217a5a8d26881	34977746
+master_large:	workspace/2026/TFW_20260909-231654_TKL/evidence/r1-ac7/03-baseline-physical.zip	ae2e294b0e8e16fda99f76e01853a510c7fc5057	31225273
+master_large:	workspace/2026/TFW_20260909-231654_TKL/evidence/r1-ac8/03-input/source-before.zip	6032a97cc4289a61bd9af7a2b0d60457974b83ff	18722824
+master_large:	workspace/2026/TFW_20260909-231654_TKL/evidence/r1-return/full-diff-check.stdout.raw	14aa41a84395a47b4071a1440f37d18f35f56404	57216329
+master_large:	workspace/2026/TFW_20260909-231654_TKL/evidence/r2-native/06-partial-physical.zip	02a544a9275fabb7524e993bc88a4c0501d35b32	31840944
+large_blobs_candidate_count: 5
+candidate_large:	workspace/2026/TFW_20260909-231654_TKL/evidence/capture-final/06-stopped-build-output.zip	5f7b427cf8f16a8df20c95d1239217a5a8d26881	34977746
+candidate_large:	workspace/2026/TFW_20260909-231654_TKL/evidence/r1-ac7/03-baseline-physical.zip	ae2e294b0e8e16fda99f76e01853a510c7fc5057	31225273
+candidate_large:	workspace/2026/TFW_20260909-231654_TKL/evidence/r1-ac8/03-input/source-before.zip	6032a97cc4289a61bd9af7a2b0d60457974b83ff	18722824
+candidate_large:	workspace/2026/TFW_20260909-231654_TKL/evidence/r1-return/full-diff-check.stdout.raw	14aa41a84395a47b4071a1440f37d18f35f56404	57216329
+candidate_large:	workspace/2026/TFW_20260909-231654_TKL/evidence/r2-native/06-partial-physical.zip	02a544a9275fabb7524e993bc88a4c0501d35b32	31840944
+large_blob_set_equal: True
+new_large_blob_count: 0
+POST_CANDIDATE_AUDIT_END

@@ -1,0 +1,14 @@
+TFW RWNR Phase B landing per-path provenance oracle
+verification_checkout: C:\Users\c0rpa\.codex\worktrees\1923\rwnr-candidate-verify
+candidate: 3c354ba29d525ccb4e7683c5c477290682b90a5a
+fresh_master: 3fd16fd1549a3f92006e8f37102df4a511b8aa55
+command: python -m pytest docs/scripts/test_repository_contracts.py -q -k rwnr_phase_b_landing_composes_clean_and_tkl_diverged_paths_exactly
+exit_code: 0
+
+OUTPUT_BEGIN
+.                                                                        [100%]
+1 passed, 145 deselected in 6.76s
+
+OUTPUT_END
+
+See phase-b-landing-candidate-boundary.txt for all 33 per-path master / accepted parent / accepted Candidate / composite blob rows.

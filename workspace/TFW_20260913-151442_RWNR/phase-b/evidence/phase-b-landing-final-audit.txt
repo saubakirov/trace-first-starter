@@ -1,0 +1,163 @@
+TFW RWNR Phase B landing final pre-TRACE-commit audit
+captured_utc: 2026-09-14T10:52:40.091055+00:00
+master_expected: 3fd16fd1549a3f92006e8f37102df4a511b8aa55
+master_observed: 3fd16fd1549a3f92006e8f37102df4a511b8aa55
+candidate_expected: 3c354ba29d525ccb4e7683c5c477290682b90a5a
+candidate_observed: 3c354ba29d525ccb4e7683c5c477290682b90a5a
+candidate_parent: 3fd16fd1549a3f92006e8f37102df4a511b8aa55
+candidate_tree: 7b61356eb8990ccec78cb9f4275dbae305948eb1
+candidate_commit_type: commit
+accepted_candidate_type: commit
+accepted_review_type: commit
+contract_type: commit
+governing_ts_blob: 8c06e15e3ad8211195f2d48314d055ad1f111979
+phase_lifecycle: KNW
+current_trace_status_count: 47
+anticipated_final_trace_selector_count: 48
+current_all_phase_local: True
+anticipated_all_phase_local: True
+cached_initial_trace_count: 37
+cached_initial_all_phase_local: True
+candidate_product_count: 33
+candidate_product_in_current_trace: []
+candidate_worktree_product_diff_count: 0
+candidate_cached_product_count: 0
+landing_diff_check_rc: 0
+landing_cached_diff_check_rc: 0
+verify_checkout_head: 3c354ba29d525ccb4e7683c5c477290682b90a5a
+verify_checkout_status: []
+boundary_external_size: 19843
+boundary_internal_size: 19843
+boundary_external_sha256: dcaab1c0bf3657e8e2483f6fe053ed7efa34c7377d51026e8011927c64a101c3
+boundary_internal_sha256: dcaab1c0bf3657e8e2483f6fe053ed7efa34c7377d51026e8011927c64a101c3
+boundary_byte_identical: True
+initial_trace_source_count: 37
+initial_trace_exact_unchanged_count: 35
+initial_trace_append_only_count: 2
+initial_trace_bad_count: 0
+initial_trace_append_only_paths: ['workspace/TFW_20260913-151442_RWNR/phase-b/RF__phase-b__resume_surface_retirement.md', 'workspace/TFW_20260913-151442_RWNR/phase-b/evidence/EV__phase-b__resume_surface_retirement.md']
+initial_trace_bad_paths: []
+event_kind: handoff
+event_time: 2026-09-14 15:50:07+05:00
+event_writer: robert
+event_on_behalf_of: saubakirov
+event_summary_codepoints: 74
+event_ref_count: 15
+event_missing_or_escaping_refs: []
+landing_receipt_count_before_final_audit: 9
+RECEIPT_HASHES_BEGIN
+workspace/TFW_20260913-151442_RWNR/phase-b/evidence/phase-b-landing-candidate-boundary.txt	bytes=19843	sha256=dcaab1c0bf3657e8e2483f6fe053ed7efa34c7377d51026e8011927c64a101c3
+workspace/TFW_20260913-151442_RWNR/phase-b/evidence/phase-b-landing-collect.txt	bytes=78054	sha256=dcc75b77dc62623781d1afa7418ac6c02ddeb9ca8ddae158d021fd1824554b96
+workspace/TFW_20260913-151442_RWNR/phase-b/evidence/phase-b-landing-focused-command-entry.txt	bytes=441	sha256=7c7a06b36160ac93e589c436be72c7947b3a989b73b56ca8273929e06373ed7f
+workspace/TFW_20260913-151442_RWNR/phase-b/evidence/phase-b-landing-full.txt	bytes=1318	sha256=a542770e1264b982940d21610e7994f32d57ebfbdc66855e59635b3048d6cc54
+workspace/TFW_20260913-151442_RWNR/phase-b/evidence/phase-b-landing-provenance-check.txt	bytes=668	sha256=75a1182eee393a5400bad52e96296116d25fd55be573311dc0a167a9416cfc79
+workspace/TFW_20260913-151442_RWNR/phase-b/evidence/phase-b-landing-state.txt	bytes=414	sha256=f63853f2dd22530071f8ff1201ab4a47c8eb28f291f31d657ad68d6ed5c20e43
+workspace/TFW_20260913-151442_RWNR/phase-b/evidence/phase-b-landing-targeted-attempt1.txt	bytes=2206	sha256=d40233b9450b765e4157822e20af9a49f75e3f750ce5de3f2b23967b6f894f5a
+workspace/TFW_20260913-151442_RWNR/phase-b/evidence/phase-b-landing-targeted.txt	bytes=1083	sha256=1041198bb8b1035fa8d19a1e4b2887fba4a18f357310feb1a1169028f7895570
+workspace/TFW_20260913-151442_RWNR/phase-b/evidence/phase-b-landing-trace-transfer.txt	bytes=11072	sha256=f89d8e0b37fb5cc735364d6c5850f9e3fd1704b0d93c876f5de3bd7ce58b7c91
+RECEIPT_HASHES_END
+master_large_blob_count: 5
+candidate_large_blob_count: 5
+large_blob_sets_equal: True
+new_large_blob_count: 0
+LARGE_BLOBS_BEGIN
+workspace/2026/TFW_20260909-231654_TKL/evidence/capture-final/06-stopped-build-output.zip	5f7b427cf8f16a8df20c95d1239217a5a8d26881	34977746
+workspace/2026/TFW_20260909-231654_TKL/evidence/r1-ac7/03-baseline-physical.zip	ae2e294b0e8e16fda99f76e01853a510c7fc5057	31225273
+workspace/2026/TFW_20260909-231654_TKL/evidence/r1-ac8/03-input/source-before.zip	6032a97cc4289a61bd9af7a2b0d60457974b83ff	18722824
+workspace/2026/TFW_20260909-231654_TKL/evidence/r1-return/full-diff-check.stdout.raw	14aa41a84395a47b4071a1440f37d18f35f56404	57216329
+workspace/2026/TFW_20260909-231654_TKL/evidence/r2-native/06-partial-physical.zip	02a544a9275fabb7524e993bc88a4c0501d35b32	31840944
+LARGE_BLOBS_END
+FINAL_TRACE_SELECTOR_BEGIN
+01	workspace/TFW_20260913-151442_RWNR/phase-b/ONB__phase-b__resume_surface_retirement.md
+02	workspace/TFW_20260913-151442_RWNR/phase-b/REVIEW__phase-b__resume_surface_retirement.md
+03	workspace/TFW_20260913-151442_RWNR/phase-b/RF__phase-b__resume_surface_retirement.md
+04	workspace/TFW_20260913-151442_RWNR/phase-b/TS__phase-b__resume_surface_retirement__rev2.md
+05	workspace/TFW_20260913-151442_RWNR/phase-b/evidence/EV__phase-b__resume_surface_retirement.md
+06	workspace/TFW_20260913-151442_RWNR/phase-b/evidence/phase-b-accounting.json
+07	workspace/TFW_20260913-151442_RWNR/phase-b/evidence/phase-b-candidate-boundary-round4.txt
+08	workspace/TFW_20260913-151442_RWNR/phase-b/evidence/phase-b-full-round4.txt
+09	workspace/TFW_20260913-151442_RWNR/phase-b/evidence/phase-b-history.json
+10	workspace/TFW_20260913-151442_RWNR/phase-b/evidence/phase-b-landing-candidate-boundary.txt
+11	workspace/TFW_20260913-151442_RWNR/phase-b/evidence/phase-b-landing-collect.txt
+12	workspace/TFW_20260913-151442_RWNR/phase-b/evidence/phase-b-landing-final-audit.txt
+13	workspace/TFW_20260913-151442_RWNR/phase-b/evidence/phase-b-landing-focused-command-entry.txt
+14	workspace/TFW_20260913-151442_RWNR/phase-b/evidence/phase-b-landing-full.txt
+15	workspace/TFW_20260913-151442_RWNR/phase-b/evidence/phase-b-landing-provenance-check.txt
+16	workspace/TFW_20260913-151442_RWNR/phase-b/evidence/phase-b-landing-state.txt
+17	workspace/TFW_20260913-151442_RWNR/phase-b/evidence/phase-b-landing-targeted-attempt1.txt
+18	workspace/TFW_20260913-151442_RWNR/phase-b/evidence/phase-b-landing-targeted.txt
+19	workspace/TFW_20260913-151442_RWNR/phase-b/evidence/phase-b-landing-trace-transfer.txt
+20	workspace/TFW_20260913-151442_RWNR/phase-b/evidence/phase-b-receivers.json
+21	workspace/TFW_20260913-151442_RWNR/phase-b/evidence/phase-b-surface.json
+22	workspace/TFW_20260913-151442_RWNR/phase-b/evidence/phase-b-targeted-round4.txt
+23	workspace/TFW_20260913-151442_RWNR/phase-b/evidence/phase-b-tests.txt
+24	workspace/TFW_20260913-151442_RWNR/phase-b/journal/20260914-003207__handoff__bb05.md
+25	workspace/TFW_20260913-151442_RWNR/phase-b/journal/20260914-021737__transition__c1b0.md
+26	workspace/TFW_20260913-151442_RWNR/phase-b/journal/20260914-081032__transition__3333.md
+27	workspace/TFW_20260913-151442_RWNR/phase-b/journal/20260914-081515__dispatch__8a9a.md
+28	workspace/TFW_20260913-151442_RWNR/phase-b/journal/20260914-082039__handoff__156b.md
+29	workspace/TFW_20260913-151442_RWNR/phase-b/journal/20260914-095800__transition__a07a.md
+30	workspace/TFW_20260913-151442_RWNR/phase-b/journal/20260914-100615__dispatch__727a.md
+31	workspace/TFW_20260913-151442_RWNR/phase-b/journal/20260914-103334__dispatch__8fa9.md
+32	workspace/TFW_20260913-151442_RWNR/phase-b/journal/20260914-103959__handoff__f5ba.md
+33	workspace/TFW_20260913-151442_RWNR/phase-b/journal/20260914-114202__transition__40b2.md
+34	workspace/TFW_20260913-151442_RWNR/phase-b/journal/20260914-114643__dispatch__32a4.md
+35	workspace/TFW_20260913-151442_RWNR/phase-b/journal/20260914-114957__transition__a6c1.md
+36	workspace/TFW_20260913-151442_RWNR/phase-b/journal/20260914-121704__transition__7308.md
+37	workspace/TFW_20260913-151442_RWNR/phase-b/journal/20260914-121917__dispatch__ca23.md
+38	workspace/TFW_20260913-151442_RWNR/phase-b/journal/20260914-122752__handoff__d213.md
+39	workspace/TFW_20260913-151442_RWNR/phase-b/journal/20260914-131552__transition__034e.md
+40	workspace/TFW_20260913-151442_RWNR/phase-b/journal/20260914-132455__dispatch__bd48.md
+41	workspace/TFW_20260913-151442_RWNR/phase-b/journal/20260914-132928__transition__3654.md
+42	workspace/TFW_20260913-151442_RWNR/phase-b/journal/20260914-133959__transition__c9ad.md
+43	workspace/TFW_20260913-151442_RWNR/phase-b/journal/20260914-135536__dispatch__f764.md
+44	workspace/TFW_20260913-151442_RWNR/phase-b/journal/20260914-155007__handoff__b4fb.md
+45	workspace/TFW_20260913-151442_RWNR/phase-b/review/judge.md
+46	workspace/TFW_20260913-151442_RWNR/phase-b/review/map.md
+47	workspace/TFW_20260913-151442_RWNR/phase-b/review/verify.md
+48	workspace/TFW_20260913-151442_RWNR/phase-b/status.md
+FINAL_TRACE_SELECTOR_END
+PLANNED_FINAL_STAGE_COMMAND_BEGIN
+git add -- 'workspace/TFW_20260913-151442_RWNR/phase-b/ONB__phase-b__resume_surface_retirement.md' 'workspace/TFW_20260913-151442_RWNR/phase-b/REVIEW__phase-b__resume_surface_retirement.md' 'workspace/TFW_20260913-151442_RWNR/phase-b/RF__phase-b__resume_surface_retirement.md' 'workspace/TFW_20260913-151442_RWNR/phase-b/TS__phase-b__resume_surface_retirement__rev2.md' 'workspace/TFW_20260913-151442_RWNR/phase-b/evidence/EV__phase-b__resume_surface_retirement.md' 'workspace/TFW_20260913-151442_RWNR/phase-b/evidence/phase-b-accounting.json' 'workspace/TFW_20260913-151442_RWNR/phase-b/evidence/phase-b-candidate-boundary-round4.txt' 'workspace/TFW_20260913-151442_RWNR/phase-b/evidence/phase-b-full-round4.txt' 'workspace/TFW_20260913-151442_RWNR/phase-b/evidence/phase-b-history.json' 'workspace/TFW_20260913-151442_RWNR/phase-b/evidence/phase-b-landing-candidate-boundary.txt' 'workspace/TFW_20260913-151442_RWNR/phase-b/evidence/phase-b-landing-collect.txt' 'workspace/TFW_20260913-151442_RWNR/phase-b/evidence/phase-b-landing-final-audit.txt' 'workspace/TFW_20260913-151442_RWNR/phase-b/evidence/phase-b-landing-focused-command-entry.txt' 'workspace/TFW_20260913-151442_RWNR/phase-b/evidence/phase-b-landing-full.txt' 'workspace/TFW_20260913-151442_RWNR/phase-b/evidence/phase-b-landing-provenance-check.txt' 'workspace/TFW_20260913-151442_RWNR/phase-b/evidence/phase-b-landing-state.txt' 'workspace/TFW_20260913-151442_RWNR/phase-b/evidence/phase-b-landing-targeted-attempt1.txt' 'workspace/TFW_20260913-151442_RWNR/phase-b/evidence/phase-b-landing-targeted.txt' 'workspace/TFW_20260913-151442_RWNR/phase-b/evidence/phase-b-landing-trace-transfer.txt' 'workspace/TFW_20260913-151442_RWNR/phase-b/evidence/phase-b-receivers.json' 'workspace/TFW_20260913-151442_RWNR/phase-b/evidence/phase-b-surface.json' 'workspace/TFW_20260913-151442_RWNR/phase-b/evidence/phase-b-targeted-round4.txt' 'workspace/TFW_20260913-151442_RWNR/phase-b/evidence/phase-b-tests.txt' 'workspace/TFW_20260913-151442_RWNR/phase-b/journal/20260914-003207__handoff__bb05.md' 'workspace/TFW_20260913-151442_RWNR/phase-b/journal/20260914-021737__transition__c1b0.md' 'workspace/TFW_20260913-151442_RWNR/phase-b/journal/20260914-081032__transition__3333.md' 'workspace/TFW_20260913-151442_RWNR/phase-b/journal/20260914-081515__dispatch__8a9a.md' 'workspace/TFW_20260913-151442_RWNR/phase-b/journal/20260914-082039__handoff__156b.md' 'workspace/TFW_20260913-151442_RWNR/phase-b/journal/20260914-095800__transition__a07a.md' 'workspace/TFW_20260913-151442_RWNR/phase-b/journal/20260914-100615__dispatch__727a.md' 'workspace/TFW_20260913-151442_RWNR/phase-b/journal/20260914-103334__dispatch__8fa9.md' 'workspace/TFW_20260913-151442_RWNR/phase-b/journal/20260914-103959__handoff__f5ba.md' 'workspace/TFW_20260913-151442_RWNR/phase-b/journal/20260914-114202__transition__40b2.md' 'workspace/TFW_20260913-151442_RWNR/phase-b/journal/20260914-114643__dispatch__32a4.md' 'workspace/TFW_20260913-151442_RWNR/phase-b/journal/20260914-114957__transition__a6c1.md' 'workspace/TFW_20260913-151442_RWNR/phase-b/journal/20260914-121704__transition__7308.md' 'workspace/TFW_20260913-151442_RWNR/phase-b/journal/20260914-121917__dispatch__ca23.md' 'workspace/TFW_20260913-151442_RWNR/phase-b/journal/20260914-122752__handoff__d213.md' 'workspace/TFW_20260913-151442_RWNR/phase-b/journal/20260914-131552__transition__034e.md' 'workspace/TFW_20260913-151442_RWNR/phase-b/journal/20260914-132455__dispatch__bd48.md' 'workspace/TFW_20260913-151442_RWNR/phase-b/journal/20260914-132928__transition__3654.md' 'workspace/TFW_20260913-151442_RWNR/phase-b/journal/20260914-133959__transition__c9ad.md' 'workspace/TFW_20260913-151442_RWNR/phase-b/journal/20260914-135536__dispatch__f764.md' 'workspace/TFW_20260913-151442_RWNR/phase-b/journal/20260914-155007__handoff__b4fb.md' 'workspace/TFW_20260913-151442_RWNR/phase-b/review/judge.md' 'workspace/TFW_20260913-151442_RWNR/phase-b/review/map.md' 'workspace/TFW_20260913-151442_RWNR/phase-b/review/verify.md' 'workspace/TFW_20260913-151442_RWNR/phase-b/status.md'
+PLANNED_FINAL_STAGE_COMMAND_END
+PLANNED_TRACE_COMMIT_COMMAND_BEGIN
+git commit -m '[codex/TFW_20260913-151442_RWNR/phase-b/executor] record TKL-safe landing Candidate return' --only -- 'workspace/TFW_20260913-151442_RWNR/phase-b/ONB__phase-b__resume_surface_retirement.md' 'workspace/TFW_20260913-151442_RWNR/phase-b/REVIEW__phase-b__resume_surface_retirement.md' 'workspace/TFW_20260913-151442_RWNR/phase-b/RF__phase-b__resume_surface_retirement.md' 'workspace/TFW_20260913-151442_RWNR/phase-b/TS__phase-b__resume_surface_retirement__rev2.md' 'workspace/TFW_20260913-151442_RWNR/phase-b/evidence/EV__phase-b__resume_surface_retirement.md' 'workspace/TFW_20260913-151442_RWNR/phase-b/evidence/phase-b-accounting.json' 'workspace/TFW_20260913-151442_RWNR/phase-b/evidence/phase-b-candidate-boundary-round4.txt' 'workspace/TFW_20260913-151442_RWNR/phase-b/evidence/phase-b-full-round4.txt' 'workspace/TFW_20260913-151442_RWNR/phase-b/evidence/phase-b-history.json' 'workspace/TFW_20260913-151442_RWNR/phase-b/evidence/phase-b-landing-candidate-boundary.txt' 'workspace/TFW_20260913-151442_RWNR/phase-b/evidence/phase-b-landing-collect.txt' 'workspace/TFW_20260913-151442_RWNR/phase-b/evidence/phase-b-landing-final-audit.txt' 'workspace/TFW_20260913-151442_RWNR/phase-b/evidence/phase-b-landing-focused-command-entry.txt' 'workspace/TFW_20260913-151442_RWNR/phase-b/evidence/phase-b-landing-full.txt' 'workspace/TFW_20260913-151442_RWNR/phase-b/evidence/phase-b-landing-provenance-check.txt' 'workspace/TFW_20260913-151442_RWNR/phase-b/evidence/phase-b-landing-state.txt' 'workspace/TFW_20260913-151442_RWNR/phase-b/evidence/phase-b-landing-targeted-attempt1.txt' 'workspace/TFW_20260913-151442_RWNR/phase-b/evidence/phase-b-landing-targeted.txt' 'workspace/TFW_20260913-151442_RWNR/phase-b/evidence/phase-b-landing-trace-transfer.txt' 'workspace/TFW_20260913-151442_RWNR/phase-b/evidence/phase-b-receivers.json' 'workspace/TFW_20260913-151442_RWNR/phase-b/evidence/phase-b-surface.json' 'workspace/TFW_20260913-151442_RWNR/phase-b/evidence/phase-b-targeted-round4.txt' 'workspace/TFW_20260913-151442_RWNR/phase-b/evidence/phase-b-tests.txt' 'workspace/TFW_20260913-151442_RWNR/phase-b/journal/20260914-003207__handoff__bb05.md' 'workspace/TFW_20260913-151442_RWNR/phase-b/journal/20260914-021737__transition__c1b0.md' 'workspace/TFW_20260913-151442_RWNR/phase-b/journal/20260914-081032__transition__3333.md' 'workspace/TFW_20260913-151442_RWNR/phase-b/journal/20260914-081515__dispatch__8a9a.md' 'workspace/TFW_20260913-151442_RWNR/phase-b/journal/20260914-082039__handoff__156b.md' 'workspace/TFW_20260913-151442_RWNR/phase-b/journal/20260914-095800__transition__a07a.md' 'workspace/TFW_20260913-151442_RWNR/phase-b/journal/20260914-100615__dispatch__727a.md' 'workspace/TFW_20260913-151442_RWNR/phase-b/journal/20260914-103334__dispatch__8fa9.md' 'workspace/TFW_20260913-151442_RWNR/phase-b/journal/20260914-103959__handoff__f5ba.md' 'workspace/TFW_20260913-151442_RWNR/phase-b/journal/20260914-114202__transition__40b2.md' 'workspace/TFW_20260913-151442_RWNR/phase-b/journal/20260914-114643__dispatch__32a4.md' 'workspace/TFW_20260913-151442_RWNR/phase-b/journal/20260914-114957__transition__a6c1.md' 'workspace/TFW_20260913-151442_RWNR/phase-b/journal/20260914-121704__transition__7308.md' 'workspace/TFW_20260913-151442_RWNR/phase-b/journal/20260914-121917__dispatch__ca23.md' 'workspace/TFW_20260913-151442_RWNR/phase-b/journal/20260914-122752__handoff__d213.md' 'workspace/TFW_20260913-151442_RWNR/phase-b/journal/20260914-131552__transition__034e.md' 'workspace/TFW_20260913-151442_RWNR/phase-b/journal/20260914-132455__dispatch__bd48.md' 'workspace/TFW_20260913-151442_RWNR/phase-b/journal/20260914-132928__transition__3654.md' 'workspace/TFW_20260913-151442_RWNR/phase-b/journal/20260914-133959__transition__c9ad.md' 'workspace/TFW_20260913-151442_RWNR/phase-b/journal/20260914-135536__dispatch__f764.md' 'workspace/TFW_20260913-151442_RWNR/phase-b/journal/20260914-155007__handoff__b4fb.md' 'workspace/TFW_20260913-151442_RWNR/phase-b/review/judge.md' 'workspace/TFW_20260913-151442_RWNR/phase-b/review/map.md' 'workspace/TFW_20260913-151442_RWNR/phase-b/review/verify.md' 'workspace/TFW_20260913-151442_RWNR/phase-b/status.md'
+PLANNED_TRACE_COMMIT_COMMAND_END
+
+ACTUAL_STAGING_AND_RECEIPT_REPAIR_BEGIN
+First exact 48-path staging audit:
+ACTUAL_FINAL_STAGED_COUNT=48
+ACTUAL_FINAL_STAGED_MISSING_COUNT=0
+ACTUAL_FINAL_STAGED_EXTRA_COUNT=0
+ACTUAL_FINAL_STAGED_PRODUCT_COUNT=0
+ACTUAL_FINAL_UNSTAGED_COUNT=0
+ACTUAL_FINAL_UNTRACKED_COUNT=0
+workspace/TFW_20260913-151442_RWNR/phase-b/evidence/phase-b-landing-candidate-boundary.txt:22: trailing whitespace.
++diff_check_before_stdout:
+workspace/TFW_20260913-151442_RWNR/phase-b/evidence/phase-b-landing-candidate-boundary.txt:23: trailing whitespace.
++diff_check_before_stderr:
+workspace/TFW_20260913-151442_RWNR/phase-b/evidence/phase-b-landing-trace-transfer.txt:106: new blank line at EOF.
+ACTUAL_FINAL_CACHED_DIFF_CHECK_RC=2
+ACTUAL_MASTER=3fd16fd1549a3f92006e8f37102df4a511b8aa55
+ACTUAL_CANDIDATE=3c354ba29d525ccb4e7683c5c477290682b90a5a
+
+Formatting-only receipt normalization:
+BOUNDARY_INTERNAL_SIZE=19843
+BOUNDARY_EXTERNAL_SIZE=19843
+BOUNDARY_INTERNAL_SHA=dcaab1c0bf3657e8e2483f6fe053ed7efa34c7377d51026e8011927c64a101c3
+BOUNDARY_EXTERNAL_SHA=dcaab1c0bf3657e8e2483f6fe053ed7efa34c7377d51026e8011927c64a101c3
+TRACE_TRANSFER_SIZE=11072
+TRACE_TRANSFER_SHA=f89d8e0b37fb5cc735364d6c5850f9e3fd1704b0d93c876f5de3bd7ce58b7c91
+UNSTAGED_DIFF_CHECK_RC=0
+
+Repaired exact 48-path staging audit:
+REPAIRED_FINAL_STAGED_COUNT=48
+REPAIRED_FINAL_STAGED_MISSING_COUNT=0
+REPAIRED_FINAL_STAGED_EXTRA_COUNT=0
+REPAIRED_FINAL_STAGED_PRODUCT_COUNT=0
+REPAIRED_FINAL_UNSTAGED_COUNT=0
+REPAIRED_FINAL_UNTRACKED_COUNT=0
+REPAIRED_FINAL_CACHED_DIFF_CHECK_RC=0
+REPAIRED_MASTER=3fd16fd1549a3f92006e8f37102df4a511b8aa55
+REPAIRED_CANDIDATE=3c354ba29d525ccb4e7683c5c477290682b90a5a
+ACTUAL_STAGING_AND_RECEIPT_REPAIR_END

@@ -1,0 +1,105 @@
+TFW RWNR Phase B landing TRACE transfer audit
+candidate: 3c354ba29d525ccb4e7683c5c477290682b90a5a
+master: 3fd16fd1549a3f92006e8f37102df4a511b8aa55
+accepted_review_producer: 14da05a4f1b4a341f30b75fce4f572db2c367b2d
+contract_producer: f979eac49bc3acd0d0220591047ec8abccf49072
+
+TRACE_TRANSFER_AUDIT_BEGIN
+review_selector_count: 36
+contract_selector_count: 1
+total_selector_count: 37
+status_count: 37
+missing: []
+extra: []
+master_observed: 3fd16fd1549a3f92006e8f37102df4a511b8aa55
+candidate_head: 3c354ba29d525ccb4e7683c5c477290682b90a5a
+product_worktree_diff_count: 0
+BLOB_PARITY_BEGIN
+workspace/TFW_20260913-151442_RWNR/phase-b/ONB__phase-b__resume_surface_retirement.md	expected=c4aa320be9d271dadc2bdcea81aa248d4cd422d2	observed=c4aa320be9d271dadc2bdcea81aa248d4cd422d2	ok=True
+workspace/TFW_20260913-151442_RWNR/phase-b/REVIEW__phase-b__resume_surface_retirement.md	expected=723aa6ce4b455182c405f5dba897172dc785cd10	observed=723aa6ce4b455182c405f5dba897172dc785cd10	ok=True
+workspace/TFW_20260913-151442_RWNR/phase-b/RF__phase-b__resume_surface_retirement.md	expected=ef29ca332eda533553a505a74eb203a0c7e1cf4e	observed=ef29ca332eda533553a505a74eb203a0c7e1cf4e	ok=True
+workspace/TFW_20260913-151442_RWNR/phase-b/TS__phase-b__resume_surface_retirement__rev2.md	expected=8c06e15e3ad8211195f2d48314d055ad1f111979	observed=8c06e15e3ad8211195f2d48314d055ad1f111979	ok=True
+workspace/TFW_20260913-151442_RWNR/phase-b/evidence/EV__phase-b__resume_surface_retirement.md	expected=fb99cd4864b29e01f18c807b55d9afa92fe6915c	observed=fb99cd4864b29e01f18c807b55d9afa92fe6915c	ok=True
+workspace/TFW_20260913-151442_RWNR/phase-b/evidence/phase-b-accounting.json	expected=c09602d72e036b2c8c29fc0e4f7be185050dfe0c	observed=c09602d72e036b2c8c29fc0e4f7be185050dfe0c	ok=True
+workspace/TFW_20260913-151442_RWNR/phase-b/evidence/phase-b-candidate-boundary-round4.txt	expected=83237925458a6766d25bf31c558c824cc7d071ce	observed=83237925458a6766d25bf31c558c824cc7d071ce	ok=True
+workspace/TFW_20260913-151442_RWNR/phase-b/evidence/phase-b-full-round4.txt	expected=0cb32dc64632e0ac3e9575a2ccdb59e1eab0b539	observed=0cb32dc64632e0ac3e9575a2ccdb59e1eab0b539	ok=True
+workspace/TFW_20260913-151442_RWNR/phase-b/evidence/phase-b-history.json	expected=d3864341576212b5118a972287b333e726b55ad3	observed=d3864341576212b5118a972287b333e726b55ad3	ok=True
+workspace/TFW_20260913-151442_RWNR/phase-b/evidence/phase-b-receivers.json	expected=459092b55f85ff4a6881a7e3c8ada95767e20c97	observed=459092b55f85ff4a6881a7e3c8ada95767e20c97	ok=True
+workspace/TFW_20260913-151442_RWNR/phase-b/evidence/phase-b-surface.json	expected=1eaf158bcd921b1ff36dda5c666dce88f8e463ee	observed=1eaf158bcd921b1ff36dda5c666dce88f8e463ee	ok=True
+workspace/TFW_20260913-151442_RWNR/phase-b/evidence/phase-b-targeted-round4.txt	expected=6c9ede486060413242d247cb688cf264d13d2bde	observed=6c9ede486060413242d247cb688cf264d13d2bde	ok=True
+workspace/TFW_20260913-151442_RWNR/phase-b/evidence/phase-b-tests.txt	expected=def506740d76fa761e694fd88a837ddd9fc2c42c	observed=def506740d76fa761e694fd88a837ddd9fc2c42c	ok=True
+workspace/TFW_20260913-151442_RWNR/phase-b/journal/20260914-003207__handoff__bb05.md	expected=b94f1e85e4c7733f6ae79a17f1319ab4620d82c2	observed=b94f1e85e4c7733f6ae79a17f1319ab4620d82c2	ok=True
+workspace/TFW_20260913-151442_RWNR/phase-b/journal/20260914-021737__transition__c1b0.md	expected=b832e5e0002e294d3c4b45ace27a6e795f524936	observed=b832e5e0002e294d3c4b45ace27a6e795f524936	ok=True
+workspace/TFW_20260913-151442_RWNR/phase-b/journal/20260914-081032__transition__3333.md	expected=308ad626a5c24b7b48b33062949adeee3542044a	observed=308ad626a5c24b7b48b33062949adeee3542044a	ok=True
+workspace/TFW_20260913-151442_RWNR/phase-b/journal/20260914-081515__dispatch__8a9a.md	expected=81f9a32dd242315a22a5ad38f193ba2c4daacb73	observed=81f9a32dd242315a22a5ad38f193ba2c4daacb73	ok=True
+workspace/TFW_20260913-151442_RWNR/phase-b/journal/20260914-082039__handoff__156b.md	expected=2153695a7d00b40667500a781d54cfe4f8faea37	observed=2153695a7d00b40667500a781d54cfe4f8faea37	ok=True
+workspace/TFW_20260913-151442_RWNR/phase-b/journal/20260914-095800__transition__a07a.md	expected=2279a04a1702bd7e3d9eb53f5837ced0e874043e	observed=2279a04a1702bd7e3d9eb53f5837ced0e874043e	ok=True
+workspace/TFW_20260913-151442_RWNR/phase-b/journal/20260914-100615__dispatch__727a.md	expected=80075909cf2a1870e61648adbc07cc484ace43ab	observed=80075909cf2a1870e61648adbc07cc484ace43ab	ok=True
+workspace/TFW_20260913-151442_RWNR/phase-b/journal/20260914-103334__dispatch__8fa9.md	expected=cdd7d8604f0a370fd3a471f022aec2762484d18c	observed=cdd7d8604f0a370fd3a471f022aec2762484d18c	ok=True
+workspace/TFW_20260913-151442_RWNR/phase-b/journal/20260914-103959__handoff__f5ba.md	expected=936788b14066702eccd211220f65ce5b1b78c051	observed=936788b14066702eccd211220f65ce5b1b78c051	ok=True
+workspace/TFW_20260913-151442_RWNR/phase-b/journal/20260914-114202__transition__40b2.md	expected=d0940fd39050d34d4d31f239c0605d5c3a38077c	observed=d0940fd39050d34d4d31f239c0605d5c3a38077c	ok=True
+workspace/TFW_20260913-151442_RWNR/phase-b/journal/20260914-114643__dispatch__32a4.md	expected=ef7cc2ed407c63a481681ac9f2de17006d87ce30	observed=ef7cc2ed407c63a481681ac9f2de17006d87ce30	ok=True
+workspace/TFW_20260913-151442_RWNR/phase-b/journal/20260914-114957__transition__a6c1.md	expected=b6693c69bf0ed7f60fafd8132c615584601f5148	observed=b6693c69bf0ed7f60fafd8132c615584601f5148	ok=True
+workspace/TFW_20260913-151442_RWNR/phase-b/journal/20260914-121704__transition__7308.md	expected=4e622bef162f1927f224f083183104d3492e1275	observed=4e622bef162f1927f224f083183104d3492e1275	ok=True
+workspace/TFW_20260913-151442_RWNR/phase-b/journal/20260914-121917__dispatch__ca23.md	expected=67de3c6c78fa277a7ba99c25f5303960a019f7cc	observed=67de3c6c78fa277a7ba99c25f5303960a019f7cc	ok=True
+workspace/TFW_20260913-151442_RWNR/phase-b/journal/20260914-122752__handoff__d213.md	expected=16fc55d09824460f0ed8c36a88cc7fa3b4b8471b	observed=16fc55d09824460f0ed8c36a88cc7fa3b4b8471b	ok=True
+workspace/TFW_20260913-151442_RWNR/phase-b/journal/20260914-131552__transition__034e.md	expected=08f76f9269c6542ecb02db30a30502a74094d578	observed=08f76f9269c6542ecb02db30a30502a74094d578	ok=True
+workspace/TFW_20260913-151442_RWNR/phase-b/journal/20260914-132455__dispatch__bd48.md	expected=934830185edf37fe5084799a109b2d4751c233d7	observed=934830185edf37fe5084799a109b2d4751c233d7	ok=True
+workspace/TFW_20260913-151442_RWNR/phase-b/journal/20260914-132928__transition__3654.md	expected=3f5c6e70c5921c253d8f6ec5229308a40252f7ba	observed=3f5c6e70c5921c253d8f6ec5229308a40252f7ba	ok=True
+workspace/TFW_20260913-151442_RWNR/phase-b/journal/20260914-133959__transition__c9ad.md	expected=ce400f37d0fe1370e8621c21860d22829455e8b8	observed=ce400f37d0fe1370e8621c21860d22829455e8b8	ok=True
+workspace/TFW_20260913-151442_RWNR/phase-b/review/judge.md	expected=72b503d793922bb548c0561f030bb6f34a2b1ec3	observed=72b503d793922bb548c0561f030bb6f34a2b1ec3	ok=True
+workspace/TFW_20260913-151442_RWNR/phase-b/review/map.md	expected=425c73e758d9ff809f7aa044ecaab90c21c7ee57	observed=425c73e758d9ff809f7aa044ecaab90c21c7ee57	ok=True
+workspace/TFW_20260913-151442_RWNR/phase-b/review/verify.md	expected=c49d70af01192e8c5786b3b968bf9c6dd9c70294	observed=c49d70af01192e8c5786b3b968bf9c6dd9c70294	ok=True
+workspace/TFW_20260913-151442_RWNR/phase-b/status.md	expected=25a9f45e9960f9410c329ebf2c61598d34f9d8cc	observed=25a9f45e9960f9410c329ebf2c61598d34f9d8cc	ok=True
+workspace/TFW_20260913-151442_RWNR/phase-b/journal/20260914-135536__dispatch__f764.md	expected=723e6ccb0a54264fff4eb54270b48e51b43b055d	observed=723e6ccb0a54264fff4eb54270b48e51b43b055d	ok=True
+BLOB_PARITY_END
+blob_mismatch_count: 0
+TRACE_TRANSFER_AUDIT_END
+
+
+TRACE_INITIAL_STAGED=37
+TRACE_INITIAL_MISSING=0
+TRACE_INITIAL_EXTRA=0
+A	workspace/TFW_20260913-151442_RWNR/phase-b/ONB__phase-b__resume_surface_retirement.md
+A	workspace/TFW_20260913-151442_RWNR/phase-b/REVIEW__phase-b__resume_surface_retirement.md
+A	workspace/TFW_20260913-151442_RWNR/phase-b/RF__phase-b__resume_surface_retirement.md
+A	workspace/TFW_20260913-151442_RWNR/phase-b/TS__phase-b__resume_surface_retirement__rev2.md
+A	workspace/TFW_20260913-151442_RWNR/phase-b/evidence/EV__phase-b__resume_surface_retirement.md
+A	workspace/TFW_20260913-151442_RWNR/phase-b/evidence/phase-b-accounting.json
+A	workspace/TFW_20260913-151442_RWNR/phase-b/evidence/phase-b-candidate-boundary-round4.txt
+A	workspace/TFW_20260913-151442_RWNR/phase-b/evidence/phase-b-full-round4.txt
+A	workspace/TFW_20260913-151442_RWNR/phase-b/evidence/phase-b-history.json
+A	workspace/TFW_20260913-151442_RWNR/phase-b/evidence/phase-b-receivers.json
+A	workspace/TFW_20260913-151442_RWNR/phase-b/evidence/phase-b-surface.json
+A	workspace/TFW_20260913-151442_RWNR/phase-b/evidence/phase-b-targeted-round4.txt
+A	workspace/TFW_20260913-151442_RWNR/phase-b/evidence/phase-b-tests.txt
+A	workspace/TFW_20260913-151442_RWNR/phase-b/journal/20260914-003207__handoff__bb05.md
+A	workspace/TFW_20260913-151442_RWNR/phase-b/journal/20260914-021737__transition__c1b0.md
+A	workspace/TFW_20260913-151442_RWNR/phase-b/journal/20260914-081032__transition__3333.md
+A	workspace/TFW_20260913-151442_RWNR/phase-b/journal/20260914-081515__dispatch__8a9a.md
+A	workspace/TFW_20260913-151442_RWNR/phase-b/journal/20260914-082039__handoff__156b.md
+A	workspace/TFW_20260913-151442_RWNR/phase-b/journal/20260914-095800__transition__a07a.md
+A	workspace/TFW_20260913-151442_RWNR/phase-b/journal/20260914-100615__dispatch__727a.md
+A	workspace/TFW_20260913-151442_RWNR/phase-b/journal/20260914-103334__dispatch__8fa9.md
+A	workspace/TFW_20260913-151442_RWNR/phase-b/journal/20260914-103959__handoff__f5ba.md
+A	workspace/TFW_20260913-151442_RWNR/phase-b/journal/20260914-114202__transition__40b2.md
+A	workspace/TFW_20260913-151442_RWNR/phase-b/journal/20260914-114643__dispatch__32a4.md
+A	workspace/TFW_20260913-151442_RWNR/phase-b/journal/20260914-114957__transition__a6c1.md
+A	workspace/TFW_20260913-151442_RWNR/phase-b/journal/20260914-121704__transition__7308.md
+A	workspace/TFW_20260913-151442_RWNR/phase-b/journal/20260914-121917__dispatch__ca23.md
+A	workspace/TFW_20260913-151442_RWNR/phase-b/journal/20260914-122752__handoff__d213.md
+A	workspace/TFW_20260913-151442_RWNR/phase-b/journal/20260914-131552__transition__034e.md
+A	workspace/TFW_20260913-151442_RWNR/phase-b/journal/20260914-132455__dispatch__bd48.md
+A	workspace/TFW_20260913-151442_RWNR/phase-b/journal/20260914-132928__transition__3654.md
+A	workspace/TFW_20260913-151442_RWNR/phase-b/journal/20260914-133959__transition__c9ad.md
+A	workspace/TFW_20260913-151442_RWNR/phase-b/journal/20260914-135536__dispatch__f764.md
+A	workspace/TFW_20260913-151442_RWNR/phase-b/review/judge.md
+A	workspace/TFW_20260913-151442_RWNR/phase-b/review/map.md
+A	workspace/TFW_20260913-151442_RWNR/phase-b/review/verify.md
+M	workspace/TFW_20260913-151442_RWNR/phase-b/status.md
+WORKTREE_REMAINDER_BEGIN
+
+?? workspace/TFW_20260913-151442_RWNR/phase-b/evidence/phase-b-landing-targeted-attempt1.txt
+WORKTREE_REMAINDER_END
+MASTER=3fd16fd1549a3f92006e8f37102df4a511b8aa55
+CANDIDATE=3c354ba29d525ccb4e7683c5c477290682b90a5a

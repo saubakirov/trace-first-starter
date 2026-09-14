@@ -1,0 +1,35 @@
+TFW RWNR Phase B landing targeted attempt 1
+candidate: 3c354ba29d525ccb4e7683c5c477290682b90a5a
+master: 3fd16fd1549a3f92006e8f37102df4a511b8aa55
+command: python -m pytest docs/scripts/test_runtime_context.py docs/scripts/test_repository_contracts.py docs/scripts/test_command_entry_eval.py -q
+exit_code: 1
+disposition: preserved failed receipt; failure caused by transferred tracked TRACE status.md remaining unstaged during candidate-scope oracle selection
+
+OUTPUT_BEGIN
+........................................................................ [ 17%]
+........................................................................ [ 34%]
+........................................................................ [ 51%]
+........................................................................ [ 68%]
+........................................................................ [ 85%]
+............F...............................................             [100%]
+================================== FAILURES ===================================
+__ test_rwnr_phase_b_surface_selector_manifest_absence_and_mutants_are_exact __
+
+    def test_rwnr_phase_b_surface_selector_manifest_absence_and_mutants_are_exact():
+        record = rwnr_phase_b_surface_record()
+        assert record["approval_ts_blob"] == record["expected_ts_blob"]
+        assert record["action_map_exact"] and (record["delete_count"], record["modify_count"]) == (5, 25)
+        assert record["manifest_commands"] == list(RWNR_PHASE_B_COMMANDS)
+        assert record["evaluator_contract"] == {
+            "commands": RWNR_PHASE_B_COMMANDS, "refusal_count": 10, "resume_absent": True}
+        assert record["excluded_test_unchanged"]
+        assert not record["errors"] and not record["unclassified_live_matches"]
+>       assert record["implementation_scope_exact"] and record["plan_unchanged_from_baseline"]
+E       assert (False)
+
+docs\scripts\test_repository_contracts.py:4135: AssertionError
+=========================== short test summary info ===========================
+FAILED docs/scripts/test_repository_contracts.py::test_rwnr_phase_b_surface_selector_manifest_absence_and_mutants_are_exact
+1 failed, 419 passed in 530.98s (0:08:50)
+
+OUTPUT_END

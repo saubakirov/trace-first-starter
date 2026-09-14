@@ -1,0 +1,20 @@
+TFW RWNR Phase B landing Candidate-bound targeted verification
+verification_checkout: C:\Users\c0rpa\.codex\worktrees\1923\rwnr-candidate-verify
+candidate_expected: 3c354ba29d525ccb4e7683c5c477290682b90a5a
+candidate_observed: 3c354ba29d525ccb4e7683c5c477290682b90a5a
+master_expected: 3fd16fd1549a3f92006e8f37102df4a511b8aa55
+checkout_status_before: clean
+checkout_status_after: clean
+command: python -m pytest docs/scripts/test_runtime_context.py docs/scripts/test_repository_contracts.py docs/scripts/test_command_entry_eval.py -q
+exit_code: 0
+
+OUTPUT_BEGIN
+........................................................................ [ 17%]
+........................................................................ [ 34%]
+........................................................................ [ 51%]
+........................................................................ [ 68%]
+........................................................................ [ 85%]
+............................................................             [100%]
+420 passed in 587.26s (0:09:47)
+
+OUTPUT_END

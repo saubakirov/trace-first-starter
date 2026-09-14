@@ -1,0 +1,479 @@
+{
+  "baseline": "d366bb1d6d70cf457acba84d4b5aafeb5c5f5b14",
+  "candidate": "6d3f3890ece2f357ab6353d4fd15a28fe4f3767c",
+  "selector_approval": "8920124c851fdeff6e3b77cfb729d9ca7ffbe73c",
+  "selector_ts_blob": "108863dd978b9e65b713f9d2feb99a8263c16857",
+  "value_numstat": [
+    {
+      "path": ".agent/rules/agents.md",
+      "additions": 0,
+      "deletions": 1
+    },
+    {
+      "path": ".agents/rules/tfw.md",
+      "additions": 1,
+      "deletions": 1
+    },
+    {
+      "path": ".agents/skills/tfw-resume/SKILL.md",
+      "additions": 0,
+      "deletions": 19
+    },
+    {
+      "path": ".agents/workflows/tfw-init.md",
+      "additions": 2,
+      "deletions": 2
+    },
+    {
+      "path": ".agents/workflows/tfw-resume.md",
+      "additions": 0,
+      "deletions": 83
+    },
+    {
+      "path": ".agents/workflows/tfw-update.md",
+      "additions": 1,
+      "deletions": 1
+    },
+    {
+      "path": ".claude/commands/tfw-init.md",
+      "additions": 2,
+      "deletions": 2
+    },
+    {
+      "path": ".claude/commands/tfw-resume.md",
+      "additions": 0,
+      "deletions": 83
+    },
+    {
+      "path": ".claude/commands/tfw-update.md",
+      "additions": 1,
+      "deletions": 1
+    },
+    {
+      "path": ".tfw/adapters/README.md",
+      "additions": 2,
+      "deletions": 2
+    },
+    {
+      "path": ".tfw/adapters/antigravity/README.md",
+      "additions": 2,
+      "deletions": 2
+    },
+    {
+      "path": ".tfw/adapters/antigravity/tfw-rules.md.template",
+      "additions": 1,
+      "deletions": 1
+    },
+    {
+      "path": ".tfw/adapters/claude-code/CLAUDE.md.template",
+      "additions": 0,
+      "deletions": 1
+    },
+    {
+      "path": ".tfw/adapters/claude-code/README.md",
+      "additions": 2,
+      "deletions": 2
+    },
+    {
+      "path": ".tfw/adapters/codex/AGENTS.md.template",
+      "additions": 0,
+      "deletions": 1
+    },
+    {
+      "path": ".tfw/adapters/codex/README.md",
+      "additions": 3,
+      "deletions": 3
+    },
+    {
+      "path": ".tfw/adapters/codex/skills/tfw-resume/SKILL.md",
+      "additions": 0,
+      "deletions": 19
+    },
+    {
+      "path": ".tfw/adapters/cursor/tfw.mdc.template",
+      "additions": 1,
+      "deletions": 1
+    },
+    {
+      "path": ".tfw/adapters/manifest.yaml",
+      "additions": 0,
+      "deletions": 4
+    },
+    {
+      "path": ".tfw/conventions.md",
+      "additions": 1,
+      "deletions": 4
+    },
+    {
+      "path": ".tfw/project_config.yaml",
+      "additions": 0,
+      "deletions": 1
+    },
+    {
+      "path": ".tfw/templates/project_config.yaml",
+      "additions": 0,
+      "deletions": 1
+    },
+    {
+      "path": ".tfw/workflows/init.md",
+      "additions": 2,
+      "deletions": 2
+    },
+    {
+      "path": ".tfw/workflows/resume.md",
+      "additions": 0,
+      "deletions": 83
+    },
+    {
+      "path": ".tfw/workflows/update.md",
+      "additions": 1,
+      "deletions": 1
+    },
+    {
+      "path": "AGENTS.md",
+      "additions": 0,
+      "deletions": 1
+    },
+    {
+      "path": "CLAUDE.md",
+      "additions": 0,
+      "deletions": 1
+    },
+    {
+      "path": "README.kk.md",
+      "additions": 1,
+      "deletions": 1
+    },
+    {
+      "path": "README.md",
+      "additions": 1,
+      "deletions": 1
+    },
+    {
+      "path": "README.ru.md",
+      "additions": 1,
+      "deletions": 1
+    }
+  ],
+  "logical_value_files": 30,
+  "additions": 25,
+  "deletions": 326,
+  "touched_text_loc": 351,
+  "approved_denominator": {
+    "files": 30,
+    "loc": 650
+  },
+  "action_counts": {
+    "DELETE": 5,
+    "MODIFY": 25
+  },
+  "baseline_operands": {
+    "plan": 2021,
+    "resume": 716,
+    "total": 2737
+  },
+  "candidate_plan_words": 1199,
+  "candidate_added_line_words": {
+    ".agent/rules/agents.md": 0,
+    ".tfw/adapters/antigravity/tfw-rules.md.template": 11,
+    ".tfw/adapters/claude-code/CLAUDE.md.template": 0,
+    ".tfw/adapters/codex/AGENTS.md.template": 0,
+    ".tfw/adapters/codex/README.md": 39,
+    ".tfw/adapters/cursor/tfw.mdc.template": 11,
+    ".tfw/adapters/manifest.yaml": 0,
+    ".tfw/conventions.md": 16,
+    ".tfw/project_config.yaml": 0,
+    ".tfw/templates/project_config.yaml": 0,
+    "README.kk.md": 39,
+    "README.md": 42,
+    "README.ru.md": 39,
+    ".tfw/workflows/init.md": 30,
+    ".tfw/workflows/update.md": 14,
+    ".tfw/adapters/README.md": 27,
+    ".tfw/adapters/claude-code/README.md": 27,
+    ".tfw/adapters/antigravity/README.md": 29
+  },
+  "candidate_surface_c": 1523,
+  "copy_parity": {
+    ".agents/workflows/tfw-plan.md": true,
+    ".claude/commands/tfw-plan.md": true,
+    ".agents/workflows/tfw-init.md": true,
+    ".claude/commands/tfw-init.md": true,
+    ".agents/workflows/tfw-update.md": true,
+    ".claude/commands/tfw-update.md": true,
+    ".agents/rules/tfw.md": true
+  },
+  "managed_block_parity": {
+    "AGENTS.md": true,
+    "CLAUDE.md": true
+  },
+  "instruction_changes": [
+    ".agent/rules/agents.md",
+    ".agents/rules/tfw.md",
+    ".agents/skills/tfw-resume/SKILL.md",
+    ".agents/workflows/tfw-init.md",
+    ".agents/workflows/tfw-plan.md",
+    ".agents/workflows/tfw-resume.md",
+    ".agents/workflows/tfw-update.md",
+    ".claude/commands/tfw-init.md",
+    ".claude/commands/tfw-plan.md",
+    ".claude/commands/tfw-resume.md",
+    ".claude/commands/tfw-update.md",
+    ".tfw/adapters/README.md",
+    ".tfw/adapters/antigravity/README.md",
+    ".tfw/adapters/antigravity/tfw-rules.md.template",
+    ".tfw/adapters/claude-code/CLAUDE.md.template",
+    ".tfw/adapters/claude-code/README.md",
+    ".tfw/adapters/codex/AGENTS.md.template",
+    ".tfw/adapters/codex/README.md",
+    ".tfw/adapters/codex/skills/tfw-resume/SKILL.md",
+    ".tfw/adapters/cursor/tfw.mdc.template",
+    ".tfw/adapters/manifest.yaml",
+    ".tfw/conventions.md",
+    ".tfw/project_config.yaml",
+    ".tfw/templates/project_config.yaml",
+    ".tfw/workflows/init.md",
+    ".tfw/workflows/plan.md",
+    ".tfw/workflows/resume.md",
+    ".tfw/workflows/update.md",
+    "AGENTS.md",
+    "CLAUDE.md",
+    "README.kk.md",
+    "README.md",
+    "README.ru.md"
+  ],
+  "unclassified_instruction_changes": [],
+  "trigger_disposition": "30/650 below 50/5000; connected surface remains one phase",
+  "owner_return_threshold": {
+    "files": 60,
+    "loc": 1300
+  },
+  "terminal_verdict": "METRICS_PASS__CONFIGURED_GATE_BLOCKED",
+  "revision_2_validation": {
+    "revision": 2,
+    "candidate": "6d6d094ac5325377772f26ddf314b965c1dfd135",
+    "baseline": "d366bb1d6d70cf457acba84d4b5aafeb5c5f5b14",
+    "selector_freeze": "e5efd3e608975184995d254bc5eb84176b8b4451",
+    "selector_ts_blob": "8c06e15e3ad8211195f2d48314d055ad1f111979",
+    "exact_value_membership": [
+      {
+        "action": "M",
+        "path": ".agent/rules/agents.md"
+      },
+      {
+        "action": "M",
+        "path": ".agents/rules/tfw.md"
+      },
+      {
+        "action": "D",
+        "path": ".agents/skills/tfw-resume/SKILL.md"
+      },
+      {
+        "action": "M",
+        "path": ".agents/workflows/tfw-init.md"
+      },
+      {
+        "action": "D",
+        "path": ".agents/workflows/tfw-resume.md"
+      },
+      {
+        "action": "M",
+        "path": ".agents/workflows/tfw-update.md"
+      },
+      {
+        "action": "M",
+        "path": ".claude/commands/tfw-init.md"
+      },
+      {
+        "action": "D",
+        "path": ".claude/commands/tfw-resume.md"
+      },
+      {
+        "action": "M",
+        "path": ".claude/commands/tfw-update.md"
+      },
+      {
+        "action": "M",
+        "path": ".tfw/adapters/README.md"
+      },
+      {
+        "action": "M",
+        "path": ".tfw/adapters/antigravity/README.md"
+      },
+      {
+        "action": "M",
+        "path": ".tfw/adapters/antigravity/tfw-rules.md.template"
+      },
+      {
+        "action": "M",
+        "path": ".tfw/adapters/claude-code/CLAUDE.md.template"
+      },
+      {
+        "action": "M",
+        "path": ".tfw/adapters/claude-code/README.md"
+      },
+      {
+        "action": "M",
+        "path": ".tfw/adapters/codex/AGENTS.md.template"
+      },
+      {
+        "action": "M",
+        "path": ".tfw/adapters/codex/README.md"
+      },
+      {
+        "action": "D",
+        "path": ".tfw/adapters/codex/skills/tfw-resume/SKILL.md"
+      },
+      {
+        "action": "M",
+        "path": ".tfw/adapters/cursor/tfw.mdc.template"
+      },
+      {
+        "action": "M",
+        "path": ".tfw/adapters/manifest.yaml"
+      },
+      {
+        "action": "M",
+        "path": ".tfw/conventions.md"
+      },
+      {
+        "action": "M",
+        "path": ".tfw/project_config.yaml"
+      },
+      {
+        "action": "M",
+        "path": ".tfw/templates/project_config.yaml"
+      },
+      {
+        "action": "M",
+        "path": ".tfw/workflows/init.md"
+      },
+      {
+        "action": "D",
+        "path": ".tfw/workflows/resume.md"
+      },
+      {
+        "action": "M",
+        "path": ".tfw/workflows/update.md"
+      },
+      {
+        "action": "M",
+        "path": "AGENTS.md"
+      },
+      {
+        "action": "M",
+        "path": "CLAUDE.md"
+      },
+      {
+        "action": "M",
+        "path": "README.kk.md"
+      },
+      {
+        "action": "M",
+        "path": "README.md"
+      },
+      {
+        "action": "M",
+        "path": "README.ru.md"
+      }
+    ],
+    "exact_assurance_membership": [
+      {
+        "action": "M",
+        "path": "docs/scripts/command_entry_eval.py"
+      },
+      {
+        "action": "M",
+        "path": "docs/scripts/test_repository_contracts.py"
+      },
+      {
+        "action": "M",
+        "path": "docs/scripts/test_runtime_context.py"
+      }
+    ],
+    "logical_value_files": 30,
+    "value_action_counts": {
+      "DELETE": 5,
+      "MODIFY": 25
+    },
+    "additions": 25,
+    "deletions": 326,
+    "touched_text_loc": 351,
+    "approved_denominator": {
+      "files": 30,
+      "loc": 650
+    },
+    "owner_return_threshold": {
+      "files": 60,
+      "loc": 1300
+    },
+    "baseline_operands": {
+      "plan": 2021,
+      "resume": 716,
+      "total": 2737
+    },
+    "candidate_plan_words": 1199,
+    "candidate_surface_c": 1523,
+    "unclassified_instruction_changes": [],
+    "trigger_disposition": "30/351 is below 30/650 and configured 50/5000; connected surface remains one phase",
+    "exact_nul_safe_method": [
+      "git diff --name-status --find-renames=50% -z <baseline> <candidate> -- <30 literal VALUE paths>",
+      "git diff --numstat --find-renames=50% -z <baseline> <candidate> -- <30 literal VALUE paths>"
+    ],
+    "candidate_bound_tests": {
+      "prefreeze_targeted": "388 passed in 407.67s",
+      "prefreeze_full": "626 passed, 1 skipped in 644.22s",
+      "candidate_targeted": "388 passed in 468.15s",
+      "candidate_collect": "627 tests collected in 0.24s",
+      "candidate_full": "626 passed, 1 skipped in 823.51s",
+      "candidate_focused_command_entry": "31 passed in 65.17s",
+      "candidate_state": "32 passed in 0.42s"
+    },
+    "terminal_verdict": "METRICS_PASS__ALL_REQUIRED_GATES_PASS"
+  },
+  "return_round_4_validation": {
+    "candidate": "51ea3015290393da001810629f305f5969f4c8b8",
+    "candidate_parent": "41a70febc6d33d369af125d7ad2ecf98a2de0761",
+    "reference_implementation_candidate": "a81e0c12ec982ee4f73639ebf15394ef53877294",
+    "reference_approved_path_count": 33,
+    "reference_byte_mismatch_count": 0,
+    "selector_approval": "e5efd3e608975184995d254bc5eb84176b8b4451",
+    "selector_ts_blob": "8c06e15e3ad8211195f2d48314d055ad1f111979",
+    "logical_value_files": 30,
+    "value_action_counts": {
+      "DELETE": 5,
+      "MODIFY": 25
+    },
+    "assurance_modify_files": 3,
+    "additions": 25,
+    "deletions": 326,
+    "touched_text_loc": 351,
+    "approved_denominator": {
+      "files": 30,
+      "loc": 650
+    },
+    "baseline_operands": {
+      "plan": 2021,
+      "resume": 716,
+      "total": 2737
+    },
+    "candidate_plan_words": 1199,
+    "candidate_surface_c": 1523,
+    "unclassified_instruction_changes": [],
+    "copy_parity_all": true,
+    "managed_block_parity_all": true,
+    "excluded_test_blob_candidate": "7f195b31c622ac8cdbd7dad0a0f2e9ae7fa7a539",
+    "excluded_test_blob_parent": "7f195b31c622ac8cdbd7dad0a0f2e9ae7fa7a539",
+    "candidate_boundary_receipt": "phase-b-candidate-boundary-round4.txt",
+    "candidate_boundary_sha256": "4c3350df1a496af6de502c10f2dd9ca773a4872167ca53d573008831bc476530",
+    "candidate_bound_tests": {
+      "targeted": "392 passed in 428.13s (0:07:08)",
+      "configured_collect": "631 tests collected in 0.23s",
+      "configured_full": "630 passed, 1 skipped in 743.11s (0:12:23)",
+      "focused_command_entry": "31 passed in 53.41s",
+      "state": "32 passed in 0.32s"
+    },
+    "trigger_disposition": "30/351 remains within immutable 30/650 and configured 50/5000; connected surface remains one phase",
+    "terminal_verdict": "METRICS_PASS__ALL_REQUIRED_GATES_PASS__EXACT_PATH_PROCESS_PASS"
+  }
+}

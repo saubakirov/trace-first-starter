@@ -1,0 +1,626 @@
+{
+  "connected_clean": {
+    "first": {
+      "status": "APPLIED",
+      "subjects": [
+        "config",
+        "antigravity",
+        "claude-code",
+        "codex",
+        "cursor"
+      ],
+      "all_preflight_before_write": true,
+      "preflight": {
+        "config": "OWNED_EXACT",
+        "compatibility_root": "OWNED_BLOCK",
+        "antigravity": {
+          "resume_destination": "OWNED_EXACT",
+          "persistent_root": "OWNED_EXACT"
+        },
+        "claude-code": {
+          "resume_destination": "OWNED_EXACT",
+          "persistent_root": "OWNED_BLOCK"
+        },
+        "codex": {
+          "resume_destination": "OWNED_EXACT",
+          "persistent_root": "OWNED_BLOCK"
+        },
+        "cursor": {
+          "resume_destination": "ABSENT",
+          "persistent_root": "OWNED_EXACT"
+        }
+      },
+      "adapter_results": {
+        "antigravity": {
+          "adapter": "antigravity",
+          "status": "APPLIED",
+          "classes": {
+            "resume_destination": "OWNED_EXACT",
+            "persistent_root": "OWNED_EXACT"
+          },
+          "commands": 10,
+          "ten_unique_commands": true,
+          "resume_absent": true,
+          "all_targets_present": true,
+          "changed": true
+        },
+        "claude-code": {
+          "adapter": "claude-code",
+          "status": "APPLIED",
+          "classes": {
+            "resume_destination": "OWNED_EXACT",
+            "persistent_root": "OWNED_BLOCK"
+          },
+          "commands": 10,
+          "ten_unique_commands": true,
+          "resume_absent": true,
+          "all_targets_present": true,
+          "changed": true
+        },
+        "codex": {
+          "adapter": "codex",
+          "status": "APPLIED",
+          "classes": {
+            "resume_destination": "OWNED_EXACT",
+            "persistent_root": "OWNED_BLOCK"
+          },
+          "commands": 10,
+          "ten_unique_commands": true,
+          "resume_absent": true,
+          "all_targets_present": true,
+          "changed": true
+        },
+        "cursor": {
+          "adapter": "cursor",
+          "status": "APPLIED",
+          "classes": {
+            "resume_destination": "ABSENT",
+            "persistent_root": "OWNED_EXACT"
+          },
+          "commands": 10,
+          "ten_unique_commands": true,
+          "resume_absent": true,
+          "all_targets_present": true,
+          "changed": true
+        }
+      },
+      "pre_sha256": "7fc865e3986afba077e798936dcdbee379b3de26f696e10da2383032e4849a5f",
+      "post_sha256": "fc46b2e623c77ac17e9fcc68ba97f1aea0136c0812480c5164ff9c5e589b7ed9",
+      "whole_connected_group_unchanged": false,
+      "four_adapters": true,
+      "ten_unique_commands_each": true,
+      "all_targets_present": true
+    },
+    "second": {
+      "status": "APPLIED",
+      "subjects": [
+        "config",
+        "antigravity",
+        "claude-code",
+        "codex",
+        "cursor"
+      ],
+      "all_preflight_before_write": true,
+      "preflight": {
+        "config": "TARGET_CURRENT",
+        "compatibility_root": "TARGET_CURRENT",
+        "antigravity": {
+          "resume_destination": "ABSENT",
+          "persistent_root": "TARGET_CURRENT"
+        },
+        "claude-code": {
+          "resume_destination": "ABSENT",
+          "persistent_root": "TARGET_CURRENT"
+        },
+        "codex": {
+          "resume_destination": "ABSENT",
+          "persistent_root": "TARGET_CURRENT"
+        },
+        "cursor": {
+          "resume_destination": "ABSENT",
+          "persistent_root": "TARGET_CURRENT"
+        }
+      },
+      "adapter_results": {
+        "antigravity": {
+          "adapter": "antigravity",
+          "status": "APPLIED",
+          "classes": {
+            "resume_destination": "ABSENT",
+            "persistent_root": "TARGET_CURRENT"
+          },
+          "commands": 10,
+          "ten_unique_commands": true,
+          "resume_absent": true,
+          "all_targets_present": true,
+          "changed": false
+        },
+        "claude-code": {
+          "adapter": "claude-code",
+          "status": "APPLIED",
+          "classes": {
+            "resume_destination": "ABSENT",
+            "persistent_root": "TARGET_CURRENT"
+          },
+          "commands": 10,
+          "ten_unique_commands": true,
+          "resume_absent": true,
+          "all_targets_present": true,
+          "changed": false
+        },
+        "codex": {
+          "adapter": "codex",
+          "status": "APPLIED",
+          "classes": {
+            "resume_destination": "ABSENT",
+            "persistent_root": "TARGET_CURRENT"
+          },
+          "commands": 10,
+          "ten_unique_commands": true,
+          "resume_absent": true,
+          "all_targets_present": true,
+          "changed": false
+        },
+        "cursor": {
+          "adapter": "cursor",
+          "status": "APPLIED",
+          "classes": {
+            "resume_destination": "ABSENT",
+            "persistent_root": "TARGET_CURRENT"
+          },
+          "commands": 10,
+          "ten_unique_commands": true,
+          "resume_absent": true,
+          "all_targets_present": true,
+          "changed": false
+        }
+      },
+      "pre_sha256": "fc46b2e623c77ac17e9fcc68ba97f1aea0136c0812480c5164ff9c5e589b7ed9",
+      "post_sha256": "fc46b2e623c77ac17e9fcc68ba97f1aea0136c0812480c5164ff9c5e589b7ed9",
+      "whole_connected_group_unchanged": true,
+      "four_adapters": true,
+      "ten_unique_commands_each": true,
+      "all_targets_present": true
+    },
+    "second_run_empty_diff": true
+  },
+  "cross_adapter_foreign": {
+    "status": "REFUSED",
+    "subjects": [
+      "config",
+      "antigravity",
+      "claude-code",
+      "codex",
+      "cursor"
+    ],
+    "all_preflight_before_write": true,
+    "preflight": {
+      "config": "OWNED_EXACT",
+      "compatibility_root": "OWNED_BLOCK",
+      "antigravity": {
+        "resume_destination": "OWNED_EXACT",
+        "persistent_root": "OWNED_EXACT"
+      },
+      "claude-code": {
+        "resume_destination": "FOREIGN_OR_DRIFTED",
+        "persistent_root": "OWNED_BLOCK"
+      },
+      "codex": {
+        "resume_destination": "OWNED_EXACT",
+        "persistent_root": "OWNED_BLOCK"
+      },
+      "cursor": {
+        "resume_destination": "OWNED_EXACT",
+        "persistent_root": "OWNED_EXACT"
+      }
+    },
+    "adapter_results": {},
+    "pre_sha256": "be30bb0c39be0b4fe90603d8602dce79c59c3300d18895a00005c9674d28cf1d",
+    "post_sha256": "be30bb0c39be0b4fe90603d8602dce79c59c3300d18895a00005c9674d28cf1d",
+    "whole_connected_group_unchanged": true,
+    "old_exact_earlier_adapter": "antigravity",
+    "old_exact_earlier_class": "OWNED_EXACT",
+    "foreign_later_adapter": "claude-code",
+    "foreign_later_class": "FOREIGN_OR_DRIFTED",
+    "observed_pre_sha256": "be30bb0c39be0b4fe90603d8602dce79c59c3300d18895a00005c9674d28cf1d",
+    "observed_post_sha256": "be30bb0c39be0b4fe90603d8602dce79c59c3300d18895a00005c9674d28cf1d"
+  },
+  "unmarked_singular_root": "FOREIGN_OR_DRIFTED",
+  "config": {
+    "default": "OWNED_EXACT",
+    "target": "TARGET_CURRENT",
+    "custom": "FOREIGN_OR_DRIFTED"
+  },
+  "synthetic_pinned_target": {
+    "version": "9.9.9-rwnr-test",
+    "evidence_only": true,
+    "guide": ".tfw/migrations/9.9.9-rwnr-test.md",
+    "guide_sha256": "c81aea37232a2511c3a579fb9d7835df2f5657953aa26d40d9305b343d0fbeed",
+    "commit": "ca53f610a70360ea06d1d3a94c6789e94507ff72",
+    "old_source_identities": {
+      ".tfw/workflows/resume.md": "31f31594e0b2146c1df71132c4481a3b711ea508",
+      ".tfw/adapters/codex/skills/tfw-resume/SKILL.md": "356e856a811c22f04fce2f1af9c9d7e5ed814146"
+    }
+  },
+  "outcome_classes": [
+    "ABSENT",
+    "FOREIGN_OR_DRIFTED",
+    "OWNED_BLOCK",
+    "OWNED_EXACT",
+    "TARGET_CURRENT"
+  ],
+  "phase": "Phase B executable owned-only retirement assurance; synthetic version only",
+  "candidate": "6d3f3890ece2f357ab6353d4fd15a28fe4f3767c",
+  "configured_gate": "BLOCKED_OUT_OF_SCOPE_COMMAND_ENTRY_EVAL",
+  "revision_2_validation": {
+    "revision": 2,
+    "candidate": "6d6d094ac5325377772f26ddf314b965c1dfd135",
+    "selector_ts_blob": "8c06e15e3ad8211195f2d48314d055ad1f111979",
+    "detailed_receipt_epoch": "revision 1 rejected Candidate receipt retained in this object",
+    "reuse_basis": {
+      "prior_candidate": "6d3f3890ece2f357ab6353d4fd15a28fe4f3767c",
+      "all_30_value_inputs_byte_identical": true,
+      "relevant_assurance_oracle": "docs/scripts/test_repository_contracts.py::test_rwnr_phase_b_receiver_update_is_versioned_owned_only_and_atomic",
+      "environment": "real temporary receiver trees; synthetic pinned guide remains evidence-only",
+      "candidate_bound_oracle_passed_twice": true
+    },
+    "required_classes": [
+      "ABSENT",
+      "OWNED_BLOCK",
+      "OWNED_EXACT",
+      "TARGET_CURRENT",
+      "FOREIGN_OR_DRIFTED"
+    ],
+    "clean_group_status": "APPLIED",
+    "foreign_group_status": "REFUSED",
+    "whole_connected_group_unchanged_on_refusal": true,
+    "second_run_empty_diff": true,
+    "candidate_bound_tests": {
+      "prefreeze_targeted": "388 passed in 407.67s",
+      "prefreeze_full": "626 passed, 1 skipped in 644.22s",
+      "candidate_targeted": "388 passed in 468.15s",
+      "candidate_collect": "627 tests collected in 0.24s",
+      "candidate_full": "626 passed, 1 skipped in 823.51s",
+      "candidate_focused_command_entry": "31 passed in 65.17s",
+      "candidate_state": "32 passed in 0.42s"
+    },
+    "terminal_verdict": "PASS"
+  },
+  "return_round_3": {
+    "approved_path_count": 33,
+    "approved_paths": [
+      ".tfw/workflows/resume.md",
+      ".tfw/adapters/codex/skills/tfw-resume/SKILL.md",
+      ".agents/skills/tfw-resume/SKILL.md",
+      ".agents/workflows/tfw-resume.md",
+      ".claude/commands/tfw-resume.md",
+      ".agent/rules/agents.md",
+      ".agents/rules/tfw.md",
+      ".tfw/adapters/antigravity/tfw-rules.md.template",
+      ".tfw/adapters/claude-code/CLAUDE.md.template",
+      ".tfw/adapters/codex/AGENTS.md.template",
+      ".tfw/adapters/codex/README.md",
+      ".tfw/adapters/cursor/tfw.mdc.template",
+      ".tfw/adapters/manifest.yaml",
+      ".tfw/conventions.md",
+      ".tfw/project_config.yaml",
+      ".tfw/templates/project_config.yaml",
+      "AGENTS.md",
+      "CLAUDE.md",
+      "README.kk.md",
+      "README.md",
+      "README.ru.md",
+      ".tfw/workflows/init.md",
+      ".agents/workflows/tfw-init.md",
+      ".claude/commands/tfw-init.md",
+      ".tfw/workflows/update.md",
+      ".agents/workflows/tfw-update.md",
+      ".claude/commands/tfw-update.md",
+      ".tfw/adapters/README.md",
+      ".tfw/adapters/claude-code/README.md",
+      ".tfw/adapters/antigravity/README.md",
+      "docs/scripts/command_entry_eval.py",
+      "docs/scripts/test_repository_contracts.py",
+      "docs/scripts/test_runtime_context.py"
+    ],
+    "c1_before_image_ref": "d09d5d49496d13b64552fe99a03821826ae435b6",
+    "candidate": "a81e0c12ec982ee4f73639ebf15394ef53877294",
+    "candidate_parent": "5cfca7abfa51fe3f565295ca4fc8be81c74c474f",
+    "epoch": "return round 3 - real AC-8 recovery models",
+    "hostile_mutants": {
+      "altered-path": {
+        "changed_approved_paths": [
+          "AGENTS.md"
+        ],
+        "extra_paths": [
+          "unexpected/AGENTS.md"
+        ],
+        "no_release_route_or_effect": true,
+        "oracle_pass": false,
+        "release_effects": [],
+        "release_routes": [],
+        "whole_group_matches_before_image": false
+      },
+      "emitted-release-route": {
+        "changed_approved_paths": [],
+        "extra_paths": [],
+        "no_release_route_or_effect": false,
+        "oracle_pass": false,
+        "release_effects": [
+          "release-effect"
+        ],
+        "release_routes": [
+          "/tfw-release"
+        ],
+        "whole_group_matches_before_image": true
+      },
+      "one-deletion-left-applied": {
+        "changed_approved_paths": [
+          ".tfw/workflows/resume.md"
+        ],
+        "extra_paths": [],
+        "no_release_route_or_effect": true,
+        "oracle_pass": false,
+        "release_effects": [],
+        "release_routes": [],
+        "whole_group_matches_before_image": false
+      }
+    },
+    "model": {
+      "actual_external_release_effect": false,
+      "module": "docs/scripts/test_repository_contracts.py",
+      "receipt_function": "rwnr_phase_b_c1_receipt",
+      "scenario_function": "rwnr_phase_b_c1_scenario",
+      "temporary_tree_only": true,
+      "tests": [
+        "test_rwnr_phase_b_c1_restores_the_complete_approved_group",
+        "test_rwnr_phase_b_c1_oracle_rejects_hostile_mutants"
+      ]
+    },
+    "rejected_candidate_retained_unaccepted_unlanded": "6d6d094ac5325377772f26ddf314b965c1dfd135",
+    "required_before_image_full_map_sha256": "1a2d5d271b7ae2cf5c246f0b1344b71a0cbb1143a00c8204c8d853fcb292c666",
+    "required_before_image_full_path_sha256_map": {
+      ".agent/rules/agents.md": "ea87c3a3e54e067c67f6b5708d4a7e97868840148e5f1f29130ead72ff229e63",
+      ".agents/rules/tfw.md": "0b03c98d0fe2b5f1cfe5d3b6ede9b62e058a1b3d5cfdd5b74e27b91d4d23a603",
+      ".agents/skills/tfw-resume/SKILL.md": "ccd7a8d3151c64cff7b5e7032a8f0f6b64095fa6f82a993ac88a6cc39fe214cc",
+      ".agents/workflows/tfw-init.md": "7ec919af5ec2c905f81d9b697bdfca41bc531d09d72dd37e3259e2852c134ef4",
+      ".agents/workflows/tfw-resume.md": "1ce3b2e1ee30f1f5be9cfd62af3cd400022a34ba106295978c426e26e46be5e3",
+      ".agents/workflows/tfw-update.md": "677f98c2ba61dcec1f59a5847ec12c782bf85132437194d291dcab3061707b1d",
+      ".claude/commands/tfw-init.md": "7ec919af5ec2c905f81d9b697bdfca41bc531d09d72dd37e3259e2852c134ef4",
+      ".claude/commands/tfw-resume.md": "1ce3b2e1ee30f1f5be9cfd62af3cd400022a34ba106295978c426e26e46be5e3",
+      ".claude/commands/tfw-update.md": "677f98c2ba61dcec1f59a5847ec12c782bf85132437194d291dcab3061707b1d",
+      ".tfw/adapters/README.md": "de524436f3090ce1327af5eccb88b9acc7ddda17be39fcc687f5479150084ab3",
+      ".tfw/adapters/antigravity/README.md": "1b0e794313a0787572cdc1e429d7249de3f6522513c904a292f68a573f238c67",
+      ".tfw/adapters/antigravity/tfw-rules.md.template": "0b03c98d0fe2b5f1cfe5d3b6ede9b62e058a1b3d5cfdd5b74e27b91d4d23a603",
+      ".tfw/adapters/claude-code/CLAUDE.md.template": "c0544b5b019505c02e1c108f884f5fc4ab54ad7fab26299906b0028f747726db",
+      ".tfw/adapters/claude-code/README.md": "20f214533502f270ef86ff4239495627d7c913da9dc4a4f3f4a32ce0996e5b37",
+      ".tfw/adapters/codex/AGENTS.md.template": "7a4c495cec70f2e9c5ba4361549404745a9ffc43a23fba2edcd2533f81898f71",
+      ".tfw/adapters/codex/README.md": "6ff2de8f3289e064101fa2d75f1a5dfc2b74ed41123dc7abe4e451d69ccdaabf",
+      ".tfw/adapters/codex/skills/tfw-resume/SKILL.md": "ccd7a8d3151c64cff7b5e7032a8f0f6b64095fa6f82a993ac88a6cc39fe214cc",
+      ".tfw/adapters/cursor/tfw.mdc.template": "b4e1208e1cd60d94c219b6cc343035e60edd3fbcdb0cfe58be58c7e204528101",
+      ".tfw/adapters/manifest.yaml": "db11326ea8089069ea54880063fea07ec42d8bd2084fdb1604c63d67cbe2beb1",
+      ".tfw/conventions.md": "09d248e997cf19bae1cef53f64423af343c8640d3b270a804e7986ffb874f9d2",
+      ".tfw/project_config.yaml": "2a36ce8ed4514b7e552438082bb8ea1f12c889b1c7d0817753acb9d95785c4c2",
+      ".tfw/templates/project_config.yaml": "b7587c459c91003a5487f99a4c138385644ec791a4ef8eeb8406f735b057ec4c",
+      ".tfw/workflows/init.md": "7ec919af5ec2c905f81d9b697bdfca41bc531d09d72dd37e3259e2852c134ef4",
+      ".tfw/workflows/resume.md": "1ce3b2e1ee30f1f5be9cfd62af3cd400022a34ba106295978c426e26e46be5e3",
+      ".tfw/workflows/update.md": "677f98c2ba61dcec1f59a5847ec12c782bf85132437194d291dcab3061707b1d",
+      "AGENTS.md": "6f7c4e7d1c418aabc6fb4ebdf8c45f7d7c7334042208d1a33e401b8d83f75d74",
+      "CLAUDE.md": "33f8aaf00a961971dbdc364c250593e709218675c62ef53b1f28e898a4982423",
+      "README.kk.md": "abe1358c8da3ae0c8c1116d18fa85bc6b347b10517f683b7e5aafb5a3ca5aba6",
+      "README.md": "d27303d30b53e2b066b3b2e4c293658bbe02a1d9e57c07da3db2fc6d84037a83",
+      "README.ru.md": "125848cb431288992b3eb3e7211b1958e9aed1aac8c216de469908418e61d3ac",
+      "docs/scripts/command_entry_eval.py": "20276ea7c6c6e89c1a189216f22ef4440eb9b80ed6b14c86961c5a0577365b77",
+      "docs/scripts/test_repository_contracts.py": "579ed84afff63a747be8d1b01f2e8f5ce56e1eeb30f882136dbe9b89f42daeb4",
+      "docs/scripts/test_runtime_context.py": "636674d05a859cc02f9ae25e42bf392f769aa0fab4bb9b2bd7595c5c123c0327"
+    },
+    "scenarios": {
+      "landing-integrated-mismatch": {
+        "application_write_count_before_failure": 0,
+        "application_writes_before_failure": [],
+        "changed_approved_paths": [],
+        "decision": "C1",
+        "extra_paths": [],
+        "full_approved_path_sha256_map": {
+          ".agent/rules/agents.md": "ea87c3a3e54e067c67f6b5708d4a7e97868840148e5f1f29130ead72ff229e63",
+          ".agents/rules/tfw.md": "0b03c98d0fe2b5f1cfe5d3b6ede9b62e058a1b3d5cfdd5b74e27b91d4d23a603",
+          ".agents/skills/tfw-resume/SKILL.md": "ccd7a8d3151c64cff7b5e7032a8f0f6b64095fa6f82a993ac88a6cc39fe214cc",
+          ".agents/workflows/tfw-init.md": "7ec919af5ec2c905f81d9b697bdfca41bc531d09d72dd37e3259e2852c134ef4",
+          ".agents/workflows/tfw-resume.md": "1ce3b2e1ee30f1f5be9cfd62af3cd400022a34ba106295978c426e26e46be5e3",
+          ".agents/workflows/tfw-update.md": "677f98c2ba61dcec1f59a5847ec12c782bf85132437194d291dcab3061707b1d",
+          ".claude/commands/tfw-init.md": "7ec919af5ec2c905f81d9b697bdfca41bc531d09d72dd37e3259e2852c134ef4",
+          ".claude/commands/tfw-resume.md": "1ce3b2e1ee30f1f5be9cfd62af3cd400022a34ba106295978c426e26e46be5e3",
+          ".claude/commands/tfw-update.md": "677f98c2ba61dcec1f59a5847ec12c782bf85132437194d291dcab3061707b1d",
+          ".tfw/adapters/README.md": "de524436f3090ce1327af5eccb88b9acc7ddda17be39fcc687f5479150084ab3",
+          ".tfw/adapters/antigravity/README.md": "1b0e794313a0787572cdc1e429d7249de3f6522513c904a292f68a573f238c67",
+          ".tfw/adapters/antigravity/tfw-rules.md.template": "0b03c98d0fe2b5f1cfe5d3b6ede9b62e058a1b3d5cfdd5b74e27b91d4d23a603",
+          ".tfw/adapters/claude-code/CLAUDE.md.template": "c0544b5b019505c02e1c108f884f5fc4ab54ad7fab26299906b0028f747726db",
+          ".tfw/adapters/claude-code/README.md": "20f214533502f270ef86ff4239495627d7c913da9dc4a4f3f4a32ce0996e5b37",
+          ".tfw/adapters/codex/AGENTS.md.template": "7a4c495cec70f2e9c5ba4361549404745a9ffc43a23fba2edcd2533f81898f71",
+          ".tfw/adapters/codex/README.md": "6ff2de8f3289e064101fa2d75f1a5dfc2b74ed41123dc7abe4e451d69ccdaabf",
+          ".tfw/adapters/codex/skills/tfw-resume/SKILL.md": "ccd7a8d3151c64cff7b5e7032a8f0f6b64095fa6f82a993ac88a6cc39fe214cc",
+          ".tfw/adapters/cursor/tfw.mdc.template": "b4e1208e1cd60d94c219b6cc343035e60edd3fbcdb0cfe58be58c7e204528101",
+          ".tfw/adapters/manifest.yaml": "db11326ea8089069ea54880063fea07ec42d8bd2084fdb1604c63d67cbe2beb1",
+          ".tfw/conventions.md": "09d248e997cf19bae1cef53f64423af343c8640d3b270a804e7986ffb874f9d2",
+          ".tfw/project_config.yaml": "2a36ce8ed4514b7e552438082bb8ea1f12c889b1c7d0817753acb9d95785c4c2",
+          ".tfw/templates/project_config.yaml": "b7587c459c91003a5487f99a4c138385644ec791a4ef8eeb8406f735b057ec4c",
+          ".tfw/workflows/init.md": "7ec919af5ec2c905f81d9b697bdfca41bc531d09d72dd37e3259e2852c134ef4",
+          ".tfw/workflows/resume.md": "1ce3b2e1ee30f1f5be9cfd62af3cd400022a34ba106295978c426e26e46be5e3",
+          ".tfw/workflows/update.md": "677f98c2ba61dcec1f59a5847ec12c782bf85132437194d291dcab3061707b1d",
+          "AGENTS.md": "6f7c4e7d1c418aabc6fb4ebdf8c45f7d7c7334042208d1a33e401b8d83f75d74",
+          "CLAUDE.md": "33f8aaf00a961971dbdc364c250593e709218675c62ef53b1f28e898a4982423",
+          "README.kk.md": "abe1358c8da3ae0c8c1116d18fa85bc6b347b10517f683b7e5aafb5a3ca5aba6",
+          "README.md": "d27303d30b53e2b066b3b2e4c293658bbe02a1d9e57c07da3db2fc6d84037a83",
+          "README.ru.md": "125848cb431288992b3eb3e7211b1958e9aed1aac8c216de469908418e61d3ac",
+          "docs/scripts/command_entry_eval.py": "20276ea7c6c6e89c1a189216f22ef4440eb9b80ed6b14c86961c5a0577365b77",
+          "docs/scripts/test_repository_contracts.py": "579ed84afff63a747be8d1b01f2e8f5ce56e1eeb30f882136dbe9b89f42daeb4",
+          "docs/scripts/test_runtime_context.py": "636674d05a859cc02f9ae25e42bf392f769aa0fab4bb9b2bd7595c5c123c0327"
+        },
+        "full_map_matches_required_before_image": true,
+        "full_map_sha256": "1a2d5d271b7ae2cf5c246f0b1344b71a0cbb1143a00c8204c8d853fcb292c666",
+        "no_release_route_or_effect": true,
+        "oracle_pass": true,
+        "recovery_write_count": 33,
+        "release_effects": [],
+        "release_routes": [],
+        "required_before_image_sha256": "1a2d5d271b7ae2cf5c246f0b1344b71a0cbb1143a00c8204c8d853fcb292c666"
+      },
+      "mid-application-failure": {
+        "application_write_count_before_failure": 1,
+        "application_writes_before_failure": [
+          {
+            "action": "DELETE",
+            "path": ".tfw/workflows/resume.md"
+          }
+        ],
+        "changed_approved_paths": [],
+        "decision": "C1",
+        "extra_paths": [],
+        "full_approved_path_sha256_map": {
+          ".agent/rules/agents.md": "ea87c3a3e54e067c67f6b5708d4a7e97868840148e5f1f29130ead72ff229e63",
+          ".agents/rules/tfw.md": "0b03c98d0fe2b5f1cfe5d3b6ede9b62e058a1b3d5cfdd5b74e27b91d4d23a603",
+          ".agents/skills/tfw-resume/SKILL.md": "ccd7a8d3151c64cff7b5e7032a8f0f6b64095fa6f82a993ac88a6cc39fe214cc",
+          ".agents/workflows/tfw-init.md": "7ec919af5ec2c905f81d9b697bdfca41bc531d09d72dd37e3259e2852c134ef4",
+          ".agents/workflows/tfw-resume.md": "1ce3b2e1ee30f1f5be9cfd62af3cd400022a34ba106295978c426e26e46be5e3",
+          ".agents/workflows/tfw-update.md": "677f98c2ba61dcec1f59a5847ec12c782bf85132437194d291dcab3061707b1d",
+          ".claude/commands/tfw-init.md": "7ec919af5ec2c905f81d9b697bdfca41bc531d09d72dd37e3259e2852c134ef4",
+          ".claude/commands/tfw-resume.md": "1ce3b2e1ee30f1f5be9cfd62af3cd400022a34ba106295978c426e26e46be5e3",
+          ".claude/commands/tfw-update.md": "677f98c2ba61dcec1f59a5847ec12c782bf85132437194d291dcab3061707b1d",
+          ".tfw/adapters/README.md": "de524436f3090ce1327af5eccb88b9acc7ddda17be39fcc687f5479150084ab3",
+          ".tfw/adapters/antigravity/README.md": "1b0e794313a0787572cdc1e429d7249de3f6522513c904a292f68a573f238c67",
+          ".tfw/adapters/antigravity/tfw-rules.md.template": "0b03c98d0fe2b5f1cfe5d3b6ede9b62e058a1b3d5cfdd5b74e27b91d4d23a603",
+          ".tfw/adapters/claude-code/CLAUDE.md.template": "c0544b5b019505c02e1c108f884f5fc4ab54ad7fab26299906b0028f747726db",
+          ".tfw/adapters/claude-code/README.md": "20f214533502f270ef86ff4239495627d7c913da9dc4a4f3f4a32ce0996e5b37",
+          ".tfw/adapters/codex/AGENTS.md.template": "7a4c495cec70f2e9c5ba4361549404745a9ffc43a23fba2edcd2533f81898f71",
+          ".tfw/adapters/codex/README.md": "6ff2de8f3289e064101fa2d75f1a5dfc2b74ed41123dc7abe4e451d69ccdaabf",
+          ".tfw/adapters/codex/skills/tfw-resume/SKILL.md": "ccd7a8d3151c64cff7b5e7032a8f0f6b64095fa6f82a993ac88a6cc39fe214cc",
+          ".tfw/adapters/cursor/tfw.mdc.template": "b4e1208e1cd60d94c219b6cc343035e60edd3fbcdb0cfe58be58c7e204528101",
+          ".tfw/adapters/manifest.yaml": "db11326ea8089069ea54880063fea07ec42d8bd2084fdb1604c63d67cbe2beb1",
+          ".tfw/conventions.md": "09d248e997cf19bae1cef53f64423af343c8640d3b270a804e7986ffb874f9d2",
+          ".tfw/project_config.yaml": "2a36ce8ed4514b7e552438082bb8ea1f12c889b1c7d0817753acb9d95785c4c2",
+          ".tfw/templates/project_config.yaml": "b7587c459c91003a5487f99a4c138385644ec791a4ef8eeb8406f735b057ec4c",
+          ".tfw/workflows/init.md": "7ec919af5ec2c905f81d9b697bdfca41bc531d09d72dd37e3259e2852c134ef4",
+          ".tfw/workflows/resume.md": "1ce3b2e1ee30f1f5be9cfd62af3cd400022a34ba106295978c426e26e46be5e3",
+          ".tfw/workflows/update.md": "677f98c2ba61dcec1f59a5847ec12c782bf85132437194d291dcab3061707b1d",
+          "AGENTS.md": "6f7c4e7d1c418aabc6fb4ebdf8c45f7d7c7334042208d1a33e401b8d83f75d74",
+          "CLAUDE.md": "33f8aaf00a961971dbdc364c250593e709218675c62ef53b1f28e898a4982423",
+          "README.kk.md": "abe1358c8da3ae0c8c1116d18fa85bc6b347b10517f683b7e5aafb5a3ca5aba6",
+          "README.md": "d27303d30b53e2b066b3b2e4c293658bbe02a1d9e57c07da3db2fc6d84037a83",
+          "README.ru.md": "125848cb431288992b3eb3e7211b1958e9aed1aac8c216de469908418e61d3ac",
+          "docs/scripts/command_entry_eval.py": "20276ea7c6c6e89c1a189216f22ef4440eb9b80ed6b14c86961c5a0577365b77",
+          "docs/scripts/test_repository_contracts.py": "579ed84afff63a747be8d1b01f2e8f5ce56e1eeb30f882136dbe9b89f42daeb4",
+          "docs/scripts/test_runtime_context.py": "636674d05a859cc02f9ae25e42bf392f769aa0fab4bb9b2bd7595c5c123c0327"
+        },
+        "full_map_matches_required_before_image": true,
+        "full_map_sha256": "1a2d5d271b7ae2cf5c246f0b1344b71a0cbb1143a00c8204c8d853fcb292c666",
+        "no_release_route_or_effect": true,
+        "oracle_pass": true,
+        "recovery_write_count": 33,
+        "release_effects": [],
+        "release_routes": [],
+        "required_before_image_sha256": "1a2d5d271b7ae2cf5c246f0b1344b71a0cbb1143a00c8204c8d853fcb292c666"
+      },
+      "preflight-failure": {
+        "application_write_count_before_failure": 0,
+        "application_writes_before_failure": [],
+        "changed_approved_paths": [],
+        "decision": "C1",
+        "extra_paths": [],
+        "full_approved_path_sha256_map": {
+          ".agent/rules/agents.md": "ea87c3a3e54e067c67f6b5708d4a7e97868840148e5f1f29130ead72ff229e63",
+          ".agents/rules/tfw.md": "0b03c98d0fe2b5f1cfe5d3b6ede9b62e058a1b3d5cfdd5b74e27b91d4d23a603",
+          ".agents/skills/tfw-resume/SKILL.md": "ccd7a8d3151c64cff7b5e7032a8f0f6b64095fa6f82a993ac88a6cc39fe214cc",
+          ".agents/workflows/tfw-init.md": "7ec919af5ec2c905f81d9b697bdfca41bc531d09d72dd37e3259e2852c134ef4",
+          ".agents/workflows/tfw-resume.md": "1ce3b2e1ee30f1f5be9cfd62af3cd400022a34ba106295978c426e26e46be5e3",
+          ".agents/workflows/tfw-update.md": "677f98c2ba61dcec1f59a5847ec12c782bf85132437194d291dcab3061707b1d",
+          ".claude/commands/tfw-init.md": "7ec919af5ec2c905f81d9b697bdfca41bc531d09d72dd37e3259e2852c134ef4",
+          ".claude/commands/tfw-resume.md": "1ce3b2e1ee30f1f5be9cfd62af3cd400022a34ba106295978c426e26e46be5e3",
+          ".claude/commands/tfw-update.md": "677f98c2ba61dcec1f59a5847ec12c782bf85132437194d291dcab3061707b1d",
+          ".tfw/adapters/README.md": "de524436f3090ce1327af5eccb88b9acc7ddda17be39fcc687f5479150084ab3",
+          ".tfw/adapters/antigravity/README.md": "1b0e794313a0787572cdc1e429d7249de3f6522513c904a292f68a573f238c67",
+          ".tfw/adapters/antigravity/tfw-rules.md.template": "0b03c98d0fe2b5f1cfe5d3b6ede9b62e058a1b3d5cfdd5b74e27b91d4d23a603",
+          ".tfw/adapters/claude-code/CLAUDE.md.template": "c0544b5b019505c02e1c108f884f5fc4ab54ad7fab26299906b0028f747726db",
+          ".tfw/adapters/claude-code/README.md": "20f214533502f270ef86ff4239495627d7c913da9dc4a4f3f4a32ce0996e5b37",
+          ".tfw/adapters/codex/AGENTS.md.template": "7a4c495cec70f2e9c5ba4361549404745a9ffc43a23fba2edcd2533f81898f71",
+          ".tfw/adapters/codex/README.md": "6ff2de8f3289e064101fa2d75f1a5dfc2b74ed41123dc7abe4e451d69ccdaabf",
+          ".tfw/adapters/codex/skills/tfw-resume/SKILL.md": "ccd7a8d3151c64cff7b5e7032a8f0f6b64095fa6f82a993ac88a6cc39fe214cc",
+          ".tfw/adapters/cursor/tfw.mdc.template": "b4e1208e1cd60d94c219b6cc343035e60edd3fbcdb0cfe58be58c7e204528101",
+          ".tfw/adapters/manifest.yaml": "db11326ea8089069ea54880063fea07ec42d8bd2084fdb1604c63d67cbe2beb1",
+          ".tfw/conventions.md": "09d248e997cf19bae1cef53f64423af343c8640d3b270a804e7986ffb874f9d2",
+          ".tfw/project_config.yaml": "2a36ce8ed4514b7e552438082bb8ea1f12c889b1c7d0817753acb9d95785c4c2",
+          ".tfw/templates/project_config.yaml": "b7587c459c91003a5487f99a4c138385644ec791a4ef8eeb8406f735b057ec4c",
+          ".tfw/workflows/init.md": "7ec919af5ec2c905f81d9b697bdfca41bc531d09d72dd37e3259e2852c134ef4",
+          ".tfw/workflows/resume.md": "1ce3b2e1ee30f1f5be9cfd62af3cd400022a34ba106295978c426e26e46be5e3",
+          ".tfw/workflows/update.md": "677f98c2ba61dcec1f59a5847ec12c782bf85132437194d291dcab3061707b1d",
+          "AGENTS.md": "6f7c4e7d1c418aabc6fb4ebdf8c45f7d7c7334042208d1a33e401b8d83f75d74",
+          "CLAUDE.md": "33f8aaf00a961971dbdc364c250593e709218675c62ef53b1f28e898a4982423",
+          "README.kk.md": "abe1358c8da3ae0c8c1116d18fa85bc6b347b10517f683b7e5aafb5a3ca5aba6",
+          "README.md": "d27303d30b53e2b066b3b2e4c293658bbe02a1d9e57c07da3db2fc6d84037a83",
+          "README.ru.md": "125848cb431288992b3eb3e7211b1958e9aed1aac8c216de469908418e61d3ac",
+          "docs/scripts/command_entry_eval.py": "20276ea7c6c6e89c1a189216f22ef4440eb9b80ed6b14c86961c5a0577365b77",
+          "docs/scripts/test_repository_contracts.py": "579ed84afff63a747be8d1b01f2e8f5ce56e1eeb30f882136dbe9b89f42daeb4",
+          "docs/scripts/test_runtime_context.py": "636674d05a859cc02f9ae25e42bf392f769aa0fab4bb9b2bd7595c5c123c0327"
+        },
+        "full_map_matches_required_before_image": true,
+        "full_map_sha256": "1a2d5d271b7ae2cf5c246f0b1344b71a0cbb1143a00c8204c8d853fcb292c666",
+        "no_release_route_or_effect": true,
+        "oracle_pass": true,
+        "recovery_write_count": 33,
+        "release_effects": [],
+        "release_routes": [],
+        "required_before_image_sha256": "1a2d5d271b7ae2cf5c246f0b1344b71a0cbb1143a00c8204c8d853fcb292c666"
+      },
+      "reviewer-rejection": {
+        "application_write_count_before_failure": 0,
+        "application_writes_before_failure": [],
+        "changed_approved_paths": [],
+        "decision": "C1",
+        "extra_paths": [],
+        "full_approved_path_sha256_map": {
+          ".agent/rules/agents.md": "ea87c3a3e54e067c67f6b5708d4a7e97868840148e5f1f29130ead72ff229e63",
+          ".agents/rules/tfw.md": "0b03c98d0fe2b5f1cfe5d3b6ede9b62e058a1b3d5cfdd5b74e27b91d4d23a603",
+          ".agents/skills/tfw-resume/SKILL.md": "ccd7a8d3151c64cff7b5e7032a8f0f6b64095fa6f82a993ac88a6cc39fe214cc",
+          ".agents/workflows/tfw-init.md": "7ec919af5ec2c905f81d9b697bdfca41bc531d09d72dd37e3259e2852c134ef4",
+          ".agents/workflows/tfw-resume.md": "1ce3b2e1ee30f1f5be9cfd62af3cd400022a34ba106295978c426e26e46be5e3",
+          ".agents/workflows/tfw-update.md": "677f98c2ba61dcec1f59a5847ec12c782bf85132437194d291dcab3061707b1d",
+          ".claude/commands/tfw-init.md": "7ec919af5ec2c905f81d9b697bdfca41bc531d09d72dd37e3259e2852c134ef4",
+          ".claude/commands/tfw-resume.md": "1ce3b2e1ee30f1f5be9cfd62af3cd400022a34ba106295978c426e26e46be5e3",
+          ".claude/commands/tfw-update.md": "677f98c2ba61dcec1f59a5847ec12c782bf85132437194d291dcab3061707b1d",
+          ".tfw/adapters/README.md": "de524436f3090ce1327af5eccb88b9acc7ddda17be39fcc687f5479150084ab3",
+          ".tfw/adapters/antigravity/README.md": "1b0e794313a0787572cdc1e429d7249de3f6522513c904a292f68a573f238c67",
+          ".tfw/adapters/antigravity/tfw-rules.md.template": "0b03c98d0fe2b5f1cfe5d3b6ede9b62e058a1b3d5cfdd5b74e27b91d4d23a603",
+          ".tfw/adapters/claude-code/CLAUDE.md.template": "c0544b5b019505c02e1c108f884f5fc4ab54ad7fab26299906b0028f747726db",
+          ".tfw/adapters/claude-code/README.md": "20f214533502f270ef86ff4239495627d7c913da9dc4a4f3f4a32ce0996e5b37",
+          ".tfw/adapters/codex/AGENTS.md.template": "7a4c495cec70f2e9c5ba4361549404745a9ffc43a23fba2edcd2533f81898f71",
+          ".tfw/adapters/codex/README.md": "6ff2de8f3289e064101fa2d75f1a5dfc2b74ed41123dc7abe4e451d69ccdaabf",
+          ".tfw/adapters/codex/skills/tfw-resume/SKILL.md": "ccd7a8d3151c64cff7b5e7032a8f0f6b64095fa6f82a993ac88a6cc39fe214cc",
+          ".tfw/adapters/cursor/tfw.mdc.template": "b4e1208e1cd60d94c219b6cc343035e60edd3fbcdb0cfe58be58c7e204528101",
+          ".tfw/adapters/manifest.yaml": "db11326ea8089069ea54880063fea07ec42d8bd2084fdb1604c63d67cbe2beb1",
+          ".tfw/conventions.md": "09d248e997cf19bae1cef53f64423af343c8640d3b270a804e7986ffb874f9d2",
+          ".tfw/project_config.yaml": "2a36ce8ed4514b7e552438082bb8ea1f12c889b1c7d0817753acb9d95785c4c2",
+          ".tfw/templates/project_config.yaml": "b7587c459c91003a5487f99a4c138385644ec791a4ef8eeb8406f735b057ec4c",
+          ".tfw/workflows/init.md": "7ec919af5ec2c905f81d9b697bdfca41bc531d09d72dd37e3259e2852c134ef4",
+          ".tfw/workflows/resume.md": "1ce3b2e1ee30f1f5be9cfd62af3cd400022a34ba106295978c426e26e46be5e3",
+          ".tfw/workflows/update.md": "677f98c2ba61dcec1f59a5847ec12c782bf85132437194d291dcab3061707b1d",
+          "AGENTS.md": "6f7c4e7d1c418aabc6fb4ebdf8c45f7d7c7334042208d1a33e401b8d83f75d74",
+          "CLAUDE.md": "33f8aaf00a961971dbdc364c250593e709218675c62ef53b1f28e898a4982423",
+          "README.kk.md": "abe1358c8da3ae0c8c1116d18fa85bc6b347b10517f683b7e5aafb5a3ca5aba6",
+          "README.md": "d27303d30b53e2b066b3b2e4c293658bbe02a1d9e57c07da3db2fc6d84037a83",
+          "README.ru.md": "125848cb431288992b3eb3e7211b1958e9aed1aac8c216de469908418e61d3ac",
+          "docs/scripts/command_entry_eval.py": "20276ea7c6c6e89c1a189216f22ef4440eb9b80ed6b14c86961c5a0577365b77",
+          "docs/scripts/test_repository_contracts.py": "579ed84afff63a747be8d1b01f2e8f5ce56e1eeb30f882136dbe9b89f42daeb4",
+          "docs/scripts/test_runtime_context.py": "636674d05a859cc02f9ae25e42bf392f769aa0fab4bb9b2bd7595c5c123c0327"
+        },
+        "full_map_matches_required_before_image": true,
+        "full_map_sha256": "1a2d5d271b7ae2cf5c246f0b1344b71a0cbb1143a00c8204c8d853fcb292c666",
+        "no_release_route_or_effect": true,
+        "oracle_pass": true,
+        "recovery_write_count": 33,
+        "release_effects": [],
+        "release_routes": [],
+        "required_before_image_sha256": "1a2d5d271b7ae2cf5c246f0b1344b71a0cbb1143a00c8204c8d853fcb292c666"
+      }
+    },
+    "terminal_verdict": "PASS"
+  }
+}

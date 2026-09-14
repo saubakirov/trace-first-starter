@@ -1,0 +1,9 @@
+RAW_TEST_RECEIPT_VERSION=1
+PHASE=TFW_20260913-151442_RWNR/phase-b
+CANDIDATE=51ea3015290393da001810629f305f5969f4c8b8
+KIND=CANDIDATE_BOUND_TARGETED
+COMMAND=python -m pytest docs/scripts/test_runtime_context.py docs/scripts/test_repository_contracts.py docs/scripts/test_command_entry_eval.py -q
+EXIT_CODE=0
+=== OBSERVED_TERMINAL_RESULT ===
+392 passed in 428.13s (0:07:08)
+=== END OBSERVED_TERMINAL_RESULT ===

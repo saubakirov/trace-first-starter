@@ -1,0 +1,2854 @@
+{
+  "baseline": "d366bb1d6d70cf457acba84d4b5aafeb5c5f5b14",
+  "candidate": "6d3f3890ece2f357ab6353d4fd15a28fe4f3767c",
+  "approval": "8920124c851fdeff6e3b77cfb729d9ca7ffbe73c",
+  "approval_ts_blob": "108863dd978b9e65b713f9d2feb99a8263c16857",
+  "expected_ts_blob": "108863dd978b9e65b713f9d2feb99a8263c16857",
+  "actions": [
+    {
+      "action": "M",
+      "path": ".agent/rules/agents.md"
+    },
+    {
+      "action": "M",
+      "path": ".agents/rules/tfw.md"
+    },
+    {
+      "action": "D",
+      "path": ".agents/skills/tfw-resume/SKILL.md"
+    },
+    {
+      "action": "M",
+      "path": ".agents/workflows/tfw-init.md"
+    },
+    {
+      "action": "D",
+      "path": ".agents/workflows/tfw-resume.md"
+    },
+    {
+      "action": "M",
+      "path": ".agents/workflows/tfw-update.md"
+    },
+    {
+      "action": "M",
+      "path": ".claude/commands/tfw-init.md"
+    },
+    {
+      "action": "D",
+      "path": ".claude/commands/tfw-resume.md"
+    },
+    {
+      "action": "M",
+      "path": ".claude/commands/tfw-update.md"
+    },
+    {
+      "action": "M",
+      "path": ".tfw/adapters/README.md"
+    },
+    {
+      "action": "M",
+      "path": ".tfw/adapters/antigravity/README.md"
+    },
+    {
+      "action": "M",
+      "path": ".tfw/adapters/antigravity/tfw-rules.md.template"
+    },
+    {
+      "action": "M",
+      "path": ".tfw/adapters/claude-code/CLAUDE.md.template"
+    },
+    {
+      "action": "M",
+      "path": ".tfw/adapters/claude-code/README.md"
+    },
+    {
+      "action": "M",
+      "path": ".tfw/adapters/codex/AGENTS.md.template"
+    },
+    {
+      "action": "M",
+      "path": ".tfw/adapters/codex/README.md"
+    },
+    {
+      "action": "D",
+      "path": ".tfw/adapters/codex/skills/tfw-resume/SKILL.md"
+    },
+    {
+      "action": "M",
+      "path": ".tfw/adapters/cursor/tfw.mdc.template"
+    },
+    {
+      "action": "M",
+      "path": ".tfw/adapters/manifest.yaml"
+    },
+    {
+      "action": "M",
+      "path": ".tfw/conventions.md"
+    },
+    {
+      "action": "M",
+      "path": ".tfw/project_config.yaml"
+    },
+    {
+      "action": "M",
+      "path": ".tfw/templates/project_config.yaml"
+    },
+    {
+      "action": "M",
+      "path": ".tfw/workflows/init.md"
+    },
+    {
+      "action": "D",
+      "path": ".tfw/workflows/resume.md"
+    },
+    {
+      "action": "M",
+      "path": ".tfw/workflows/update.md"
+    },
+    {
+      "action": "M",
+      "path": "AGENTS.md"
+    },
+    {
+      "action": "M",
+      "path": "CLAUDE.md"
+    },
+    {
+      "action": "M",
+      "path": "README.kk.md"
+    },
+    {
+      "action": "M",
+      "path": "README.md"
+    },
+    {
+      "action": "M",
+      "path": "README.ru.md"
+    }
+  ],
+  "action_map_exact": true,
+  "delete_count": 5,
+  "modify_count": 25,
+  "manifest_commands": [
+    "plan",
+    "research",
+    "handoff",
+    "review",
+    "docs",
+    "knowledge",
+    "release",
+    "update",
+    "config",
+    "init"
+  ],
+  "matches": [
+    {
+      "path": ".tfw/CHANGELOG.md",
+      "classification": "AGGREGATE_HISTORY",
+      "terms": [
+        "/tfw-resume",
+        "resume.md"
+      ]
+    },
+    {
+      "path": "KNOWLEDGE.md",
+      "classification": "AGGREGATE_HISTORY",
+      "terms": [
+        "resume.md"
+      ]
+    },
+    {
+      "path": "docs/scripts/test_repository_contracts.py",
+      "classification": "ASSURANCE",
+      "terms": [
+        "/tfw-resume",
+        "resume.md",
+        "tfw-resume"
+      ]
+    },
+    {
+      "path": "docs/scripts/test_runtime_context.py",
+      "classification": "ASSURANCE",
+      "terms": [
+        "/tfw-resume",
+        "resume.md"
+      ]
+    },
+    {
+      "path": "knowledge/stakeholder.md",
+      "classification": "AGGREGATE_HISTORY",
+      "terms": [
+        "resume.md"
+      ]
+    },
+    {
+      "path": "tasks/TFW-11__research_stage/RF__PhaseA__core_artifact_workflow.md",
+      "classification": "HISTORY",
+      "terms": [
+        "resume.md"
+      ]
+    },
+    {
+      "path": "tasks/TFW-11__research_stage/RF__PhaseC__adapter_sync_version.md",
+      "classification": "HISTORY",
+      "terms": [
+        "/tfw-resume"
+      ]
+    },
+    {
+      "path": "tasks/TFW-11__research_stage/TS__PhaseC__adapter_sync_version.md",
+      "classification": "HISTORY",
+      "terms": [
+        "/tfw-resume",
+        "tfw-resume"
+      ]
+    },
+    {
+      "path": "tasks/TFW-12__scope_budget_centralization/TS__TFW-12__config_centralization.md",
+      "classification": "HISTORY",
+      "terms": [
+        "    resume:",
+        "resume.md"
+      ]
+    },
+    {
+      "path": "tasks/TFW-15__pipeline_status_rename/RES__TFW-15__pipeline_status_rename.md",
+      "classification": "HISTORY",
+      "terms": [
+        "resume.md"
+      ]
+    },
+    {
+      "path": "tasks/TFW-22__coordinator_research_enrichment/HL-TFW-22__coordinator_research_enrichment.md",
+      "classification": "HISTORY",
+      "terms": [
+        "resume.md"
+      ]
+    },
+    {
+      "path": "tasks/TFW-24__res_state_machine/HL-TFW-24__res_state_machine.md",
+      "classification": "HISTORY",
+      "terms": [
+        "/tfw-resume"
+      ]
+    },
+    {
+      "path": "tasks/TFW-26__documentation_site/HL-TFW-26__documentation_site.md",
+      "classification": "HISTORY",
+      "terms": [
+        "resume.md"
+      ]
+    },
+    {
+      "path": "tasks/TFW-26__documentation_site/coordinator_fact_capture/ONB__TFW-26__coordinator_fact_capture.md",
+      "classification": "HISTORY",
+      "terms": [
+        "resume.md"
+      ]
+    },
+    {
+      "path": "tasks/TFW-26__documentation_site/coordinator_fact_capture/REVIEW__TFW-26__coordinator_fact_capture.md",
+      "classification": "HISTORY",
+      "terms": [
+        "resume.md"
+      ]
+    },
+    {
+      "path": "tasks/TFW-26__documentation_site/coordinator_fact_capture/RF__TFW-26__coordinator_fact_capture.md",
+      "classification": "HISTORY",
+      "terms": [
+        "resume.md"
+      ]
+    },
+    {
+      "path": "tasks/TFW-26__documentation_site/coordinator_fact_capture/TS__TFW-26__coordinator_fact_capture.md",
+      "classification": "HISTORY",
+      "terms": [
+        "resume.md"
+      ]
+    },
+    {
+      "path": "tasks/TFW-29__consistency_audit/ONB__TFW-29__consistency_audit.md",
+      "classification": "HISTORY",
+      "terms": [
+        "resume.md"
+      ]
+    },
+    {
+      "path": "tasks/TFW-29__consistency_audit/RES__TFW-29__consistency_audit.md",
+      "classification": "HISTORY",
+      "terms": [
+        "resume.md"
+      ]
+    },
+    {
+      "path": "tasks/TFW-29__consistency_audit/REVIEW__TFW-29__consistency_audit.md",
+      "classification": "HISTORY",
+      "terms": [
+        "resume.md"
+      ]
+    },
+    {
+      "path": "tasks/TFW-29__consistency_audit/RF__TFW-29__consistency_audit.md",
+      "classification": "HISTORY",
+      "terms": [
+        "Resume.md",
+        "resume.md"
+      ]
+    },
+    {
+      "path": "tasks/TFW-29__consistency_audit/TS__TFW-29__consistency_audit.md",
+      "classification": "HISTORY",
+      "terms": [
+        "resume.md"
+      ]
+    },
+    {
+      "path": "tasks/TFW-29__consistency_audit/research/challenge.md",
+      "classification": "HISTORY",
+      "terms": [
+        "/tfw-resume",
+        "resume.md"
+      ]
+    },
+    {
+      "path": "tasks/TFW-29__consistency_audit/research/extract.md",
+      "classification": "HISTORY",
+      "terms": [
+        "resume.md"
+      ]
+    },
+    {
+      "path": "tasks/TFW-29__consistency_audit/research/gather.md",
+      "classification": "HISTORY",
+      "terms": [
+        "resume.md"
+      ]
+    },
+    {
+      "path": "tasks/TFW-2__upgrade_to_v3/RF__TFW-2__upgrade_to_v3.md",
+      "classification": "HISTORY",
+      "terms": [
+        "tfw-resume"
+      ]
+    },
+    {
+      "path": "tasks/TFW-30__antigravity_adapter_audit/HL-TFW-30__antigravity_adapter_audit.md",
+      "classification": "HISTORY",
+      "terms": [
+        "tfw-resume"
+      ]
+    },
+    {
+      "path": "tasks/TFW-42__research_cycle_restructure/phase-b/TS__phase-b__workflow_updates.md",
+      "classification": "HISTORY",
+      "terms": [
+        "resume.md"
+      ]
+    },
+    {
+      "path": "tasks/TFW-43__research_stage_protocol/RF-TFW-43__research_stage_protocol.md",
+      "classification": "HISTORY",
+      "terms": [
+        "  Resume:"
+      ]
+    },
+    {
+      "path": "tasks/TFW-47__codex_adapter_shortcut_skills/HL-TFW-47__codex_adapter_shortcut_skills.md",
+      "classification": "HISTORY",
+      "terms": [
+        "resume.md",
+        "tfw-resume"
+      ]
+    },
+    {
+      "path": "tasks/TFW-47__codex_adapter_shortcut_skills/phase-b/TS__phase-b__codex_adapter.md",
+      "classification": "HISTORY",
+      "terms": [
+        "/tfw-resume",
+        "resume.md"
+      ]
+    },
+    {
+      "path": "tasks/TFW-47__codex_adapter_shortcut_skills/phase-b/evidence/codex_adapter_validation.txt",
+      "classification": "HISTORY",
+      "terms": [
+        "tfw-resume"
+      ]
+    },
+    {
+      "path": "tasks/TFW-47__codex_adapter_shortcut_skills/research/iter2/2_gather.md",
+      "classification": "HISTORY",
+      "terms": [
+        "tfw-resume"
+      ]
+    },
+    {
+      "path": "tasks/TFW-4__framework_cleanup/TS__TFW-4__PhaseA__remove_steps_and_frontmatter.md",
+      "classification": "HISTORY",
+      "terms": [
+        "/tfw-resume",
+        "resume.md"
+      ]
+    },
+    {
+      "path": "tasks/TFW-50__minimal_agent_commit_attribution/research/iter1/2_gather.md",
+      "classification": "HISTORY",
+      "terms": [
+        "/tfw-resume",
+        "resume.md"
+      ]
+    },
+    {
+      "path": "tasks/TFW-50__minimal_agent_commit_attribution/research/iter1/3_extract.md",
+      "classification": "HISTORY",
+      "terms": [
+        "/tfw-resume",
+        "resume.md"
+      ]
+    },
+    {
+      "path": "tasks/TFW-50__minimal_agent_commit_attribution/research/iter1/4_challenge.md",
+      "classification": "HISTORY",
+      "terms": [
+        "resume.md"
+      ]
+    },
+    {
+      "path": "tasks/TFW-53__hl_contract_and_goal_defence/HL-TFW-53__hl_contract_and_goal_defence.md",
+      "classification": "HISTORY",
+      "terms": [
+        "resume.md"
+      ]
+    },
+    {
+      "path": "tasks/TFW-53__hl_contract_and_goal_defence/phase-b/TS__phase-b__enforcement_in_workflows.md",
+      "classification": "HISTORY",
+      "terms": [
+        "resume.md"
+      ]
+    },
+    {
+      "path": "tasks/TFW-53__hl_contract_and_goal_defence/research/iter1/2_gather.md",
+      "classification": "HISTORY",
+      "terms": [
+        "resume.md"
+      ]
+    },
+    {
+      "path": "tasks/TFW-53__hl_contract_and_goal_defence/research/iter1/3_extract.md",
+      "classification": "HISTORY",
+      "terms": [
+        "resume.md"
+      ]
+    },
+    {
+      "path": "tasks/TFW-53__hl_contract_and_goal_defence/research/iter1/4_challenge.md",
+      "classification": "HISTORY",
+      "terms": [
+        "resume.md"
+      ]
+    },
+    {
+      "path": "tasks/TFW-53__hl_contract_and_goal_defence/research/iter1/RES.md",
+      "classification": "HISTORY",
+      "terms": [
+        "resume.md"
+      ]
+    },
+    {
+      "path": "tasks/TFW-55__canonization_program/phase-b/TS__phase-b2__project_readme_localization.md",
+      "classification": "HISTORY",
+      "terms": [
+        "/tfw-resume"
+      ]
+    },
+    {
+      "path": "tasks/TFW-55__canonization_program/phase-b/evidence/EV__phase-b2__project_readme_localization.md",
+      "classification": "HISTORY",
+      "terms": [
+        "/tfw-resume"
+      ]
+    },
+    {
+      "path": "tasks/TFW-55__canonization_program/phase-b/evidence/LANG_REVIEW__phase-b2__kk.md",
+      "classification": "HISTORY",
+      "terms": [
+        "/tfw-resume"
+      ]
+    },
+    {
+      "path": "tasks/TFW-55__canonization_program/phase-b/evidence/LANG_REVIEW__phase-b2__ru.md",
+      "classification": "HISTORY",
+      "terms": [
+        "/tfw-resume"
+      ]
+    },
+    {
+      "path": "tasks/TFW-58__revise_protocol/PROPOSAL__TFW-58__revise_protocol.md",
+      "classification": "HISTORY",
+      "terms": [
+        "resume.md"
+      ]
+    },
+    {
+      "path": "tasks/TFW-60__conflict_resistant_shared_workspace/FIELD-REPORT__TFW-60__second_external_update.md",
+      "classification": "HISTORY",
+      "terms": [
+        "resume.md"
+      ]
+    },
+    {
+      "path": "tasks/TFW-60__conflict_resistant_shared_workspace/HL-TFW-60__conflict_resistant_shared_workspace.md",
+      "classification": "HISTORY",
+      "terms": [
+        "resume.md"
+      ]
+    },
+    {
+      "path": "tasks/TFW-60__conflict_resistant_shared_workspace/phase-a/ONB__phase-a__task_state_and_coordination.md",
+      "classification": "HISTORY",
+      "terms": [
+        "resume.md"
+      ]
+    },
+    {
+      "path": "tasks/TFW-60__conflict_resistant_shared_workspace/phase-a/TS__phase-a__task_state_and_coordination.md",
+      "classification": "HISTORY",
+      "terms": [
+        "resume.md"
+      ]
+    },
+    {
+      "path": "tasks/TFW-60__conflict_resistant_shared_workspace/phase-a/evidence/control_char_gate.txt",
+      "classification": "HISTORY",
+      "terms": [
+        "resume.md"
+      ]
+    },
+    {
+      "path": "tasks/TFW-60__conflict_resistant_shared_workspace/phase-a/review/verify.md",
+      "classification": "HISTORY",
+      "terms": [
+        "resume.md"
+      ]
+    },
+    {
+      "path": "tasks/TFW-60__conflict_resistant_shared_workspace/research/iter1/2_gather.md",
+      "classification": "HISTORY",
+      "terms": [
+        "/tfw-resume"
+      ]
+    },
+    {
+      "path": "tasks/TFW-60__conflict_resistant_shared_workspace/research/iter3/2_gather.md",
+      "classification": "HISTORY",
+      "terms": [
+        "resume.md"
+      ]
+    },
+    {
+      "path": "tasks/TFW-8__reviewer_role_and_workflow/HL-TFW-8__reviewer_role_and_workflow.md",
+      "classification": "HISTORY",
+      "terms": [
+        "resume.md"
+      ]
+    },
+    {
+      "path": "tasks/TFW-8__reviewer_role_and_workflow/ONB__TFW-8__reviewer_role_and_workflow.md",
+      "classification": "HISTORY",
+      "terms": [
+        "resume.md"
+      ]
+    },
+    {
+      "path": "tasks/TFW-8__reviewer_role_and_workflow/REVIEW__PhaseB__documentation_sync.md",
+      "classification": "HISTORY",
+      "terms": [
+        "resume.md"
+      ]
+    },
+    {
+      "path": "tasks/TFW-8__reviewer_role_and_workflow/RF__PhaseB__documentation_sync.md",
+      "classification": "HISTORY",
+      "terms": [
+        "resume.md"
+      ]
+    },
+    {
+      "path": "tasks/TFW-8__reviewer_role_and_workflow/TS__TFW-8__reviewer_role_and_workflow.md",
+      "classification": "HISTORY",
+      "terms": [
+        "resume.md"
+      ]
+    },
+    {
+      "path": "workspace/2026/TFW_20260830-194027_TLD/HL-TFW_20260830-194027_TLD.md",
+      "classification": "HISTORY",
+      "terms": [
+        "resume.md"
+      ]
+    },
+    {
+      "path": "workspace/2026/TFW_20260830-194027_TLD/ONB__TFW_20260830-194027_TLD.md",
+      "classification": "HISTORY",
+      "terms": [
+        "resume.md"
+      ]
+    },
+    {
+      "path": "workspace/2026/TFW_20260830-194027_TLD/RF__TFW_20260830-194027_TLD.md",
+      "classification": "HISTORY",
+      "terms": [
+        "resume.md"
+      ]
+    },
+    {
+      "path": "workspace/2026/TFW_20260830-194027_TLD/TS__TFW_20260830-194027_TLD.md",
+      "classification": "HISTORY",
+      "terms": [
+        "resume.md"
+      ]
+    },
+    {
+      "path": "workspace/2026/TFW_20260830-194027_TLD/research/iter1/2_gather.md",
+      "classification": "HISTORY",
+      "terms": [
+        "resume.md"
+      ]
+    },
+    {
+      "path": "workspace/2026/TFW_20260830-194027_TLD/research/iter1/3_extract.md",
+      "classification": "HISTORY",
+      "terms": [
+        "resume.md"
+      ]
+    },
+    {
+      "path": "workspace/2026/TFW_20260830-194027_TLD/research/iter1/RES.md",
+      "classification": "HISTORY",
+      "terms": [
+        "resume.md"
+      ]
+    },
+    {
+      "path": "workspace/2026/TFW_20260830-194027_TLD/research/iterations.yaml",
+      "classification": "HISTORY",
+      "terms": [
+        "resume.md"
+      ]
+    },
+    {
+      "path": "workspace/2026/TFW_20260830-194027_TLD/review/verify.md",
+      "classification": "HISTORY",
+      "terms": [
+        "resume.md"
+      ]
+    },
+    {
+      "path": "workspace/2026/TFW_20260902-111644_CRATM/HL-TFW_20260902-111644_CRATM.md",
+      "classification": "HISTORY",
+      "terms": [
+        "resume.md"
+      ]
+    },
+    {
+      "path": "workspace/2026/TFW_20260902-111644_CRATM/phase-c/HL__phase-c__authority_routing.md",
+      "classification": "HISTORY",
+      "terms": [
+        "resume.md"
+      ]
+    },
+    {
+      "path": "workspace/2026/TFW_20260902-111644_CRATM/phase-c/evidence/EV__phase-c__authority_routing.md",
+      "classification": "HISTORY",
+      "terms": [
+        "/tfw-resume",
+        "resume.md"
+      ]
+    },
+    {
+      "path": "workspace/2026/TFW_20260902-111644_CRATM/phase-d/ONB__phase-d__team_mode_and_role_assignment.md",
+      "classification": "HISTORY",
+      "terms": [
+        "/tfw-resume",
+        "resume.md"
+      ]
+    },
+    {
+      "path": "workspace/2026/TFW_20260902-111644_CRATM/phase-d/RF__phase-d__team_mode_and_role_assignment.md",
+      "classification": "HISTORY",
+      "terms": [
+        "resume.md"
+      ]
+    },
+    {
+      "path": "workspace/2026/TFW_20260902-111644_CRATM/phase-d/TS__phase-d__team_mode_and_role_assignment.md",
+      "classification": "HISTORY",
+      "terms": [
+        "/tfw-resume"
+      ]
+    },
+    {
+      "path": "workspace/2026/TFW_20260902-111644_CRATM/phase-d/TS__phase-d__team_mode_and_role_assignment__rev3.md",
+      "classification": "HISTORY",
+      "terms": [
+        "/tfw-resume",
+        "resume.md"
+      ]
+    },
+    {
+      "path": "workspace/2026/TFW_20260902-111644_CRATM/phase-d/evidence/phase-d-context.json",
+      "classification": "HISTORY",
+      "terms": [
+        "/tfw-resume",
+        "resume.md"
+      ]
+    },
+    {
+      "path": "workspace/2026/TFW_20260902-111644_CRATM/phase-d/evidence/phase-d-round3-a5.json",
+      "classification": "HISTORY",
+      "terms": [
+        "/tfw-resume",
+        "resume.md"
+      ]
+    },
+    {
+      "path": "workspace/2026/TFW_20260902-111644_CRATM/phase-d/evidence/phase-d-round3-accounting.txt",
+      "classification": "HISTORY",
+      "terms": [
+        "/tfw-resume",
+        "resume.md"
+      ]
+    },
+    {
+      "path": "workspace/2026/TFW_20260902-111644_CRATM/phase-d/evidence/phase-d-round3-scenarios.json",
+      "classification": "HISTORY",
+      "terms": [
+        "resume.md"
+      ]
+    },
+    {
+      "path": "workspace/2026/TFW_20260902-111644_CRATM/phase-d/evidence/phase-d-round4-a5.json",
+      "classification": "HISTORY",
+      "terms": [
+        "/tfw-resume",
+        "resume.md"
+      ]
+    },
+    {
+      "path": "workspace/2026/TFW_20260902-111644_CRATM/phase-d/evidence/phase-d-round4-accounting.txt",
+      "classification": "HISTORY",
+      "terms": [
+        "/tfw-resume",
+        "resume.md"
+      ]
+    },
+    {
+      "path": "workspace/2026/TFW_20260902-111644_CRATM/phase-e/TS__phase-e__integration_gate.md",
+      "classification": "HISTORY",
+      "terms": [
+        "/tfw-resume",
+        "resume.md"
+      ]
+    },
+    {
+      "path": "workspace/2026/TFW_20260902-111644_CRATM/phase-e/evidence/phase-e-integration-lineage.txt",
+      "classification": "HISTORY",
+      "terms": [
+        "/tfw-resume",
+        "resume.md"
+      ]
+    },
+    {
+      "path": "workspace/2026/TFW_20260902-112841_RDP/HL-TFW_20260902-112841_RDP.md",
+      "classification": "HISTORY",
+      "terms": [
+        "resume.md"
+      ]
+    },
+    {
+      "path": "workspace/2026/TFW_20260902-112841_RDP/ONB__TFW_20260902-112841_RDP.md",
+      "classification": "HISTORY",
+      "terms": [
+        "resume.md"
+      ]
+    },
+    {
+      "path": "workspace/2026/TFW_20260902-112841_RDP/REVIEW__TFW_20260902-112841_RDP.md",
+      "classification": "HISTORY",
+      "terms": [
+        "/tfw-resume",
+        "resume.md"
+      ]
+    },
+    {
+      "path": "workspace/2026/TFW_20260902-112841_RDP/RF__TFW_20260902-112841_RDP.md",
+      "classification": "HISTORY",
+      "terms": [
+        "resume.md"
+      ]
+    },
+    {
+      "path": "workspace/2026/TFW_20260902-112841_RDP/TS__TFW_20260902-112841_RDP.md",
+      "classification": "HISTORY",
+      "terms": [
+        "resume.md"
+      ]
+    },
+    {
+      "path": "workspace/2026/TFW_20260902-112841_RDP/evidence/round2.md",
+      "classification": "HISTORY",
+      "terms": [
+        "/tfw-resume"
+      ]
+    },
+    {
+      "path": "workspace/2026/TFW_20260902-112841_RDP/review/judge.md",
+      "classification": "HISTORY",
+      "terms": [
+        "resume.md"
+      ]
+    },
+    {
+      "path": "workspace/2026/TFW_20260902-175227_RCFR/HL-TFW_20260902-175227_RCFR.md",
+      "classification": "HISTORY",
+      "terms": [
+        "resume.md"
+      ]
+    },
+    {
+      "path": "workspace/2026/TFW_20260902-175227_RCFR/phase-b/TS__phase-b__primary_role_paths.md",
+      "classification": "HISTORY",
+      "terms": [
+        "/tfw-resume"
+      ]
+    },
+    {
+      "path": "workspace/2026/TFW_20260902-175227_RCFR/phase-c/HL__phase-c__closure_secondary_paths_and_whole_system_proof.md",
+      "classification": "HISTORY",
+      "terms": [
+        "/tfw-resume"
+      ]
+    },
+    {
+      "path": "workspace/2026/TFW_20260902-175227_RCFR/phase-c/RF__phase-c__closure_secondary_paths_and_whole_system_proof.md",
+      "classification": "HISTORY",
+      "terms": [
+        "/tfw-resume",
+        "resume.md"
+      ]
+    },
+    {
+      "path": "workspace/2026/TFW_20260902-175227_RCFR/phase-c/evidence/runtime-context-whole-system.txt",
+      "classification": "HISTORY",
+      "terms": [
+        "/tfw-resume",
+        "resume.md"
+      ]
+    },
+    {
+      "path": "workspace/2026/TFW_20260902-175227_RCFR/phase-c/evidence/semantic-and-lifecycle-whole-system.txt",
+      "classification": "HISTORY",
+      "terms": [
+        "resume.md"
+      ]
+    },
+    {
+      "path": "workspace/2026/TFW_20260902-175227_RCFR/phase-c/evidence/verification-whole-system.txt",
+      "classification": "HISTORY",
+      "terms": [
+        "/tfw-resume"
+      ]
+    },
+    {
+      "path": "workspace/2026/TFW_20260902-175227_RCFR/research/iter1/2_gather.md",
+      "classification": "HISTORY",
+      "terms": [
+        "resume.md"
+      ]
+    },
+    {
+      "path": "workspace/2026/TFW_20260902-175227_RCFR/research/iter1/3_extract.md",
+      "classification": "HISTORY",
+      "terms": [
+        "/tfw-resume",
+        "resume.md"
+      ]
+    },
+    {
+      "path": "workspace/2026/TFW_20260902-175227_RCFR/research/iter1/4_challenge.md",
+      "classification": "HISTORY",
+      "terms": [
+        "resume.md"
+      ]
+    },
+    {
+      "path": "workspace/2026/TFW_20260902-175227_RCFR/research/iter1/RES.md",
+      "classification": "HISTORY",
+      "terms": [
+        "resume.md"
+      ]
+    },
+    {
+      "path": "workspace/2026/TFW_20260902-175227_RCFR/research/iter2/3_extract.md",
+      "classification": "HISTORY",
+      "terms": [
+        "resume.md"
+      ]
+    },
+    {
+      "path": "workspace/2026/TFW_20260905-124029_RTPSN/HL-TFW_20260905-124029_RTPSN.md",
+      "classification": "HISTORY",
+      "terms": [
+        "/tfw-resume"
+      ]
+    },
+    {
+      "path": "workspace/2026/TFW_20260905-124029_RTPSN/phase-a/evidence/command-entry-topology.txt",
+      "classification": "HISTORY",
+      "terms": [
+        "/tfw-resume",
+        "resume.md"
+      ]
+    },
+    {
+      "path": "workspace/2026/TFW_20260905-124029_RTPSN/phase-b/HL__phase-b__session_identity_ergonomics.md",
+      "classification": "HISTORY",
+      "terms": [
+        "/tfw-resume"
+      ]
+    },
+    {
+      "path": "workspace/2026/TFW_20260905-124029_RTPSN/phase-b/ONB__phase-b__session_identity_ergonomics.md",
+      "classification": "HISTORY",
+      "terms": [
+        "resume.md"
+      ]
+    },
+    {
+      "path": "workspace/2026/TFW_20260905-124029_RTPSN/phase-b/RF__phase-b__session_identity_ergonomics.md",
+      "classification": "HISTORY",
+      "terms": [
+        "resume.md"
+      ]
+    },
+    {
+      "path": "workspace/2026/TFW_20260905-124029_RTPSN/phase-b/TS__phase-b__session_identity_ergonomics.md",
+      "classification": "HISTORY",
+      "terms": [
+        "/tfw-resume",
+        "resume.md"
+      ]
+    },
+    {
+      "path": "workspace/2026/TFW_20260905-124029_RTPSN/phase-b/evidence/session-identity-accounting.txt",
+      "classification": "HISTORY",
+      "terms": [
+        "/tfw-resume",
+        "resume.md"
+      ]
+    },
+    {
+      "path": "workspace/2026/TFW_20260905-124029_RTPSN/phase-b/evidence/session-identity-context.txt",
+      "classification": "HISTORY",
+      "terms": [
+        "/tfw-resume",
+        "resume.md"
+      ]
+    },
+    {
+      "path": "workspace/2026/TFW_20260905-124029_RTPSN/phase-b/evidence/session-identity-coverage.txt",
+      "classification": "HISTORY",
+      "terms": [
+        "resume.md"
+      ]
+    },
+    {
+      "path": "workspace/2026/TFW_20260905-124029_RTPSN/phase-b/evidence/session-identity-scenarios.json",
+      "classification": "HISTORY",
+      "terms": [
+        "resume.md"
+      ]
+    },
+    {
+      "path": "workspace/2026/TFW_20260905-124029_RTPSN/phase-b/review/verify.md",
+      "classification": "HISTORY",
+      "terms": [
+        "resume.md"
+      ]
+    },
+    {
+      "path": "workspace/2026/TFW_20260905-124029_RTPSN/research/iter1/2_gather.md",
+      "classification": "HISTORY",
+      "terms": [
+        "/tfw-resume"
+      ]
+    },
+    {
+      "path": "workspace/2026/TFW_20260905-124029_RTPSN/research/iter2/2_gather.md",
+      "classification": "HISTORY",
+      "terms": [
+        "/tfw-resume"
+      ]
+    },
+    {
+      "path": "workspace/2026/TFW_20260905-124029_RTPSN/research/iter2/3_extract.md",
+      "classification": "HISTORY",
+      "terms": [
+        "/tfw-resume"
+      ]
+    },
+    {
+      "path": "workspace/2026/TFW_20260905-124029_RTPSN/research/iter2/4_challenge.md",
+      "classification": "HISTORY",
+      "terms": [
+        "/tfw-resume"
+      ]
+    },
+    {
+      "path": "workspace/2026/TFW_20260905-124029_RTPSN/research/iter2/RES.md",
+      "classification": "HISTORY",
+      "terms": [
+        "/tfw-resume"
+      ]
+    },
+    {
+      "path": "workspace/2026/TFW_20260906-190312_CRUE/RF-TFW_20260906-190312_CRUE.md",
+      "classification": "HISTORY",
+      "terms": [
+        "/tfw-resume"
+      ]
+    },
+    {
+      "path": "workspace/2026/TFW_20260906-190312_CRUE/TS-TFW_20260906-190312_CRUE.md",
+      "classification": "HISTORY",
+      "terms": [
+        "/tfw-resume"
+      ]
+    },
+    {
+      "path": "workspace/2026/TFW_20260906-190312_CRUE/evidence/EV__TFW_20260906-190312_CRUE.md",
+      "classification": "HISTORY",
+      "terms": [
+        "/tfw-resume",
+        "tfw-resume"
+      ]
+    },
+    {
+      "path": "workspace/2026/TFW_20260906-190312_CRUE/research/iter3/4_challenge.md",
+      "classification": "HISTORY",
+      "terms": [
+        "/tfw-resume"
+      ]
+    },
+    {
+      "path": "workspace/2026/TFW_20260907-020729_SLC/RF__TFW_20260907-020729_SLC.md",
+      "classification": "HISTORY",
+      "terms": [
+        "/tfw-resume",
+        "resume.md"
+      ]
+    },
+    {
+      "path": "workspace/2026/TFW_20260907-020729_SLC/TS__TFW_20260907-020729_SLC.md",
+      "classification": "HISTORY",
+      "terms": [
+        "/tfw-resume",
+        "resume.md"
+      ]
+    },
+    {
+      "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/01-readers.receipt.json",
+      "classification": "HISTORY",
+      "terms": [
+        "/tfw-resume",
+        "resume.md"
+      ]
+    },
+    {
+      "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/02-source.receipt.json",
+      "classification": "HISTORY",
+      "terms": [
+        "/tfw-resume",
+        "resume.md"
+      ]
+    },
+    {
+      "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/03-collection.receipt.json",
+      "classification": "HISTORY",
+      "terms": [
+        "/tfw-resume",
+        "resume.md"
+      ]
+    },
+    {
+      "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/04-collection.receipt.json",
+      "classification": "HISTORY",
+      "terms": [
+        "/tfw-resume",
+        "resume.md"
+      ]
+    },
+    {
+      "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/05-init-contract.receipt.json",
+      "classification": "HISTORY",
+      "terms": [
+        "/tfw-resume",
+        "resume.md"
+      ]
+    },
+    {
+      "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/07-compiler.receipt.json",
+      "classification": "HISTORY",
+      "terms": [
+        "/tfw-resume",
+        "resume.md"
+      ]
+    },
+    {
+      "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/08-full.receipt.json",
+      "classification": "HISTORY",
+      "terms": [
+        "/tfw-resume",
+        "resume.md"
+      ]
+    },
+    {
+      "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/EV__TFW_20260907-020729_SLC.md",
+      "classification": "HISTORY",
+      "terms": [
+        "RESUME.md"
+      ]
+    },
+    {
+      "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/accounting/result.json",
+      "classification": "HISTORY",
+      "terms": [
+        "/tfw-resume",
+        "resume.md"
+      ]
+    },
+    {
+      "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/accounting/slc-05c6fcdfe6a1c1b4e9615f0390d094ee1b1fb5e8-name-status.z",
+      "classification": "HISTORY",
+      "terms": [
+        "/tfw-resume",
+        "resume.md"
+      ]
+    },
+    {
+      "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/accounting/slc-05c6fcdfe6a1c1b4e9615f0390d094ee1b1fb5e8-numstat.z",
+      "classification": "HISTORY",
+      "terms": [
+        "/tfw-resume",
+        "resume.md"
+      ]
+    },
+    {
+      "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/c2-01-resolver.receipt.json",
+      "classification": "HISTORY",
+      "terms": [
+        "/tfw-resume",
+        "resume.md"
+      ]
+    },
+    {
+      "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/c2-02-collection.receipt.json",
+      "classification": "HISTORY",
+      "terms": [
+        "/tfw-resume",
+        "resume.md"
+      ]
+    },
+    {
+      "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/c2-03-integration.receipt.json",
+      "classification": "HISTORY",
+      "terms": [
+        "/tfw-resume",
+        "resume.md"
+      ]
+    },
+    {
+      "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/c2-accounting/full-name-status.z",
+      "classification": "HISTORY",
+      "terms": [
+        "/tfw-resume",
+        "resume.md"
+      ]
+    },
+    {
+      "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/c2-accounting/result.json",
+      "classification": "HISTORY",
+      "terms": [
+        "/tfw-resume",
+        "resume.md"
+      ]
+    },
+    {
+      "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/c2-accounting/slc-433d9db62905e16786113af9bfe126a89c21b9a5-name-status.z",
+      "classification": "HISTORY",
+      "terms": [
+        "/tfw-resume",
+        "resume.md"
+      ]
+    },
+    {
+      "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/c2-accounting/slc-433d9db62905e16786113af9bfe126a89c21b9a5-numstat.z",
+      "classification": "HISTORY",
+      "terms": [
+        "/tfw-resume",
+        "resume.md"
+      ]
+    },
+    {
+      "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/c2-opened-output.json",
+      "classification": "HISTORY",
+      "terms": [
+        "/tfw-resume",
+        "resume.md"
+      ]
+    },
+    {
+      "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/candidate-return.json",
+      "classification": "HISTORY",
+      "terms": [
+        "/tfw-resume",
+        "resume.md"
+      ]
+    },
+    {
+      "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/final-doc-links/input-manifest.json",
+      "classification": "HISTORY",
+      "terms": [
+        "/tfw-resume",
+        "resume.md"
+      ]
+    },
+    {
+      "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/final-doc-links/opened-output.json",
+      "classification": "HISTORY",
+      "terms": [
+        "/tfw-resume",
+        "RESUME.md",
+        "resume.md"
+      ]
+    },
+    {
+      "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/final-release/01-collection.receipt.json",
+      "classification": "HISTORY",
+      "terms": [
+        "/tfw-resume",
+        "resume.md"
+      ]
+    },
+    {
+      "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/final-release/02-full.receipt.json",
+      "classification": "HISTORY",
+      "terms": [
+        "/tfw-resume",
+        "resume.md"
+      ]
+    },
+    {
+      "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/final-release/accounting/slc-05c6fcdfe6a1c1b4e9615f0390d094ee1b1fb5e8-name-status.z",
+      "classification": "HISTORY",
+      "terms": [
+        "/tfw-resume",
+        "resume.md"
+      ]
+    },
+    {
+      "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/final-release/accounting/slc-05c6fcdfe6a1c1b4e9615f0390d094ee1b1fb5e8-numstat.z",
+      "classification": "HISTORY",
+      "terms": [
+        "/tfw-resume",
+        "resume.md"
+      ]
+    },
+    {
+      "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/final-release/composition.json",
+      "classification": "HISTORY",
+      "terms": [
+        "/tfw-resume",
+        "resume.md"
+      ]
+    },
+    {
+      "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/final-release/input-accounting/slc-3366ae87da0e73f4cf54a4c109ff0479e3bd33c7-name-status.z",
+      "classification": "HISTORY",
+      "terms": [
+        "/tfw-resume",
+        "resume.md"
+      ]
+    },
+    {
+      "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/final-release/input-accounting/slc-3366ae87da0e73f4cf54a4c109ff0479e3bd33c7-numstat.z",
+      "classification": "HISTORY",
+      "terms": [
+        "/tfw-resume",
+        "resume.md"
+      ]
+    },
+    {
+      "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/final-release/input-manifest.json",
+      "classification": "HISTORY",
+      "terms": [
+        "/tfw-resume",
+        "resume.md"
+      ]
+    },
+    {
+      "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/final-release/opened-output.json",
+      "classification": "HISTORY",
+      "terms": [
+        "/tfw-resume",
+        "RESUME.md",
+        "resume.md"
+      ]
+    },
+    {
+      "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/native-package-index.json",
+      "classification": "HISTORY",
+      "terms": [
+        "RESUME.md"
+      ]
+    },
+    {
+      "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/pre-candidate.json",
+      "classification": "HISTORY",
+      "terms": [
+        "/tfw-resume",
+        "resume.md"
+      ]
+    },
+    {
+      "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/review-c2-final/accounting-result.json",
+      "classification": "HISTORY",
+      "terms": [
+        "/tfw-resume",
+        "resume.md"
+      ]
+    },
+    {
+      "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/review-c2-final/accounting/slc-433d9db62905e16786113af9bfe126a89c21b9a5-name-status.z",
+      "classification": "HISTORY",
+      "terms": [
+        "/tfw-resume",
+        "resume.md"
+      ]
+    },
+    {
+      "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/review-c2-final/accounting/slc-433d9db62905e16786113af9bfe126a89c21b9a5-numstat.z",
+      "classification": "HISTORY",
+      "terms": [
+        "/tfw-resume",
+        "resume.md"
+      ]
+    },
+    {
+      "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/review-c2-final/input-manifest.json",
+      "classification": "HISTORY",
+      "terms": [
+        "/tfw-resume",
+        "resume.md"
+      ]
+    },
+    {
+      "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/review-c2-final/opened-output.json",
+      "classification": "HISTORY",
+      "terms": [
+        "resume.md"
+      ]
+    },
+    {
+      "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/support-accounting.ps1",
+      "classification": "HISTORY",
+      "terms": [
+        "/tfw-resume",
+        "resume.md"
+      ]
+    },
+    {
+      "path": "workspace/2026/TFW_20260907-020729_SLC/research/iter2/RES.md",
+      "classification": "HISTORY",
+      "terms": [
+        "resume.md"
+      ]
+    },
+    {
+      "path": "workspace/2026/TFW_20260907-020729_SLC/review/accounting/slc-05c6fcdfe6a1c1b4e9615f0390d094ee1b1fb5e8-name-status.z",
+      "classification": "HISTORY",
+      "terms": [
+        "/tfw-resume",
+        "resume.md"
+      ]
+    },
+    {
+      "path": "workspace/2026/TFW_20260907-020729_SLC/review/accounting/slc-05c6fcdfe6a1c1b4e9615f0390d094ee1b1fb5e8-numstat.z",
+      "classification": "HISTORY",
+      "terms": [
+        "/tfw-resume",
+        "resume.md"
+      ]
+    },
+    {
+      "path": "workspace/2026/TFW_20260907-020729_SLC/review/verify.md",
+      "classification": "HISTORY",
+      "terms": [
+        "resume.md"
+      ]
+    },
+    {
+      "path": "workspace/2026/TFW_20260907-133942_PTTC/phase-b/HL__phase-b__finite_closure_and_recovery.md",
+      "classification": "HISTORY",
+      "terms": [
+        "/tfw-resume"
+      ]
+    },
+    {
+      "path": "workspace/2026/TFW_20260907-133942_PTTC/phase-b/REVIEW__phase-b__finite_closure_and_recovery.md",
+      "classification": "HISTORY",
+      "terms": [
+        "/tfw-resume",
+        "resume.md"
+      ]
+    },
+    {
+      "path": "workspace/2026/TFW_20260907-133942_PTTC/phase-b/RF__phase-b__finite_closure_and_recovery.md",
+      "classification": "HISTORY",
+      "terms": [
+        "/tfw-resume",
+        "resume.md"
+      ]
+    },
+    {
+      "path": "workspace/2026/TFW_20260907-133942_PTTC/phase-b/TS__phase-b__finite_closure_and_recovery.md",
+      "classification": "HISTORY",
+      "terms": [
+        "/tfw-resume",
+        "resume.md"
+      ]
+    },
+    {
+      "path": "workspace/2026/TFW_20260907-133942_PTTC/phase-b/evidence/01-pure.events.jsonl",
+      "classification": "HISTORY",
+      "terms": [
+        "/tfw-resume",
+        "resume.md"
+      ]
+    },
+    {
+      "path": "workspace/2026/TFW_20260907-133942_PTTC/phase-b/evidence/01-pure.sources.json",
+      "classification": "HISTORY",
+      "terms": [
+        "/tfw-resume",
+        "resume.md"
+      ]
+    },
+    {
+      "path": "workspace/2026/TFW_20260907-133942_PTTC/phase-b/evidence/01-pure.stdout.txt",
+      "classification": "HISTORY",
+      "terms": [
+        "/tfw-resume",
+        "resume.md"
+      ]
+    },
+    {
+      "path": "workspace/2026/TFW_20260907-133942_PTTC/phase-b/evidence/02-correction.sources.json",
+      "classification": "HISTORY",
+      "terms": [
+        "/tfw-resume",
+        "resume.md"
+      ]
+    },
+    {
+      "path": "workspace/2026/TFW_20260907-133942_PTTC/phase-b/evidence/03-collection.sources.json",
+      "classification": "HISTORY",
+      "terms": [
+        "/tfw-resume",
+        "resume.md"
+      ]
+    },
+    {
+      "path": "workspace/2026/TFW_20260907-133942_PTTC/phase-b/evidence/04-full.events.jsonl",
+      "classification": "HISTORY",
+      "terms": [
+        "/tfw-resume",
+        "resume.md"
+      ]
+    },
+    {
+      "path": "workspace/2026/TFW_20260907-133942_PTTC/phase-b/evidence/04-full.sources.json",
+      "classification": "HISTORY",
+      "terms": [
+        "/tfw-resume",
+        "resume.md"
+      ]
+    },
+    {
+      "path": "workspace/2026/TFW_20260907-133942_PTTC/phase-b/evidence/04-full.stdout.txt",
+      "classification": "HISTORY",
+      "terms": [
+        "/tfw-resume"
+      ]
+    },
+    {
+      "path": "workspace/2026/TFW_20260907-133942_PTTC/phase-b/evidence/05-full-corrected.events.jsonl",
+      "classification": "HISTORY",
+      "terms": [
+        "/tfw-resume",
+        "resume.md"
+      ]
+    },
+    {
+      "path": "workspace/2026/TFW_20260907-133942_PTTC/phase-b/evidence/05-full-corrected.sources.json",
+      "classification": "HISTORY",
+      "terms": [
+        "/tfw-resume",
+        "resume.md"
+      ]
+    },
+    {
+      "path": "workspace/2026/TFW_20260907-133942_PTTC/phase-b/evidence/accounting-inputs.json",
+      "classification": "HISTORY",
+      "terms": [
+        "/tfw-resume",
+        "resume.md"
+      ]
+    },
+    {
+      "path": "workspace/2026/TFW_20260907-133942_PTTC/phase-b/evidence/accounting-name-status.nul",
+      "classification": "HISTORY",
+      "terms": [
+        "/tfw-resume",
+        "resume.md"
+      ]
+    },
+    {
+      "path": "workspace/2026/TFW_20260907-133942_PTTC/phase-b/evidence/accounting-numstat.nul",
+      "classification": "HISTORY",
+      "terms": [
+        "/tfw-resume",
+        "resume.md"
+      ]
+    },
+    {
+      "path": "workspace/2026/TFW_20260907-133942_PTTC/phase-b/evidence/accounting-result.json",
+      "classification": "HISTORY",
+      "terms": [
+        "/tfw-resume",
+        "resume.md"
+      ]
+    },
+    {
+      "path": "workspace/2026/TFW_20260907-133942_PTTC/phase-b/evidence/candidate-commit.json",
+      "classification": "HISTORY",
+      "terms": [
+        "/tfw-resume",
+        "resume.md"
+      ]
+    },
+    {
+      "path": "workspace/2026/TFW_20260907-133942_PTTC/phase-b/evidence/candidate-source-audit.json",
+      "classification": "HISTORY",
+      "terms": [
+        "/tfw-resume",
+        "resume.md"
+      ]
+    },
+    {
+      "path": "workspace/2026/TFW_20260907-133942_PTTC/phase-b/evidence/native-B2-correction.json",
+      "classification": "HISTORY",
+      "terms": [
+        "/tfw-resume",
+        "resume.md"
+      ]
+    },
+    {
+      "path": "workspace/2026/TFW_20260907-133942_PTTC/phase-b/evidence/native-B2-preparation.json",
+      "classification": "HISTORY",
+      "terms": [
+        "/tfw-resume",
+        "resume.md"
+      ]
+    },
+    {
+      "path": "workspace/2026/TFW_20260907-133942_PTTC/phase-b/evidence/native-B5-setup.json",
+      "classification": "HISTORY",
+      "terms": [
+        "/tfw-resume",
+        "resume.md"
+      ]
+    },
+    {
+      "path": "workspace/2026/TFW_20260907-133942_PTTC/phase-b/evidence/native-profile-preparation-correction.json",
+      "classification": "HISTORY",
+      "terms": [
+        "/tfw-resume",
+        "resume.md",
+        "tfw-resume"
+      ]
+    },
+    {
+      "path": "workspace/2026/TFW_20260907-133942_PTTC/phase-b/evidence/phase-b-final-source-audit.json",
+      "classification": "HISTORY",
+      "terms": [
+        "/tfw-resume",
+        "resume.md"
+      ]
+    },
+    {
+      "path": "workspace/2026/TFW_20260907-133942_PTTC/phase-b/evidence/phase-b-installation.json",
+      "classification": "HISTORY",
+      "terms": [
+        "/tfw-resume",
+        "resume.md"
+      ]
+    },
+    {
+      "path": "workspace/2026/TFW_20260907-133942_PTTC/phase-b/evidence/phase-b-native-inputs.json",
+      "classification": "HISTORY",
+      "terms": [
+        "/tfw-resume",
+        "resume.md"
+      ]
+    },
+    {
+      "path": "workspace/2026/TFW_20260907-133942_PTTC/phase-b/evidence/support-accounting.ps1",
+      "classification": "HISTORY",
+      "terms": [
+        "/tfw-resume",
+        "resume.md"
+      ]
+    },
+    {
+      "path": "workspace/2026/TFW_20260907-133942_PTTC/phase-b/evidence/trace-package-staging.json",
+      "classification": "HISTORY",
+      "terms": [
+        "resume.md",
+        "tfw-resume"
+      ]
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/TS__TFW_20260909-231654_TKL.md",
+      "classification": "HISTORY",
+      "terms": [
+        "/tfw-resume",
+        "resume.md"
+      ]
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/coordinator-ac7-complete/custody.json",
+      "classification": "HISTORY",
+      "terms": [
+        "/tfw-resume",
+        "resume.md"
+      ]
+    },
+    {
+      "path": "workspace/2026/TFW_20260909-231654_TKL/research/iter1/4_challenge.md",
+      "classification": "HISTORY",
+      "terms": [
+        "resume.md"
+      ]
+    },
+    {
+      "path": "workspace/TFW_20260913-151442_RWNR/HL-TFW_20260913-151442_RWNR.md",
+      "classification": "HISTORY",
+      "terms": [
+        "/tfw-resume",
+        "resume.md"
+      ]
+    },
+    {
+      "path": "workspace/TFW_20260913-151442_RWNR/journal/20260913-165716__dispatch__ab3b.md",
+      "classification": "HISTORY",
+      "terms": [
+        "/tfw-resume"
+      ]
+    },
+    {
+      "path": "workspace/TFW_20260913-151442_RWNR/phase-a/RF__phase-a__continuation_responsibilities.md",
+      "classification": "HISTORY",
+      "terms": [
+        "resume.md"
+      ]
+    },
+    {
+      "path": "workspace/TFW_20260913-151442_RWNR/phase-b/HL__phase-b__resume_surface_retirement.md",
+      "classification": "PHASE_B_TRACE",
+      "terms": [
+        "/tfw-resume",
+        "resume.md",
+        "tfw-resume",
+        "workflows.resume"
+      ]
+    },
+    {
+      "path": "workspace/TFW_20260913-151442_RWNR/phase-b/ONB__phase-b__resume_surface_retirement.md",
+      "classification": "PHASE_B_TRACE",
+      "terms": [
+        "/tfw-resume"
+      ]
+    },
+    {
+      "path": "workspace/TFW_20260913-151442_RWNR/phase-b/TS__phase-b__resume_surface_retirement.md",
+      "classification": "PHASE_B_TRACE",
+      "terms": [
+        "/tfw-resume",
+        "resume.md",
+        "tfw-resume",
+        "workflows.resume"
+      ]
+    },
+    {
+      "path": "workspace/TFW_20260913-151442_RWNR/research/iter1/1_briefing.md",
+      "classification": "HISTORY",
+      "terms": [
+        "/tfw-resume"
+      ]
+    },
+    {
+      "path": "workspace/TFW_20260913-151442_RWNR/research/iter1/2_gather.md",
+      "classification": "HISTORY",
+      "terms": [
+        "/tfw-resume",
+        "resume.md",
+        "workflows.resume"
+      ]
+    },
+    {
+      "path": "workspace/TFW_20260913-151442_RWNR/research/iter1/3_extract.md",
+      "classification": "HISTORY",
+      "terms": [
+        "/tfw-resume",
+        "resume.md",
+        "tfw-resume"
+      ]
+    },
+    {
+      "path": "workspace/TFW_20260913-151442_RWNR/research/iter1/4_challenge.md",
+      "classification": "HISTORY",
+      "terms": [
+        "/tfw-resume",
+        "resume.md"
+      ]
+    },
+    {
+      "path": "workspace/TFW_20260913-151442_RWNR/research/iter1/RES.md",
+      "classification": "HISTORY",
+      "terms": [
+        "/tfw-resume"
+      ]
+    },
+    {
+      "path": "workspace/TFW_20260913-151442_RWNR/research/iter2/2_gather.md",
+      "classification": "HISTORY",
+      "terms": [
+        "/tfw-resume",
+        "resume.md",
+        "tfw-resume",
+        "workflows.resume"
+      ]
+    },
+    {
+      "path": "workspace/TFW_20260913-151442_RWNR/research/iter2/3_extract.md",
+      "classification": "HISTORY",
+      "terms": [
+        "resume.md"
+      ]
+    },
+    {
+      "path": "workspace/TFW_20260913-151442_RWNR/research/iter2/RES.md",
+      "classification": "HISTORY",
+      "terms": [
+        "/tfw-resume"
+      ]
+    },
+    {
+      "path": "workspace/TFW_20260913-151442_RWNR/status.md",
+      "classification": "HISTORY",
+      "terms": [
+        "/tfw-resume"
+      ]
+    }
+  ],
+  "unclassified_live_matches": [],
+  "implementation_paths": [
+    ".agent/rules/agents.md",
+    ".agents/rules/tfw.md",
+    ".agents/skills/tfw-resume/SKILL.md",
+    ".agents/workflows/tfw-init.md",
+    ".agents/workflows/tfw-resume.md",
+    ".agents/workflows/tfw-update.md",
+    ".claude/commands/tfw-init.md",
+    ".claude/commands/tfw-resume.md",
+    ".claude/commands/tfw-update.md",
+    ".tfw/adapters/README.md",
+    ".tfw/adapters/antigravity/README.md",
+    ".tfw/adapters/antigravity/tfw-rules.md.template",
+    ".tfw/adapters/claude-code/CLAUDE.md.template",
+    ".tfw/adapters/claude-code/README.md",
+    ".tfw/adapters/codex/AGENTS.md.template",
+    ".tfw/adapters/codex/README.md",
+    ".tfw/adapters/codex/skills/tfw-resume/SKILL.md",
+    ".tfw/adapters/cursor/tfw.mdc.template",
+    ".tfw/adapters/manifest.yaml",
+    ".tfw/conventions.md",
+    ".tfw/project_config.yaml",
+    ".tfw/templates/project_config.yaml",
+    ".tfw/workflows/init.md",
+    ".tfw/workflows/resume.md",
+    ".tfw/workflows/update.md",
+    "AGENTS.md",
+    "CLAUDE.md",
+    "README.kk.md",
+    "README.md",
+    "README.ru.md",
+    "docs/scripts/test_repository_contracts.py",
+    "docs/scripts/test_runtime_context.py"
+  ],
+  "implementation_scope_exact": true,
+  "plan_unchanged_from_baseline": true,
+  "mutants": {
+    "restore:.tfw/workflows/resume.md": true,
+    "restore:.tfw/adapters/codex/skills/tfw-resume/SKILL.md": true,
+    "restore:.agents/skills/tfw-resume/SKILL.md": true,
+    "restore:.agents/workflows/tfw-resume.md": true,
+    "restore:.claude/commands/tfw-resume.md": true,
+    "live-registration": true,
+    "fixed-count": true
+  },
+  "errors": [],
+  "candidate_status": "REJECTED_BY_CONFIGURED_GATE",
+  "rejected_predecessor": "f17bdfb2c83e4eaf49459772122577b6a57fe9f9",
+  "revision_2_validation": {
+    "revision": 2,
+    "candidate": "6d6d094ac5325377772f26ddf314b965c1dfd135",
+    "candidate_parent": "a1857064c14c72ad12996d808f0e810a432dbcf6",
+    "selector_freeze": "e5efd3e608975184995d254bc5eb84176b8b4451",
+    "selector_ts_blob": "8c06e15e3ad8211195f2d48314d055ad1f111979",
+    "implementation_paths": [
+      {
+        "action": "M",
+        "path": ".agent/rules/agents.md"
+      },
+      {
+        "action": "M",
+        "path": ".agents/rules/tfw.md"
+      },
+      {
+        "action": "D",
+        "path": ".agents/skills/tfw-resume/SKILL.md"
+      },
+      {
+        "action": "M",
+        "path": ".agents/workflows/tfw-init.md"
+      },
+      {
+        "action": "D",
+        "path": ".agents/workflows/tfw-resume.md"
+      },
+      {
+        "action": "M",
+        "path": ".agents/workflows/tfw-update.md"
+      },
+      {
+        "action": "M",
+        "path": ".claude/commands/tfw-init.md"
+      },
+      {
+        "action": "D",
+        "path": ".claude/commands/tfw-resume.md"
+      },
+      {
+        "action": "M",
+        "path": ".claude/commands/tfw-update.md"
+      },
+      {
+        "action": "M",
+        "path": ".tfw/adapters/README.md"
+      },
+      {
+        "action": "M",
+        "path": ".tfw/adapters/antigravity/README.md"
+      },
+      {
+        "action": "M",
+        "path": ".tfw/adapters/antigravity/tfw-rules.md.template"
+      },
+      {
+        "action": "M",
+        "path": ".tfw/adapters/claude-code/CLAUDE.md.template"
+      },
+      {
+        "action": "M",
+        "path": ".tfw/adapters/claude-code/README.md"
+      },
+      {
+        "action": "M",
+        "path": ".tfw/adapters/codex/AGENTS.md.template"
+      },
+      {
+        "action": "M",
+        "path": ".tfw/adapters/codex/README.md"
+      },
+      {
+        "action": "D",
+        "path": ".tfw/adapters/codex/skills/tfw-resume/SKILL.md"
+      },
+      {
+        "action": "M",
+        "path": ".tfw/adapters/cursor/tfw.mdc.template"
+      },
+      {
+        "action": "M",
+        "path": ".tfw/adapters/manifest.yaml"
+      },
+      {
+        "action": "M",
+        "path": ".tfw/conventions.md"
+      },
+      {
+        "action": "M",
+        "path": ".tfw/project_config.yaml"
+      },
+      {
+        "action": "M",
+        "path": ".tfw/templates/project_config.yaml"
+      },
+      {
+        "action": "M",
+        "path": ".tfw/workflows/init.md"
+      },
+      {
+        "action": "D",
+        "path": ".tfw/workflows/resume.md"
+      },
+      {
+        "action": "M",
+        "path": ".tfw/workflows/update.md"
+      },
+      {
+        "action": "M",
+        "path": "AGENTS.md"
+      },
+      {
+        "action": "M",
+        "path": "CLAUDE.md"
+      },
+      {
+        "action": "M",
+        "path": "README.kk.md"
+      },
+      {
+        "action": "M",
+        "path": "README.md"
+      },
+      {
+        "action": "M",
+        "path": "README.ru.md"
+      },
+      {
+        "action": "M",
+        "path": "docs/scripts/command_entry_eval.py"
+      },
+      {
+        "action": "M",
+        "path": "docs/scripts/test_repository_contracts.py"
+      },
+      {
+        "action": "M",
+        "path": "docs/scripts/test_runtime_context.py"
+      }
+    ],
+    "implementation_path_count": 33,
+    "value_action_counts": {
+      "DELETE": 5,
+      "MODIFY": 25
+    },
+    "assurance_paths": [
+      "docs/scripts/command_entry_eval.py",
+      "docs/scripts/test_repository_contracts.py",
+      "docs/scripts/test_runtime_context.py"
+    ],
+    "manifest_commands": [
+      "plan",
+      "research",
+      "handoff",
+      "review",
+      "docs",
+      "knowledge",
+      "release",
+      "update",
+      "config",
+      "init"
+    ],
+    "evaluator_contract": {
+      "commands": [
+        "plan",
+        "research",
+        "handoff",
+        "review",
+        "docs",
+        "knowledge",
+        "release",
+        "update",
+        "config",
+        "init"
+      ],
+      "refusal_count": 10,
+      "resume_absent": true,
+      "blob": "fb8c3f030d030547f470f5550280a262149422d5"
+    },
+    "excluded_test": {
+      "path": "docs/scripts/test_command_entry_eval.py",
+      "blob": "7f195b31c622ac8cdbd7dad0a0f2e9ae7fa7a539",
+      "c1_restore_blob": "7f195b31c622ac8cdbd7dad0a0f2e9ae7fa7a539",
+      "unchanged": true
+    },
+    "candidate_match_classifications": [
+      {
+        "path": ".tfw/CHANGELOG.md",
+        "classification": "AGGREGATE_HISTORY"
+      },
+      {
+        "path": "KNOWLEDGE.md",
+        "classification": "AGGREGATE_HISTORY"
+      },
+      {
+        "path": "docs/scripts/test_repository_contracts.py",
+        "classification": "ASSURANCE"
+      },
+      {
+        "path": "docs/scripts/test_runtime_context.py",
+        "classification": "ASSURANCE"
+      },
+      {
+        "path": "knowledge/stakeholder.md",
+        "classification": "AGGREGATE_HISTORY"
+      },
+      {
+        "path": "tasks/TFW-11__research_stage/RF__PhaseA__core_artifact_workflow.md",
+        "classification": "HISTORY"
+      },
+      {
+        "path": "tasks/TFW-11__research_stage/RF__PhaseC__adapter_sync_version.md",
+        "classification": "HISTORY"
+      },
+      {
+        "path": "tasks/TFW-11__research_stage/TS__PhaseC__adapter_sync_version.md",
+        "classification": "HISTORY"
+      },
+      {
+        "path": "tasks/TFW-12__scope_budget_centralization/TS__TFW-12__config_centralization.md",
+        "classification": "HISTORY"
+      },
+      {
+        "path": "tasks/TFW-15__pipeline_status_rename/RES__TFW-15__pipeline_status_rename.md",
+        "classification": "HISTORY"
+      },
+      {
+        "path": "tasks/TFW-22__coordinator_research_enrichment/HL-TFW-22__coordinator_research_enrichment.md",
+        "classification": "HISTORY"
+      },
+      {
+        "path": "tasks/TFW-24__res_state_machine/HL-TFW-24__res_state_machine.md",
+        "classification": "HISTORY"
+      },
+      {
+        "path": "tasks/TFW-26__documentation_site/HL-TFW-26__documentation_site.md",
+        "classification": "HISTORY"
+      },
+      {
+        "path": "tasks/TFW-26__documentation_site/coordinator_fact_capture/ONB__TFW-26__coordinator_fact_capture.md",
+        "classification": "HISTORY"
+      },
+      {
+        "path": "tasks/TFW-26__documentation_site/coordinator_fact_capture/REVIEW__TFW-26__coordinator_fact_capture.md",
+        "classification": "HISTORY"
+      },
+      {
+        "path": "tasks/TFW-26__documentation_site/coordinator_fact_capture/RF__TFW-26__coordinator_fact_capture.md",
+        "classification": "HISTORY"
+      },
+      {
+        "path": "tasks/TFW-26__documentation_site/coordinator_fact_capture/TS__TFW-26__coordinator_fact_capture.md",
+        "classification": "HISTORY"
+      },
+      {
+        "path": "tasks/TFW-29__consistency_audit/ONB__TFW-29__consistency_audit.md",
+        "classification": "HISTORY"
+      },
+      {
+        "path": "tasks/TFW-29__consistency_audit/RES__TFW-29__consistency_audit.md",
+        "classification": "HISTORY"
+      },
+      {
+        "path": "tasks/TFW-29__consistency_audit/REVIEW__TFW-29__consistency_audit.md",
+        "classification": "HISTORY"
+      },
+      {
+        "path": "tasks/TFW-29__consistency_audit/RF__TFW-29__consistency_audit.md",
+        "classification": "HISTORY"
+      },
+      {
+        "path": "tasks/TFW-29__consistency_audit/TS__TFW-29__consistency_audit.md",
+        "classification": "HISTORY"
+      },
+      {
+        "path": "tasks/TFW-29__consistency_audit/research/challenge.md",
+        "classification": "HISTORY"
+      },
+      {
+        "path": "tasks/TFW-29__consistency_audit/research/extract.md",
+        "classification": "HISTORY"
+      },
+      {
+        "path": "tasks/TFW-29__consistency_audit/research/gather.md",
+        "classification": "HISTORY"
+      },
+      {
+        "path": "tasks/TFW-2__upgrade_to_v3/RF__TFW-2__upgrade_to_v3.md",
+        "classification": "HISTORY"
+      },
+      {
+        "path": "tasks/TFW-30__antigravity_adapter_audit/HL-TFW-30__antigravity_adapter_audit.md",
+        "classification": "HISTORY"
+      },
+      {
+        "path": "tasks/TFW-42__research_cycle_restructure/phase-b/TS__phase-b__workflow_updates.md",
+        "classification": "HISTORY"
+      },
+      {
+        "path": "tasks/TFW-43__research_stage_protocol/RF-TFW-43__research_stage_protocol.md",
+        "classification": "HISTORY"
+      },
+      {
+        "path": "tasks/TFW-47__codex_adapter_shortcut_skills/HL-TFW-47__codex_adapter_shortcut_skills.md",
+        "classification": "HISTORY"
+      },
+      {
+        "path": "tasks/TFW-47__codex_adapter_shortcut_skills/phase-b/TS__phase-b__codex_adapter.md",
+        "classification": "HISTORY"
+      },
+      {
+        "path": "tasks/TFW-47__codex_adapter_shortcut_skills/phase-b/evidence/codex_adapter_validation.txt",
+        "classification": "HISTORY"
+      },
+      {
+        "path": "tasks/TFW-47__codex_adapter_shortcut_skills/research/iter2/2_gather.md",
+        "classification": "HISTORY"
+      },
+      {
+        "path": "tasks/TFW-4__framework_cleanup/TS__TFW-4__PhaseA__remove_steps_and_frontmatter.md",
+        "classification": "HISTORY"
+      },
+      {
+        "path": "tasks/TFW-50__minimal_agent_commit_attribution/research/iter1/2_gather.md",
+        "classification": "HISTORY"
+      },
+      {
+        "path": "tasks/TFW-50__minimal_agent_commit_attribution/research/iter1/3_extract.md",
+        "classification": "HISTORY"
+      },
+      {
+        "path": "tasks/TFW-50__minimal_agent_commit_attribution/research/iter1/4_challenge.md",
+        "classification": "HISTORY"
+      },
+      {
+        "path": "tasks/TFW-53__hl_contract_and_goal_defence/HL-TFW-53__hl_contract_and_goal_defence.md",
+        "classification": "HISTORY"
+      },
+      {
+        "path": "tasks/TFW-53__hl_contract_and_goal_defence/phase-b/TS__phase-b__enforcement_in_workflows.md",
+        "classification": "HISTORY"
+      },
+      {
+        "path": "tasks/TFW-53__hl_contract_and_goal_defence/research/iter1/2_gather.md",
+        "classification": "HISTORY"
+      },
+      {
+        "path": "tasks/TFW-53__hl_contract_and_goal_defence/research/iter1/3_extract.md",
+        "classification": "HISTORY"
+      },
+      {
+        "path": "tasks/TFW-53__hl_contract_and_goal_defence/research/iter1/4_challenge.md",
+        "classification": "HISTORY"
+      },
+      {
+        "path": "tasks/TFW-53__hl_contract_and_goal_defence/research/iter1/RES.md",
+        "classification": "HISTORY"
+      },
+      {
+        "path": "tasks/TFW-55__canonization_program/phase-b/TS__phase-b2__project_readme_localization.md",
+        "classification": "HISTORY"
+      },
+      {
+        "path": "tasks/TFW-55__canonization_program/phase-b/evidence/EV__phase-b2__project_readme_localization.md",
+        "classification": "HISTORY"
+      },
+      {
+        "path": "tasks/TFW-55__canonization_program/phase-b/evidence/LANG_REVIEW__phase-b2__kk.md",
+        "classification": "HISTORY"
+      },
+      {
+        "path": "tasks/TFW-55__canonization_program/phase-b/evidence/LANG_REVIEW__phase-b2__ru.md",
+        "classification": "HISTORY"
+      },
+      {
+        "path": "tasks/TFW-58__revise_protocol/PROPOSAL__TFW-58__revise_protocol.md",
+        "classification": "HISTORY"
+      },
+      {
+        "path": "tasks/TFW-60__conflict_resistant_shared_workspace/FIELD-REPORT__TFW-60__second_external_update.md",
+        "classification": "HISTORY"
+      },
+      {
+        "path": "tasks/TFW-60__conflict_resistant_shared_workspace/HL-TFW-60__conflict_resistant_shared_workspace.md",
+        "classification": "HISTORY"
+      },
+      {
+        "path": "tasks/TFW-60__conflict_resistant_shared_workspace/phase-a/ONB__phase-a__task_state_and_coordination.md",
+        "classification": "HISTORY"
+      },
+      {
+        "path": "tasks/TFW-60__conflict_resistant_shared_workspace/phase-a/TS__phase-a__task_state_and_coordination.md",
+        "classification": "HISTORY"
+      },
+      {
+        "path": "tasks/TFW-60__conflict_resistant_shared_workspace/phase-a/evidence/control_char_gate.txt",
+        "classification": "HISTORY"
+      },
+      {
+        "path": "tasks/TFW-60__conflict_resistant_shared_workspace/phase-a/review/verify.md",
+        "classification": "HISTORY"
+      },
+      {
+        "path": "tasks/TFW-60__conflict_resistant_shared_workspace/research/iter1/2_gather.md",
+        "classification": "HISTORY"
+      },
+      {
+        "path": "tasks/TFW-60__conflict_resistant_shared_workspace/research/iter3/2_gather.md",
+        "classification": "HISTORY"
+      },
+      {
+        "path": "tasks/TFW-8__reviewer_role_and_workflow/HL-TFW-8__reviewer_role_and_workflow.md",
+        "classification": "HISTORY"
+      },
+      {
+        "path": "tasks/TFW-8__reviewer_role_and_workflow/ONB__TFW-8__reviewer_role_and_workflow.md",
+        "classification": "HISTORY"
+      },
+      {
+        "path": "tasks/TFW-8__reviewer_role_and_workflow/REVIEW__PhaseB__documentation_sync.md",
+        "classification": "HISTORY"
+      },
+      {
+        "path": "tasks/TFW-8__reviewer_role_and_workflow/RF__PhaseB__documentation_sync.md",
+        "classification": "HISTORY"
+      },
+      {
+        "path": "tasks/TFW-8__reviewer_role_and_workflow/TS__TFW-8__reviewer_role_and_workflow.md",
+        "classification": "HISTORY"
+      },
+      {
+        "path": "workspace/2026/TFW_20260830-194027_TLD/HL-TFW_20260830-194027_TLD.md",
+        "classification": "HISTORY"
+      },
+      {
+        "path": "workspace/2026/TFW_20260830-194027_TLD/ONB__TFW_20260830-194027_TLD.md",
+        "classification": "HISTORY"
+      },
+      {
+        "path": "workspace/2026/TFW_20260830-194027_TLD/RF__TFW_20260830-194027_TLD.md",
+        "classification": "HISTORY"
+      },
+      {
+        "path": "workspace/2026/TFW_20260830-194027_TLD/TS__TFW_20260830-194027_TLD.md",
+        "classification": "HISTORY"
+      },
+      {
+        "path": "workspace/2026/TFW_20260830-194027_TLD/research/iter1/2_gather.md",
+        "classification": "HISTORY"
+      },
+      {
+        "path": "workspace/2026/TFW_20260830-194027_TLD/research/iter1/3_extract.md",
+        "classification": "HISTORY"
+      },
+      {
+        "path": "workspace/2026/TFW_20260830-194027_TLD/research/iter1/RES.md",
+        "classification": "HISTORY"
+      },
+      {
+        "path": "workspace/2026/TFW_20260830-194027_TLD/research/iterations.yaml",
+        "classification": "HISTORY"
+      },
+      {
+        "path": "workspace/2026/TFW_20260830-194027_TLD/review/verify.md",
+        "classification": "HISTORY"
+      },
+      {
+        "path": "workspace/2026/TFW_20260902-111644_CRATM/HL-TFW_20260902-111644_CRATM.md",
+        "classification": "HISTORY"
+      },
+      {
+        "path": "workspace/2026/TFW_20260902-111644_CRATM/phase-c/HL__phase-c__authority_routing.md",
+        "classification": "HISTORY"
+      },
+      {
+        "path": "workspace/2026/TFW_20260902-111644_CRATM/phase-c/evidence/EV__phase-c__authority_routing.md",
+        "classification": "HISTORY"
+      },
+      {
+        "path": "workspace/2026/TFW_20260902-111644_CRATM/phase-d/ONB__phase-d__team_mode_and_role_assignment.md",
+        "classification": "HISTORY"
+      },
+      {
+        "path": "workspace/2026/TFW_20260902-111644_CRATM/phase-d/RF__phase-d__team_mode_and_role_assignment.md",
+        "classification": "HISTORY"
+      },
+      {
+        "path": "workspace/2026/TFW_20260902-111644_CRATM/phase-d/TS__phase-d__team_mode_and_role_assignment.md",
+        "classification": "HISTORY"
+      },
+      {
+        "path": "workspace/2026/TFW_20260902-111644_CRATM/phase-d/TS__phase-d__team_mode_and_role_assignment__rev3.md",
+        "classification": "HISTORY"
+      },
+      {
+        "path": "workspace/2026/TFW_20260902-111644_CRATM/phase-d/evidence/phase-d-context.json",
+        "classification": "HISTORY"
+      },
+      {
+        "path": "workspace/2026/TFW_20260902-111644_CRATM/phase-d/evidence/phase-d-round3-a5.json",
+        "classification": "HISTORY"
+      },
+      {
+        "path": "workspace/2026/TFW_20260902-111644_CRATM/phase-d/evidence/phase-d-round3-accounting.txt",
+        "classification": "HISTORY"
+      },
+      {
+        "path": "workspace/2026/TFW_20260902-111644_CRATM/phase-d/evidence/phase-d-round3-scenarios.json",
+        "classification": "HISTORY"
+      },
+      {
+        "path": "workspace/2026/TFW_20260902-111644_CRATM/phase-d/evidence/phase-d-round4-a5.json",
+        "classification": "HISTORY"
+      },
+      {
+        "path": "workspace/2026/TFW_20260902-111644_CRATM/phase-d/evidence/phase-d-round4-accounting.txt",
+        "classification": "HISTORY"
+      },
+      {
+        "path": "workspace/2026/TFW_20260902-111644_CRATM/phase-e/TS__phase-e__integration_gate.md",
+        "classification": "HISTORY"
+      },
+      {
+        "path": "workspace/2026/TFW_20260902-111644_CRATM/phase-e/evidence/phase-e-integration-lineage.txt",
+        "classification": "HISTORY"
+      },
+      {
+        "path": "workspace/2026/TFW_20260902-112841_RDP/HL-TFW_20260902-112841_RDP.md",
+        "classification": "HISTORY"
+      },
+      {
+        "path": "workspace/2026/TFW_20260902-112841_RDP/ONB__TFW_20260902-112841_RDP.md",
+        "classification": "HISTORY"
+      },
+      {
+        "path": "workspace/2026/TFW_20260902-112841_RDP/REVIEW__TFW_20260902-112841_RDP.md",
+        "classification": "HISTORY"
+      },
+      {
+        "path": "workspace/2026/TFW_20260902-112841_RDP/RF__TFW_20260902-112841_RDP.md",
+        "classification": "HISTORY"
+      },
+      {
+        "path": "workspace/2026/TFW_20260902-112841_RDP/TS__TFW_20260902-112841_RDP.md",
+        "classification": "HISTORY"
+      },
+      {
+        "path": "workspace/2026/TFW_20260902-112841_RDP/evidence/round2.md",
+        "classification": "HISTORY"
+      },
+      {
+        "path": "workspace/2026/TFW_20260902-112841_RDP/review/judge.md",
+        "classification": "HISTORY"
+      },
+      {
+        "path": "workspace/2026/TFW_20260902-175227_RCFR/HL-TFW_20260902-175227_RCFR.md",
+        "classification": "HISTORY"
+      },
+      {
+        "path": "workspace/2026/TFW_20260902-175227_RCFR/phase-b/TS__phase-b__primary_role_paths.md",
+        "classification": "HISTORY"
+      },
+      {
+        "path": "workspace/2026/TFW_20260902-175227_RCFR/phase-c/HL__phase-c__closure_secondary_paths_and_whole_system_proof.md",
+        "classification": "HISTORY"
+      },
+      {
+        "path": "workspace/2026/TFW_20260902-175227_RCFR/phase-c/RF__phase-c__closure_secondary_paths_and_whole_system_proof.md",
+        "classification": "HISTORY"
+      },
+      {
+        "path": "workspace/2026/TFW_20260902-175227_RCFR/phase-c/evidence/runtime-context-whole-system.txt",
+        "classification": "HISTORY"
+      },
+      {
+        "path": "workspace/2026/TFW_20260902-175227_RCFR/phase-c/evidence/semantic-and-lifecycle-whole-system.txt",
+        "classification": "HISTORY"
+      },
+      {
+        "path": "workspace/2026/TFW_20260902-175227_RCFR/phase-c/evidence/verification-whole-system.txt",
+        "classification": "HISTORY"
+      },
+      {
+        "path": "workspace/2026/TFW_20260902-175227_RCFR/research/iter1/2_gather.md",
+        "classification": "HISTORY"
+      },
+      {
+        "path": "workspace/2026/TFW_20260902-175227_RCFR/research/iter1/3_extract.md",
+        "classification": "HISTORY"
+      },
+      {
+        "path": "workspace/2026/TFW_20260902-175227_RCFR/research/iter1/4_challenge.md",
+        "classification": "HISTORY"
+      },
+      {
+        "path": "workspace/2026/TFW_20260902-175227_RCFR/research/iter1/RES.md",
+        "classification": "HISTORY"
+      },
+      {
+        "path": "workspace/2026/TFW_20260902-175227_RCFR/research/iter2/3_extract.md",
+        "classification": "HISTORY"
+      },
+      {
+        "path": "workspace/2026/TFW_20260905-124029_RTPSN/HL-TFW_20260905-124029_RTPSN.md",
+        "classification": "HISTORY"
+      },
+      {
+        "path": "workspace/2026/TFW_20260905-124029_RTPSN/phase-a/evidence/command-entry-topology.txt",
+        "classification": "HISTORY"
+      },
+      {
+        "path": "workspace/2026/TFW_20260905-124029_RTPSN/phase-b/HL__phase-b__session_identity_ergonomics.md",
+        "classification": "HISTORY"
+      },
+      {
+        "path": "workspace/2026/TFW_20260905-124029_RTPSN/phase-b/ONB__phase-b__session_identity_ergonomics.md",
+        "classification": "HISTORY"
+      },
+      {
+        "path": "workspace/2026/TFW_20260905-124029_RTPSN/phase-b/RF__phase-b__session_identity_ergonomics.md",
+        "classification": "HISTORY"
+      },
+      {
+        "path": "workspace/2026/TFW_20260905-124029_RTPSN/phase-b/TS__phase-b__session_identity_ergonomics.md",
+        "classification": "HISTORY"
+      },
+      {
+        "path": "workspace/2026/TFW_20260905-124029_RTPSN/phase-b/evidence/session-identity-accounting.txt",
+        "classification": "HISTORY"
+      },
+      {
+        "path": "workspace/2026/TFW_20260905-124029_RTPSN/phase-b/evidence/session-identity-context.txt",
+        "classification": "HISTORY"
+      },
+      {
+        "path": "workspace/2026/TFW_20260905-124029_RTPSN/phase-b/evidence/session-identity-coverage.txt",
+        "classification": "HISTORY"
+      },
+      {
+        "path": "workspace/2026/TFW_20260905-124029_RTPSN/phase-b/evidence/session-identity-scenarios.json",
+        "classification": "HISTORY"
+      },
+      {
+        "path": "workspace/2026/TFW_20260905-124029_RTPSN/phase-b/review/verify.md",
+        "classification": "HISTORY"
+      },
+      {
+        "path": "workspace/2026/TFW_20260905-124029_RTPSN/research/iter1/2_gather.md",
+        "classification": "HISTORY"
+      },
+      {
+        "path": "workspace/2026/TFW_20260905-124029_RTPSN/research/iter2/2_gather.md",
+        "classification": "HISTORY"
+      },
+      {
+        "path": "workspace/2026/TFW_20260905-124029_RTPSN/research/iter2/3_extract.md",
+        "classification": "HISTORY"
+      },
+      {
+        "path": "workspace/2026/TFW_20260905-124029_RTPSN/research/iter2/4_challenge.md",
+        "classification": "HISTORY"
+      },
+      {
+        "path": "workspace/2026/TFW_20260905-124029_RTPSN/research/iter2/RES.md",
+        "classification": "HISTORY"
+      },
+      {
+        "path": "workspace/2026/TFW_20260906-190312_CRUE/RF-TFW_20260906-190312_CRUE.md",
+        "classification": "HISTORY"
+      },
+      {
+        "path": "workspace/2026/TFW_20260906-190312_CRUE/TS-TFW_20260906-190312_CRUE.md",
+        "classification": "HISTORY"
+      },
+      {
+        "path": "workspace/2026/TFW_20260906-190312_CRUE/evidence/EV__TFW_20260906-190312_CRUE.md",
+        "classification": "HISTORY"
+      },
+      {
+        "path": "workspace/2026/TFW_20260906-190312_CRUE/research/iter3/4_challenge.md",
+        "classification": "HISTORY"
+      },
+      {
+        "path": "workspace/2026/TFW_20260907-020729_SLC/RF__TFW_20260907-020729_SLC.md",
+        "classification": "HISTORY"
+      },
+      {
+        "path": "workspace/2026/TFW_20260907-020729_SLC/TS__TFW_20260907-020729_SLC.md",
+        "classification": "HISTORY"
+      },
+      {
+        "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/01-readers.receipt.json",
+        "classification": "HISTORY"
+      },
+      {
+        "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/02-source.receipt.json",
+        "classification": "HISTORY"
+      },
+      {
+        "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/03-collection.receipt.json",
+        "classification": "HISTORY"
+      },
+      {
+        "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/04-collection.receipt.json",
+        "classification": "HISTORY"
+      },
+      {
+        "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/05-init-contract.receipt.json",
+        "classification": "HISTORY"
+      },
+      {
+        "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/07-compiler.receipt.json",
+        "classification": "HISTORY"
+      },
+      {
+        "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/08-full.receipt.json",
+        "classification": "HISTORY"
+      },
+      {
+        "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/EV__TFW_20260907-020729_SLC.md",
+        "classification": "HISTORY"
+      },
+      {
+        "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/accounting/result.json",
+        "classification": "HISTORY"
+      },
+      {
+        "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/c2-01-resolver.receipt.json",
+        "classification": "HISTORY"
+      },
+      {
+        "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/c2-02-collection.receipt.json",
+        "classification": "HISTORY"
+      },
+      {
+        "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/c2-03-integration.receipt.json",
+        "classification": "HISTORY"
+      },
+      {
+        "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/c2-accounting/result.json",
+        "classification": "HISTORY"
+      },
+      {
+        "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/c2-opened-output.json",
+        "classification": "HISTORY"
+      },
+      {
+        "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/candidate-return.json",
+        "classification": "HISTORY"
+      },
+      {
+        "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/final-doc-links/input-manifest.json",
+        "classification": "HISTORY"
+      },
+      {
+        "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/final-doc-links/opened-output.json",
+        "classification": "HISTORY"
+      },
+      {
+        "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/final-release/01-collection.receipt.json",
+        "classification": "HISTORY"
+      },
+      {
+        "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/final-release/02-full.receipt.json",
+        "classification": "HISTORY"
+      },
+      {
+        "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/final-release/composition.json",
+        "classification": "HISTORY"
+      },
+      {
+        "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/final-release/input-manifest.json",
+        "classification": "HISTORY"
+      },
+      {
+        "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/final-release/opened-output.json",
+        "classification": "HISTORY"
+      },
+      {
+        "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/native-package-index.json",
+        "classification": "HISTORY"
+      },
+      {
+        "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/pre-candidate.json",
+        "classification": "HISTORY"
+      },
+      {
+        "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/review-c2-final/accounting-result.json",
+        "classification": "HISTORY"
+      },
+      {
+        "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/review-c2-final/input-manifest.json",
+        "classification": "HISTORY"
+      },
+      {
+        "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/review-c2-final/opened-output.json",
+        "classification": "HISTORY"
+      },
+      {
+        "path": "workspace/2026/TFW_20260907-020729_SLC/evidence/support-accounting.ps1",
+        "classification": "HISTORY"
+      },
+      {
+        "path": "workspace/2026/TFW_20260907-020729_SLC/research/iter2/RES.md",
+        "classification": "HISTORY"
+      },
+      {
+        "path": "workspace/2026/TFW_20260907-020729_SLC/review/verify.md",
+        "classification": "HISTORY"
+      },
+      {
+        "path": "workspace/2026/TFW_20260907-133942_PTTC/phase-b/HL__phase-b__finite_closure_and_recovery.md",
+        "classification": "HISTORY"
+      },
+      {
+        "path": "workspace/2026/TFW_20260907-133942_PTTC/phase-b/REVIEW__phase-b__finite_closure_and_recovery.md",
+        "classification": "HISTORY"
+      },
+      {
+        "path": "workspace/2026/TFW_20260907-133942_PTTC/phase-b/RF__phase-b__finite_closure_and_recovery.md",
+        "classification": "HISTORY"
+      },
+      {
+        "path": "workspace/2026/TFW_20260907-133942_PTTC/phase-b/TS__phase-b__finite_closure_and_recovery.md",
+        "classification": "HISTORY"
+      },
+      {
+        "path": "workspace/2026/TFW_20260907-133942_PTTC/phase-b/evidence/01-pure.events.jsonl",
+        "classification": "HISTORY"
+      },
+      {
+        "path": "workspace/2026/TFW_20260907-133942_PTTC/phase-b/evidence/01-pure.sources.json",
+        "classification": "HISTORY"
+      },
+      {
+        "path": "workspace/2026/TFW_20260907-133942_PTTC/phase-b/evidence/01-pure.stdout.txt",
+        "classification": "HISTORY"
+      },
+      {
+        "path": "workspace/2026/TFW_20260907-133942_PTTC/phase-b/evidence/02-correction.sources.json",
+        "classification": "HISTORY"
+      },
+      {
+        "path": "workspace/2026/TFW_20260907-133942_PTTC/phase-b/evidence/03-collection.sources.json",
+        "classification": "HISTORY"
+      },
+      {
+        "path": "workspace/2026/TFW_20260907-133942_PTTC/phase-b/evidence/04-full.events.jsonl",
+        "classification": "HISTORY"
+      },
+      {
+        "path": "workspace/2026/TFW_20260907-133942_PTTC/phase-b/evidence/04-full.sources.json",
+        "classification": "HISTORY"
+      },
+      {
+        "path": "workspace/2026/TFW_20260907-133942_PTTC/phase-b/evidence/04-full.stdout.txt",
+        "classification": "HISTORY"
+      },
+      {
+        "path": "workspace/2026/TFW_20260907-133942_PTTC/phase-b/evidence/05-full-corrected.events.jsonl",
+        "classification": "HISTORY"
+      },
+      {
+        "path": "workspace/2026/TFW_20260907-133942_PTTC/phase-b/evidence/05-full-corrected.sources.json",
+        "classification": "HISTORY"
+      },
+      {
+        "path": "workspace/2026/TFW_20260907-133942_PTTC/phase-b/evidence/accounting-inputs.json",
+        "classification": "HISTORY"
+      },
+      {
+        "path": "workspace/2026/TFW_20260907-133942_PTTC/phase-b/evidence/accounting-result.json",
+        "classification": "HISTORY"
+      },
+      {
+        "path": "workspace/2026/TFW_20260907-133942_PTTC/phase-b/evidence/candidate-commit.json",
+        "classification": "HISTORY"
+      },
+      {
+        "path": "workspace/2026/TFW_20260907-133942_PTTC/phase-b/evidence/candidate-source-audit.json",
+        "classification": "HISTORY"
+      },
+      {
+        "path": "workspace/2026/TFW_20260907-133942_PTTC/phase-b/evidence/native-B2-correction.json",
+        "classification": "HISTORY"
+      },
+      {
+        "path": "workspace/2026/TFW_20260907-133942_PTTC/phase-b/evidence/native-B2-preparation.json",
+        "classification": "HISTORY"
+      },
+      {
+        "path": "workspace/2026/TFW_20260907-133942_PTTC/phase-b/evidence/native-B5-setup.json",
+        "classification": "HISTORY"
+      },
+      {
+        "path": "workspace/2026/TFW_20260907-133942_PTTC/phase-b/evidence/native-profile-preparation-correction.json",
+        "classification": "HISTORY"
+      },
+      {
+        "path": "workspace/2026/TFW_20260907-133942_PTTC/phase-b/evidence/phase-b-final-source-audit.json",
+        "classification": "HISTORY"
+      },
+      {
+        "path": "workspace/2026/TFW_20260907-133942_PTTC/phase-b/evidence/phase-b-installation.json",
+        "classification": "HISTORY"
+      },
+      {
+        "path": "workspace/2026/TFW_20260907-133942_PTTC/phase-b/evidence/phase-b-native-inputs.json",
+        "classification": "HISTORY"
+      },
+      {
+        "path": "workspace/2026/TFW_20260907-133942_PTTC/phase-b/evidence/support-accounting.ps1",
+        "classification": "HISTORY"
+      },
+      {
+        "path": "workspace/2026/TFW_20260907-133942_PTTC/phase-b/evidence/trace-package-staging.json",
+        "classification": "HISTORY"
+      },
+      {
+        "path": "workspace/2026/TFW_20260909-231654_TKL/TS__TFW_20260909-231654_TKL.md",
+        "classification": "HISTORY"
+      },
+      {
+        "path": "workspace/2026/TFW_20260909-231654_TKL/evidence/coordinator-ac7-complete/custody.json",
+        "classification": "HISTORY"
+      },
+      {
+        "path": "workspace/2026/TFW_20260909-231654_TKL/research/iter1/4_challenge.md",
+        "classification": "HISTORY"
+      },
+      {
+        "path": "workspace/TFW_20260913-151442_RWNR/HL-TFW_20260913-151442_RWNR.md",
+        "classification": "HISTORY"
+      },
+      {
+        "path": "workspace/TFW_20260913-151442_RWNR/journal/20260913-165716__dispatch__ab3b.md",
+        "classification": "HISTORY"
+      },
+      {
+        "path": "workspace/TFW_20260913-151442_RWNR/phase-a/RF__phase-a__continuation_responsibilities.md",
+        "classification": "HISTORY"
+      },
+      {
+        "path": "workspace/TFW_20260913-151442_RWNR/phase-b/HL__phase-b__resume_surface_retirement.md",
+        "classification": "PHASE_B_TRACE"
+      },
+      {
+        "path": "workspace/TFW_20260913-151442_RWNR/phase-b/ONB__phase-b__resume_surface_retirement.md",
+        "classification": "PHASE_B_TRACE"
+      },
+      {
+        "path": "workspace/TFW_20260913-151442_RWNR/phase-b/RF__phase-b__resume_surface_retirement.md",
+        "classification": "PHASE_B_TRACE"
+      },
+      {
+        "path": "workspace/TFW_20260913-151442_RWNR/phase-b/TS__phase-b__resume_surface_retirement.md",
+        "classification": "PHASE_B_TRACE"
+      },
+      {
+        "path": "workspace/TFW_20260913-151442_RWNR/phase-b/TS__phase-b__resume_surface_retirement__rev2.md",
+        "classification": "PHASE_B_TRACE"
+      },
+      {
+        "path": "workspace/TFW_20260913-151442_RWNR/phase-b/evidence/phase-b-accounting.json",
+        "classification": "PHASE_B_TRACE"
+      },
+      {
+        "path": "workspace/TFW_20260913-151442_RWNR/phase-b/evidence/phase-b-receivers.json",
+        "classification": "PHASE_B_TRACE"
+      },
+      {
+        "path": "workspace/TFW_20260913-151442_RWNR/phase-b/evidence/phase-b-surface.json",
+        "classification": "PHASE_B_TRACE"
+      },
+      {
+        "path": "workspace/TFW_20260913-151442_RWNR/research/iter1/1_briefing.md",
+        "classification": "HISTORY"
+      },
+      {
+        "path": "workspace/TFW_20260913-151442_RWNR/research/iter1/2_gather.md",
+        "classification": "HISTORY"
+      },
+      {
+        "path": "workspace/TFW_20260913-151442_RWNR/research/iter1/3_extract.md",
+        "classification": "HISTORY"
+      },
+      {
+        "path": "workspace/TFW_20260913-151442_RWNR/research/iter1/4_challenge.md",
+        "classification": "HISTORY"
+      },
+      {
+        "path": "workspace/TFW_20260913-151442_RWNR/research/iter1/RES.md",
+        "classification": "HISTORY"
+      },
+      {
+        "path": "workspace/TFW_20260913-151442_RWNR/research/iter2/2_gather.md",
+        "classification": "HISTORY"
+      },
+      {
+        "path": "workspace/TFW_20260913-151442_RWNR/research/iter2/3_extract.md",
+        "classification": "HISTORY"
+      },
+      {
+        "path": "workspace/TFW_20260913-151442_RWNR/research/iter2/RES.md",
+        "classification": "HISTORY"
+      },
+      {
+        "path": "workspace/TFW_20260913-151442_RWNR/status.md",
+        "classification": "HISTORY"
+      }
+    ],
+    "unclassified_live_matches": [],
+    "revision_1_value_content_parity": {
+      "candidate": "6d3f3890ece2f357ab6353d4fd15a28fe4f3767c",
+      "paths_checked": 30,
+      "exact": true
+    },
+    "candidate_bound_tests": {
+      "prefreeze_targeted": "388 passed in 407.67s",
+      "prefreeze_full": "626 passed, 1 skipped in 644.22s",
+      "candidate_targeted": "388 passed in 468.15s",
+      "candidate_collect": "627 tests collected in 0.24s",
+      "candidate_full": "626 passed, 1 skipped in 823.51s",
+      "candidate_focused_command_entry": "31 passed in 65.17s",
+      "candidate_state": "32 passed in 0.42s"
+    },
+    "terminal_verdict": "PASS"
+  }
+}
