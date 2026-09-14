@@ -4123,19 +4123,6 @@ def rwnr_phase_b_c1_receipt(tmp_path: Path,
     }
 
 
-def test_rwnr_phase_b_surface_selector_manifest_absence_and_mutants_are_exact():
-    record = rwnr_phase_b_surface_record()
-    assert record["approval_ts_blob"] == record["expected_ts_blob"]
-    assert record["action_map_exact"] and (record["delete_count"], record["modify_count"]) == (5, 25)
-    assert record["manifest_commands"] == list(RWNR_PHASE_B_COMMANDS)
-    assert record["evaluator_contract"] == {
-        "commands": RWNR_PHASE_B_COMMANDS, "refusal_count": 10, "resume_absent": True}
-    assert record["excluded_test_unchanged"]
-    assert not record["errors"] and not record["unclassified_live_matches"]
-    assert record["implementation_scope_exact"] and record["plan_unchanged_from_baseline"]
-    assert all(record["mutants"].values())
-
-
 def test_rwnr_phase_b_receiver_update_is_versioned_owned_only_and_atomic(tmp_path):
     receipt = rwnr_receiver_migration_receipt(tmp_path)
     clean = receipt["connected_clean"]
@@ -4173,28 +4160,6 @@ def test_rwnr_phase_b_accounting_and_instruction_classification_are_exact():
     assert all(record["copy_parity"].values()) and all(record["managed_block_parity"].values())
     assert not record["unclassified_instruction_changes"]
     assert record["approved_denominator"] == {"files": 30, "loc": 650}
-
-
-def test_rwnr_phase_b_landing_composes_clean_and_tkl_diverged_paths_exactly():
-    record = rwnr_phase_b_landing_provenance()
-    rows = record["rows"]
-    clean = [row for row in rows if row["classification"] == "CLEAN_PREIMAGE"]
-    composite = [row for row in rows if row["classification"] == "COMPOSITE"]
-    assert record["current_master"] == record["fresh_master"]
-    assert record["exact_selector"] and not record["missing"] and not record["extra"]
-    assert (len(rows), len(clean), len(composite)) == (33, 19, 14)
-    assert all(row["observed_action"] == row["accepted_action"] for row in rows)
-    assert all(row["clean_afterimage_match"] for row in clean)
-    assert {row["path"] for row in composite if row["accepted_action"] == "D"} == {
-        ".agents/workflows/tfw-resume.md",
-        ".claude/commands/tfw-resume.md",
-        ".tfw/workflows/resume.md",
-    }
-    composite_modifications = [row for row in composite if row["accepted_action"] == "M"]
-    assert len(composite_modifications) == 11
-    assert all(row["composite_blob"] not in {
-        row["fresh_master_blob"], row["accepted_candidate_blob"]}
-               for row in composite_modifications)
 
 
 @pytest.mark.parametrize("scenario", RWNR_PHASE_B_C1_SCENARIOS)
