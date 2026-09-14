@@ -2931,12 +2931,12 @@ def test_rtpsn_phase_b_codex_manifest_roots_phase_a_cratm_and_project_routes_are
 # RWNR Phase A assurance. These models prove retirement preconditions without changing the live
 # eleven-command manifest or any Resume path; Phase B owns the real versioned migration.
 # Phase-A REVIEW sections 4.2 and 6.3 pin this historical scope oracle.
-# workspace/TFW_20260913-151442_RWNR/phase-a/REVIEW__phase-a__continuation_responsibilities.md
+# workspace/2026/TFW_20260913-151442_RWNR/phase-a/REVIEW__phase-a__continuation_responsibilities.md
 RWNR_ACCEPTED_PHASE_A = "ddb6fc4a1ab528525abd1020ee2fb562d4e10f65"
 RWNR_ACCOUNTING_BASELINE = "f6e85aa898061779c6b37bba34dc97e28c76f01f"
 RWNR_HISTORY_BASELINE = "a2363fd07253ca92410db149b4301432de79be3b"
 RWNR_PHASE_A_CANDIDATE = "ddb6fc4a1ab528525abd1020ee2fb562d4e10f65"
-RWNR_PHASE_B_TRACE_PREFIX = "workspace/TFW_20260913-151442_RWNR/phase-b/"
+RWNR_PHASE_B_TRACE_PREFIX = "workspace/2026/TFW_20260913-151442_RWNR/phase-b/"
 RWNR_VALUE_PATHS = (
     ".tfw/workflows/plan.md",
     ".agents/workflows/tfw-plan.md",
@@ -3367,7 +3367,7 @@ def _rwnr_history_selection(ref: str = RWNR_HISTORY_BASELINE) -> dict[str, objec
     }
     selected = name_hits | content_hits
     selected = {path for path in selected
-                if not path.startswith("workspace/TFW_20260913-151442_RWNR/")}
+                if not path.startswith("workspace/2026/TFW_20260913-151442_RWNR/")}
     aggregates = set(RWNR_AGGREGATE_BLOBS) & selected
     task_paths = {path for path in selected if re.match(r"^(tasks|workspace)/", path)}
     live = selected - task_paths - aggregates
@@ -3509,7 +3509,7 @@ RWNR_PHASE_B_ACCEPTED_PARENT = "41a70febc6d33d369af125d7ad2ecf98a2de0761"
 RWNR_PHASE_B_ACCEPTED_CANDIDATE = "51ea3015290393da001810629f305f5969f4c8b8"
 RWNR_PHASE_B_APPROVAL = "e5efd3e608975184995d254bc5eb84176b8b4451"
 RWNR_PHASE_B_TS_PATH = (
-    "workspace/TFW_20260913-151442_RWNR/phase-b/"
+    "workspace/2026/TFW_20260913-151442_RWNR/phase-b/"
     "TS__phase-b__resume_surface_retirement__rev2.md")
 RWNR_PHASE_B_TS_BLOB = "8c06e15e3ad8211195f2d48314d055ad1f111979"
 RWNR_PHASE_B_C1_RESTORE = "d09d5d49496d13b64552fe99a03821826ae435b6"
@@ -3792,7 +3792,7 @@ def rwnr_phase_b_history_record(candidate_ref: str | None = None) -> dict[str, o
     comparison_baseline = _rwnr_b_comparison_baseline(candidate_ref)
     protected = _rwnr_b_protected_history_paths(comparison_baseline)
     protected = tuple(path for path in protected if path !=
-                      "workspace/TFW_20260913-151442_RWNR/HL-TFW_20260913-151442_RWNR.md")
+                      "workspace/2026/TFW_20260913-151442_RWNR/HL-TFW_20260913-151442_RWNR.md")
     command = ["git", "diff", "--name-only", comparison_baseline]
     if candidate_ref is not None:
         command.append(candidate_ref)
