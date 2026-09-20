@@ -1,0 +1,23 @@
+# Sequential focused passes. Iteration 2 reads and challenges iteration 1.
+# The owner creates/starts the Researcher. The Researcher writes only its iterN directory and may
+# report status/results or TFW-required questions directly to the Coordinator through send_message.
+# The Coordinator owns this file and may issue only a bounded gate answer or planned continuation
+# to that already-launched Researcher; no agent creation, scope widening, peer dialogue or AT.
+task_id: TFW_20260920-223357_FRATS
+title: "Framework Refactoring and Agent-Team Simplification"
+mode: focused
+min_iterations: 2
+max_iterations: 5
+iterations:
+  - number: 1
+    focus: "reconstruct the four receiver update histories and current states; reproduce or bridge the RCFR measurements; map canonical and installed readers, copies and artifact filename grammar; test observed compliance and growth causes against counter-evidence"
+    hypotheses: [H1, H4, H5, H8, H9, H10]
+    status: pending
+    res_file: research/iter1/RES.md
+    sources: [codebase, task-traces, receiver-trees]
+  - number: 2
+    focus: "challenge iteration-1 findings; compare activation and dialogue topologies with existing carrier ownership; test the minimal no-dialogue role chain, LEAD limits and native Codex and Claude session behavior; select the smallest complete architecture"
+    hypotheses: [H1, H2, H3, H6, H7, H8, H9, H10]
+    status: pending
+    res_file: research/iter2/RES.md
+    sources: [predecessor-research, codebase, native-provider-evidence, receiver-trees]
