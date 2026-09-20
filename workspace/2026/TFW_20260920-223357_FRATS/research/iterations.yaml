@@ -12,7 +12,7 @@ iterations:
   - number: 1
     focus: "reconstruct the four receiver update histories and current states; reproduce or bridge the RCFR measurements; map canonical and installed readers, copies and artifact filename grammar; test observed compliance and growth causes against counter-evidence"
     hypotheses: [H1, H4, H5, H8, H9, H10, H11]
-    status: pending
+    status: complete
     res_file: research/iter1/RES.md
     sources: [codebase, task-traces, receiver-trees]
   - number: 2
