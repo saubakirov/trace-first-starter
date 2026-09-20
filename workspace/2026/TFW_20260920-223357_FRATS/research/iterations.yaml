@@ -17,7 +17,7 @@ iterations:
     sources: [codebase, task-traces, receiver-trees]
   - number: 2
     focus: "challenge iteration-1 findings; compare activation and dialogue topologies with existing carrier ownership; test the minimal no-dialogue role chain, LEAD limits and native Codex and Claude session behavior; select the smallest complete architecture"
-    hypotheses: [H1, H2, H3, H6, H7, H8, H9, H10, H11, H12, H13, H14, H15]
+    hypotheses: [H1, H2, H3, H6, H7, H8, H9, H10, H11, H12, H13, H14, H15, H16, H17]
     status: pending
     res_file: research/iter2/RES.md
     sources: [predecessor-research, codebase, native-provider-evidence, receiver-trees]
