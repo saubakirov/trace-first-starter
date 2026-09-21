@@ -155,6 +155,43 @@ by the recorded Coordinator; the refusal produced no file change or commit. This
 route without granting a child Coordinator authority. Terminal close remains blocked only on the
 same independent Reviewer's bounded acceptance of effect commit `3effc3e…`.
 
+## 9. Bounded Reviewer Follow-Up — D75 Docs Effect
+
+> **Date**: 2026-09-22
+> **Actual Reviewer unit**: `codex:thread:local:01a0c498-dc86-75f3-92d0-32e69b8bd5cc`
+> **Bounded scope**: effect commit `3effc3ec15b57013de93feb2d5d84458754fe71e` and
+> Coordinator effect record `bec0f58e7996ee50ed6deae4940097e543e45b9d`
+> **Preserved Candidate**: `93186cea9ac8209cade30a49e76f3b8a32ae6227`
+> **Bounded judgment**: **✅ ACCEPTED**
+
+### Independent verification
+
+| Check | Result |
+|---|---|
+| Lineage | APPROVE/`RF → KNW` commit `f1a8cd120b65f185f7a2d2c5a7e8cb0d65f4677d` is an ancestor of `3effc3e…`; `3effc3e…` is an ancestor of `bec0f58…`; the accepted Candidate is also an ancestor of the inspected head. |
+| Effect boundary | `3effc3e…` changes only `KNOWLEDGE.md`, with one deletion and one insertion in D75's impact cell. The exact replacement is `Trajectory 310,485→112,536 (−63.8%)` → `Trajectory 310,485→112,206 (−63.9%)`. |
+| Primary evidence | Phase C RF lines 185–186, Phase C EV E7, Phase C REVIEW revision 3 and `runtime-context-whole-system.txt` Return Round 1 all support `310,485 → 112,206 (63.9% lower)` and the unchanged active-corpus figure `66,436 → 32,088 (51.7% lower)`. |
+| Reproduction | `310,485 − 112,206 = 198,279`, yielding `63.9%` at one decimal; `66,436 − 32,088 = 34,348`, yielding `51.7%` at one decimal. |
+| D75 integrity | The decision statement, remaining impact text, receiver and route wording, configured-suite claim and all three citations are byte-preserved; every cited path resolves. |
+| Coordinator record | `bec0f58…` appends only §8's 22-line effect record to this REVIEW. The combined post-APPROVE diff is limited to `KNOWLEDGE.md` and this REVIEW, and `git diff --check` is clean. |
+| Knowledge disposition | The correction is repository-readable technical reference maintenance and introduces no human-only Fact Candidate. The Coordinator's `/tfw-knowledge: N/A` disposition remains applicable. |
+
+### Bounded judgment and closing state
+
+The D75 Docs effect is accepted with no new defect. The prior APPROVE remains in force, and the
+accepted Candidate is unchanged. AC-8/D75 and the required AC-9 independent judgment are now
+complete. This follow-up changes no lifecycle state: Phase B remains at `KNW`, and only the recorded
+Coordinator may validate terminal records and perform `KNW → DONE`.
+
+- [x] Required D75 `/tfw-docs` effect applied and independently accepted.
+- [x] `/tfw-knowledge: N/A` remains supported by the inspected artifacts.
+- [x] Changed final claim, evidence lineage, arithmetic and preserved context independently judged.
+- [ ] Terminal status, outcome and event validation — retained for the Coordinator.
+
+Material return is limited to Coordinator unit
+`codex:thread:local:01a0bfdb-f0b7-7642-837c-8c47d0a284cf`. No release, tag, push, publication,
+receiver write or further Reviewer mutation is authorized.
+
 ---
 
 *REVIEW — TFW_20260920-223357_FRATS / Phase B: Corpus Consistency, Compression and Receiver Proof — Revision 3 | 2026-09-22*
