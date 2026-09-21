@@ -47,3 +47,34 @@ until the independent Reviewer and Coordinator produce the named records.
 ---
 
 *EV — TFW_20260920-223357_FRATS / Phase B: Corpus Consistency, Compression and Receiver Proof | 2026-09-21*
+
+---
+
+## Return Round 1 — Replacement Evidence
+
+Earlier rows remain the rejected Candidate epoch and are not relabeled. The rows below supersede
+their active claims where Candidate, word-bound, validator-path, provider-limit or accounting inputs
+changed. Independent judgment of these rows is still owed.
+
+| # | AC | What was verified | Environment | Result | Artifact |
+|---|---|---|---|---|---|
+| E1-R1 | AC-1 | Identical successor method measured replacement Candidate 107,850 trajectory and 31,813 unique corpus from Baseline 114,221/37,818; historical series/bridge remain separate. | Immutable Git trees; Python 3.13.5 | VERIFIED | [`current-corpus-and-exposure.txt`](current-corpus-and-exposure.txt) Return Round 1 |
+| E2-R1 | AC-2 | F12–F15 close the four previously missing workflow-bound contradictions; exact Candidate word counts are Plan 923, Handoff 937, Review 998, Update 988 and all ten canonical workflows are ≤1,200. | Candidate Git blobs; `\S+` oracle | VERIFIED | [`instruction-disposition-ledger.md`](instruction-disposition-ledger.md), [`adapter-and-suite.txt`](adapter-and-suite.txt) |
+| E3-R1 | AC-3 | Six positive and six material-negative cases pass/reject from exact Candidate objects; real authority/recovery calls load existing `tools/tfw_state.py` and emit the recorded diagnostics. | Candidate Git objects; Python 3.13.5 | VERIFIED | [`rung1-semantic-replay.txt`](rung1-semantic-replay.txt), [`six-edge-replay.md`](six-edge-replay.md) |
+| E4-R1 | AC-4 | Returned workflows meet the active bound through explicit consolidation dispositions while preserving all six carriers; no new runtime, registry, artifact class or exception was created. | Candidate source/ledger | VERIFIED | [`instruction-disposition-ledger.md`](instruction-disposition-ledger.md) F12–F15; [`rung1-semantic-replay.txt`](rung1-semantic-replay.txt) |
+| E5-R1 | AC-5 | All ten canonical workflow blobs equal all 20 projections. Accepted Phase A bounds are Codex P2/partial P3, authenticated Claude P2, Antigravity P2/partial P3; no full P3/P4 or reliability rate is claimed. | Candidate Git blobs; accepted Phase A RF/REVIEW | VERIFIED | [`adapter-and-suite.txt`](adapter-and-suite.txt); [`../../phase-a/RF__phase-a__explicit_coordination_gateway_and_session_identity.md`](../../phase-a/RF__phase-a__explicit_coordination_gateway_and_session_identity.md); [`../../phase-a/REVIEW__phase-a__explicit_coordination_gateway_and_session_identity.md`](../../phase-a/REVIEW__phase-a__explicit_coordination_gateway_and_session_identity.md) |
+| E6-R1 | AC-6 | R1–R3 do not read or write receiver trees; Coordinator R5 makes the original matched receiver epoch terminal not-owed. Its immutable evidence remains applicable to the unchanged receiver claim. | Recorded Round-0 epoch plus ruled REVIEW R5 | VERIFIED | [`receiver-replay.md`](receiver-replay.md); [`../REVIEW__phase-b__corpus_consistency_compression_and_receiver_proof.md`](../REVIEW__phase-b__corpus_consistency_compression_and_receiver_proof.md) §8 R5 |
+| E7-R1 | AC-7 | Replacement Candidate: 14 collected, 14 passed; command-entry dry-run errors=[]/valid=true/18; 20/20 copy parity; exact final accounting reproduced. | Candidate; pytest 9.0.2; local dry-run | VERIFIED | [`adapter-and-suite.txt`](adapter-and-suite.txt) Return Round 1 |
+| E8-R1 | AC-8 | Appended RF presents replacement Candidate, final counts/metrics, corrected provider bounds and unchanged exact D75 post-APPROVE route. | Executor Return Round 1 | VERIFIED | [`../RF__phase-b__corpus_consistency_compression_and_receiver_proof.md`](../RF__phase-b__corpus_consistency_compression_and_receiver_proof.md) Return Round 1 |
+| E9-R1 | AC-9 | Same Executor produced tested replacement Candidate and appended evidence/RF under the ruled rung-1 bound. Same independent Reviewer verdict, post-APPROVE docs effect/follow-up and terminal Coordinator lineage remain downstream. | Executor unit and immutable refs | DEFERRED | Required next route: same independent `/tfw-review`; then ruled R4/closing sequence only after APPROVE. |
+| E-accounting-R1 | AC-7 | TS approval `8c02d42375c3838ff62586bf5221b63f46d78446`; ruling `44f9a6135293a3a68af7a537a4875d722f25d5bf`; Baseline `1a9209530d7a939db1270e2f91dcef40a9f449e6`; Candidate `50ed7fb8c09cfc32e67623848b0551f9ada881da`; literal 47 VALUE paths; 39 modified + 8 zero-diff; 1,283 + 2,823 = 4,106 touched text LOC; net −1,540; no rename/binary/membership deviation; other changed paths are prior governing/TRACE history; below prompts/ceiling; immutable 47/4,800 approval predates work; exact NUL-safe method unchanged. | Repository; Git 2.42.0; exact refs | VERIFIED | [`adapter-and-suite.txt`](adapter-and-suite.txt) final 47-row table and reproduction method |
+
+`E-accounting-R1` is the sole accounting row for the replacement Candidate epoch. It does not move
+Candidate, redefine selector, ratchet denominator or provide late authority.
+
+### Return Round 1 Verdict
+
+Replacement evidence verdict: 9/10 VERIFIED, 1 DEFERRED, 0 BLOCKED, 0 N/A.
+
+The only deferred row is the deliberately downstream independent acceptance/docs follow-up/terminal
+lineage portion of AC-9. The independent Reviewer must confirm or revise this Executor verdict.

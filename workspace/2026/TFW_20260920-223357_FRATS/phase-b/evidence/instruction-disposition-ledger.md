@@ -95,3 +95,19 @@ case-folding, each non-alphanumeric run replaced by `_`, then trimming leading/t
 
 Plan, Handoff, Review and all relevant templates now agree on these fixtures. Historical files were
 not renamed or normalized.
+
+## Return Round 1 — closed workflow-bound contradictions
+
+Independent REVIEW found four additional active contradictions. These rows extend the F1–F11 census
+and supersede the generic path-level dispositions for rows 11, 13, 14 and 18 where more specific.
+
+| ID | Path / baseline finding | Normative owner / readers | Disposition | Candidate result and reason |
+|---|---|---|---|---|
+| F12 | `.tfw/workflows/plan.md`: 1,433 words exceeded the active ≤1,200 Design Rule | Plan workflow / Coordinator plus Claude and Antigravity projections | **consolidate** | 923 words; retain state routing, activation/authority, knowledge/research gates, exact HL/TS issuance, amendment/REVISE exceptions and Coordinator return. Exact copies regenerated. |
+| F13 | `.tfw/workflows/handoff.md`: 2,101 words exceeded the bound | Handoff workflow / Executor plus two projections | **consolidate** | 937 words; retain rung-specific recovery, ONB gate, VALUE/Candidate accounting, evidence/RF, exact state transitions and hard stop. Exact copies regenerated. |
+| F14 | `.tfw/workflows/review.md`: 2,136 words exceeded the bound | Review workflow / independent Reviewer plus two projections | **consolidate** | 998 words; retain independent staged verification, immutable accounting, Purpose Check, citation bar, findings/rungs, verdict/KNW and bounded follow-up. `Step 2: Verify` anchor remains valid. Exact copies regenerated. |
+| F15 | `.tfw/workflows/update.md`: 2,630 words exceeded the bound | Update workflow / Coordinator plus two projections | **consolidate** | 988 words; retain immutable pin, migration/preservation groups, config/adapter gates, receipt/re-entry/cleanup and safety exceptions. Exact copies regenerated. |
+
+All ten canonical workflows are now ≤1,200 `\S+` words. Each subtraction retains the six-edge
+carriers listed in `six-edge-replay.md`; the Candidate replay and material-negative mutations resolve
+in `rung1-semantic-replay.txt`. No exception to the Design Rule was invented.

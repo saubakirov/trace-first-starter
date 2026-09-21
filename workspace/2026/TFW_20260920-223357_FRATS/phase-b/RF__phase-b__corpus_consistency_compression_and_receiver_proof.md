@@ -132,8 +132,9 @@ remain explicitly conditional.
 - Receiver replay: all four start/end HEAD/branch/status tuples equal; no receiver mutation.
 - Historical replay: exit 0, 569 audit lines, exact accepted 112,206/32,088 terminal values.
 
-Preserved costs and limits: provider-native reliability remains Codex P2/Claude P0; dynamic task
-inputs remain visible but uncharged; root/provider bootstrap text remains locally available; the old
+Preserved costs and limits: accepted evidence remains Codex P2 with partial P3, authenticated Claude
+P2, and Antigravity P2 with partial P3, with no full P3/P4 or reliability rate; dynamic task inputs
+remain visible but uncharged; root/provider bootstrap text remains locally available; the old
 harness has unresolved Phase-A-era anchors and is not claimed for those cases; no receiver upgrade,
 release, push, publication or deployment was tested or authorized.
 
@@ -183,7 +184,8 @@ source lineage, and four receiver repositories read-only.
 Material return: tested Candidate, six bounded evidence attachments, EV, this RF, exact 39/8 and
 365+507 accounting, exact copy/receiver immutability results, and the D75 correction package.
 Uncertainty retained: old-oracle cases whose retired anchors no longer resolve, provider behavior
-beyond P2/P0, and receiver-specific future update results. Unresolved decision: the independent
+beyond the accepted Codex/Claude/Antigravity bounds stated above, and receiver-specific future update
+results. Unresolved decision: the independent
 Reviewer must judge AC-1–AC-9 and the D75 correction. Continuation: transition Phase B to `RF`,
 return only to the recorded Coordinator, then start a separate independent `/tfw-review`; if it
 accepts the D75 correction, route `/tfw-docs` and obtain the same Reviewer's bounded follow-up before
@@ -192,3 +194,120 @@ terminal closure. No release or receiver mutation is implied.
 ---
 
 *RF — TFW_20260920-223357_FRATS / Phase B: Corpus Consistency, Compression and Receiver Proof | 2026-09-21*
+
+---
+
+## Return Round 1 — R1–R3 Replacement Result
+
+> **Date**: 2026-09-21
+> **Status**: 🟢 RF — Rung-1 return complete; independent re-review required
+> **Activation**: delegated same-Executor continuation under
+> `HL-TFW_20260920-223357_FRATS.md @ 35fba767abd768413237bf6416102e189f1d91e6`
+> **Ruled REVIEW**: `44f9a6135293a3a68af7a537a4875d722f25d5bf`, §8 R1–R3
+> **Producer**: `codex:thread:local:01a0c415-c362-78b3-98e9-00d728c5ac18`
+> **Coordinator**: `codex:thread:local:01a0bfdb-f0b7-7642-837c-8c47d0a284cf`
+
+This numbered return section supersedes the original RF's Candidate/accounting/metric, validator-path
+and provider-limit statements where different. The original rejected round remains openable above
+and at its immutable commit.
+
+### 1. What Was Done
+
+R1 consolidated Plan, Handoff, Review and Update to 923/937/998/988 `\S+` words from the Reviewer's
+1,433/2,101/2,136/2,630 observations while preserving activation, authority, evidence, recovery,
+continuation and exception carriers. All ten canonical workflows are now ≤1,200 words. The eight
+affected Claude/Antigravity copies were regenerated; all 20 generated copies exactly match their ten
+canonical sources.
+
+R2 corrects the validator source to `tools/tfw_state.py` and adds an exact Candidate-object command
+plus positive/material-negative output in `evidence/rung1-semantic-replay.txt`. R3 restores the
+accepted Phase A limits: Codex P2 with partial P3, authenticated Claude P2, Antigravity/`agy` P2 with
+partial P3, and no full P3/P4 or reliability rate. These bounds are sourced by
+[Phase A RF](../phase-a/RF__phase-a__explicit_coordination_gateway_and_session_identity.md) §2.5 and
+[Phase A REVIEW](../phase-a/REVIEW__phase-a__explicit_coordination_gateway_and_session_identity.md) §1.
+
+#### Actual Value-Bearing Accounting
+
+| Fact | Replacement result |
+|---|---|
+| TS / ruled return | TS approval `8c02d42375c3838ff62586bf5221b63f46d78446`; REVIEW ruling `44f9a6135293a3a68af7a537a4875d722f25d5bf` |
+| Baseline / Candidate | `1a9209530d7a939db1270e2f91dcef40a9f449e6` / `50ed7fb8c09cfc32e67623848b0551f9ada881da` |
+| Candidate lineage | Replacement Candidate is the first tested descendant containing the R1 VALUE repairs; rejected `fd0655ce…` remains history and is not nominated. |
+| VALUE membership | Same approved 47 paths: 39 MODIFY, 8 ZERO-DIFF; class/reason ledger unchanged except explicit F12–F15 dispositions. |
+| Arithmetic | 1,283 additions + 2,823 deletions = 4,106 touched text LOC; net −1,540; all text; no rename/binary. |
+| Deviations | None. Other Baseline→Candidate paths are governing/TRACE history, not added VALUE. |
+| Trigger/authority | 39 changed / 4,106 touched is below 50/5,000 prompts and 94/9,600 ceiling. Immutable 47/4,800 denominator and boundaries remain owner-approved; no prospective ruling needed. |
+| Reproduction | Unchanged TS NUL-safe literal-selector commands; full final table in `evidence/adapter-and-suite.txt`. |
+
+New TRACE file: `evidence/rung1-semantic-replay.txt`. Modified VALUE: four canonical workflows and
+their eight generated projections. Modified TRACE: the affected evidence attachments, EV and RF only.
+
+### 2. Key Decisions
+
+1. Delete repeated explanation, not gates: exact state, refusal, artifact, evidence, return and
+   exception behavior remains local to each workflow.
+2. Preserve live cross-reference anchors such as Review `Step 2: Verify`; metric discovery and Config
+   registry resolution pass on the replacement Candidate.
+3. Treat provider levels as inherited accepted evidence, not a new native test or reliability claim.
+
+### 3. Acceptance Criteria
+
+- [x] AC-1 — identical successor selector now measures 114,221→107,850 exposure and 37,818→31,813 active corpus; historical series remains separate.
+- [x] AC-2 — F12–F15 explicitly close all four word-bound contradictions; filename census remains valid.
+- [x] AC-3 — exact Candidate-source replay passes all six positive/material-negative cases; validator path exists and self-resolves.
+- [x] AC-4 — every canonical workflow is ≤1,200 words with canonical ownership and no replacement runtime.
+- [x] AC-5 — 20/20 copies exact; provider claims match accepted Phase A limits and do not exceed P3/P4 evidence.
+- [x] AC-6 — original read-only receiver epoch remains applicable; R5 ruled no receiver mutation or new epoch is owed.
+- [x] AC-7 — configured checks, dry-run, copy parity and final immutable accounting pass.
+- [x] AC-8 — owner-readable result and verified D75 correction route remain unchanged.
+- [ ] AC-9 — replacement Candidate/EV/RF complete; same independent Reviewer judgment and later accepted docs/terminal lineage remain downstream.
+
+### 4. Verification
+
+- Word bound: all ten canonical workflows pass; maximum is Init at 1,197.
+- Lint: 14 tests collected; exit 0.
+- Tests: 14 passed in 3.95s; exit 0.
+- Command-entry dry-run: `errors=[]`, `valid=true`, denominator 18.
+- Generated copies: 20/20 canonical blob matches.
+- Successor metric: trajectory 107,850 (−6,371; −5.5778% from Baseline); unique corpus 31,813
+  (−6,005; −15.8787%).
+- Six-edge replay: six positives pass; six material negatives reject, including real validator
+  diagnostics for missing authority and illegal same-state transition.
+- `git diff --check`: clean.
+
+### 5. Evidence
+
+See [EV](evidence/EV__phase-b__corpus_consistency_compression_and_receiver_proof.md) and its Return
+Round 1 rows. Replacement evidence verdict: 9/10 VERIFIED, 1 DEFERRED, 0 BLOCKED, 0 N/A. The deferred
+portion is only independent acceptance/docs follow-up/terminal lineage in AC-9.
+
+### 6. Observations (out-of-scope, not modified)
+
+No new observations. Original D75 and receiver observations retain their ruled R4/R5 dispositions;
+R4 is a post-APPROVE `/tfw-docs` effect and R5 is terminal not-owed.
+
+### 7. Fact Candidates
+
+No fact candidates. The delegated mandate and rulings are already durable governing artifacts, not
+new human-only project knowledge.
+
+### 8. Strategic Insights (Execution)
+
+No strategic insights. This round implements the closed Reviewer/Coordinator bound only.
+
+### 9. Diagrams
+
+No diagrams.
+
+### Material handover at this return
+
+Producer: same Executor unit `codex:thread:local:01a0c415-c362-78b3-98e9-00d728c5ac18`, acting as
+`saubakirov` via Codex. Recipient: Coordinator unit
+`codex:thread:local:01a0bfdb-f0b7-7642-837c-8c47d0a284cf`. Source epoch: mandate `35fba767…`, ruled
+REVIEW `44f9a613…`, approved TS `8c02d423…`, Baseline `1a920953…`, replacement Candidate
+`50ed7fb8…`. Inspected scope: R1–R3, four canonical workflows/eight projections, all ten word
+counts/copy blobs, affected metrics/tests, Candidate validator source, Phase A provider RF/REVIEW and
+affected evidence/RF/EV. Material return: R1–R3 complete with no scope deviation. Uncertainty remains
+only at the accepted provider evidence limits and downstream independent acceptance.
+Continuation: transition to `RF`, return only to the Coordinator, and route the same independent
+Reviewer through `/tfw-review`; no docs effect, receiver write, release or close occurs in this unit.

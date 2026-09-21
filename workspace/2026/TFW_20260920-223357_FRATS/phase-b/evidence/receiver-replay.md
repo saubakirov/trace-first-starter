@@ -40,8 +40,9 @@ replace it as a managed block without separate owner authorization.
   keeps role workflows on the already-active root delivery, and synchronizes all generated command
   copies in the framework source tree.
 - The Candidate preserves managed foreign content, historical filename reads, current adapter
-  topology and the existing Codex P2 / Claude P0 evidence ceiling. It does not establish provider
-  reliability, receiver upgrade safety for all customizations, or universal behavior from four cases.
+  topology and the accepted Phase A bounds: Codex P2 with partial P3, authenticated Claude P2, and
+  Antigravity P2 with partial P3. It establishes no full P3/P4, reliability rate, receiver upgrade
+  safety for all customizations, or universal behavior from four cases.
 - Any install/update, RYC managed-block adoption, cleanup of receiver dirt, or release is a separate
   owner-controlled action outside this Phase B replay.
 

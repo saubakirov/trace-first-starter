@@ -80,3 +80,28 @@ MAINTENANCE DECISION
 No runtime, service, registry or permanent test was added. There is no current production reader
 for a maintained metric tool, and restoring the retired oracle would impose a large maintenance and
 reader tax. The immutable-source procedure and its exact inputs/outputs remain bounded task evidence.
+
+RETURN ROUND 1 — REPLACEMENT CANDIDATE
+Candidate `fd0655ce17f2c650d238622c1d6a57ec5dd9a204` was rejected by independent REVIEW and is retained
+above as the Round-0 epoch. The identical selector/method was rerun against replacement Candidate
+`50ed7fb8c09cfc32e67623848b0551f9ada881da`:
+
+command                         baseline     candidate     delta
+/tfw-plan                         26,246        25,748       -498
+/tfw-research:focused              6,613         6,382       -231
+/tfw-research:deep                 6,678         6,447       -231
+/tfw-handoff                       8,150         6,820     -1,330
+/tfw-review                       27,858        26,601     -1,257
+/tfw-docs                         18,908        18,858        -50
+/tfw-knowledge                     3,082         3,042        -40
+/tfw-release                       1,918         1,902        -16
+/tfw-update                        6,625         4,200     -2,425
+/tfw-config                        3,638         3,374       -264
+/tfw-init                          4,505         4,476        -29
+TRAJECTORY                       114,221       107,850     -6,371 (-5.5778%)
+ACTIVE_TFW_CORPUS                 37,818        31,813     -6,005 (-15.8787%)
+
+The larger reduction is the direct effect of the ruled ≤1,200-word repair in Plan, Handoff, Review
+and Update plus their actual reader graphs. The historical 112,206/32,088 series remains separate;
+no denominator or bridge claim changes. The audit source, command set, charged ranges, dynamic-zero
+rule, containment deduplication and maintenance decision are unchanged from the method above.

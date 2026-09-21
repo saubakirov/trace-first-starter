@@ -24,7 +24,7 @@ subtracted.
 ## Source-derived positive and material-negative replays
 
 The replay read exact source clauses from the Phase A and Phase B Git trees. Where a real validator
-exists it was used (`.tfw/scripts/tfw_state.py`); otherwise the check resolved the canonical heading,
+exists it was used (`tools/tfw_state.py`); otherwise the check resolved the canonical heading,
 producer step and required fields, then applied a single output-changing omission/mismatch mutant.
 
 | Edge | Positive replay | Material negative replay | Result |
@@ -64,3 +64,15 @@ the controlling Phase B evidence; the historical harness is corroboration only.
 
 Verdict: every removal/consolidation family has a closed six-edge map, and every applicable edge has
 one positive and one material-negative outcome. PASS.
+
+## Return Round 1 — R1/R2 replay
+
+Replacement Candidate `50ed7fb8c09cfc32e67623848b0551f9ada881da` reduces the four returned
+canonical workflows while retaining the mapped carriers. The exact source-derived command and output
+are in [`rung1-semantic-replay.txt`](rung1-semantic-replay.txt). It reads Plan, Handoff, Review,
+Update and `tools/tfw_state.py` directly from the Candidate Git tree; no working-tree fallback exists.
+
+All six positive cases pass. One in-memory removal per structural edge is rejected. The real
+validator accepts the complete gate-answer and legal `ONB → RF` cases, rejects the missing governing
+HL/TS reference and rejects `ONB → ONB`. This section supersedes the original validator-path sentence;
+the actual path exists and resolves at the named Candidate.

@@ -1,0 +1,53 @@
+FRATS Phase B Return Round 1 — source-derived six-edge replay
+Date: 2026-09-21
+Candidate: 50ed7fb8c09cfc32e67623848b0551f9ada881da
+Validator source: tools/tfw_state.py at the Candidate Git tree
+
+REPRODUCTION COMMAND
+Run from repository root with Python 3.13.5:
+
+$code=@'
+import subprocess,sys,types
+from pathlib import Path
+candidate='50ed7fb8c09cfc32e67623848b0551f9ada881da'
+def read(path): return subprocess.check_output(['git','show',f'{candidate}:{path}']).decode('utf-8')
+state_src=read('tools/tfw_state.py')
+state=types.ModuleType('candidate_tfw_state')
+state.__file__=str(Path.cwd()/'tools/tfw_state.py')
+sys.modules[state.__name__]=state
+exec(compile(state_src,f'{candidate}:tools/tfw_state.py','exec'),state.__dict__)
+s={k:read(f'.tfw/workflows/{k}.md') for k in ('plan','handoff','review','update')}
+def activation(x): return all('activation/routing' in x[k] for k in x) and all('complete matching spine' in x[k] for k in ('plan','handoff','review')) and 'owner-direct `/tfw-update`' in x['update']
+def evidence(x): return all(t in x['handoff'] for t in ('VERIFIED, DEFERRED, BLOCKED','accounting row','NUL-safe')) and all(t in x['review'] for t in ('Audit EV against RF §5','Baseline/Candidate','Any discrepancy escalates'))
+def continuation(x): return all('coordinator_route' in x[k] for k in ('plan','handoff','review')) and 'Reuse the same Executor and independent Reviewer' in x['plan'] and 'same independent Reviewer' in x['review']
+def exception(x): return all(t in x['plan'] for t in ('Rung 1','rung 2','Rung 3')) and all(t in x['handoff'] for t in ('Rung 1','rung 2','Rung 3')) and 'REVISE' in x['review'] and 'hard stop' in x['review'].lower()
+for name,fn,owner,anchor in [('activation',activation,'handoff','complete matching spine'),('evidence',evidence,'handoff','NUL-safe'),('continuation',continuation,'plan','Reuse the same Executor and independent Reviewer'),('exception',exception,'handoff','Rung 3')]:
+ print(name+'_positive',fn(s)); mutant=dict(s); mutant[owner]=mutant[owner].replace(anchor,'MUTATED',1); print(name+'_negative_rejected',not fn(mutant))
+profiles=state.team_profiles(Path.cwd())
+gate={'time':'2026-09-21T12:00:00+05:00','kind':'gate_answer','writer':'saubakirov','on_behalf_of':'saubakirov','via':'codex','refs':['status.md','ONB__phase-b__corpus_consistency_compression_and_receiver_proof.md','TS__phase-b__corpus_consistency_compression_and_receiver_proof.md'],'summary':'Bounded answer.'}
+print('authority_positive',state.validate_new_event(gate,'20260921-120000__gate_answer__a1b2.md',profiles))
+print('authority_negative',state.validate_new_event({**gate,'refs':['status.md','ONB__phase-b__corpus_consistency_compression_and_receiver_proof.md']},'20260921-120000__gate_answer__a1b2.md',profiles))
+tr={'time':'2026-09-21T12:00:01+05:00','kind':'transition','writer':'saubakirov','on_behalf_of':'saubakirov','via':'codex','from':'ONB','to':'RF','refs':['status.md','RF__phase-b__corpus_consistency_compression_and_receiver_proof.md'],'summary':'Executor returned RF.'}
+print('recovery_positive',state.validate_new_event(tr,'20260921-120001__transition__b2c3.md',profiles))
+print('recovery_negative',state.validate_new_event({**tr,'to':'ONB'},'20260921-120001__transition__b2c3.md',profiles))
+'@
+python -c $code
+
+EXACT OUTPUT
+activation_positive True
+activation_negative_rejected True
+evidence_positive True
+evidence_negative_rejected True
+continuation_positive True
+continuation_negative_rejected True
+exception_positive True
+exception_negative_rejected True
+authority_positive []
+authority_negative ['gate_answer refs must include the governing HL or TS']
+recovery_positive []
+recovery_negative ['illegal transition pair: ONB -> ONB']
+
+The structural cases read exact workflow blobs from Candidate and replace one load-bearing anchor in
+memory for each negative. Authority and recovery load and execute the actual Candidate blob
+`tools/tfw_state.py`; an empty list is acceptance and the named diagnostic is refusal. No fixture is
+written to the repository.

@@ -34,8 +34,9 @@ UPDATE / INIT / CONFIG CONSISTENCY
 All three consume the single manifest topology only at the adapter checkpoint. Update and Init read
 the canonical activation/routing contract conditionally when repairing or synchronizing adapters;
 Config has an explicit activation checkpoint and updates every registered inline location before
-return. No workflow authorizes deferred same-phase copy cleanup. Phase A provider evidence remains
-bounded at Codex P2 and Claude P0; no text upgrades P3/P4.
+return. No workflow authorizes deferred same-phase copy cleanup. Accepted Phase A evidence remains
+bounded at Codex P2 with partial P3, authenticated Claude P2, and Antigravity P2 with partial P3;
+no provider has full P3/P4 or a reliability rate.
 
 CONFIGURED CHECKS
   python -m pytest tools/tests/ docs/scripts/ -q
@@ -118,3 +119,104 @@ WORKTREE BOUNDARY
 The unrelated untracked paths `PROPOSAL__serialized_landing_and_test_boundary.md`,
 `workspace/2026/TFW_20260909-231654_OTR/`, and `workspace/2026/TFW_20260921-180000_RVAG/` were not
 staged, committed, measured or modified by Phase B.
+
+RETURN ROUND 1 — REPLACEMENT CANDIDATE
+Ruled REVIEW: 44f9a6135293a3a68af7a537a4875d722f25d5bf
+Candidate: 50ed7fb8c09cfc32e67623848b0551f9ada881da
+
+CANONICAL WORD BOUND (`len(re.findall(r"\S+", exact_candidate_blob))`)
+  plan       923
+  research  1007
+  handoff    937
+  review     998
+  docs       733
+  knowledge 1038
+  release    718
+  update     988
+  config     748
+  init      1197
+Result: all 10/10 canonical workflows are <=1,200 words. Returned files changed from Reviewer-observed
+1,433/2,101/2,136/2,630 to 923/937/998/988 respectively.
+
+REPLACEMENT COPY PARITY
+Each row is canonical Git blob = Claude copy = Antigravity copy at Candidate:
+  plan       7d2a9fa9293159390fcece7d2983d711878dcc50 = same = same
+  research   9492a59cb09078c2f97b54ce5bd5974b2d2d3e = same = same
+  handoff    d1d6b1def39e6c5fa7f5c8fb3a4e49938cf4afb6 = same = same
+  review     cc59fb3b3d36825ce792d2a7e5757e1d379b1f93 = same = same
+  docs       41f756499e071661f74ddf5b47a83afd78c25d60 = same = same
+  knowledge  9fcc8ffab57d57da5e9349ac0f34d9dee660dde1 = same = same
+  release    11475f2742383129c52ab842e4a2ac67b34bbdbb = same = same
+  update     6660f602f1c1f85c95b0e446ac0f6c49ee8d4766 = same = same
+  config     a9b49aeee30b9b549ba39ee6319c9a4259eef358 = same = same
+  init       22a1daadc8eae867807e9ceb057c13d5a659badf = same = same
+Result: 20/20 generated copies exact; persistent-surface Round-0 results are unchanged and applicable.
+
+REPLACEMENT CONFIGURED CHECKS
+  python -m pytest tools/tests/ docs/scripts/ -q --collect-only
+    14 tests collected; exit 0
+  python -m pytest tools/tests/ docs/scripts/ -q
+    14 passed in 3.95s; exit 0
+  python docs/scripts/command_entry_eval.py dry-run --repetitions 1
+    errors=[]; valid=true; valid_denominator=18; exit 0
+  git diff --check
+    no output; exit 0
+
+FINAL BASELINE→REPLACEMENT VALUE ACCOUNTING
+47 literal VALUE paths; 39 modified + 8 zero-diff; all text; no rename/binary.
+1,283 additions + 2,823 deletions = 4,106 touched text LOC; net -1,540.
+
+path                                                               action      +     -
+.tfw/conventions.md                                                MODIFY      50    21
+.tfw/glossary.md                                                   MODIFY       1     1
+.tfw/README.md                                                     ZERO-DIFF    0     0
+.tfw/templates/HL.md                                               MODIFY       5     6
+.tfw/templates/TS.md                                               MODIFY       2     0
+.tfw/templates/RES.md                                              MODIFY       5     6
+.tfw/templates/ONB.md                                              MODIFY       5     6
+.tfw/templates/RF.md                                               MODIFY       5     6
+.tfw/templates/REVIEW.md                                           MODIFY       5     6
+.tfw/templates/evidence/EV.md                                      MODIFY       2     2
+.tfw/workflows/plan.md                                             MODIFY      90   156
+.tfw/workflows/research/base.md                                    MODIFY       7    25
+.tfw/workflows/handoff.md                                          MODIFY      94   233
+.tfw/workflows/review.md                                           MODIFY      82   207
+.tfw/workflows/docs.md                                             MODIFY       4     8
+.tfw/workflows/knowledge.md                                        MODIFY       4     7
+.tfw/workflows/release.md                                          MODIFY      10    12
+.tfw/workflows/update.md                                           MODIFY      99   268
+.tfw/workflows/config.md                                           MODIFY       6     0
+.tfw/workflows/init.md                                             MODIFY       5     7
+.tfw/adapters/codex/AGENTS.md.template                             ZERO-DIFF    0     0
+AGENTS.md                                                          ZERO-DIFF    0     0
+.tfw/adapters/claude-code/CLAUDE.md.template                       ZERO-DIFF    0     0
+CLAUDE.md                                                          ZERO-DIFF    0     0
+.tfw/adapters/antigravity/tfw-rules.md.template                    ZERO-DIFF    0     0
+.agents/rules/tfw.md                                               ZERO-DIFF    0     0
+.tfw/adapters/cursor/tfw.mdc.template                              ZERO-DIFF    0     0
+.claude/commands/tfw-plan.md                                       MODIFY      90   156
+.agents/workflows/tfw-plan.md                                      MODIFY      90   156
+.claude/commands/tfw-research.md                                   MODIFY       7    25
+.agents/workflows/tfw-research.md                                  MODIFY       7    25
+.claude/commands/tfw-handoff.md                                    MODIFY      94   233
+.agents/workflows/tfw-handoff.md                                   MODIFY      94   233
+.claude/commands/tfw-review.md                                     MODIFY      82   207
+.agents/workflows/tfw-review.md                                    MODIFY      82   207
+.claude/commands/tfw-docs.md                                       MODIFY       4     8
+.agents/workflows/tfw-docs.md                                      MODIFY       4     8
+.claude/commands/tfw-knowledge.md                                  MODIFY       4     7
+.agents/workflows/tfw-knowledge.md                                 MODIFY       4     7
+.claude/commands/tfw-release.md                                    MODIFY      10    12
+.agents/workflows/tfw-release.md                                   MODIFY      10    12
+.claude/commands/tfw-update.md                                     MODIFY      99   268
+.agents/workflows/tfw-update.md                                    MODIFY      99   268
+.claude/commands/tfw-config.md                                     MODIFY       6     0
+.agents/workflows/tfw-config.md                                    MODIFY       6     0
+.claude/commands/tfw-init.md                                       MODIFY       5     7
+.agents/workflows/tfw-init.md                                      MODIFY       5     7
+
+Membership and semantic reasons remain the approved selector and disposition ledger. The 39/4,106
+actual result is below the 50/5,000 decomposition prompts and 94/9,600 owner ceiling; the immutable
+47/4,800 approved denominator does not ratchet. Paths outside the selector between Baseline and
+Candidate are governing/TRACE history from Phase A/B, not additional VALUE. No prospective ruling
+or membership deviation exists.
