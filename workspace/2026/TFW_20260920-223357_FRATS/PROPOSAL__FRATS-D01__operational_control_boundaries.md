@@ -60,6 +60,22 @@ isolated candidate work may continue in parallel?
 - a repository lease file that external or offline writers can bypass;
 - treating worktree isolation as branch, tag or deployment isolation.
 
+### Worktree topology that must be decided, not assumed
+
+The current canon assigns one mutation owner to each delegated mutating-run worktree, and the
+current Codex team profile uses separate worktrees for mutating units. A future task must compare
+that model with the owner's simpler serial alternative:
+
+| Alternative | Potential value | Required challenge |
+|---|---|---|
+| Separate worktree per mutating unit | Strong filesystem/index isolation and parallel candidates | Creates crossing, landing, status propagation and repeated integration cost between roles. |
+| One worktree per task/phase with sequential ownership transfer | One visible task state and no intra-task candidate merge when roles run serially | Must prevent concurrent writes, preserve independent review, identify the current owner and recover safely from an unavailable holder. |
+
+Do not infer “one worktree per agent” from an agent name, or “one worktree per task” from the path
+name. The selected unit of isolation must follow the actual concurrency and mutation boundary. A
+serial task may reuse one task/phase worktree only after the future contract defines exclusive
+handoff, stale-session refusal, review behavior and cleanup.
+
 ## 4. Candidate work package F2 — enforceable capability profiles
 
 ### Question
