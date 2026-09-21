@@ -185,6 +185,68 @@ this live REVIEW plus prior activation/return lineage. The Executor appends the 
 EV rather than creating siblings, then returns to the same independent Reviewer through
 `/tfw-review`. No other role, peer dialogue, receiver write, release or publication is authorized.
 
+## 9. Coordinator Record — Owner-Directed Rung 2
+
+> **Date**: 2026-09-22
+> **Source**: direct owner intervention in the Coordinator task after inspection of the replacement Candidate
+> **Classification**: rung 2 — the owner changes the governing TS, not a frozen HL claim
+> **Governing artifact**: `TS__phase-b__corpus_consistency_compression_and_receiver_proof__rev2.md`
+> **Next recipient**: same Executor unit `codex:thread:local:01a0c415-c362-78b3-98e9-00d728c5ac18`
+
+The owner found that compression had reduced the Coordinator to routing mechanics and exposed an
+active vocabulary collision among Phase, Step, Stage and Gate. The owner approved restoration of
+the Strategic Architect identity, Working Backwards / press-release preview, future-state rendering,
+consequential challenge, two-sided research hypotheses, the Saint-Exupéry judgment gate and explicit
+Executor freedom. The owner also replaced the 1,200-word workflow ceiling with 1,400 words so the
+limit remains a safety boundary rather than a source of one-word approval churn.
+
+Revision 2 carries the exact owner-approved Plan, glossary and Design Rules text in AC-10/AC-11 and
+the exact workflow-heading propagation map. The previous R1 ruling remains immutable history; its
+prospective `≤1,200` completion condition is superseded by AC-11's `≤1,400` condition. R2/R3, all
+other Phase B ACs, the 47-file / 4,800-LOC denominator, receiver read-only boundary, Phase A
+coordination semantics and independent review remain in force.
+
+This is not an HL amendment: it restores the frozen purpose and principles instead of changing
+Goal, Value, phase outcome, DoD, DoF or authority. The current replacement Candidate
+`50ed7fb8c09cfc32e67623848b0551f9ada881da` receives no verdict; it becomes input to a new tested
+descendant under revision 2. The paused Reviewer resumes only after that descendant returns.
+
+PV meaning/scan policy and Reviewer identity are explicitly deferred for separate rulings. The
+Executor may choose safe propagation mechanics and evidence commands, but may not reword the exact
+AC-10/AC-11 blocks, redesign the taxonomy, mutate receivers, open peer dialogue or broaden scope.
+
+### 9.1 Owner hold — coordination entry was still missing
+
+Before commit or Executor dispatch, the owner identified a second purpose-level omission: Plan had
+the routing schema but no mandatory act that asks how the task will be coordinated, discloses native
+provider limits, separates Coordinator from GATEWAY, or tells a continuation what to repeat and skip.
+Execution is therefore held. Revision 2 is a live `TS_DRAFT`; AC-10 now includes Entry and
+Continuation plus Coordination Selection gates, and AC-12 binds provider-honest entry behavior
+without restoring `/tfw-resume` or creating coordinate/gateway workflows. The prior approved
+mindset, vocabulary and 1,400-word ceiling remain accepted inputs, but no expanded execution order
+exists until the owner reviews this exact addition.
+
+### 9.2 Owner approval — revision 2 is executable
+
+On 2026-09-22 owner `saubakirov` approved the complete revision 2 after inspecting the full rendered
+`plan.md` target. The approval covers the exact AC-10 Plan text, AC-11 vocabulary and ≤1,400-word
+ceiling, AC-12 provider-honest coordination entry, and the unchanged immutable denominator of 47
+VALUE files / 4,800 touched text LOC. The §9.1 hold is resolved; it remains immutable history of why
+the coordination entry was added.
+
+The next authorized act is `/tfw-handoff` in the same Executor unit
+`codex:thread:local:01a0c415-c362-78b3-98e9-00d728c5ac18`. It must implement revision 2, append the
+existing ONB/RF/EV, nominate a tested descendant Candidate, and return through the recorded
+Coordinator to the same independent Reviewer. This approval grants no peer dialogue, receiver
+mutation, release, push, PV redesign, Reviewer-identity change or other scope expansion.
+
+**Knowledge handover.** Actual producer is Coordinator unit
+`codex:thread:local:01a0bfdb-f0b7-7642-837c-8c47d0a284cf`; inspected scope is the owner-reviewed
+revision 2, live REVIEW and unchanged Phase-B authority/denominator. No separate project-knowledge
+publication is material: the reusable source is the approved TS plus this ruling. Uncertainty is
+bounded to implementation and independent verification; recipient is the same Executor, followed
+by the same Reviewer.
+
 ---
 
 *REVIEW — TFW_20260920-223357_FRATS / Phase B: Corpus Consistency, Compression and Receiver Proof | 2026-09-21*
