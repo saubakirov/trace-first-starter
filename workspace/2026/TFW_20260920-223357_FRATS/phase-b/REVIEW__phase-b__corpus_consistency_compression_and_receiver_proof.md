@@ -150,6 +150,41 @@ the Executor must stop and return that concrete contradiction rather than invent
 Continuation belongs to the Coordinator: rule all proposals once in this live REVIEW, then dispatch
 the same Executor under the existing approved TS only if the rung-1 bound is accepted.
 
+## 8. Coordinator Ruling — Rung 1 Return
+
+> **Date**: 2026-09-21
+> **Ruler**: Coordinator unit `codex:thread:local:01a0bfdb-f0b7-7642-837c-8c47d0a284cf`, acting as `saubakirov`
+> **Reviewed source**: this independent REVIEW at `9746a73c8fc9305e4971c4790c8ef8ebdc4b233f`
+> **Classification**: rung 1 only — all fixes remain inside approved Phase B TS `8c02d42375c3838ff62586bf5221b63f46d78446`
+> **Governing execution bound**: the approved TS plus R1–R3 below; no TS sibling or HL amendment
+> **Next recipient**: the same Executor unit `codex:thread:local:01a0c415-c362-78b3-98e9-00d728c5ac18`
+
+This section is the Coordinator's one ruling act required by `The 🔄 REVISE route`. It resolves the
+five `pending — coordinator` dispositions in §5 without rewriting the independent Reviewer's
+proposal or judgment. Lifecycle remains `RF`; it moves to `ONB` only when the same Executor accepts
+an owner-direct continuation.
+
+| Ruling | Source | Decision and executable bound | Terminal disposition / completion |
+|---|---|---|---|
+| R1 | Reviewer proposal 1; §5 row 1 | **ACCEPTED — `promoted — phase-b`.** Add explicit ledger findings for Plan, Handoff, Review and Update; reduce each canonical workflow to no more than 1,200 `\S+` words without losing any of the six protected semantic edges; regenerate the corresponding Claude and Antigravity copies; rerun affected word counts, current corpus/exposure, six-edge checks, copy parity, configured tests, command-entry dry-run and immutable accounting; nominate the first tested descendant as the replacement Candidate. If the bound cannot be met without semantic loss, stop and return that exact contradiction rather than inventing an exception. | Complete only when all four canonical workflows satisfy the active bound, their ledger rows close, projections are exact, checks pass, and appended ONB/RF/EV name the replacement Candidate. |
+| R2 | Reviewer proposal 2; §5 row 2 | **ACCEPTED — `promoted — phase-b`.** Replace the nonexistent `.tfw/scripts/tfw_state.py` citation with the actual `tools/tfw_state.py` source, preserve the reproducible validator command/output reference and update EV E3 only after every cited path resolves at the named epoch. | Complete when AC-3 evidence is self-resolving and the affected positive/material-negative cases reproduce. |
+| R3 | Reviewer proposal 3; §5 row 3 | **ACCEPTED — `promoted — phase-b`.** Replace every stale Phase B `Codex P2/Claude P0` ceiling with the accepted Phase A bounds: Codex P2 with partial P3, authenticated Claude P2, Antigravity P2 with partial P3, and no full P3/P4 or reliability rate. Recalculate the EV verdict from the corrected evidence. | Complete when RF, EV and all affected evidence agree with accepted Phase A RF/REVIEW and make no stronger provider claim. |
+| R4 | §5 row 4 | **ACCEPTED — `promoted — phase-b`, post-APPROVE closing effect.** Preserve the independently verified D75 replacement and route it through `/tfw-docs` only after the implementation return receives an independent APPROVE. It is not Executor work in this rung. | Complete only after the actual docs effect and the same independent Reviewer's bounded follow-up; until then Phase B cannot close. |
+| R5 | §5 row 5 | **ACCEPTED — `not material — not owed by Phase B`.** Receiver upgrades or normalization would violate the approved read-only evidence boundary and separate project authority. Preserve the recorded epochs and expose any future receiver update as separate owner work. | Terminal disposition now; no receiver mutation, update or follow-up is owed by this phase. |
+
+Effective §6 state after this ruling:
+
+- [x] Coordinator dispositions complete: R1–R5 above rule every §5 proposal once.
+- [ ] R1–R3 implementation return remains due from the same Executor under the approved TS.
+- [ ] Independent `/tfw-review` of the returned Candidate remains due from the same Reviewer.
+- [ ] `/tfw-docs` D75 effect and bounded Reviewer follow-up remain due after APPROVE.
+- [ ] `/tfw-knowledge` remains a closing-time N/A candidate because no human-only Fact Candidate is present; it is not an execution item in this round.
+
+**Exact continuation:** owner starts `/tfw-handoff frats phase b` in the same Executor task and cites
+this live REVIEW plus prior activation/return lineage. The Executor appends the existing ONB, RF and
+EV rather than creating siblings, then returns to the same independent Reviewer through
+`/tfw-review`. No other role, peer dialogue, receiver write, release or publication is authorized.
+
 ---
 
 *REVIEW — TFW_20260920-223357_FRATS / Phase B: Corpus Consistency, Compression and Receiver Proof | 2026-09-21*
