@@ -48,8 +48,6 @@ Evidence verdict: {N}/{M} VERIFIED, {X} DEFERRED, {Y} BLOCKED, {Z} N/A
 |---|---|
 | `{filename}` | {binary artifact; omit section when none} |
 
-> Names: single-phase `EV__{ID}.md`; multi-phase `EV__phase-{x}__{title}.md`.
-
 ---
 
 *EV — {ID} / Phase {X}: {Title} | YYYY-MM-DD*
