@@ -28,6 +28,16 @@ Do not load every open task, infer a version scheme, or make the installed TFW v
 release version. Missing required contract headings, ambiguous selected evidence, or malformed selected
 state stops the selected release effect, not unrelated routine work.
 
+## Activation and routing checkpoint
+
+Before material work, resolve the exact `/tfw-release` activation, selected effect and task/phase,
+actual Coordinator unit, and owner-direct, delegated, or continuation source. Task-bound release work
+reads and validates the complete status routing spine first; total absence is legacy-readable but
+cannot activate and partial presence is invalid. A release trigger, role prompt, briefing, wait result
+or provisioned unit is not activation. Under `tfw-gates-only`, role-unit status and durable returns go
+only to `coordinator_route`; this Coordinator alone uses `owner_gateway`. External release effects
+remain separately authorized by the project contract and owner gateway.
+
 ## 1. Resolve the Project Release Route
 
 The selected effect first resolves **Scope and Version** under the project's contract. If no trigger

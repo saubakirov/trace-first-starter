@@ -31,10 +31,28 @@ headings stop under `Context Selection`.
 
 ### Session identity checkpoint
 
-For an existing task, after task/phase state and lineage resolve, resolve selected LEAD principal,
-acting principal, mandate root Coordinator unit and current actual unit. `LEAD · {handle} · …` applies only
-when the central root predicate qualifies this exact `PLAN` unit; same-principal children keep `PLAN` with no handle.
-Reapply/read back before questions, routing, Step 2, or writes. New work awaits ID.
+For an existing task, after task/phase state and lineage resolve, apply ordinary `WORK=PLAN`.
+For new work, wait for the approved ID before applying the title. A `GATEWAY` title belongs only to a
+separate actual gateway unit under an explicit iterative grant; this Coordinator never assumes it.
+Reapply/read back before questions, routing, Step 2, or writes.
+
+### Activation and routing checkpoint
+
+Before planning or routing existing work, resolve the exact `/tfw-plan` activation, selected
+task/phase, actual Coordinator unit, and owner-direct, delegated, or continuation source. Validate the
+complete status routing spine. Total absence is legacy-readable but cannot activate current work;
+partial fields, a role prompt, briefing, wait result, implicit latest session, foreign dispatch or
+wrong role/address/parent/scope is a pre-work refusal.
+
+For delegated activation, verify the cited immutable mandate and direct dispatch. Stable principal
+attribution is resolved only when explicitly required; owner-direct activation invents none. Under
+`tfw-gates-only`, this Coordinator receives role-unit returns at `coordinator_route` and alone uses
+`owner_gateway`. It does not instruct peer-role, role-to-owner or role-to-gateway material edges.
+Authority answers are recorded as `gate_answer` events, never edits to another role's artifact.
+
+For a new task, the owner-direct `/tfw-plan` invocation is the activation source. The first status
+must include all five routing fields, naming this actual Coordinator route, the accountable owner
+gateway, dialogue policy, activation policy and exact immutable coordination authority.
 
 ### Existing-reference pre-route
 
@@ -44,9 +62,9 @@ multiple=`COLLISION`, history-only=`HISTORICAL_ONLY`, invalid=`INVALID_CARRIER`;
 
 One active match reads local state, journal, authority, approval and REVIEW; selected phases use only
 phase-local carriers. Unselected `PHASES` renders `Phase | Goal | Value | Lifecycle | Authority |
-Route`, asks which phase, and **STOP**. Re-resolve AT/direct dispatch every time: no AT gives `PLAN`;
-an exact valid root gives `LEAD`; children remain `PLAN`. Absent/ambiguous/stale/foreign/wrong-root AT facts report directly and **STOP**
-unclaimed. Rename/readback failure reports once and continues unclaimed; chat/title/OS/provider never qualify.
+Route`, asks which phase, and **STOP**. Re-resolve routing and activation every time. Missing,
+ambiguous, stale, foreign or wrong-unit facts report to the resolved route and **STOP**. Title/readback
+failure reports once and does not change authority; chat/title/OS/provider never qualify.
 
 | Resolved state/evidence | Result → exact owner |
 |---|---|
@@ -88,17 +106,17 @@ owner-approved full title and uppercase-alphanumeric `ABBR` before creation. �
 
 ## Step 4: Write HL
 
-1. Resolve Who Is Acting before writes; never infer identity.
+1. Resolve owner source and activation before writes; ordinary owner-direct work invents no agent identity.
 2. Create `{container}/{YYYY}/{prefix}_{stamp}_{ABBR}` once. **The whole directory name is the identifier.**
    Collision **STOPS**; never retry, suffix or count.
 3. **Apply session identity.** With the approved ID, apply `PLAN` before state/event/HL writes.
 4. **Write the task's own state and first event** from templates; complete HL and set `HL_DRAFT`.
-10. **Prepare Role Assignment only when AT is contemplated.** Keep the selected-LEAD mandate and
-    append-only working-unit assignment separate; draft rows grant no work.
+10. **Prepare Coordination Selection only when delegation is contemplated.** Keep an immutable
+    delegation mandate separate from operational status/journal routing; draft rows grant no work.
 
 **GATE:** present HL; 🛑 WAIT. Approval freezes and commits before research under `HL Contract` rule 15.
-Ask the human owner to choose manual work or AT; no choice is CL. AT needs one stable agent LEAD,
-bounded mandate/controls, direct reporting and `Autonomous from`.
+Do not ask for an execution mode. Owner-direct activation is sufficient unless the owner chooses a
+bounded delegation or iterative dialogue grant. Record either choice explicitly in the routing spine.
 
 ## Step 5: Hypothesis Iteration
 
@@ -126,14 +144,14 @@ Choose topology; open `templates/TS.md`; bind VALUE/accounting/authority to §4 
 Single phase: approve exact TS+denominator, name `/tfw-handoff`, **STOP**. Multi-phase: read preceding
 RF, create derivation-only Phase HL/TS, approve exact TS+denominator, and stop per phase.
 
-### AT dispatch after exact TS approval
+### Activation or dispatch after exact TS approval
 
-For each start, resolve the selected principal/mandate separately from the actual
+For each start, resolve the activation policy and any immutable mandate separately from the actual
 destination unit, address, parent, role/scope, direct channel, governing status, gate and dispatch refs.
 Record source/destination/parent, refs and originating proposer `{principal, unit}` or `none`;
-`writer` grants nothing. Conflicts report directly and wait. Never execute another workflow.
-Reuse the same Executor and independent Reviewer; unavailable holders require owner-approved §12 `SUPERSEDE`
-before bounded replacement dispatch. Questions/proposals/results return directly.
+`writer` grants nothing. Conflicts report through the routing spine and wait. Never execute another
+workflow. Reuse the same Executor and independent Reviewer. Questions, gates, status changes and
+durable results return only to each unit's `coordinator_route` under `tfw-gates-only`.
 
 ## Step 8: a 🔄 REVISE returned the work — rule and route the round
 

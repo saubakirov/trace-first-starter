@@ -30,6 +30,16 @@ No global digest/state, task sweep, full common library, maintained record list 
 history is an input. An incomplete adoption returns to the authorized updater and its pinned guide;
 qualification neither migrates nor invents a before-image.
 
+## Activation and routing checkpoint
+
+Before material work, resolve the exact `/tfw-knowledge` activation, selected task/phase when
+task-owned, actual Coordinator unit, and owner-direct, delegated, or continuation source. A task-bound
+run reads and validates the complete status routing spine first; total absence is legacy-readable but
+cannot activate and partial presence is invalid. A source artifact, role prompt, briefing, wait result
+or provisioned unit is not activation. Under `tfw-gates-only`, contributors return only to
+`coordinator_route` and this Coordinator alone uses `owner_gateway`. Authority answers are task-local
+`gate_answer` events. Project-wide owner-direct qualification creates no invented task or principal.
+
 ## Phase 1: Orient
 
 Resolve the selected owner and existing qualification grant. Preserve actual originating

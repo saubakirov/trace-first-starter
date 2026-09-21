@@ -3,6 +3,11 @@
 > **Test:** "Can I explain WHY we're investigating this and what would change our approach?"
 > Parent: [HL-{ID}](../../HL-{ID}.md)
 > Goal: {from HL §1 Vision — one sentence}
+> Producer unit: {actual native Researcher address}
+> Parent Coordinator: {status.md coordinator_route}
+> Activation / dispatch source: {owner-direct activation or immutable dispatch ref}
+> Coordination authority: {exact status.md coordination_authority}
+> Originating proposer: {principal and unit, or `none`}
 
 ## Research Plan
 {3-5 bullets per stage: what to investigate. If obvious from briefing, note candidate decision factors (dimensions) you expect to decompose in Gather.}

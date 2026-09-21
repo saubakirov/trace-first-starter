@@ -29,6 +29,18 @@ Full changelog history, live source `HEAD`, unpinned target files, full common l
 state bodies are not inputs. A missing target, target workflow, intervening range, or required major
 migration is a hard stop.
 
+## Activation and routing checkpoint
+
+Before pinning or writing, resolve the exact `/tfw-update` owner-direct activation and actual
+Coordinator unit. A source checkout, role prompt, briefing, provisioned unit or wait result is not
+activation. When the update is attached to a task, read and validate its complete routing spine first;
+total absence is legacy-readable but cannot activate and partial presence is invalid. Under
+`tfw-gates-only`, status and durable returns use `coordinator_route`; this Coordinator alone uses
+`owner_gateway`. Update compatibility preserves legacy statuses and never invents routing. It may add
+the complete five-field spine only to an active task when the accountable authority supplies exact
+route, gateway, dialogue, activation and immutable authority values; otherwise leave the status
+legacy-readable and report the missing decision. A routing-only migration creates no same-state event.
+
 ## 0. Pin the Payload Before Deciding Anything
 
 Resolve `tfw.upstream` to a local Git checkout. The operator names a tag, or explicitly authorizes an
@@ -72,16 +84,16 @@ concrete project-specific next action.
 
 ## 2. Resolve Authority Without a Fixed Interview
 
-Discover the acting human, configured task containers, project checks, established customizations, and
-current grants from applicable project evidence. Never infer identity from Git, OS, folder, provider,
-model, stale receipt, or source checkout. A local per-machine binding may select a handle only when the
-binding exists outside the tree; several declared profiles with no binding require one short identity
-question before the first durable write.
+Discover the accountable human, configured task containers, project checks, established customizations,
+and current grants from applicable project evidence. Never infer identity from Git, OS, folder,
+provider, model, stale receipt, or source checkout. Resolve stable principal attribution only when an
+immutable mandate or explicit provenance requirement needs it. Ordinary owner-direct update work
+invents no agent principal; ambiguity in the actual human owner source permits one short question.
 
 An ordinary configured update does not require a fixed three-question interview or one approval per
 file. Ask one material question only when evidence cannot settle project meaning, a consequential choice,
 or an external effect. State the project consequence, missing evidence, recommendation, and tradeoff in
-ordinary language. An updater cannot select a receiving LEAD or turn a normal update into AT.
+ordinary language. An updater cannot create a delegation or iterative dialogue grant.
 ## 3. Observe, Classify, and Preview Semantic Effects
 
 Before any target write, compare the installed payload with the pinned target and classify semantic

@@ -5,6 +5,11 @@
 > **Status**: 🟢 RF — Complete
 > **Parent HL**: [HL-{ID}](path-to-HL)
 > **TS**: [TS Phase {X}](path-to-TS)
+> **Producer unit**: {actual native Executor address}
+> **Parent Coordinator**: {status.md coordinator_route}
+> **Activation / dispatch source**: {owner-direct activation or immutable dispatch ref}
+> **Coordination authority**: {exact status.md coordination_authority}
+> **Originating proposer**: {principal and unit, or `none`}
 
 ---
 

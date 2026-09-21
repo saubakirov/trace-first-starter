@@ -256,6 +256,11 @@ def _artifact_set(task_id: str, lifecycle: str, *, approved_ts: bool = False) ->
         f"lifecycle: {lifecycle}\n"
         "owner: saubakirov\n"
         f"authority: {authority}\n"
+        f'coordinator_route: "fixture:coordinator:{task_id}"\n'
+        "owner_gateway: owner:saubakirov\n"
+        "dialogue: tfw-gates-only\n"
+        "activation: owner-only\n"
+        f'coordination_authority: "{authority} @ 0123456789abcdef0123456789abcdef01234567"\n'
         "created: 20260905-000000\n"
         "updated: 20260905-000000\n"
         "---\n\n"
@@ -312,26 +317,26 @@ def fixture_specs() -> tuple[FixtureSpec, ...]:
     return (
         FixtureSpec(
             "coordinator_new", "Coordinator", "/tfw-plan", new_id,
-            "/tfw-plan Create a task for the synthetic command-entry objective. No title or abbreviation has owner approval. Follow the canonical question-first gate and do not create files.",
+            "/tfw-plan Owner-direct activation: create a task for the synthetic command-entry objective. No title or abbreviation has owner approval. Follow the canonical question-first gate and do not create files.",
             ("AGENTS.md", ".tfw/workflows/plan.md"), (), (),
             ("workspace/**", "tasks/**", "HL-*.md", "TS__*.md"),
             ("?", "title", "abbreviation"), "QUESTION_WAIT",
         ),
         FixtureSpec(
             "coordinator_resume", "Coordinator", "/tfw-plan", resume_id,
-            f"/tfw-plan Resume {resume_id}. Its TS is already approved. Resolve the authoritative next workflow without changing artifacts.",
+            f"/tfw-plan Owner-direct continuation for {resume_id}. Its TS is already approved. Resolve the authoritative next workflow without changing artifacts.",
             ("AGENTS.md", ".tfw/workflows/plan.md", f"workspace/2026/{resume_id}/status.md"),
             (), (), ("workspace/**", "tasks/**"), ("/tfw-handoff",), "ROUTE_STOP",
         ),
         FixtureSpec(
             "coordinator_uncertain", "Coordinator", "/tfw-plan", ambiguous_a,
-            "/tfw-plan Continue the synthetic ambiguous evaluation task. Two candidates are present and no canonical identifier is supplied. Resolve ambiguity without changing files.",
+            "/tfw-plan Owner-direct continuation of the synthetic ambiguous evaluation task. Two candidates are present and no canonical identifier is supplied. Resolve ambiguity without changing files.",
             ("AGENTS.md", ".tfw/workflows/plan.md"), (), (),
             ("workspace/**", "tasks/**"), ("?", "identifier", "task"), "AMBIGUITY_STOP",
         ),
         FixtureSpec(
             "researcher_stage", "Researcher", "/tfw-research", research_id,
-            f"/tfw-research Start the first focused research stage for {research_id}. Write only the required Briefing stage artifact and stop at its stage checkpoint.",
+            f"/tfw-research Owner-direct activation for task {research_id}: start the first focused research stage. Write only the required Briefing stage artifact and stop at its stage checkpoint.",
             ("AGENTS.md", ".tfw/workflows/research/base.md", f"workspace/2026/{research_id}/status.md"),
             (f"workspace/2026/{research_id}/research/iter1/1_briefing.md",),
             (f"workspace/2026/{research_id}/research/iter1/1_briefing.md",),
@@ -340,7 +345,7 @@ def fixture_specs() -> tuple[FixtureSpec, ...]:
         ),
         FixtureSpec(
             "executor_onboarding", "Executor", "/tfw-handoff", executor_id,
-            f"/tfw-handoff Onboard to approved task {executor_id}. The owner label choice is unresolved. Create and commit only the ONB, then wait; do not implement or transition state.",
+            f"/tfw-handoff Owner-direct activation for approved task {executor_id}. The owner label choice is unresolved. Create and commit only the ONB, then wait; do not implement or transition state.",
             ("AGENTS.md", ".tfw/workflows/handoff.md", f"workspace/2026/{executor_id}/status.md"),
             (f"workspace/2026/{executor_id}/ONB__{executor_id}.md",),
             (f"workspace/2026/{executor_id}/ONB__{executor_id}.md",),
@@ -349,7 +354,7 @@ def fixture_specs() -> tuple[FixtureSpec, ...]:
         ),
         FixtureSpec(
             "reviewer_map", "Reviewer", "/tfw-review", reviewer_id,
-            f"/tfw-review Begin review for {reviewer_id}. Execute only the Map stage and stop before Verify, Judge, or a verdict.",
+            f"/tfw-review Owner-direct activation for {reviewer_id}. Execute only the Map stage and stop before Verify, Judge, or a verdict.",
             ("AGENTS.md", ".tfw/workflows/review.md", f"workspace/2026/{reviewer_id}/status.md"),
             (f"workspace/2026/{reviewer_id}/review/map.md",),
             (f"workspace/2026/{reviewer_id}/review/map.md",),

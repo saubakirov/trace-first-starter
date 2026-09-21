@@ -93,9 +93,14 @@ DEFAULT_CONTAINERS = ["workspace"]
 
 TERMINAL = {"DONE", "REJECTED"}
 
+COORDINATION_KEYS = {
+    "coordinator_route", "owner_gateway", "dialogue", "activation",
+    "coordination_authority",
+}
+
 STATUS_KEYS = {
     "id", "title", "goal", "value", "lifecycle", "lifecycle_verbatim",
-    "owner", "authority", "outcome", "created", "updated",
+    "owner", "authority", "outcome", "created", "updated", *COORDINATION_KEYS,
 }
 
 REQUIRED_KEYS = ("id", "title", "goal", "value", "lifecycle", "owner", "authority",
@@ -419,6 +424,34 @@ def validate_status(data: dict, task_dir: Path | None = None,
         problems.append("outcome is set on a task that has not reached a terminal "
                         "lifecycle — it claims a result that has not happened")
 
+    coordination_present = COORDINATION_KEYS.intersection(data)
+    if coordination_present and coordination_present != COORDINATION_KEYS:
+        missing = sorted(COORDINATION_KEYS - coordination_present)
+        problems.append("partial coordination routing spine; missing: " + ", ".join(missing))
+    elif coordination_present:
+        route = data.get("coordinator_route")
+        if not isinstance(route, str) or not route.strip():
+            problems.append("coordinator_route must be a non-empty native address string")
+        gateway = data.get("owner_gateway")
+        if not isinstance(gateway, str) or not re.fullmatch(
+                r"(?:owner:[a-z0-9][a-z0-9-]*|gateway:\S+)", gateway):
+            problems.append("owner_gateway must be owner:{human} or gateway:{native}")
+        dialogue = data.get("dialogue")
+        if dialogue not in {"tfw-gates-only", "iterative"}:
+            problems.append("dialogue must be tfw-gates-only or iterative")
+        activation = data.get("activation")
+        if not isinstance(activation, str) or not (
+                activation == "owner-only" or
+                (activation.startswith("delegated:") and activation != "delegated:")):
+            problems.append("activation must be owner-only or delegated:{immutable mandate ref}")
+        authority = data.get("coordination_authority")
+        if not isinstance(authority, str) or not re.fullmatch(
+                r"\S(?:.*\S)? @ [0-9a-f]{40}", authority):
+            problems.append(
+                "coordination_authority must contain an exact local reference and full Git epoch")
+        if dialogue == "iterative" and isinstance(gateway, str) and not gateway.startswith("gateway:"):
+            problems.append("iterative dialogue requires a gateway:{native} owner_gateway")
+
     for key in ("created", "updated"):
         value = data.get(key)
         if value is None:
@@ -438,6 +471,16 @@ def validate_status(data: dict, task_dir: Path | None = None,
                 f"id {str(data['id'])!r} disagrees with its directory, which is "
                 f"{parsed[1]!r}")
 
+    return problems
+
+
+def validate_new_status(data: dict, task_dir: Path | None = None,
+                        declared: list[str] | None = None) -> list[str]:
+    """Strict pre-write gate: current statuses require the complete routing spine."""
+    problems = validate_status(data, task_dir, declared)
+    missing = sorted(COORDINATION_KEYS - set(data))
+    if missing:
+        problems.append("new status is missing coordination routing fields: " + ", ".join(missing))
     return problems
 
 
@@ -509,7 +552,7 @@ LEGACY_EVENT_NAME = re.compile(r"^(?P<stamp>\d{8}-\d{6})__(?P<kind>[a-z_]+)\.md$
 
 #: Closed vocabulary. ``consolidation`` is reserved for Phases B and C and is not yet valid.
 EVENT_KINDS = ("created", "dispatch", "handoff", "transition", "ownership_changed",
-               "amendment_escalated")
+               "amendment_escalated", "gate_answer")
 RESERVED_EVENT_KINDS = ("consolidation",)
 
 #: `actor` stays in the accepted set and is absent from the required one. Every event ever
@@ -585,7 +628,8 @@ def validate_profile(handle: str, profile: dict, profiles: dict[str, dict]) -> l
             problems.append(
                 f"agent profile '{handle}' accountable_to does not name a human profile"
             )
-        if not isinstance(profile.get("may_rule_amendments"), bool):
+        if ("may_rule_amendments" in profile and
+                not isinstance(profile.get("may_rule_amendments"), bool)):
             problems.append(
                 f"agent profile '{handle}' may_rule_amendments is not a YAML Boolean"
             )
@@ -835,6 +879,16 @@ def validate_new_event(data: dict, filename: str,
             problems.append(f"illegal transition pair: {source} -> {target}")
     elif source is not None or target is not None:
         problems.append("only a transition event may carry 'from' and 'to'")
+    if kind == "gate_answer" and isinstance(refs, list):
+        normalized_refs = [str(ref).replace("\\", "/") for ref in refs]
+        if not any(ref.endswith("status.md") for ref in normalized_refs):
+            problems.append("gate_answer refs must include the governing status.md")
+        if not any(re.search(r"(?:^|/)(?:ONB|RES|RF|REVIEW|1_briefing)[^/]*\.md$", ref)
+                   for ref in normalized_refs):
+            problems.append("gate_answer refs must include the blocked role artifact")
+        if not any(re.search(r"(?:^|/)(?:HL|TS)[^/]*\.md$", ref)
+                   for ref in normalized_refs):
+            problems.append("gate_answer refs must include the governing HL or TS")
     return problems
 
 

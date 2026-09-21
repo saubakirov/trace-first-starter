@@ -28,6 +28,17 @@ Shared ranges use unique headings; missing/duplicate addressed headings are a ha
 Global state/counts, unrelated task bodies, full libraries and already completed effects are not
 inputs. Retained legacy D rows are history and reference, not a queue to convert or renumber.
 
+## Activation and routing checkpoint
+
+Before material work, resolve the exact `/tfw-docs` activation, selected task/phase when task-bound,
+actual Coordinator unit, and owner-direct, delegated, or continuation source. A task-bound run reads
+and validates the complete status routing spine first; total absence is legacy-readable but cannot
+activate and partial presence is invalid. A prompt, briefing, wait result or provisioned unit is not
+activation. Under `tfw-gates-only`, all producing-role returns arrive at `coordinator_route` and this
+Coordinator alone uses `owner_gateway`. Record authority answers as `gate_answer`, never by editing a
+producer-owned artifact. Manual batch work without a task needs an explicit owner-direct activation
+and creates no invented task identity or principal.
+
 ## 1. Select and Triage
 
 Modes: Auto uses the approved REVIEW selection. Manual resolves the named task's live REVIEW/RF.

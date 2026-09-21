@@ -28,6 +28,16 @@ adapters are not inputs.
 Missing or duplicate task containers, unresolved manifest rows, ambiguous adapter selection, or a
 purpose collision that evidence cannot settle are hard stops.
 
+## Activation and routing checkpoint
+
+Before discovery or repair, resolve the exact `/tfw-init` owner-direct activation and actual
+Coordinator unit. A role prompt, briefing, provisioned unit or wait result is not activation. Full
+init has no prior status: the first status names this `coordinator_route`, accountable
+`owner_gateway`, dialogue policy, `activation: owner-only`, and exact immutable
+`coordination_authority`. Attach/repair validates an existing task routing spine when task-bound;
+legacy or partial routing is reported and never guessed. Stable agent attribution is not required for
+ordinary owner-direct init. Under `tfw-gates-only`, all later role-unit returns use the recorded route.
+
 ## 0. Route Before Discovery
 
 **Detect Full Init vs Adapter Attach/Repair** before reading broad project context.

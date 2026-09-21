@@ -6,6 +6,11 @@
 > **RF**: [RF Phase {X}](path-to-RF)
 > **TS**: [TS Phase {X}](path-to-TS)
 > **Stage files**: `review/map.md`, `review/verify.md`, `review/judge.md`
+> **Producer unit**: {actual native Reviewer address}
+> **Parent Coordinator**: {status.md coordinator_route}
+> **Activation / dispatch source**: {owner-direct activation or immutable dispatch ref}
+> **Coordination authority**: {exact status.md coordination_authority}
+> **Originating proposer**: {principal and unit, or `none`}
 
 ---
 

@@ -3,23 +3,18 @@
 #   POSIX     ~/.tfw/bindings.yaml
 #   Windows   %LOCALAPPDATA%\tfw\bindings.yaml
 #
-# WHAT THIS FILE IS FOR, and its one job: when a project declares more than one participant,
-# it says which declared principal THIS machine acts as. A principal is a valid human or agent
-# profile in that project's team/. The binding grants nothing, proves nothing, and is read by
-# nobody but the session resolving who is acting.
+# WHAT THIS FILE IS FOR, and its one job: when an immutable delegation mandate or explicit
+# attribution requirement needs a stable principal, it says which declared principal THIS machine
+# acts as. Ordinary owner-direct workflow activation does not require a binding or invent an agent
+# principal. A binding grants nothing, proves nothing, and activates nothing.
 #
 # WHY IT LIVES OUTSIDE THE PROJECT. A project-local file can be gitignored but not
 # sync-ignored, so under file synchronization a per-user file reaches every participant who
 # shares the folder. This one is per-machine by construction, not by a rule someone remembers.
 #
-# WHEN YOU NEED IT. With one profile in team/ it is used silently and this file is
-# unnecessary. Write it when the SECOND profile appears — otherwise every later session lands
-# in the "no binding, ask one short question" branch, forever.
-#
-# Seven workflows instruct a session to read this file: plan, handoff, review, resume,
-# release, research/base and init. Until 2.0.0-dirty.3 the payload shipped nothing that said
-# what it contains, so an agent told to read it had nothing to parse and an agent that wanted
-# to write one had nothing to write.
+# WHEN YOU NEED IT. Read it only when stable attribution is required. If that attribution is
+# required and absent or ambiguous, ask one short question before a durable write. Do not ask an
+# identity question merely because `team/` contains multiple profiles.
 
 bindings:
   # absolute path to the project root : the principal handle this machine acts as
@@ -32,7 +27,8 @@ bindings:
 # stop and ask rather than inventing one here.
 #
 # A HANDLE MUST NAME A VALID PROFILE in that project's team/. An agent principal is valid only
-# when its profile names an existing accountable human and carries a Boolean amendment grant.
+# when its profile names an existing accountable human. Historical Boolean amendment fields are
+# readable but never supply current authority.
 # A binding pointing at a missing or invalid profile sends a session back to asking exactly one
 # short identity question; correct the binding rather than recreating a deleted profile.
 #

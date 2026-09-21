@@ -42,30 +42,23 @@ and does not block review.
 > beside the point — goals, values and the north star are yours to defend, and they alone can
 > ground a block. Trust evidence, not declarations.
 
-## Who Is Acting
+## Activation and routing checkpoint
 
-Resolve the acting handle **before the first durable write** — before any `status.md` change,
-any journal event, any commit. Once per session, not per turn.
+Before Map, resolve the exact `/tfw-review` activation, selected task/phase, lifecycle gate, actual
+Reviewer unit, and owner-direct, delegated, or continuation source. Read and validate the complete
+`status.md` routing spine. Total absence is legacy-readable but cannot activate; partial fields, a
+role prompt, briefing, wait result, implicit latest session, foreign dispatch, wrong role/address,
+parent or scope is a pre-work refusal.
 
-| Situation | What happens |
-|---|---|
-| One profile in `team/` | it is used, silently |
-| Several profiles | read the binding on **this machine** — `~/.tfw/bindings.yaml`, or `%LOCALAPPDATA%\tfw\bindings.yaml` |
-| No binding · a shared device · a copied binding · a handle whose profile is gone | **ask exactly one short question**, then proceed |
+For delegated activation, verify the cited immutable mandate and direct Coordinator dispatch. Resolve
+stable principal attribution only when explicitly required; owner-direct activation invents none.
+REVIEW records producer unit, parent `coordinator_route`, activation/dispatch source,
+`coordination_authority`, and originating proposer or `none`. Recheck all on continuation. Shared
+attribution never compromises Reviewer independence or grants ruling authority.
 
-Set optional `writer` to the acting principal only when **Who Is Acting** resolves one; otherwise omit the field. Never create a profile per session.
-
-## Agent Team checkpoint
-
-When AT is declared, resolve the selected LEAD principal and mandate separately from this independent
-Reviewer's actual address, parent Coordinator unit, role/scope, direct channel, `Autonomous from`,
-governing status, exact gate and dispatch refs before Map; recheck all on every continuation. Restate
-both layers, authoritative sources and proposal origin `{principal, unit}` or `none` in REVIEW; never
-replace origin on forwarding, transcription or restart. Shared attribution grants nothing and cannot
-make the Reviewer the LEAD/root ruler. Missing, conflicting, foreign, wrong-parent/address, or `—`
-authority requires a direct Coordinator report and wait. Questions, verdict and proposals return
-directly; continue in this Reviewer. If unavailable, require owner-approved §12 `SUPERSEDE` before a
-bounded replacement dispatch. Non-AT execution and Role Lock are unchanged.
+Under `tfw-gates-only`, every status, question, proposal, verdict and durable return goes only to this
+Reviewer's `coordinator_route`; never to a peer, owner or GATEWAY. Authority answers are accepted only
+through valid task-local `gate_answer` events. Continue in the same Reviewer unit.
 
 ## Trust Protocol (Review)
 

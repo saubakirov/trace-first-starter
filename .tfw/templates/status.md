@@ -6,6 +6,11 @@ value: "what shipping it gives the project, one line"
 lifecycle: TODO
 owner: unassigned
 authority: HL-PREFIX_YYYYMMDD-HHMMSS_ABBR.md
+coordinator_route: "native:coordinator-address"
+owner_gateway: owner:human-handle
+dialogue: tfw-gates-only
+activation: owner-only
+coordination_authority: "HL-PREFIX_YYYYMMDD-HHMMSS_ABBR.md @ full-immutable-epoch"
 created: YYYYMMDD-HHMMSS
 updated: YYYYMMDD-HHMMSS
 ---
@@ -30,6 +35,11 @@ A COMPLETE, VALID EXAMPLE:
     lifecycle: TS_DRAFT
     owner: saubakirov
     authority: HL-20260827-091500__query_redesign.md
+    coordinator_route: "codex:thread:local:01example"
+    owner_gateway: owner:saubakirov
+    dialogue: tfw-gates-only
+    activation: owner-only
+    coordination_authority: "HL-20260827-091500__query_redesign.md @ 0123456789abcdef0123456789abcdef01234567"
     created: 20260827-091500
     updated: 20260827-114210
     ---
@@ -46,6 +56,11 @@ The key set is closed. Concision guides, never validates; never truncate.
 | `lifecycle_verbatim` | complete source value | iff `UNDECLARED` | migration diagnostics |
 | `owner` | human `team/` handle or `unassigned` | always | resume, authority checks |
 | `authority` | path relative to this file | always | resume, authority checks |
+| `coordinator_route` | quoted non-empty native unit address | current statuses | all workflows |
+| `owner_gateway` | `owner:{human-handle}` or `gateway:{native-address}` | current statuses | Coordinator only |
+| `dialogue` | `tfw-gates-only` or `iterative` | current statuses | all workflows |
+| `activation` | `owner-only` or `delegated:{immutable-mandate-ref}` | current statuses | activation checks |
+| `coordination_authority` | quoted exact local authority reference plus immutable epoch | current statuses | all workflows |
 | `outcome` | complete one-line prose | iff terminal | release, humans |
 | `created` | `YYYYMMDD-HHMMSS` or `unrecorded` | always | selected readers |
 | `updated` | `YYYYMMDD-HHMMSS` or `unrecorded` | always | selected readers |
@@ -56,6 +71,13 @@ phase state. Terminal `DONE`/`REJECTED` require `outcome`; nonterminal states fo
 
 Migration-only `UNDECLARED` requires the verbatim source value. Tools never normalize it; an
 accountable owner resolves it with a paired `transition` event from `UNDECLARED`.
+
+The five coordination fields are an all-or-none routing spine. Total absence is accepted only when
+reading legacy status and cannot activate a current workflow. Partial presence is invalid. Current
+writers require all five. `owner_gateway: gateway:{native-address}` and `dialogue: iterative` require
+an exact immutable grant in `coordination_authority`; otherwise use `owner:{human-handle}` and
+`tfw-gates-only`. An authorized active status may add the complete spine without a same-state event;
+the lifecycle did not change.
 
 Read second-resolution times from the clock. Use `unrecorded` with no source time and
 `YYYYMMDD-000000` for a known legacy date with unknown time.

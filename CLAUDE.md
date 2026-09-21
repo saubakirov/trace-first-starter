@@ -12,6 +12,16 @@ Root instructions are already active; do not reload them. For `/tfw-*`, open the
 `.claude/commands/tfw-*.md` copy and its canonical workflow completely. The workflow's Read
 Contract selects task state, addressed shared ranges, templates, and knowledge inputs.
 
+### Activation and routing
+
+A slash command activates work only when it names the exact `/tfw-*` skill, task/phase and
+owner-direct, delegated or continuation source. A session, role prompt, briefing, wait result or
+title is not activation. Read and validate the complete task routing spine before material work;
+report every status change to `coordinator_route`. Under `tfw-gates-only`, role units communicate
+materially only with their own Coordinator, never peers, owner or GATEWAY. Record actual producer
+session/address, parent route, activation/dispatch source and immutable authority in role artifacts.
+Iterative dialogue requires a separately addressable GATEWAY session and exact immutable grant.
+
 ### Slash Commands
 
 | Command | Workflow | Role | Purpose |
@@ -43,8 +53,3 @@ Contract selects task state, addressed shared ranges, templates, and knowledge i
 - **Language**: Reply in the user's latest message language.
 - **Personal preferences**: if `.user_preferences.md` exists in the project root, load it as part of context loading and follow it. It is gitignored and per-user — never copy its content into a shared file (constraint F1). It governs how gates, approvals and verdict requests are presented.
 - **Safety**: Secrets via env vars only. Never claim something was "run" outside the session.
-
-### Execution Modes
-
-- **CL (Chat Loop)** — default. AI proposes, user approves/executes.
-- **AG (Autonomous)** — explicit request only. AI works within approved TS scope.

@@ -38,30 +38,22 @@ After task and iteration resolution, apply `Session identity` with `WORK=RESEARC
 research write, question, wait, or stage work. Iteration never supplies `PHASE`; only governing
 task/phase state may do so.
 
-## Who Is Acting
+## Activation and routing checkpoint
 
-Resolve the acting handle **before the first durable write** — before any `status.md` change,
-any journal event, any commit. Once per session, not per turn.
+Before Step 1, resolve the exact `/tfw-research` activation, selected task/phase and iteration,
+actual Researcher unit, and owner-direct, delegated, or continuation source. Read and validate the
+complete `status.md` routing spine. Total absence is legacy-readable but cannot activate; partial
+fields, a role prompt, briefing, wait result, implicit latest session, foreign dispatch, or wrong
+role/address/parent/scope is a pre-work refusal.
 
-| Situation | What happens |
-|---|---|
-| One profile in `team/` | it is used, silently |
-| Several profiles | read the binding on **this machine** — `~/.tfw/bindings.yaml`, or `%LOCALAPPDATA%\tfw\bindings.yaml` |
-| No binding · a shared device · a copied binding · a handle whose profile is gone | **ask exactly one short question**, then proceed |
+For delegated activation, verify the cited immutable mandate and direct Coordinator dispatch. Resolve
+stable principal attribution only when explicitly required; owner-direct activation invents none.
+Briefing and RES record producer unit, parent `coordinator_route`, activation/dispatch source,
+`coordination_authority`, and originating proposer or `none`. Recheck all on continuation.
 
-Set optional `writer` to the acting principal only when **Who Is Acting** resolves one; otherwise omit the field. Never create a profile per session.
-
-## Agent Team checkpoint
-
-When AT is declared, resolve the selected LEAD principal and mandate separately from this Researcher's
-actual address, parent Coordinator unit, role/scope, direct channel, `Autonomous from`, governing
-status, exact gate and dispatch refs before Step 1; recheck all on every continuation. Restate both
-layers, authoritative sources and proposal origin `{principal, unit}` or `none` in Briefing and RES;
-forwarding or restart never changes origin. Shared principal attribution grants nothing to this child.
-Missing, conflicting, foreign, wrong-parent/address, or `—` authority requires a direct Coordinator
-report and wait. Every WAIT and final RES return directly; continue in this Researcher. If
-unavailable, require owner-approved §12 `SUPERSEDE` before bounded replacement dispatch. Non-AT
-execution and Role Lock are unchanged.
+Under `tfw-gates-only`, every stage status, question, gate and durable return goes only to this
+Researcher's `coordinator_route`; never to a peer, owner or GATEWAY. Authority answers are accepted
+only through valid task-local `gate_answer` events. Continue in the same Researcher unit.
 
 ## Knowledge at use and return
 

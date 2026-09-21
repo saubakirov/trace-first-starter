@@ -14,8 +14,8 @@ CANONICAL TEMPLATE — copy into team/ as {handle}.md, one file per participant.
 A principal is a stable project-local handle backed by a valid human or agent profile. It is
 never a provider, model, executable, process, session, workflow role, or directly addressable
 working unit. Never create one per run, session, Coordinator, Researcher, Executor, or Reviewer.
-One selected LEAD principal may attribute several distinct units without merging their addresses,
-parents, work, or proposal origins.
+One optional principal may attribute several distinct units without merging their addresses,
+parents, work, authority, or proposal origins.
 
 | Key | Bound | Human | Agent |
 |---|---|---|---|
@@ -26,19 +26,17 @@ parents, work, or proposal origins.
 | `organization_role` | description or `not_applicable` | optional | optional |
 | `project_role` | description or `not_applicable` | optional | optional |
 | `accountable_to` | existing human handle | forbidden | required |
-| `may_rule_amendments` | Boolean `true` or `false` | forbidden | required |
+| `may_rule_amendments` | legacy Boolean `true` or `false` | forbidden | optional; read-only |
 | `mentality` | non-empty guidance | forbidden | optional |
 
 The original four keys remain a valid human profile. Optional roles must be non-empty;
 omitted means unknown/not supplied, while exact `not_applicable` means known not to apply.
 Roles are context, never authentication, permission, task scope, or workflow role.
 
-An agent is valid only when `accountable_to` resolves to `type: human` and the grant is a YAML
-Boolean. The grant has exactly two levels but creates no route or permission. A `true` grant is
-eligible only for the owner-selected LEAD's root Coordinator unit inside its approved mandate;
-children sharing principal attribution never inherit it. Never redefine an existing principal's
-grant; a change requires a new handle/profile. `mentality` guides style only and cannot imply
-authority, alter permissions, or change a Role Lock.
+An agent is valid only when `accountable_to` resolves to `type: human`. A historical
+`may_rule_amendments` Boolean remains readable but is never issued and grants no route, activation
+or amendment authority. Current authority comes only from the exact immutable object named by the
+task routing spine. `mentality` guides style only and cannot alter permissions or a Role Lock.
 
 Compatible four-key human:
 
@@ -51,7 +49,7 @@ since: 2025-09-08
 ---
 ```
 
-Agent principal that may rule amendments:
+Current agent principal:
 
 ```yaml
 ---
@@ -62,11 +60,10 @@ since: 2026-09-05
 organization_role: not_applicable
 project_role: phase coordinator
 accountable_to: saubakirov
-may_rule_amendments: true
 mentality: critical opponent
 ---
 ```
 
-Create a profile before a binding or current `writer` names it. Every event still carries
+New agent profiles omit `may_rule_amendments`. Create a profile before a binding or current `writer` names it. Every event still carries
 human `on_behalf_of`. Full writer, tool, token, and binding semantics: `conventions.md` §4.
 -->

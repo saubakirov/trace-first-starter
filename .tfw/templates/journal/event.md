@@ -30,7 +30,8 @@ identity; the token means only uniqueness.
 | `actor` | any value already present | never issue; legacy read only |
 
 Current kinds are closed: `created`, `dispatch`, `handoff`, `transition`, `ownership_changed`,
-`amendment_escalated`. `consolidation` is reserved. If no kind fits, write no event; never invent one.
+`amendment_escalated`, `gate_answer`. `consolidation` is reserved. If no kind fits, write no event;
+never invent one.
 
 Optional `writer` names a declared principal; never derive it from `via`, OS/account identity,
 hostname, model, session, folder, or token. `on_behalf_of` names the accountable human, `via` is
@@ -43,6 +44,11 @@ edge. The body/summary plus refs must preserve the actual source, destination an
 workflow role and bounded scope, direct address/channel, governing artifacts, and originating
 proposer `{principal, unit}` or explicit `none`. Identical writers never merge units; forwarding,
 restart or continuation never changes the recorded origin. Add no frontmatter key for these facts.
+
+For `kind: gate_answer`, omit `from` and `to`. `refs` must cite the governing `status.md`, the
+blocked role artifact, and the exact governing HL or TS. The body identifies the answer source,
+immutable authority epoch and operational effect. The owning authority writes the event; the blocked
+role never answers itself and chat, a title, profile or hidden state cannot amend the governing scope.
 
 A transition requires both `from` and `to`; non-transition state pairs and illegal lifecycle edges
 are refused. Phase events use the phase-local journal and this schema.

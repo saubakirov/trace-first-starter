@@ -9,6 +9,14 @@ This project follows Trace-First Workflow. Root instructions are already active;
 reload them. For `/tfw-*`, open `.cursor/commands/tfw-<command>.md`, then follow the mapped
 canonical workflow's Read Contract. The workflow selects all further inputs.
 
+A command activates work only when it names the exact skill, task/phase and owner-direct,
+delegated or continuation source. A workspace, role prompt, briefing, wait result or title is not
+activation. Read and validate the complete status routing spine before material work and report every
+status change to `coordinator_route`. Under `tfw-gates-only`, role units communicate materially only
+with their own Coordinator, never peers, owner or GATEWAY. Record actual producer surface/address,
+parent route, activation/dispatch source and immutable authority. Iterative dialogue requires a
+separate native GATEWAY surface and exact immutable grant; if unavailable, refuse that mode.
+
 | Commands | Roles |
 |---|---|
 | `/tfw-plan`, `/tfw-docs`, `/tfw-knowledge`, `/tfw-release`, `/tfw-update`, `/tfw-config`, `/tfw-init` | Coordinator |

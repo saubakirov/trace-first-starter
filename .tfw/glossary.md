@@ -3,16 +3,25 @@
 Terms route to their one normative owner. Procedures, field schemas, refusal algorithms,
 and incident histories live at the linked authority or durable history source.
 
-## Execution Modes
+## Coordination
 
-### CL (Chat Loop Mode)
-**Meaning:** The default mode in which AI proposes and the human performs or approves external actions. **Authority:** [conventions.md](conventions.md#7-execution-modes), `CL (Chat Loop)`.
+### Activation
+**Meaning:** Authorization for one exact `/tfw-*` workflow, task/phase, role unit and lineage source. Provisioning, a role prompt, a title or a wait result is not activation. **Authority:** [conventions.md](conventions.md#7-coordination), `Coordination`.
 
-### AG (Autonomous Mode)
-**Meaning:** Explicitly authorized execution within a bounded approved scope, with safe failure on missing context. **Authority:** [conventions.md](conventions.md#7-execution-modes), `AG (Autonomous)`.
+### Continuation
+**Meaning:** Resumption by the same working unit under the same immutable authority and routing spine. **Authority:** [conventions.md](conventions.md#7-coordination), `Coordination`.
 
-### AT (Agent Team)
-**Meaning:** Provider-neutral team execution mode. **Authority:** [conventions.md](conventions.md#at-agent-team--explicit-declaration-only), `AT (Agent Team)`.
+### Routing spine
+**Meaning:** The five all-or-none status fields `coordinator_route`, `owner_gateway`, `dialogue`, `activation`, and `coordination_authority`. **Authority:** [conventions.md](conventions.md#5-task-statuses), `Task Statuses`, and `.tfw/templates/status.md`.
+
+### GATEWAY
+**Meaning:** A separately addressable owner-dialogue unit permitted only by an exact `dialogue: iterative` grant; it is not the root Coordinator and executes no role workflow. **Authority:** [conventions.md](conventions.md#7-coordination), `Coordination`.
+
+### gate_answer
+**Meaning:** An immutable authority-owned event that answers a blocked workflow question and cites status, blocked role artifact, and exact HL/TS authority. **Authority:** [conventions.md](conventions.md#7-coordination), `Coordination`, and `.tfw/templates/journal/event.md`.
+
+### Historical execution labels
+**Meaning:** `CL`, `AG`, `AT`, `LEAD`, `Autonomous from`, and `G1`–`G8` remain readable only at their original epochs and are never current controls. **Authority:** [conventions.md](conventions.md#7-coordination), `Coordination`.
 
 ## Artifact Types
 
@@ -180,7 +189,7 @@ or the highest approved TS sibling, while ONB/RF/EV append. **Authority:** [conv
 
 ### Principal
 
-**Meaning:** Stable project-local participant attribution. **Authority:** [conventions.md](conventions.md#declared-participants-and-principals), `Declared participants and principals`.
+**Meaning:** Optional stable project-local participant attribution; it never grants activation or authority. **Authority:** [conventions.md](conventions.md#declared-participants-and-principals), `Declared participants and principals`.
 
 ### Initiation Chain
 
@@ -242,9 +251,9 @@ or the highest approved TS sibling, while ONB/RF/EV append. **Authority:** [conv
 
 **Meaning:** The minimum completed research cycles required before the Researcher may close. **Authority:** `tfw.research.min_iterations` in `.tfw/project_config.yaml`.
 
-## Read-only AG
+## Read-only research scope
 
-**Meaning:** Autonomous research permission to inspect and write research traces while all project artifacts remain read-only. **Authority:** `research/base.md`, `Execution mode`.
+**Meaning:** A Researcher activation that permits research traces while keeping implementation and governing artifacts read-only. **Authority:** `research/base.md`, `Role Lock` and `Activation and routing checkpoint`.
 
 ## Research — Dimensional Analysis
 
@@ -356,7 +365,7 @@ Priorities 0 and 1 remain distinct semantic items even when one file contains bo
 
 ## status.md
 
-**Meaning:** The only authority for one task or phase's current lifecycle and owner. **Authority:** [conventions.md](conventions.md#task-control-files), `Task control files`, and `.tfw/templates/status.md`.
+**Meaning:** The only authority for one task or phase's current lifecycle, owner, and routing spine. **Authority:** [conventions.md](conventions.md#task-control-files), `Task control files`, and `.tfw/templates/status.md`.
 
 ## journal/
 

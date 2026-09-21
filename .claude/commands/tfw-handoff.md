@@ -39,30 +39,24 @@ After Read Contract item 1 resolves the selected task/phase, apply `Session iden
 `WORK=EXEC` before ONB analysis, writing, waiting, or stopping. Request wording never outranks state;
 transport failure reports once and does not block execution.
 
-## Who Is Acting
+## Activation and routing checkpoint
 
-Resolve the acting handle **before the first durable write** — before any `status.md` change,
-any journal event, any commit. Once per session, not per turn.
+Before ONB analysis or any material work, resolve the exact `/tfw-handoff` activation, selected
+task/phase, lifecycle gate, actual Executor unit, and owner-direct, delegated, or continuation source.
+Read the complete routing spine from `status.md`. Total absence is legacy-readable but cannot activate;
+partial fields, a provisioned task, role prompt, briefing, wait result, implicit latest session,
+foreign dispatch, wrong role/address/parent/scope, or authority mismatch is a pre-work refusal.
 
-| Situation | What happens |
-|---|---|
-| One profile in `team/` | it is used, silently |
-| Several profiles | read the binding on **this machine** — `~/.tfw/bindings.yaml`, or `%LOCALAPPDATA%\tfw\bindings.yaml` |
-| No binding · a shared device · a copied binding · a handle whose profile is gone | **ask exactly one short question**, then proceed |
+For delegated activation, verify the cited immutable mandate and direct Coordinator dispatch. Resolve
+stable principal attribution only when that mandate explicitly requires it; ordinary owner-direct
+activation invents no agent principal. Record actual producer unit, parent `coordinator_route`,
+activation/dispatch source, exact `coordination_authority`, and originating proposer or `none` in ONB
+and RF. Recheck the spine on continuation.
 
-Set optional `writer` to the acting principal only when **Who Is Acting** resolves one; otherwise omit the field. Never create a profile per session.
-
-## Agent Team checkpoint
-
-When AT is declared, resolve the selected LEAD principal and mandate separately from this Executor's
-actual address, parent Coordinator unit, role/scope, direct channel, `Autonomous from`, governing
-status, exact gate and dispatch refs before ONB/work; recheck all on every continuation. Restate both
-layers, authoritative sources and any originating proposer `{principal, unit}` or `none` in ONB.
-Shared principal attribution grants nothing to this child and never replaces unit identity or origin.
-Missing, conflicting, foreign, wrong-parent/address, or `—` authority requires a direct Coordinator
-report and wait. Return questions and RF directly; reuse this Executor. If unavailable, only an
-owner-approved §12 `SUPERSEDE` followed by bounded replacement dispatch permits a substitute.
-Non-AT execution and Role Lock are unchanged.
+Under `tfw-gates-only`, send every status change, question, gate and durable return only to this
+Executor's `coordinator_route`. Do not send material work to peers, owner or GATEWAY. A Coordinator
+answer is accepted only as a valid task-local `gate_answer` event citing status, ONB, and governing
+HL/TS. The Executor never writes or self-answers that event.
 
 ## Returning after a 🔄 REVISE
 
@@ -122,10 +116,12 @@ invented. Qualification and independent acceptance remain their existing owners'
    status and cached names, stage explicit full paths, and use `git commit --only -- <paths>`.
    `git add -A`, `git add .`, and `git commit -a` are forbidden for shared-tree work. Preserve unrelated
    dirt; STOP on an inseparable foreign hunk.
-5. **Wait for user approval** — do NOT proceed until all blocking questions resolved. An already
-   approved AG execution grant satisfies the authorization gate when the ONB records no blockers.
+5. **Resolve blocking questions** — do NOT proceed while any blocker lacks a valid `gate_answer`.
+   If no blockers exist, the valid activation and approved TS are sufficient; no second execution
+   permission is invented. Report the status change to `coordinator_route`.
 
-   > **ONB answers:** if HL/TS/KNOWLEDGE does not answer, the Coordinator presents 2–3 traded options and never decides for the stakeholder.
+   > **ONB answers:** if HL/TS/KNOWLEDGE does not answer, the Coordinator obtains the ruling through
+   > `owner_gateway` and writes the immutable event; the Executor only cites its operational effect.
 
 6. **Set the task's own state** — after the bound resolves, set `lifecycle: ONB` from the table's
    required prior state (`RF` for rung 1 only; `TS_DRAFT` for rung 2/mixed), update `status.md`, and
@@ -147,8 +143,8 @@ never widens or approves scope.
 
 7. **Implement** — follow TS step by step:
    - For code changes: write production-ready code, no placeholders
-   - For CL tasks: present commands/SQL to user, wait for execution
-   - For AG tasks: create artifacts directly
+   - Perform every authorized local action needed by the approved TS
+   - Stop and report to `coordinator_route` when a required action exceeds the activation or authority
 
    **Execution Loops:** for `[depends: AC-X]`, verify the prerequisite AC gate passes before starting the dependent AC. Independent ACs may run in any order.
 

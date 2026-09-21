@@ -5,6 +5,11 @@
 > **Status**: 🔬 RES — In progress
 > **Parent HL**: [HL-{ID}](path) _(pipeline only)_
 > **Mode**: Pipeline / Standalone
+> **Producer unit**: {actual native Researcher address}
+> **Parent Coordinator**: {status.md coordinator_route}
+> **Activation / dispatch source**: {owner-direct activation or immutable dispatch ref}
+> **Coordination authority**: {exact status.md coordination_authority}
+> **Originating proposer**: {principal and unit, or `none`}
 
 ---
 

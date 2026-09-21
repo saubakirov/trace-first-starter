@@ -5,6 +5,11 @@
 > **Status**: 🟠 ONB — Awaiting answers
 > **Parent HL**: [HL-{ID}](path-to-HL)
 > **TS**: [TS Phase {X}](path-to-TS)
+> **Producer unit**: {actual native Executor address}
+> **Parent Coordinator**: {status.md coordinator_route}
+> **Activation / dispatch source**: {owner-direct activation or immutable dispatch ref}
+> **Coordination authority**: {exact status.md coordination_authority}
+> **Originating proposer**: {principal and unit, or `none`}
 
 ---
 
@@ -16,9 +21,12 @@
 
 ## 3. Questions (blocking — cannot proceed without answers)
 
-| # | Question | Answer |
-|---|----------|--------|
-| 1 | {question} | _{coordinator fills in}_ |
+| # | Question | Blocking reason | Answer authority / event ref | Operational effect |
+|---|---|---|---|---|
+| 1 | {question} | {why work cannot proceed} | {task-local `gate_answer` ref or `pending`} | {what becomes permitted, or `none while pending`} |
+
+The Executor owns this table. The answering authority appends `gate_answer`; no Coordinator or human
+edits the Executor-owned ONB.
 
 ## 4. Recommendations (suggestions, not blocking)
 1. {suggestion and rationale}
