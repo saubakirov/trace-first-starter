@@ -432,3 +432,85 @@ blocker. Uncertainty is limited to independent verification of wording placement
 coverage. Continuation: commit this append alone, implement the eight authorized VALUE changes,
 nominate one tested descendant Candidate, append affected evidence/EV/RF, transition to `RF`, and
 return only to the recorded Coordinator for the same independent Reviewer.
+
+---
+
+## Return Round 4 — Reproducible Semantic Evidence
+
+> **Date**: 2026-09-22
+> **Status**: 🟠 ONB — Rung-1 evidence-only return accepted; no blocking questions
+> **Continuation source**: Coordinator REVIEW revision 2 §8 at
+> `4cd4397795a5b831d6d90dacea1adb0a6d41efec`
+> **Preserved Candidate**: `93186cea9ac8209cade30a49e76f3b8a32ae6227`
+> **Governing TS**: `TS__phase-b__corpus_consistency_compression_and_receiver_proof__rev2.md @ 116a324bb38d5ca21094bf6c5d528620d4ec4121`
+
+### 1. Understanding
+
+The same Executor accepts one evidence-only rung-1 repair. Product implementation, VALUE accounting,
+tests, metrics, projections, provider wording, receiver evidence and Candidate are already verified
+and must not change. Replace the unsupported rung-2 output labels with a self-contained task-local
+TRACE harness and exact output that identify Python/tool version, immutable inputs, every predicate,
+Candidate source, material-negative mutation, outcome and exit status. Only after reproduction may
+EV E3-R2/E10-R2/E12-R2 and RF be appended with the repaired evidence epoch.
+
+### 2. Entry Points
+
+- Defective record: `evidence/rung2-semantic-replay.txt`.
+- Permitted TRACE harness/output: `evidence/rung2-semantic-replay.py` and the existing `.txt` record.
+- Affected claims only: EV E3-R2/E10-R2/E12-R2 and RF Return Round 2; append a new numbered section,
+  preserving the rejected evidence epoch.
+- Immutable inputs: TS approval `116a324b…`, transcript-isolation ruling `68d85cc…`, Candidate
+  `93186cea…`, and Coordinator evidence-return ruling `4cd43977…`.
+
+### 3. Questions (blocking — cannot proceed without answers)
+
+No blocking questions. Lifecycle is `RF`; REVIEW revision 2 contains one closed rung-1 bound,
+unchanged TS and Candidate, this same Executor address and the recorded Coordinator route. The ruling
+explicitly authorizes task-local evidence repair and forbids VALUE changes or Candidate movement.
+
+### 4. Recommendations
+
+1. Keep the harness under task-local evidence, import no product runtime and install no permanent
+   test; read every semantic input with `git show <immutable-ref>:<path>`.
+2. Represent each scenario as executable source predicates plus one named mutation whose removal
+   makes that predicate fail; print the source paths, mutation and expected outcome with each result.
+3. Fail nonzero on any missing source, ambiguous mutation count, positive failure or surviving
+   negative mutation so the output cannot be hand-labeled.
+
+### 5. Risks Found
+
+1. A decision table disconnected from Candidate text would repeat the reviewed defect; every result
+   must be derived from exact source predicates.
+2. Reading another role's session to recover the former command would violate transcript isolation;
+   the new harness is reconstructed only from durable artifacts and immutable commits.
+3. Editing any VALUE path, assurance source or receiver would exceed the ruling and move or invalidate
+   the preserved Candidate.
+
+### 6. Inconsistency to Repair
+
+`rung2-semantic-replay.txt` states that an inline `python -` replay executed and lists 32 `PASS`
+labels, but it stores neither the executable command nor the predicate definitions that connect those
+labels to Candidate sources and material-negative mutations. The implementation itself has no found
+defect; only AC-3/AC-10/AC-12 evidence sufficiency is incomplete.
+
+### 7. Knowledge Citations
+
+| Source | Read? | Applied |
+|---|---|---|
+| REVIEW revision 2 §4/§8 | ✅ | Preserve Candidate and repair only reproducibility/traceability of the named semantic replay. |
+| Approved TS AC-3/AC-10/AC-12 | ✅ | Bind positive and material-negative outcomes to immutable source predicates and provider/entry gates. |
+| Transcript isolation / F19 | ✅ | Use named artifacts and commits only; no role transcript, terminal, tool output or unreturned tree. |
+| Exact-path staging / K17 | ✅ | Commit ONB alone, then only task-local replay/EV/RF evidence and state events. |
+
+### Material handover at this return
+
+Producer: same Executor unit `codex:thread:local:01a0c415-c362-78b3-98e9-00d728c5ac18`, acting as
+`saubakirov` via Codex. Recipient: recorded Coordinator unit
+`codex:thread:local:01a0bfdb-f0b7-7642-837c-8c47d0a284cf`. Source epoch: mandate `35fba767…`, TS
+approval `116a324b…`, Candidate `93186cea…`, evidence/RF `cbe9c6f…`, independent REVIEW revision 2
+and Coordinator ruling `4cd43977…`. Inspected scope: live status/journal, full REVIEW revision 2,
+the existing rung-2 replay and affected EV/RF claims. Material return: one evidence-only repair with
+no blocker and no Candidate movement. Uncertainty is confined to whether the new durable harness
+reproduces every claimed predicate; failure stops before EV/RF. Continuation: commit this ONB alone,
+enter `ONB`, create and run the bounded TRACE harness, append EV/RF only after exit 0, return to `RF`
+and route the same Candidate/evidence to the same independent Reviewer through the Coordinator.
