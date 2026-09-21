@@ -44,21 +44,11 @@ and does not block review.
 
 ## Activation and routing checkpoint
 
-Before Map, resolve the exact `/tfw-review` activation, selected task/phase, lifecycle gate, actual
-Reviewer unit, and owner-direct, delegated, or continuation source. Read and validate the complete
-`status.md` routing spine. Total absence is legacy-readable but cannot activate; partial fields, a
-role prompt, briefing, wait result, implicit latest session, foreign dispatch, wrong role/address,
-parent or scope is a pre-work refusal.
-
-For delegated activation, verify the cited immutable mandate and direct Coordinator dispatch. Resolve
-stable principal attribution only when explicitly required; owner-direct activation invents none.
-REVIEW records producer unit, parent `coordinator_route`, activation/dispatch source,
-`coordination_authority`, and originating proposer or `none`. Recheck all on continuation. Shared
-attribution never compromises Reviewer independence or grants ruling authority.
-
-Under `tfw-gates-only`, every status, question, proposal, verdict and durable return goes only to this
-Reviewer's `coordinator_route`; never to a peer, owner or GATEWAY. Authority answers are accepted only
-through valid task-local `gate_answer` events. Continue in the same Reviewer unit.
+Apply the active root activation/routing contract before Map. Current work requires a complete spine;
+total legacy absence is read-only and partial/mismatched routing refuses. Delegation verifies its
+cited mandate/direct dispatch; owner-direct work invents no principal. Verify the Reviewer gate and
+independence; REVIEW records provenance. Shared attribution grants no ruling authority. Continue in
+the same Reviewer unit.
 
 ## Trust Protocol (Review)
 
@@ -66,17 +56,9 @@ Treat RF as claims: trust stated outcome/deviations and domain facts; verify rea
 
 ## Knowledge at use and return
 
-Read `conventions.md` headings `Current knowledge use` and `Knowledge handover` at the relevant
-use/transfer checkpoint. Required PV/HL citations include relevant new records and incoming relations
-to exact legacy/record identities; source content is evidence, never authority. Keep scope, source,
-grounds, disposition, producer and unresolved conflicts explicit before applying a claim.
-Before each actual Reviewer interim/final or stage/iteration return, preserve available material insight
-in the existing role/stage section. A necessary stopped/interim fallback uses the handover template
-under the owning task; no file per person or copied source corpus. Return actual source/version,
-producer/unit, inspected context and continuation to the authorized Coordinator. Justified-none cites
-inspected scope; unavailable context and its missing decision are not none. Retain rejected work with
-its real state. A required unresolved effect stays open; no private context or successful return is
-invented. Qualification and independent acceptance remain their existing owners' work.
+At each use/return checkpoint, read and apply `Current knowledge use` and `Knowledge handover`.
+Review stages/REVIEW preserve exact source/version, producer unit, inspected scope, material or
+justified-none, uncertainty and continuation for the authorized Coordinator.
 
 ## Step 1: Map
 
@@ -151,7 +133,10 @@ Complete self-check gate. If any unchecked → go back and do it.
 > **Mindset:** Decision-maker. Synthesize stages into a binding verdict with cited proof.
 
 Read all 3 stage files (map.md, verify.md, judge.md).
-Write `REVIEW__*.md` from its template: synthesize §1–§3; §4 gives the evidenced APPROVE/REVISE/REJECT verdict.
+Derive exactly `REVIEW__{ID}.md` for a single-phase task or
+`REVIEW__phase-{x}__{phase_slug}.md` in a phase, then write it from the template: synthesize §1–§3;
+§4 gives the evidenced APPROVE/REVISE/REJECT verdict. A formal revision appends `__rev{N}` to that
+topology's unsuffixed REVIEW stem; bounded post-acceptance follow-up appends to the live REVIEW.
 
 **Routing.** `not fit for purpose` and a **contract defect** ground ❌ REJECT even when other checks
 pass; both route to the **owner**, never the executor (`judge.md` row 2a). Rung 3 follows `The 🔄

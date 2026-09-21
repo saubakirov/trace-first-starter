@@ -1,5 +1,7 @@
 # TS — {ID} / Phase {X}: {Title}
 
+> **Current filename**: `TS__{ID}.md` or `TS__phase-{x}__{phase_slug}.md`; a formal revision appends `__rev{N}`. Derive under `conventions.md` → `Artifact file naming`.
+
 > **Date**: YYYY-MM-DD
 > **Author**: {author}
 > **Status**: 🟡 TS_DRAFT — Awaiting approval

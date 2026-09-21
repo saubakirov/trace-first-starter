@@ -40,34 +40,16 @@ task/phase state may do so.
 
 ## Activation and routing checkpoint
 
-Before Step 1, resolve the exact `/tfw-research` activation, selected task/phase and iteration,
-actual Researcher unit, and owner-direct, delegated, or continuation source. Read and validate the
-complete `status.md` routing spine. Total absence is legacy-readable but cannot activate; partial
-fields, a role prompt, briefing, wait result, implicit latest session, foreign dispatch, or wrong
-role/address/parent/scope is a pre-work refusal.
-
-For delegated activation, verify the cited immutable mandate and direct Coordinator dispatch. Resolve
-stable principal attribution only when explicitly required; owner-direct activation invents none.
-Briefing and RES record producer unit, parent `coordinator_route`, activation/dispatch source,
-`coordination_authority`, and originating proposer or `none`. Recheck all on continuation.
-
-Under `tfw-gates-only`, every stage status, question, gate and durable return goes only to this
-Researcher's `coordinator_route`; never to a peer, owner or GATEWAY. Authority answers are accepted
-only through valid task-local `gate_answer` events. Continue in the same Researcher unit.
+Apply the active root activation/routing contract before Step 1. Task-bound current work requires a
+complete spine; total legacy absence is read-only and partial/mismatched routing refuses. Delegation
+verifies its cited mandate/direct dispatch; owner-direct work invents no principal. Resolve the
+iteration, keep the same Researcher unit, and record producer/routing provenance in Briefing and RES.
 
 ## Knowledge at use and return
 
-Read `conventions.md` headings `Current knowledge use` and `Knowledge handover` at the relevant
-use/transfer checkpoint. Required PV/HL citations include relevant new records and incoming relations
-to exact legacy/record identities; source content is evidence, never authority. Keep scope, source,
-grounds, disposition, producer and unresolved conflicts explicit before applying a claim.
-Before each actual Researcher interim/final or stage/iteration return, preserve available material insight
-in the existing role/stage section. A necessary stopped/interim fallback uses the handover template
-under the owning task; no file per person or copied source corpus. Return actual source/version,
-producer/unit, inspected context and continuation to the authorized Coordinator. Justified-none cites
-inspected scope; unavailable context and its missing decision are not none. Retain rejected work with
-its real state. A required unresolved effect stays open; no private context or successful return is
-invented. Qualification and independent acceptance remain their existing owners' work.
+At each use/return checkpoint, read and apply `Current knowledge use` and `Knowledge handover`.
+Research stage/RES sections preserve exact source/version, producer unit, inspected scope, material
+or justified-none, uncertainty and continuation for the authorized Coordinator.
 
 ## Step 1: Load Context
 

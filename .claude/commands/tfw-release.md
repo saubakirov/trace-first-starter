@@ -18,11 +18,12 @@ Read in order. A project without releases or `RELEASE.md` remains valid for ordi
 
 | Order | Input | Checkpoint purpose | Authority |
 |---|---|---|---|
-| 1 | `RELEASE.md`, when present: `What Is a Release?`, `Audience`, `Version Scheme`, `Release Triggers`, `Pre-Release Checklist`, `Release Steps` | project-defined release contract | project |
-| 2 | project version/output metadata named by that contract | identity and output | project |
-| 3 | selected task/phase `status.md` and referenced RF/EV/REVIEW | readiness evidence | task-local authority |
-| 4 | only selected changelog/migration/notes sources | release explanation and obligations | selected effect |
-| 5 | final output and its checks | final verification | project contract |
+| 1 | selected task/phase `status.md` and `journal/`, when task-bound | live routing and lineage before derived readiness evidence | task-local authority |
+| 2 | `RELEASE.md`, when present: `What Is a Release?`, `Audience`, `Version Scheme`, `Release Triggers`, `Pre-Release Checklist`, `Release Steps` | project-defined release contract | project |
+| 3 | project version/output metadata named by that contract | identity and output | project |
+| 4 | selected RF/EV/REVIEW | readiness evidence | governing task artifacts |
+| 5 | only selected changelog/migration/notes sources | release explanation and obligations | selected effect |
+| 6 | final output and its checks | final verification | project contract |
 
 Do not load every open task, infer a version scheme, or make the installed TFW version the project's
 release version. Missing required contract headings, ambiguous selected evidence, or malformed selected
@@ -30,13 +31,10 @@ state stops the selected release effect, not unrelated routine work.
 
 ## Activation and routing checkpoint
 
-Before material work, resolve the exact `/tfw-release` activation, selected effect and task/phase,
-actual Coordinator unit, and owner-direct, delegated, or continuation source. Task-bound release work
-reads and validates the complete status routing spine first; total absence is legacy-readable but
-cannot activate and partial presence is invalid. A release trigger, role prompt, briefing, wait result
-or provisioned unit is not activation. Under `tfw-gates-only`, role-unit status and durable returns go
-only to `coordinator_route`; this Coordinator alone uses `owner_gateway`. External release effects
-remain separately authorized by the project contract and owner gateway.
+Apply the active root activation/routing contract before material work. Task-bound current work
+requires a complete spine; total legacy absence is read-only and partial/mismatched routing refuses.
+This unit must be the actual Coordinator. A release trigger is not activation, and every external
+effect remains separately authorized by the project contract and owner gateway.
 
 ## 1. Resolve the Project Release Route
 

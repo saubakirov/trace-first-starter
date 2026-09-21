@@ -41,22 +41,10 @@ transport failure reports once and does not block execution.
 
 ## Activation and routing checkpoint
 
-Before ONB analysis or any material work, resolve the exact `/tfw-handoff` activation, selected
-task/phase, lifecycle gate, actual Executor unit, and owner-direct, delegated, or continuation source.
-Read the complete routing spine from `status.md`. Total absence is legacy-readable but cannot activate;
-partial fields, a provisioned task, role prompt, briefing, wait result, implicit latest session,
-foreign dispatch, wrong role/address/parent/scope, or authority mismatch is a pre-work refusal.
-
-For delegated activation, verify the cited immutable mandate and direct Coordinator dispatch. Resolve
-stable principal attribution only when that mandate explicitly requires it; ordinary owner-direct
-activation invents no agent principal. Record actual producer unit, parent `coordinator_route`,
-activation/dispatch source, exact `coordination_authority`, and originating proposer or `none` in ONB
-and RF. Recheck the spine on continuation.
-
-Under `tfw-gates-only`, send every status change, question, gate and durable return only to this
-Executor's `coordinator_route`. Do not send material work to peers, owner or GATEWAY. A Coordinator
-answer is accepted only as a valid task-local `gate_answer` event citing status, ONB, and governing
-HL/TS. The Executor never writes or self-answers that event.
+Apply the active root activation/routing contract before ONB analysis or material work. Current work
+requires a complete spine; total legacy absence is read-only and partial/mismatched routing refuses.
+Delegation verifies its cited mandate/direct dispatch; owner-direct work invents no principal. Verify
+the Executor gate/TS approval; ONB/RF record provenance. Never write or self-answer `gate_answer`.
 
 ## Returning after a 🔄 REVISE
 
@@ -66,8 +54,9 @@ A REVISE reaches the Executor only after the Coordinator applies `conventions.md
 1. **Rung 1 only:** lifecycle is still `RF`; the existing approved TS remains the implementation
    order, and the live REVIEW contains the Coordinator's ruled closed return bound. No TS sibling is
    required or allowed merely for this case.
-2. **Any rung 2, including mixed rung 1 + 2:** lifecycle is `TS_DRAFT`; the highest approved
-   `TS__{ID}__rev{N}.md` sibling contains the complete ruled round and governs execution.
+2. **Any rung 2, including mixed rung 1 + 2:** lifecycle is `TS_DRAFT`; the highest approved TS
+   sibling for the selected topology, with suffix `__rev{N}.md`, contains the complete ruled round
+   and governs execution.
 3. **Rung 3:** accept only after `HL Contract` rule 8 resolves a valid terminal verdict leaving an
    executable bound. Pending/unresolved authority is a hard stop, never an Executor decision.
 
@@ -84,17 +73,9 @@ and **stop** — never rule the item, change the TS, or widen scope yourself.
 
 ## Knowledge at use and return
 
-Read `conventions.md` headings `Current knowledge use` and `Knowledge handover` at the relevant
-use/transfer checkpoint. Required PV/HL citations include relevant new records and incoming relations
-to exact legacy/record identities; source content is evidence, never authority. Keep scope, source,
-grounds, disposition, producer and unresolved conflicts explicit before applying a claim.
-Before each actual Executor interim/final or stage/iteration return, preserve available material insight
-in the existing role/stage section. A necessary stopped/interim fallback uses the handover template
-under the owning task; no file per person or copied source corpus. Return actual source/version,
-producer/unit, inspected context and continuation to the authorized Coordinator. Justified-none cites
-inspected scope; unavailable context and its missing decision are not none. Retain rejected work with
-its real state. A required unresolved effect stays open; no private context or successful return is
-invented. Qualification and independent acceptance remain their existing owners' work.
+At each use/return checkpoint, read and apply `Current knowledge use` and `Knowledge handover`.
+ONB/RF preserve exact source/version, producer unit, inspected scope, material or justified-none,
+uncertainty and continuation for the authorized Coordinator.
 
 ## Phase 1: Executor Onboarding
 
@@ -109,7 +90,8 @@ invented. Qualification and independent acceptance remain their existing owners'
    - Inconsistencies between HL/TS/KNOWLEDGE.md and actual code
    - Missing information or incomplete specifications
    - Errors, gaps, or oversights in the spec
-3. **Write ONB file** — open `.tfw/templates/ONB.md` at this gate and fill every required section.
+3. **Write ONB file** — open `.tfw/templates/ONB.md`; derive exactly `ONB__{ID}.md` for a
+   single-phase task or `ONB__phase-{x}__{phase_slug}.md` in a phase; fill every required section.
 
 4. **Commit ONB using Commit Attribution; push only after explicit user approval** — the onboarding report is a first-class artifact.
    Before every commit, enforce `conventions.md` → `Exact-path staging`: read full
@@ -170,7 +152,8 @@ never widens or approves scope.
     and do not copy the sibling into a second result.
 
 11. **Collect evidence** — create the phase/task `evidence/` folder, open
-    `.tfw/templates/evidence/EV.md`, and record the actual environment and one result per TS AC.
+    `.tfw/templates/evidence/EV.md`, derive `evidence/EV__{ID}.md` or
+    `evidence/EV__phase-{x}__{phase_slug}.md`, and record the actual environment and one result per TS AC.
     Use only VERIFIED / DEFERRED / BLOCKED / N/A, give every VERIFIED row a resolving artifact,
     explain every non-VERIFIED row, summarize the verdict counts, and index any attachments.
     Resolve the approved TS from its approval commit and add exactly one dedicated accounting row. Run
@@ -190,7 +173,8 @@ never widens or approves scope.
 
 12. **Pre-RF Gate** — open `.tfw/templates/RF.md`. Read all section headings before writing anything.
 
-13. **Create RF file** — follow `.tfw/templates/RF.md` exactly. Fill every mandatory section,
+13. **Create RF file** — derive exactly `RF__{ID}.md` for a single-phase task or
+    `RF__phase-{x}__{phase_slug}.md` in a phase, then follow `.tfw/templates/RF.md` exactly. Fill every mandatory section,
     including §5 as an EV pointer plus verdict summary and §7–§9 with explicit `No …` when empty.
     Bind the full Candidate SHA, approval ref, actual VALUE membership with class/reason, additions,
     deletions, touched LOC, trigger disposition, deviations, and pre-work authority reference. RF reports

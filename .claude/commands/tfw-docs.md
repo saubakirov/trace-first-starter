@@ -30,14 +30,10 @@ inputs. Retained legacy D rows are history and reference, not a queue to convert
 
 ## Activation and routing checkpoint
 
-Before material work, resolve the exact `/tfw-docs` activation, selected task/phase when task-bound,
-actual Coordinator unit, and owner-direct, delegated, or continuation source. A task-bound run reads
-and validates the complete status routing spine first; total absence is legacy-readable but cannot
-activate and partial presence is invalid. A prompt, briefing, wait result or provisioned unit is not
-activation. Under `tfw-gates-only`, all producing-role returns arrive at `coordinator_route` and this
-Coordinator alone uses `owner_gateway`. Record authority answers as `gate_answer`, never by editing a
-producer-owned artifact. Manual batch work without a task needs an explicit owner-direct activation
-and creates no invented task identity or principal.
+Apply the active root activation/routing contract before material work. Task-bound current work
+requires a complete spine; total legacy absence is read-only and partial/mismatched routing refuses.
+This unit must be the actual Coordinator. Manual batch work requires owner-direct activation, creates
+no task/principal, and never answers authority by editing a producer-owned artifact.
 
 ## 1. Select and Triage
 

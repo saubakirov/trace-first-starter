@@ -91,7 +91,7 @@ referenced without requiring the sibling to reach DONE. **Authority:** [conventi
 **Meaning:** A Purpose Check result stating that green local criteria still fail the approved intended outcome. **Authority:** `.tfw/templates/review/judge.md`, `Purpose Check`.
 
 ### Deferral confession
-**Meaning:** An explicit statement that the contract remains unmet when a material gap is deliberately deferred. **Authority:** [conventions.md](conventions.md#hl-high-level), `HL Contract` rule 22.
+**Meaning:** An explicit statement that the contract remains unmet when a material gap is deliberately deferred. **Authority:** [.tfw/templates/review/judge.md](templates/review/judge.md#purpose-check), `Purpose Check`.
 
 ## Knowledge Terms
 

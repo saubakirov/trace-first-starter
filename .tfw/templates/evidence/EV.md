@@ -1,5 +1,7 @@
 # EV — {ID} / Phase {X}: {Title}
 
+> **Current filename**: `evidence/EV__{ID}.md` or `evidence/EV__phase-{x}__{phase_slug}.md`; later rounds append to this file. Derive under `conventions.md` → `Artifact file naming`.
+
 > **Date**: YYYY-MM-DD
 > **Author**: {executor}
 > **Task**: {ID}

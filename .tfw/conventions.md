@@ -38,7 +38,7 @@ TFW turns work (analytics, documents, code, research) into a reproducible proces
 - `.tfw/templates/update_receipt.md` — immutable record for one update attempt.
 - `.tfw/VERSION` — current framework version (semver, single line).
 - `.tfw/CHANGELOG.md` — version history (Keep a Changelog format).
-- `.tfw/project_config.yaml` — project configuration (stack, build commands, task prefix, execution engine).
+- `.tfw/project_config.yaml` — project configuration (stack, checks, task containers, scope, research, review, and content settings).
 - `.tfw/compilable_contract.md` — build-time compilation specification (Source Manifest, Reference Format, Output Structure).
 - `.tfw/migrations/{major}.md` — migration guide per major version. A major release without one is incomplete.
 
@@ -169,7 +169,7 @@ another role.
 Format: strictly follows `.tfw/templates/ONB.md`.
 
 ### REVIEW (Review Report)
-Formal coordinator report after reviewing RF: checklist, verdict, and a disposition on every debt item it captured.
+Formal independent Reviewer report after reviewing RF: checklist, verdict, and a disposition on every debt item it captured.
 Format: strictly follows `.tfw/templates/REVIEW.md`.
 
 ### Fact Candidates (section in RF, REVIEW, RES)
@@ -388,6 +388,31 @@ Never infer identity from an OS username, hostname, folder, or account display. 
 which principal the session acts as; it does not prove who is present or what they may do. History:
 D68, TFW-54 and TFW-60.
 
+### Workflow activation and routing
+
+A command activates material work only when the request names the exact `/tfw-*` skill, selected
+task/phase when task-bound, and owner-direct, delegated, or continuation source. A created or selected
+unit, role prompt, briefing, wait result, title, source artifact, trigger, or implicit latest session
+does not activate a workflow.
+
+For task-bound work, read its own `status.md` and journal before derived or shared inputs. Validate
+the lifecycle/role gate, bounded scope, actual unit/address/parent, and all five routing fields. Total
+absence is legacy-readable but cannot activate current work; partial, stale, foreign, unverifiable or
+mismatched routing is a pre-work refusal. Owner-direct activation needs no agent principal. Delegated
+activation additionally requires the cited immutable mandate and direct Coordinator dispatch; apply
+`Which handle a machine acts as` only when stable attribution is explicitly required.
+
+Under `tfw-gates-only`, a role unit sends every material status, question, gate and durable return
+only to its own `coordinator_route`; it never sends them to a peer, owner, foreign Coordinator or
+GATEWAY. That Coordinator alone uses `owner_gateway`. `iterative` additionally requires its exact
+immutable grant and a separately addressable GATEWAY, which performs no workflow role. An authority
+answer is valid only as the owning authority's task-local `gate_answer`; no role edits another role's
+artifact to answer itself.
+
+Role artifacts preserve the actual producer unit, parent Coordinator, activation/dispatch source,
+`coordination_authority`, and originating proposer `{principal, unit}` or explicit `none`. Recheck the
+spine on continuation. Provisioning, navigation, attribution and forwarding grant no authority.
+
 ### Session identity
 
 Navigation-only; non-authoritative.
@@ -430,25 +455,24 @@ report-once(title,reason); continue-unclaimed.
 
 | Artifact | Format | Example |
 |----------|--------|---------|
-| Master HL, current grammar | `HL-{ID}.md` | `HL-TFW_20260829-172110_ABT.md` |
-| Single-phase RES, current grammar | `RES__{ID}.md` | `RES__TFW_20260829-172110_ABT.md` |
-| Master HL | `HL-{ID}.md` | `HL-20260826-143000__query_redesign.md` |
-| Single-phase RES | `RES__{ID}.md` | `RES__20260826-143000__query_redesign.md` |
-| Single-phase TS | `TS__{ID}.md` | `TS__20260826-143000__query_redesign.md` |
-| Single-phase RF | `RF__{ID}.md` | `RF__20260826-143000__query_redesign.md` |
-| Single-phase ONB | `ONB__{ID}.md` | `ONB__20260826-143000__query_redesign.md` |
-| Single-phase REVIEW | `REVIEW__{ID}.md` | `REVIEW__20260826-143000__query_redesign.md` |
-| Single-phase EV | `EV__{ID}.md` | `EV__20260826-143000__query_redesign.md` |
-| Phase RES | `RES__phase-{x}__{title}.md` | `RES__phase-a__conventions.md` |
-| Phase TS | `TS__phase-{x}__{title}.md` | `TS__phase-a__conventions.md` |
-| Phase RF | `RF__phase-{x}__{title}.md` | `RF__phase-a__conventions.md` |
-| Phase ONB | `ONB__phase-{x}__{title}.md` | `ONB__phase-a__conventions.md` |
-| Phase REVIEW | `REVIEW__phase-{x}__{title}.md` | `REVIEW__phase-a__conventions.md` |
-| Phase EV | `EV__phase-{x}__{title}.md` | `EV__phase-a__conventions.md` |
+| Master HL | `HL-{ID}.md` | `HL-TFW_20260829-172110_ABT.md` |
+| Phase HL | `HL__phase-{x}__{phase_slug}.md` | `HL__phase-a__data_model.md` |
+| Single-phase TS / ONB / RF / REVIEW | `{TYPE}__{ID}.md` | `TS__TFW_20260829-172110_ABT.md` |
+| Single-phase EV | `evidence/EV__{ID}.md` | `evidence/EV__TFW_20260829-172110_ABT.md` |
+| Phase TS / ONB / RF / REVIEW | `{TYPE}__phase-{x}__{phase_slug}.md` | `TS__phase-a__data_model.md` |
+| Phase EV | `evidence/EV__phase-{x}__{phase_slug}.md` | `evidence/EV__phase-a__data_model.md` |
+| Research synthesis | `research/iter{N}/RES.md` | `research/iter2/RES.md` |
 | Single-phase TS revision | `TS__{ID}__rev{N}.md` | `TS__TFW_20260829-172110_ABT__rev2.md` |
 | Single-phase REVIEW revision | `REVIEW__{ID}__rev{N}.md` | `REVIEW__TFW_20260829-172110_ABT__rev2.md` |
-| Phase TS revision | `TS__phase-{x}__{title}__rev{N}.md` | `TS__phase-a__conventions__rev2.md` |
-| Phase REVIEW revision | `REVIEW__phase-{x}__{title}__rev{N}.md` | `REVIEW__phase-a__conventions__rev2.md` |
+| Phase TS revision | `TS__phase-{x}__{phase_slug}__rev{N}.md` | `TS__phase-a__data_model__rev2.md` |
+| Phase REVIEW revision | `REVIEW__phase-{x}__{phase_slug}__rev{N}.md` | `REVIEW__phase-a__data_model__rev2.md` |
+
+At a current write gate, first select task topology, then artifact type, then revision behavior. `{ID}`
+is the exact task identifier. `{x}` is the selected `phase-{x}` directory token. `{phase_slug}` is
+derived once from the selected phase `status.md.title`: remove an exact leading `Phase {X}:`, apply
+Unicode NFKC case-folding, replace each non-alphanumeric run with `_`, and trim `_`; an empty result
+is invalid. A current producer emits the one matching row and refuses any other new name. Research
+stage files use their fixed names inside `research/iter{N}/`; their owning path supplies identity.
 
 **`{ID}` is the task's whole identifier**, and it means the same thing everywhere: in a path,
 in a filename, in a reference and in `status.md`. For a current-grammar task that is
@@ -461,6 +485,10 @@ reads it; the abbreviation inside the identifier is what makes the filename read
 A legacy task keeps `{PREFIX}-{N}`, where the identifier does *not* carry a slug, so its
 historical filenames have the form `RES__TFW-60__conflict_resistant_shared_workspace.md`.
 Those files are never renamed; the two-part form is history, not a second rule.
+
+Historical clock-task and legacy artifact names remain discoverable exactly as stored. They are
+read inputs only: examples, citations, or existing filenames never authorize a new historical-form
+artifact. Current issuance always uses the table above.
 
 #### The revision suffix, and what it generates
 
@@ -483,8 +511,9 @@ correction is an order nobody can raise a question against.
 
 History: D72 and RDP.
 
-> **Rule:** ALL artifact filenames MUST include the task ID or Phase identifier. A filename
-> without either is an error.
+> **Rule:** every current primary artifact at a task/phase root includes the task ID or phase
+> identifier. Fixed-name stage artifacts such as `research/iterN/RES.md` and `review/map.md` are
+> identified by their owning task/phase path and are not competing primary-artifact grammars.
 
 ### Discovery
 

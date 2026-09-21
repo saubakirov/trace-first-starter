@@ -30,13 +30,10 @@ purpose collision that evidence cannot settle are hard stops.
 
 ## Activation and routing checkpoint
 
-Before discovery or repair, resolve the exact `/tfw-init` owner-direct activation and actual
-Coordinator unit. A role prompt, briefing, provisioned unit or wait result is not activation. Full
-init has no prior status: the first status names this `coordinator_route`, accountable
-`owner_gateway`, dialogue policy, `activation: owner-only`, and exact immutable
-`coordination_authority`. Attach/repair validates an existing task routing spine when task-bound;
-legacy or partial routing is reported and never guessed. Stable agent attribution is not required for
-ordinary owner-direct init. Under `tfw-gates-only`, all later role-unit returns use the recorded route.
+Apply the active root activation/routing contract before discovery or repair and require exact
+owner-direct `/tfw-init` activation. Full init has no prior status: the first status records this
+Coordinator's complete routing spine. Attach/repair validates existing task routing when task-bound
+and never guesses legacy or partial fields.
 
 ## 0. Route Before Discovery
 
@@ -49,6 +46,7 @@ ordinary owner-direct init. Under `tfw-gates-only`, all later role-unit returns 
   report malformed paths or ID collisions, never infer a fresh project from missing modern statuses.
   Preserve all state; skip discovery, research,
   config creation, and init-task creation. Select the adapter explicitly when it cannot be inferred,
+  read `Workflow activation and routing` only when repairing its persistent coordination block,
   apply its persistent row and all ten command rows, verify bytes/blocks, roles, paths, idempotence, and
   foreign neighbors, then stop.
 

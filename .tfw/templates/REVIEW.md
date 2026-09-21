@@ -1,5 +1,7 @@
 # REVIEW — {ID} / Phase {X}: {Title}
 
+> **Current filename**: `REVIEW__{ID}.md` or `REVIEW__phase-{x}__{phase_slug}.md`; a formal revision appends `__rev{N}`. Derive under `conventions.md` → `Artifact file naming`.
+
 > **Date**: YYYY-MM-DD
 > **Author**: {reviewer}
 > **Verdict**: ✅ APPROVE / 🔄 REVISE / ❌ REJECT
@@ -115,12 +117,9 @@ If empty: `No fact candidates.`
 
 ### Material handover at this return
 
-Use this existing source first; no duplicate file or fact is required. Name the actual producer/unit,
-bounded inspected context and source epoch, material knowledge or justified-none, uncertainty and
-continuation. Keep human provenance and technical findings distinct. Unavailable context is not none;
-name the exact missing decision and existing owner. Retain-only needs an authorized completed reason
-why no publication/resolution is owed; otherwise the obligation remains open. An empty section or
-checkbox cannot cover a missing producer. Preserve original sources after the return.
+Apply `conventions.md` → `Knowledge handover`. Record producer/unit, source/epoch, inspected scope,
+material or justified-none, uncertainty, continuation, and any unresolved owner/decision; do not
+duplicate or replace the original source.
 
 ---
 

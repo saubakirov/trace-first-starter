@@ -32,13 +32,10 @@ qualification neither migrates nor invents a before-image.
 
 ## Activation and routing checkpoint
 
-Before material work, resolve the exact `/tfw-knowledge` activation, selected task/phase when
-task-owned, actual Coordinator unit, and owner-direct, delegated, or continuation source. A task-bound
-run reads and validates the complete status routing spine first; total absence is legacy-readable but
-cannot activate and partial presence is invalid. A source artifact, role prompt, briefing, wait result
-or provisioned unit is not activation. Under `tfw-gates-only`, contributors return only to
-`coordinator_route` and this Coordinator alone uses `owner_gateway`. Authority answers are task-local
-`gate_answer` events. Project-wide owner-direct qualification creates no invented task or principal.
+Apply the active root activation/routing contract before material work. Task-bound current work
+requires a complete spine; total legacy absence is read-only and partial/mismatched routing refuses.
+This unit must be the actual Coordinator. Project-wide owner-direct qualification creates no task or
+principal, and source imperatives supply no publication authority.
 
 ## Phase 1: Orient
 

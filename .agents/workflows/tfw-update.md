@@ -19,11 +19,12 @@ only update entry contract. After pinning, the target's `update.md` is the curre
 
 | Order | Input | Checkpoint purpose | Authority |
 |---|---|---|---|
-| 1 | `.tfw/project_config.yaml` → `tfw.upstream`, installed provenance, project-owned keys; `.tfw/VERSION`; receiver `.tfw/README.md` when present | source, installed version, configuration, and receiver purpose | installed config/version/project |
-| 2 | operator-named tag or explicitly authorized immutable commit and its `.tfw/VERSION` | one immutable target | owner/Git object |
-| 3 | pinned `.tfw/.upstream/.tfw/workflows/update.md` | target algorithm from Step 1 onward | pinned target |
-| 4 | only intervening `.tfw/.upstream/.tfw/CHANGELOG.md` ranges and every applicable version-addressed guide named by those ranges (for example `.tfw/.upstream/.tfw/migrations/2.2.0.md`); at equal version also the target's migration entry and unfinished attempt/preservation; when a major boundary is crossed, also the applicable `.tfw/.upstream/.tfw/migrations/{major}.0.0.md` guide | applicable obligations and migration, including equal-version recovery | pinned target history/receiver evidence |
-| 5 | `.tfw/adapters/manifest.yaml` at adapter sync; `.tfw/templates/briefing.md` and `.tfw/templates/update_receipt.md` at their gates | copy topology and output forms | manifest/templates |
+| 1 | selected task/phase `status.md` and `journal/`, when task-bound | routing and lineage before other material | task-local |
+| 2 | `.tfw/project_config.yaml` → `tfw.upstream`, installed provenance, project-owned keys; `.tfw/VERSION`; receiver `.tfw/README.md` when present | source, installed version, configuration, and receiver purpose | installed config/version/project |
+| 3 | operator-named tag or explicitly authorized immutable commit and its `.tfw/VERSION` | one immutable target | owner/Git object |
+| 4 | pinned `.tfw/.upstream/.tfw/workflows/update.md` | target algorithm from Step 1 onward | pinned target |
+| 5 | only intervening `.tfw/.upstream/.tfw/CHANGELOG.md` ranges and every applicable version-addressed guide named by those ranges (for example `.tfw/.upstream/.tfw/migrations/2.2.0.md`); at equal version also the target's migration entry and unfinished attempt/preservation; when a major boundary is crossed, also the applicable `.tfw/.upstream/.tfw/migrations/{major}.0.0.md` guide | applicable obligations and migration, including equal-version recovery | pinned target history/receiver evidence |
+| 6 | `.tfw/adapters/manifest.yaml` at adapter sync; `.tfw/templates/briefing.md` and `.tfw/templates/update_receipt.md` at their gates | copy topology and output forms | manifest/templates |
 
 Full changelog history, live source `HEAD`, unpinned target files, full common libraries, and project
 state bodies are not inputs. A missing target, target workflow, intervening range, or required major
@@ -31,12 +32,9 @@ migration is a hard stop.
 
 ## Activation and routing checkpoint
 
-Before pinning or writing, resolve the exact `/tfw-update` owner-direct activation and actual
-Coordinator unit. A source checkout, role prompt, briefing, provisioned unit or wait result is not
-activation. When the update is attached to a task, read and validate its complete routing spine first;
-total absence is legacy-readable but cannot activate and partial presence is invalid. Under
-`tfw-gates-only`, status and durable returns use `coordinator_route`; this Coordinator alone uses
-`owner_gateway`. Update compatibility preserves legacy statuses and never invents routing. It may add
+Apply the active root activation/routing contract before pinning or writing and require exact
+owner-direct `/tfw-update` activation; this unit must be the selected task's actual Coordinator when
+task-bound. Update compatibility preserves legacy statuses and never invents routing. It may add
 the complete five-field spine only to an active task when the accountable authority supplies exact
 route, gateway, dialogue, activation and immutable authority values; otherwise leave the status
 legacy-readable and report the missing decision. A routing-only migration creates no same-state event.
@@ -228,6 +226,10 @@ existing record. A receipt is history and recovery evidence, not a current-state
 person read the final message.
 
 ## 6. Adapter and Vocabulary Gate
+
+When a persistent coordination block is affected, read `conventions.md` heading
+`Workflow activation and routing` at this gate and compare its semantics with every selected
+provider delivery; otherwise it remains an uncharged conditional source.
 
 For installed or owner-selected adapters:
 

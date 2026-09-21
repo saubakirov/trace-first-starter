@@ -26,6 +26,12 @@ Full conventions/glossary/workflows, unregistered ranges, task artifacts, and un
 not inputs. A missing or duplicate heading/row/target, unresolved source, or incomplete adapter map
 is a hard stop.
 
+## Activation checkpoint
+
+Apply the active root activation/routing contract to the exact `/tfw-config` request before Edit or
+Verify Mode. This project-wide command preserves the request's owner-direct or delegated source but
+creates no task identity, principal, routing carrier, or permission beyond the selected operation.
+
 ## Edit Mode
 
 1. Ask what config key and value should change.

@@ -38,17 +38,10 @@ Reapply/read back before questions, routing, Step 2, or writes.
 
 ### Activation and routing checkpoint
 
-Before planning or routing existing work, resolve the exact `/tfw-plan` activation, selected
-task/phase, actual Coordinator unit, and owner-direct, delegated, or continuation source. Validate the
-complete status routing spine. Total absence is legacy-readable but cannot activate current work;
-partial fields, a role prompt, briefing, wait result, implicit latest session, foreign dispatch or
-wrong role/address/parent/scope is a pre-work refusal.
-
-For delegated activation, verify the cited immutable mandate and direct dispatch. Stable principal
-attribution is resolved only when explicitly required; owner-direct activation invents none. Under
-`tfw-gates-only`, this Coordinator receives role-unit returns at `coordinator_route` and alone uses
-`owner_gateway`. It does not instruct peer-role, role-to-owner or role-to-gateway material edges.
-Authority answers are recorded as `gate_answer` events, never edits to another role's artifact.
+Apply the active root activation/routing contract before planning or routing. Task-bound current work
+requires a complete spine; total legacy absence is read-only and partial/mismatched routing refuses.
+Delegation verifies its cited mandate/direct dispatch; owner-direct work invents no principal. This
+unit must be the actual Coordinator, alone uses `owner_gateway`, and records answers as `gate_answer`.
 
 For a new task, the owner-direct `/tfw-plan` invocation is the activation source. The first status
 must include all five routing fields, naming this actual Coordinator route, the accountable owner
@@ -110,7 +103,9 @@ owner-approved full title and uppercase-alphanumeric `ABBR` before creation. �
 2. Create `{container}/{YYYY}/{prefix}_{stamp}_{ABBR}` once. **The whole directory name is the identifier.**
    Collision **STOPS**; never retry, suffix or count.
 3. **Apply session identity.** With the approved ID, apply `PLAN` before state/event/HL writes.
-4. **Write the task's own state and first event** from templates; complete HL and set `HL_DRAFT`.
+4. **Write the task's own state and first event** from templates. Derive the one current HL filename
+   from `Artifact file naming`: master `HL-{ID}.md`, or phase
+   `HL__phase-{x}__{phase_slug}.md`; complete HL and set `HL_DRAFT`.
 10. **Prepare Coordination Selection only when delegation is contemplated.** Keep an immutable
     delegation mandate separate from operational status/journal routing; draft rows grant no work.
 
@@ -140,9 +135,11 @@ settled contract.
 
 ## Step 7: Write TS
 
-Choose topology; open `templates/TS.md`; bind VALUE/accounting/authority to §4 and evidence per AC.
-Single phase: approve exact TS+denominator, name `/tfw-handoff`, **STOP**. Multi-phase: read preceding
-RF, create derivation-only Phase HL/TS, approve exact TS+denominator, and stop per phase.
+Choose topology; open `templates/TS.md`; derive exactly `TS__{ID}.md` for single-phase work or
+`TS__phase-{x}__{phase_slug}.md` inside the selected phase, then bind VALUE/accounting/authority to
+§4 and evidence per AC. Single phase: approve exact TS+denominator, name `/tfw-handoff`, **STOP**.
+Multi-phase: read the preceding RF, create the derivation-only Phase HL/TS, approve the exact
+TS+denominator, and stop per phase.
 
 ### Activation or dispatch after exact TS approval
 
@@ -156,15 +153,14 @@ durable results return only to each unit's `coordinator_route` under `tfw-gates-
 ## Step 8: a 🔄 REVISE returned the work — rule and route the round
 
 Read `The 🔄 REVISE route`; rule each cited proposal once. Rung 1 appends the bound to live REVIEW;
-rung 2 writes one approved TS revision and `TS_DRAFT`; rung 3 routes §12 and waits for a valid
-valid terminal verdict. Name next artifact/recipient and **STOP**; never execute the round.
+rung 2 appends `__rev{N}` to the selected topology's unsuffixed TS stem, writes that one approved
+revision and `TS_DRAFT`; rung 3 routes §12 and waits for a valid terminal verdict. Name next
+artifact/recipient and **STOP**; never execute the round.
 
 > → Role Lock: `conventions.md` §15
 
 ## Producing-role return
 
-Before planning/decision transfer or an orderly stop, apply `Knowledge handover`. Preserve material
-available context in the existing HL/source; use its exact source/epoch and actual producer unit.
-A necessary interim fallback uses the handover template under this task only. Return a real source
-or justified-none with inspected scope; unavailable context is explicit, never invented. Preserve
-rejected work and its honest state. The receiving Coordinator checks actual dispatch/return lineage.
+Before planning/decision transfer or an orderly stop, apply `Knowledge handover` in the existing
+HL/source. Preserve source/epoch, producer unit, inspected scope, material or justified-none,
+uncertainty and continuation; the receiving Coordinator verifies dispatch/return lineage.
