@@ -1,71 +1,68 @@
-FRATS Phase B — revision-2 and transcript-isolation semantic replay
+FRATS Phase B — self-contained revision-2 semantic replay
 Date: 2026-09-22
+Result: PASS; exit 0
+
+EXECUTABLE COMMAND
+Run from the repository root:
+
+  python workspace/2026/TFW_20260920-223357_FRATS/phase-b/evidence/rung2-semantic-replay.py
+
+HARNESS
+Path: evidence/rung2-semantic-replay.py
+SHA-256: b64ae4ba2da96c048cf155a872b4b5c854596cfa9147cf8bda158fcfd9c7d59c
+The committed harness is the complete executable predicate definition. It reads only immutable Git
+objects, normalizes whitespace for clause predicates, requires every positive predicate, removes one
+named critical source clause in memory for every material-negative case, requires the mutated
+predicate to fail, verifies six-edge coverage, and exits 1 on a missing source, ambiguous mutation,
+positive failure, surviving negative mutation or incomplete edge set. It writes no product or
+receiver file and reads no other role's transcript, terminal, tool output or unreturned tree.
+
+IMMUTABLE INPUTS
 TS source: 116a324bb38d5ca21094bf6c5d528620d4ec4121
-Necessary-constituent ruling: 68d85cc20b285e2dce083d23519d3394056033f4
+Transcript-isolation ruling: 68d85cc20b285e2dce083d23519d3394056033f4
+Evidence-return ruling: 4cd4397795a5b831d6d90dacea1adb0a6d41efec
 Candidate: 93186cea9ac8209cade30a49e76f3b8a32ae6227
 
-METHOD
-The executed `python -` replay used only `git show <ref>:<path>` inputs. It extracted AC-10's first
-Markdown code block, both AC-11 Markdown code blocks and REVIEW §10.1's canonical rule from the named
-authority commits, then compared them with exact Candidate blobs. It counted words with
-`len(re.findall(r"\S+", text))`, scanned active workflow headings, compared each canonical workflow
-byte-for-byte with its Claude and Antigravity projections, and inspected all seven provider
-source/target paths.
-
-The scenario oracle was a closed decision table:
-
-  activation(owner-direct) -> ACTIVATE_NO_PRINCIPAL
-  activation(delegated:immutable) -> ACTIVATE
-  activation(continuation, same-unit, current-spine) -> ACTIVATE
-  activation(continuation, wrong-unit or missing-spine) -> REFUSE
-  activation(GATEWAY, iterative, exact-grant, separate-unit) -> ROUTE_STOP
-  activation(GATEWAY otherwise) -> REFUSE
-  observe(wait_threads, cursor, bounded) -> ALLOW_WAIT
-  observe(one addressed status request) -> ALLOW_REQUEST
-  observe(named artifact/commit after durable return) -> ALLOW_RETURN
-  observe(transcript/reasoning/tool-output/terminal/unreturned-tree/read_thread/
-          includeOutputs/resume-session) -> REFUSE
-
-This is a source-derived replay, not a provider reliability trial. It does not read any other role's
-transcript, reasoning, tool output, terminal or unreturned working tree.
+PREDICATE CONTRACT
+Each CASE output below names its semantic edge, Candidate source path(s), expected outcome and exact
+in-memory remove mutation. positive=PASS means every literal source predicate resolved at the
+Candidate. negative=PASS means the same predicate failed after exactly one occurrence of the named
+critical clause was removed. The source paths and literals are data in the executable SCENARIOS
+tuple; no output label is independent of those predicates.
 
 EXACT OUTPUT
-exact_ac10_mindset PASS
-exact_ac10_steps PASS
-dispatch_retained PASS
-plan_le_1400 PASS
-exact_ac11_glossary PASS
-exact_ac11_design_rules PASS
-exact_transcript_rule PASS
-all_workflows_le_1400 PASS
-active_heading_search_clean PASS
-copy_parity_20_of_20 PASS
-provider_mapping_7_of_7 PASS
-codex_specific_mapping PASS
-session_provider_mapping PASS
-scenario_owner_direct PASS
-scenario_delegated PASS
-scenario_iterative_gateway PASS
-scenario_ordinary_continuation PASS
-scenario_invalid_continuation PASS
-scenario_accidental_gateway PASS
-scenario_limited_provider_owner_assisted PASS
-isolation_bounded_wait PASS
-isolation_one_status_request PASS
-isolation_durable_artifact PASS
-isolation_durable_commit PASS
-isolation_refuse_transcript PASS
-isolation_refuse_reasoning PASS
-isolation_refuse_tool-output PASS
-isolation_refuse_terminal PASS
-isolation_refuse_unreturned-tree PASS
-isolation_refuse_read_thread PASS
-isolation_refuse_includeOutputs PASS
-isolation_refuse_resume-session PASS
+PYTHON 3.13.5
+GIT git version 2.42.0.windows.1
+CANDIDATE 93186cea9ac8209cade30a49e76f3b8a32ae6227
+TS_REF 116a324bb38d5ca21094bf6c5d528620d4ec4121
+TRANSCRIPT_RULE_REF 68d85cc20b285e2dce083d23519d3394056033f4
+EVIDENCE_RULING_REF 4cd4397795a5b831d6d90dacea1adb0a6d41efec
+STATIC exact_ac10_mindset=PASS
+STATIC exact_ac10_steps=PASS
+STATIC dispatch_retained=PASS
+STATIC plan_le_1400=PASS
+STATIC exact_ac11_glossary=PASS
+STATIC exact_ac11_design_rules=PASS
+STATIC exact_transcript_rule=PASS
+STATIC evidence_ruling_present=PASS
+STATIC all_workflows_le_1400=PASS
+STATIC copy_parity_20_of_20=PASS
+STATIC provider_mapping_7_of_7=PASS
+CASE owner_direct positive=PASS negative=PASS outcome=ACTIVATE_NO_INVENTED_PRINCIPAL edge=activation sources=.tfw/conventions.md mutation=.tfw/conventions.md::remove:'**owner-direct:** an accountable human starts the role workflow; no agent principal is invented;'
+CASE exact_delegated positive=PASS negative=PASS outcome=ACTIVATE edge=authority sources=.tfw/conventions.md mutation=.tfw/conventions.md::remove:'**delegated:** an actual Coordinator dispatch cites the immutable delegation mandate;'
+CASE ordinary_continuation positive=PASS negative=PASS outcome=ACTIVATE_SAME_UNIT edge=continuation sources=.tfw/conventions.md mutation=.tfw/conventions.md::remove:'**continuation:** the same unit cites its prior activation and still-current routing spine.'
+CASE invalid_continuation positive=PASS negative=PASS outcome=REFUSE edge=continuation sources=.tfw/conventions.md mutation=.tfw/conventions.md::remove:'A mismatch, partial or legacy-only status, foreign dispatch, role prompt without activation, implicit latest-session lookup, relay, hidden helper or ambiguous address is a pre-work refusal.'
+CASE iterative_gateway_separation positive=PASS negative=PASS outcome=ROUTE_COORDINATOR_AND_STOP edge=authority sources=.tfw/conventions.md mutation=.tfw/conventions.md::remove:'`dialogue: iterative` is valid only when an owner-approved immutable authority names exactly two peer units, their purpose, boundary, consolidator, durable output and stop condition, and names a separate directly addressable `GATEWAY` unit.'
+CASE accidental_gateway_invocation positive=PASS negative=PASS outcome=REFUSE_ROLE_WORKFLOW edge=activation sources=.tfw/workflows/plan.md mutation=.tfw/workflows/plan.md::remove:'An exact configured GATEWAY never runs Plan: route the existing Coordinator or provision/activate a separate one only under exact delegation, then stop.'
+CASE limited_provider_owner_assisted positive=PASS negative=PASS outcome=OWNER_ASSISTED_BOUNDARY edge=provider sources=.tfw/adapters/cursor/tfw.mdc.template,.tfw/workflows/plan.md mutation=.tfw/workflows/plan.md::remove:'A missing native mechanism requires owner-assisted provisioning/exact addresses or a capable provider, never a claim of end-to-end orchestration.'
+CASE bounded_cursor_wait positive=PASS negative=PASS outcome=ALLOW_STATUS_SIGNAL edge=observation sources=.tfw/adapters/codex/AGENTS.md.template mutation=.tfw/adapters/codex/AGENTS.md.template::remove:'cursor-based, bounded `wait_threads`'
+CASE one_addressed_status_request positive=PASS negative=PASS outcome=ALLOW_ONE_REQUEST edge=observation sources=.tfw/conventions.md mutation=.tfw/conventions.md::remove:'A suspected stall permits one addressed status request; no response or missing return is reported as unavailable or blocked, never repaired by transcript inspection.'
+CASE durable_artifact_commit positive=PASS negative=PASS outcome=ALLOW_AT_STATED_EVIDENCE edge=evidence sources=.tfw/conventions.md mutation=.tfw/conventions.md::remove:'After a durable return, only the named artifacts and commits become inputs at their stated evidence level.'
+CASE refuse_transcript_surfaces positive=PASS negative=PASS outcome=REFUSE edge=observation sources=.tfw/conventions.md mutation=.tfw/conventions.md::remove:"**Transcript isolation.** Another active unit's transcript, reasoning, tool output, terminal and unreturned working tree are not coordination or evidence surfaces."
+CASE refuse_codex_read_thread_outputs positive=PASS negative=PASS outcome=REFUSE edge=observation sources=.tfw/adapters/codex/AGENTS.md.template mutation=.tfw/adapters/codex/AGENTS.md.template::remove:'never call `read_thread` or use `includeOutputs` to monitor it'
+CASE refuse_provider_session_inspection positive=PASS negative=PASS outcome=REFUSE edge=observation sources=.agents/rules/tfw.md,.tfw/adapters/antigravity/tfw-rules.md.template,.tfw/adapters/claude-code/CLAUDE.md.template,.tfw/adapters/cursor/tfw.mdc.template,CLAUDE.md mutation=.tfw/adapters/cursor/tfw.mdc.template::remove:'Never open or resume another TFW role session to inspect its chat, reasoning, tool output, terminal or unreturned work.'
+EDGE_COVERAGE activation,authority,continuation,evidence,observation,provider
 OVERALL PASS
 
-INTERPRETATION
-The exact owner text, preserved dispatch paragraph, vocabulary owner, word ceiling and provider
-disclosures resolve at the Candidate. The added necessary constituent closes passive observation:
-bounded cursor waits, one addressed request and returned artifacts/commits remain usable; every
-tested active-session inspection path refuses. No transcript was used as an evidence source.
+EXIT STATUS
+0
