@@ -27,6 +27,9 @@ title is not activation. Read and validate the complete task routing spine befor
 report every status change to `coordinator_route`. Under `tfw-gates-only`, role units communicate
 materially only with their own Coordinator, never peers, owner or GATEWAY. Record actual producer
 session/address, parent route, activation/dispatch source and immutable authority in role artifacts.
+Never open or resume another TFW role session to inspect its chat, reasoning, tool output, terminal or
+unreturned work. Silence routes through wait/status or one addressed status request; unavailable
+monitoring is disclosed rather than replaced by session inspection.
 Iterative dialogue requires a separately addressable GATEWAY session and exact immutable grant.
 
 ### Slash Commands

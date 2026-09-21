@@ -22,6 +22,9 @@ status change to `coordinator_route`. Under `tfw-gates-only`, role units communi
 with their own Coordinator, never peers, owner or GATEWAY. Record actual producer surface/address,
 parent route, activation/dispatch source and immutable authority. Iterative dialogue requires a
 separate native GATEWAY surface and exact immutable grant; if unavailable, refuse that mode.
+Never open or resume another TFW role session to inspect its chat, reasoning, tool output, terminal or
+unreturned work. Silence routes through wait/status or one addressed status request; unavailable
+monitoring is disclosed rather than replaced by session inspection.
 
 | Commands | Roles |
 |---|---|

@@ -994,6 +994,14 @@ Coordinator only when `activation` cites the exact delegated authority; it never
 questions, gates and durable returns to its own `coordinator_route`; the Coordinator alone uses
 `owner_gateway`. Peer-role, role-to-owner and role-to-gateway material communication is prohibited.
 
+**Transcript isolation.** Another active unit's transcript, reasoning, tool output, terminal and
+unreturned working tree are not coordination or evidence surfaces. No role reads, tails, resumes,
+searches or reconstructs them to monitor progress, validate trust, review work, recover context or
+pre-solve that unit's task. Use only addressed TFW status/gate messages, provider status/wait signals
+and durable returns. A suspected stall permits one addressed status request; no response or missing
+return is reported as unavailable or blocked, never repaired by transcript inspection. After a
+durable return, only the named artifacts and commits become inputs at their stated evidence level.
+
 `dialogue: iterative` is valid only when an owner-approved immutable authority names exactly two peer
 units, their purpose, boundary, consolidator, durable output and stop condition, and names a separate
 directly addressable `GATEWAY` unit. A missing or over-broad grant refuses. The gateway is not the

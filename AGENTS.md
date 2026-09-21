@@ -58,6 +58,10 @@ briefing, waiting, or changing a title only provisions/navigates; none activates
 validate the task routing spine before material work and report every status change to the unit's
 `coordinator_route`.
 
+For another TFW role task, use cursor-based, bounded `wait_threads`; never call `read_thread` or use
+`includeOutputs` to monitor it. Silence routes through wait/status or one addressed status request;
+unavailable monitoring is disclosed rather than replaced by transcript inspection.
+
 When delegation is authorized, use distinct user-visible, directly addressable Codex tasks for
 Coordinator, Researcher, Executor and Reviewer. Record their actual task addresses and parents;
 shared principal attribution never merges units or grants authority. Use `send_message_to_thread`
