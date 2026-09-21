@@ -9,10 +9,10 @@ authority: HL-TFW_20260920-223357_FRATS.md
 coordinator_route: "codex:thread:local:01a0bfdb-f0b7-7642-837c-8c47d0a284cf"
 owner_gateway: owner:saubakirov
 dialogue: tfw-gates-only
-activation: owner-only
-coordination_authority: "HL-TFW_20260920-223357_FRATS.md @ c80c0dd5e79a6e996fdc68a89ad01b26887c638e"
+activation: "delegated:HL-TFW_20260920-223357_FRATS.md@35fba767abd768413237bf6416102e189f1d91e6"
+coordination_authority: "HL-TFW_20260920-223357_FRATS.md @ 35fba767abd768413237bf6416102e189f1d91e6"
 created: 20260920-223357
-updated: 20260921-174658
+updated: 20260921-213105
 ---
 
 **Task state.** This file is the only authority for this task's live state. Any downstream projection is disposable and never outranks it.
