@@ -54,3 +54,28 @@ the earlier observation. AFD remains at the same HEAD with the same three task p
 receiver facts are bounded to the exact epoch above.
 
 Verdict: read-only replay PASS. No receiver repository was mutated by this task.
+
+## Revision-2 / final-Candidate epoch
+
+> **Verification epoch**: 2026-09-21T20:44:44.4264548Z to 2026-09-21T20:44:45.9853790Z
+> **Mode**: read-only; no install, update, generation, normalization, staging or commit
+> **Candidate under comparison**: `93186cea9ac8209cade30a49e76f3b8a32ae6227`
+
+The same boundary method was rerun after revision 2 and the transcript-isolation constituent. Every
+receiver matched at start/end on resolved path, HEAD, branch, full porcelain count and SHA-256 hash.
+
+| Receiver | HEAD / branch | TFW | Worktree at both boundaries | Start=end |
+|---|---|---:|---|---|
+| Helpdesk (`D:/projects/research/helpdesk`) | `0bf033893d15faf2b3341cc9c663524148715503` / `beta` | 3.4.1 | clean; 0 paths; `e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855` | yes |
+| SenseLab / KazNPU (`D:/projects/research/kaznpu-ai-lab`) | `b91184f270d643e5bb8de02b32a305a020167b49` / `master` | 3.1.0 | 22 paths; `b47197a8669aa19609e307d46d8cc57122a786ef1a840e90d5ee384096c56d5b` | yes |
+| AFD (`D:/projects/research/ai-first-devices`) | `c615a9076353e85689150192f45551b4bb4711c2` / `beta` | 3.3.0 | 3 paths; `196574d5e93b995ad956ad1b238c377bdda5a2cd46ac2c7cd72f4b98558aa00a` | yes |
+| RYC (`D:/projects/research/research-yandex-cloud`) | `93116c4172b3be2b1906c2f725ee1baf5aa0f387` / `master` | 3.4.1 | clean; 0 paths; `e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855` | yes |
+
+KazNPU's 22 paths are course material and one existing task request: 19 tracked changes/deletions
+and three untracked course documents. AFD retains the same three task-artifact paths recorded above.
+These are receiver-owned states, not Phase B writes. Helpdesk and KazNPU have advanced since the
+original epoch; their earlier and current facts are not merged. The Candidate changes framework
+source only and still proves no receiver upgrade, release or universal customization safety.
+
+Verdict for this epoch: read-only replay PASS. No receiver repository was mutated, and no receiver
+session or transcript was inspected.

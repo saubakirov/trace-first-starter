@@ -311,3 +311,145 @@ affected evidence/RF/EV. Material return: R1–R3 complete with no scope deviati
 only at the accepted provider evidence limits and downstream independent acceptance.
 Continuation: transition to `RF`, return only to the Coordinator, and route the same independent
 Reviewer through `/tfw-review`; no docs effect, receiver write, release or close occurs in this unit.
+
+---
+
+## Return Round 2 — Revision 2 and Transcript-Isolation Result
+
+> **Date**: 2026-09-22
+> **Status**: 🟢 RF — revision 2 and necessary constituent complete; independent review required
+> **Producer unit**: `codex:thread:local:01a0c415-c362-78b3-98e9-00d728c5ac18`
+> **Parent Coordinator**: `codex:thread:local:01a0bfdb-f0b7-7642-837c-8c47d0a284cf`
+> **Activation / dispatch source**: delegated continuation under mandate
+> `HL-TFW_20260920-223357_FRATS.md @ 35fba767abd768413237bf6416102e189f1d91e6`
+> **Governing order**: revision-2 approval `116a324bb38d5ca21094bf6c5d528620d4ec4121`
+> plus prospective necessary-constituent ruling `68d85cc20b285e2dce083d23519d3394056033f4`
+> **Originating proposer**: owner `saubakirov` through the recorded Coordinator unit
+
+This numbered section supersedes earlier Candidate, metric, workflow-bound, provider-entry,
+receiver-epoch and accounting claims where different. Rejected and replaced epochs remain readable
+above and at their immutable commits.
+
+### 1. What Was Done
+
+Revision 2 restores the Coordinator's exact Strategic Architect identity and nine-step planning
+behavior, preserves the post-approval dispatch paragraph under the resolved gate answer, installs one
+Phase/Step/Stage/Gate vocabulary and ≤1,400-word ceiling, normalizes active workflow headings/links,
+and makes provider coordination entry disclose four capabilities honestly. REVIEW §10 then closes
+the remaining passive-observation loophole: another active role's transcript, reasoning, tool output,
+terminal and unreturned working tree are not coordination or evidence surfaces. Bounded wait/status,
+one addressed status request and named artifacts/commits after durable return remain permitted.
+
+#### Actual Value-Bearing Accounting
+
+| Fact | Final result |
+|---|---|
+| TS approval ref | `116a324bb38d5ca21094bf6c5d528620d4ec4121` |
+| Necessary-constituent authority | REVIEW §10 at `68d85cc20b285e2dce083d23519d3394056033f4`, committed before its eight VALUE writes |
+| Baseline / Candidate | `1a9209530d7a939db1270e2f91dcef40a9f449e6` / `93186cea9ac8209cade30a49e76f3b8a32ae6227` |
+| Candidate lineage | Tested descendant of prior input `627182ab5292454a00d37bb2062547a67d203387`; later TRACE writes do not move it. |
+| VALUE membership | Exact approved 47 paths, all MODIFY-or-zero-diff VALUE: 46 modified and `.tfw/README.md` zero-diff. Per-path actions and cumulative semantic reasons are in the disposition ledger; exact arithmetic table is in `evidence/adapter-and-suite.txt`. |
+| Arithmetic | 1,675 additions + 2,982 deletions = 4,657 touched text LOC; net −1,307; 47 logical files; binary/non-text N/A; no rename. |
+| Membership deviations | None. Paths outside the selector are governing/TRACE history, not added VALUE. |
+| Trigger disposition | 46/4,657 remains below the 50-file/5,000-LOC prompts and 94-file/9,600-LOC owner ceiling. REVIEW §10 prospectively admitted only the necessary constituent inside unchanged boundaries; no split or added assurance was required. |
+| Authority and timing | Owner approved immutable 47/4,800 denominator in revision 2 before implementation; it never ratchets. REVIEW §10 predates Candidate `93186cea…`. |
+| Reproduction | The TS's exact literal selector and NUL-safe `name-status`/`numstat` commands are unchanged; numeric fields are text LOC and `-` is binary/N/A. |
+
+This reports the approved contract; it does not create a selector, move Candidate, ratchet the
+denominator or supply late authority.
+
+#### New TRACE File
+
+| File | Description |
+|---|---|
+| `evidence/rung2-semantic-replay.txt` | Exact-object replay for AC-10–AC-12 and transcript isolation; no role transcript input. |
+
+#### Modified Implementation Families
+
+| Files | Changes |
+|---|---|
+| `.tfw/workflows/*.md` plus 20 projections | Exact AC-10 Plan behavior, AC-11 heading normalization, preserved six-edge carriers and ≤1,400 words; every projection equals its canonical source. |
+| `.tfw/glossary.md`, `.tfw/conventions.md` | Exact four-term vocabulary, Design Rules, active anchor repair and one exact transcript-isolation owner rule. |
+| Four adapter templates; `AGENTS.md`, `CLAUDE.md`, `.agents/rules/tfw.md` | Honest four-capability disclosure and shortest provider-specific transcript-isolation mapping with managed/full-copy parity. |
+| Templates named by the 47-path selector | Cumulative Phase B naming and handover repairs retained; no new artifact class. |
+
+### 2. Key Decisions
+
+1. Exact owner text is semantic authority, not a compression target: Plan remains 1,370 words, below
+   the approved 1,400 ceiling, with the gate-answered dispatch paragraph intact.
+2. Vocabulary normalization changes ordered-action headings only; true task phases, cognitive stages,
+   Config modes and historical artifacts remain unchanged.
+3. Transcript isolation owns the policy once in Coordination; adapters contain only executable
+   surface mappings. A suspected stall yields bounded wait/status or one addressed request, never
+   hidden inspection or reconstructed reasoning.
+4. Candidate evidence comes from named artifacts, commits and local checks. No agent transcript,
+   session output or unreturned working tree is an evidence source.
+
+### 3. Acceptance Criteria
+
+- [x] AC-1 — identical successor measurement yields 114,221→110,512 trajectory and 37,818→33,220 active corpus; historical series remains separate.
+- [x] AC-2 — F1–F19 disposition ledger closes the cumulative active-source census.
+- [x] AC-3 — exact-source positive/material-negative entry, continuation, provider and isolation cases pass while prohibited inspection refuses.
+- [x] AC-4 — canonical ownership remains singular; all workflows are ≤1,400 without filler or new runtime/control surface.
+- [x] AC-5 — 20/20 projections and all installed managed/full adapter targets match sources; provider evidence bounds are unchanged.
+- [x] AC-6 — four receiver repositories match start/end at the declared final epoch and were not mutated.
+- [x] AC-7 — configured checks, 54-schedule dry-run, links, headings, parity and exact final accounting pass.
+- [x] AC-8 — owner-readable final metrics/accounting/limits and the exact D75 post-APPROVE route are present; `KNOWLEDGE.md` is untouched.
+- [ ] AC-9 — Candidate, EV and RF are complete; independent verdict, accepted docs effect/follow-up and terminal Coordinator lineage are downstream.
+- [x] AC-10 — exact Strategic Architect mindset/nine planning steps, Coordination read, state route and retained dispatch behavior resolve; Plan is 1,370 words.
+- [x] AC-11 — exact vocabulary/Design Rules, heading map, active anchors and ≤1,400 ceiling resolve; 84/84 checked links pass.
+- [x] AC-12 — provider-honest capability entry and transcript-isolation mappings produce the same explicit owner boundary without false orchestration.
+
+### 4. Verification
+
+- Canonical word counts: Plan 1,370; Research 1,014; Handoff 937; Review 1,005; Docs 739;
+  Knowledge 1,042; Release 726; Update 1,003; Config 749; Init 1,209 — all ≤1,400.
+- Generated copies: 20/20 byte-identical; Codex/Claude managed blocks and Antigravity full target
+  match their sources.
+- Tests: `python -m pytest tools/tests/ docs/scripts/ -q` → 14 passed in 4.00s, exit 0.
+- Command-entry dry-run: `--repetitions 3` → `errors=[]`, `valid=true`, denominator 54, exit 0.
+- Candidate diff check: no output, exit 0.
+- Relative links: 42 changed VALUE Markdown blobs, 84 checked links, 0 missing.
+- Active headings: no operational `Phase N`, `Plan gates`, `## N.` or colon-form `Step N:`.
+- Semantic replay: all exact-text, entry/continuation/GATEWAY/provider and isolation cases PASS.
+- Receiver replay: all four start/end boundaries equal; no write or transcript/session inspection.
+
+### 5. Evidence
+
+See [EV](evidence/EV__phase-b__corpus_consistency_compression_and_receiver_proof.md) Return Round 2.
+Final-Candidate evidence verdict: 12/13 VERIFIED, 1 DEFERRED, 0 BLOCKED, 0 N/A. The deferred row is
+only AC-9's independent acceptance, ruled docs/follow-up and terminal lineage.
+
+### 6. Observations (out-of-scope, not modified)
+
+No new observations. The original D75 discrepancy remains independently verified and routed by R4
+to `/tfw-docs` only after APPROVE; receiver upgrades/customization changes remain not owed by Phase B.
+
+### 7. Fact Candidates
+
+No fact candidates. The owner decisions are already durable in the approved TS, gate answer and
+REVIEW §10 ruling; implementation facts are repository-readable.
+
+### 8. Strategic Insights (Execution)
+
+No strategic insights. This return implements the exact owner-approved and prospectively ruled
+bounds without adding an Executor-authored project strategy.
+
+### 9. Diagrams
+
+No diagrams.
+
+### Material handover at this return
+
+Producer: same Executor unit `codex:thread:local:01a0c415-c362-78b3-98e9-00d728c5ac18`, acting as
+`saubakirov` via Codex. Recipient: recorded Coordinator unit
+`codex:thread:local:01a0bfdb-f0b7-7642-837c-8c47d0a284cf`. Source epoch: mandate `35fba767…`,
+revision-2 approval `116a324b…`, resolved gate answer `6a43c85d…`, prospective transcript-isolation
+ruling `68d85cc…`, Baseline `1a920953…` and final Candidate `93186cea…`. Inspected scope: the literal
+47-path selector, AC-1–AC-12, exact owner text, F1–F19 ledger, ten workflows/20 projections, seven
+provider source/target paths, configured checks, metric graphs, four receivers read-only and all
+affected evidence attachments. Material return: one tested descendant Candidate with no scope or
+membership deviation. Uncertainty remains only in independent judgment and downstream D75
+publication/closure. Continuation: transition Phase B to `RF`, return only to this Coordinator, and
+start the same independent `/tfw-review`; after APPROVE, route only the already-ruled docs/follow-up
+and terminal sequence. No peer dialogue, transcript inspection, receiver mutation, release or push.

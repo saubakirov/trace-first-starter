@@ -220,3 +220,121 @@ actual result is below the 50/5,000 decomposition prompts and 94/9,600 owner cei
 47/4,800 approved denominator does not ratchet. Paths outside the selector between Baseline and
 Candidate are governing/TRACE history from Phase A/B, not additional VALUE. No prospective ruling
 or membership deviation exists.
+
+RETURN ROUND 2 — REVISION 2 PLUS TRANSCRIPT ISOLATION
+Revision-2 approval: 116a324bb38d5ca21094bf6c5d528620d4ec4121
+Necessary-constituent ruling: 68d85cc20b285e2dce083d23519d3394056033f4
+Baseline: 1a9209530d7a939db1270e2f91dcef40a9f449e6
+Candidate: 93186cea9ac8209cade30a49e76f3b8a32ae6227
+
+CANONICAL WORKFLOW WORDS / SHA-256 / COPY PARITY
+  plan       1370  4a7dc8750a8c6f7add2975146d85a490ebdfa23a4cd6117bd91a9445aae71185  parity=true
+  research   1014  825a94512c119614123e70ae0a70113f6c16d78d49d2489dea5f8815aafdc135  parity=true
+  handoff     937  99aeb4256625d0285ffbf55290d0201b5ea04920f0744c23139999e668263ba4  parity=true
+  review     1005  519cc8028b4d104d9dd10519b6e5d9a3639754525a66e9bef15bc741b9f0bba8  parity=true
+  docs        739  051b167c473baa0d0a8b9fe6829b2685109ecba609fcb9639ca2d9f86414f903  parity=true
+  knowledge  1042  bdb7081b2a19ca2800f7771195b256f81ff1b62e3a3c16f5a82c932c2fd61fc8  parity=true
+  release     726  b78839755ce75d875e08fe18c1f35a31e5942e8ae1734c477e05426cdbacf4c3  parity=true
+  update     1003  033c599388fa1bf16bbb1668c5673a98df882134aff79361a8c128f1220d1141  parity=true
+  config      749  a9290b4ec14ad4c35511623d462c3b6e02b43882bd102fb3f382f3cd86fc835d  parity=true
+  init       1209  8003d48075c31192f6f039c4ce497ab9fd2eb493dc8c2ef3826170fbe119340d  parity=true
+Result: all 10/10 canonical workflows are <=1,400 words; 20/20 Claude/Antigravity projections are
+byte-identical. Active heading search found no operational `Phase N`, `Plan gates`, `## N.` or
+colon-form `Step N:` heading.
+
+PERSISTENT COORDINATION SURFACES
+  Codex managed source/target SHA-256:
+    dbe0c1a883470fd822a0113d367c7900fa8f58380f633b51ab19581bdb718dc1 / same — PASS
+  Claude managed source/target SHA-256:
+    4d412a9ee01942b67924e16f64614bf5115fea76f9a1f818ec3cb01444abd7dd / same — PASS
+  Antigravity source/target SHA-256:
+    dc42c0b65f3337f5777696b8b8917417716a8c678d64e0866d7050a20dfb8c26 / same — PASS
+  Cursor source SHA-256:
+    2c398668d556cf18503968911cd44917eeef9a1d0f308a27149e4e0ca887d312; no installed target — bounded.
+All seven active source/target paths contain the provider-honest four-capability disclosure and the
+transcript-isolation mechanism mapping. Codex names bounded cursor waits and refuses
+`read_thread`/`includeOutputs` monitoring; Claude, Antigravity and Cursor refuse opening/resuming
+another role session. Foreign material outside managed blocks remains preserved.
+
+FINAL CONFIGURED AND STATIC CHECKS
+  python -m pytest tools/tests/ docs/scripts/ -q
+    14 passed in 4.00s; exit 0
+  python docs/scripts/command_entry_eval.py dry-run --repetitions 3
+    errors=[]; valid=true; valid_denominator=54; exit 0
+  git diff --check 1a9209530d7a939db1270e2f91dcef40a9f449e6 93186cea9ac8209cade30a49e76f3b8a32ae6227
+    no output; exit 0
+  relative Markdown links in changed VALUE Markdown blobs
+    changed_value_markdown=42; checked=84; missing=0; exit 0
+  exact-source semantic replay
+    AC-10/AC-11/transcript-rule exact; entry/continuation/GATEWAY/provider/isolation scenarios PASS
+No permanent test, runtime, registry, workflow, command, artifact class or ASSURANCE file was added.
+
+FINAL BASELINE→CANDIDATE VALUE ACCOUNTING
+Approved literal selector: 47 existing VALUE paths. Result: 46 modified + 1 zero-diff; all text;
+no rename or binary. 1,675 additions + 2,982 deletions = 4,657 touched text LOC; net -1,307.
+
+path                                                               action      +     -
+.tfw/conventions.md                                                MODIFY      63    23
+.tfw/glossary.md                                                   MODIFY      26    11
+.tfw/README.md                                                     ZERO-DIFF    0     0
+.tfw/templates/HL.md                                               MODIFY       5     6
+.tfw/templates/TS.md                                               MODIFY       2     0
+.tfw/templates/RES.md                                              MODIFY       5     6
+.tfw/templates/ONB.md                                              MODIFY       5     6
+.tfw/templates/RF.md                                               MODIFY       5     6
+.tfw/templates/REVIEW.md                                           MODIFY       5     6
+.tfw/templates/evidence/EV.md                                      MODIFY       2     2
+.tfw/workflows/plan.md                                             MODIFY     135   156
+.tfw/workflows/research/base.md                                    MODIFY      14    32
+.tfw/workflows/handoff.md                                          MODIFY      94   233
+.tfw/workflows/review.md                                           MODIFY     106   231
+.tfw/workflows/docs.md                                             MODIFY       7    11
+.tfw/workflows/knowledge.md                                        MODIFY       8    11
+.tfw/workflows/release.md                                          MODIFY      14    16
+.tfw/workflows/update.md                                           MODIFY      99   268
+.tfw/workflows/config.md                                           MODIFY       7     1
+.tfw/workflows/init.md                                             MODIFY      11    13
+.tfw/adapters/codex/AGENTS.md.template                             MODIFY      11     0
+AGENTS.md                                                          MODIFY      11     0
+.tfw/adapters/claude-code/CLAUDE.md.template                       MODIFY      10     0
+CLAUDE.md                                                          MODIFY      10     0
+.tfw/adapters/antigravity/tfw-rules.md.template                    MODIFY      10     0
+.agents/rules/tfw.md                                               MODIFY      10     0
+.tfw/adapters/cursor/tfw.mdc.template                              MODIFY      10     0
+.claude/commands/tfw-plan.md                                       MODIFY     135   156
+.agents/workflows/tfw-plan.md                                      MODIFY     135   156
+.claude/commands/tfw-research.md                                   MODIFY      14    32
+.agents/workflows/tfw-research.md                                  MODIFY      14    32
+.claude/commands/tfw-handoff.md                                    MODIFY      94   233
+.agents/workflows/tfw-handoff.md                                   MODIFY      94   233
+.claude/commands/tfw-review.md                                     MODIFY     106   231
+.agents/workflows/tfw-review.md                                    MODIFY     106   231
+.claude/commands/tfw-docs.md                                       MODIFY       7    11
+.agents/workflows/tfw-docs.md                                      MODIFY       7    11
+.claude/commands/tfw-knowledge.md                                  MODIFY       8    11
+.agents/workflows/tfw-knowledge.md                                 MODIFY       8    11
+.claude/commands/tfw-release.md                                    MODIFY      14    16
+.agents/workflows/tfw-release.md                                   MODIFY      14    16
+.claude/commands/tfw-update.md                                     MODIFY      99   268
+.agents/workflows/tfw-update.md                                    MODIFY      99   268
+.claude/commands/tfw-config.md                                     MODIFY       7     1
+.agents/workflows/tfw-config.md                                    MODIFY       7     1
+.claude/commands/tfw-init.md                                       MODIFY      11    13
+.agents/workflows/tfw-init.md                                      MODIFY      11    13
+
+The actual 46/4,657 result is below the 50-file / 5,000-LOC decomposition prompts and far below the
+94-file / 9,600-LOC owner ceiling. The prospective REVIEW §10 ruling admitted only a necessary
+constituent inside unchanged boundaries before its eight VALUE writes. The immutable owner-approved
+denominator remains 47/4,800 and does not ratchet. There is no selector or membership deviation;
+paths outside the selector are prior governing/TRACE history.
+
+REPRODUCTION
+Use the exact approved `$valuePaths` array from revision 2 with the unchanged NUL-safe commands:
+  git diff --name-status --find-renames=50% -z <Baseline> <Candidate> -- $valuePaths
+  git diff --numstat --find-renames=50% -z <Baseline> <Candidate> -- $valuePaths
+Parse NUL-delimited records; numeric numstat fields are text LOC and `-` is binary/N/A.
+
+WORKTREE BOUNDARY
+The unrelated untracked paths `PROPOSAL__serialized_landing_and_test_boundary.md`,
+`workspace/2026/TFW_20260909-231654_OTR/`, `workspace/2026/TFW_20260921-180000_RVAG/` and
+`workspace/2026/TFW_20260921-220500_AGSK/` were not modified, staged, committed or measured.

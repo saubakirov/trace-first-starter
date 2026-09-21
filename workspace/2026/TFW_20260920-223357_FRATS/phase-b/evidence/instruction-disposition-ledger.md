@@ -111,3 +111,21 @@ and supersede the generic path-level dispositions for rows 11, 13, 14 and 18 whe
 All ten canonical workflows are now ≤1,200 `\S+` words. Each subtraction retains the six-edge
 carriers listed in `six-edge-replay.md`; the Candidate replay and material-negative mutations resolve
 in `rung1-semantic-replay.txt`. No exception to the Design Rule was invented.
+
+## Return Round 2/3 — owner text, vocabulary, provider entry and transcript isolation
+
+Revision 2 supersedes only the earlier ≤1,200 completion bound with the owner-approved ≤1,400
+ceiling and adds exact AC-10–AC-12 semantics. REVIEW §10 then admits one prospective necessary
+constituent without changing the selector, denominator, TS, role, route or lifecycle.
+
+| ID | Path / detected finding | Normative owner / readers | Disposition | Final Candidate result and reason |
+|---|---|---|---|---|
+| F16 | `.tfw/workflows/plan.md`: prior compression reduced the Coordinator to routing mechanics and omitted an executable coordination-selection act. | Plan / Coordinator plus Claude and Antigravity projections | **repair under AC-10** | Install the exact Strategic Architect mindset and nine planning steps, add the `Coordination` read, normalize the state-table route and retain the existing post-approval dispatch paragraph under gate answer `6a43c85d…`. Plan is 1,370 words and both projections are exact. |
+| F17 | Active workflow prose collided among Phase, Step, Stage and Gate; the old 1,200 ceiling rejected required meaning. | Glossary and Design Rules / all ten workflows and active references | **repair under AC-11** | Install the exact four-term glossary and ≤1,400 rule, normalize only ordered-action headings and affected anchors/registry entries, preserve true phases/cognitive stages/Config modes, and repair the active Purpose Check anchor. All workflows are ≤1,400 and 84/84 checked relative links resolve. |
+| F18 | Provider entry surfaces did not force Plan Step 5's four-capability disclosure and could imply orchestration borrowed from another surface or receipt. | Adapter templates / installed Codex, Claude and Antigravity entry targets; future Cursor target | **repair under AC-12** | All seven source/target paths disclose `provision · addressed send · wait/readback · title/readback` as `native`, `owner-assisted` or `unavailable`, bind claims to exposed mechanisms and preserve managed/full-copy parity. |
+| F19 | Vertical gates-only traffic and durable returns left passive observation unnamed, permitting another role's transcript/session/tool output to become hidden coordination state. | `.tfw/conventions.md` `Coordination` / every role; provider mappings / active entry surfaces | **repair under REVIEW §10** | Add the exact canonical transcript-isolation rule once. Codex permits only cursor-based bounded `wait_threads`, never `read_thread`/`includeOutputs` monitoring; Claude, Antigravity and Cursor forbid opening/resuming another role session. All allow wait/status, one addressed request and named artifacts/commits after durable return. |
+
+The final Candidate is `93186cea9ac8209cade30a49e76f3b8a32ae6227`. F16–F19 close every
+newly ruled finding without a new workflow, command, artifact, mode, registry, permanent test or
+local-only authority. `.tfw/README.md` remains the selector's sole zero-diff path; all other approved
+VALUE members are cumulative Phase B changes.

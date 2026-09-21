@@ -1,0 +1,71 @@
+FRATS Phase B — revision-2 and transcript-isolation semantic replay
+Date: 2026-09-22
+TS source: 116a324bb38d5ca21094bf6c5d528620d4ec4121
+Necessary-constituent ruling: 68d85cc20b285e2dce083d23519d3394056033f4
+Candidate: 93186cea9ac8209cade30a49e76f3b8a32ae6227
+
+METHOD
+The executed `python -` replay used only `git show <ref>:<path>` inputs. It extracted AC-10's first
+Markdown code block, both AC-11 Markdown code blocks and REVIEW §10.1's canonical rule from the named
+authority commits, then compared them with exact Candidate blobs. It counted words with
+`len(re.findall(r"\S+", text))`, scanned active workflow headings, compared each canonical workflow
+byte-for-byte with its Claude and Antigravity projections, and inspected all seven provider
+source/target paths.
+
+The scenario oracle was a closed decision table:
+
+  activation(owner-direct) -> ACTIVATE_NO_PRINCIPAL
+  activation(delegated:immutable) -> ACTIVATE
+  activation(continuation, same-unit, current-spine) -> ACTIVATE
+  activation(continuation, wrong-unit or missing-spine) -> REFUSE
+  activation(GATEWAY, iterative, exact-grant, separate-unit) -> ROUTE_STOP
+  activation(GATEWAY otherwise) -> REFUSE
+  observe(wait_threads, cursor, bounded) -> ALLOW_WAIT
+  observe(one addressed status request) -> ALLOW_REQUEST
+  observe(named artifact/commit after durable return) -> ALLOW_RETURN
+  observe(transcript/reasoning/tool-output/terminal/unreturned-tree/read_thread/
+          includeOutputs/resume-session) -> REFUSE
+
+This is a source-derived replay, not a provider reliability trial. It does not read any other role's
+transcript, reasoning, tool output, terminal or unreturned working tree.
+
+EXACT OUTPUT
+exact_ac10_mindset PASS
+exact_ac10_steps PASS
+dispatch_retained PASS
+plan_le_1400 PASS
+exact_ac11_glossary PASS
+exact_ac11_design_rules PASS
+exact_transcript_rule PASS
+all_workflows_le_1400 PASS
+active_heading_search_clean PASS
+copy_parity_20_of_20 PASS
+provider_mapping_7_of_7 PASS
+codex_specific_mapping PASS
+session_provider_mapping PASS
+scenario_owner_direct PASS
+scenario_delegated PASS
+scenario_iterative_gateway PASS
+scenario_ordinary_continuation PASS
+scenario_invalid_continuation PASS
+scenario_accidental_gateway PASS
+scenario_limited_provider_owner_assisted PASS
+isolation_bounded_wait PASS
+isolation_one_status_request PASS
+isolation_durable_artifact PASS
+isolation_durable_commit PASS
+isolation_refuse_transcript PASS
+isolation_refuse_reasoning PASS
+isolation_refuse_tool-output PASS
+isolation_refuse_terminal PASS
+isolation_refuse_unreturned-tree PASS
+isolation_refuse_read_thread PASS
+isolation_refuse_includeOutputs PASS
+isolation_refuse_resume-session PASS
+OVERALL PASS
+
+INTERPRETATION
+The exact owner text, preserved dispatch paragraph, vocabulary owner, word ceiling and provider
+disclosures resolve at the Candidate. The added necessary constituent closes passive observation:
+bounded cursor waits, one addressed request and returned artifacts/commits remain usable; every
+tested active-session inspection path refuses. No transcript was used as an evidence source.

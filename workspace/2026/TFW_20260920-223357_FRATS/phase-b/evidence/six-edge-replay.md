@@ -76,3 +76,24 @@ All six positive cases pass. One in-memory removal per structural edge is reject
 validator accepts the complete gate-answer and legal `ONB → RF` cases, rejects the missing governing
 HL/TS reference and rejects `ONB → ONB`. This section supersedes the original validator-path sentence;
 the actual path exists and resolves at the named Candidate.
+
+## Return Round 2/3 — revision 2 and transcript-isolation replay
+
+Final Candidate `93186cea9ac8209cade30a49e76f3b8a32ae6227` adds the exact owner-approved
+AC-10/AC-11 blocks, provider-honest AC-12 entry and REVIEW §10 transcript-isolation constituent.
+[`rung2-semantic-replay.txt`](rung2-semantic-replay.txt) reads only named Git objects; it does not
+inspect another role's transcript, reasoning, tool output, terminal or unreturned working tree.
+
+| Behavior | Positive case | Material negative | Result |
+|---|---|---|---|
+| Owner-direct entry | Exact skill/task/phase plus owner-direct source activates without inventing a principal. | Missing/ambiguous activation source refuses. | PASS |
+| Delegated entry | Exact immutable mandate activates the addressed role. | Briefing, title or role prompt without the mandate refuses. | PASS |
+| Iterative GATEWAY separation | Exact grant plus separately addressed GATEWAY routes a distinct Coordinator and stops. | GATEWAY attempting Plan or lacking the exact grant refuses. | PASS |
+| Limited-provider entry | Owner-assisted provision/addressed-send plus exact supplied addresses is disclosed and accepted as a boundary. | Missing mechanics cannot be relabeled native or full end-to-end orchestration. | PASS |
+| Continuation | Same unit plus prior activation and current routing spine resumes. | Wrong unit or incomplete spine refuses. | PASS |
+| Bounded observation | Cursor-based bounded wait/status, one addressed status request, and named artifacts/commits after durable return are valid surfaces. | Transcript, reasoning, tool output, terminal, unreturned tree, `read_thread`, `includeOutputs` and session resume all refuse. | PASS |
+
+The protected edges remain intact: activation and authority stay explicit; evidence is artifact-based;
+durable return provides recovery; same-unit lineage provides continuation; invalid or stalled cases
+route as unavailable/blocked without hidden inspection. Workflow-copy parity remains 20/20, so no
+provider projection silently changes an edge.

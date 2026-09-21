@@ -78,3 +78,38 @@ Replacement evidence verdict: 9/10 VERIFIED, 1 DEFERRED, 0 BLOCKED, 0 N/A.
 
 The only deferred row is the deliberately downstream independent acceptance/docs follow-up/terminal
 lineage portion of AC-9. The independent Reviewer must confirm or revise this Executor verdict.
+
+---
+
+## Return Round 2 — Revision 2 and Transcript-Isolation Evidence
+
+Earlier rows remain their historical Candidate epochs. The rows below are the sole active evidence
+set for Candidate `93186cea9ac8209cade30a49e76f3b8a32ae6227`; they incorporate the owner-approved
+revision 2 and the prospective REVIEW §10 necessary constituent.
+
+| # | AC | What was verified | Environment | Result | Artifact |
+|---|---|---|---|---|---|
+| E1-R2 | AC-1 | Identical successor selector measured 114,221→110,512 trajectory (−3,709; −3.2472%) and 37,818→33,220 unique corpus (−4,598; −12.1582%); the historical 112,206/32,088 series and bridge remain separate. | Exact Baseline/Candidate Git trees; Python 3.13.5 | VERIFIED | [`current-corpus-and-exposure.txt`](current-corpus-and-exposure.txt) Return Round 2 |
+| E2-R2 | AC-2 | F16–F19 close the revision-2 and transcript-observation findings with one canonical owner and actual readers; the cumulative F1–F19 census has no undispositioned active-source finding. | Approved TS, prospective ruling and Candidate blobs | VERIFIED | [`instruction-disposition-ledger.md`](instruction-disposition-ledger.md) Return Round 2/3 |
+| E3-R2 | AC-3 | Exact-source entry/continuation/GATEWAY/provider and transcript-isolation scenarios pass. Bounded wait/status/one request/returned artifacts are allowed; transcript, reasoning, tool-output, terminal, unreturned-tree and session-inspection variants refuse. | Named Git objects only; no role transcript input | VERIFIED | [`rung2-semantic-replay.txt`](rung2-semantic-replay.txt), [`six-edge-replay.md`](six-edge-replay.md) |
+| E4-R2 | AC-4 | All ten canonical workflows are ≤1,400 words; semantic additions are ruled owner text or necessary safety, not filler. No runtime, registry, workflow, command, artifact class, permanent test or exception was added. | Candidate source and ledger | VERIFIED | [`adapter-and-suite.txt`](adapter-and-suite.txt), [`instruction-disposition-ledger.md`](instruction-disposition-ledger.md) |
+| E5-R2 | AC-5 | Ten canonical workflows equal all 20 projections; Codex/Claude managed blocks and Antigravity full target equal sources; provider limits remain Codex P2/partial P3, authenticated Claude P2, Antigravity P2/partial P3, with no full P3/P4 or reliability rate. | Candidate Git blobs; accepted Phase A RF/REVIEW | VERIFIED | [`adapter-and-suite.txt`](adapter-and-suite.txt) Return Round 2 |
+| E6-R2 | AC-6 | Four receiver start/end snapshots match on resolved path, HEAD, branch, status count and status hash at a new declared epoch; no receiver write, install or normalization occurred. | 2026-09-21T20:44:44.4264548Z–20:44:45.9853790Z; four local repos | VERIFIED | [`receiver-replay.md`](receiver-replay.md) Revision-2/final-Candidate epoch |
+| E7-R2 | AC-7 | Candidate passes 14/14 tests, 54-schedule dry-run, diff check, 20/20 copy parity, 84/84 relative-link checks, active-heading search and exact immutable accounting. | Python 3.13.5; pytest 9.0.2; Git 2.42.0 | VERIFIED | [`adapter-and-suite.txt`](adapter-and-suite.txt) Return Round 2 |
+| E8-R2 | AC-8 | RF reports final metrics, gross/net accounting, owner-visible behavior, limitations and the unchanged exact D75 post-APPROVE `/tfw-docs` route without editing `KNOWLEDGE.md`. | Executor RF at final Candidate epoch | VERIFIED | [`../RF__phase-b__corpus_consistency_compression_and_receiver_proof.md`](../RF__phase-b__corpus_consistency_compression_and_receiver_proof.md) Return Round 2 |
+| E9-R2 | AC-9 | Same Executor produced one tested descendant Candidate and appended EV/RF under revision 2 plus the prospective necessary constituent. Independent verdict, accepted D75 docs effect/follow-up and terminal Coordinator lineage remain downstream by design. | Executor unit `codex:thread:local:01a0c415-c362-78b3-98e9-00d728c5ac18` | DEFERRED | Required next route: same independent `/tfw-review`; after APPROVE only, ruled docs/follow-up/closure sequence. |
+| E10-R2 | AC-10 | Canonical Plan contains the exact Strategic Architect mindset and nine planning steps, retains the answered post-approval dispatch paragraph, reads Coordination and is 1,370 words; both projections are exact. | TS approval object and Candidate Git blobs | VERIFIED | [`rung2-semantic-replay.txt`](rung2-semantic-replay.txt), [`adapter-and-suite.txt`](adapter-and-suite.txt) |
+| E11-R2 | AC-11 | Exact Phase/Step/Stage/Gate glossary and Design Rules text resolve; operational headings and references are normalized; all workflows remain ≤1,400; changed VALUE Markdown has 84 checked links and zero missing. | Candidate Git blobs and static link/heading audit | VERIFIED | [`rung2-semantic-replay.txt`](rung2-semantic-replay.txt), [`adapter-and-suite.txt`](adapter-and-suite.txt) |
+| E12-R2 | AC-12 | Seven provider source/target paths disclose the four capabilities honestly and carry the bounded transcript-isolation mapping. Codex refuses `read_thread`/`includeOutputs` monitoring; other providers refuse opening/resuming another role session; silence routes through wait/status or one addressed request. | Candidate Git blobs; exact-source replay | VERIFIED | [`rung2-semantic-replay.txt`](rung2-semantic-replay.txt), [`adapter-and-suite.txt`](adapter-and-suite.txt) |
+| E-accounting-R2 | AC-7 | Revision-2 approval `116a324bb38d5ca21094bf6c5d528620d4ec4121`; prospective necessary-constituent ruling `68d85cc20b285e2dce083d23519d3394056033f4`; Baseline `1a9209530d7a939db1270e2f91dcef40a9f449e6`; Candidate `93186cea9ac8209cade30a49e76f3b8a32ae6227`; literal 47 VALUE paths with approved classes/reasons; 46 modified + 1 zero-diff; 1,675 + 2,982 = 4,657 touched text LOC; net −1,307; no binary/rename/membership deviation; other changed paths are governing/TRACE history; below 50/5,000 prompt and 94/9,600 ceiling; immutable 47/4,800 approval predates all work and does not ratchet; unchanged NUL-safe method. | Repository; Git 2.42.0; exact refs | VERIFIED | [`adapter-and-suite.txt`](adapter-and-suite.txt) final 47-row table and reproduction method |
+
+`E-accounting-R2` is the sole accounting row for the final Candidate epoch. It neither moves
+Candidate nor supplies late authority: REVIEW §10 prospectively admitted the eight-path constituent
+inside the existing selector before implementation.
+
+### Return Round 2 Verdict
+
+Final-Candidate evidence verdict: 12/13 VERIFIED, 1 DEFERRED, 0 BLOCKED, 0 N/A.
+
+The only deferred row is AC-9's intentionally downstream independent acceptance, D75 docs effect,
+bounded follow-up and terminal lineage. No transcript/session inspection is evidence for any row.

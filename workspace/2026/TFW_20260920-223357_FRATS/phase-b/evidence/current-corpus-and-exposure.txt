@@ -105,3 +105,32 @@ The larger reduction is the direct effect of the ruled ≤1,200-word repair in P
 and Update plus their actual reader graphs. The historical 112,206/32,088 series remains separate;
 no denominator or bridge claim changes. The audit source, command set, charged ranges, dynamic-zero
 rule, containment deduplication and maintenance decision are unchanged from the method above.
+
+RETURN ROUND 2 — REVISION 2 PLUS TRANSCRIPT ISOLATION
+Revision-2 approval: 116a324bb38d5ca21094bf6c5d528620d4ec4121
+Necessary-constituent ruling: 68d85cc20b285e2dce083d23519d3394056033f4
+Candidate: 93186cea9ac8209cade30a49e76f3b8a32ae6227
+
+The identical immutable-source method was rerun after the exact AC-10/AC-11/AC-12 implementation
+and the prospective transcript-isolation constituent. No denominator, discovery rule or command set
+changed.
+
+command                         baseline     candidate     delta
+/tfw-plan                         26,246        27,202       +956
+/tfw-research:focused              6,613         6,496       -117
+/tfw-research:deep                 6,678         6,561       -117
+/tfw-handoff                       8,150         6,927     -1,223
+/tfw-review                       27,858        26,750     -1,108
+/tfw-docs                         18,908        18,971        +63
+/tfw-knowledge                     3,082         3,153        +71
+/tfw-release                       1,918         2,017        +99
+/tfw-update                        6,625         4,322     -2,303
+/tfw-config                        3,638         3,518       -120
+/tfw-init                          4,505         4,595        +90
+TRAJECTORY                       114,221       110,512     -3,709 (-3.2472%)
+ACTIVE_TFW_CORPUS                 37,818        33,220     -4,598 (-12.1582%)
+
+The increases are the owner-approved Strategic Architect/coordination-entry semantics and the
+prospective transcript-isolation safety rule, not measurement drift or filler. The Candidate still
+reduces both the ten-command trajectory and unique active corpus from the approved Baseline. The
+historical 112,206/32,088 result remains a separate series and the D75 correction route is unchanged.
