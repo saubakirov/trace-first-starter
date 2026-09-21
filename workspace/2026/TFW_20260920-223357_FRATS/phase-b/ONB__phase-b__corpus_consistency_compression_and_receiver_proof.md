@@ -345,3 +345,90 @@ EV/RF/evidence, transition to `RF`, and return only to the same Coordinator for 
 
 The authority-owned answer changes no scope, acceptance criterion, architecture, denominator,
 receiver boundary or dialogue rule. No blocking question remains.
+
+---
+
+## Return Round 3 — Transcript Isolation Necessary Constituent
+
+> **Date**: 2026-09-22
+> **Status**: 🟠 ONB — Prospective necessary constituent accepted; no blocking questions
+> **Continuation source**: Coordinator REVIEW §10 at
+> `68d85cc20b285e2dce083d23519d3394056033f4`
+> **Prior Candidate input**: `627182ab5292454a00d37bb2062547a67d203387`
+> **Governing TS**: `TS__phase-b__corpus_consistency_compression_and_receiver_proof__rev2.md @ 116a324bb38d5ca21094bf6c5d528620d4ec4121`
+
+### 1. Understanding
+
+The same Executor accepts the Coordinator's prospective ruling inside AC-2, AC-3 and AC-12. Add the
+exact compact transcript-isolation rule to `.tfw/conventions.md` `Coordination`, then add the shortest
+provider-specific mechanism mapping to the four adapter sources and three installed targets. Active
+TFW roles must use addressed status/gate messages, bounded provider wait/status signals and durable
+returns instead of another role's transcript, reasoning, tool output, terminal or unreturned working
+tree. No new artifact class, workflow, mode, registry, test or authority is authorized.
+
+### 2. Entry Points
+
+- Canonical owner: `.tfw/conventions.md` → `## 7) Coordination`.
+- Codex source/target: `.tfw/adapters/codex/AGENTS.md.template`, `AGENTS.md`.
+- Claude source/target: `.tfw/adapters/claude-code/CLAUDE.md.template`, `CLAUDE.md`.
+- Antigravity source/target: `.tfw/adapters/antigravity/tfw-rules.md.template`,
+  `.agents/rules/tfw.md`.
+- Cursor source: `.tfw/adapters/cursor/tfw.mdc.template`; no installed target is claimed.
+- Proof surface: exact-source search, bounded scenarios, 20/20 workflow-copy parity, configured
+  checks, immutable accounting and affected exposure metrics.
+
+### 3. Questions (blocking — cannot proceed without answers)
+
+No blocking questions. REVIEW §10 contains the owner's exact canonical rule, provider mappings,
+hard-constraint proof and completion condition; all implementation paths are already members of the
+approved VALUE selector and the routing spine still names this Executor and Coordinator.
+
+### 4. Recommendations
+
+1. Insert the exact canonical paragraph after the vertical `tfw-gates-only` communication rule so
+   active messaging and passive observation form one inspectable boundary.
+2. Keep each provider mapping local and mechanical: name the forbidden inspection surface and the
+   permitted wait/status fallback without copying the full canonical rule.
+3. Extend the existing semantic replay with positive wait/status/durable-return cases and negative
+   transcript/session/tool-output inspection cases; do not use any role transcript as evidence.
+
+### 5. Risks Found
+
+1. A broad ban on reading repositories would exceed the ruling; only another active role's
+   unreturned working tree is prohibited, while named artifacts and commits after durable return are
+   valid inputs at their stated evidence level.
+2. Codex wording must distinguish cursor-based `wait_threads` from `read_thread`; the latter is
+   forbidden for monitoring another TFW role task, including with `includeOutputs`.
+3. Provider prose must not imply that silence is failure: one addressed status request is allowed,
+   then unavailable or blocked is reported without transcript inspection.
+4. Seven VALUE paths change, so the Candidate, metrics and full Baseline accounting must move and be
+   recomputed; generated workflow copies must remain unchanged and exact.
+
+### 6. Inconsistency to Repair
+
+Current Coordination prohibits material peer traffic and requires durable returns but does not
+explicitly forbid passive transcript/session/tool-output inspection. The provider entries therefore
+leave open an observation path that duplicates reasoning, crosses Role Locks and makes reconstruction
+depend on hidden runtime state. REVIEW §10 closes only this bounded omission.
+
+### 7. Knowledge Citations
+
+| Source | Read? | Applied |
+|---|---|---|
+| REVIEW §10 / owner ruling | ✅ | Use the exact canonical paragraph, bounded provider mappings and stated hard-constraint proof without reinterpretation. |
+| Approved revision-2 TS AC-2/AC-3/AC-12 | ✅ | Keep one normative owner, replay protected semantics, and preserve provider-honest coordination entry. |
+| Phase A coordination boundary | ✅ | Extend vertical gates-only traffic to passive observation without changing routing, provider evidence levels or role identity. |
+| Exact-path staging / K17 | ✅ | Commit this ONB append alone, then only the eight authorized VALUE paths and later task-local TRACE. |
+
+### Material handover at this return
+
+Producer: same Executor unit `codex:thread:local:01a0c415-c362-78b3-98e9-00d728c5ac18`, acting as
+`saubakirov` via Codex. Recipient: recorded Coordinator unit
+`codex:thread:local:01a0bfdb-f0b7-7642-837c-8c47d0a284cf`. Source epoch: delegated mandate
+`35fba767…`, approved revision 2 `116a324b…`, prior Candidate `627182ab…` and prospective necessary-
+constituent ruling `68d85cc…`. Inspected scope: live status/journal, REVIEW §10, current Coordination
+owner and seven provider source/target files. Material return: the bounded rule is executable with no
+blocker. Uncertainty is limited to independent verification of wording placement and scenario
+coverage. Continuation: commit this append alone, implement the eight authorized VALUE changes,
+nominate one tested descendant Candidate, append affected evidence/EV/RF, transition to `RF`, and
+return only to the recorded Coordinator for the same independent Reviewer.
