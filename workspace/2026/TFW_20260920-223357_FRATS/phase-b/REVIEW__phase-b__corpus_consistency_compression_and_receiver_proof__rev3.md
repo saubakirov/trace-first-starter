@@ -133,6 +133,28 @@ already-ruled D75 `/tfw-docs` effect, return that changed claim to this same Rev
 follow-up, record `/tfw-knowledge` N/A if it remains true, then complete terminal closing. No receiver
 write, release, tag, push, publication or additional role/phase is authorized.
 
+## 8. Coordinator Docs Effect
+
+> **Date**: 2026-09-22
+> **Actual unit**: `codex:thread:local:01a0bfdb-f0b7-7642-837c-8c47d0a284cf` (`DOCS · FRATS · B`)
+> **Mode**: Auto from this APPROVE and prior R4
+> **Effect commit**: `3effc3ec15b57013de93feb2d5d84458754fe71e`
+
+- [x] **tfw-docs: Applied.** Only `KNOWLEDGE.md` D75's impact cell changed:
+  `Trajectory 310,485→112,536 (−63.8%)` became
+  `Trajectory 310,485→112,206 (−63.9%)`. The remaining impact text, decision statement and three
+  citations are byte-preserved. Authority is this REVIEW §4–§6 plus original Coordinator R4; grounds
+  are Phase C RF lines 185–186, EV E7 and Phase C REVIEW rev3, independently rechecked by FRATS.
+- [x] **tfw-knowledge: N/A.** Phase B RF §7 and this REVIEW §7 contain no human-only Fact Candidate;
+  the applied correction is source-backed technical reference maintenance owned by `/tfw-docs`.
+  No topic, record, index, knowledge-state or processed-source write is warranted.
+
+The attempted separate `DOCS · FRATS · B` unit correctly refused to mutate because the canonical
+Docs activation checkpoint requires the actual Coordinator. The effect was therefore applied here
+by the recorded Coordinator; the refusal produced no file change or commit. This records the actual
+route without granting a child Coordinator authority. Terminal close remains blocked only on the
+same independent Reviewer's bounded acceptance of effect commit `3effc3e…`.
+
 ---
 
 *REVIEW — TFW_20260920-223357_FRATS / Phase B: Corpus Consistency, Compression and Receiver Proof — Revision 3 | 2026-09-22*
