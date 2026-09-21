@@ -401,7 +401,7 @@ approved VALUE selector and the routing spine still names this Executor and Coor
    forbidden for monitoring another TFW role task, including with `includeOutputs`.
 3. Provider prose must not imply that silence is failure: one addressed status request is allowed,
    then unavailable or blocked is reported without transcript inspection.
-4. Seven VALUE paths change, so the Candidate, metrics and full Baseline accounting must move and be
+4. Eight VALUE paths change, so the Candidate, metrics and full Baseline accounting must move and be
    recomputed; generated workflow copies must remain unchanged and exact.
 
 ### 6. Inconsistency to Repair
