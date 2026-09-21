@@ -116,8 +116,9 @@ routing spine and explicit owner-direct activation language. It is excluded from
 4. `gate_answer` stays inside the existing event carrier. Scope/acceptance/architecture/authority
    changes are explicitly rejected and routed to TS revision or HL §12.
 5. Provider evidence is recorded independently and honestly: Codex reached bounded P1/P2 and partial
-   P3; Claude stopped at expired OAuth; Antigravity exposed only launch/process readback; no provider
-   was awarded P4 or a reliability rate.
+   P3; authenticated Claude reached P1/P2 but not P3/P4; `agy` reached P1/P2 and partial P3 after one
+   owner-authorized same-conversation correction. The original authentication failure and initial
+   contradiction remain preserved; no provider was awarded P4 or a reliability rate.
 
 ## 3. Acceptance Criteria
 
@@ -140,6 +141,9 @@ routing spine and explicit owner-direct activation language. It is excluded from
 - Copy parity: 18 command copies; Codex and Claude managed blocks; Antigravity persistent copy — PASS.
 - Diff quality: `git diff --check` — PASS.
 - Accounting: 47 logical VALUE files, 1,346 touched text LOC, no binary/rename/deviation — PASS.
+- Post-Candidate provider recheck: Claude session `a42f2c99-9bc2-426a-9726-ab109e52f5c1` and `agy`
+  conversation `9b323e29-99dc-4934-86c3-e930bfca72bc` read the exact carrier; title readback and an
+  addressed cross-provider Coordinator return remain unsupported.
 
 ## 5. Evidence
 
@@ -186,8 +190,10 @@ Producer: `codex:thread:local:01a0c3a2-c742-7962-a981-369effb5ac83`, parent Coor
 TS at `ad6042dad73aa04b9bbe9f13880c5a944e7e4f05`, Candidate
 `1a9209530d7a939db1270e2f91dcef40a9f449e6`, current status, all declared sources, provider-native
 attempts and local verification. Material result is the explicit coordination contract and exact
-evidence above. Uncertainty is bounded to Claude authentication and Antigravity/Codex P3–P4 limits;
-none is represented as reliability proof. Continue with the same task through independent
+evidence above. The original Claude OAuth failure and first `agy` contradiction are preserved; later
+readbacks are bound to their native session/conversation addresses. Uncertainty remains in native
+title readback, addressed cross-provider return and incomplete P3–P4; none is represented as
+reliability proof. Continue with the same task through independent
 `/tfw-review`; do not recreate implementation or provider evidence from transcript.
 
 ---
