@@ -236,3 +236,103 @@ each workflow can meet 1,200 words without semantic loss; R1 requires an exact c
 if it cannot. Continuation: commit this append, transition `RF → ONB`, implement R1–R3, nominate a
 replacement Candidate, append evidence/EV/RF, transition back to `RF`, and return only to the same
 Coordinator for the same independent Reviewer.
+
+---
+
+## Return Round 2 — Approved TS Revision 2
+
+> **Date**: 2026-09-22
+> **Status**: 🟠 ONB — Rung-2 return accepted; no blocking questions
+> **Activation / dispatch source**: delegated dispatch
+> `journal/20260922-003829__dispatch__f79a.md` from Coordinator unit
+> `codex:thread:local:01a0bfdb-f0b7-7642-837c-8c47d0a284cf`
+> **Delegated mandate**: `HL-TFW_20260920-223357_FRATS.md @ 35fba767abd768413237bf6416102e189f1d91e6`
+> **Governing TS**: `TS__phase-b__corpus_consistency_compression_and_receiver_proof__rev2.md @ 116a324bb38d5ca21094bf6c5d528620d4ec4121`
+> **Superseded completion bound**: REVIEW §8 R1's `≤1,200`; revision 2 AC-11 now governs at `≤1,400`
+
+### 1. Understanding
+
+The same Executor accepts the owner-approved rung-2 order. The prior replacement Candidate
+`50ed7fb8c09cfc32e67623848b0551f9ada881da` is input, not an accepted result. Revision 2 requires
+three coupled repairs: install AC-10's exact Strategic Architect and nine-step Plan text while
+preserving Plan state/routing/return behavior; normalize active Phase/Step/Stage/Gate vocabulary and
+workflow headings under AC-11; and make every provider entry disclose the four coordination
+capabilities honestly under AC-12. R2/R3 evidence corrections, the 47-path / 4,800-LOC denominator,
+receiver read-only boundary and independent-review route remain in force.
+
+### 2. Entry Points
+
+- Exact owner text: revision 2 AC-10 and AC-11; it may be propagated but not reworded.
+- Canonical owners: `.tfw/workflows/plan.md`, `.tfw/glossary.md`, and
+  `.tfw/conventions.md` Design Rules.
+- Heading propagation: all ten canonical workflows plus every active link, anchor and Config registry
+  row affected by the renames.
+- Provider entry: four adapter templates and their managed project targets within the approved
+  selector; Claude and Antigravity command files remain exact canonical projections.
+- Existing round evidence: instruction ledger, six-edge replay, adapter/suite record, EV and RF;
+  append only the changed revision-2 claims and rerun affected checks.
+
+### 3. Questions (blocking — cannot proceed without answers)
+
+No blocking questions. Lifecycle `TS_DRAFT`, highest approved `__rev2` TS, dispatch recipient,
+Executor unit and Coordinator route form one valid rung-2 spine. The owner-approved exact text and
+unchanged denominator leave no unresolved scope or authority decision.
+
+### 4. Recommendations
+
+1. Install the exact Plan target first, then repair its state-table phrase and Read Contract range;
+   test that all prior routing branches and return semantics remain present.
+2. Rename headings mechanically only after classifying each occurrence as real task Phase,
+   ordered workflow Step, cognitive Stage or decision Gate; do not rewrite historical artifacts.
+3. Keep provider capability statements local to mechanisms actually exposed by that adapter and
+   avoid any reliability inference.
+4. Regenerate projections from canonical workflows only after their headings, anchors and word
+   counts are final.
+
+### 5. Risks Found
+
+1. The exact AC-10 insertion increases Plan substantially; the 1,400-word ceiling is a hard limit
+   but not permission to cut state, routing, authority, artifact or return semantics.
+2. Repository-wide replacement of `Phase` would corrupt real task-phase terminology and historical
+   traces; only active workflow-step uses named by AC-11 may change.
+3. Heading renames can silently break Config registry lookups and Markdown anchors even when tests
+   still pass; both active-source search and relative-link checks are required.
+4. Adapter capability wording can overstate native orchestration if it borrows another provider's
+   tools or old receipts; each surface must state `native`, `owner-assisted` or `unavailable` from
+   its own exposed mechanics.
+5. Unrelated untracked paths now also include
+   `workspace/2026/TFW_20260921-220500_AGSK/`; exact-path staging remains mandatory.
+
+### 6. Inconsistencies to Repair
+
+1. Current Plan still uses the thin mindset, `## Plan gates`, `continue Plan gates`, and omits
+   `Coordination` from its conventions Read Contract instead of AC-10's exact target.
+2. Handoff and Knowledge still use `Phase N` for ordered workflow actions; Docs, Init, Release and
+   Update lack the required `Step N` heading form; active references must follow the renamed anchors.
+3. Glossary currently has legacy/overlapping Phase and Stage definitions and lacks the exact
+   AC-11 four-term owner block; conventions still states the superseded 1,200-word rule.
+4. Provider adapter entry sections do not yet expose the exact four-capability disclosure needed by
+   Plan Step 5, so owner-assisted limitations remain implicit.
+
+### 7. Knowledge Citations
+
+| Source | Read? | Applied |
+|---|---|---|
+| Master HL §7 principles 2–11 / K1–K20 | ✅ | Preserve explicit routing, Working Backwards, bounded provider evidence, six-edge behavior and independent review while changing active vocabulary. |
+| REVIEW §9 / owner-approved rung 2 | ✅ | Treat revision 2 as the whole round; previous Candidate and rung-1 limit remain history rather than execution authority. |
+| Phase A accepted provider evidence | ✅ | Preserve Codex P2/partial P3, authenticated Claude P2 and Antigravity P2/partial P3 without composing a reliability claim. |
+| Exact-path staging / K17 | ✅ | Isolate ONB, approved VALUE/projection changes, evidence/RF appends and state events from foreign dirt. |
+
+### Material handover at this return
+
+Producer: same Executor unit `codex:thread:local:01a0c415-c362-78b3-98e9-00d728c5ac18`, acting as
+`saubakirov` via Codex. Recipient: recorded Coordinator unit
+`codex:thread:local:01a0bfdb-f0b7-7642-837c-8c47d0a284cf`. Source epoch: delegated mandate
+`35fba767…`, revision-2 approval `116a324b…`, dispatch `7180322…`, live REVIEW §9, Baseline
+`1a920953…` and prior replacement Candidate `50ed7fb…`. Inspected scope: changed lineage, exact
+AC-10/AC-11/AC-12 text, current canonical workflows, selected shared-rule headings, adapter/copy
+surfaces and cumulative evidence. Material return: the order is accepted with no blocker; the four
+inconsistencies above are the complete executable round. Uncertainty is limited to implementation
+fit below 1,400 words and independent verification. Continuation: commit this append alone,
+transition `TS_DRAFT → ONB`, implement and prove revision 2, nominate a tested descendant, append
+EV/RF/evidence, transition to `RF`, and return only to the same Coordinator for the same Reviewer.
