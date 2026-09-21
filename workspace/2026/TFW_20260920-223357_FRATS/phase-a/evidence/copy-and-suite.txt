@@ -1,0 +1,71 @@
+Phase A copy, suite, census, and accounting evidence
+Date: 2026-09-21
+Baseline: c80c0dd5e79a6e996fdc68a89ad01b26887c638e
+Candidate: 1a9209530d7a939db1270e2f91dcef40a9f449e6
+Approval: ad6042dad73aa04b9bbe9f13880c5a944e7e4f05
+
+ENVIRONMENT
+Python 3.13.5
+pytest 9.0.2
+git version 2.42.0.windows.1
+codex-cli 0.152.1
+Claude Code 2.1.273
+Antigravity 1.107.0 (15487b3041e65228cae24980a3f796c905ef582c, x64)
+
+SYNTAX AND CONFIGURED SUITE
+python -m py_compile tools/tfw_state.py docs/scripts/command_entry_eval.py
+exit: 0
+
+python -m pytest tools/tests/ docs/scripts/ -q
+exit: 0
+result: 14 passed in 3.84s
+limits: configured repository command; no new permanent test file
+
+TASK-LOCAL SEMANTIC FIXTURES
+in-memory validate_status / validate_new_status / validate_new_event scenarios
+exit: 0
+PASS: legacy-readable; legacy-new-refused; current-valid; partial-refused; empty-refused;
+      invalid-enum-refused; unresolved-authority-refused; iterative-without-gateway-refused;
+      gate-answer-valid; gate-answer-missing-refs-refused
+
+COPY PARITY
+18 changed installed command copies byte-identical to their nine canonical workflows: PASS
+Codex managed block equals .tfw/adapters/codex/AGENTS.md.template: PASS
+Claude managed block equals source managed block: PASS
+Antigravity persistent target equals source: PASS
+Cursor source inspected only; no installed-target claim: PASS
+git diff --check: PASS
+
+CURRENT-TERM CENSUS
+Literal selector census for CL/AG/AT/LEAD/Autonomous from:
+- .tfw/conventions.md: historical LEAD-title compatibility and one explicit historical-term list
+- .tfw/glossary.md: one Historical execution labels entry
+- tools/tfw_state.py: English comment phrase "AT ALL", false positive, not a term or issuer
+- workflows, installed command copies, adapter current instructions, status/event/role templates:
+  zero unexplained current issuers
+Repository migrations and preserved update-receipt before-images retain historical occurrences by
+design and were not normalized.
+
+NUL-SAFE BASELINE TO CANDIDATE ACCOUNTING
+Executed the approved argument vectors:
+git diff --name-status --find-renames=50% -z c80c0dd5e79a6e996fdc68a89ad01b26887c638e 1a9209530d7a939db1270e2f91dcef40a9f449e6 -- <literal 47 VALUE paths>
+git diff --numstat --find-renames=50% -z c80c0dd5e79a6e996fdc68a89ad01b26887c638e 1a9209530d7a939db1270e2f91dcef40a9f449e6 -- <literal 47 VALUE paths>
+Parsing: raw NUL-delimited bytes, rename-aware logical entries
+result: 47 logical VALUE entries, all status M, no rename/create/delete, no binary/non-text entries
+additions: 826
+deletions: 520
+touched text LOC: 1346
+configured triggers: 50 files / 5000 LOC; neither crossed
+owner multipliers: 94 files / 6400 LOC; neither approached
+membership deviations: none
+prospective scope rulings: none
+
+ASSURANCE
+docs/scripts/command_entry_eval.py changed as the sole ASSURANCE path and is excluded from VALUE
+accounting. Task-local status/evidence/RF are TRACE and were written after Candidate.
+
+WORKTREE BOUNDARY
+Unrelated untracked paths preserved and excluded:
+- PROPOSAL__serialized_landing_and_test_boundary.md
+- workspace/2026/TFW_20260909-231654_OTR/
+No receiver project or historical artifact was modified. No FRATS-D01 control entered Candidate.
