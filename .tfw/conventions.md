@@ -1082,7 +1082,7 @@ One rule governs every such block, in every adapter:
 
 Appending a block to a file that already carries an unmarked, hand-written TFW section produces
 two sections that disagree; no adapter guesses where the content "probably is". Exactly one
-managed block per file. `update.md` Step 6 names which row is a copy and which is a block.
+managed block per file. `update.md` Step 4 names which row is a copy and which is a block.
 
 For Codex, `/tfw-*` is the primary human-facing command contract. Root `AGENTS.md`
 provides always-on recognition and fallback routing; repository-local skills provide
@@ -1311,7 +1311,10 @@ this rule replaced.
 
 ### Design Rules
 
-- **Token density**: workflow instructions ≤1200 words. Templates own format; workflows reference templates
+- **Token density:** workflow instructions ≤1400 words. A ceiling is not a target or permission to
+  remove meaning; templates own format and workflows reference templates.
+- **Workflow vocabulary:** Phase = task unit; Step = ordered workflow action; Stage = cognitive
+  subprocedure; Gate = pass/stop, routing or authority boundary.
 - **Inline enforcement**: enforcement-critical values MUST be inline (Pattern A: defaults + config key). Pure refs (Pattern B) = broken
 - **DNA/Library**: Role Lock + Mindset = always inline. Reference data = via ref-inside-step. Step self-contained, ref adds precision
 - **Progressive Disclosure**: agent loads only what it needs now. Mode files loaded at Step 2, not at start

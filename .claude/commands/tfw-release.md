@@ -36,7 +36,7 @@ requires a complete spine; total legacy absence is read-only and partial/mismatc
 This unit must be the actual Coordinator. A release trigger is not activation, and every external
 effect remains separately authorized by the project contract and owner gateway.
 
-## 1. Resolve the Project Release Route
+## Step 1 — Resolve the Project Release Route
 
 The selected effect first resolves **Scope and Version** under the project's contract. If no trigger
 fires, stop before preparation; a pre-release failure is also a stop.
@@ -51,14 +51,14 @@ If a procedure exists, preserve its customizations and apply its own identity, t
 and permission rules. A release of an application, report, document, or data product must not bump the
 installed TFW version merely because TFW instructions were used.
 
-## 2. Select Effect and Evidence
+## Step 2 — Select Effect and Evidence
 
 Start from the selected shipping effect, then resolve its governing task/phase TS, RF, EV, and REVIEW at
 the applicable approval epoch and topology. A phase-only result does not need an invented root RF or a
 global all-DONE scan. Unrelated open tasks and harmless trace arrivals do not block a selected effect;
 missing proof for that effect does.
 
-## 3. Prepare, Verify, and Report
+## Step 3 — Prepare, Verify, and Report
 
 Resolve readiness to prepare separately from verification of the prepared result. The concrete procedure
 in `RELEASE.md` owns the project-specific metadata, output and check order. The generic route is:
@@ -77,7 +77,7 @@ Use the project's own build/package/render checks. No common route requires Pyth
 `.tfw/VERSION`, `.tfw/CHANGELOG.md`, or a tag unless the project contract says so. Preserve the original
 worktree and producer commits; if integration changes operational contents, verify the changed result.
 
-## 4. Trace and safety boundary
+## Step 4 — Trace and safety boundary
 
 Classify incidental sibling traces by semantic effect. A selected stable trace-only path may accompany an
 authorized exact-path commit after inspection; it does not make a sibling task DONE or authorize editing

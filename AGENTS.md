@@ -45,6 +45,13 @@ common rule, terminology, or project-knowledge libraries here.
 
 ### Codex native coordination
 
+Before Plan Step 5, inspect the task tools exposed in the current Codex task and report
+`provision · addressed send · wait/readback · title/readback`, classifying each as `native`,
+`owner-assisted`, or `unavailable`. `native` requires the corresponding current mechanism: task
+creation/fork for provision, exact task-addressed send, task wait/read for readback, and both title
+write plus exact title readback. A missing mechanism is owner-assisted or unavailable; capability
+never grants authority or proves reliability.
+
 A `/tfw-*` invocation activates work only when it names the exact skill, task/phase and owner-direct,
 delegated or continuation source. Creating or selecting a task, assigning a role prompt, sending a
 briefing, waiting, or changing a title only provisions/navigates; none activates a workflow. Read and

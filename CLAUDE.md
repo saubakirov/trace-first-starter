@@ -14,6 +14,13 @@ Contract selects task state, addressed shared ranges, templates, and knowledge i
 
 ### Activation and routing
 
+Before Plan Step 5, report `provision · addressed send · wait/readback · title/readback` from the
+mechanisms exposed in the current Claude Code session, classifying each as `native`,
+`owner-assisted`, or `unavailable`. Starting one session does not provision distinct addressable TFW
+role units. Without an exposed distinct-unit creator and exact recipient send, provision and
+addressed send are owner-assisted; resume/agent or title options count as native only when the
+current surface also exposes their exact readback. Never borrow Codex or receipt capabilities.
+
 A slash command activates work only when it names the exact `/tfw-*` skill, task/phase and
 owner-direct, delegated or continuation source. A session, role prompt, briefing, wait result or
 title is not activation. Read and validate the complete task routing spine before material work;

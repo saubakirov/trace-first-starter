@@ -85,7 +85,7 @@ owns preservation and removal; do not sync them into current workflows or recrea
 
 | Config Key | Target File | Section Header | Row Label |
 |---|---|---|---|
-| `review.min_verify_ratio` | `.tfw/workflows/review.md` | Step 2: Verify | Min verify ratio |
+| `review.min_verify_ratio` | `.tfw/workflows/review.md` | Step 2 — Verify | Min verify ratio |
 
 ### content_language
 

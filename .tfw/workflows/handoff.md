@@ -48,7 +48,7 @@ evidence. Append numbered round sections to ONB/RF; TS/REVIEW use revision sibli
 At use/return gates apply `Current knowledge use` and `Knowledge handover`: preserve source/epoch,
 producer unit, inspected scope, material or justified-none, uncertainty, recipient and continuation.
 
-## Phase 1 — ONB
+## Step 1 — ONB
 
 1. Read the governing artifacts and relevant implementation.
 2. Analyze blockers, recommendations, risks, spec/code inconsistencies and missing facts. Verify each
@@ -65,7 +65,7 @@ producer unit, inspected scope, material or justified-none, uncertainty, recipie
    `handoff` event using one clock reading and a drawn four-hex token. No path outside this task/phase
    changes.
 
-## Phase 2 — Implement and prove
+## Step 2 — Implement and prove
 
 Before each implementation write, compare the path with the approved VALUE selector and protected
 boundaries. Only forecast VALUE logical files/touched text LOC count toward decomposition; TRACE,
@@ -91,7 +91,7 @@ admit a necessary constituent.
     immutable-denominator authority/timing and the unchanged NUL-safe command. Missing/mutable/late
     contract facts are BLOCKED; N/A means truly inapplicable. Summarize verdict counts.
 
-## Phase 3 — RF and stop
+## Step 3 — RF and stop
 
 12. Open the RF template and read every heading.
 13. Emit `RF__{ID}.md` or `RF__phase-{x}__{phase_slug}.md`; append numbered touched sections on

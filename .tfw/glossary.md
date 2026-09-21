@@ -96,7 +96,7 @@ referenced without requiring the sibling to reach DONE. **Authority:** [conventi
 ## Knowledge Terms
 
 ### Fact Candidate
-**Meaning:** An unverified observation whose value depends on human knowledge and may be promoted only through consolidation. **Authority:** [.tfw/workflows/knowledge.md](workflows/knowledge.md#phase-2-gather), `Gather`.
+**Meaning:** An unverified observation whose value depends on human knowledge and may be promoted only through consolidation. **Authority:** [.tfw/workflows/knowledge.md](workflows/knowledge.md#step-2--gather), `Step 2 — Gather`.
 
 ### Strategic Insight
 **Meaning:** Human-sourced domain knowledge captured with implications during planning, research, or execution. **Authority:** `.tfw/templates/{HL,RES,RF}.md`, each `Strategic Insights` section.
@@ -122,7 +122,7 @@ referenced without requiring the sibling to reach DONE. **Authority:** [conventi
 **Meaning:** The TS per-criterion prescription of environment, action, and observable success. **Authority:** `.tfw/templates/TS.md` §5.
 
 ### Evidence Collection
-**Meaning:** The Executor activity after the build gate and before the Pre-RF Gate that records each AC using the evidence vocabulary. **Authority:** [.tfw/workflows/handoff.md](workflows/handoff.md#phase-2-execution), **Collect evidence**.
+**Meaning:** The Executor activity after the build gate and before the Pre-RF Gate that records each AC using the evidence vocabulary. **Authority:** [.tfw/workflows/handoff.md](workflows/handoff.md#step-2--implement-and-prove), `Step 2 — Implement and prove`.
 
 ### Evidence Audit
 **Meaning:** The Reviewer's independent check that EV claims resolve and agree with the delivered result. **Authority:** `.tfw/templates/review/verify.md`, `Evidence Verification`.
@@ -213,13 +213,13 @@ or the highest approved TS sibling, while ONB/RF/EV append. **Authority:** [conv
 **Meaning:** `[depends: AC-X]` forbids starting a dependent criterion until its prerequisite is verified. **Authority:** `.tfw/templates/TS.md` §5 and `handoff.md` **Implement**.
 
 ### Execution Loop
-**Meaning:** The Executor implements and verifies each prerequisite AC before any annotated dependent AC proceeds. **Authority:** [.tfw/workflows/handoff.md](workflows/handoff.md#phase-2-execution), **Implement**.
+**Meaning:** The Executor implements and verifies each prerequisite AC before any annotated dependent AC proceeds. **Authority:** [.tfw/workflows/handoff.md](workflows/handoff.md#step-2--implement-and-prove), `Step 2 — Implement and prove`.
 
 ### Pre-TS Gate
 **Meaning:** Planning must inspect the latest dependency RF before specifying a later phase. **Authority:** [.tfw/workflows/plan.md](workflows/plan.md), **Pre-TS Gate**.
 
 ### Pre-RF Gate
-**Meaning:** Before writing RF, the Executor opens `.tfw/templates/RF.md` and reads every section heading. **Authority:** [.tfw/workflows/handoff.md](workflows/handoff.md#phase-3-write-rf), **Pre-RF Gate**.
+**Meaning:** Before writing RF, the Executor opens `.tfw/templates/RF.md` and reads every section heading. **Authority:** [.tfw/workflows/handoff.md](workflows/handoff.md#step-3--rf-and-stop), `Step 3 — RF and stop`.
 
 ### Session Naming
 **Meaning:** A state-backed, fail-soft navigation title for task-bound work; `plan.md` binds it after creation by design because the task identifier must first exist. **Authority:** `conventions.md` → `Session identity`; workflows only bind their local cue and checkpoint.
@@ -230,10 +230,6 @@ or the highest approved TS sibling, while ONB/RF/EV append. **Authority:** [conv
 ## RESEARCH
 
 **Meaning:** The optional Researcher-locked investigation stage between HL framing and executable TS. **Authority:** [.tfw/workflows/research/base.md](workflows/research/base.md), `Core Algorithm`.
-
-## Stage (Research)
-
-**Meaning:** One ordered research activity with its own template, trace file, and completion gate. **Authority:** `research/base.md`, `Stage Execution`.
 
 ## Pass (Research)
 
@@ -276,7 +272,26 @@ or the highest approved TS sibling, while ONB/RF/EV append. **Authority:** [conv
 
 ## Phase
 
-**Meaning:** A scope-bounded unit of a multi-phase task with its own HL→TS→ONB→RF→REVIEW path and local state. **Authority:** [conventions.md](conventions.md#multi-phase-folder-structure), `Multi-phase folder structure`.
+**Meaning:** A scope-bounded unit of a multi-phase task with its own HL→TS→ONB→RF→REVIEW path and
+local lifecycle. **Authority:** [conventions.md](conventions.md#multi-phase-folder-structure),
+`Multi-phase folder structure`.
+
+## Step
+
+**Meaning:** One ordered action in a workflow. It has no independent lifecycle. **Authority:**
+[conventions.md](conventions.md#design-rules), `Design Rules`.
+
+## Stage
+
+**Meaning:** One named cognitive subprocedure, such as Gather/Extract/Challenge or
+Map/Verify/Judge. It may own a trace or checkpoint; it is not a task phase. **Authority:**
+the owning Research or Review workflow.
+
+## Gate
+
+**Meaning:** A condition that decides pass, stop, routing or authority before work continues. It is
+not a synonym for a step. **Authority:** the owning workflow and
+[conventions.md](conventions.md#design-rules), `Design Rules`.
 
 ## Multi-phase Handoff
 
@@ -304,7 +319,7 @@ or the highest approved TS sibling, while ONB/RF/EV append. **Authority:** [conv
 
 ## Consolidation
 
-**Meaning:** Source-bound qualification and completed dispositions for explicitly selected human knowledge; no global batch, markers or state writes. **Authority:** [.tfw/workflows/knowledge.md](workflows/knowledge.md), Phases 2–4.
+**Meaning:** Source-bound qualification and completed dispositions for explicitly selected human knowledge; no global batch, markers or state writes. **Authority:** [.tfw/workflows/knowledge.md](workflows/knowledge.md), Steps 2–4.
 
 ## Qualified Record
 

@@ -35,7 +35,7 @@ owner-direct `/tfw-init` activation. Full init has no prior status: the first st
 Coordinator's complete routing spine. Attach/repair validates existing task routing when task-bound
 and never guesses legacy or partial fields.
 
-## 0. Route Before Discovery
+## Step 0 — Route Before Discovery
 
 **Detect Full Init vs Adapter Attach/Repair** before reading broad project context.
 
@@ -53,7 +53,7 @@ and never guesses legacy or partial fields.
 Never reset an existing project or guess its adapter. Contradictory source/receiver ownership stops
 before config/state writes. An existing root or `.tfw/README.md` is not a blank starter surface.
 
-## 1. Discover and Interview
+## Step 1 — Discover and Interview
 
 **Interview + Mini-Setup** applies only to full init; attach/repair has no second interview.
 
@@ -63,7 +63,7 @@ at most three questions per message until the owner approves task prefix, comple
 content language, greenfield/brownfield constraints, and the first task title/acronym. Never invent an
 acronym apart from an approved title.
 
-## 2. Mini-Setup
+## Step 2 — Mini-Setup
 
 Resolve the acting human before writing. Preserve existing project-owned purpose and state:
 
@@ -115,13 +115,13 @@ provider, model, or folder.
 6. Verify semantic YAML, task state/event contracts, absent retired runtime/prose keys, no receiver
    Python/PyYAML prerequisite, and project-owned files unchanged.
 
-## 3. Research Gate
+## Step 3 — Research Gate
 
 Announce and run `/tfw-research` inside the init task. Preserve its stages and RES. Focus on architecture,
 decisions, dependencies, domain terms, debt, conventions, and the project's own release procedure when
 one exists. Wait wherever the research workflow waits.
 
-## 4. Full Setup
+## Step 4 — Full Setup
 
 1. Merge the managed TFW block into root `AGENTS.md`; never overwrite project-owned text.
 2. Create `KNOWLEDGE.md` from its clean template and approved research findings.
@@ -136,7 +136,7 @@ one exists. Wait wherever the research workflow waits.
    The repair route reports, then stop; full init continues to research and closure. For the route
    contract, report, then stop after repair.
 
-## 5. Verify, RF, and Close
+## Step 5 — Verify, RF, and Close
 
 Verify core/config/root files, state, RES, knowledge choice, selected adapter roots, exact routes/roles/
 bytes, idempotence, literal `/tfw-*` routes, VERSION/config agreement, direct setup postconditions, and

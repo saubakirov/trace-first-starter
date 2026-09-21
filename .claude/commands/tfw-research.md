@@ -28,7 +28,7 @@ stage files are read only for resume or synthesis; §14.1 history is read only w
 question triggers it. Missing or duplicate addressed headings are a hard stop under
 `conventions.md` → `Context Selection`.
 
-## Step 0: Resume & Iteration Detection
+## Step 0 — Resume & Iteration Detection
 
 On resume, reread this workflow and mode. Read `research/iterations.yaml` when present. Current iteration is the first pending entry, cross-checked against `iterN/` folders (highest + 1, else 1); for N>1 read predecessor RES files. In current `iterN/`, inspect stage/RES files. Resume from first missing stage. Existing RES completes the iteration.
 
@@ -51,12 +51,12 @@ At each use/return checkpoint, read and apply `Current knowledge use` and `Knowl
 Research stage/RES sections preserve exact source/version, producer unit, inspected scope, material
 or justified-none, uncertainty and continuation for the authorized Coordinator.
 
-## Step 1: Load Context
+## Step 1 — Load Context
 
 Apply the Read Contract once. Read relevant code and external sources only when the current
 question or stage requires them.
 
-## Step 2: Select Mode
+## Step 2 — Select Mode
 
 Read `project_config.yaml` → `tfw.research.default_mode`.
 Present: "Recommend [{mode}]. Reason: {specific}. Switch? [focused/deep]"
@@ -64,11 +64,11 @@ Present: "Recommend [{mode}]. Reason: {specific}. Switch? [focused/deep]"
 
 **Entry:** Pipeline uses its task; Standalone creates a first-container task at `RES`.
 
-## Step 3: Create Research Subfolder
+## Step 3 — Create Research Subfolder
 
 Create `research/iterN/` and its container when needed. For N>1, Briefing cites predecessor RES decisions, open threads, and new hypotheses/directions.
 
-## Step 4: Briefing Protocol
+## Step 4 — Briefing Protocol
 
 Copy the Briefing template into `iterN/`; adopt its **Mindset**.
 
@@ -79,7 +79,7 @@ Fill Briefing:
 4. Guiding questions (≤3)
 🛑 WAIT
 
-## Step 5: Run Stages (Gather → Extract → Challenge)
+## Step 5 — Run Stages (Gather → Extract → Challenge)
 
 Gather sets dimensions; Extract maps configurations; Challenge tests survivors. Feed forward; below three dimensions use a matrix.
 
@@ -93,7 +93,7 @@ Repeat up to YAML `loops_per_stage`: **OBSERVE** via web/files/code/user; **ORIE
 
 Present findings and ≤3 questions; mark `Stage complete: YES`; recommend close/deeper; 🛑 WAIT.
 
-## Step 6: Synthesis
+## Step 6 — Synthesis
 
 1. Read all stage files (`1_briefing.md`, `2_gather.md`, `3_extract.md`, `4_challenge.md`)
 2. Write `research/iterN/RES.md` using `templates/RES.md` — synthesize, don't copy-paste

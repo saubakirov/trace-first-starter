@@ -25,7 +25,7 @@ contract; afterward the pinned target's `update.md` governs.
 Never read live source HEAD, unpinned target files, full changelog/common libraries or project-state
 bodies. Missing/incoherent target workflow, range or required guide stops.
 
-## Activation and pin
+## Step 0 — Activation and pin
 
 Apply root activation/routing before pinning or writing; require exact owner-direct `/tfw-update` and,
 when task-bound, the actual Coordinator. Preserve legacy statuses. Add a complete routing spine only
@@ -41,7 +41,7 @@ For an authorized untagged Candidate, set installed version from target VERSION 
 `tfw.installed_from` to configured upstream plus full Candidate SHA; receipt/outcome label it
 untagged and never claim a release tag.
 
-## Target history and authority
+## Step 1 — Target history and authority
 
 Read pinned target `update.md` before target writes. Verify workflow, manifest, templates, required
 changelog ranges and migrations come from the same object. At equal version, re-observe target
@@ -56,7 +56,7 @@ mandate or provenance need. Ask one short material question only when evidence c
 meaning, consequential choice or external effect; Update cannot create delegation or iterative
 dialogue.
 
-## Observe, classify, and preview
+## Step 2 — Observe, classify, and preview
 
 Compare installed payload with target before writes; group connected semantic effects. Update
 authority covers coherent framework-owned changes and prescribed compatible migration, not new
@@ -77,7 +77,7 @@ For every non-mechanical choice record fact, authority/currentness, semantic eff
 and resolving evidence. Preview groups, exclusions, preservation, migrations, checks, unresolved
 choices and exact target; do not demand per-file approval already supplied by update authority.
 
-## Apply connected groups
+## Step 3 — Apply connected groups
 
 Copy approved pinned payload by connected group while reporting exclusions; merge config separately.
 Stop a whole group on dependency failure. Diagnostic staging/preservation is a disclosed write.
@@ -97,7 +97,7 @@ receiver; partial application, equal version or old receipt never closes checks/
   `max_modified_files`; add `owner_escalation_multiplier: 2`. Mixed old/new blocks stop; historical
   task approvals retain their epoch semantics.
 
-## Adapters, verification, receipt, outcome
+## Step 4 — Adapters, verification, receipt, outcome
 
 At adapter sync, if a persistent coordination block changes, read `Workflow activation and routing`;
 otherwise it is uncharged. Validate four adapters and ten manifest commands. Apply exact copies or

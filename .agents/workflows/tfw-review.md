@@ -36,13 +36,13 @@ architecture/flow diagrams and unsupported empty sections. At each use/return ga
 knowledge use` and `Knowledge handover` with source/epoch, unit, scope, material, uncertainty and
 continuation.
 
-## Step 1: Map
+## Step 1 — Map
 
 Create the task/phase `review/` directory, open the map template, map every RF claim to TS criteria,
 files, evidence and predecessors, complete its self-check, commit exact paths, and stop at the stage
 checkpoint when required.
 
-## Step 2: Verify
+## Step 2 — Verify
 
 Open the verify template and independently audit the mapped claims.
 
@@ -67,13 +67,13 @@ Open the verify template and independently audit the mapped claims.
 Verify at least `ceil(files × tfw.review.min_verify_ratio)` (default 0.42). Any discrepancy escalates
 to 100%. Complete the stage self-check; unchecked items return to verification.
 
-## Step 3: Judge
+## Step 3 — Judge
 
 Open the judge template and cite Verify findings. Purpose row 2a tests the master HL contract
 baseline plus Project North Star—not TS or Phase HL—and names the served or harmed purpose. Use only
 the three template outcomes. Complete the self-check.
 
-## Step 4: Decide (Synthesize → REVIEW)
+## Step 4 — Decide (Synthesize → REVIEW)
 
 Read all stage files, open the REVIEW template, and emit `REVIEW__{ID}.md` or
 `REVIEW__phase-{x}__{phase_slug}.md`. A formal new round uses `…__rev{N}.md`; bounded
@@ -86,7 +86,7 @@ A REVISE proposal must cite a breached TS criterion or frozen HL claim; otherwis
 the remainder, or return an ungrounded decision to the owner. Accounting mismatch is cited and routed,
 never repaired in REVIEW.
 
-## Step 5: Findings — locate, test, route, propose
+## Step 5 — Findings — locate, test, route, propose
 
 Record each real RF observation or Reviewer finding once in REVIEW §5. Filter filler; name harm to
 purpose, inspectability, authority or continuation; test the consequence; classify authority rung;
@@ -94,7 +94,7 @@ propose `paid`, `promoted`, or `not material`. `pending — coordinator` awaits 
 disposition names an existing artifact/task, never a generic backlog. Reviewer proposes;
 Coordinator rules.
 
-## Step 6: Record verdict, then route proposals
+## Step 6 — Record verdict, then route proposals
 
 Use `The 🔄 REVISE route` for recipient, ruling site, governing artifact, lifecycle and hard stop.
 
@@ -110,7 +110,7 @@ Use `The 🔄 REVISE route` for recipient, ruling site, governing artifact, life
 If accepted output later changes, this same independent Reviewer appends a bounded judgment of the
 affected result/evidence. Do not restart unchanged stages. A real new defect uses normal REVISE.
 
-## Step 7: Return for Coordinator closure
+## Step 7 — Return for Coordinator closure
 
 **STOP** after verdict and authorized trace/KNW routing. Never capture knowledge, close DONE, repair
 implementation, or enter another role.

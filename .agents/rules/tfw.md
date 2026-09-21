@@ -8,6 +8,13 @@ This project follows Trace-First Workflow. Root instructions are already active;
 reload them. For `/tfw-*`, open `.agents/workflows/tfw-<command>.md`, then follow the mapped
 canonical workflow's Read Contract. The workflow selects all further inputs.
 
+Before Plan Step 5, report `provision · addressed send · wait/readback · title/readback` from the
+mechanisms exposed in the current Antigravity surface, classifying each as `native`,
+`owner-assisted`, or `unavailable`. Opening one window or conversation does not provision distinct
+addressable TFW role units. Provision, addressed send, wait/readback, or title/readback is native
+only when that exact mechanism and its observable result are exposed now; otherwise use the honest
+owner-assisted or unavailable boundary. Never borrow another provider's capability or old receipt.
+
 A command activates work only when it names the exact skill, task/phase and owner-direct,
 delegated or continuation source. A workspace, role prompt, briefing, wait result or title is not
 activation. Read and validate the complete status routing spine before material work and report every
