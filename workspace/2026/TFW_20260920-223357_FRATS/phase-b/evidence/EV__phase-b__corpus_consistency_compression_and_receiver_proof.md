@@ -113,3 +113,33 @@ Final-Candidate evidence verdict: 12/13 VERIFIED, 1 DEFERRED, 0 BLOCKED, 0 N/A.
 
 The only deferred row is AC-9's intentionally downstream independent acceptance, D75 docs effect,
 bounded follow-up and terminal lineage. No transcript/session inspection is evidence for any row.
+
+---
+
+## Return Round 3 — Reproducible Semantic Evidence
+
+Independent REVIEW revision 2 rejected the earlier E3-R2/E10-R2/E12-R2 replay support because the
+record preserved output labels but not their executable predicates or command. The affected rows
+below supersede only those semantic-evidence claims. Candidate, VALUE accounting and every unaffected
+row remain unchanged.
+
+| # | AC | What was verified | Environment | Result | Artifact |
+|---|---|---|---|---|---|
+| E3-R3 | AC-3 | The committed task-local harness reads only the named immutable TS/ruling/Candidate objects and executes 13 source-derived scenarios. Every positive predicate resolves; removal of exactly one named critical Candidate clause makes the paired material-negative predicate fail. The output identifies outcome, semantic edge, source path(s) and mutation; six-edge coverage is complete. | Python 3.13.5; Git 2.42.0.windows.1; harness SHA-256 `b64ae4ba2da96c048cf155a872b4b5c854596cfa9147cf8bda158fcfd9c7d59c` | VERIFIED | [`rung2-semantic-replay.py`](rung2-semantic-replay.py) executable predicates; [`rung2-semantic-replay.txt`](rung2-semantic-replay.txt) exact command/output/exit 0 |
+| E10-R3 | AC-10 | The same run extracts AC-10 from TS approval `116a324b…`, verifies exact mindset and nine steps, retained dispatch text and Plan ≤1,400, then proves positive/material-negative owner-direct, delegated, continuation, invalid-continuation and GATEWAY cases from named Candidate clauses. | Immutable Git objects; no working-tree semantic input | VERIFIED | [`rung2-semantic-replay.py`](rung2-semantic-replay.py) `static_checks` and `SCENARIOS`; [`rung2-semantic-replay.txt`](rung2-semantic-replay.txt) |
+| E12-R3 | AC-12 | The run verifies all seven provider mappings, owner-assisted fallback, bounded Codex wait, one addressed status request, durable returned artifacts/commits and refusal of transcript, `read_thread`/`includeOutputs` and provider-session inspection. Each outcome has an executable critical-clause removal that fails its predicate. | Exact Candidate adapter/conventions blobs | VERIFIED | [`rung2-semantic-replay.py`](rung2-semantic-replay.py); [`rung2-semantic-replay.txt`](rung2-semantic-replay.txt) |
+| E-accounting-R3 | AC-7 | TS approval `116a324bb38d5ca21094bf6c5d528620d4ec4121`; evidence-only ruling `4cd4397795a5b831d6d90dacea1adb0a6d41efec`; Baseline `1a9209530d7a939db1270e2f91dcef40a9f449e6`; preserved Candidate `93186cea9ac8209cade30a49e76f3b8a32ae6227`; unchanged literal 47 VALUE paths/classes/reasons; 46 modified + 1 zero-diff; 1,675 + 2,982 = 4,657 touched text LOC; net −1,307; no binary/rename/deviation; below triggers/ceiling; immutable 47/4,800 authority predates work; NUL-safe method unchanged. This round changes TRACE evidence only. | Repository; Git 2.42.0; exact refs | VERIFIED | [`adapter-and-suite.txt`](adapter-and-suite.txt) existing 47-row table; `git diff --name-only 93186cea… --` confirms no new VALUE edit |
+
+`E-accounting-R3` is the sole accounting row for this evidence epoch. It reuses independently
+verified immutable Candidate accounting because neither its inputs nor oracle changed; the new
+harness/output are task-local TRACE and do not move Candidate.
+
+### Return Round 3 Verdict
+
+Affected evidence verdict: 4/4 VERIFIED, 0 DEFERRED, 0 BLOCKED, 0 N/A. The complete Candidate set is
+again 12/13 VERIFIED, 1 DEFERRED, 0 BLOCKED, 0 N/A; the sole deferred row remains AC-9's independent
+acceptance, post-APPROVE D75 effect/follow-up and terminal lineage.
+
+No other role's transcript, terminal, tool output or unreturned working tree was used. The repair
+introduces no product runtime, permanent test, workflow, authority surface, receiver write or VALUE
+change.

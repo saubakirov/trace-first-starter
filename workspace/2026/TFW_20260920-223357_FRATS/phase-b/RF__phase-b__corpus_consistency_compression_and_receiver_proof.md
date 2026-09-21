@@ -453,3 +453,126 @@ membership deviation. Uncertainty remains only in independent judgment and downs
 publication/closure. Continuation: transition Phase B to `RF`, return only to this Coordinator, and
 start the same independent `/tfw-review`; after APPROVE, route only the already-ruled docs/follow-up
 and terminal sequence. No peer dialogue, transcript inspection, receiver mutation, release or push.
+
+---
+
+## Return Round 3 — Reproducible Semantic Evidence
+
+> **Date**: 2026-09-22
+> **Status**: 🟢 RF — evidence-only repair complete; independent re-review required
+> **Producer unit**: `codex:thread:local:01a0c415-c362-78b3-98e9-00d728c5ac18`
+> **Parent Coordinator**: `codex:thread:local:01a0bfdb-f0b7-7642-837c-8c47d0a284cf`
+> **Activation source**: delegated evidence-only continuation under REVIEW revision 2 §8 at
+> `4cd4397795a5b831d6d90dacea1adb0a6d41efec`
+> **Preserved Candidate**: `93186cea9ac8209cade30a49e76f3b8a32ae6227`
+
+This section supersedes only the unsupported semantic-replay evidence in Return Round 2. It does not
+change product implementation, Candidate, accounting, tests, metrics, receiver epoch or D75 route.
+
+### 1. What Was Done
+
+Added a task-local executable TRACE harness and replaced the earlier label-only replay record with
+the exact command, Python/Git versions, immutable refs, harness SHA-256, all source predicates, named
+critical-clause mutations, exact output and exit status. The harness reads Candidate objects through
+`git show`, normalizes only whitespace, requires each positive predicate, removes exactly one named
+clause in memory for each material-negative case, requires the mutant to fail, verifies all six
+semantic edges and exits nonzero on any ambiguity or failure.
+
+#### Actual Value-Bearing Accounting
+
+| Fact | Evidence-only result |
+|---|---|
+| TS approval ref | `116a324bb38d5ca21094bf6c5d528620d4ec4121` |
+| Evidence-return authority | REVIEW revision 2 §8 at `4cd4397795a5b831d6d90dacea1adb0a6d41efec` |
+| Baseline / Candidate | `1a9209530d7a939db1270e2f91dcef40a9f449e6` / preserved `93186cea9ac8209cade30a49e76f3b8a32ae6227` |
+| VALUE membership | Unchanged approved 47-path selector/classes/reasons: 46 modified + `.tfw/README.md` zero-diff. Existing exact table remains in `evidence/adapter-and-suite.txt`. |
+| Arithmetic | Unchanged 1,675 additions + 2,982 deletions = 4,657 touched text LOC; net −1,307; 47 logical files; binary/non-text N/A; no rename. |
+| Membership deviations | None; this round changes task-local TRACE only. |
+| Trigger disposition | Unchanged 46/4,657 remains below 50/5,000 prompts and 94/9,600 ceiling; evidence-only ruling forbids VALUE changes. |
+| Authority and timing | Immutable 47/4,800 denominator still predates implementation and does not ratchet; no new implementation authority was used. |
+| Reproduction | Approved NUL-safe accounting method unchanged; independent REVIEW revision 2 already reproduced it. |
+
+This reports the unchanged approved contract; it does not move Candidate or provide late authority.
+
+#### New TRACE File
+
+| File | Description |
+|---|---|
+| `evidence/rung2-semantic-replay.py` | Self-contained immutable-object predicate/mutation harness; SHA-256 `b64ae4ba2da96c048cf155a872b4b5c854596cfa9147cf8bda158fcfd9c7d59c`. |
+
+#### Modified TRACE Files
+
+| File | Changes |
+|---|---|
+| `evidence/rung2-semantic-replay.txt` | Exact executable command, input refs, predicate contract, full output and exit 0 replace unsupported labels. |
+| `evidence/EV__phase-b__corpus_consistency_compression_and_receiver_proof.md` | Appended E3-R3/E10-R3/E12-R3 plus one unchanged accounting row. |
+| `RF__phase-b__corpus_consistency_compression_and_receiver_proof.md` | This evidence-only return section. |
+
+### 2. Key Decisions
+
+1. The replay is executable task evidence, not a product runtime or permanent test.
+2. Every named outcome is admitted only when exact Candidate source clauses resolve and the paired
+   one-clause in-memory mutation makes the same predicate fail.
+3. Earlier independent product/accounting/test/metric/receiver verification is reused because the
+   Candidate and every corresponding input/oracle are unchanged.
+
+### 3. Acceptance Criteria
+
+- [x] AC-3 — 13 source-derived positive/material-negative scenarios reproduce activation,
+  authority, continuation, provider, observation and evidence edges with named sources/mutations.
+- [x] AC-10 — exact Plan text/limit and owner-direct, delegated, continuation and GATEWAY outcomes
+  reproduce from TS approval and Candidate objects.
+- [x] AC-12 — seven provider mappings and allowed/refused observation outcomes reproduce from exact
+  Candidate adapter/conventions blobs.
+- [x] Candidate preservation — no VALUE/ASSURANCE/receiver path changed; Candidate remains
+  `93186cea9ac8209cade30a49e76f3b8a32ae6227`.
+- [ ] AC-9 — independent acceptance, post-APPROVE D75 effect/follow-up and terminal lineage remain
+  downstream.
+
+### 4. Verification
+
+- Exact command: `python workspace/2026/TFW_20260920-223357_FRATS/phase-b/evidence/rung2-semantic-replay.py`.
+- Environment: Python 3.13.5; Git 2.42.0.windows.1.
+- Fresh replay: 32 output lines, all present verbatim in the durable record; exit 0.
+- Harness integrity: SHA-256 `b64ae4ba2da96c048cf155a872b4b5c854596cfa9147cf8bda158fcfd9c7d59c`.
+- Static predicates: AC-10/AC-11/transcript-rule/ruling/word/copy/provider checks all PASS.
+- Scenario predicates: 13/13 positive PASS and 13/13 material-negative PASS.
+- Edge coverage: activation, authority, continuation, evidence, observation and provider.
+- Unaffected build/suite: reused from identical Candidate and independently verified REVIEW revision
+  2; no product/build input changed.
+
+### 5. Evidence
+
+See [EV](evidence/EV__phase-b__corpus_consistency_compression_and_receiver_proof.md) Return Round 3.
+Affected evidence verdict: 4/4 VERIFIED, 0 DEFERRED, 0 BLOCKED, 0 N/A. Complete Candidate evidence
+returns to 12/13 VERIFIED, 1 DEFERRED, 0 BLOCKED, 0 N/A; only AC-9 remains downstream.
+
+### 6. Observations (out-of-scope, not modified)
+
+No new observations. D75 remains a post-APPROVE `/tfw-docs` effect; receiver changes remain not owed.
+
+### 7. Fact Candidates
+
+No fact candidates. The defect and repair are fully repository- and command-readable.
+
+### 8. Strategic Insights (Execution)
+
+No strategic insights. This return repairs evidence traceability only.
+
+### 9. Diagrams
+
+No diagrams.
+
+### Material handover at this return
+
+Producer: same Executor unit `codex:thread:local:01a0c415-c362-78b3-98e9-00d728c5ac18`, acting as
+`saubakirov` via Codex. Recipient: recorded Coordinator unit
+`codex:thread:local:01a0bfdb-f0b7-7642-837c-8c47d0a284cf`. Source epoch: mandate `35fba767…`, TS
+approval `116a324b…`, preserved Candidate `93186cea…`, independent REVIEW revision 2 and ruling
+`4cd43977…`, executable evidence commit `4d1c25e…`. Inspected scope: the full REVIEW revision 2,
+existing replay record, immutable TS/ruling/Candidate objects, 13 scenario predicates/mutations and
+affected EV/RF claims. Material return: evidence-only defect closed with exit 0 and no Candidate
+movement. Uncertainty remains only in independent judgment and the downstream D75/terminal sequence.
+Continuation: return to `RF`, route only through the recorded Coordinator to the same independent
+`/tfw-review`, and perform no Docs/KNW effect before APPROVE. No VALUE edit, receiver write,
+transcript/session inspection, release or push occurred.
