@@ -336,3 +336,12 @@ inconsistencies above are the complete executable round. Uncertainty is limited 
 fit below 1,400 words and independent verification. Continuation: commit this append alone,
 transition `TS_DRAFT → ONB`, implement and prove revision 2, nominate a tested descendant, append
 EV/RF/evidence, transition to `RF`, and return only to the same Coordinator for the same Reviewer.
+
+### 3.1 Resolved Gate — Plan dispatch paragraph
+
+| Question | Blocking reason | Answer authority / event ref | Operational effect |
+|---|---|---|---|
+| Does AC-10's exact replacement delete the existing post-approval dispatch/return paragraph, or does its preservation clause retain it? | The two readings produce 1,324 versus 1,370 words and the Executor cannot choose between exact owner text and preserved return semantics. | `journal/20260922-010033__gate_answer__af9c.md` at `6a43c85da0089fe88f72920f0a5621571113e65c` | Retain the paragraph unchanged immediately before `## REVISE and return`; 1,370 words is the approved result and remains below AC-11's 1,400-word ceiling. Resume the preserved working tree. |
+
+The authority-owned answer changes no scope, acceptance criterion, architecture, denominator,
+receiver boundary or dialogue rule. No blocking question remains.
