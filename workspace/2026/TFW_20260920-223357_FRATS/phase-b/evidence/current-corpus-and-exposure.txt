@@ -1,0 +1,82 @@
+FRATS Phase B — current corpus and reader exposure
+Date: 2026-09-21
+Baseline: 1a9209530d7a939db1270e2f91dcef40a9f449e6
+Candidate: fd0655ce17f2c650d238622c1d6a57ec5dd9a204
+
+ENVIRONMENT
+Windows / PowerShell; Python 3.13.5; Git 2.42.0.windows.1; ripgrep 14.1.0;
+pytest 9.0.2. Word counting is the historical audit's `len(re.findall(r"\S+", text))`.
+
+HISTORICAL RCFR REPLAY — A SEPARATE, IMMUTABLE SERIES
+Source tree: detached temporary worktree at
+25d0e89afe48144c79c11324ff09d300b76dd6e9.
+Baseline argument: cf36dd6ac404b2335234cd9763bc4821409ca9fc.
+Command:
+  $env:PYTHONIOENCODING='utf-8'
+  python docs/scripts/test_runtime_context.py --audit --baseline-ref cf36dd6ac404b2335234cd9763bc4821409ca9fc
+Exit: 0; 569 output lines.
+Result:
+  TRAJECTORY        before=310485 after=112206 reduction=63.9%
+  ACTIVE_TFW_CORPUS before=66436  after=32088  reduction=51.7%
+The exact temporary worktree was verified at the named commit, clean, and then removed and
+unregistered. The deleted 6,885-line audit was not restored to the live tree.
+
+CURRENT TEN-COMMAND SUCCESSOR — NOT THE HISTORICAL DENOMINATOR
+The successor loads the accepted audit implementation from the immutable Git object
+`25d0e89:docs/scripts/test_runtime_context.py` into memory. It derives the ten command identities
+and canonical workflow paths from `.tfw/adapters/manifest.yaml`; verifies their root/skill dispatch;
+parses persistent entry surfaces and the actual workflow Read Contracts; removes retired
+`/tfw-resume` symmetrically; and applies the same source-range discovery and `\S+` counter to the
+Baseline and Candidate Git trees. Research focused/deep are two variants of one manifest command.
+`/tfw-handoff:revise` and the three lifecycle graphs participate in unique-corpus discovery but not
+the ten-command trajectory sum, matching the historical audit's distinction.
+
+Charged inputs are complete files or uniquely resolved headings/ranges. Dynamic task-local inputs
+are visible in the graph but charged as zero because their content is selected at runtime. The
+unique active corpus counts charged `.tfw` sources/ranges once, removes a selected range contained
+inside another selected range, and charges a whole file when `*` is selected. All reads use exact
+Git refs; no working-tree content is counted.
+
+Reproduction procedure (the code is evidence-only, not installed):
+  1. `git show 25d0e89afe48144c79c11324ff09d300b76dd6e9:docs/scripts/test_runtime_context.py`.
+  2. Execute that source in an in-memory Python module with `PROJECT_ROOT` resolving to this repo.
+  3. Set `commands = PRIMARY_VARIANTS + (SECONDARY_COMMANDS without /tfw-resume)`.
+  4. Set `RUNTIME_VARIANTS = commands + (/tfw-handoff:revise) + LIFECYCLE_VARIANTS`.
+  5. For each ref, construct `SourceTree.from_git(PROJECT_ROOT, ref)`, call
+     `discover_read_graph` + `measure_graph` for every command, sum the command values, then call
+     `active_runtime_corpus_words`.
+
+EXACT OUTPUT
+command                         baseline     candidate     delta
+/tfw-plan                         26,246        26,258        +12
+/tfw-research:focused              6,613         6,382       -231
+/tfw-research:deep                 6,678         6,447       -231
+/tfw-handoff                       8,150         7,984       -166
+/tfw-review                       27,858        27,739       -119
+/tfw-docs                         18,908        18,858        -50
+/tfw-knowledge                     3,082         3,042        -40
+/tfw-release                       1,918         1,902        -16
+/tfw-update                        6,625         6,636        +11
+/tfw-config                        3,638         3,681        +43
+/tfw-init                          4,505         4,476        -29
+TRAJECTORY                       114,221       113,405       -816 (-0.7144%)
+ACTIVE_TFW_CORPUS                 37,818        37,061       -757 (-2.0017%)
+
+The small Plan, Update and Config increases are the explicit filename, conditional adapter-repair
+and activation-checkpoint repairs. Acceptance is semantic, not percentage-based.
+
+COMPARISON BRIDGE AND LIMITS
+The historical series has eleven commands, including the now-retired Resume path, and compares an
+older Phase C baseline with its accepted Candidate. The successor has ten manifest commands,
+includes later task-state/closure/configuration behavior, and compares the approved Phase B
+Baseline with the Phase B Candidate. Therefore 112,206 and 113,405 are not points in one series.
+
+The pre-Phase-A bridge, produced by removing Resume on both sides while retaining the old audit's
+discovery/counting mechanics, was 108,942→113,465 for trajectory and 31,529→37,045 for unique
+corpus. It proves continuity of mechanics, not equality of denominator. The final Phase B baseline
+is 114,221/37,818 because the approved Baseline includes Phase A.
+
+MAINTENANCE DECISION
+No runtime, service, registry or permanent test was added. There is no current production reader
+for a maintained metric tool, and restoring the retired oracle would impose a large maintenance and
+reader tax. The immutable-source procedure and its exact inputs/outputs remain bounded task evidence.

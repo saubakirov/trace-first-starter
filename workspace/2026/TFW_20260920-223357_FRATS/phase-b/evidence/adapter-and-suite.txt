@@ -1,0 +1,120 @@
+FRATS Phase B — adapter, suite and exact accounting
+Date: 2026-09-21
+TS approval: 8c02d42375c3838ff62586bf5221b63f46d78446
+Baseline: 1a9209530d7a939db1270e2f91dcef40a9f449e6
+Candidate: fd0655ce17f2c650d238622c1d6a57ec5dd9a204
+
+MANIFEST-DERIVED COMMAND COPY PARITY
+Each row is command: canonical Git blob = Claude copy = Antigravity copy.
+  plan       90992a7f65c684245662facd56e35f399b803829 = same = same
+  research   9492a59cb09078c2f97b54ce5bd5974b2d2d3e = same = same
+  handoff    d33b2613917255c4920b27f8a93a12b444ced27d = same = same
+  review     2d7e06b6519430684790a40e736dd19e6955cb22 = same = same
+  docs       41f756499e071661f74ddf5b47a83afd78c25d60 = same = same
+  knowledge  9fcc8ffab57d57da5e9349ac0f34d9dee660dde1 = same = same
+  release    11475f2742383129c52ab842e4a2ac67b34bbdbb = same = same
+  update     a3ee481e7e71ff04ef4479c22752a0003d607345 = same = same
+  config     a9b49aeee30b9b549ba39ee6319c9a4259eef358 = same = same
+  init       22a1daadc8eae867807e9ceb057c13d5a659badf = same = same
+Result: 20/20 generated command copies are byte-identical to their ten canonical workflows.
+
+PERSISTENT SURFACES
+  Codex managed block source/target SHA-256:
+    ee79b21c239ffac41a5503c4dff69a6845592c131afcdbcb621cad522f82dfad / same — PASS
+  Claude managed block source/target SHA-256:
+    eaabcf276914b9f0cce71ec33764c567f14bb3db1701546092d1ab2dd51127e6 / same — PASS
+  Antigravity source/target Git blob:
+    044608b954e1ca09da63b2bce80ccf4c10d29abe / same — PASS
+  Cursor source Git blob:
+    bd9e1e7f61c0de4be6c196ed4cd5d38b21cf907f; no installed target in this repository — bounded.
+Codex/Claude target files preserve their foreign project-owned material outside managed markers.
+All seven persistent source/target selector paths are zero-diff; the Cursor source is also zero-diff.
+
+UPDATE / INIT / CONFIG CONSISTENCY
+All three consume the single manifest topology only at the adapter checkpoint. Update and Init read
+the canonical activation/routing contract conditionally when repairing or synchronizing adapters;
+Config has an explicit activation checkpoint and updates every registered inline location before
+return. No workflow authorizes deferred same-phase copy cleanup. Phase A provider evidence remains
+bounded at Codex P2 and Claude P0; no text upgrades P3/P4.
+
+CONFIGURED CHECKS
+  python -m pytest tools/tests/ docs/scripts/ -q
+    14 passed in 3.97s; exit 0
+  python -m pytest tools/tests/ docs/scripts/ -q --collect-only
+    14 tests collected; exit 0
+  python docs/scripts/command_entry_eval.py dry-run --repetitions 1
+    arm_validation.errors=[]; valid=true; valid_denominator=18; exit 0
+  git diff --check 1a9209530d7a939db1270e2f91dcef40a9f449e6 fd0655ce17f2c650d238622c1d6a57ec5dd9a204
+    no output; exit 0
+No permanent test or ASSURANCE file was added or modified.
+
+BASELINE→CANDIDATE VALUE ACCOUNTING
+Approved literal selector: 47 existing VALUE paths. Result: 39 modified, 8 zero-diff;
+365 additions + 507 deletions = 872 touched text LOC; net -142 lines; all text; binary/non-text N/A.
+No VALUE path outside the selector changed. Candidate contains implementation commits
+aeb7c45af778f0541890c15a44d10e833ee3f5f9 and fd0655ce17f2c650d238622c1d6a57ec5dd9a204;
+the latter supersedes the former as Candidate because it contains the final VALUE fix.
+
+path                                                               action      +     -
+.tfw/conventions.md                                                MODIFY      50    21
+.tfw/glossary.md                                                   MODIFY       1     1
+.tfw/README.md                                                     ZERO-DIFF    0     0
+.tfw/templates/HL.md                                               MODIFY       5     6
+.tfw/templates/TS.md                                               MODIFY       2     0
+.tfw/templates/RES.md                                              MODIFY       5     6
+.tfw/templates/ONB.md                                              MODIFY       5     6
+.tfw/templates/RF.md                                               MODIFY       5     6
+.tfw/templates/REVIEW.md                                           MODIFY       5     6
+.tfw/templates/evidence/EV.md                                      MODIFY       2     2
+.tfw/workflows/plan.md                                             MODIFY      18    22
+.tfw/workflows/research/base.md                                    MODIFY       7    25
+.tfw/workflows/handoff.md                                          MODIFY      16    32
+.tfw/workflows/review.md                                           MODIFY      12    27
+.tfw/workflows/docs.md                                             MODIFY       4     8
+.tfw/workflows/knowledge.md                                        MODIFY       4     7
+.tfw/workflows/release.md                                          MODIFY      10    12
+.tfw/workflows/update.md                                           MODIFY      13    11
+.tfw/workflows/config.md                                           MODIFY       6     0
+.tfw/workflows/init.md                                             MODIFY       5     7
+.tfw/adapters/codex/AGENTS.md.template                             ZERO-DIFF    0     0
+AGENTS.md                                                          ZERO-DIFF    0     0
+.tfw/adapters/claude-code/CLAUDE.md.template                       ZERO-DIFF    0     0
+CLAUDE.md                                                          ZERO-DIFF    0     0
+.tfw/adapters/antigravity/tfw-rules.md.template                    ZERO-DIFF    0     0
+.agents/rules/tfw.md                                               ZERO-DIFF    0     0
+.tfw/adapters/cursor/tfw.mdc.template                              ZERO-DIFF    0     0
+.claude/commands/tfw-plan.md                                       MODIFY      18    22
+.agents/workflows/tfw-plan.md                                      MODIFY      18    22
+.claude/commands/tfw-research.md                                   MODIFY       7    25
+.agents/workflows/tfw-research.md                                  MODIFY       7    25
+.claude/commands/tfw-handoff.md                                    MODIFY      16    32
+.agents/workflows/tfw-handoff.md                                   MODIFY      16    32
+.claude/commands/tfw-review.md                                     MODIFY      12    27
+.agents/workflows/tfw-review.md                                    MODIFY      12    27
+.claude/commands/tfw-docs.md                                       MODIFY       4     8
+.agents/workflows/tfw-docs.md                                      MODIFY       4     8
+.claude/commands/tfw-knowledge.md                                  MODIFY       4     7
+.agents/workflows/tfw-knowledge.md                                 MODIFY       4     7
+.claude/commands/tfw-release.md                                    MODIFY      10    12
+.agents/workflows/tfw-release.md                                   MODIFY      10    12
+.claude/commands/tfw-update.md                                     MODIFY      13    11
+.agents/workflows/tfw-update.md                                    MODIFY      13    11
+.claude/commands/tfw-config.md                                     MODIFY       6     0
+.agents/workflows/tfw-config.md                                    MODIFY       6     0
+.claude/commands/tfw-init.md                                       MODIFY       5     7
+.agents/workflows/tfw-init.md                                      MODIFY       5     7
+
+The plan remains below the configured 50-file / 5,000-LOC decomposition prompts and far below the
+94-file / 9,600-LOC owner ceiling. No prospective scope ruling was needed. The immutable denominator
+remains 47/4,800; actual size does not ratchet it.
+
+REPRODUCTION
+Use the exact approved `$valuePaths` array from the TS with:
+  git diff --name-status --find-renames=50% -z <Baseline> <Candidate> -- $valuePaths
+  git diff --numstat --find-renames=50% -z <Baseline> <Candidate> -- $valuePaths
+Parse NUL-delimited records; numeric numstat fields are text LOC and `-` is binary/N/A.
+
+WORKTREE BOUNDARY
+The unrelated untracked paths `PROPOSAL__serialized_landing_and_test_boundary.md`,
+`workspace/2026/TFW_20260909-231654_OTR/`, and `workspace/2026/TFW_20260921-180000_RVAG/` were not
+staged, committed, measured or modified by Phase B.
