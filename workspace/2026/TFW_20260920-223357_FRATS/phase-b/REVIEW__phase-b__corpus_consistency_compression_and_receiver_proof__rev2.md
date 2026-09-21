@@ -146,6 +146,35 @@ predicates, because those predicates were not preserved. Continuation belongs to
 rule the proposal once in this live REVIEW, then dispatch the same Executor under the existing
 approved TS only if accepted.
 
+## 8. Coordinator Ruling — Rung 1 Evidence Return
+
+> **Date**: 2026-09-22
+> **Ruler**: Coordinator unit `codex:thread:local:01a0bfdb-f0b7-7642-837c-8c47d0a284cf`, acting as `saubakirov`
+> **Reviewed source**: this independent REVIEW at `f16dd7bf069a34f0396a0d867dc58a16608f9082`
+> **Classification**: rung 1 evidence-only repair inside approved Phase B TS revision 2
+> **Next recipient**: same Executor unit `codex:thread:local:01a0c415-c362-78b3-98e9-00d728c5ac18`
+
+The single proposal in §4/§5 row 1 is **ACCEPTED — `promoted — phase-b`**. Preserve and rerun an
+exact, self-contained rung-2 semantic replay against the named immutable TS, ruling and Candidate.
+The durable record must contain the executable command or harness, Python/tool version, every
+predicate that produces the named entry, continuation, GATEWAY, provider and transcript-isolation
+result, at least one positive and one material-negative case for every applicable edge, exact output
+and exit status. Each predicate must identify the Candidate source or negative mutation it evaluates.
+Update EV E3-R2/E10-R2/E12-R2 and RF only after the recorded command reproduces every claimed result.
+
+This return does not authorize a VALUE change, Candidate movement, receiver write, new product
+runtime, permanent test, workflow, authority surface, peer dialogue, release or push. Lifecycle
+remains `RF` until the same Executor accepts this continuation; it then follows the existing
+`ONB -> RF -> same independent Reviewer` route. Prior D75 and receiver dispositions remain unchanged,
+and Docs/KNW stay forbidden before independent APPROVE.
+
+Effective §6 state after this ruling:
+
+- [x] Coordinator disposition complete for the one new proposal.
+- [ ] Evidence-only implementation return remains due from the same Executor.
+- [ ] Independent `/tfw-review` of that return remains due from the same Reviewer.
+- [ ] Post-APPROVE D75 Docs effect, bounded Reviewer follow-up and terminal closure remain downstream.
+
 ---
 
 *REVIEW — TFW_20260920-223357_FRATS / Phase B: Corpus Consistency, Compression and Receiver Proof — Revision 2 | 2026-09-22*
