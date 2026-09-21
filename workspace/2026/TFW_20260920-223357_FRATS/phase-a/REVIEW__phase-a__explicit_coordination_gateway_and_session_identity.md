@@ -87,14 +87,21 @@ can establish their actual effects.
 
 - [x] independent verdict, applicability limits and authorized KNW transition/return recorded
 - [x] Coordinator's §5 dispositions complete; no pending row — no debt row exists
-- [ ] tfw-docs: Pending Coordinator assessment during `Closing and record recovery`; Reviewer does not pre-approve capture
-- [ ] tfw-knowledge: Pending Coordinator assessment during `Closing and record recovery`; Reviewer does not perform qualification
+- [x] tfw-docs: N/A — the accepted VALUE is itself the canonical conventions, glossary, schemas,
+  workflows and maintained adapter documentation; no separate technical/reference publication is owed
+- [x] tfw-knowledge: N/A — §7 contains no Fact Candidate and the 100% review found no uncaptured
+  human-sourced knowledge requiring qualification
 - [x] final reviewed output identity and evidence recorded — Candidate `1a920953…`, final reviewed TRACE `51ee2c2…`; any materially changed closing output requires bounded independent follow-up here
-- [ ] actual required final effects, including selected landing, complete — pending Coordinator inspection
-- [ ] complete status/outcome/updated and actual event validated before terminal write — `KNW` is nonterminal; Coordinator owns the later close
+- [x] actual required final effects complete — Reviewer commit `4e872d4…` fast-forward landed on
+  `master`, preserving Candidate and TRACE ancestry; version, release, tag, push, publication and
+  deployment are N/A because the approved TS explicitly excludes them
+- [x] terminal carrier complete — phase status records the accepted outcome and the immutable
+  `20260921-174348__transition__9d21.md` event records the actual `KNW → DONE` transition
 
-Reviewed, landed and published are distinct. This REVIEW establishes only the independent reviewed
-state and its `KNW` route; it neither asserts a landing/publication nor authorizes an external effect.
+Reviewed, landed and published remain distinct: reviewed is the independent `4e872d4…` verdict over
+Candidate `1a920953…` and TRACE `51ee2c2…`; landed is the exact fast-forward of that Reviewer commit
+to `master`; published is N/A because Phase A authorizes no external effect. Closing changes only
+TRACE/control records and therefore changes no accepted claim requiring bounded Reviewer follow-up.
 
 ## 7. Fact Candidates
 
