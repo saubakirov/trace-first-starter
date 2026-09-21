@@ -148,3 +148,91 @@ in dependency order and return tested Candidate evidence plus RF to the same Coo
 ---
 
 *ONB — TFW_20260920-223357_FRATS / Phase B: Corpus Consistency, Compression and Receiver Proof | 2026-09-21*
+
+---
+
+## Return Round 1 — Accepted Rung-1 Bound
+
+> **Date**: 2026-09-21
+> **Status**: 🟠 ONB — Return accepted; no blocking questions
+> **Activation source**: delegated continuation from Coordinator unit
+> `codex:thread:local:01a0bfdb-f0b7-7642-837c-8c47d0a284cf`
+> **Delegated mandate**: `HL-TFW_20260920-223357_FRATS.md @ 35fba767abd768413237bf6416102e189f1d91e6`
+> **Ruled bound**: `REVIEW__phase-b__corpus_consistency_compression_and_receiver_proof.md @ 44f9a6135293a3a68af7a537a4875d722f25d5bf`
+> **Governing TS**: unchanged approved TS at `8c02d42375c3838ff62586bf5221b63f46d78446`
+
+### 1. Understanding
+
+The same Executor accepts the Coordinator's closed rung-1 R1–R3 return. R1 requires explicit ledger
+dispositions and reduction of Plan, Handoff, Review and Update to at most 1,200 `\S+` words each,
+without losing activation, authority, evidence, recovery, continuation or exception behavior;
+changed provider copies and affected checks must be regenerated and rerun. R2 corrects the validator
+path and makes its replays self-resolving. R3 replaces the stale provider ceiling with the accepted
+Phase A bounds. No TS sibling, HL change, receiver write, release or scope expansion is authorized.
+
+### 2. Entry Points
+
+- Canonical workflows: `.tfw/workflows/{plan,handoff,review,update}.md`.
+- Generated projections: corresponding `.claude/commands/tfw-*.md` and
+  `.agents/workflows/tfw-*.md` files.
+- Census/evidence: `evidence/instruction-disposition-ledger.md`,
+  `evidence/six-edge-replay.md`, `evidence/adapter-and-suite.txt`, required EV and RF.
+- Accepted provider sources: Phase A RF/EV/REVIEW and their recorded native evidence.
+- Exact authority: live REVIEW §8 R1–R3 at `44f9a613…`; current delegated status spine at
+  `3c68d2aacc7198d9cb0ecc23e032b7e90010bd1e`.
+
+### 3. Questions (blocking — cannot proceed without answers)
+
+No blocking questions. The lifecycle is `RF`, the return is rung 1 only, the live REVIEW contains
+the Coordinator's closed R1–R3 bound, and the delegated mandate names this same Executor lineage.
+
+### 4. Recommendations
+
+1. Compress by deleting duplicated explanation and moving no behavior: retain ordered gates,
+   refusal conditions, exact artifacts, state transitions and return carriers in each workflow.
+2. Measure each canonical file after every pass and regenerate only after the canonical source is
+   below the bound; this avoids projection drift during iteration.
+3. Treat accepted Phase A provider evidence as a bounded inheritance correction, not a new provider
+   trial or reliability claim.
+
+### 5. Risks Found
+
+1. The four word ceilings demand substantial subtraction, especially Update; accidental removal of
+   a recovery or exception branch is a hard stop under R1.
+2. Generated copies multiply every canonical change by two, but they remain projections and cannot
+   become independent implementations.
+3. A later VALUE edit moves Candidate and requires full immutable accounting and affected metrics;
+   TRACE-only evidence/RF appends do not.
+
+### 6. Inconsistencies to Repair
+
+1. Plan, Handoff, Review and Update are 1,433 / 2,101 / 2,136 / 2,630 `\S+` words respectively,
+   exceeding the active 1,200-word Design Rule without a ledger disposition.
+2. `evidence/six-edge-replay.md` names nonexistent `.tfw/scripts/tfw_state.py`; the actual imported
+   validator is `tools/tfw_state.py`.
+3. RF, EV and two evidence attachments repeat pre-Phase-A `Claude P0`; accepted Phase A evidence is
+   Codex P2 with partial P3, authenticated Claude P2, Antigravity P2 with partial P3, and no full
+   P3/P4 or reliability rate.
+
+### 7. Knowledge Citations
+
+| Source | Read? | Applied |
+|---|---|---|
+| HL §7 Design Rules / K11 | ✅ | Enforce the active ≤1,200-word workflow bound without changing frozen purpose or authority. |
+| Phase A RF/EV/REVIEW native evidence | ✅ | Use only the accepted provider bounds named by R3; run no substitute trial. |
+| FRATS iteration-2 D19 / K20 | ✅ | Preserve all six semantic edges for every R1 subtraction. |
+| Exact-path staging / K17 | ✅ | Commit only this unit's ONB, VALUE/projection changes, evidence/RF appends and state events. |
+
+### Material handover at this return
+
+Producer: same Executor unit `codex:thread:local:01a0c415-c362-78b3-98e9-00d728c5ac18`, acting as
+`saubakirov` via Codex. Recipient: recorded Coordinator unit
+`codex:thread:local:01a0bfdb-f0b7-7642-837c-8c47d0a284cf`. Source epoch: delegated mandate
+`35fba767…`, installed phase status `3c68d2a…`, ruled REVIEW `44f9a613…`, approved TS `8c02d423…`,
+and rejected Candidate `fd0655ce…`. Inspected scope: R1–R3, affected canonical/projection paths,
+ledger/evidence/RF/EV and accepted Phase A provider evidence. Material return: the bound is accepted
+with no blocker; the three inconsistencies above define the complete round. Uncertainty: whether
+each workflow can meet 1,200 words without semantic loss; R1 requires an exact contradiction return
+if it cannot. Continuation: commit this append, transition `RF → ONB`, implement R1–R3, nominate a
+replacement Candidate, append evidence/EV/RF, transition back to `RF`, and return only to the same
+Coordinator for the same independent Reviewer.
