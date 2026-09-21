@@ -247,6 +247,59 @@ publication is material: the reusable source is the approved TS plus this ruling
 bounded to implementation and independent verification; recipient is the same Executor, followed
 by the same Reviewer.
 
+## 10. Coordinator Ruling — Transcript Isolation
+
+> **Date**: 2026-09-22
+> **Source**: direct owner correction after the Coordinator read an active Executor task
+> **Classification**: prospective necessary constituent inside existing AC-2, AC-3 and AC-12; no
+> TS/HL, denominator, role, route or lifecycle change
+> **Recipient**: same Executor unit `codex:thread:local:01a0c415-c362-78b3-98e9-00d728c5ac18`
+
+Phase A made gates-only traffic vertical, required durable returns reconstructable without a
+transcript and rejected distrust-only repetition, but left passive observation unnamed. The owner
+now closes that loophole: reading another role's session makes the observer consume and reinterpret
+the same work, leaks Role Locks and recreates the token cost that FRATS exists to remove. The current
+Candidate lineage remains valid input; the next tested descendant adds only the bounded rule below.
+
+### 10.1 Canonical rule
+
+Add this exact compact rule to `.tfw/conventions.md` `Coordination`:
+
+```md
+**Transcript isolation.** Another active unit's transcript, reasoning, tool output, terminal and
+unreturned working tree are not coordination or evidence surfaces. No role reads, tails, resumes,
+searches or reconstructs them to monitor progress, validate trust, review work, recover context or
+pre-solve that unit's task. Use only addressed TFW status/gate messages, provider status/wait signals
+and durable returns. A suspected stall permits one addressed status request; no response or missing
+return is reported as unavailable or blocked, never repaired by transcript inspection. After a
+durable return, only the named artifacts and commits become inputs at their stated evidence level.
+```
+
+Provider adapters and installed managed copies carry only the shortest mechanism mapping needed to
+make that rule executable. Codex must say: use cursor-based, bounded `wait_threads`; never call
+`read_thread` on another TFW role task and never use `includeOutputs` to monitor it. Claude,
+Antigravity and Cursor must say: never open or resume another TFW role session to inspect its chat,
+reasoning, tool output, terminal or unreturned work. Silence routes through wait/status or one
+addressed status request; unavailable monitoring is disclosed rather than replaced by session
+inspection. Do not add a new artifact, workflow, mode, registry, permanent test or local-only second
+authority.
+
+### 10.2 Hard-constraint proof
+
+| Fact | Bound |
+|---|---|
+| M1 — consequence | Prevent duplicate reasoning, cross-role leakage, hidden transcript dependence and unbounded token consumption. |
+| M2 — object/risk | Isolation of active TFW role units and artifact-based reconstruction. |
+| M3 — measure | Exact-source search plus scenarios showing wait/status/one request and refusing transcript/session/tool-output inspection. |
+| M4 — pre-act enforcement | The adapter instruction applies before any attempt to observe another unit. |
+| M5 — softer-control gap | Disclosure after reading cannot undo consumed context, duplicated reasoning or Role-Lock contamination. |
+| M6 — authority | Owner `saubakirov`; this prospective Coordinator ruling records the direct prohibition. |
+
+Completion requires canonical ownership, all active provider projections, 20/20 workflow-copy
+parity, existing configured checks and a tested descendant Candidate. The same independent Reviewer
+must verify that Phase A's communication boundary now covers both active messaging and passive
+observation. No agent transcript is evidence for that verdict.
+
 ---
 
 *REVIEW — TFW_20260920-223357_FRATS / Phase B: Corpus Consistency, Compression and Receiver Proof | 2026-09-21*
