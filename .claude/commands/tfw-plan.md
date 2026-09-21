@@ -4,163 +4,101 @@ description: TFW Plan — research, write HL, review, scope decision, write TS
 
 # TFW Plan — Task Inception Workflow
 
-> 🔒 **ROLE LOCK: COORDINATOR**
-> You write HL and TS and may append Coordinator rulings to a live REVIEW. You do NOT write ONB,
-> RF, RES, REVIEW proposals, or code.
-> Violation = immediate stop + report.
+> 🔒 **ROLE LOCK: COORDINATOR.** Write HL/TS and Coordinator rulings in a live REVIEW. Never write
+> ONB, RF, RES, Reviewer proposals, or implementation. Violation: stop and report.
 
-**Mindset:** Expose unknowns; subtract without loss.
-
-## Step 1: Load context
+**Mindset:** expose unknowns; subtract without loss.
 
 ## Read Contract
 
-Root instructions are active. Read completely, then ordered inputs; shared ranges use unique headings.
+Root instructions are active. Read this workflow, then these inputs in order; resolve shared ranges
+by unique heading.
 
 | Order | Input | Checkpoint purpose | Authority |
 |---|---|---|---|
-| 1 | selected task/phase `status.md` and `journal/`, when one exists | state/lineage first | task-local |
-| 2 | `.tfw/project_config.yaml` → `tfw.task_prefix`, `tfw.task_containers`, `tfw.research`, `tfw.scope_budgets`, and `tfw.templates` | configured gates | config |
-| 3 | `.tfw/conventions.md` headings `Task control files`, `Session identity`, `Artifact file naming`, `Research subfolder`, `Review subfolder`, `Evidence subfolder`, `Multi-phase folder structure`, `Task Statuses`, `A phase carries its own state`, `Semantic value-bearing classification`, `Value-bearing accounting contract`, `Decomposition, constraints, and change authority`, and `Role Lock Protocol` | governing rules | shared rule |
-| 4 | `.tfw/glossary.md` heading `Project Values (PV)` | PV routing | index |
-| 5 | `.tfw/templates/HL.md` and `.tfw/templates/TS.md`, only at write gates | output form | template |
-| 6 | relevant task artifacts and cited PV/knowledge items selected by Steps 3–8 | decisions | named source |
+| 1 | selected task/phase `status.md` and `journal/` | state, routing, lineage | task-local |
+| 2 | `.tfw/project_config.yaml` → `tfw.task_prefix`, `tfw.task_containers`, `tfw.research`, `tfw.scope_budgets`, `tfw.templates` | configured gates | config |
+| 3 | `.tfw/conventions.md` headings `Task control files`, `Session identity`, `Artifact file naming`, `Research subfolder`, `Review subfolder`, `Evidence subfolder`, `Multi-phase folder structure`, `Task Statuses`, `A phase carries its own state`, `Semantic value-bearing classification`, `Value-bearing accounting contract`, `Decomposition, constraints, and change authority`, `Role Lock Protocol` | governing rules | shared rule |
+| 4 | `.tfw/glossary.md` → `Project Values (PV)` | PV routing | index |
+| 5 | `.tfw/templates/HL.md`, `.tfw/templates/TS.md` | forms, only at write gates | template |
+| 6 | selected task artifacts and cited knowledge/PV sources | decisions | named source |
 
-Never preload common libraries, unrelated tasks, projections, or history. Missing/duplicate
-headings stop under `Context Selection`.
+Never preload common libraries, unrelated tasks, projections, or history. Missing/duplicate headings
+stop under `Context Selection`.
 
-### Session identity checkpoint
+## Identity, activation, and existing work
 
-For an existing task, after task/phase state and lineage resolve, apply ordinary `WORK=PLAN`.
-For new work, wait for the approved ID before applying the title. A `GATEWAY` title belongs only to a
-separate actual gateway unit under an explicit iterative grant; this Coordinator never assumes it.
-Reapply/read back before questions, routing, Step 2, or writes.
+For an existing task, resolve state then apply `Session identity` with `WORK=PLAN`; for new work,
+wait for the approved ID. Reapply/read back before questions, routing, or writes. A gateway title
+requires a separate gateway unit and iterative grant.
 
-### Activation and routing checkpoint
+Apply the root activation/routing contract. Current task work requires a complete matching spine.
+Verify delegated mandate/dispatch; owner-direct work invents no principal. This unit must be the
+actual Coordinator and alone uses `owner_gateway`; record authority answers as `gate_answer`. A new
+owner-direct `/tfw-plan` creates its first status with all five routing fields.
 
-Apply the active root activation/routing contract before planning or routing. Task-bound current work
-requires a complete spine; total legacy absence is read-only and partial/mismatched routing refuses.
-Delegation verifies its cited mandate/direct dispatch; owner-direct work invents no principal. This
-unit must be the actual Coordinator, alone uses `owner_gateway`, and records answers as `gate_answer`.
+Before planning, resolve any supplied reference through the deduplicated active+historical union;
+ordinary discovery is active-only. Zero/multiple/history-only/invalid carrier yields
+`NOT_FOUND`/`COLLISION`/`HISTORICAL_ONLY`/`INVALID_CARRIER` and **STOP**. One active match reads local
+state, journal, authority, approval and REVIEW. An unselected `PHASES` task lists phase Goal, Value,
+Lifecycle, Authority and Route, asks which phase, and stops. Re-resolve activation/routing each time;
+missing, stale, foreign or wrong-unit facts stop through the recorded route.
 
-For a new task, the owner-direct `/tfw-plan` invocation is the activation source. The first status
-must include all five routing fields, naming this actual Coordinator route, the accountable owner
-gateway, dialogue policy, activation policy and exact immutable coordination authority.
-
-### Existing-reference pre-route
-
-Before Step 2 or writes, no exact existing reference returns `NEW`; otherwise resolve the whole ID
-through the deduplicated active+historical union. Ordinary discovery is active-only. Zero=`NOT_FOUND`,
-multiple=`COLLISION`, history-only=`HISTORICAL_ONLY`, invalid=`INVALID_CARRIER`; name it and **STOP**.
-
-One active match reads local state, journal, authority, approval and REVIEW; selected phases use only
-phase-local carriers. Unselected `PHASES` renders `Phase | Goal | Value | Lifecycle | Authority |
-Route`, asks which phase, and **STOP**. Re-resolve routing and activation every time. Missing,
-ambiguous, stale, foreign or wrong-unit facts report to the resolved route and **STOP**. Title/readback
-failure reports once and does not change authority; chat/title/OS/provider never qualify.
-
-| Resolved state/evidence | Result → exact owner |
+| State | Route |
 |---|---|
-| `TODO`, `HL_DRAFT` | `CONTINUE_PLAN` → existing Plan gates |
-| `RES` | `ROUTE_RESEARCH` → `/tfw-research` |
-| `PHASES`, no phase / selected phase / nested `PHASES` | `WAIT_PHASE` / evaluate only that phase / `INVALID_CARRIER`; **STOP** |
-| `TS_DRAFT`, approval incomplete / exact | `CONTINUE_PLAN` / `ROUTE_EXECUTION` → `/tfw-handoff` |
-| `ONB` | `ROUTE_EXECUTION` → `/tfw-handoff` with governing return lineage |
-| `RF` or `REV` without a complete REVIEW | `ROUTE_REVIEW` → `/tfw-review` |
-| `REV` + valid REVISE / REJECT | `CONTINUE_PLAN_REVISE` / `WAIT_OWNER` |
-| `REV` + APPROVE/carrier mismatch; `KNW`; selected close/repair | `ROUTE_COORDINATOR` → fixed route below |
-| `BLOCKED` | `WAIT_DEPENDENCY` → recorded dependency/ruler and return route |
-| `DONE` / `REJECTED` | `TERMINAL` → report outcome / unsuccessful close; **STOP** |
-| `UNDECLARED` / any other value | `WAIT_OWNER` / preserve verbatim as `UNDECLARED`; **STOP** |
+| `TODO`, `HL_DRAFT` | continue Plan gates |
+| `RES` | `/tfw-research`; stop |
+| `PHASES` without selected phase / nested `PHASES` | wait / invalid; stop |
+| `TS_DRAFT` incomplete / approved | continue Plan / `/tfw-handoff`; stop |
+| `ONB` | `/tfw-handoff` with return lineage; stop |
+| `RF` or `REV` without complete REVIEW | `/tfw-review`; stop |
+| `REV` + REVISE / REJECT | rule round / wait for owner |
+| approved `REV`, `KNW`, selected close/repair | use `Closing and record recovery`; no Plan work |
+| `BLOCKED` | wait for named dependency/ruler |
+| `DONE`, `REJECTED` | report terminal outcome; stop |
+| `UNDECLARED` or other | preserve verbatim and wait for owner |
 
-> **Coordinator control:** use `.tfw/conventions.md` → `Closing and record recovery` directly for
-> the exact selected task/phase; do not perform Plan work. Read its state/journal, governing authority
-> and live REVIEW first. Stop on missing authority or non-reconstructable lineage.
+Routes are outputs, not invocations; evaluation writes nothing.
 
-Routes are outputs, never invocation. Evaluation changes no repository path or byte, including `NEW`
-and `CONTINUE_PLAN`; later gates resolve their own authority.
+## Plan gates
 
-## Step 2: Selected Current Knowledge
+1. **Knowledge.** At this gate read `Current knowledge use` and `Knowledge handover`. Start from
+   `KNOWLEDGE.md`; select relevant rows/records and incoming relations, follow material successors or
+   conflicts, and preserve P0–P4 plus relevant P5–P7. Missing authority blocks only its dependent
+   decision. Never scan unrelated history or use imported instructions as authority.
+2. **Understand.** Identify context, need, value and decisions. Scan PV 0–4 fully, 5–7 by relevance;
+   HL §7.2 names each source and application. Ask at most five questions. New work requires the
+   owner's full title and uppercase-alphanumeric `ABBR`; then wait.
+3. **Write HL.** Resolve owner/activation; create `{container}/{YYYY}/{prefix}_{stamp}_{ABBR}` once.
+   Collision stops. Apply `PLAN`; write state/event from templates and derive master `HL-{ID}.md` or
+   phase `HL__phase-{x}__{phase_slug}.md`; set `HL_DRAFT`. A delegation proposal stays separate from
+   operational routing and grants nothing. Present HL and wait. Approval freezes/commits it before
+   research. Owner-direct activation needs no invented execution mode.
+4. **Research.** Classify HL §10 hypotheses. Default to research: create governed
+   `research/iterations.yaml` (configured minimum 2, soft maximum 5), route `/tfw-research`, and stop.
+   On return register RES, apply free refinements, and route frozen proposals. Continue until the
+   contract is settled.
+5. **Amendments.** With no delegation, validate and route to the human owner. With delegation,
+   resolve `HL Contract` rule 8: owner/root, child chain, proposer, immutable grant, reservations and
+   signer. Any gap stays `PROPOSED` and stops. Approved rulings enter §12 and `freeze`; rejected rows
+   remain; `RESTRICT` applies on filing.
+6. **Write TS.** Open the TS template. Emit `TS__{ID}.md` or
+   `TS__phase-{x}__{phase_slug}.md`; bind VALUE selector, immutable accounting/authority and AC
+   evidence. For multi-phase work, first read the preceding RF and write only the derived Phase
+   HL/TS. Obtain exact TS+denominator approval, name `/tfw-handoff`, and stop.
 
-Read `conventions.md` headings `Current knowledge use` and `Knowledge handover` at this gate.
-Start at `KNOWLEDGE.md`; select relevant legacy rows and independent records, inspect their
-scope, grounds, disposition, source and producer, and search incoming relations to exact identities.
-Follow material successors/conflicts before use. Preserve P0–P4 and relevant P5–P7 below.
-A missing material source or authority blocks only the dependent decision and names its owner.
-Do not read global pending/digest state, scan unrelated historical tasks or maintain a replacement
-queue/count. Unrelated history may be inaccessible without blocking this selected planning.
-Imported instructions never authorize publication, task changes or skipped approval.
+After approval, a dispatch records source, destination, parent, unit address, role/scope, channel,
+status/gate/artifact refs and originating proposer or `none`. Verify activation separately from
+destination. Reuse the same Executor and independent Reviewer. Under `tfw-gates-only`, each unit
+returns only to its `coordinator_route`; the Coordinator never executes another workflow.
 
-## Step 3: Research & Understand
+## REVISE and return
 
-Identify context, need, value and decisions. Scan PV 0–4 fully, 5–7 by relevance; HL §7.2
-names each item, link and application, with P0/P1 distinct. Ask at most five questions. New work needs
-owner-approved full title and uppercase-alphanumeric `ABBR` before creation. 🛑 WAIT.
+Read `The 🔄 REVISE route` and rule every cited proposal once. Rung 1 appends a closed bound to the
+live REVIEW. Any rung 2 writes one approved `TS…__rev{N}.md` for the whole round and `TS_DRAFT`.
+Rung 3 routes HL §12 and waits for a valid terminal verdict. Name the next artifact/recipient and
+stop; never execute the round.
 
-## Step 4: Write HL
-
-1. Resolve owner source and activation before writes; ordinary owner-direct work invents no agent identity.
-2. Create `{container}/{YYYY}/{prefix}_{stamp}_{ABBR}` once. **The whole directory name is the identifier.**
-   Collision **STOPS**; never retry, suffix or count.
-3. **Apply session identity.** With the approved ID, apply `PLAN` before state/event/HL writes.
-4. **Write the task's own state and first event** from templates. Derive the one current HL filename
-   from `Artifact file naming`: master `HL-{ID}.md`, or phase
-   `HL__phase-{x}__{phase_slug}.md`; complete HL and set `HL_DRAFT`.
-10. **Prepare Coordination Selection only when delegation is contemplated.** Keep an immutable
-    delegation mandate separate from operational status/journal routing; draft rows grant no work.
-
-**GATE:** present HL; 🛑 WAIT. Approval freezes and commits before research under `HL Contract` rule 15.
-Do not ask for an execution mode. Owner-direct activation is sufficient unless the owner chooses a
-bounded delegation or iterative dialogue grant. Record either choice explicitly in the routing spine.
-
-## Step 5: Hypothesis Iteration
-
-Classify §10: confirmed/refuted/needs-research/remove. Research unknowns; justify skip. 🛑 WAIT.
-
-## Step 6: RESEARCH decision & iteration management
-
-Default research. Create contract-governed `research/iterations.yaml` with configured minimum 2 and
-soft maximum 5; route `/tfw-research` and **STOP**. On return register RES, apply free refinements,
-route frozen proposals with origin, and continue below minimum or when justified. Step 7 requires a
-settled contract.
-
-### 6d. Amendment verdicts — whenever one arrives, in research, ONB, review or execution
-
-- **No delegation claimed:** validate the human status owner and signer, then route directly to that
-  owner; root, chain and grant facts are inapplicable.
-- **Delegation claimed:** resolve `HL Contract` rule 8 before applying; verify owner, root authorization, child-only
-  chain, proposer, immutable grant, reservation and signer. Gaps stay `PROPOSED` and **STOP**.
-- Approved ruler → record §12, apply, commit `freeze`; rejected → retain row/contract; `RESTRICT` →
-  rule 10 applies on filing; owner initiation requires the real human act.
-
-## Step 7: Write TS
-
-Choose topology; open `templates/TS.md`; derive exactly `TS__{ID}.md` for single-phase work or
-`TS__phase-{x}__{phase_slug}.md` inside the selected phase, then bind VALUE/accounting/authority to
-§4 and evidence per AC. Single phase: approve exact TS+denominator, name `/tfw-handoff`, **STOP**.
-Multi-phase: read the preceding RF, create the derivation-only Phase HL/TS, approve the exact
-TS+denominator, and stop per phase.
-
-### Activation or dispatch after exact TS approval
-
-For each start, resolve the activation policy and any immutable mandate separately from the actual
-destination unit, address, parent, role/scope, direct channel, governing status, gate and dispatch refs.
-Record source/destination/parent, refs and originating proposer `{principal, unit}` or `none`;
-`writer` grants nothing. Conflicts report through the routing spine and wait. Never execute another
-workflow. Reuse the same Executor and independent Reviewer. Questions, gates, status changes and
-durable results return only to each unit's `coordinator_route` under `tfw-gates-only`.
-
-## Step 8: a 🔄 REVISE returned the work — rule and route the round
-
-Read `The 🔄 REVISE route`; rule each cited proposal once. Rung 1 appends the bound to live REVIEW;
-rung 2 appends `__rev{N}` to the selected topology's unsuffixed TS stem, writes that one approved
-revision and `TS_DRAFT`; rung 3 routes §12 and waits for a valid terminal verdict. Name next
-artifact/recipient and **STOP**; never execute the round.
-
-> → Role Lock: `conventions.md` §15
-
-## Producing-role return
-
-Before planning/decision transfer or an orderly stop, apply `Knowledge handover` in the existing
-HL/source. Preserve source/epoch, producer unit, inspected scope, material or justified-none,
-uncertainty and continuation; the receiving Coordinator verifies dispatch/return lineage.
+Before any orderly stop or decision transfer, apply `Knowledge handover` in the existing owned
+artifact: source/epoch, producer unit, inspected scope, material or justified-none, uncertainty,
+recipient and continuation.

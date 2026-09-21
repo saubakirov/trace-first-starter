@@ -1,226 +1,116 @@
 ---
-description: TFW Review — reviewer checks RF against TS, writes REVIEW, proposes a disposition per finding
+description: TFW Review — independently verify RF against TS and issue REVIEW
 ---
 
-# TFW Review — Task Review by Reviewer
+# TFW Review — Independent Acceptance
 
-> **Role:** Reviewer (coordinator in review-locked mode)
-> **Input:** Completed RF file + TS (for DoD verification)
-> **Output:** REVIEW file with verdict + a disposition on every debt item it captured
-
-> **🔒 ROLE LOCK: REVIEWER**
-> Permitted artifacts: review stage files (map.md, verify.md, judge.md) + REVIEW file.
-> Forbidden actions: writing code, writing ONB, writing RF, modifying HL/TS.
-> Never modify implementation; fundamental defects go in REVIEW with verdict ❌ REJECT.
+> 🔒 **ROLE LOCK: REVIEWER.** Write `review/{map,verify,judge}.md` and REVIEW only. Never modify
+> implementation, HL, TS, ONB or RF. Fundamental defects receive a cited verdict, not a repair.
 
 ## Read Contract
 
-Root instructions are already active. Read this workflow completely, then make these stage-local
-reads in order. Every shared range is addressed by its unique Markdown heading.
+Root instructions are active. Read this workflow, then stage-local inputs in order.
 
 | Order | Stage | Input | Checkpoint purpose | Authority |
 |---|---|---|---|---|
-| 1 | Bootstrap | selected phase/task `status.md` and `journal/`; master/phase HL; governing TS at its approval commit; RF; EV index | current state, approval lineage, and one governing artifact set | task-local/governing artifacts |
-| 2 | Map | RF claims, TS acceptance criteria, changed-file list, and referenced predecessors | build the verification map | governing artifacts |
-| 3 | Verify | actual changed files and evidence; `.tfw/project_config.yaml` key `tfw.review.min_verify_ratio`; `.tfw/glossary.md` heading `Project Values (PV)`; independent P0–P4 and relevant P5–P7 sources | verify claims, evidence, and citations independently | files/config/routing index/named PV sources |
-| 4 | Judge | master HL at its contract baseline and Project North Star reread; verify output | independent Purpose Check and ten-row judgment | frozen contract/PV/stage evidence |
-| 5 | Decide | stage files; `.tfw/conventions.md` headings `Task control files`, `Session identity`, `Artifact file naming`, `Task Statuses`, `The 🔄 REVISE route`, `Safety and Execution Honesty`, `Trace Discipline`, and `Role Lock Protocol`; `.tfw/templates/REVIEW.md` | identity, verdict, disposition, routing, trace | stage/shared rule/template |
+| 1 | Bootstrap | selected `status.md`/`journal/`; master/phase HL; governing TS at approval; RF; EV | state, independence, artifact lineage | task/governing artifacts |
+| 2 | Map | RF claims, TS ACs, changed-file list, referenced predecessors | verification map | governing artifacts |
+| 3 | Verify | actual changed files/evidence; `.tfw/project_config.yaml` → `tfw.review.min_verify_ratio`; `.tfw/glossary.md` → `Project Values (PV)`; independent P0–P4 and relevant P5–P7 | independent proof/citations | files/config/PV sources |
+| 4 | Judge | master HL at contract baseline, Project North Star, Verify output | Purpose Check and judgment | frozen contract/stage evidence |
+| 5 | Decide | stage files; `.tfw/conventions.md` headings `Task control files`, `Session identity`, `Artifact file naming`, `Task Statuses`, `The 🔄 REVISE route`, `Safety and Execution Honesty`, `Trace Discipline`, `Role Lock Protocol`; `.tfw/templates/REVIEW.md` | verdict, disposition, routing | stage/shared rule/template |
 
-Load `.tfw/templates/review/{map,verify,judge}.md` only on entry to its stage. Do not reload
-`AGENTS.md` or full `conventions.md`, `glossary.md`, or `KNOWLEDGE.md`. The Verify PV scan and Judge
-Purpose reread are deliberate independent reads and must remain separate. Missing or duplicate
-addressed headings are a hard stop under `conventions.md` → `Context Selection`.
+Open each `.tfw/templates/review/{map,verify,judge}.md` only at its stage. Never reload root or full
+common libraries. Verify-PV and Judge-purpose reads are deliberately separate. Missing/duplicate
+headings stop under `Context Selection`.
 
-## Session identity checkpoint
+## Identity, activation, and trust
 
-After Bootstrap item 1 resolves task/phase, apply `Session identity` with `WORK=REVIEW` before Map,
-writing, waiting, or stopping. Request wording never outranks state; transport failure reports once
-and does not block review.
+After Bootstrap resolves the task, apply `Session identity` with `WORK=REVIEW`. Apply root
+activation/routing before Map; require a complete matching spine, cited mandate/dispatch, Reviewer
+gate and independence. Owner-direct work invents no principal. Shared attribution grants no ruling
+authority. Continue in the same Reviewer unit and return only to `coordinator_route`.
 
-> **Reviewer Identity:** Quality guardian, not rubber stamp. Your job is to protect the project
-> from unverified claims, from incomplete work, and from work that is verified, complete and
-> beside the point — goals, values and the north star are yours to defend, and they alone can
-> ground a block. Trust evidence, not declarations.
-
-## Activation and routing checkpoint
-
-Apply the active root activation/routing contract before Map. Current work requires a complete spine;
-total legacy absence is read-only and partial/mismatched routing refuses. Delegation verifies its
-cited mandate/direct dispatch; owner-direct work invents no principal. Verify the Reviewer gate and
-independence; REVIEW records provenance. Shared attribution grants no ruling authority. Continue in
-the same Reviewer unit.
-
-## Trust Protocol (Review)
-
-Treat RF as claims: trust stated outcome/deviations and domain facts; verify reasons, files, tests, evidence, DoD/DoF, and technical claims; empirically test numbers. Challenge missing/N/A evidence when TS requested it, omitted diagrams for architecture/flow/state change, and “no fact candidates” against the conversation. Trust Fact Candidates for later knowledge verification; triage Observations into REVIEW §5.
-
-## Knowledge at use and return
-
-At each use/return checkpoint, read and apply `Current knowledge use` and `Knowledge handover`.
-Review stages/REVIEW preserve exact source/version, producer unit, inspected scope, material or
-justified-none, uncertainty and continuation for the authorized Coordinator.
+Treat RF as claims. Verify reasons, files, tests, AC/DoD/DoF, numbers and evidence; trust only
+human-sourced Fact Candidates for later qualification. Challenge missing/N/A evidence, omitted useful
+architecture/flow diagrams and unsupported empty sections. At each use/return gate apply `Current
+knowledge use` and `Knowledge handover` with source/epoch, unit, scope, material, uncertainty and
+continuation.
 
 ## Step 1: Map
 
-> **Mindset:** Experienced newcomer. Understand before you judge.
-
-Create `review/` subfolder in task phase directory.
-Copy `templates/review/map.md` → fill all fields.
-Complete self-check gate. If any unchecked → go back and do it.
+Create the task/phase `review/` directory, open the map template, map every RF claim to TS criteria,
+files, evidence and predecessors, complete its self-check, commit exact paths, and stop at the stage
+checkpoint when required.
 
 ## Step 2: Verify
 
-> **Mindset:** Auditor. The RF is a declaration, not a fact.
+Open the verify template and independently audit the mapped claims.
 
-Copy `templates/review/verify.md` → fill verification log.
-Every action in it is unconditional — verification depth is set by the ratio below, never by the kind of work under review.
-Independently judge whether supplied evidence covers each claim's actual inputs/output, oracle or
-authority, and environment assumptions. Adequate evidence requires no fresh build/test merely for a
-command row. Changed, missing or uncertain dependencies require an affected check or an explicit
-unresolved claim; retain unrelated applicable evidence and the TS's required verification.
-Check evidence: verify.md includes an Evidence Verification section — audit evidence artifacts against RF §5 claims.
-Independently enforce `conventions.md` → `Exact-path staging`: verify complete pre-commit status and
-cached-name evidence, explicit full pathspecs, and `git commit --only -- <paths>`. `git add -A`,
-`git add .`, and `git commit -a` are forbidden for shared-tree work; unrelated dirt is preserved and
-an inseparable foreign hunk stops the commit. Apply the same rule to every Reviewer commit.
-For a crossing deliverable, verify its own producer-task/phase commit, acting role, path history,
-exact Candidate reachability, and that cleanup waits for reviewed landing (`Landing a deliverable across sessions`).
-For any selected stable uncommitted sibling trace, verify the exact path, producer task/phase,
-relationship, and semantic effect recorded by the executor. It is an evidence dependency, not a
-sibling-DONE gate and not additional VALUE scope.
-For the value-bearing accounting AC, independently resolve the approved TS and rerun its exact method with
-the RF's full immutable Baseline and Candidate SHAs and literal VALUE selector. Compare logical membership,
-rename identity, numeric additions, numeric deletions, touched text LOC, and per-file binary/non-text `N/A`.
-Verify that Candidate is the first tested Executor implementation commit, precedes EV/RF/final state, and
-contains no protected-selector change. Later RF, REVIEW, EV, status, journal, ASSURANCE, or non-value DERIVED
-writes do not move it; any later VALUE write requires a new Candidate and recomputation.
+- Evidence must cover the claim's actual input/output, oracle or authority and relevant environment.
+  Reuse applicable evidence; rerun changed, missing or uncertain dependencies and all TS-required
+  checks. Audit EV against RF §5.
+- Enforce `Exact-path staging`: inspect full status/cached names; require explicit full pathspecs and
+  `git commit --only`. Broad staging or inseparable foreign hunks fail. For crossings, verify producer
+  task/phase, role, history, Candidate reachability and deferred cleanup.
+- For accounting, resolve the approved TS and rerun its exact NUL-safe method with the RF's full
+  Baseline/Candidate and literal VALUE selector. Verify logical membership/renames, numeric additions,
+  deletions and touched LOC, binary N/A, phase attribution, protected boundaries and timing. Candidate
+  is the first tested implementation commit before EV/RF/state; later VALUE moves it, later TRACE,
+  ASSURANCE or non-value DERIVED does not.
+- Recheck trigger disposition and prospective authority against the immutable owner-approved
+  denominator. Never invent a selector, ratchet a plan or supply late authority. Missing/mutable/late
+  facts are BLOCKED; unresolved attribution is INVALID; DEFERRED cannot close a required decision.
+- Scan PV priorities 0–4 fully and 5–7 by relevance. For every HL §7.2/ONB §7 citation verify link,
+  existence, semantic match, currentness and relevance, including distinct priority-0 purpose and
+  priority-1 methodology clauses.
 
-Adjudicate the same terminal decomposition disposition and the prospective authority decision against the
-immutable owner-approved denominator. The Reviewer may not ratchet the plan, construct a different selector,
-supply missing Coordinator/Owner authority after work, or invent a competing total. Missing, mutable,
-mismatched, or late contract facts make the accounting AC `BLOCKED`; `N/A` applies only to an inapplicable
-metric, `INVALID` to unresolved exact phase attribution, and `DEFERRED` is not terminal for a trigger or hard
-decision. Any discrepancy names the accounting AC and escalates verification to 100%.
-Independently scan Project Values priorities 0–4 in full and 5–7 by relevance. For every HL §7.2 and ONB §7
-citation, verify link resolution, item existence, semantic match, and relevance to the asserted
-application. Check priority 0 against the purpose/principle/non-goal clause claimed and priority 1
-against the methodology-value clause claimed, even when both share a README. A resolving but wrong
-or irrelevant citation is a discrepancy and triggers the same 100% escalation as any other mismatch.
-
-> From `project_config.yaml` (`tfw.review`). Defaults below.
-
-| Parameter | Default | Type | Config key |
-|-----------|---------|------|------------|
-| Min verify ratio | 0.42 | Hard | `min_verify_ratio` |
-
-Round up: if RF lists 5 files, verify at least ⌈5 × 0.42⌉ = 3. On any discrepancy → escalate to 100%.
-
-Complete self-check gate. If any unchecked → go back and do it.
+Verify at least `ceil(files × tfw.review.min_verify_ratio)` (default 0.42). Any discrepancy escalates
+to 100%. Complete the stage self-check; unchecked items return to verification.
 
 ## Step 3: Judge
 
-> **Mindset:** Judge. Evidence from Verify → rule on quality.
-
-Copy `templates/review/judge.md` → fill checklists with evidence.
-Must reference verify.md findings (not re-invent).
-
-**Purpose Check (row 2a):** test master HL baseline plus North Star, never the TS/Phase HL; cite clause and harm. Three outcomes: `judge.md`.
-
-Complete self-check gate. If any unchecked → go back and do it.
+Open the judge template and cite Verify findings. Purpose row 2a tests the master HL contract
+baseline plus Project North Star—not TS or Phase HL—and names the served or harmed purpose. Use only
+the three template outcomes. Complete the self-check.
 
 ## Step 4: Decide (Synthesize → REVIEW)
 
-> **Mindset:** Decision-maker. Synthesize stages into a binding verdict with cited proof.
+Read all stage files, open the REVIEW template, and emit `REVIEW__{ID}.md` or
+`REVIEW__phase-{x}__{phase_slug}.md`. A formal new round uses `…__rev{N}.md`; bounded
+post-acceptance follow-up appends to live REVIEW. Synthesize Map/Verify/Judge and issue evidenced
+APPROVE, REVISE or REJECT.
 
-Read all 3 stage files (map.md, verify.md, judge.md).
-Derive exactly `REVIEW__{ID}.md` for a single-phase task or
-`REVIEW__phase-{x}__{phase_slug}.md` in a phase, then write it from the template: synthesize §1–§3;
-§4 gives the evidenced APPROVE/REVISE/REJECT verdict. A formal revision appends `__rev{N}` to that
-topology's unsuffixed REVIEW stem; bounded post-acceptance follow-up appends to the live REVIEW.
-
-**Routing.** `not fit for purpose` and a **contract defect** ground ❌ REJECT even when other checks
-pass; both route to the **owner**, never the executor (`judge.md` row 2a). Rung 3 follows `The 🔄
-REVISE route` and `HL Contract` rule 8; the Reviewer preserves the proposer, proposes, and stops
-without resolving authority.
-
-**The citation bar.** A 🔄 REVISE may propose only items naming the condition each breaches — a TS
-acceptance criterion, or a frozen HL claim; the rest is disposed of in §5. Cite nothing and the verdict is
-✅ APPROVE, the remainder disposed. Neither cite nor approve and the work returns to the task's `owner`
-(`conventions.md` §5).
-
-An accounting mismatch is never repaired inside REVIEW. Cite the accounting AC, report the exact reference,
-membership, arithmetic, timing, or authority disagreement, and route it through the existing verdict rules.
+`not fit for purpose`, a contract defect, or rung 3 routes to the owner under the canonical REVISE
+route and `HL Contract` rule 8. The Reviewer preserves proposer/grounds but never resolves authority.
+A REVISE proposal must cite a breached TS criterion or frozen HL claim; otherwise approve and dispose
+the remainder, or return an ungrounded decision to the owner. Accounting mismatch is cited and routed,
+never repaired in REVIEW.
 
 ## Step 5: Findings — locate, test, route, propose
 
-Debt is written **once**, in this REVIEW's §5 — no project registry (`tasks/DEBT-SNAPSHOT.md` holds the
-retired one). Project-wide search: `templates/REVIEW.md` §5.
-
-Per item in the executor's RF `## Observations`:
-
-| Act | The rule |
-|---|---|
-| **Filter** | real, or filler? Not what it deserves |
-| **Axis** | Would omission harm **purpose, inspectability, authority or continuation**? NS1 names harms, not decisions. |
-| **Test** | Name the consequence/absence; *low* or *can wait* is not one. |
-| **Route** | By changed authority: rung 1 none, rung 2 TS, rung 3 frozen claim. |
-| **Propose** | `paid` · `promoted` · `not material` (not owed or cited prohibition); `pending — coordinator` awaits ruling. |
-
-**A disposition names an artifact that already exists** — a phase directory, or a task directory and
-`status.md` created now. *"→ backlog"* names nothing. Grammar: `templates/REVIEW.md` §5.
-
-**The reviewer marks and proposes; the coordinator rules** — `conventions.md` §15.
+Record each real RF observation or Reviewer finding once in REVIEW §5. Filter filler; name harm to
+purpose, inspectability, authority or continuation; test the consequence; classify authority rung;
+propose `paid`, `promoted`, or `not material`. `pending — coordinator` awaits one ruling. A
+disposition names an existing artifact/task, never a generic backlog. Reviewer proposes;
+Coordinator rules.
 
 ## Step 6: Record verdict, then route proposals
 
-`conventions.md` → `The 🔄 REVISE route` owns every REVISE recipient, ruling site, governing
-artifact, lifecycle effect, and hard stop. The Reviewer proposes; the Coordinator later rules every
-proposal once and applies one table case.
+Use `The 🔄 REVISE route` for recipient, ruling site, governing artifact, lifecycle and hard stop.
 
-After verdict:
-1. **Set the task's own state only when the verdict authorizes it** — APPROVE enters `KNW`; REJECT
-   follows its selected owner route; REVISE alone does not move lifecycle. Every actual transition
-   uses `{task}/status.md` plus one `{task}/journal/{YYYYMMDD-HHMMSS}__{kind}__{token}.md` event with
-   the time read from the clock
-2. **Check §5** — every item carries one of the three dispositions. An undisposed item blocks `DONE`, not the verdict
-3. If ✅ APPROVE: `lifecycle: KNW`, not `DONE` yet
-4. If 🔄 REVISE: the items stay **proposals** and the work returns to the **Coordinator** for one
-   ruling act. No lifecycle move, bound, TS revision, or Executor dispatch is a Reviewer action
+1. APPROVE transitions the task/phase to `KNW`; REJECT follows its owner route; REVISE alone does
+   not move lifecycle. Every transition writes status plus one valid timestamped journal event.
+2. Every §5 item must have a disposition before DONE, though an undisposed item need not block the
+   verdict itself.
+3. REVISE returns to the Coordinator for one ruling; Reviewer creates no bound, TS revision or
+   Executor dispatch.
+4. APPROVE returns the exact accepted result, limits and pending dispositions to the Coordinator,
+   which alone performs `Closing and record recovery` and DONE.
+
+If accepted output later changes, this same independent Reviewer appends a bounded judgment of the
+affected result/evidence. Do not restart unchanged stages. A real new defect uses normal REVISE.
 
 ## Step 7: Return for Coordinator closure
 
-After ✅ APPROVE verdict, return the exact reviewed result, applicability limits and pending
-dispositions to the existing Coordinator. It applies `conventions.md` → `Closing and record recovery`;
-the Reviewer performs no capture and writes no DONE. Capture markers describe the Coordinator's
-actual Applied/N/A effects, not Reviewer pre-approval of later work. Here capture means project
-qualification/promotion; the Reviewer's own material handover remains required.
-
-For changed final accepted claims, this same independent Reviewer examines the affected result and
-evidence before the Coordinator closes. Append that bounded judgment to existing REVIEW/evidence
-sections; do not restart all stages or create a formal revision merely to record it. A real cited
-defect receives the ordinary REVISE route and proper ruler; no unchanged product work is restarted
-only by an administrative correction. The Coordinator cannot substitute its own material acceptance.
-
-**Hard stop:** after the verdict and its authorized trace/KNW routing are recorded, stop. Never
-repair implementation or enter another TFW role in this session.
-
-> 💡 If you discovered something about the project during review that isn't
-> in KNOWLEDGE.md, record it in REVIEW §7 Fact Candidates.
->
-> **Before writing Fact Candidates, review the conversation history.** The human's
-> messages are the primary source of strategic knowledge — domain insights, stakeholder
-> priorities, business context, and constraints that shape decisions.
-
-## Anti-patterns
-
-> Full generic list → conventions.md §14. Role-specific items below:
-
-- Reviewer writes REVIEW without reading RF — must read the actual results
-- Reviewer skips observations triage — every surviving observation is recorded in REVIEW §5 and disposed of there
-- Reviewer declares DONE or performs project qualification, or writes a disposition naming something not yet in existence
-- Reviewer rules a disposition instead of proposing it — acceptance authority is the coordinator's, `conventions.md` §15
-- A ruling names no consequence, or names only a priority — a preference, not a decision
-- Reviewer modifies RF or code — **🔒 Role Lock violation**
-- Reviewer approves without checking DoD — each TS acceptance criterion must be verified
-- Reviewer and executor are the same session — review must be a separate session/agent
-- **🔒 Reviewer MUST NOT write code, ONB, RF, HL, or TS** — Role Lock violation
+**STOP** after verdict and authorized trace/KNW routing. Never capture knowledge, close DONE, repair
+implementation, or enter another role.
