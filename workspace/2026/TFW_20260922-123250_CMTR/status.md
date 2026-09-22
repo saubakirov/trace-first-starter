@@ -1,18 +1,18 @@
 ---
 id: TFW_20260922-123250_CMTR
-title: "Coordinator-Assisted Model Selection, Thinking Budgeting, and Platform-Adaptive Launching"
-goal: "enable the coordinator to recommend or autonomously select platform-native models and thinking effort per launch to preserve quality without burning tokens or quotas"
-value: "optimized token and session economy across all platforms with zero quality degradation on architecture/review and frictionless UI or autonomous launch guidance"
+title: "Per-Launch Model and Reasoning Selection"
+goal: "select the minimum sufficient model and reasoning effort for every actual TFW role launch from the current platform's verified options"
+value: "preserve the required quality floor while avoiding unnecessary token and session spend and removing manual launch guesswork"
 lifecycle: PHASES
 owner: saubakirov
 authority: HL-TFW_20260922-123250_CMTR.md
 coordinator_route: "codex:thread:local:01a0c400-3e48-7422-bb86-3b34fe177aa5"
 owner_gateway: owner:saubakirov
 dialogue: tfw-gates-only
-activation: owner-only
-coordination_authority: "HL-TFW_20260922-123250_CMTR.md @ 9cb04a4cc3c1fc2d3f3fef9e395798d60667ef47"
+activation: "delegated:HL-TFW_20260922-123250_CMTR.md §12 A2 @ 2c72ec8c6b0b21269caf95b707d26c631be5df52"
+coordination_authority: "HL-TFW_20260922-123250_CMTR.md @ addb2e707dd9f271b7bf1287617a8b93b8d72cb0"
 created: 20260922-123250
-updated: 20260922-143811
+updated: 20260922-150937
 ---
 
 **Task state.** This file is the only authority for this task's live state. Any downstream projection is disposable and never outranks it.
