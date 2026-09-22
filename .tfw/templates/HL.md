@@ -90,9 +90,9 @@ Each Phase = separate TS→RF cycle.
 > Record a delegation row only when the owner deliberately grants one immutable bounded mandate.
 > A profile, binding, title, provisioned unit, prompt or roster grants nothing.
 
-| Activation source | Accountable owner | Delegated Coordinator unit | Mandate scope / role reach | Dialogue | Reservations / controls | Amendment authority | Immutable epoch | Execution profile |
-|---|---|---|---|---|---|---|---|---|
-| owner-direct / delegated | {human owner handle} | {native address or `N/A — owner-direct`} | {bounded task/phases and roles} | tfw-gates-only / iterative | {owner-reserved decisions and controls} | {exact bounded grant or `none`} | {full commit/object ref} | {Procedural/Standard/Critical} ({Model class}, thinking: {level}) |
+| Activation source | Accountable owner | Delegated Coordinator unit | Mandate scope / role reach | Dialogue | Reservations / controls | Amendment authority | Immutable epoch |
+|---|---|---|---|---|---|---|---|
+| owner-direct / delegated | {human owner handle} | {native address or `N/A — owner-direct`} | {bounded task/phases and roles} | tfw-gates-only / iterative | {owner-reserved decisions and controls} | {exact bounded grant or `none`} | {full commit/object ref} |
 
 > `iterative` requires an exact grant and a separate directly addressable GATEWAY unit. Working-unit
 > addresses and dispatches are operational trace in `status.md` and `journal/`, not frozen HL roster

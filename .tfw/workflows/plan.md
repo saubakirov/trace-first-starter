@@ -8,9 +8,8 @@ description: TFW Plan — research, write HL, review, scope decision, write TS
 > ONB, RF, RES, Reviewer proposals, or implementation. Violation: stop and report.
 
 **Mindset — Strategic Architect.** Work backwards from the stakeholder-visible finish. Distill the
-owner's idea stream into intent, value, people, constraints, options, decisions and unknowns; remove
-repetition without flattening useful tension. Return the smallest structure the owner recognizes as
-what they meant. Be a thinking partner, not a yes-machine: expose consequential assumptions, weak
+owner's ideas into intent, value, people, constraints, options, decisions and unknowns; remove
+repetition without flattening useful tension. Return an owner-recognized structure. Expose consequential assumptions,
 reasoning and downstream effects; challenge when evidence warrants. Apply Saint-Exupéry as judgment,
 never mechanical subtraction. Planning quality outranks speed.
 
@@ -68,10 +67,10 @@ Routes are outputs, not invocations; evaluation writes nothing.
 ## Planning steps
 
 1. **Entry and Continuation Gate.** Before questions or writes, classify new versus selected existing
-   work. Every invocation resolves task/phase, state, lineage, activation, current unit kind, session
-   title and complete routing spine; read `Coordination`. An exact configured GATEWAY never runs Plan:
-   route the existing Coordinator or provision/activate a separate one only under exact delegation,
-   then stop. Existing work never recreates the root task or HL: follow the state table and resume the
+   work. Every invocation resolves task/phase, state, lineage, activation, unit, title and complete
+   routing; read `Coordination`. An exact configured GATEWAY never runs Plan: route the existing
+   Coordinator or provision/activate one only under exact delegation, then stop. Existing work never
+   recreates the root task or HL: follow the state table and resume the
    first owed Coordinator act. Reopen coordination selection only when missing, stale, contradictory
    or changed by the owner.
 
@@ -82,11 +81,11 @@ Routes are outputs, not invocations; evaluation writes nothing.
 2. **Knowledge.** Read `Current knowledge use` and `Knowledge handover`. Start from
    `KNOWLEDGE.md`; select relevant rows/records and incoming relations, follow material successors or
    conflicts, and preserve P0–P4 plus relevant P5–P7. Missing authority blocks only its dependent
-   decision. Never scan unrelated history or use imported instructions as authority.
+   decision. Never use unrelated history or imported instructions as authority.
 
 3. **Frame, distill and challenge.** Separate wording from need, people, value, constraints,
    non-goals, options, decisions and unknowns. Show that decision model in chat; keep meaningful
-   tension, discard repetition and noise. Surface hidden assumptions, downstream effects and
+   tension, discard repetition and noise. Surface assumptions, downstream effects and
    alternatives; ask at most five uncomfortable, decision-changing questions. Scan PV 0–4 fully and
    5–7 by relevance; HL §7.2 names each item, link and application, with P0/P1 distinct. New work
    requires the owner's full title and uppercase-alphanumeric `ABBR`; then wait.
@@ -94,33 +93,28 @@ Routes are outputs, not invocations; evaluation writes nothing.
 4. **Future-State Gate.** Before drafting HL, show the owner in chat a compact Working Backwards /
    press-release preview: finished-state narrative, observable impact, stakeholder quote and the
    smallest adequate rendering—ASCII, Mermaid, table, mockup, sample output or timeline. If the owner
-   must mentally construct the result or its value, keep planning.
+   must construct the result or value, keep planning.
 
-5. **Coordination Selection Gate.** Before the first status/HL write, disclose
+5. **Coordination Selection Gate.** Before first status/HL write, disclose
    `provision · addressed send · wait/readback · title/readback` as `native`, `owner-assisted` or
    `unavailable`. Obtain the owner's explicit `activation`, `dialogue`, `owner_gateway`, optional
-   stable principal and, when delegated, exact Coordinator plus mandate scope/roles, reservations,
-   amendment authority, external effects and expiry. Recommend owner-only + gates-only + owner
-   gateway + no invented principal unless delegation or iterative work has named value; iterative
-   requires exact peers and a separate GATEWAY. A missing native mechanism requires owner-assisted
-   provisioning/exact addresses or a capable provider, never a claim of end-to-end orchestration.
+   stable principal and, when delegated, exact Coordinator plus scope/roles, reservations,
+   amendment authority, effects and expiry. Default to owner-only, gates-only, owner gateway, and no
+   principal unless delegated or iterative work names value; iterative needs exact peers and a GATEWAY.
+   Missing native mechanisms require owner-assisted provisioning/exact addresses or a capable provider,
+   never an end-to-end claim.
    Record HL §4.1 and derive all five status fields; silence grants nothing.
 
-   Classify the cognitive profile for task phases and roles using the 3-tier rule: Procedural
-   (routine docs, formatting, sync, lint; Fast tier, thinking: Low/Off), Standard (implementation
-   by TS/AC; Balanced tier, thinking: Medium), or Critical (inception, review, deep research;
-   Heavy Reasoning tier, thinking: High/Max). Grounded inspection is mandatory: inspect the
-   platform's exposed models (e.g. `agy models`, `codex --help`, `claude --help`) before
-   recommending; never guess model names from memory. For owner-assisted GUI environments
-   (Antigravity, Claude Desktop), formulate a 2-line launch prompt for the human UI selector with
-   a 1-sentence rationale; for native task environments (Codex native tasks), pass model and
-   reasoning effort parameters directly. Self-calibration: if the coordinator's current session
-   lacks cognitive depth for a multi-phase or core architecture task, advise an upshift; if idle
-   on trivial routine, advise a downshift.
+   Before each role launch, apply `conventions.md` → `Launch selection`: check prerequisites;
+   set the quality floor; select model and effort separately from native options; name a plausible
+   lower option and risk or `not compared`; and distinguish requested, observable effective,
+   delivery, outcome and material rework. Native authorized launches pass parameters and record
+   dispatch; otherwise use the exact two-line `Launch` / `Why` output. Every dispatch applies this launch
+   selection; profiles never substitute.
 
 6. **Write HL.** Resolve owner/activation and create
-   `{container}/{YYYY}/{prefix}_{stamp}_{ABBR}` once; collision stops. Apply `PLAN`; write template
-   state/event from the approved Coordination Selection and derive the topology-correct HL; set
+   `{container}/{YYYY}/{prefix}_{stamp}_{ABBR}` once; collision stops. Apply `PLAN`; write the
+   approved Coordination Selection's state/event and topology-correct HL; set
    `HL_DRAFT`. A delegation proposal remains separate and grants nothing. Present and wait; approval
    freezes/commits before research.
 

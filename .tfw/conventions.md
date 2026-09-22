@@ -1046,22 +1046,19 @@ Role Lock. Distrust alone creates no repeat-work duty: repetition cites either a
 workflow check or a concrete contradiction/evidence gap. Record a discrepancy once in the detecting
 role's artifact and return it through that unit's own Coordinator without peer debate.
 
-### Cognitive Budgeting and Platform-Adaptive Launching
+### Launch selection
 
-TFW optimizes cognitive expenditure per launch across three discrete tiers:
-1. **Procedural:** Routine documentation, sync, formatting, version updates, linting. Fast tier (Flash, Haiku, 4o-mini), thinking Low/Off. Prevents overthinking and reduces latency by up to 80%.
-2. **Standard:** Implementation by approved TS and AC, modular coding, focused iteration-1 research. Balanced tier (Sonnet, Pro, o3-mini), thinking Medium.
-3. **Critical / Adversarial:** Task inception, architectural design, independent review, adversarial research. Heavy Reasoning tier (Sonnet High Thinking, o3 High, Gemini Pro High). Downgrading power on this tier is strictly prohibited.
+Before creating a separate role unit, the Coordinator:
 
-**Grounded Inspection:**
-The coordinator never recommends models from pre-trained memory. It inspects exposed platform tools (e.g. `agy models`, `codex --help`, `claude --help`) before advising, or operates purely by abstract tiers (Fast / Balanced / Heavy) when the platform exposes no inspection mechanism.
+1. **Checks prerequisites:** required context, tools, native availability, authority, an addressable unit and an exact return route. If one is missing, do not launch; name it.
+2. **Sets the quality floor** from uncertainty, dependency breadth, assurance timing and strength, and consequence/reversibility.
+3. **Selects model and reasoning effort separately** from current native options. Choose the least-resource option justified to meet the floor. Name one plausible lower-resource option and either the material failure it risks or `not compared`; do not call the choice minimum without comparison.
+4. **Applies the choice at launch.** When native and authorized, pass the parameters and record dispatch. Otherwise output exactly:
+   `Launch: <command> · <model> · <effort>`
+   `Why: <reason>; lower: <option> — <risk | not compared>.`
+5. **Keeps evidence separate:** requested settings, effective settings when observable, delivery, outcome, and material rework. Correct the next launch by the failure cause, not by role name, provider analogy, or completion alone.
 
-**Dual Launch Protocol:**
-- *Owner-Assisted (GUI):* In Antigravity, Claude Desktop, and GUI sessions, the coordinator outputs a 2-line selector guidance for the human opening a new chat window. Cross-session messaging via queues delivers to storage; activation of sleeping windows remains an owner action.
-- *Autonomous (Native API):* Under an approved delegation mandate on platforms with native task creation (Codex), the coordinator passes `model` and `reasoning_effort` directly to the creation API and logs the dispatch.
-
-**Self-Calibration:**
-A coordinator evaluating complex multi-component architecture on a Fast tier session issues a single non-blocking recommendation to upshift the active window to Pro/High; conversely, on trivial local edits it suggests a downshift to conserve quota.
+Provider-specific rosters and controls belong to the owning adapter or current native inspection, never this core rule.
 
 ### Provider-native evidence
 
