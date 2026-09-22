@@ -1,14 +1,14 @@
 # RES — TFW_20260922-192606_PCUX: Provider-specific coordinator UX and autonomy guidance
 
-> **Date:** 2026-09-23  
-> **Author:** Codex Researcher  
-> **Status:** 🔬 RES — iteration 1 complete; Coordinator assessment pending  
-> **Parent HL:** [HL-TFW_20260922-192606_PCUX](../../HL-TFW_20260922-192606_PCUX.md)  
-> **Mode:** Pipeline, focused  
-> **Producer unit:** `codex:thread:local:01a0cb19-cbf2-7603-8775-c776f52660d4`  
-> **Parent Coordinator:** `codex:thread:local:01a0c980-4552-7ed3-b2aa-3c5cc46bc7bc`  
-> **Activation / dispatch source:** delegated command `/tfw-research TFW_20260922-192606_PCUX` from that Coordinator; approved HL §4.1 mandate at `5259851e6f07206a07d022db11ef1cbc91dca775`  
-> **Coordination authority:** `HL-TFW_20260922-192606_PCUX.md @ 5259851e6f07206a07d022db11ef1cbc91dca775`  
+> **Date:** 2026-09-23
+> **Author:** Codex Researcher
+> **Status:** 🔬 RES — iteration 1 complete; Coordinator assessment pending
+> **Parent HL:** [HL-TFW_20260922-192606_PCUX](../../HL-TFW_20260922-192606_PCUX.md)
+> **Mode:** Pipeline, focused
+> **Producer unit:** `codex:thread:local:01a0cb19-cbf2-7603-8775-c776f52660d4`
+> **Parent Coordinator:** `codex:thread:local:01a0c980-4552-7ed3-b2aa-3c5cc46bc7bc`
+> **Activation / dispatch source:** delegated command `/tfw-research TFW_20260922-192606_PCUX` from that Coordinator; approved HL §4.1 mandate at `5259851e6f07206a07d022db11ef1cbc91dca775`
+> **Coordination authority:** `HL-TFW_20260922-192606_PCUX.md @ 5259851e6f07206a07d022db11ef1cbc91dca775`
 > **Originating proposer:** `none` for this dispatch; owner `saubakirov` approved the governing mandate
 
 ---
