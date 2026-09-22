@@ -106,6 +106,18 @@ Routes are outputs, not invocations; evaluation writes nothing.
    provisioning/exact addresses or a capable provider, never a claim of end-to-end orchestration.
    Record HL §4.1 and derive all five status fields; silence grants nothing.
 
+   Classify the cognitive profile for task phases and roles using the 3-tier rule: Procedural
+   (routine docs, formatting, sync, lint; Fast tier, thinking: Low/Off), Standard (implementation
+   by TS/AC; Balanced tier, thinking: Medium), or Critical (inception, review, deep research;
+   Heavy Reasoning tier, thinking: High/Max). Grounded inspection is mandatory: inspect the
+   platform's exposed models (e.g. `agy models`, `codex --help`, `claude --help`) before
+   recommending; never guess model names from memory. For owner-assisted GUI environments
+   (Antigravity, Claude Desktop), formulate a 2-line launch prompt for the human UI selector with
+   a 1-sentence rationale; for native task environments (Codex native tasks), pass model and
+   reasoning effort parameters directly. Self-calibration: if the coordinator's current session
+   lacks cognitive depth for a multi-phase or core architecture task, advise an upshift; if idle
+   on trivial routine, advise a downshift.
+
 6. **Write HL.** Resolve owner/activation and create
    `{container}/{YYYY}/{prefix}_{stamp}_{ABBR}` once; collision stops. Apply `PLAN`; write template
    state/event from the approved Coordination Selection and derive the topology-correct HL; set

@@ -6,6 +6,7 @@
 > **Author**: {author}
 > **Status**: 🟡 TS_DRAFT — Awaiting approval
 > **Parent HL**: [HL-{ID}](path-to-HL)
+> **Recommended execution profile**: {Procedural | Standard | Critical} ({Model tier}, thinking: {level}) — {1-sentence rationale}
 
 ---
 
