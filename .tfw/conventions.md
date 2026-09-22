@@ -10,37 +10,15 @@ TFW turns work (analytics, documents, code, research) into a reproducible proces
 
 ## 2) Required Artifacts (project root)
 
-- `README.md` — human explanation: why/what/how, with direct routes to the method, verified knowledge, releases, and selected traces. It carries no live task table and is not edited by a lifecycle transition.
-- `AGENTS.md` — AI agent behavior rules for the project.
-- `KNOWLEDGE.md` _(optional)_ — project knowledge index: architecture, decisions, legacy. Template: `.tfw/templates/KNOWLEDGE.md`.
-- `RELEASE.md` _(optional)_ — project release strategy and context. Template: `.tfw/templates/RELEASE.md`.
-- `.tfw/README.md` — TFW philosophy, lifecycle, values.
-- `.tfw/conventions.md` — project conventions (this file).
-- `.tfw/glossary.md` — project glossary.
-- `.tfw/templates/HL.md` — canonical HL template.
-- `.tfw/templates/TS.md` — canonical TS template.
-- `.tfw/templates/RF.md` — canonical RF template.
-- `.tfw/templates/ONB.md` — canonical Onboarding Report template.
-- `.tfw/templates/RES.md` — canonical Research Report template.
-- `.tfw/templates/status.md` — canonical task state carrier.
-- `.tfw/templates/journal/event.md` — canonical journal event.
-- `.tfw/templates/team/profile.md` — canonical participant profile.
-- `.tfw/templates/REVIEW.md` — canonical Review template.
-- `.tfw/workflows/init.md` — canonical initialization workflow.
-- `.tfw/workflows/plan.md` — canonical planning workflow.
-- `.tfw/workflows/research/base.md` — canonical research workflow (entry point).
-- `.tfw/workflows/handoff.md` — canonical execution workflow.
-- `.tfw/workflows/review.md` — canonical review workflow.
-- `.tfw/workflows/docs.md` — canonical knowledge update workflow.
-- `.tfw/workflows/release.md` — canonical release workflow.
-- `.tfw/workflows/update.md` — canonical upstream update workflow.
-- `.tfw/workflows/config.md` — interactive config change workflow.
-- `.tfw/templates/update_receipt.md` — immutable record for one update attempt.
-- `.tfw/VERSION` — current framework version (semver, single line).
-- `.tfw/CHANGELOG.md` — version history (Keep a Changelog format).
-- `.tfw/project_config.yaml` — project configuration (stack, checks, task containers, scope, research, review, and content settings).
-- `.tfw/compilable_contract.md` — build-time compilation specification (Source Manifest, Reference Format, Output Structure).
-- `.tfw/migrations/{major}.md` — migration guide per major version. A major release without one is incomplete.
+- **Project entry points:** `README.md`, `AGENTS.md`, and optional project-owned `KNOWLEDGE.md`
+  and `RELEASE.md`. They explain the project and route to current authority; they carry no duplicate
+  live task state.
+- **Framework core:** `.tfw/README.md`, `conventions.md`, `glossary.md`, `project_config.yaml`,
+  `VERSION`, `CHANGELOG.md`, `quickstart.md`, and `compilable_contract.md`.
+- **Canonical behavior and forms:** `.tfw/workflows/` and `.tfw/templates/`. Those directories own
+  their exact member set; this section does not duplicate it.
+- **Adapters:** `.tfw/adapters/manifest.yaml` and its declared sources/targets.
+- **Migrations:** applicable guides under `.tfw/migrations/`.
 
 ## 3) Artifact Types (canonical)
 
@@ -119,8 +97,6 @@ a valid delegated claim routes to the owner.
 20. **A Phase HL is derivation-only.** It may restate master content and add execution context — files, sequencing, phase-local risks.
 21. **A Phase HL may not carry its own §1, §5, §6 or §7.** Vision, acceptance criteria, failure conditions and principles exist once, in the master HL. A Phase HL that authors them is a second, unapproved contract.
 
-History: D63 and TFW-53.
-
 ### Project North Star
 
 The layer above every task HL: what the product is for, and what it must never become. Together with the
@@ -176,59 +152,21 @@ Format: strictly follows `.tfw/templates/REVIEW.md`.
 ### Fact Candidates (section in RF, REVIEW, RES)
 Raw observations about the project recorded during work. Cognitive mode: pure reporting — record factual without interpretation. NOT verified facts — they become facts after `/tfw-knowledge` consolidation. Each artifact has a Fact Candidates section with a structured table (Category, Candidate, Source, Confidence). Quality filter: "Would the next agent decide differently knowing this?"
 
-### Visual Sections (per-template)
+### Artifact-owned semantic sections
 
-> **Decision criterion:** "Does the cognitive mode CHANGE between templates?" If yes → per-template naming. If no → unified.
-> Visual sections trigger different cognitive modes per template context (empirically validated: RES3 D22, RES4 Exp1+Exp2).
+Templates own exact headings, numbering and fields. Conventions fix only the distinctions that must
+survive across templates:
 
-| Template | Section | Cognitive Mode | What it produces |
-|----------|---------|---------------|-----------------|
-| HL | §3.1 Result Visualization | Narrative / Outcome | Outcome preview — Working Backwards style ("imagine it's done") |
-| HL | §3.2 Value Flow | Strategic / Value-oriented | Value streams, INPUT→PROCESSING→OUTCOME, transformation tables |
-| RF | §9 Diagrams | Technical / Engineering | Architecture, ERD, sequence diagrams, component diagrams |
-| RES | Findings Map | Analytical / Research | Root cause analysis, hypothesis trees, priority matrices |
-| REVIEW | — | — | No visual section (checklist artifact, not result) |
+| Concern | Stable meaning |
+|---|---|
+| Visuals | HL previews outcome and value flow; RF explains the delivered system; RES maps findings. REVIEW adds no mandatory visual. |
+| Knowledge capture | Fact Candidates report observations without promotion; Strategic Insights add interpretation and implications. |
+| Knowledge input | Knowledge Citations name the exact item and application; review verifies resolution, meaning and relevance. A resolving but absent, irrelevant or semantically different item is a discrepancy. |
+| Assurance | Verification is synthetic tool output; Evidence is observation in the intended environment. Coordinator specifies the oracle, Executor records EV, RF points to it, and Reviewer audits applicability and completeness. |
 
-### Knowledge Capture Sections (unified naming)
-
-| Section | Name | Templates | Cognitive Mode |
-|---------|------|-----------|---------------|
-| §7 | Fact Candidates | RF, RES, REVIEW | Pure reporting: record without interpretation |
-| §8/§11 | Strategic Insights + qualifier | HL (Planning), RF (Execution), RES (Research) | Deep analytical synthesis: capture + add implications |
-
-### Knowledge Input Sections (unified naming)
-
-| Section | Name | Templates | Cognitive Mode |
-|---------|------|-----------|----------------|
-| §7.2 | Knowledge Citations | HL | Input tracing: cite the exact PV clause/item read, link it, and state its concrete application |
-| §7 | Knowledge Citations | ONB | Input tracing: confirm the exact HL §7.2 items read and how each applies; add new relevant items |
-| _(section)_ | Knowledge Citations Verified | review/verify.md | Verification: check link resolution, item existence, semantic match, and relevance to the asserted application |
-
-> **Unified naming rationale (D43/D28/D39):** cognitive mode is the same across all three — "report what you read and how it applies." Same mode = same name. Scan scope differs by role: Coordinator + Reviewer do full PV scan, Executor references coordinator's citations. See glossary.md → Project Values (PV).
->
-> **Semantic integrity:** a citation that resolves to a real file or anchor but names an absent, irrelevant,
-> or semantically different item is a discrepancy, not a verified citation. Priorities 0 and 1 must be
-> recorded and checked as distinct meaning even when one README contains both.
-
-### Evidence Sections (per-template)
-
-> Evidence = real-world verification of completed work in its intended environment.
-> Separate from Verification (RF §4 — synthetic tool output: lint, test, build).
-> Status vocabulary: VERIFIED / DEFERRED / BLOCKED / N/A.
-> Role pipeline: Coordinator designs (TS) → Executor collects (EV file) → Reviewer audits (REVIEW).
->
-> **Mandatory folder:** Every task directory MUST contain an `evidence/` subfolder with a structured EV file.
-> The EV file captures environment metadata, per-AC verification results, and a verdict summary.
-> RF §5 is a pointer to the EV file — not a duplicate of the evidence table.
-> Template: `.tfw/templates/evidence/EV.md`.
-
-| Template | Section | Cognitive Mode | What it produces |
-|----------|---------|---------------|------------------|
-| TS | Evidence field (in §5 AC items) | Prescriptive / Planning | What to verify in real environment, suggested tools |
-| EV file | `evidence/EV__{...}.md` | Observational / Verification | Environment header, per-AC evidence table, verdict, attachments |
-| RF | §5 Evidence (pointer) | Summary / Reference | One-line pointer to EV file + verdict summary |
-| review/verify.md | Evidence Verification | Audit / Trust-but-verify | Artifact existence checks, claim-vs-reality |
-| review/judge.md | Check #7 Evidence completeness | Judicial / Completeness | All TS Evidence fields covered in EV file? |
+Priorities 0 and 1 remain distinct even when one file contains both. Evidence uses
+`VERIFIED / DEFERRED / BLOCKED / N/A`; every task directory contains `evidence/` with a structured EV
+file, and RF references rather than duplicates it. See `.tfw/templates/evidence/EV.md`.
 
 ## 4) Task Identity and Location
 
@@ -329,7 +267,7 @@ both proposed carriers before either write. Events are append-only: a correction
 event and describes the actual act using an existing truthful kind, never a same-state or invented
 transition. If no kind fits, do not invent an event; record the explanation in the existing owning
 artifact. Compatibility `actor` and erroneous history remain readable, never rewritten. Recover an
-interrupted pair through `Closing and record recovery`. History: D68, TFW-54, TFW-60.
+interrupted pair through `Closing and record recovery`.
 
 ### Declared participants and principals
 
@@ -386,33 +324,7 @@ owner-source itself is ambiguous, the same one-question rule selects the human s
 not ask an identity question.
 
 Never infer identity from an OS username, hostname, folder, or account display. The binding selects
-which principal the session acts as; it does not prove who is present or what they may do. History:
-D68, TFW-54 and TFW-60.
-
-### Workflow activation and routing
-
-A command activates material work only when the request names the exact `/tfw-*` skill, selected
-task/phase when task-bound, and owner-direct, delegated, or continuation source. A created or selected
-unit, role prompt, briefing, wait result, title, source artifact, trigger, or implicit latest session
-does not activate a workflow.
-
-For task-bound work, read its own `status.md` and journal before derived or shared inputs. Validate
-the lifecycle/role gate, bounded scope, actual unit/address/parent, and all five routing fields. Total
-absence is legacy-readable but cannot activate current work; partial, stale, foreign, unverifiable or
-mismatched routing is a pre-work refusal. Owner-direct activation needs no agent principal. Delegated
-activation additionally requires the cited immutable mandate and direct Coordinator dispatch; apply
-`Which handle a machine acts as` only when stable attribution is explicitly required.
-
-Under `tfw-gates-only`, a role unit sends every material status, question, gate and durable return
-only to its own `coordinator_route`; it never sends them to a peer, owner, foreign Coordinator or
-GATEWAY. That Coordinator alone uses `owner_gateway`. `iterative` additionally requires its exact
-immutable grant and a separately addressable GATEWAY, which performs no workflow role. An authority
-answer is valid only as the owning authority's task-local `gate_answer`; no role edits another role's
-artifact to answer itself.
-
-Role artifacts preserve the actual producer unit, parent Coordinator, activation/dispatch source,
-`coordination_authority`, and originating proposer `{principal, unit}` or explicit `none`. Recheck the
-spine on continuation. Provisioning, navigation, attribution and forwarding grant no authority.
+which principal the session acts as; it does not prove who is present or what they may do.
 
 ### Session identity
 
@@ -490,8 +402,6 @@ highest valid lineage. Cumulative records append rather than overwrite.
 never-edited rule protects history, not the order currently in force — an order that cannot absorb a
 correction is an order nobody can raise a question against.
 
-History: D72 and RDP.
-
 > **Rule:** every current primary artifact at a task/phase root includes the task ID or phase
 > identifier. Fixed-name stage artifacts such as `research/iterN/RES.md` and `review/map.md` are
 > identified by their owning task/phase path and are not competing primary-artifact grammars.
@@ -515,7 +425,6 @@ Full ships no executable, dependency, collector, portfolio cache, or freshness d
 required for ordinary lifecycle work are complete in workflows and templates and must remain
 usable without Python or PyYAML. The upstream repository may keep optional maintainer tools
 outside `.tfw/`; they are not copied by init/update and hold no authority over receiver state.
-History: D69, D73, D75, D76, and the applicable migration RF.
 
 ### A major release ships a migration guide
 
@@ -756,7 +665,7 @@ TODO → HL_DRAFT → RES → 🧩 PHASES → KNW → DONE
 
 While `PHASES` stands, read each phase's state. Every phase consumer reads that local state and
 journal before acting. A transition is two ordered acts: write the authoritative task/phase
-`status.md`, then append its journal event. History: D68 and TFW-60.
+`status.md`, then append its journal event.
 
 Review verdicts:
 - ✅ **APPROVE** — no material finding remains → 📚 KNW; return to Coordinator for `Closing and
@@ -860,7 +769,7 @@ Executor dispatch until its valid terminal verdict leaves an executable bound. T
 ONB, RF and EV round content, and the Reviewer verifies the affected return. No complete material
 condition means no round: approve with the remainder disposed, or transition to `BLOCKED` and return
 to the task owner because no basis can be stated. An `unassigned` owner is a hard stop. A fresh role
-holder resolves lineage from state/artifact references. History: D72 and RDP.
+holder resolves lineage from state/artifact references.
 
 ## 6) Scope Budgets (per Phase)
 
@@ -952,6 +861,8 @@ Apply by release/TS approval epoch; never reinterpret history. Migration preserv
 retires the other old keys, and adds multiplier `2`.
 
 ## 7) Coordination
+
+### Activation and gate routing
 
 Provisioning creates or selects a callable unit. Activation authorizes one exact workflow run.
 Continuation resumes the same unit inside the same immutable authority and routing spine. None of
@@ -1335,7 +1246,7 @@ this rule replaced.
 - **A command written into a workflow must survive its adapter.** No `$0`–`$9` and no `$ARGUMENTS` in any
   shell or `awk` snippet a role runs: adapters may substitute them before the role reads the command.
   Use named variables or literal examples and exercise the command once from the project root before
-  shipping it. History: TLD and RDP
+  shipping it.
 
 ## 12) Safety and Execution Honesty
 
@@ -1353,66 +1264,58 @@ Reverting a result does not revert its trace. A rejected task's folder and its b
 
 ## 14) Anti-patterns (prohibited)
 
-- Executor codes before blocking questions resolve
-- Executor codes without reading HL
-- Coordinator closes without review or REVIEW
-- RF omits test results or observations
-- TS precedes HL approval
-- Executor modifies the Master HL
-- Executor makes architectural decisions not in HL
-- Executor modifies out-of-TS files, including “obvious fixes”
-- Executor makes undocumented “bonus fixes”
-- Executor writes RF before build/lint passes
-- Executor omits material debt/dead code from Observations
-- Coordinator leaves a surviving Executor observation unrecorded or undisposed in REVIEW §5
-- Coordinator writes ONB/RF or code → **Role Lock violation**
-- Executor writes HL/TS or changes scope → **Role Lock violation**
-- Executor writes REVIEW → **Role Lock violation**
-- Reviewer approves without opening files or spot-checking RF claims against artifacts
-- A checklist, citation, firing rate, changed-file count or historical defect count is used as a
-  quality objective without a named protected subject, harm and material consequence
-- Executor omits RF §7-9 (Fact Candidates, Strategic Insights, Diagrams) — sections are mandatory; empty content ("No X.") is valid, absent section is not
-- Researcher omits Findings Map in RES — section is mandatory; "No findings map." is valid if genuinely no visualization relevant
-- Coordinator reads KNOWLEDGE.md in context loading but never cites relevant items in HL §4 — "read but don't use" pattern breaks cross-task knowledge flow
-- TS contains ready-made implementation — TS §5 must contain acceptance criteria (WHAT), not code or steps (HOW); implementation belongs to executor
-- Coordinator reads own TS instead of RF when planning next phase — before writing TS for Phase N, read RF of the latest completed phase; plan ≠ fact
-- Executor writes RF without opening template — RF template must be opened before writing; writing from memory drifts from required structure
-- Coordinator answers ONB questions without source — when uncertain, present options and context, not decisions on behalf of the stakeholder
-- Executor marks evidence VERIFIED without artifact reference in `evidence/` folder — assertion without evidence
-- Executor marks evidence N/A without justification from TS Evidence field or documented reason
-- Executor writes RF §5 Evidence before actually collecting evidence — evidence must be contemporaneous, not reconstructed
-- Reviewer approves RF without checking that evidence artifact references resolve to real files or inline output
-- Executor marks evidence DEFERRED without naming the specific blocker (missing environment, unavailable device, pending deployment)
-- Anyone edits a frozen HL section without a §12 row carrying the valid rule-8 verdict — the silent contract edit the amendment channel exists to replace
-- Researcher submits HL recommendations without classifying each row as a refinement or an amendment proposal — one undifferentiated channel is how "risk probability is Medium" and "drop Phase B" arrive together
-- Coordinator applies an amendment before its valid rule-8 verdict — the proposal and change become one act, so the ruling follows what it governs
-- Research starts on an uncommitted approved HL — the baseline cannot be diffed, so drift becomes documented and permanently unverifiable
-- Any role treats a remark inside a research thread, a review or a chat as an amendment verdict — a comment is input, a verdict is a distinct recorded act
-- An agent cites its own delegation as authority to accept a scope or budget overrun — a mandate is a ceiling, and authority that extends itself is not authority
-- A Phase HL authors its own acceptance criteria, failure conditions, vision or principles — a second, unapproved contract one level below the one that was ruled on
-- A reviewer approves work that satisfies the TS but not the approved contract or the north star — the TS is downstream of any drift, so a green review against it can only confirm the drift
-- A reviewer asserts alignment without citing the clause it serves — an unciteable claim is indistinguishable from a fabricated one, and a citation that resolves while being irrelevant is the same defect one layer in
-- A whole-tree restore reverts task state past a recorded failure
-- A workflow acts on a task from the derived index instead of re-reading that task's `status.md`
-- A task directory is moved to express status or change its creation-year folder
-- An identifier is allocated from a project-wide maximum, counter, or another task directory
-- A journal event is edited/deleted instead of corrected by a new referencing event
-- A journal event copies artifact or chat bodies instead of referencing them
-- A status outside the vocabulary is normalized instead of reported verbatim
-- Identity is inferred from an OS username, hostname, folder, or account display
-- A per-user file is stored on the shared tree
-- A workflow command contains `$0`–`$9` or `$ARGUMENTS`
-- A task closes with an undisposed debt item or a disposition naming no existing phase/round and cited condition
-- A project-level debt list, per-task debt file, or generated backlog view is introduced
-- Work is left unfinished because it can be recorded as debt
-- A rung-2 finding is addressed only to the Executor, who cannot amend a TS
-- A 🔄 REVISE item names no breached acceptance criterion or frozen claim
-- Broad staging mixes sibling work
-- An unrelated landing commit hides its producer from path history
-- A foreign caller resumes “last,” writing into an undelegated session rather than the returned id
-- An agent rules its proposal after transcription, session replacement, or grant change
-- Claimed delegation lacks one human-rooted child-only prefix or substitutes accountability
-- An Executor initiates, or a phase Coordinator points to an ancestor/task Coordinator
+### Authority and role
+
+- Material work starts before its prerequisites, blocking questions, approved authority or exact scope
+  are resolved.
+- A role creates or changes artifacts outside its Role Lock; an Executor changes HL, TS, RES,
+  REVIEW, scope, architecture not authorized by HL or out-of-TS files, including “bonus fixes”.
+- A Coordinator writes Executor artifacts or delivery code, or closes delivery without an
+  independent REVIEW.
+- A frozen HL changes without its valid amendment verdict, or a proposal and its ruling become one act.
+- Research recommendations do not distinguish refinement from amendment, or a remark in an artifact,
+  review or chat is treated as a verdict.
+- An agent extends its own delegation to accept scope or budget overrun, rules its own proposal, or
+  substitutes delegated attribution for human-rooted accountability.
+- A Phase HL introduces a second vision, acceptance contract, failure contract or set of principles.
+
+### Value and assurance
+
+- A TS precedes HL approval or prescribes implementation instead of an observable result;
+  implementation starts without approved governing HL/TS; research starts from an uncommitted HL.
+- Evidence is reconstructed after the fact; RF omits test results or material observations; an
+  evidence status lacks the required observable artifact, oracle, justification or blocker.
+- A Reviewer approves without opening the delivered output and checking RF/evidence claims against
+  reality, the approved contract and the North Star.
+- A checklist, citation, firing rate, changed-file count or historical defect count becomes a quality
+  objective without a named protected subject, harm and material consequence.
+- A task closes with an undisposed observation, debt or finding, or with a disposition that names no
+  existing phase/round and cited condition.
+- Work is left unfinished because it can be called debt, or a parallel project/task debt registry is
+  introduced.
+
+### State and trace
+
+- A workflow uses a derived index instead of the selected task's `status.md`, or infers identity from
+  a username, host, folder or account display.
+- A task directory moves to express state or change its creation-year partition, or an identifier is
+  allocated from a corpus-wide counter or another task.
+- A journal event is edited or deleted, copies artifact/chat bodies instead of referencing them, or an
+  unknown status is silently normalized.
+- A per-user file is stored in the shared tree.
+- Broad staging mixes sibling work, an unrelated landing hides its producer, or a whole-tree restore
+  overwrites later recorded state.
+- A workflow command contains `$0`–`$9` or `$ARGUMENTS`.
+
+### Coordination and revision
+
+- A foreign caller resumes “last” instead of the exact returned unit, or a relay, hidden helper,
+  invalid address or foreign parent substitutes for the recorded route.
+- Claimed delegation lacks its immutable human-rooted, child-only scope and exact destination.
+- An Executor initiates its own workflow, or a phase Coordinator routes through an ancestor/task
+  Coordinator instead of its recorded parent.
+- A rung-2 finding goes only to the Executor, or a REVISE item names no breached acceptance criterion
+  or frozen claim.
 
 ## 15) Role Lock Protocol
 

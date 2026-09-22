@@ -46,7 +46,7 @@ and never guesses legacy or partial fields.
   report malformed paths or ID collisions, never infer a fresh project from missing modern statuses.
   Preserve all state; skip discovery, research,
   config creation, and init-task creation. Select the adapter explicitly when it cannot be inferred,
-  read `Workflow activation and routing` only when repairing its persistent coordination block,
+  read `Activation and gate routing` only when repairing its persistent coordination block,
   apply its persistent row and all ten command rows, verify bytes/blocks, roles, paths, idempotence, and
   foreign neighbors, then stop.
 

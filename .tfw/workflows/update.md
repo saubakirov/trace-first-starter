@@ -99,7 +99,7 @@ receiver; partial application, equal version or old receipt never closes checks/
 
 ## Step 4 — Adapters, verification, receipt, outcome
 
-At adapter sync, if a persistent coordination block changes, read `Workflow activation and routing`;
+At adapter sync, if a persistent coordination block changes, read `Activation and gate routing`;
 otherwise it is uncharged. Validate four adapters and ten manifest commands. Apply exact copies or
 one marker-bounded block; preserve unmarked/foreign neighbors. Antigravity installs to plural
 `.agents`; singular `.agent/rules` remains compatible rule location, never inferred workflow support
