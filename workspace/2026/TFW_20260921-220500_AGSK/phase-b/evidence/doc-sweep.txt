@@ -1,0 +1,14 @@
+CLEAN: KNOWLEDGE.md
+CLEAN: .tfw/glossary.md
+CLEAN: README.md
+CLEAN: README.ru.md
+CLEAN: README.kk.md
+CLEAN: .tfw/CHANGELOG.md
+CLEAN: .agents/rules/tfw.md
+CLEAN: .tfw/adapters/antigravity/tfw-rules.md.template
+CLEAN: .tfw/adapters/antigravity/README.md
+CLEAN: .tfw/migrations/3.5.0.md
+
+Pattern: `.agent/workflows/` and `.agent/rules/tfw.md`
+Search scope: all 10 VALUE paths
+Result: zero matches — no stale references remain
