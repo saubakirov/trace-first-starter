@@ -5,8 +5,7 @@ trigger: always_on
 # TFW
 
 This project follows Trace-First Workflow. Root instructions are already active; do not
-reload them. For `/tfw-*`, open `.agents/workflows/tfw-<command>.md`, then follow the mapped
-canonical workflow's Read Contract. The workflow selects all further inputs.
+reload them. For `/tfw-*`, invoke the matching repository-local skill. The canonical workflow's Read Contract selects all further inputs.
 
 Before Plan Step 5, report `provision · addressed send · wait/readback · title/readback` from the
 mechanisms exposed in the current Antigravity surface, classifying each as `native`,

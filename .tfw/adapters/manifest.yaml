@@ -77,6 +77,6 @@ adapters:
       target: .agents/rules/tfw.md
       strategy: copy
     commands:
-      source: "{workflow}"
-      target: .agents/workflows/tfw-{command}.md
+      source: .tfw/adapters/codex/skills/tfw-{command}/SKILL.md
+      target: .agents/skills/tfw-{command}/SKILL.md
       strategy: copy
