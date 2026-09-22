@@ -10,6 +10,12 @@ Format: [Keep a Changelog](https://keepachangelog.com/). Versioning: [Semantic V
 - Stale Antigravity command routing in `.tfw/conventions.md` (§9 Tool Adapter Pattern) and
   `.tfw/adapters/README.md`: replaced deprecated `.agents/workflows/` paths with
   `.agents/skills/tfw-{command}/SKILL.md` to match the adapter manifest and installed skills.
+- Restored the canonical `Workflow activation and routing` contract after over-aggressive
+  deduplication, including journal-first context, complete routing-spine validation, legacy-absence
+  refusal, non-activating inputs, exact coordination authority and continuation provenance.
+- Restored Coordinator ownership of `research/iterations.yaml`: Plan prepares each pending iteration
+  before dispatch and closes it on return; Researcher refuses incomplete pipeline control state and
+  never creates or edits the control file.
 
 ### Changed
 
@@ -21,6 +27,11 @@ Format: [Keep a Changelog](https://keepachangelog.com/). Versioning: [Semantic V
   debt snapshot.
 - Cleaned closed internal bug references (`TD-144`, `TD-178`) from anti-pattern items in
   `.tfw/conventions.md` (§14).
+- Hardened `tfw-gates-only` monitoring across persistent adapters: roles use addressed gate/status
+  messages, bounded provider waits and durable returns, never foreign transcripts, session logs,
+  unrelated task history or relayed unreturned reasoning.
+- Compressed duplicated artifact inventories, template-owned semantic tables and the flat
+  anti-pattern catalogue in `.tfw/conventions.md` while retaining one canonical coordination rule.
 
 ### Removed
 
