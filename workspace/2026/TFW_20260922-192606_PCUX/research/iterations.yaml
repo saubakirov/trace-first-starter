@@ -8,8 +8,3 @@ iterations:
     hypotheses: [H1, H2, H3, H4]
     status: pending
     res_file: research/iter1/RES.md
-  - number: 2
-    focus: Challenge the first iteration's viable configurations against independent review, continuation, browser access, context cost, adapter delivery, and honest fallbacks.
-    hypotheses: [H1, H2, H3, H4]
-    status: pending
-    res_file: research/iter2/RES.md
