@@ -10,7 +10,8 @@ iterations:
   - number: 1
     focus: "Изучить параметры моделей и thinking в Antigravity, Codex и Claude Code для полноценных сессий; сформулировать минимальный набор простых эвристик классификации сложности (правило 3 уровней: Procedural, Standard, Critical) и правила самокалибровки координатора"
     hypotheses: [H1, H2, H3]
-    status: pending
+    status: complete
+    agent: "antigravity:thread:local:24003cc7-799f-4352-9c51-bc150687d097"
     res_file: research/iter1/RES.md
     sources: [platform-docs, codebase, task-traces, conventions]
   - number: 2
