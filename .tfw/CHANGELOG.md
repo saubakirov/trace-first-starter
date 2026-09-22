@@ -5,10 +5,14 @@ Format: [Keep a Changelog](https://keepachangelog.com/). Versioning: [Semantic V
 
 ## [Unreleased]
 
-FRATS — Framework Refactoring and Agent-Team Simplification. Coordination is now an explicit,
-task-local contract rather than an inferred autonomy mode or a chain of conversational agents. The
-refactor also restores the Coordinator's Strategic Architect role while reducing duplicated and
-contradictory instruction text without using a percentage target as a quality proxy.
+## [3.5.0] — 2026-09-22
+
+FRATS & AGSK — Framework Refactoring, Explicit Coordination, and Antigravity Skill Migration.
+Coordination is now an explicit, task-local contract rather than an inferred autonomy mode or a
+chain of conversational agents, with transcript isolation and restored Strategic Architect
+planning. The active workflow corpus is compressed to ≤1,400 words per workflow, and the Antigravity
+adapter is unified with Codex around the shared `.agents/skills/` surface, retiring legacy
+`.agents/workflows/` and `.agent/`.
 
 ### Changed
 
@@ -31,6 +35,16 @@ contradictory instruction text without using a percentage target as a quality pr
 - Current artifact issuance uses one deterministic grammar, including `TS__{ID}.md` for a
   single-phase TS, `TS__phase-{x}__{phase_slug}.md` for a phase TS, and `__rev{N}` only for a formal
   revision. Historical artifact names remain readable and are not renamed.
+- Antigravity commands route through `.agents/skills/tfw-{command}/SKILL.md` (shared with Codex)
+  instead of the deprecated `.agents/workflows/tfw-{command}.md`.
+- The persistent Antigravity rule (`.agents/rules/tfw.md`) includes explicit coordination messaging
+  instructions for vertical `send_message` communication under `tfw-gates-only`.
+- Adapter documentation (`.tfw/adapters/antigravity/README.md`) documents cross-session addressed
+  messaging mechanics.
+- `KNOWLEDGE.md` Adapters row updated: 10 routes, `.agents/skills/` surface, `.agent` fully retired.
+- `.tfw/glossary.md` Tool Adapter definition updated to reference `.agents/skills/`.
+- Adapter entry points in `README.md`, `README.ru.md`, `README.kk.md` updated to `.agents/rules/tfw.md`
+  plus `.agents/skills/tfw-*/SKILL.md`.
 
 ### Fixed
 
@@ -46,42 +60,6 @@ contradictory instruction text without using a percentage target as a quality pr
 - Corrected legacy decision D75 from trajectory `310,485→112,536 (−63.8%)` to the independently
   reproduced `310,485→112,206 (−63.9%)`; the active-corpus result and cited sources are unchanged.
 
-### Compatibility and updating
-
-**Migration is required for active Full TFW installations; historical task data does not need to be
-rewritten.** A release version has not yet been assigned, so no version-addressed migration guide
-exists yet. That guide is required before this Unreleased entry may ship.
-
-- Update framework-owned workflows, templates, adapters, skills, and managed instruction blocks
-  together through `/tfw-update`; do not copy only Plan or only an adapter projection.
-- A current task that will continue under the new contract must receive all five routing fields in
-  one authority-backed migration. Total legacy absence remains readable; a partial or contradictory
-  spine refuses activation. The updater must not infer Coordinator, GATEWAY, dialogue, or mandate.
-- Existing closed tasks, journals, approvals, historical `CL`/`AG`/`AT` labels, `LEAD` titles, and
-  legacy artifact filenames remain readable and must not be rewritten merely to match current terms.
-- No application data, receiver repository, release tag, or publication migration is implied. The
-  four receiver projects were verified read-only; each future receiver update remains a separate
-  owner-authorized action.
-
-## [3.5.0] — 2026-09-22
-
-AGSK — Antigravity Skill Migration & Legacy .agent Retirement. The Antigravity adapter is unified
-with Codex around the shared `.agents/skills/` surface. The deprecated `.agents/workflows/`
-directory and the vestigial singular `.agent/` directory are fully retired.
-
-### Changed
-
-- Antigravity commands route through `.agents/skills/tfw-{command}/SKILL.md` (shared with Codex)
-  instead of the deprecated `.agents/workflows/tfw-{command}.md`.
-- The persistent Antigravity rule (`.agents/rules/tfw.md`) includes explicit coordination messaging
-  instructions for vertical `send_message` communication under `tfw-gates-only`.
-- Adapter documentation (`.tfw/adapters/antigravity/README.md`) documents cross-session addressed
-  messaging mechanics.
-- `KNOWLEDGE.md` Adapters row updated: 10 routes, `.agents/skills/` surface, `.agent` fully retired.
-- `.tfw/glossary.md` Tool Adapter definition updated to reference `.agents/skills/`.
-- Adapter entry points in `README.md`, `README.ru.md`, `README.kk.md` updated to `.agents/rules/tfw.md`
-  plus `.agents/skills/tfw-*/SKILL.md`.
-
 ### Removed
 
 - The `.agent/` directory (singular) and its contents (`rules/agents.md`).
@@ -94,7 +72,8 @@ directory and the vestigial singular `.agent/` directory are fully retired.
 Downstream projects must classify `.agent/` contents before deletion: framework-owned files are
 safe to remove; custom rules move to `.agents/rules/`; custom workflows convert to skills in
 `.agents/skills/`. Customized or ambiguous affected files refuse replacement instead of being
-silently deleted.
+silently deleted. Active tasks continuing under the new contract require the five routing spine
+fields (`coordinator_route`, `owner_gateway`, `dialogue`, `activation`, `coordination_authority`).
 
 ## [3.4.1] — 2026-09-14
 
