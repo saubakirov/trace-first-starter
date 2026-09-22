@@ -1,8 +1,8 @@
 # Sequential focused passes. Iteration 2 reads and challenges iteration 1.
 # The Coordinator provisions and activates one directly addressable Researcher per launch. The
 # Researcher writes only its assigned iterN directory and returns materially only to coordinator_route.
-# This research may run beside AGSK, but it cannot freeze a TS denominator or authorize overlapping
-# implementation until the accepted AGSK Phase B landing is present and rebased.
+# AGSK is now accepted and landed. Iteration 2 must inspect that durable result and establish the
+# post-AGSK denominator before TS approval or overlapping implementation.
 task_id: TFW_20260921-180000_RVAG
 title: "Reviewer Value-Assurance Gate: product quality, meaningful assurance, and material findings"
 mode: focused
@@ -12,11 +12,12 @@ iterations:
   - number: 1
     focus: "reconstruct MFX and contrasting review outcomes; map current verdict, verification, test-admission, trace and return-message rules; distinguish value protection from process proxies and identify the smallest post-AGSK change surface"
     hypotheses: [H1, H2, H3, H4, H5, H6, H7]
-    status: pending
+    status: complete
     res_file: research/iter1/RES.md
+    agent: codex:thread:local:01a0c7ba-6045-7ab0-b261-11cec3ca1af5
     sources: [codebase, task-traces, accepted-results, sibling-task-artifacts]
   - number: 2
-    focus: "challenge iteration-1 findings against real product defects, authority failures, non-code results and false-return risks; select minimal materiality, assurance-admission, record-correction and compact Reviewer-return semantics"
+    focus: "attack C4+ marginal decision power, mixed-round per-item routing, safety/security and human-authority boundaries, evidence/result identity and new-carrier necessity; inspect accepted AGSK transport and select the minimal post-AGSK Reviewer payload and change surface"
     hypotheses: [H1, H2, H3, H4, H5, H6, H7]
     status: pending
     res_file: research/iter2/RES.md
