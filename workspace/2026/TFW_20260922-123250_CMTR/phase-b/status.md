@@ -12,7 +12,7 @@ dialogue: tfw-gates-only
 activation: "delegated:../HL-TFW_20260922-123250_CMTR.md §12 A2 @ 2c72ec8c6b0b21269caf95b707d26c631be5df52"
 coordination_authority: "../HL-TFW_20260922-123250_CMTR.md @ addb2e707dd9f271b7bf1287617a8b93b8d72cb0"
 created: 20260922-150937
-updated: 20260922-151933
+updated: 20260922-154919
 ---
 
 **Task state.** This file is the only authority for this phase's live state. The task-level `status.md` never summarizes it.
