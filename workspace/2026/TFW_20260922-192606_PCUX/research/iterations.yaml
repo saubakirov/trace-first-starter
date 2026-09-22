@@ -4,7 +4,7 @@ min_iterations: 2
 max_iterations: 5
 iterations:
   - number: 1
-    focus: Select minimal shared and provider changes for command-only launch, gates-only phase coordination, live owner-selected mandates, obligatory reporting, Claude shared-workspace and compact routes, and changelog plus safe cleanup; distinguish owner-reported behavior from unperformed field trials.
-    hypotheses: [H1, H2, H3, H4, H5, H6, H7, H8, H9]
+    focus: Resolve owner-visible Q1-Q4 on minimal launch/mandate carriers, compact-role eligibility, Claude prepared sessions in one workspace, and docs/knowledge plus safe close ordering; preserve the approved mental-model and visualization contract, and distinguish owner reports from unperformed field trials. H3/H4 are implementation checks, not research.
+    hypotheses: [H1, H2, H5, H6, H7, H8, H9]
     status: pending
     res_file: research/iter1/RES.md
