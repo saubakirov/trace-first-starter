@@ -5,6 +5,54 @@ Format: [Keep a Changelog](https://keepachangelog.com/). Versioning: [Semantic V
 
 ## [Unreleased]
 
+## [3.5.1] — 2026-09-22
+
+RVAG — Reviewer Value-Assurance Gate. Review now judges the accepted result before process polish:
+purpose and domain behavior, material assurance, then authority/result identity and continuation.
+Administrative record defects no longer restart unchanged product execution unless they invalidate a
+material claim or authorized action.
+
+### Changed
+
+- Each candidate finding is classified by subject, affected claim or authority, fact and oracle,
+  concrete harm, material consequence, owner, completion condition, route and Candidate effect before
+  one aggregate verdict is derived.
+- Mixed rounds keep per-item product, assurance, authority and finite record-only routes. The highest
+  required authority sequences the next act but does not reclassify lower items or move unchanged
+  VALUE.
+- Verification depth follows material claims, risk/criticality, dependencies, environment,
+  oracle/authority, evidence gaps and stated limits instead of a changed-file population ratio.
+- Permanent guards require a named protected behavior/invariant, failure consequence and relevant
+  counterfactual detection. Positive controls, temporary diagnostics, counts and governance checks
+  retain their narrower labels.
+- A completed Reviewer sends one compact logical envelope after durable REVIEW and authorized trace:
+  `REVIEW · <reviewer-unit> · <task-or-phase> · <verdict> · <review-artifact@ref>`.
+  Delivery is provider-bounded and semantically idempotent; no universal exactly-once guarantee is
+  claimed.
+
+### Fixed
+
+- Prevented a breached citation, count, label or other process-shaped criterion from forcing
+  `REVISE` without a named material consequence for the accepted result or authority.
+- Prevented the highest rung in a mixed review from dragging record-only or assurance-only items into
+  product re-execution.
+- Preserved strong blocking behavior for wrong purpose/behavior, safety/security, human authority,
+  accepted-result identity and insufficient material proof.
+
+### Removed
+
+- Active `tfw.review.min_verify_ratio` from project and receiver-default configuration.
+- The blanket `any discrepancy → 100%` verification escalation and historical firing-rate labels as
+  current verdict inputs.
+
+### Compatibility and updating
+
+**Read [Updating to TFW 3.5.1](migrations/3.5.1.md), including from 3.5.0 and earlier.**
+Refresh the canonical Review, Review stage/artifact templates, conventions, glossary and Config
+workflow as one connected semantic group; update Claude full copies from their canonical workflows.
+Codex and Antigravity thin skills and accepted AGSK transport remain unchanged. Customized or
+ambiguous affected files refuse replacement instead of being silently overwritten.
+
 ## [3.5.0] — 2026-09-22
 
 FRATS & AGSK — Framework Refactoring, Explicit Coordination, and Antigravity Skill Migration.
