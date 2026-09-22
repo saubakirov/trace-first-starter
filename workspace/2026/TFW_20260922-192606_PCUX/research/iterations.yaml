@@ -6,5 +6,5 @@ iterations:
   - number: 1
     focus: Resolve remaining Q1-Q4 gaps on minimal launch/mandate carriers, compact-role eligibility, Claude command-at-ready-gate launches in one local workspace, and docs/knowledge plus safe close ordering. Consume the owner-supplied 2026-09-23 Claude Desktop spawn report selected with its digest in HL section 2; do not repeat its answered empty-prompt/local-launch probes or treat it as a complete TFW trial. Specify shared-writer and independent-review semantics and archive restoration dependencies. Preserve the frozen mental-model/visualization contract; H3/H4 remain implementation checks, not research.
     hypotheses: [H1, H2, H5, H6, H7, H8, H9]
-    status: pending
+    status: in_progress
     res_file: research/iter1/RES.md
