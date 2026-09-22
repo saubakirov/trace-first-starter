@@ -85,17 +85,24 @@ envelope; the addressed provider transaction is the delivery record.
 - [x] durable REVIEW and applicability limits recorded in the immutable tree named by the terminal envelope
 - [x] authorized `REVIEW → KNW` lifecycle/status and journal effect included in that immutable tree
 - [x] exact Coordinator route and immutable REVIEW ref required as the final pre-send check
-- [ ] one compact logical envelope sent — post-commit provider effect; intentionally not pre-claimed in this artifact
+- [x] one compact logical envelope sent — post-commit provider effect received by the exact Coordinator route
 - [x] §5 is empty; no class, completion route, disposition or Candidate effect is owed
 
-Coordinator closing facts remain intentionally unset because the Reviewer neither captures
-knowledge nor declares DONE:
+Coordinator closing record, appended by the existing Coordinator after the Reviewer return:
 
-- [ ] Coordinator §5 rulings complete — N/A at Reviewer return because §5 has no items
-- [ ] tfw-docs: Coordinator decision/effect pending
-- [ ] tfw-knowledge: Coordinator decision/effect pending
-- [ ] final accepted output identity and affected independent judgment recorded by Coordinator close
-- [ ] selected landing/final effects complete and status/event validated before terminal write
+- [x] Coordinator §5 rulings: N/A — §5 has no finding, observation or disposition
+- [x] tfw-docs: N/A — the independently reviewed core documentation is the accepted VALUE output;
+  no separate post-review documentation record is owed
+- [x] tfw-knowledge: N/A — §7 has no Fact Candidate
+- [x] final accepted output identity: Candidate `e29ae633814c47cc41c82afab6d5359cd66f78ca`
+  landed with identical full tree as `7205fb50…`; later trace commits do not move VALUE
+- [x] selected landing/final effects complete; release and push remain owner-reserved and outside this
+  TS, so neither is an owed closing effect
+
+Parallel AGSK commit `6e50bcb3de46f5bae8a6b629032ca0a89002728f` changed only the Antigravity
+adapter-routing line in `.tfw/conventions.md` plus its adapter README peer. It does not touch CMTR's
+launch-selection rule, accepted claim, oracle or authority, so the independent judgment remains
+applicable and no affected follow-up review is required. No closing effect remains.
 
 ## 7. Fact Candidates
 
