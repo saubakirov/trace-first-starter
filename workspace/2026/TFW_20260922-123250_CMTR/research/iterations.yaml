@@ -24,7 +24,8 @@ iterations:
   - number: 3
     focus: "Вывести правило минимально достаточного выбора модели и reasoning effort для конкретного запуска и проверить нативные контракты Codex, Antigravity и Claude без ролевых уровней, статических имён и аналогий между платформами"
     hypotheses: [H1, H2, H3, H4]
-    status: pending
+    status: in_progress
+    agent: "codex:thread:local:01a0c89b-3d1e-7bd1-b8ab-a6376a7607d1"
     res_file: research/iter3/RES.md
     sources: [owner-correction, amended-HL, phase-a-candidate, platform-native-surfaces, task-traces]
   - number: 4
