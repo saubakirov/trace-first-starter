@@ -31,15 +31,18 @@ briefing, waiting, or changing a title only provisions/navigates; none activates
 validate the task routing spine before material work and report every status change to the unit's
 `coordinator_route`.
 
-For another TFW role task, use cursor-based, bounded `wait_threads`; never call `read_thread` or use
-`includeOutputs` to monitor it. Silence routes through wait/status or one addressed status request;
-unavailable monitoring is disclosed rather than replaced by transcript inspection.
+For another TFW role task, use cursor-based, event-driven `wait_threads` only for readback or
+continuation; never call `read_thread`, request `includeOutputs`, or inspect raw global state,
+session logs or unrelated task/chat history. After an unchanged signal, back off; never poll on a
+short fixed timer or narrate unchanged state. A suspected stall permits one addressed status
+request, then is reported as unavailable or blocked. Under `tfw-gates-only`, do not harvest or relay
+another unit's unreturned reasoning, suspicions, prose or preferred solution.
 
 When delegation is authorized, use distinct user-visible, directly addressable Codex tasks for
 Coordinator, Researcher, Executor and Reviewer. Record their actual task addresses and parents;
 shared principal attribution never merges units or grants authority. Use `send_message_to_thread`
-only for the permitted vertical edge and `wait_threads` only for readback/continuation. Under
-`tfw-gates-only`, role units communicate materially only with their own Coordinator—never peers,
+only for the permitted vertical edge. Under `tfw-gates-only`, role units communicate materially only
+with their own Coordinator—never peers,
 owner, or GATEWAY. Mutating units use separate worktrees; reuse the same Executor and independent
 Reviewer on returns. Forks, subagents, relays, hidden helpers and provider switches cannot hold TFW
 roles or substitute for unavailable units. Iterative dialogue requires a separately addressable
