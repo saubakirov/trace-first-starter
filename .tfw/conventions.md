@@ -169,7 +169,8 @@ another role.
 Format: strictly follows `.tfw/templates/ONB.md`.
 
 ### REVIEW (Review Report)
-Formal independent Reviewer report after reviewing RF: checklist, verdict, and a disposition on every debt item it captured.
+Formal independent Reviewer report after reviewing RF: ordered VALUE, ASSURANCE and TRACE
+assessment; per-item classification, route and Candidate effect; and one aggregate verdict.
 Format: strictly follows `.tfw/templates/REVIEW.md`.
 
 ### Fact Candidates (section in RF, REVIEW, RES)
@@ -778,8 +779,10 @@ journal before acting. A transition is two ordered acts: write the authoritative
 `status.md`, then append its journal event. History: D68 and TFW-60.
 
 Review verdicts:
-- ✅ **APPROVE** — independent verdict → 📚 KNW; return to Coordinator for `Closing and record recovery`
-- 🔄 **REVISE** — specific cited issues → the Reviewer proposes and stops; the Coordinator rules
+- ✅ **APPROVE** — no material finding remains → 📚 KNW; return to Coordinator for `Closing and
+  record recovery`. Visible non-material TRACE observations and finite current-carrier repairs may
+  coexist with APPROVE, but an owed disposition still keeps close open
+- 🔄 **REVISE** — specific complete material findings → the Reviewer proposes and stops; the Coordinator rules
   once, then follows **The 🔄 REVISE route** below. The verdict alone never moves lifecycle
 - ❌ **REJECT** → 🛑 User decides: (a) 📝 HL_DRAFT (rework HL), (b) 🔬 RES (new research), (c) 🟡 TS_DRAFT (rewrite TS)
 
@@ -846,10 +849,22 @@ owner may resolve UNDECLARED. A genuine new defect uses its existing authority r
 
 #### The 🔄 REVISE route
 
-A rung belongs to an item; the highest required authority controls a mixed round. The table is the
-single routing authority. `live REVIEW` means the existing REVIEW while it remains the current
-verdict artifact; recording a Coordinator ruling there is acceptance control, not a new
-implementation order.
+A finding, not an artifact, discrepancy or round, is the unit of review. Before routing, classify
+each item as VALUE, ASSURANCE or TRACE and record its affected accepted claim/authority, fact and
+oracle, harm, material consequence, owner, observable completion, route/rung and Candidate effect.
+A breached criterion, citation, count or process record alone cannot change the verdict.
+
+VALUE defects use the product/specification rungs below. ASSURANCE-only gaps target the missing
+proof or guard and preserve an independently established Candidate. Material TRACE defects use the
+exact acceptance authority or accepted-result identity ruler. Non-material TRACE stays visible as
+an observation or finite current-carrier repair and neither restarts product execution nor moves the
+Candidate. The highest required authority sequences only the next act in a mixed round; it never
+reclassifies another item, drags unchanged VALUE into repair or changes another item's Candidate
+effect. One REVIEW may mix all classes without a second verdict or blanket re-audit.
+
+A rung belongs to one material item. The table is the single routing authority. `live REVIEW` means
+the existing REVIEW while it remains the current verdict artifact; recording a Coordinator ruling
+there is acceptance control, not a new implementation order.
 
 | Case | Fix boundary | Recipient after Reviewer | Coordinator ruling site | Governing execution artifact | Lifecycle after REVIEW → after Executor acceptance | Exact hard stop |
 |---|---|---|---|---|---|---|
@@ -858,15 +873,14 @@ implementation order.
 | Rung 3 | a frozen HL claim | Coordinator, then `HL Contract` rule-8 ruler | HL §12 proposal plus `amendment_escalated` event and resolved ruler's terminal verdict | none until that verdict leaves an executable bound | unchanged; Executor is not dispatchable | Reviewer → Coordinator → resolved ruler; **STOP until terminal verdict** |
 | Mixed rung 1 + 2 | approved implementation plus TS change | Coordinator, then the same Executor | one TS revision containing the complete ruled round | highest approved TS revision | `TS_DRAFT → ONB` when the Executor accepts | Reviewer → Coordinator; Coordinator → `/tfw-handoff`; Executor → `/tfw-review` |
 
-A REVISE item names the failed TS acceptance criterion or frozen HL claim, its owner, and an
-observable completion condition. The Reviewer proposes and stops. The Coordinator rules every
-proposal once: a rung-1-only round is closed in the live REVIEW; any rung-2 item produces one TS
-sibling for the whole executable round; rung 3 uses rule 8 and forbids Executor dispatch until its
-valid terminal verdict leaves an executable bound. The Executor appends ONB, RF, and EV
-round content, and the Reviewer verifies the return. No cited condition means no round: approve
-with the remainder disposed, or transition to `BLOCKED` and return to the task owner because no
-basis can be stated. An `unassigned` owner is a hard stop. A fresh role holder resolves lineage
-from state/artifact references. History: D72 and RDP.
+A REVISE item supplies the complete finding grammar above. The Reviewer proposes and stops. The
+Coordinator rules every proposal once: a rung-1-only round is closed in the live REVIEW; any rung-2
+VALUE item produces one TS sibling for the executable VALUE round; rung 3 uses rule 8 and forbids
+Executor dispatch until its valid terminal verdict leaves an executable bound. The Executor appends
+ONB, RF and EV round content, and the Reviewer verifies the affected return. No complete material
+condition means no round: approve with the remainder disposed, or transition to `BLOCKED` and return
+to the task owner because no basis can be stated. An `unassigned` owner is a hard stop. A fresh role
+holder resolves lineage from state/artifact references. History: D72 and RDP.
 
 ## 6) Scope Budgets (per Phase)
 
@@ -993,6 +1007,13 @@ Coordinator only when `activation` cites the exact delegated authority; it never
 `dialogue: tfw-gates-only` creates only vertical edges: every role unit sends status changes,
 questions, gates and durable returns to its own `coordinator_route`; the Coordinator alone uses
 `owner_gateway`. Peer-role, role-to-owner and role-to-gateway material communication is prohibited.
+
+A Reviewer terminal return is emitted only after the REVIEW and authorized status/journal are
+durable and an immediate preflight confirms the exact route and immutable artifact ref. Its complete
+payload is `REVIEW · <reviewer-unit> · <task-or-phase> · <verdict> · <review-artifact@ref>` with no
+narrative. The tuple is the semantic identity: a duplicate causes no second act. Retry once only
+when the provider can confirm non-application while preserving that identical tuple; an ambiguous
+outcome is reported through provider status/readback and is never blindly retried.
 
 **Transcript isolation.** Another active unit's transcript, reasoning, tool output, terminal and
 unreturned working tree are not coordination or evidence surfaces. No role reads, tails, resumes,
@@ -1363,7 +1384,8 @@ Reverting a result does not revert its trace. A rejected task's folder and its b
 - Executor writes HL/TS or changes scope → **Role Lock violation**
 - Executor writes REVIEW → **Role Lock violation**
 - Reviewer approves without opening files or spot-checking RF claims against artifacts
-- A review checklist row is added without an evidenced firing rate or a stated asymmetric consequence
+- A checklist, citation, firing rate, changed-file count or historical defect count is used as a
+  quality objective without a named protected subject, harm and material consequence
 - Executor omits RF §7-9 (Fact Candidates, Strategic Insights, Diagrams) — sections are mandatory; empty content ("No X.") is valid, absent section is not
 - Researcher omits Findings Map in RES — section is mandatory; "No findings map." is valid if genuinely no visualization relevant
 - Coordinator reads KNOWLEDGE.md in context loading but never cites relevant items in HL §4 — "read but don't use" pattern breaks cross-task knowledge flow
@@ -1474,6 +1496,11 @@ no addressee is not a decision:
 3. On ❌ REJECT — route by §5's three destinations and say **which**: (a) 📝 HL_DRAFT, (b) 🔬 RES, or
    (c) 🟡 TS_DRAFT
 4. **Do NOT fix anything yourself** — a reviewer that repairs its own findings has reviewed nothing
+
+After the correct durable verdict/state write, the Reviewer preflights the exact `coordinator_route`
+and immutable REVIEW ref, then sends only the compact terminal envelope defined in §7. A wrong route,
+stale ref, narrative payload or unresolved send outcome is a hard stop; it is not repaired by sending
+a second semantic decision.
 
 When a Coordinator receives work returned by a 🔄 REVISE, the correct action is:
 1. Rule all proposals once and apply the exact case in `The 🔄 REVISE route` in §5

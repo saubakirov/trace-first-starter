@@ -83,9 +83,9 @@ owns preservation and removal; do not sync them into current workflows or recrea
 
 ### review
 
-| Config Key | Target File | Section Header | Row Label |
-|---|---|---|---|
-| `review.min_verify_ratio` | `.tfw/workflows/review.md` | Step 2 — Verify | Min verify ratio |
+`tfw.review.min_verify_ratio` is retired migration state. Remove it from active project and template
+configuration; do not sync or recreate it. Review verification is selected by claim, risk,
+dependency, environment, oracle, evidence gap and stated limits, not by a changed-file ratio.
 
 ### content_language
 

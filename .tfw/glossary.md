@@ -41,7 +41,7 @@ and incident histories live at the linked authority or durable history source.
 **Meaning:** The Executor's pre-work record of understanding, questions, recommendations, risks, and inconsistencies. **Authority:** [conventions.md](conventions.md#onb-onboarding-report), `ONB (Onboarding Report)`, and `.tfw/templates/ONB.md`.
 
 ### REVIEW (Review Report)
-**Meaning:** The Reviewer-locked verdict and disposition record produced after independent verification. **Authority:** [conventions.md](conventions.md#review-review-report), `REVIEW (Review Report)`, and `.tfw/templates/REVIEW.md`.
+**Meaning:** The Reviewer-locked record of ordered VALUE, ASSURANCE and TRACE assessment, classified item routes and Candidate effects, and one aggregate verdict after independent verification. **Authority:** [conventions.md](conventions.md#review-review-report), `REVIEW (Review Report)`, and `.tfw/templates/REVIEW.md`.
 
 ### KNOWLEDGE.md
 **Meaning:** The stable ordinary-file entry for architecture/reference, preserved legacy topics/D rows and independent qualified records; no maintained counts or inventory. **Authority:** [conventions.md](conventions.md#102-knowledge-infrastructure), `Knowledge Infrastructure`.
@@ -151,15 +151,18 @@ capture, and a terminal outcome. **Authority:** [conventions.md](conventions.md#
 **Meaning:** Optional post-review documentation and knowledge consolidation before closure. **Authority:** [conventions.md](conventions.md#5-task-statuses), `Task Statuses`.
 
 ### Revision
-**Meaning:** A repair round whose rung selects either the existing approved TS plus ruled live REVIEW
-or the highest approved TS sibling, while ONB/RF/EV append. **Authority:** [conventions.md](conventions.md#5-task-statuses),
+**Meaning:** A repair round whose individual findings retain their class, route and Candidate effect;
+the highest required authority sequences only the next act and selects either the existing approved
+TS plus ruled live REVIEW or the highest approved TS sibling, while ONB/RF/EV append. **Authority:** [conventions.md](conventions.md#5-task-statuses),
 `The 🔄 REVISE route`, and `Artifact file naming`.
 
 ### Citation bar
-**Meaning:** A review round may order only work that cites the failed approved TS criterion or frozen HL claim. **Authority:** [conventions.md](conventions.md#5-task-statuses), `REVISE`, and `.tfw/templates/REVIEW.md` §5.
+**Meaning:** A returning item must cite the affected approved claim or authority and state the fact,
+oracle, harm and material consequence; a breach or citation alone is insufficient. **Authority:** [conventions.md](conventions.md#5-task-statuses), `REVISE`, and `.tfw/templates/REVIEW.md` §5.
 
 ### Rung
-**Meaning:** A review finding's payment owner: Executor, Coordinator, or task owner. **Authority:** [conventions.md](conventions.md#15-role-lock-protocol), `Role Lock Protocol`.
+**Meaning:** The authority and owner needed to complete one material finding. It does not reclassify
+other items or move their Candidate. **Authority:** [conventions.md](conventions.md#15-role-lock-protocol), `Role Lock Protocol`.
 
 ## Concept Taxonomy
 
@@ -411,6 +414,9 @@ are not ordinary role inputs.
 ## Disposition
 
 **Meaning:** A review item becomes **paid** by a named phase, **promoted** to an existing task, or ruled **not material**; if payment is future, the same act must order that phase in a round with the item's cited condition, or `paid` is deferral. **Authority:** `.tfw/templates/REVIEW.md` §5 and [conventions.md](conventions.md#15-role-lock-protocol), `Role Lock Protocol`.
+Each item retains its class, route and Candidate effect. A non-material TRACE item remains a visible
+observation or finite current-carrier repair; it neither moves the Candidate nor restarts product
+execution. Any pending owed item keeps close open.
 
 ## project_config.yaml
 

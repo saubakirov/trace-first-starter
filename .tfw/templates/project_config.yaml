@@ -76,9 +76,6 @@ tfw:
         verify_user_tech_claims: true
         require_counter_evidence: true
 
-  review:                             # ← FRAMEWORK: updated by tfw-update
-    min_verify_ratio: 0.42
-
   statuses:                           # ← FRAMEWORK: updated by tfw-update
     - id: TODO
       emoji: "⬜"
