@@ -305,7 +305,7 @@ Two historical grammars remain readable forever and are never renamed or issued 
 
 - legacy `PREFIX-N`, optionally carried by a directory as `PREFIX-N__slug`, normalizes to
   `PREFIX-N`;
-- `2.0.0-dirty` `YYYYMMDD-HHMMSS__slug` keeps its whole directory name as the identifier.
+- legacy un-prefixed timestamp `YYYYMMDD-HHMMSS__slug` keeps its whole directory name as the identifier.
 
 ### Task control files
 
@@ -416,41 +416,21 @@ spine on continuation. Provisioning, navigation, attribution and forwarding gran
 
 ### Session identity
 
-Navigation-only; non-authoritative.
+Navigation-only; non-authoritative window and thread title formatting:
 
-```text
-SP:=U+0020;DOT:=U+00B7;BASE:=WORK+SP+DOT+SP+TASK[+SP+DOT+SP+PHASE]
-GATEWAY_BASE:=GATEWAY+SP+DOT+SP+[HANDLE+SP+DOT+SP]+TASK[+SP+DOT+SP+PHASE]
-WORK:=PLAN|RESEARCH|EXEC|REVIEW|RESUME|DOCS|INIT
-```
+- **Standard format**: `{WORK} · {TASK}` or `{WORK} · {TASK} · {PHASE}`
+- **Gateway format**: `GATEWAY · {TASK}` (or `GATEWAY · {HANDLE} · {TASK}`)
+- **WORK vocabulary**: `PLAN`, `RESEARCH`, `EXEC`, `REVIEW`, `RESUME`, `DOCS`, `INIT`.
+- **TASK**: Approved root-unique abbreviation (e.g. `CMTR`) or full task ID.
+- **PHASE**: Uppercase phase token (e.g. `PHASE-A`) when applicable; omit if single-phase or ambiguous.
+- **GATEWAY**: Emitted only when `dialogue: iterative` and running in the designated gateway thread. The gateway is separate from the root Coordinator and cannot execute a role workflow.
 
-**TASK:** approved root-unique abbreviation;else=full-ID;historical:=full-ID;preserve(`TFW-##`).
+Examples:
+- `PLAN · CMTR`
+- `EXEC · CMTR · PHASE-A`
+- `REVIEW · CMTR · PHASE-A`
 
-**PHASE:** uppercase(sole-governing-`phase-{token}`);else=omit(absent/conflict/ambiguity/iteration).
-
-**GATEWAY:** emit `GATEWAY_BASE` only when `dialogue: iterative` and the current actual unit address
-equals the `gateway:{native}` address in `owner_gateway`. The gateway is separate from the root
-Coordinator and cannot execute a role workflow. Include `{handle}` only when stable attribution was
-explicitly selected. Every role unit emits ordinary `BASE`; historical `LEAD` titles remain readable
-but are never issued.
-
-**Handle:** display the selected stable profile handle only. Never use mutable `name`, title,
-OS/account/provider, human binding or chat. Navigation grants no identity, authority, mandate,
-dispatch edge, role permission or amendment right; a generic bound or attribution is insufficient.
-
-**Collision:** RENDERED:=BASE|GATEWAY_BASE; duplicate(RENDERED)+exposed(stable-key) →
-suffix(SP+DOT+SP+`@<shortest-unique-leading-prefix>`); exact-readback-only for either RENDERED.
-
-
-
-**Failure:** either RENDERED unavailable/failed/altered-readback/no-key →
-report-once(title,reason); continue-unclaimed.
-
-**Forbidden:** guessed-fields/title-pipe/hyphen/emoji/alternate-separator/ordinal.
-
-**Sources:** authoritative-state/lineage; never chat/index/folder/memory.
-
-
+Never guess fields, and never use emojis, hyphens, pipes, or ordinals as separators. Navigation titles grant no identity, authority, mandate, or permissions.
 
 ### Artifact file naming
 
@@ -1333,15 +1313,6 @@ output: `templates/journal/event.md` → `{task}/journal/<name>.md`. An undersco
 for a directory separator — a `journal_event` shape rather than `journal/event` — is what
 this rule replaced.
 
-> **Why this is stated as two rules rather than one.** Until `2.0.0-dirty.3` §10.4 said every
-> Markdown template follows `lower_snake_case`, and **nine of its own twenty subjects
-> contradicted it** — every artifact template did. Its single illustration was
-> a `topic_file` template a move had already deleted, so the one example it offered named a
-> file the payload no longer shipped. Swapping that example for a surviving filename was the
-> available small fix and it was refused: it would have left a rule wrong about nine of the
-> files it governs, and a rule nobody follows teaches the reader to distrust the ones that
-> are true. What was wrong was the rule.
-
 ## 11) Quality Standard (no compromises)
 
 - No placeholders.
@@ -1376,7 +1347,7 @@ this rule replaced.
 
 Every task produces an **RF file** with results, decisions and observations, a **`status.md`** carrying its live state, and a **`journal/`** recording the events that moved it. Together with its task-local artifacts, these form the project's memory across sessions — and because each lives inside its own task, two tasks can advance without their traces colliding.
 
-Debt found in a review is part of that trace and lives in the REVIEW that found it, disposed of before the task closes. There is no project-level debt registry: the one that existed was retired at 2.1.0 and its rows are history in `tasks/DEBT-SNAPSHOT.md`.
+Debt found in a review is part of that trace and lives in the REVIEW that found it, disposed of before the task closes. There is no project-level debt registry: debt is bounded strictly to task review traces.
 
 Reverting a result does not revert its trace. A rejected task's folder and its board row are never deleted: the work may leave the working tree, the record that the work happened stays.
 
@@ -1436,28 +1407,12 @@ Reverting a result does not revert its trace. A rejected task's folder and its b
 - Work is left unfinished because it can be recorded as debt
 - A rung-2 finding is addressed only to the Executor, who cannot amend a TS
 - A 🔄 REVISE item names no breached acceptance criterion or frozen claim
-- Broad staging mixes sibling work (TD-144; TFW-60 review; verbal rule 0/1)
-- An unrelated landing commit hides its producer from path history (TD-178)
+- Broad staging mixes sibling work
+- An unrelated landing commit hides its producer from path history
 - A foreign caller resumes “last,” writing into an undelegated session rather than the returned id
 - An agent rules its proposal after transcription, session replacement, or grant change
 - Claimed delegation lacks one human-rooted child-only prefix or substitutes accountability
 - An Executor initiates, or a phase Coordinator points to an ancestor/task Coordinator
-
-History for these prohibitions: D61, D68, D72, and the named task/snapshot traces.
-
-### 14.1 Terminology Origin (maintainer reference)
-
-The following terms used in research stage templates are TFW-native and intentionally avoid methodology names:
-
-| TFW Term | Meaning | Origin |
-|----------|---------|--------|
-| Dimension | An independent decision factor (degree of freedom) in the problem | Zwicky's GMA: "parameter" |
-| Alternative | One valid value for a Dimension | Zwicky's GMA: "parameter value" |
-| Configuration Space | The full cross-product of all Dimension alternatives | Zwicky's GMA: "morphological box" |
-| Consistency Check | Pairwise incompatibility analysis eliminating invalid combinations | Zwicky's GMA: "cross-consistency assessment (CCA)" |
-| Surviving Configuration | A configuration that passed all pairwise checks | Zwicky's GMA: "compatible solution" |
-
-> **Scope:** This note is for framework maintainers only. The terms "Zwicky", "GMA", "General Morphological Analysis", "morphological box", and "cross-consistency assessment" MUST NOT appear in any researcher-facing template or workflow instruction.
 
 ## 15) Role Lock Protocol
 
