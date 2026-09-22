@@ -189,7 +189,7 @@ TFW is tool-agnostic. Adapters translate the same repository-local workflow into
 |---|---|---|
 | Claude Code | `.tfw/adapters/claude-code/` | Root `CLAUDE.md` |
 | Cursor | `.tfw/adapters/cursor/` | `.cursor/rules/tfw.mdc` |
-| Antigravity | `.tfw/adapters/antigravity/` | `.agent/rules/tfw.md` |
+| Antigravity | `.tfw/adapters/antigravity/` | `.agents/rules/tfw.md` plus `.agents/skills/tfw-*/SKILL.md` |
 | Codex | `.tfw/adapters/codex/` | Root `AGENTS.md` plus `.agents/skills/tfw-*/SKILL.md` |
 | Plain chat | No installed adapter | Provide the relevant repository files explicitly |
 

@@ -188,7 +188,7 @@ TFW нақты бір құралға байланбайды. Адаптер ре
 |---|---|---|
 | Claude Code | `.tfw/adapters/claude-code/` | Түбірдегі `CLAUDE.md` |
 | Cursor | `.tfw/adapters/cursor/` | `.cursor/rules/tfw.mdc` |
-| Antigravity | `.tfw/adapters/antigravity/` | `.agent/rules/tfw.md` |
+| Antigravity | `.tfw/adapters/antigravity/` | `.agents/rules/tfw.md` және `.agents/skills/tfw-*/SKILL.md` |
 | Codex | `.tfw/adapters/codex/` | Түбірдегі `AGENTS.md` және `.agents/skills/tfw-*/SKILL.md` |
 | Кәдімгі чат | Орнатылатын адаптер жоқ | Қажетті репозиторий файлдарын анық беріңіз |
 

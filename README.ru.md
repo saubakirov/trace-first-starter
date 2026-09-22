@@ -187,7 +187,7 @@ TFW не зависит от инструмента. Адаптер перево
 |---|---|---|
 | Claude Code | `.tfw/adapters/claude-code/` | Корневой `CLAUDE.md` |
 | Cursor | `.tfw/adapters/cursor/` | `.cursor/rules/tfw.mdc` |
-| Antigravity | `.tfw/adapters/antigravity/` | `.agent/rules/tfw.md` |
+| Antigravity | `.tfw/adapters/antigravity/` | `.agents/rules/tfw.md` и `.agents/skills/tfw-*/SKILL.md` |
 | Codex | `.tfw/adapters/codex/` | Корневой `AGENTS.md` и `.agents/skills/tfw-*/SKILL.md` |
 | Обычный чат | Адаптер не устанавливается | Передавайте нужные файлы репозитория явно |
 

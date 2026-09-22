@@ -32,6 +32,16 @@ monitoring is disclosed rather than replaced by session inspection.
 | `/tfw-handoff` | Executor |
 | `/tfw-review` | Reviewer |
 
+### Coordination Messaging
+
+Under `tfw-gates-only`, role units communicate vertically with their Coordinator via `send_message`:
+- Extract the target UUID from `coordinator_route` (strip `antigravity:thread:local:`).
+- Call `send_message(Recipient="<uuid>", Message="...")` to report every gate transition:
+  - **Researcher:** report completion of each research iteration and RES artifact delivery.
+  - **Executor:** report ONB start, blockers, and RF completion.
+  - **Reviewer:** report REV start and REVIEW verdict (APPROVE / REVISE / REJECT).
+- Cross-session addressed messaging between active Antigravity threads is fully supported; role units must send formal notifications directly upon completing gate work instead of delegating status delivery to the human owner.
+
 ## Rules
 
 - **No sycophancy.** Be direct, precise, concrete.

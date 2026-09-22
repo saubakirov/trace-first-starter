@@ -5,6 +5,39 @@ Format: [Keep a Changelog](https://keepachangelog.com/). Versioning: [Semantic V
 
 ## [Unreleased]
 
+## [3.5.0] — 2026-09-22
+
+AGSK — Antigravity Skill Migration & Legacy .agent Retirement. The Antigravity adapter is unified
+with Codex around the shared `.agents/skills/` surface. The deprecated `.agents/workflows/`
+directory and the vestigial singular `.agent/` directory are fully retired.
+
+### Changed
+
+- Antigravity commands route through `.agents/skills/tfw-{command}/SKILL.md` (shared with Codex)
+  instead of the deprecated `.agents/workflows/tfw-{command}.md`.
+- The persistent Antigravity rule (`.agents/rules/tfw.md`) includes explicit coordination messaging
+  instructions for vertical `send_message` communication under `tfw-gates-only`.
+- Adapter documentation (`.tfw/adapters/antigravity/README.md`) documents cross-session addressed
+  messaging mechanics.
+- `KNOWLEDGE.md` Adapters row updated: 10 routes, `.agents/skills/` surface, `.agent` fully retired.
+- `.tfw/glossary.md` Tool Adapter definition updated to reference `.agents/skills/`.
+- Adapter entry points in `README.md`, `README.ru.md`, `README.kk.md` updated to `.agents/rules/tfw.md`
+  plus `.agents/skills/tfw-*/SKILL.md`.
+
+### Removed
+
+- The `.agent/` directory (singular) and its contents (`rules/agents.md`).
+- The `.agents/workflows/` directory and all 10 deprecated workflow files (`tfw-plan.md` through
+  `tfw-init.md`).
+
+### Compatibility and updating
+
+**Read [Updating to TFW 3.5.0](migrations/3.5.0.md), including from 3.4.1 and earlier.**
+Downstream projects must classify `.agent/` contents before deletion: framework-owned files are
+safe to remove; custom rules move to `.agents/rules/`; custom workflows convert to skills in
+`.agents/skills/`. Customized or ambiguous affected files refuse replacement instead of being
+silently deleted.
+
 ## [3.4.1] — 2026-09-14
 
 RWNR — Resume Without Resume. Returning and interrupted work now uses the existing `/tfw-plan`
