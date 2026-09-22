@@ -30,7 +30,13 @@ question triggers it. Missing or duplicate addressed headings are a hard stop un
 
 ## Step 0 — Resume & Iteration Detection
 
-On resume, reread this workflow and mode. Read `research/iterations.yaml` when present. Current iteration is the first pending entry, cross-checked against `iterN/` folders (highest + 1, else 1); for N>1 read predecessor RES files. In current `iterN/`, inspect stage/RES files. Resume from first missing stage. Existing RES completes the iteration.
+On resume, reread this workflow and mode. For pipeline research, require the Coordinator-prepared
+`research/iterations.yaml`; a missing, malformed or incomplete pending entry returns to the
+Coordinator before research work. The Researcher never creates or edits this file. Current iteration
+is the first pending entry, cross-checked against `iterN/` folders (highest + 1, else 1); for N>1 read
+predecessor RES files. In current `iterN/`, inspect stage/RES files. Resume from first missing stage.
+Existing RES completes the iteration. Standalone research may infer iteration 1 when no control file
+exists; it does not claim a Coordinator-governed iteration.
 
 ## Session identity checkpoint
 

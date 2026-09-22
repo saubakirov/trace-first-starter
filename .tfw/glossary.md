@@ -244,7 +244,9 @@ other items or move their Candidate. **Authority:** [conventions.md](conventions
 
 ## iterations.yaml
 
-**Meaning:** Research-local state declaring iteration bounds and completion without owning task lifecycle. **Authority:** `.tfw/workflows/research/base.md`, `Resume & Iteration Detection`.
+**Meaning:** Coordinator-owned research control state declaring prepared iterations and their
+completion without owning task lifecycle. **Authority:** `.tfw/workflows/plan.md`, `Research`;
+`.tfw/workflows/research/base.md` consumes but never creates or edits it.
 
 ## min_iterations
 

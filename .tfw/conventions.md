@@ -537,7 +537,8 @@ When research spans multiple iterations, each iteration gets its own subfolder a
 
 **Trace rule:** Iteration folders accumulate — never delete or overwrite previous iteration's files. Each `research/iterN/` folder is a trace. Deleting them = deleting reasoning.
 
-**Control file:** `research/iterations.yaml` tracks iteration state. Created by coordinator in `plan.md` Step 6 before launching research. Format:
+**Control file:** `research/iterations.yaml` tracks iteration state. The Coordinator creates and fully
+prepares it in `plan.md` Step 7 before the first research dispatch. Format:
 
 ```yaml
 task_id: PROJ-N
@@ -561,7 +562,10 @@ iterations:
 
 The `agent` field records which tool or agent conducted the iteration — for traceability, not dispatch. The `sources` field records what source categories were consulted. Both fields are optional; simple single-agent tasks can omit them.
 
-Coordinator updates `research/iterations.yaml` after each iteration (marks status, adds next iteration if needed). Researcher reads it at start to understand predecessor context and assigned hypotheses.
+The Coordinator alone updates `research/iterations.yaml`: after each durable return it marks the
+current entry complete and, when another iteration is justified, adds a fully prepared pending entry
+with its focus and hypotheses before dispatch. The Researcher reads it for predecessor context and
+assigned hypotheses; the Researcher never creates or edits the control file.
 
 
 ### Review subfolder
@@ -862,12 +866,13 @@ retires the other old keys, and adds multiplier `2`.
 
 ## 7) Coordination
 
-### Activation and gate routing
+### Workflow activation and routing
 
 Provisioning creates or selects a callable unit. Activation authorizes one exact workflow run.
 Continuation resumes the same unit inside the same immutable authority and routing spine. None of
 these acts implies another. A profile, binding, title, role prompt, briefing, status token, provider
-session, provisioned task or wait result never activates work.
+session, source artifact, trigger, provisioned task or wait result never activates work. Navigation,
+attribution and forwarding grant no authority.
 
 A **TFW gate** is a named workflow checkpoint whose question, status or correction affects whether
 the current role may continue. A **durable return** is the role-owned artifact plus task-local status
@@ -881,15 +886,19 @@ Every activation supplies the exact `/tfw-*` skill, task and phase, and one line
 - **delegated:** an actual Coordinator dispatch cites the immutable delegation mandate;
 - **continuation:** the same unit cites its prior activation and still-current routing spine.
 
+Resolve a machine handle only when stable attribution is explicitly required.
+
 The activation payload contains only those facts and an exact continuation reference when resuming.
 Copied solution text, a long briefing, “wait”, or “you are the role” may provide context but never
 substitutes for the skill or activation source. Dispatch preserves actual source, destination,
 parent, role/scope, native address/channel, governing status/authority and originating proposer.
 
-Before material work the unit reads the governing `status.md`, validates the complete routing spine,
-exact lifecycle gate, skill, role, task/phase and lineage, and records producer provenance in its role
-artifact. A mismatch, partial or legacy-only status, foreign dispatch, role prompt without activation,
-implicit latest-session lookup, relay, hidden helper or ambiguous address is a pre-work refusal.
+Before material work the unit reads the governing `status.md` and journal before derived or shared
+inputs; validates bounded scope, actual unit/address/parent, all five routing fields, exact lifecycle
+gate, skill, role, task/phase and lineage; and records producer provenance in its role artifact. Total
+absence is legacy-readable but cannot activate current work. A partial, stale, foreign, unverifiable
+or mismatched spine, role prompt without activation, implicit latest-session lookup, relay, hidden
+helper or ambiguous address is a pre-work refusal.
 Apply the session title at the earliest valid state checkpoint, read it back where supported, report
 failure once and never treat the title as authority. A GATEWAY may provision or activate a separate
 Coordinator only when `activation` cites the exact delegated authority; it never invokes
@@ -923,14 +932,16 @@ dialogue and cannot rewrite authority. A Reviewer for the result cannot be eithe
 An authority answer is an immutable task-local `gate_answer` event. It cites the governing status,
 the blocked role artifact and the exact HL or TS authority; its body identifies the answer source,
 authority epoch and operational effect. The blocked role never writes its own answer or treats chat,
-a title, a profile or hidden state as amendment authority.
+a title, a profile or hidden state as amendment authority. No role edits another role's artifact to
+answer itself.
 An answer that changes scope, acceptance, architecture, authority or an owner reservation is invalid
 as `gate_answer` and routes to a TS revision or HL §12. Missing, stale, foreign, unverifiable or
 contradictory refs keep the role blocked.
 
-All current role artifacts record: actual producer unit address, parent Coordinator route,
-activation or dispatch source, governing authority reference and originating proposer when present.
-Shared principal attribution never merges units or changes authority.
+All current role artifacts record the actual producer unit address, parent Coordinator route,
+activation or dispatch source, exact `coordination_authority`, and originating proposer
+`{principal, unit}` or explicit `none`. Recheck the complete spine on continuation. Shared principal
+attribution never merges units or changes authority.
 
 A role consumes prior artifacts only at their stated evidence level and does not pre-solve another
 Role Lock. Distrust alone creates no repeat-work duty: repetition cites either an explicit independent
@@ -1330,7 +1341,7 @@ recipient/artifact/state contract is owned by `The 🔄 REVISE route` in §5.
 | Workflow | Role Lock | Permitted Artifacts | Forbidden Artifacts |
 |----------|-----------|---------------------|---------------------|
 | `init.md` | Coordinator | RES, RF, project config files | HL, TS, code |
-| `plan.md` | Coordinator | HL, TS, acceptance rulings appended to a live REVIEW | ONB, RF, RES, REVIEW creation/proposals, code |
+| `plan.md` | Coordinator | HL, TS, `research/iterations.yaml`, acceptance rulings appended to a live REVIEW | ONB, RF, RES, REVIEW creation/proposals, code |
 | `research/base.md` | Researcher | RES, research/ stage files | HL, TS, ONB, RF, REVIEW, code |
 | `handoff.md` | Executor | ONB, RF, code | HL, TS, RES, REVIEW |
 | `review.md` | Reviewer — **marks and proposes**; the **Coordinator** holds acceptance authority over dispositions and rules them once at the close of review (Step 6) | review stage files (map.md, verify.md, judge.md), REVIEW, proposed dispositions | ONB, RF, HL, TS, code, **disposition rulings** |

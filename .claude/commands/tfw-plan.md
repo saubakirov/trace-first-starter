@@ -4,7 +4,7 @@ description: TFW Plan — research, write HL, review, scope decision, write TS
 
 # TFW Plan — Task Inception Workflow
 
-> 🔒 **ROLE LOCK: COORDINATOR.** Write HL/TS and Coordinator rulings in a live REVIEW. Never write
+> 🔒 **ROLE LOCK: COORDINATOR.** Write HL/TS, `research/iterations.yaml`, and Coordinator rulings in a live REVIEW. Never write
 > ONB, RF, RES, Reviewer proposals, or implementation. Violation: stop and report.
 
 **Mindset — Strategic Architect.** Work backwards from the stakeholder-visible finish. Distill the
@@ -113,9 +113,11 @@ Routes are outputs, not invocations; evaluation writes nothing.
    freezes/commits before research.
 
 7. **Research.** Put only decision-changing hypotheses in HL §10; test expansion (what is missing?)
-   and subtraction (what may be false, unnecessary or overbuilt?). Default to governed research
-   (configured minimum 2, soft maximum 5), route `/tfw-research`, and stop. On return register RES,
-   apply free refinements and route frozen proposals until the contract settles.
+   and subtraction (what may be false, unnecessary or overbuilt?). Before every dispatch, the
+   Coordinator alone prepares `research/iterations.yaml` per `Research subfolder`: configured bounds
+   and one complete pending entry with decision-linked focus/hypotheses, status and expected RES.
+   The Researcher never edits it. Route `/tfw-research`; stop. On return the Coordinator verifies RES,
+   closes the entry, applies refinements and routes proposals; repeat only for a material gap.
 
 8. **Amendments.** Without delegation, validate and route to the human owner. With delegation,
    resolve `HL Contract` rule 8: owner/root, chain, proposer, grant, reservations and signer. Gaps
