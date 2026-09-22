@@ -1,0 +1,21 @@
+# Sequential focused passes. Iteration 2 reads and challenges iteration 1.
+# The Coordinator activates one directly addressable Researcher per launch.
+# The Researcher writes only its assigned iterN directory and returns materially only to coordinator_route.
+task_id: TFW_20260922-123250_CMTR
+title: "Coordinator-Assisted Model Selection, Thinking Budgeting, and Platform-Adaptive Launching"
+mode: focused
+min_iterations: 2
+max_iterations: 5
+iterations:
+  - number: 1
+    focus: "Изучить параметры моделей и thinking в Antigravity, Codex и Claude Code для полноценных сессий; сформулировать минимальный набор простых эвристик классификации сложности (правило 3 уровней: Procedural, Standard, Critical) и правила самокалибровки координатора"
+    hypotheses: [H1, H2, H3]
+    status: pending
+    res_file: research/iter1/RES.md
+    sources: [platform-docs, codebase, task-traces, conventions]
+  - number: 2
+    focus: "Протестировать и атаковать правило 3 уровней на контрастных сценариях TFW; определить точные минимальные места расширения в plan.md, conventions §7 и шаблонах HL.md/TS.md без раздувания сущностей"
+    hypotheses: [H1, H2, H3]
+    status: pending
+    res_file: research/iter2/RES.md
+    sources: [iter1-results, conventions, workflows, task-traces, templates]
