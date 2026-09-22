@@ -3,7 +3,7 @@
 > **Current filename**: `TS__phase-a__core_framework_integration.md`
 > **Date**: 2026-09-22
 > **Author**: Antigravity Coordinator
-> **Status**: 🟡 TS_DRAFT — Awaiting approval
+> **Status**: 🟢 TS_APPROVED
 > **Parent HL**: [HL-TFW_20260922-123250_CMTR](../HL-TFW_20260922-123250_CMTR.md)
 > **Recommended execution profile**: Standard (Balanced tier, thinking: Medium) — Интеграция готовых выверенных диффов из ресерча в ядро TFW, верификация тестами.
 
