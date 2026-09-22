@@ -17,6 +17,7 @@ iterations:
   - number: 2
     focus: "Протестировать и атаковать правило 3 уровней на контрастных сценариях TFW; определить точные минимальные места расширения в plan.md, conventions §7 и шаблонах HL.md/TS.md без раздувания сущностей"
     hypotheses: [H1, H2, H3]
-    status: pending
+    status: complete
+    agent: "antigravity:thread:local:24003cc7-799f-4352-9c51-bc150687d097"
     res_file: research/iter2/RES.md
     sources: [iter1-results, conventions, workflows, task-traces, templates]
