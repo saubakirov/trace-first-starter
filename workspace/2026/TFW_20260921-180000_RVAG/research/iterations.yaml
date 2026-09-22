@@ -19,6 +19,7 @@ iterations:
   - number: 2
     focus: "attack C4+ marginal decision power, mixed-round per-item routing, safety/security and human-authority boundaries, evidence/result identity and new-carrier necessity; inspect accepted AGSK transport and select the minimal post-AGSK Reviewer payload and change surface"
     hypotheses: [H1, H2, H3, H4, H5, H6, H7]
-    status: pending
+    status: in_progress
     res_file: research/iter2/RES.md
+    agent: codex:thread:local:01a0c7dd-94bf-78b2-82ba-b14da2e7778a
     sources: [predecessor-research, codebase, task-traces, counterexamples, accepted-AGSK-result]
