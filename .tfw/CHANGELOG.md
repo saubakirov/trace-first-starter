@@ -5,20 +5,21 @@ Format: [Keep a Changelog](https://keepachangelog.com/). Versioning: [Semantic V
 
 ## [Unreleased]
 
-### Fixed
+## [3.5.2] — 2026-09-22
 
-- Stale Antigravity command routing in `.tfw/conventions.md` (§9 Tool Adapter Pattern) and
-  `.tfw/adapters/README.md`: replaced deprecated `.agents/workflows/` paths with
-  `.agents/skills/tfw-{command}/SKILL.md` to match the adapter manifest and installed skills.
-- Restored the canonical `Workflow activation and routing` contract after over-aggressive
-  deduplication, including journal-first context, complete routing-spine validation, legacy-absence
-  refusal, non-activating inputs, exact coordination authority and continuation provenance.
-- Restored Coordinator ownership of `research/iterations.yaml`: Plan prepares each pending iteration
-  before dispatch and closes it on return; Researcher refuses incomplete pipeline control state and
-  never creates or edits the control file.
+CMTR — Per-Launch Model and Reasoning Selection. Coordinators now choose model and reasoning effort
+at each actual role launch from verified native options, protecting the required quality floor while
+avoiding unnecessary token/session spend. This patch also hardens gate-only communication and removes
+duplicated framework instructions.
 
 ### Changed
 
+- Before every role launch, Plan checks prerequisites, sets the quality floor, selects model and
+  reasoning effort separately, and records one lower-resource alternative with its material risk.
+- Native authorized launches receive the selected parameters. Other environments receive the exact
+  two-line `Launch` / `Why` advice instead of an unsupported automation claim.
+- Launch evidence separates requested settings, observable effective settings, delivery, outcome and
+  material rework; completion alone does not prove that a model choice was sufficient or minimal.
 - Simplified session identity specification in `.tfw/conventions.md` (§4), replacing cryptic BNF
   pseudo-code and unicode character references with clear formatting rules and representative examples.
 - Normalized historical task grammar classification in `.tfw/conventions.md` (§4) from `2.0.0-dirty`
@@ -33,11 +34,31 @@ Format: [Keep a Changelog](https://keepachangelog.com/). Versioning: [Semantic V
 - Compressed duplicated artifact inventories, template-owned semantic tables and the flat
   anti-pattern catalogue in `.tfw/conventions.md` while retaining one canonical coordination rule.
 
+### Fixed
+
+- Stale Antigravity command routing in `.tfw/conventions.md` (§9 Tool Adapter Pattern) and
+  `.tfw/adapters/README.md`: replaced deprecated `.agents/workflows/` paths with
+  `.agents/skills/tfw-{command}/SKILL.md` to match the adapter manifest and installed skills.
+- Restored the canonical `Workflow activation and routing` contract after over-aggressive
+  deduplication, including journal-first context, complete routing-spine validation, legacy-absence
+  refusal, non-activating inputs, exact coordination authority and continuation provenance.
+- Restored Coordinator ownership of `research/iterations.yaml`: Plan prepares each pending iteration
+  before dispatch and closes it on return; Researcher refuses incomplete pipeline control state and
+  never creates or edits the control file.
+- Restored `.claude/commands/tfw-plan.md` as an exact copy of its canonical workflow.
+
 ### Removed
 
 - Pre-release historical polemic regarding `2.0.0-dirty.3` template naming from `.tfw/conventions.md` (§10.4).
 - Internal maintainer-only morphological analysis terminology note (§14.1) from agent-facing
   `.tfw/conventions.md`.
+
+### Compatibility and updating
+
+**Read [Updating to TFW 3.5.2](migrations/3.5.2.md), including from 3.5.1 and earlier.**
+Refresh Plan, Research, conventions, glossary and the affected persistent adapters as one connected
+coordination group; install the canonical Claude Plan and Research copies. Existing task state and
+routing fields remain compatible and must not be rewritten.
 
 ## [3.5.1] — 2026-09-22
 
