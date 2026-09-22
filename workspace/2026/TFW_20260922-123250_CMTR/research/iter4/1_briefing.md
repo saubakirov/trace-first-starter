@@ -17,12 +17,12 @@
 
 - Reconstruct the exact iteration-3 decision contract and its four claimed decision factors, then inventory which inputs were observed, declared, unavailable, or inferred.
 - Collect durable, provider-native evidence for the iteration-3 Codex launch and the bounded Antigravity CLI/IDE and Claude Code/Desktop claims; keep creation arguments, resolved settings, delivery, result, and rework as separate evidence fields.
-- Define at least one cheaper plausible Codex model/effort pair available at the same dispatch surface and the minimum evidence needed to call either pair sufficient for this exact adversarial task.
+- Define at least one cheaper plausible Codex model/effort pair available at the same dispatch surface as a counterfactual candidate only, and identify what a separately authorized equivalent-work trial would need to establish sufficiency.
 - Identify prospective Phase C observations that could contradict the rule rather than merely demonstrate that a launch completed.
 
 ### Extract
 
-- Map the actual iteration-3 and iteration-4 launches into a comparison matrix: demanded result, uncertainty, dependency breadth, oracle strength, consequence, feasible pair, selection rationale, native readback, outcome, and material rework.
+- Map the iteration-3 and iteration-4 launches into a contrast matrix—demanded result, uncertainty, dependency breadth, oracle strength, consequence, feasible pair, selection rationale, native readback, outcome, and material rework—while explicitly refusing equivalent-work or causal model comparison because their work differs.
 - Test whether the four-factor rule discriminates the selected pair from a cheaper plausible pair; separate a quality-floor justification from unknown cost ordering and retrospective fluency.
 - Produce surface-specific claim boundaries for Codex, Antigravity CLI/IDE, Claude Code, and Claude Desktop without transferring evidence between provider modes.
 - Convert prospective Phase C evidence into explicit falsifiers and escalation conditions tied to observable result or rework.
@@ -38,15 +38,15 @@
 
 | # | Hypothesis | HL Status |
 |---|-----------|-----------|
-| H1 | The quality-floor → least-resource-sufficient rule is more robust on real TFW launches than a role-based three-tier classification. | open — the prior 95% confirmation was withdrawn as unsupported |
-| H2 | Selecting model capability and reasoning effort separately prevents errors hidden by a combined profile. | open — requires comparison on real launches |
-| H3 | Applying the choice at dispatch is more reliable than a frozen HL/TS profile field and needs no new permanent artifact. | open — requires a native pilot |
-| H4 | Each claimed platform has an authoritative availability source and an exact autonomous or owner-assisted launch route. | open — must be verified per platform |
+| H1 | The quality-floor → least-resource-sufficient rule is more robust on real TFW launches than a role-based three-tier classification. | open — analytical counterexamples to tiers exist, but there is no equivalent-work outcome comparison |
+| H2 | Selecting model capability and reasoning effort separately prevents errors hidden by a combined profile. | open — structural and native-contract support exists without a causal comparison |
+| H3 | Applying the choice at dispatch is more reliable than a frozen HL/TS profile field and needs no new permanent artifact. | partial — Codex parameter passing and delivery are proven; prospective application of the rule and effective settings are not |
+| H4 | Each claimed platform has an authoritative availability source and an exact autonomous or owner-assisted launch route. | partial — surfaces are separated, but account selectors and foreign-provider chains are unpiloted |
 
 ## Scope Intent
 
 - **In scope:** Independent attack of iteration 3's RES and durable evidence; the concrete iteration-3 and iteration-4 Codex launch selections; strict requested/resolved/delivery/outcome/rework separation; bounded Antigravity and Claude claim review; falsifiable Phase C outcome and rework criteria; classified HL recommendations only.
-- **Out of scope:** Provider pilots or helpers; inspection of iteration-3 task transcripts or unreturned state; claims about effective backend model/effort without native readback; Phase B acceptance; TS, Phase C implementation, workflows, templates, conventions, adapters, code, Phase A history, status, `iterations.yaml`, HL edits, or any provider substitution.
+- **Out of scope:** Provider pilots or helpers; inspection of iteration-3 task transcripts or unreturned state; claims about effective backend model/effort without native readback; treating iteration 3's Astra/high rule-derivation outcome and iteration 4's Sol/high RES-attack outcome as equivalent-work evidence or a causal model comparison; presenting a cheaper iteration-4 pair as tested without separately authorized trial evidence; Phase B acceptance; TS, Phase C implementation, workflows, templates, conventions, adapters, code, Phase A history, status, `iterations.yaml`, HL edits, or any provider substitution.
 
 ## Guiding Questions
 
