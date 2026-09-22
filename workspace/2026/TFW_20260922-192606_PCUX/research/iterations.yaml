@@ -11,5 +11,5 @@ iterations:
   - number: 2
     focus: Test the unresolved authority/reference semantics of RES iter1 D1-D3 against existing task/phase status, journal and activation readers. Cover command-first launch with later child identity, conditional mode selection followed by same-unit continuation, root-to-phase scope, revocation and legacy/default interpretation. Compare the smallest compatible options and map affected source/copy readers with concrete failure cases; do not implement schemas or repeat settled provider probes. H1/H2/H8 remain conditional real-use evidence limits; consume the browser addendum only if the owner returns it as complete. Preserve the frozen intent, model/effort selection and existing unaffected obligations; no full platform trial is a prerequisite to documenting a conditional route.
     hypotheses: [H5, H6, H7]
-    status: in_progress
+    status: complete
     res_file: research/iter2/RES.md
