@@ -5,6 +5,29 @@ Format: [Keep a Changelog](https://keepachangelog.com/). Versioning: [Semantic V
 
 ## [Unreleased]
 
+### Fixed
+
+- Stale Antigravity command routing in `.tfw/conventions.md` (§9 Tool Adapter Pattern) and
+  `.tfw/adapters/README.md`: replaced deprecated `.agents/workflows/` paths with
+  `.agents/skills/tfw-{command}/SKILL.md` to match the adapter manifest and installed skills.
+
+### Changed
+
+- Simplified session identity specification in `.tfw/conventions.md` (§4), replacing cryptic BNF
+  pseudo-code and unicode character references with clear formatting rules and representative examples.
+- Normalized historical task grammar classification in `.tfw/conventions.md` (§4) from `2.0.0-dirty`
+  to `legacy un-prefixed timestamp`.
+- Streamlined trace discipline in `.tfw/conventions.md` (§13) by removing references to the 2.1.0-retired
+  debt snapshot.
+- Cleaned closed internal bug references (`TD-144`, `TD-178`) from anti-pattern items in
+  `.tfw/conventions.md` (§14).
+
+### Removed
+
+- Pre-release historical polemic regarding `2.0.0-dirty.3` template naming from `.tfw/conventions.md` (§10.4).
+- Internal maintainer-only morphological analysis terminology note (§14.1) from agent-facing
+  `.tfw/conventions.md`.
+
 ## [3.5.1] — 2026-09-22
 
 RVAG — Reviewer Value-Assurance Gate. Review now judges the accepted result before process polish:
