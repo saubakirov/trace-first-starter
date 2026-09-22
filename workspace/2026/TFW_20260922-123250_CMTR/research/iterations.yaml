@@ -31,7 +31,7 @@ iterations:
   - number: 4
     focus: "Независимо атаковать выводы iteration 3 контрпримерами и реальными launch evidence; определить границы достаточности, эскалации и непроверенных платформенных claims до Phase C"
     hypotheses: [H1, H2, H3, H4]
-    status: in_progress
+    status: complete
     agent: "codex:thread:local:01a0c8bf-5bbb-75f1-ac97-b8e640b531ae"
     res_file: research/iter4/RES.md
     sources: [iter3-results, platform-native-surfaces, live-dispatch-evidence, counterexamples, project-north-star]
