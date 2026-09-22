@@ -4,7 +4,7 @@ min_iterations: 2
 max_iterations: 5
 iterations:
   - number: 1
-    focus: Establish provider capabilities, full TFW role obligations for compact subagent chains, and command-only Coordinator/GATEWAY launch with task-local authority and exact provenance.
-    hypotheses: [H1, H2, H3, H4, H5]
+    focus: Select minimal shared and provider changes for command-only launch with later address discovery, gates-only GATEWAY with separate phase Coordinators, and compact full TFW role chains.
+    hypotheses: [H1, H2, H3, H4, H5, H6]
     status: pending
     res_file: research/iter1/RES.md
