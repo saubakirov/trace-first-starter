@@ -5,6 +5,64 @@ Format: [Keep a Changelog](https://keepachangelog.com/). Versioning: [Semantic V
 
 ## [Unreleased]
 
+FRATS — Framework Refactoring and Agent-Team Simplification. Coordination is now an explicit,
+task-local contract rather than an inferred autonomy mode or a chain of conversational agents. The
+refactor also restores the Coordinator's Strategic Architect role while reducing duplicated and
+contradictory instruction text without using a percentage target as a quality proxy.
+
+### Changed
+
+- Current task state carries one five-field routing spine: `coordinator_route`, `owner_gateway`,
+  `dialogue`, `activation`, and `coordination_authority`. A `/tfw-*` invocation activates a role only
+  when it names the exact skill, task/phase, and owner-direct, delegated, or continuation source.
+- `tfw-gates-only` permits only vertical role-to-own-Coordinator status, gate, and durable-return
+  traffic. Iterative dialogue is a separate, exact grant and requires an isolated GATEWAY that is
+  neither the root Coordinator nor a workflow role.
+- Plan again acts as a Strategic Architect: it works backwards from the stakeholder-visible finish,
+  renders the future state, challenges consequential assumptions, applies the Saint-Exupery removal
+  gate, selects coordination explicitly, and gives Executors functional freedom inside goal, value,
+  boundaries, DoD, and DoF.
+- Provider entry points disclose native provisioning, addressed send, wait/readback, and title
+  capabilities before coordination is selected. Capability never grants authority or proves
+  reliability; unavailable orchestration is reported instead of simulated.
+- Ten canonical workflows own their rules once, stay within the 1,400-word safety ceiling, and
+  regenerate twenty exact Claude/Antigravity projections. Repeated activation, return, knowledge,
+  and handover instructions were consolidated at their actual owners.
+- Current artifact issuance uses one deterministic grammar, including `TS__{ID}.md` for a
+  single-phase TS, `TS__phase-{x}__{phase_slug}.md` for a phase TS, and `__rev{N}` only for a formal
+  revision. Historical artifact names remain readable and are not renamed.
+
+### Fixed
+
+- Added **Transcript isolation**: no role may read, tail, resume, search, or reconstruct another
+  active role's transcript, reasoning, tool output, terminal, or unreturned worktree for monitoring,
+  review, trust validation, context recovery, or pre-solving. Use bounded wait/status, one addressed
+  status request, and returned artifacts instead.
+- Restored Coordinator purpose that earlier compression had reduced to routing mechanics, including
+  Working Backwards, press-release preview, future-state rendering, uncomfortable questions,
+  two-sided research hypotheses, and explicit checks for unnecessary scope.
+- Repaired contradictory Reviewer ownership, stale configuration wording, a dead glossary anchor,
+  inconsistent Phase/Step/Stage/Gate headings, and ambiguous single-phase artifact naming.
+- Corrected legacy decision D75 from trajectory `310,485→112,536 (−63.8%)` to the independently
+  reproduced `310,485→112,206 (−63.9%)`; the active-corpus result and cited sources are unchanged.
+
+### Compatibility and updating
+
+**Migration is required for active Full TFW installations; historical task data does not need to be
+rewritten.** A release version has not yet been assigned, so no version-addressed migration guide
+exists yet. That guide is required before this Unreleased entry may ship.
+
+- Update framework-owned workflows, templates, adapters, skills, and managed instruction blocks
+  together through `/tfw-update`; do not copy only Plan or only an adapter projection.
+- A current task that will continue under the new contract must receive all five routing fields in
+  one authority-backed migration. Total legacy absence remains readable; a partial or contradictory
+  spine refuses activation. The updater must not infer Coordinator, GATEWAY, dialogue, or mandate.
+- Existing closed tasks, journals, approvals, historical `CL`/`AG`/`AT` labels, `LEAD` titles, and
+  legacy artifact filenames remain readable and must not be rewritten merely to match current terms.
+- No application data, receiver repository, release tag, or publication migration is implied. The
+  four receiver projects were verified read-only; each future receiver update remains a separate
+  owner-authorized action.
+
 ## [3.5.0] — 2026-09-22
 
 AGSK — Antigravity Skill Migration & Legacy .agent Retirement. The Antigravity adapter is unified
