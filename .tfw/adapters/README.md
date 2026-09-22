@@ -10,7 +10,7 @@ route to canonical workflows, which remain authoritative.
 | Codex | `AGENTS.md` | `.agents/skills/tfw-*/SKILL.md` |
 | Claude Code | `CLAUDE.md` | `.claude/commands/tfw-*.md` |
 | Cursor | `.cursor/rules/tfw.mdc` | `.cursor/commands/tfw-*.md` |
-| Antigravity | `.agents/rules/tfw.md` | `.agents/workflows/tfw-*.md` |
+| Antigravity | `.agents/rules/tfw.md` | `.agents/skills/tfw-*/SKILL.md` |
 
 `init.md` installs the manifest's exact target set, `update.md` repairs those same copies,
 and `config.md` verifies affected generated copies. Missing sources, targets, roles, extra or
