@@ -4,7 +4,7 @@ min_iterations: 2
 max_iterations: 5
 iterations:
   - number: 1
-    focus: Establish current provider capabilities and the exact Full TFW role obligations for a compact subagent chain.
-    hypotheses: [H1, H2, H3, H4]
+    focus: Establish current provider capabilities, full TFW role obligations for compact subagent chains, and one-request delegated Codex role activation.
+    hypotheses: [H1, H2, H3, H4, H5]
     status: pending
     res_file: research/iter1/RES.md
