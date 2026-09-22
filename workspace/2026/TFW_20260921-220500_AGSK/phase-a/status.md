@@ -3,7 +3,7 @@ id: TFW_20260921-220500_AGSK
 title: "Phase A: Adapter Migration and Workspace Cleanup"
 goal: "Migrate Antigravity adapter from workflows to skills, retire .agent/ and .agents/workflows/, and update manifest"
 value: "A clean vendor-aligned adapter surface and elimination of legacy workflow directories without breaking tests"
-lifecycle: ONB
+lifecycle: RF
 owner: saubakirov
 authority: TS__phase-a__adapter_migration_and_cleanup.md
 coordinator_route: "antigravity:thread:local:8888199a-c102-44c8-b661-f9c6bef8d7a6"
