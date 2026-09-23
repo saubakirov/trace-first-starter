@@ -155,3 +155,16 @@ The shared card now names the actual mandatory changelog and conditions any rele
 | TRACE | Approved route, replacement identity, accounting and continuation | ✅: same Executor/Reviewer under prior rung-1 bound, `e56874d88662b1d6ab67ea328ea99e74be7a98e2`, 38/1,004 replay and current RF state. |
 
 F-R3 and F-R4 product conditions are now independently complete. No new material item changes implementation acceptance or the next authorized act. The Coordinator retains final item accounting, owner verdict and resource-complete close. **Round 4 aggregate verdict: ✅ APPROVE** the replacement Candidate at the stated local/source scope, with RF→KNW trace effect; this is not DONE or owner Plan-text acceptance.
+
+## Supplementary human-knowledge final-effect judgment — 2026-09-23
+
+The new record preserves why the owner chose this autonomy design without turning a single human confirmation into six independent observations or a new operating rule. This serves the master HL's Strategic Architect and intent-preservation purpose and `.tfw/README.md` NS1's inspectable continuation. It adds no mandatory clone test, provider reliability assertion, release authority or role shortcut.
+
+| Ordered layer | Subject | Judgment / evidence |
+|---|---|---|
+| VALUE | Six confirmed owner-intent meanings and scoped relations | ✅ Faithful to the recorded confirmation and frozen HL; legacy knowledge retains its original scope; Verify supplementary check. |
+| VALUE | Safety/security and human authority boundaries | ✅ The record states current authority still comes from task/workflow sources and excludes provider, owner-gate and release inferences. |
+| ASSURANCE | Source, relation and changed-claim evidence | ✅ One human origin is explicitly confirmed in the task-local owner gate; exact links/objects and relevant legacy meanings checked. Configured tests are bounded local controls. |
+| TRACE | Identity, selector, Candidate and continuation | ✅ New direct-child record within prospective ruling, reachable `3f203e66e0544452c2374716ce566a184e4c60f1`, 39/1,059 replay, same independent Reviewer and KNW route. |
+
+No material item changes the prior implementation acceptance or this affected knowledge publication. **Affected verdict: ✅ APPROVE** the final-effect Candidate at its stated scope. Final release composition and unresolved resource disposition remain with their existing owners; this Reviewer does not declare DONE or authorize publication.
