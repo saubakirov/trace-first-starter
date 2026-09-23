@@ -103,3 +103,14 @@ The approved TS and master HL purpose are unchanged. Verify V-R2A/V-R2B now esta
 | TRACE | Authority, replacement identity, accounting and return route | ✅ | Approved TS/rung-1 ruling, reachable replacement Candidate, 36/764 replay and same Reviewer/Coordinator units |
 
 F-R1/F-R2 are now corrected and independently verified as product conditions. No new material finding changes implementation acceptance or the next authorized act. The Coordinator owns final §5 disposition recording; this Reviewer does not issue a new ruling. The earlier REVISE remains historical and is superseded by the Round 2 verdict artifact. **Round 2 aggregate verdict: ✅ APPROVE** the replacement implementation Candidate. The owner's explicit acceptance of the corrected complete Plan passages, docs/knowledge, changelog, later changed-claim checks, integration and safe resource close remain open before DONE.
+
+## Final-effect affected judgment — 2026-09-23
+
+| Ordered layer | Changed subject | Judgment and ground |
+|---|---|---|
+| VALUE | Architecture Map and source-bound TKL technical reference | HOLDS: the selected adapter, current status and finite landing claims match approved HL/TS and the independently reviewed implementation; Verify final-effect check. The record does not make owner or native-provider claims. |
+| VALUE | Owner-sourced F1–F3 qualification and changelog | HOLDS at bounded scope: retain-only preserves one dated source without promotion; the `Unreleased` entry describes actual changes without asserting release or final acceptance. |
+| ASSURANCE | Added-documentation evidence | HOLDS locally: exact diff, six link targets, source/relation checks, 14 configured passes and clean diff check apply to the added claims. External original bytes and native cycles remain expressly limited. |
+| TRACE | Authority, final-effect Candidate and accounting | HOLDS: approved TS selector, reachable `2d96641e4c246cd076276b48642afe63c5035da1`, 38/803 replay, same independent Reviewer and current KNW state. Owner verdict and disposal remain open. |
+
+The master HL's Strategic Architect and truthful close promises, together with `.tfw/README.md` NS1's inspectable continuation, are served by a reference that keeps provider mechanics scoped and pending authority visible. No new material item changes the Round 2 acceptance or next authorized act. **Affected final-effect verdict: ✅ APPROVE** the selected documentation Candidate, without declaring the task DONE or supplying the owner's Plan-text verdict.
