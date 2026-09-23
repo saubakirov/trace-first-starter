@@ -5,6 +5,8 @@ Format: [Keep a Changelog](https://keepachangelog.com/). Versioning: [Semantic V
 
 ## [Unreleased]
 
+- **PCUX — `TFW_20260922-192606_PCUX`:** added three selected coordinator UX profiles, command-only role launches, source-backed live owner selection and independent GATEWAY/dialogue choices. Preserved strategic planning and per-launch model/effort selection; documented conditional small-task routes, mandatory vertical gates, docs/knowledge capture and safe resource-complete close. Provider reports remain dated and scoped; this entry does not claim a completed cross-platform trial, release or final task acceptance.
+
 ## [3.5.2] — 2026-09-22
 
 CMTR — Per-Launch Model and Reasoning Selection. Coordinators now choose model and reasoning effort

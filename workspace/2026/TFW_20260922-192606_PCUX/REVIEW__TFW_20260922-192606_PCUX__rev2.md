@@ -72,13 +72,38 @@ The durable Round 2 REVIEW and stage additions support an authorized `RF → KNW
 
 Coordinator closing facts, to be appended only after their actual effects:
 
-- [ ] F-R1/F-R2 terminal §5 item accounting recorded under the prior Coordinator rulings
+- [x] F-R1/F-R2 terminal §5 item accounting recorded under the prior Coordinator rulings
 - [ ] Owner's explicit corrected Plan-passage verdict before final acceptance/distribution
-- [ ] `/tfw-docs` actual Applied effect or substantive source-based N/A
-- [ ] `/tfw-knowledge` actual Applied effect or substantive source-based N/A, including selected iter1 candidates
-- [ ] One truthful PCUX changelog entry without implied release
+- [x] `/tfw-docs` actual Applied effect or substantive source-based N/A
+- [x] `/tfw-knowledge` actual Applied effect or substantive source-based N/A, including selected iter1 candidates
+- [x] One truthful PCUX changelog entry without implied release
 - [ ] Exact task-owned resource dispositions, safe integration and accepted Candidate reachability
 - [ ] Independent affected-result check for later changed claims and validated final state/event before DONE
+
+### Coordinator item accounting and selected capture — 2026-09-23
+
+Author: existing Coordinator `codex:thread:local:01a0c980-4552-7ed3-b2aa-3c5cc46bc7bc`. This section records acceptance control and actual capture effects, not Reviewer findings or a self-review. Source: this independent return at `68d1ccb80b10078ef669ff36869b7ba61cd056c8`, cumulative RF/EV at `8792281cc5f05dd55241d65574f9db0bc3cc87a3`, and unchanged approved TS/HL. The original Reviewer text above remains attributable.
+
+| Item / effect | Actual disposition and limits |
+|---|---|
+| F-R1 | Paid by this existing Phase A under the one prior rung-1 ruling: replacement Candidate `b1a62085f236cba7442f22838137afca7455cb28` restores the general priority and this independent REVIEW verifies it. No debt task or second ruling. The separate owner verdict on complete corrected passages remains open. |
+| F-R2 | Paid by this existing Phase A under the same prior ruling: the replacement Candidate removes the second provider/path catalogue and this independent REVIEW verifies selected-adapter ownership. No new finding, scope or denominator. |
+| `tfw-docs: Applied` | Updated only affected `KNOWLEDGE.md` Framework Structure relationships and added `knowledge/records/TKL-20260923-PCUX.md`, the source-bound approved architecture reference. This is technical qualification under TS AC-9, not human-fact promotion or release. It changes VALUE and requires a new Candidate, accounting and the same independent Reviewer's affected judgment. |
+| `tfw-knowledge: Applied` | Completed the selected qualification of RES iter1 F1–F3 as retain-only in their existing sources, with the exact grounds below. No human fact was promoted, rejected as false or silently deferred; no topic, historical source, processed marker or knowledge-state file was rewritten. |
+| Changelog | One task-attributed PCUX entry in `.tfw/CHANGELOG.md` / `Unreleased`. No version, tag, push, publication, external-project update or final task acceptance is claimed. |
+| Owner Plan-text checkpoint | Coordinator presented the complete corrected Mindset, framing/critique, future preview, research, Saint-Exupery and launch/acceptance passages from Candidate `b1a62085f236cba7442f22838137afca7455cb28`, with a before/after explanation in the owner-facing return following RF `8792281cc5f05dd55241d65574f9db0bc3cc87a3`. No owner verdict has been received; this remains a reserved open gate. |
+
+Selected knowledge source: `research/iter1/RES.md` / Fact Candidates at `a2c3c717311cf5e02dcd8018284b7e8613de2326`, originating Researcher `codex:thread:local:01a0cb19-cbf2-7603-8775-c776f52660d4`, preserving owner saubakirov's reported observations in HL §2 at frozen epoch `5259851e6f07206a07d022db11ef1cbc91dca775`. The original external Claude report digest is `66bea5b7b4271f27189264f471dbe0cbc68f239a0ad2be9e2f361d9df583b1d6`; its old bytes are not now verified. The unselected browser addendum was not consumed. These copied returns are one human origin, not independent corroboration. Relevant record-space lookup found no equivalent or conflicting provider-environment record; the existing TKL architecture record governs qualification, not these capabilities.
+
+| Candidate | Completed qualification | Why no further publication/resolution is owed |
+|---|---|---|
+| F1 — nonempty initial prompt and shared selected local checkout in the owner's 2026-09-23 Claude setup | Retain-only as the dated owner-reported observation in frozen HL §2 and RES F1; not an independently reproduced or current product-wide capability | It already supplies the selected profile's explicitly bounded input. Exact old external bytes and a complete native cycle are not established; duplicating it as an accepted timeless environment fact adds no justified knowledge. The conditional route and real-use checks remain required, not an unpaid PCUX trial. |
+| F2 — archival left a worktree/branch restoration dependency in that setup | Retain-only as the same dated report in HL §2 and RES F2; no universal archive/delete guarantee | Its useful consequence is already retained in the approved safe-disposal rule: archive is not disk removal, and restoration dependencies need an exact disposition. No extra factual publication or new cleanup authority is needed. |
+| F3 — owner reported manual Antigravity full-chat creation separately from subagent availability | Retain-only as the owner's 2026-09-23 active-surface report in HL §2 and RES F3; no independently checked present capability | The selected profile retains the date/limit and requires active-surface checking. Repeating this report as independent corroboration or promising an unattended full-chat cycle would overstate evidence. No unresolved contradiction was found in the selected scope. |
+
+The actual qualification authority is the existing owner-approved TS AC-9 and frozen mandate for source-bound dispositions, not a grant inferred from the Researcher's text. These retain-only outcomes do not hide promised future publication: PCUX owes qualification and bounded provider guidance, not independent external-platform validation. A later complete owner-supplied report is a new selection, not a pending action on the unselected file.
+
+Contributor handover coverage: the Coordinator's frozen HL/TS retain owner decisions; Researcher iter1 retains the selected report and D1–D6, while iter2 at `f3f754fc22fdc7139d22443e8c3ebc6f00842fcb` supplies technical design and justified-none for new human facts. Executor RF/EV and both independent review returns explicitly have no new human candidates. Their technical result is linked by the new source-bound reference. No missing producer return is replaced by another role's summary. This Coordinator's material result is these exact capture effects and dispositions; uncertainty remains the owner verdict and external operation, not a hidden capture queue. Resource disposal and final changed-claim judgment remain open; KNW is nonterminal.
 
 ## 7. Fact Candidates
 
