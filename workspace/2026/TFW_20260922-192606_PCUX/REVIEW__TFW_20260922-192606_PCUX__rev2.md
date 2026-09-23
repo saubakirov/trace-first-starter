@@ -193,6 +193,16 @@ Independent full Baseline→Candidate accounting: **38 VALUE files, 863 addition
 
 **Current verdict: 🔄 REVISE** Candidate `5ee5f190b23af43aa56039be1750d0fba3a7bd9d` for F-R3's residual safe-close claim. F-R4's product completion is verified. No new lifecycle transition is issued; current RF remains. No new human Fact Candidates or provider-native claims arise from this check.
 
+### Coordinator continuation disposition — residual F-R3, 2026-09-23
+
+The existing Coordinator received and landed the same Reviewer's Round 3 return at `ecb0b091279deaf6f0db15bb510f42e942dad2c8`. Under the single prior ruling at `3b200ac6ff7bef1101fdf7de424707909eae312a`, **F-R4 is paid by this phase**: actual early-entry/Step-5 behavior and installed parity are independently verified. The separate owner verdict on Plan text is not supplied by this disposition. **F-R3 remains open only for the shared card's safe-close field** identified by V-R3A; the existing rung-1 acceptance bound already requires a truthful safe-close description. This is continuation of that ruling, not a new finding, second ruling, TS sibling or wider implementation order.
+
+Completion is the Reviewer's stated residual: the shared card names applicable docs/knowledge and the mandatory truthful task changelog, with release only when separately authorized. Preserve the already-correct profile values, early mode selection, command-only activation and unrelated source/receiver obligations. The same Executor supplies the narrowly affected correction, normal cumulative ONB/RF/EV and replacement tested VALUE Candidate with full original-Baseline accounting; the same independent Reviewer checks the changed claim and necessary dependencies. No new research, permanent test, role unit, mandate, denominator or owner choice. Reuse unchanged proof, including the independently verified F-R4 condition.
+
+The complete relevant current Plan passages from Candidate `5ee5f190b23af43aa56039be1750d0fba3a7bd9d` were presented in this Coordinator's owner-facing response following the durable RF return: Mindset, framing/challenge, future preview, research, Saint-Exupery, the new entry paragraph, full Step 5 and post-approval launch/acceptance paragraph, with before/after explanation. No explicit owner verdict has arrived. The residual concerns shared conventions, not a required change to those Plan passages; any actual later material change still reopens their reserved checkpoint.
+
+Handover producer/parent is Coordinator `codex:thread:local:01a0c980-4552-7ed3-b2aa-3c5cc46bc7bc`; recipient is the same Executor `codex:thread:local:01a0cc7a-5604-7143-bf0d-ae2cd3affb32` through `/tfw-handoff TFW_20260922-192606_PCUX` and the committed handoff reference. Inspected source is the named Round 3 RF, Candidate and independent return. Material result is the F-R4 disposition and finite F-R3 continuation; no new human Fact Candidate or provider observation. Current RF remains unchanged until Executor acceptance performs RF to ONB. Owner text acceptance and resource-complete final close remain open; no product correction or final acceptance is claimed here.
+
 ## 7. Fact Candidates
 
 No fact candidates. The correction adds no new human source or knowledge claim; prior research and owner-report provenance remain for the authorized knowledge workflow.
