@@ -8,14 +8,18 @@ At new-task entry, render the shared `New-task startup card` as one owner-facing
 using current Codex task tools for each capability instead of assuming this profile is a live
 receipt. Offer owner-only or bounded delegated activation with `tfw-gates-only` dialogue;
 reporting stays native-gates
-unless the owner explicitly selects owner-transfer. A separate owner GATEWAY is optional and never
-the planning Coordinator. The Coordinator plans, then distinct visible Researcher, Executor and
+unless the owner explicitly selects owner-transfer. Full-session delegation uses a separate owner
+GATEWAY and a Coordinator per ready phase; direct coordination needs an explicit owner choice.
+The Coordinator plans, then distinct visible Researcher, Executor and
 independent Reviewer tasks run at their gates and return vertically to that Coordinator; the
 Coordinator presents owner decisions/results directly or through the selected GATEWAY.
 
 Use `PLAN`, `RESEARCH`, `EXEC` and `REVIEW` titles in the `Session identity` format
-only when each exact title can be set and read back; a task-only sidebar Section is optional. Name future task IDs, addresses,
-phase titles and Section as undecided until actually known. Use separate worktrees for mutating
+only when each exact title can be set and read back. Create or reuse one task-only sidebar Section
+`TFW · {ABBR}` and place this task's owner-facing unit, Coordinators and all known role tasks in it;
+verify membership after placement. If grouping is unavailable, report the precise limit or owner
+action instead of silently omitting it. Name future task IDs, addresses and phase titles as
+undecided until actually known. Use separate worktrees for mutating
 roles; keep a tested reachable Candidate fixed for independent review. At each launch the
 Coordinator checks current model/effort options, sets the quality floor, selects both separately,
 and records rationale outside the first message; an unobserved effective setting is unknown.
@@ -32,7 +36,7 @@ Report `provision · addressed send · wait/readback · title/readback` as `nati
 
 For authorized new work, create a separate visible planning Coordinator; for an approved multi-phase map create one separate Coordinator per ready phase, and one for a single phase. A persistent owner GATEWAY is a distinct unit: it presents phase-level decisions/results and never runs Plan, watches workers or receives role traffic. Gateway selection alone grants no peer dialogue. Every new Coordinator, Researcher, Executor or Reviewer task receives only the exact `/tfw-* <task[/phase]>` first message. Do not fork history, supply a briefing, wait prompt or second activation message. The receiver reads task files and its own native context. Record the child's actual address when the receipt or first normal gate reveals it; subsequent addressed operations require the exact address. Record launch model/effort reasoning outside the first message under `Launch selection`; unknown effective settings remain unknown.
 
-Use distinct visible, directly addressable roles and separate worktrees for mutating Codex units. Native `send_message_to_thread` carries only the permitted vertical edge. Use event-driven, cursor-based `wait_threads` for readback/continuation; do not open another role's transcript, terminal, raw session state or unreturned worktree. After an unchanged signal, back off without narration. One addressed liveness question after about five minutes of unexplained silence is an optional immediate-parent fallback, never a permanent monitor. Reuse the Executor on corrections and a separate independent Reviewer. Group only this task's known role tasks in an optional task-only Section and use exact role titles with readback; do not move unrelated tasks. Archive children only after durable return and last correction; independently dispose their task-owned worktrees when safe.
+Use distinct visible, directly addressable roles and separate worktrees for mutating Codex units. Native `send_message_to_thread` carries only the permitted vertical edge. Use event-driven, cursor-based `wait_threads` for readback/continuation; do not open another role's transcript, terminal, raw session state or unreturned worktree. After an unchanged signal, back off without narration. One addressed liveness question after about five minutes of unexplained silence is an optional immediate-parent fallback, never a permanent monitor. Reuse the Executor on corrections and a separate independent Reviewer. Add each newly addressable role task to the same task-only Section and use exact role titles with readback; do not move unrelated tasks. Archive children only after durable return and last correction; independently dispose their task-owned worktrees when safe.
 
 ## Capability and mandate boundary
 

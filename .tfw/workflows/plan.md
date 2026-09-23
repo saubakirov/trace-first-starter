@@ -81,6 +81,11 @@ Routes are outputs, not invocations; evaluation writes nothing.
    first owed Coordinator act. Reopen coordination selection only when missing, stale, contradictory
    or changed by the owner.
 
+   **Protect the owner's context.** Before first delegation or a mandate change, resolve the
+   GATEWAY-to-Coordinator handover under `Coordination`. Full-session delegation requires this
+   separation unless the owner explicitly chooses direct coordination. An inherited direct route
+   is not that choice; preserve active work until a safe handover, without replaying planning.
+
    | Every invocation | New task only | Existing task/phase |
    |---|---|---|
    | state/lineage, unit kind, title, routing/authority, next-route capability | selected-profile disclosure, initial mode choice, title/ABBR, future preview, Coordination Selection, root status/HL | skip settled inception; continue only the state-owned route |
@@ -91,9 +96,9 @@ Routes are outputs, not invocations; evaluation writes nothing.
    refuses a provider-specific offer. Before Step 2's substantive interpretation, Step 3's framing
    questions or Step 4's future-state preview, show the single owner-facing startup card required
    by `conventions.md` -> `New-task startup card`, populated from current surface inspection and
-   the selected profile. Mark unknown and optional values; do not invent future task/phase IDs,
+   the selected profile. Mark unknown values and platform limits; do not invent future task/phase IDs,
    child addresses, worktree paths, titles or effective settings. Ask the owner for the initial
-   operating mode (activation, dialogue, reporting and optional GATEWAY). This is a provisional
+   operating mode (activation, dialogue, reporting and owner-context topology). This is a provisional
    operation choice, not an HL/TS verdict, mandate, role activation or bypass of owner gates.
    Preserve the owner's answer for Step 5; if unresolved, return to that choice before first
    status/HL write. A GATEWAY uses the same card contract at its new-work selection gate and
@@ -148,8 +153,9 @@ Routes are outputs, not invocations; evaluation writes nothing.
    `activation`, `dialogue`, `owner_gateway`, optional
    stable principal and, when delegated, exact Coordinator plus scope/roles, reservations,
    amendment authority, effects and expiry. Default to owner-only, gates-only, owner gateway,
-   `native-gates` reporting and no principal unless a valid grant changes them. Manual role
-   creation does not select owner-transfer. Gateway topology and dialogue are independent: a
+   `native-gates` reporting and no principal unless a valid grant changes them. Full-session
+   delegation includes the GATEWAY handover; manual provisioning does not waive it or select
+   owner-transfer. Gateway topology and dialogue are independent: a
    gateway may use gates-only, while iterative dialogue needs an exact immutable two-peer grant
    whether or not a gateway exists. A gateway is a distinct persistent owner interface; it launches
    a planning Coordinator for unplanned work and one Coordinator per ready execution phase, then
@@ -158,8 +164,10 @@ Routes are outputs, not invocations; evaluation writes nothing.
    never an end-to-end claim.
    Record HL §4.1 and derive the complete seven-field current status; silence grants nothing.
 
-   Before each role launch, apply `conventions.md` → `Launch selection` and record its native choice
-   or exact owner-facing launch advice; profiles never substitute.
+   **Model and reasoning gate — fit the capability to the work.** Before each new role launch,
+   choose and justify a concrete model and, where supported, reasoning effort under `Launch
+   selection`. Neither default nor maximum is a justification. Apply the choice when authorized;
+   otherwise resolve the specific owner action before launch. Do not silently substitute settings.
 
 6. **Write HL.** Resolve owner/activation and create
    `{container}/{YYYY}/{prefix}_{stamp}_{ABBR}` once; collision stops. Apply `PLAN`; write the

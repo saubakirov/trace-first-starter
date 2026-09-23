@@ -979,6 +979,17 @@ a GATEWAY. A missing or over-broad grant refuses. When selected, the gateway is 
 root Coordinator, cannot execute a role workflow, receives no raw worker traffic, joins no peer
 dialogue and cannot rewrite authority. A Reviewer for the result cannot be either peer or consolidator.
 
+**Protect the owner's context.** Full-session delegation uses a persistent GATEWAY and a distinct
+Coordinator per ready phase, including a single-phase task. Direct coordination requires an
+explicit owner choice; the admitted small-task compact route keeps its existing boundaries.
+At first delegation or a mandate change, do not treat an inherited direct route as that choice.
+Use the selected profile's native or owner-assisted creation; an unavailable mechanism is a named
+limit, not permission to collapse roles. This topology grants no launch authority by itself.
+Handover is an action, not a title: preserve task-file context and active work, activate the separate
+Coordinator with its exact command, then bind the observed address and return routes at a safe gate
+before further worker launches. The owner-facing unit then acts only as GATEWAY, receiving
+Coordinator-level gates/results. Do not silently reparent workers or replay completed planning.
+
 An authority answer is an immutable task-local `gate_answer` event. It cites the governing status,
 the blocked role artifact and the exact HL or TS authority; its body identifies the answer source,
 authority epoch and operational effect. The blocked role never writes its own answer or treats chat,
@@ -1007,12 +1018,13 @@ so explicitly and makes no tailored provider offer. The card is a display contra
 registry, authority, launch receipt or role's first message. Its fields must together state:
 
 1. Active platform and actual surface; current `provision / addressed send / wait/readback / title/readback` classification (`native`, `owner-assisted` or `unavailable`) with unknowns named.
-2. The operating mode offered now: activation, dialogue, reporting and owner interface; whether a
-   separate GATEWAY is optional/selected and how it differs from the planning Coordinator.
+2. The operating mode offered now: activation, dialogue, reporting and owner interface; the required
+   GATEWAY/Coordinator separation for full-session delegation or the explicit basis for direct coordination.
 3. The role sequence and return route: Coordinator plans; distinct Researcher, Executor and
    independent Reviewer work only after their gates; roles return vertically to their own
    Coordinator, which presents owner gates/results through the selected owner interface.
-4. Visible task titles and optional grouping, distinguishing known titles from names to set later.
+4. Visible task titles and task-only grouping: use it when supported; name unavailable mechanics
+   and remaining owner actions. Distinguish known titles from names to set later.
 5. Workspace or checkout arrangement, mutation isolation and how an independent Reviewer receives
    a fixed reachable Candidate; identify any owner action or unresolved provider limit.
 6. Who chooses model and reasoning effort at each launch, where the rationale is recorded, and
@@ -1026,7 +1038,7 @@ registry, authority, launch receipt or role's first message. Its fields must tog
 
 The selected profile supplies platform-specific mechanics and current limitations for these fields.
 Unknown future addresses, paths, phase count, title values and settings stay explicitly unknown;
-optional choices are labelled optional. Ask for the initial operating mode with the card. The
+required mechanics are not optional conveniences. Ask for the initial operating mode with the card. The
 answer is an intended arrangement only. It cannot activate a role, approve HL/TS, satisfy a
 reserved owner gate or grant dialogue/delegation. At Plan Step 5 validate and record this choice
 against current capability and immutable authority; reopen it only for a material boundary change
@@ -1036,15 +1048,16 @@ its corresponding new-work selection gate, without running Plan itself.
 
 ### Launch selection
 
-Before creating a separate role unit, the Coordinator:
+The direct launcher owns this judgment: GATEWAY for its Coordinators, each Coordinator for its
+own roles. Quality sets the floor; resources must serve the intended result. Before each new launch:
 
-1. **Checks prerequisites:** required context, tools, native availability, authority and an exact return route. A new child's address may arrive after command-first launch; a later addressed operation requires it. If a real prerequisite is missing, do not launch; name it.
-2. **Sets the quality floor** from uncertainty, dependency breadth, assurance timing and strength, and consequence/reversibility.
-3. **Selects model and reasoning effort separately** from current native options. Choose the least-resource option justified to meet the floor. Name one plausible lower-resource option and either the material failure it risks or `not compared`; do not call a default a reasoned choice or claim a minimum without comparison.
-4. **Applies the choice at launch.** When native and authorized, pass the parameters and record dispatch. Otherwise output exactly:
+1. **Check prerequisites:** required context, tools, native availability, authority and an exact return route. A new child's address may arrive after command-first launch; a later addressed operation requires it. If a real prerequisite is missing, do not launch; name it.
+2. **Set the quality floor** from uncertainty, dependency breadth, assurance timing and strength, and consequence/reversibility.
+3. **Choose for the work.** Name an available model and select reasoning effort separately where supported. Choose the least-resource option justified to meet the quality floor; assess one plausible lower-resource alternative against the actual risk. If comparison is unavailable, explain why without claiming an optimum or waiving the recommendation. A known suitable default may be selected; an unknown default is not a choice.
+4. **Apply or resolve before launch.** Pass the selected parameters when native and authorized and record dispatch. Otherwise give the launch advice below and name the exact owner action or constraint to resolve; stop only the affected launch until resolved. Do not launch with substituted settings and repair them afterward. Reuse an applicable explicit owner decision without asking again. Mark an unsupported effort control as unavailable, not as an invented setting.
    `Launch: <command> · <model> · <effort>`
-   `Why: <reason>; lower: <option> — <risk | not compared>.`
-5. **Keeps evidence separate:** requested settings, effective settings when observable, delivery, outcome, and material rework. Provider restrictions are honored; unobserved effective settings stay unknown. Rationale is in dispatch/owner launch advice, never the command-only first message. Correct the next launch by the failure cause, not by role name, provider analogy, or completion alone.
+   `Why: <reason>; lower: <option> — <risk | reason comparison is unavailable>.`
+5. **Keep evidence separate:** requested settings, effective settings when observable, delivery, outcome, and material rework. Provider restrictions are honored; unobserved effective settings stay unknown. Rationale is in dispatch/owner launch advice, never the command-only first message. Correct the next launch by the failure cause, not by role name, provider analogy, or completion alone.
 
 Provider-specific rosters and controls belong to the owning adapter or current native inspection, never this core rule.
 

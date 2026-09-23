@@ -9,13 +9,16 @@ dated report below does not establish today's native links. Offer the visible fu
 with owner-created distinct planning Coordinator, Researcher, Executor and independent Reviewer
 chats at ready gates. Owner-only or bounded delegated activation with `tfw-gates-only` dialogue and native-gates
 reporting is an intended choice; only an
-explicit owner selection changes reporting to owner-transfer. A separate GATEWAY is optional and
-receives only Coordinator-level owner gates/results. Each role returns vertically to its own
+explicit owner selection changes reporting to owner-transfer. Full-session delegation uses an
+owner-created separate GATEWAY and a Coordinator per ready phase. Direct coordination needs an
+explicit owner choice; the admitted compact route remains separate. GATEWAY receives only
+Coordinator-level owner gates/results. Each role returns vertically to its own
 Coordinator. The compact route is conditional on the complete prerequisites below and cannot be
 presented as currently proven.
 
-Use role titles only with actual title write and exact readback; unavailable titles or grouping
-are navigation limits, and grouping is optional. State the observed checkout arrangement, keep
+Use role titles only with actual title write and exact readback. Use task-only grouping when
+supported; report unavailable title/grouping mechanics or the required owner action. Do not assume
+a Codex Section exists here. State the observed checkout arrangement, keep
 mutation isolated or serialized as that surface permits, and give the independent Reviewer a fixed
 reachable Candidate. Do not invent a worktree path. The Coordinator chooses model and effort
 separately at each launch from current controls and records rationale outside the first message;
@@ -37,4 +40,4 @@ At each ready role gate the owner creates the needed full chat. Its first messag
 
 For a genuinely small bounded one-phase task or small debt/fix, assess whether separate complete Researcher, Executor and independent Reviewer subagents can load their exact commands, own artifacts, return/continue directly, use all needed tools including browser when relevant, hold a stable Candidate and fit Coordinator context/noise. Reassess growth. A large or multi-phase task is ineligible even if launched sequentially. A missing link routes to the visible full-chat offer with the exact owner action; no hidden substitute or weakened review. Earlier subagent observations and absence of a P3/P4 field trial permit this conditional description but prove no complete run.
 
-The current PCUX run remains Coordinator plus owner with gates-only reporting. This profile does not enact GATEWAY, dialogue or owner-transfer; those are independent, exact current selections.
+Historical PCUX observations do not select a current task's topology, grant dialogue or change reporting; the current owner mandate and shared coordination contract govern them.

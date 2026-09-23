@@ -10,13 +10,16 @@ Offer the visible full-chat route: the owner may need to click-create each separ
 Researcher, Executor and independent Reviewer chat, with native addressed gates where current
 tools support them. Owner-only or bounded delegated activation with `tfw-gates-only` dialogue and native-gates
 reporting is the initial operating choice;
-owner-transfer requires explicit selection. A distinct GATEWAY is optional and presents only
+owner-transfer requires explicit selection. Full-session delegation uses a distinct GATEWAY and a
+Coordinator per ready phase, with owner creation clicks when required. Direct coordination needs
+an explicit owner choice; the admitted compact route remains separate. GATEWAY presents only
 Coordinator-level owner gates/results. The planning Coordinator never is the GATEWAY; roles return
 vertically to their own Coordinator. The compact route below is conditional and must pass every
 stated role and tool prerequisite before being offered as available.
 
-Show role-specific visible titles when the surface can set and read them; grouping is optional and
-unsupported grouping stays unknown. For the reported Desktop route, use the owner-selected local
+Show role-specific visible titles when the surface can set and read them. Use task-only grouping
+when supported; report an unavailable mechanism or required owner action. Do not assume a Codex
+Section exists here. For the reported Desktop route, use the owner-selected local
 checkout, serialize mutation and hold the Executor while an independent Reviewer examines a fixed
 reachable Candidate; do not invent a path. The Coordinator selects model and effort separately at
 each launch from actual available choices and records rationale outside the first message; report

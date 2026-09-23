@@ -99,8 +99,10 @@ Each Phase = separate TS→RF cycle.
 
 > Gateway topology and dialogue permission are independent. `iterative` needs a separate exact
 > immutable two-peer grant; GATEWAY selection needs its own direct owner route and grants no
-> dialogue permission. A live choice within this frozen ceiling is in status plus its immutable
-> human selection event, not a routine HL edit. Working-unit
+> dialogue permission. Full-session delegation uses a separate GATEWAY and one Coordinator per
+> ready phase; direct coordination needs an explicit owner choice or the admitted compact route.
+> An inherited direct route is not evidence of that choice. A live choice within this frozen ceiling
+> is in status plus its immutable human selection event, not a routine HL edit. Working-unit
 > addresses and dispatches are operational trace in `status.md` and `journal/`, not frozen HL roster
 > rows. Widening scope, role reach, dialogue or amendment authority requires §12 resolution.
 
