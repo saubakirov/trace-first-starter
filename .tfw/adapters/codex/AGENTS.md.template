@@ -16,7 +16,8 @@
 | `/tfw-config` | `.tfw/workflows/config.md` |
 | `/tfw-init` | `.tfw/workflows/init.md` |
 
-At Plan Step 5 or a changed capability gate, read exactly
+At Plan Step 5, GATEWAY's corresponding capability/selection gate, or a changed capability gate,
+read exactly
 `.tfw/adapters/codex/coordinator.md`. This selected profile describes Codex mechanics; it is not
 authority and is not preloaded for every role command. A missing or ambiguous selected path is
 reported, never guessed.
@@ -30,8 +31,10 @@ creation/fork for provision, exact task-addressed send, task wait/read for readb
 write plus exact title readback. A missing mechanism is owner-assisted or unavailable; capability
 never grants authority or proves reliability.
 
-A `/tfw-*` invocation activates work only when it names the exact skill, task/phase and owner-direct,
-delegated or continuation source. Creating or selecting a task, assigning a role prompt, sending a
+A `/tfw-*` invocation activates work only when its exact skill, task/phase and owner-direct,
+delegated or continuation source resolve. The command-only first message names the command and
+task/phase; native origin and task files supply the source. Creating or selecting a task, assigning
+a role prompt, sending a
 briefing, waiting, or changing a title only provisions/navigates; none activates a workflow. Read and
 validate the complete current task routing and selection fields before material work and report
 every status change to the unit's `coordinator_route` under native-gates reporting. A newly launched

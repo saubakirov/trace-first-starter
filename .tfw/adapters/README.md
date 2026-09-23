@@ -7,7 +7,8 @@ route to canonical workflows, which remain authoritative.
 
 Exactly three provider-specific Coordinator profiles live at
 `codex/coordinator.md`, `claude-code/coordinator.md` and `antigravity/coordinator.md`. The selected
-persistent adapter names its one exact path. Plan Step 5 reads only that profile at capability or
+persistent adapter names its one exact path. Plan Step 5 or GATEWAY's corresponding selection gate
+reads only that profile at capability or
 changed-capability selection, after task control and shared rule reads; other role commands do not
 preload it. Cursor keeps common compatibility without a fourth product profile. Profiles own
 mechanics and dated limitations, never authorization, Role Locks or a copied workflow algorithm.

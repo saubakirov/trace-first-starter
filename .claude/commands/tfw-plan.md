@@ -84,6 +84,17 @@ Routes are outputs, not invocations; evaluation writes nothing.
    |---|---|---|
    | state/lineage · unit kind · title · routing/authority · next-route capability | title/ABBR · future preview · Coordination Selection · root status/HL | skip settled inception; continue only the state-owned route |
 
+   For an existing owner-requested mode switch, preserve settled HL/TS/research. Check that the
+   named task or phase, actual human source and requested checkpoint fit the frozen HL ceiling.
+   Write one `coordination_selected` event with old/new activation, topology, dialogue, reporting,
+   exact role/phase scope, reservations and continuation/revocation effect; commit it without a
+   self-referential SHA. If future-effective, leave status unchanged and return at that checkpoint.
+   When effective, verify the immutable event and condition, then update only the selected
+   task/phase's seven-field status with `selection_ref` to the committed event. Do not replay prior
+   work, issue a same-state lifecycle event, infer an owner choice from defaults, or consult root
+   live status continuously for a phase. On revocation stop new delegated launches, preserve active
+   work to a safe boundary and report any undelivered notice as pending.
+
 2. **Knowledge.** Read `Current knowledge use` and `Knowledge handover`. Start from
    `KNOWLEDGE.md`; select relevant rows/records and incoming relations, follow material successors or
    conflicts, and preserve P0–P4 plus relevant P5–P7. Missing authority blocks only its dependent

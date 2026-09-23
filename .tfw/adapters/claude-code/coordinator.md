@@ -1,6 +1,6 @@
 # Claude Code Coordinator profile
 
-Selected by `CLAUDE.md` at Plan Step 5 or a changed capability gate. Read this one profile, not every provider profile or the tooling manifest. Canonical TFW rules govern authority, role locks, gates and acceptance; this file gives the Claude route and its evidence limits.
+Selected by `CLAUDE.md` at Plan Step 5, GATEWAY's corresponding selection gate, or a changed capability gate. Read this one profile, not every provider profile or the tooling manifest. Canonical TFW rules govern authority, role locks, gates and acceptance; this file gives the Claude route and its evidence limits.
 
 ## Dated source and current check
 

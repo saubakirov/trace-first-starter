@@ -1,6 +1,6 @@
 # Antigravity Coordinator profile
 
-Selected by `.agents/rules/tfw.md` at Plan Step 5 or a changed capability gate. Read this one profile, not every provider profile or the tooling manifest. Current task status, frozen HL, canonical workflow and human choice govern authority.
+Selected by `.agents/rules/tfw.md` at Plan Step 5, GATEWAY's corresponding selection gate, or a changed capability gate. Read this one profile, not every provider profile or the tooling manifest. Current task status, frozen HL, canonical workflow and human choice govern authority.
 
 ## Dated route and active-surface check
 

@@ -918,7 +918,8 @@ valid activation; it is independent of dialogue policy.
 
 Every activation supplies the exact `/tfw-*` skill, task and phase, and one lineage source. A new
 Coordinator, worker or admitted compact role receives only `/tfw-* <task[/phase]>` as its first
-message; files and native context supply the mandate, route and scope. No inherited conversation,
+message; files and native context supply the lineage source, mandate, route and scope. The source
+need not be repeated in that first message. No inherited conversation,
 briefing, wait instruction, hidden hint or second registration ceremony belongs in that message:
 
 - **owner-direct:** an accountable human starts the role workflow; no agent principal is invented;

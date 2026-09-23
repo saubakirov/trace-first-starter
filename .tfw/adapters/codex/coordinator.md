@@ -1,6 +1,6 @@
 # Codex Coordinator profile
 
-Selected by `AGENTS.md` at Plan Step 5 or a changed capability gate. This file describes Codex mechanics; the current `status.md`, frozen HL, canonical workflow and actual owner choice govern authority. Read this one profile at its checkpoint, not every provider profile or the tooling manifest.
+Selected by `AGENTS.md` at Plan Step 5, GATEWAY's corresponding selection gate, or a changed capability gate. This file describes Codex mechanics; the current `status.md`, frozen HL, canonical workflow and actual owner choice govern authority. Read this one profile at its checkpoint, not every provider profile or the tooling manifest.
 
 ## Offer on the active surface
 
