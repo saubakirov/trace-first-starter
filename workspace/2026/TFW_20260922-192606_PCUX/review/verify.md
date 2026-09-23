@@ -136,3 +136,30 @@ Research iter1 `RES` at `a2c3c717...` and iter2 `RES` at `f3f754fc...` were retu
 - [x] Verified RF claims, EV references, citations and immutable accounting against actual artifacts.
 
 Stage complete: YES.
+
+## Bounded continuation verification — 2026-09-23
+
+Continuation source is `journal/20260923-100853__handoff__c5eb.md @ c7f29c39a19d93921209e01bfe4a57231824883d`. Candidate, TS, HL and authority are unchanged. V1/V2/V4 and all accounting, test, citation and provider-limit evidence above remain applicable. Only V3's preservation judgment and V1's ownership judgment are expanded for C-R1/C-R2; the earlier HOLDS statements on those two subjects are superseded by the findings below.
+
+### V-R1: C-R1 — planning quality versus speed
+
+- **Subject tuple:** Actual canonical Plan and installed Claude copy@Baseline `991a0da91d97196f1233cfbafd3851edc6f66f8e` versus Candidate `195c77d614d6cc0baa2c74568101450b2f621e6e`, local source oracle frozen HL §§3.3.1–3.3.2 and approved TS AC-5/8.
+- **Action/evidence:** Opened the complete Baseline and Candidate Mindset paragraphs and searched the Candidate Plan for speed/quality tradeoff language. Baseline's final sentence says, “Planning quality outranks speed.” Candidate's replacement says, “Autonomy changes mechanics, not the quality of owner discussion,” and adds detailed preview, challenge and hypothesis instructions. No other Candidate Plan clause restores a general priority when planning speed conflicts with plan quality.
+- **Observed consequence:** The replacement protects discussion quality across autonomy modes but narrows the original priority to that discussion. The approved HL explicitly protects the existing Mindset, and AC-8 requires affected baseline obligations to be preserved unless an approved amendment supersedes them. No amendment removed the speed/quality priority. A Coordinator following the Candidate could trade plan quality for a faster workflow outside owner discussion while still satisfying the new sentence; the resulting plan can miss consequential decisions or proof.
+- **Result:** FINDING F-R1, VALUE. This is a semantic loss, not a finding about deleted words alone.
+
+### V-R2: C-R2 — provider path ownership
+
+- **Subject tuple:** Plan Step 5 and Codex/Claude/Antigravity persistent entry templates@Candidate, local source oracle frozen HL §3 and approved TS AC-1/8.
+- **Action/evidence:** Compared actual Plan Step 5 with each persistent adapter's new exact pointer. Each adapter names only its own `.tfw/adapters/<provider>/coordinator.md`; Plan separately enumerates all three provider names and paths plus Cursor's exception. TS AC-1 requires the selected persistent adapter to supply one exact profile path and excludes a permanent provider/model roster in shared rules. HL §3 assigns provider guidance to adapters and shared governance to the core.
+- **Observed consequence:** Current three pointers agree, so this is not a present wrong-profile observation. The shared Plan now owns a second platform/path catalogue. Adding or moving a provider profile requires coupled edits in the adapter and Plan; if only the owner pointer changes, Plan can direct a stale or conflicting profile despite the selected adapter's exact path. That violates the accepted source ownership and portability boundary in the shipping workflow.
+- **Result:** FINDING F-R2, VALUE. Byte parity establishes that the duplication shipped to the installed Claude Plan; it does not resolve the architecture defect.
+
+### Follow-up candidate findings
+
+| ID | Class | Subject / affected claim or authority | Observed fact + oracle | Concrete harm | Material consequence | Owner | Observable completion | Route / rung | Candidate effect | Status |
+|---|---|---|---|---|---|---|---|---|---|---|
+| F-R1 | VALUE | Protected actual Plan Mindset, HL §§3.3.1–3.3.2, TS AC-5/8 | Baseline prioritizes planning quality over speed; Candidate has only a narrower owner-discussion quality sentence; V-R1 source comparison | A faster but poorer plan can omit consequential choices/proof | Approved baseline planning behavior is lost in the accepted output | Coordinator rules; same Executor implements; this Reviewer verifies | Actual canonical Plan and installed copy retain the general quality-over-speed priority alongside new strategic requirements; owner receives the corrected complete passages | Rung 1 within approved TS, live REVIEW ruling then same Executor | Moves: Plan and installed copy are VALUE | Open proposal |
+| F-R2 | VALUE | Selected-adapter path ownership, HL §3, TS AC-1/8 | Plan Step 5 enumerates provider/path list despite each persistent adapter's exact pointer; V-R2 | A provider/profile update can leave conflicting route instructions | Shared workflow becomes a second source of provider identity, contrary to accepted architecture and portability | Coordinator rules; same Executor implements; this Reviewer verifies | Plan selects the exact path supplied by the active persistent adapter without a common provider/path roster; missing/ambiguous pointers still refuse; installed copy agrees | Rung 1 within approved TS, live REVIEW ruling then same Executor | Moves: Plan and installed copy are VALUE | Open proposal |
+
+Both findings have existing, approved execution scope and no frozen-HL change. They require a replacement tested Candidate and affected independent check. Unchanged EV accounting/test evidence remains applicable only to the old Candidate's unchanged claims; owner Plan-text acceptance is still open and must use the corrected passages. The current KNW state is nonterminal; this Reviewer issues no lifecycle move for REVISE.

@@ -62,3 +62,14 @@ RF reports no unapproved VALUE path. It expressly defers the actual owner Plan-t
 - [x] Avoided classification by file, discrepancy count or artifact volume.
 
 Stage complete: YES.
+
+## Bounded continuation — 2026-09-23
+
+Continuation source: `journal/20260923-100853__handoff__c5eb.md @ c7f29c39a19d93921209e01bfe4a57231824883d`, returned to this same Reviewer after the first APPROVE. The fixed Candidate and all other mapped claims are unchanged. Two exact preservation contrasts select only the following added checks:
+
+| ID | Layer | Accepted claim / authority boundary | Risk or concrete harm | Affected behavior / dependencies | Relevant environment | Oracle / authority | Evidence identity | Required? |
+|---|---|---|---|---|---|---|---|---|
+| C-R1 | VALUE | Baseline Plan Mindset's planning-quality priority survives the protected strategic contract | A fast but poorer plan can be treated as compliant | Actual Mindset and planning choices, installed Claude Plan | Canonical source and installed copy | Frozen HL §§3.3.1–3.3.2; TS AC-5/8; Baseline Mindset | `.tfw/workflows/plan.md`@Baseline/Candidate; same text in installed copy | yes |
+| C-R2 | VALUE | Selected persistent adapter owns one exact profile path; common Plan owns only the selection algorithm | A second provider/path catalogue can drift and select stale guidance | Plan Step 5, persistent adapter pointers, profile discovery | Canonical/installed source | Frozen HL §3; TS AC-1/8 | Plan and adapter roots@Candidate | yes |
+
+Selection: compare the exact Baseline/Candidate Plan passages and the three current adapter pointers against the quoted HL/TS clauses. Determine semantic harm rather than treating deletion or duplication count as a verdict. No unrelated evidence or provider cycle is reopened. The owner's actual Plan-text acceptance remains pending.

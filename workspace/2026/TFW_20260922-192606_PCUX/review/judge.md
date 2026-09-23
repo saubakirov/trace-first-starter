@@ -71,3 +71,21 @@ No applicable contradictions. D59's capability/availability distinction, D73's c
 - [x] Derived one verdict without using checklist or count as a quality objective.
 
 Stage complete: YES.
+
+## Bounded continuation judgment — 2026-09-23
+
+The Coordinator's exact continuation handoff selected C-R1/C-R2 on the unchanged Candidate. Verify V-R1/V-R2 establishes two material VALUE findings; it supersedes the earlier VALUE HOLDS judgment only for protected Plan priority and provider-path ownership. The master HL at Contract Baseline still requires the Coordinator to remain a Strategic Architect and three provider profiles to own provider mechanics, while `.tfw/README.md` NS1 requires purposeful, inspectable human-governed continuation. Losing the general quality-over-speed priority risks a plan that is fast but misses consequential work; duplicating profile selection in shared Plan risks a stale provider route. Both harms bear directly on the approved value, rather than on wording or file counts.
+
+| Ordered layer | Updated subject | Status | Evidence / item |
+|---|---|---|---|
+| VALUE | Plan Mindset's general planning-quality priority | ❌ | Verify V-R1; F-R1; HL §§3.3.1–3.3.2, TS AC-5/8 |
+| VALUE | Selected-adapter ownership of exact provider profile path | ❌ | Verify V-R2; F-R2; HL §3, TS AC-1/8 |
+| VALUE | Other accepted behavior, safety/security and human authority | ✅ at prior scope | Verify V1–V4 unaffected; owner Plan-text verdict remains open |
+| ASSURANCE | Evidence for these two accepted semantic claims | ❌ for those claims | Source comparison establishes the contrary facts; passing tests/copy parity do not establish preservation |
+| TRACE | Approved authority, fixed Candidate, accounting and independent route | ✅ | Prior Verify V2/V4 remain applicable; no change to Candidate or status |
+
+F-R1 and F-R2 are correctable within the approved TS. Each is routed separately as rung 1 to the Coordinator for one ruling in the live REVIEW, then the same Executor under the unchanged TS and the same independent Reviewer for affected proof. Both corrections alter VALUE and therefore move Candidate. Neither defect requires an HL amendment, new phase, owner budget ruling or a change to unaffected evidence. The pending owner Plan-text gate must inspect the corrected complete passage and cannot accept the first Candidate by default.
+
+**Current aggregate verdict: 🔄 REVISE.** This supersedes the earlier APPROVE for Candidate `195c77d614d6cc0baa2c74568101450b2f621e6e`. The original approval remains historical evidence of the earlier bounded judgment; it cannot support final acceptance after F-R1/F-R2 are established. REVISE alone does not move lifecycle. The Coordinator must rule the proposals and route the correction under the governing state contract; this Reviewer does not invent a KNW return transition or dispatch the Executor.
+
+Follow-up self-check: both items have accepted claim, observed fact/oracle, concrete harm, material consequence, owner, observable completion, rung and Candidate effect; unchanged evidence was reused; one live verdict is stated.
