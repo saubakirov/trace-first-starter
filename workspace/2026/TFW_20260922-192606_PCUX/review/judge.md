@@ -114,3 +114,17 @@ F-R1/F-R2 are now corrected and independently verified as product conditions. No
 | TRACE | Authority, final-effect Candidate and accounting | HOLDS: approved TS selector, reachable `2d96641e4c246cd076276b48642afe63c5035da1`, 38/803 replay, same independent Reviewer and current KNW state. Owner verdict and disposal remain open. |
 
 The master HL's Strategic Architect and truthful close promises, together with `.tfw/README.md` NS1's inspectable continuation, are served by a reference that keeps provider mechanics scoped and pending authority visible. No new material item changes the Round 2 acceptance or next authorized act. **Affected final-effect verdict: ✅ APPROVE** the selected documentation Candidate, without declaring the task DONE or supplying the owner's Plan-text verdict.
+
+## Owner startup acceptance judgment — 2026-09-23
+
+The owner's accepted comments select two previously unproven parts of the frozen UX contract. The master HL at `5259851e6f07206a07d022db11ef1cbc91dca775` promises a practical autonomy choice while preserving the Strategic Architect; `.tfw/README.md` NS1 calls for a purposeful, inspectable continuation. A fragmented launch description makes the choice hard to understand, and a mode question after substantive planning delays the owner's control of how that discussion proceeds. Both are material to that purpose. The comments clarify the existing HL/TS rather than changing frozen authority or role independence.
+
+| Ordered layer | Subject | Judgment / evidence |
+|---|---|---|
+| VALUE | Unified startup card | ❌ V-R3: no mandatory whole-arrangement owner display; F-R3. |
+| VALUE | Early initial mode choice | ❌ V-R4: Plan Steps 3–4 precede first capability/mandate question at Step 5; F-R4. |
+| VALUE | Other domain behavior, safety, human authority and documentation | ✅ at prior scope: unchanged source and earlier Round 2/final-effect checks remain attributable. Owner verdict on corrected complete Plan text remains open. |
+| ASSURANCE | Evidence for the two startup claims | ❌ for these claims: component/profile presence and scenario checks do not establish the requested presentation or timing; actual source proves the opposite. |
+| TRACE | Fixed Candidate, owner source, approved scope, independent route | ✅: `2d96641e4c246cd076276b48642afe63c5035da1`, owner-input handoff at `e6bb2c61fd1881f5adf8bed9c46d994b4c4fb5ba`, unchanged approved TS and same Reviewer/Coordinator units. KNW remains nonterminal. |
+
+F-R3 and F-R4 are correctable within approved TS AC-1/2/3/4/7/8 and frozen HL §§3.3–3.7. Each is a rung-1 VALUE proposal: the Coordinator rules once in the live REVIEW, the same Executor changes the approved VALUE surface under the existing TS, and this independent Reviewer verifies the replacement Candidate. Neither item authorizes a new owner selection, extra profile, weakened gate, HL/TS amendment or task closure. **Current aggregate verdict: 🔄 REVISE.** It supersedes the previous APPROVE only for this newly selected startup acceptance scope; the earlier implementation/documentation evidence remains historical and reusable where unchanged. REVISE alone does not move lifecycle from KNW.
