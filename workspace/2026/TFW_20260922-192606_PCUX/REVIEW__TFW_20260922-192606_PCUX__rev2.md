@@ -250,6 +250,27 @@ Archival receipts and later exact filesystem observations are distinct evidence;
 
 Current lifecycle remains **KNW**. The old unused receipt's identity/disposition is an explicit remaining Coordinator action, not concealed debris or a fabricated resource. Release preparation may proceed for the complete independently reviewed shipping effect under the project's selected-effect contract; it does not manufacture PCUX DONE. No extra implementation/research cycle or new permanent test follows from this administrative limitation.
 
+### Coordinator supplementary knowledge selection — 2026-09-23
+
+Actual human source is owner saubakirov in this Coordinator task `codex:thread:local:01a0c980-4552-7ed3-b2aa-3c5cc46bc7bc`. After the owner asked to complete docs/knowledge before release and consider useful knowledge from this conversation, the Coordinator showed the six formulations below and asked **«Верно передан смысл?»**, proposing their knowledge qualification, a bounded independent check and only then release-candidate refresh. The owner's exact next answer was **«да»**. This confirms these statements and the selected local knowledge effect; it does not answer the earlier merge/tag/push request.
+
+| Confirmed formulation shown to the owner | Preserved original source |
+|---|---|
+| **Автономия заменяет механические действия владельца**, а не добавляет микроменеджмент: команда и задача, без подсказок решения и пересказов чужих разговоров. | Frozen HL §11 S6–S9 and the owner's command-only/manual-equivalence corrections |
+| **GATEWAY защищает контекст владельца**. Поэтому рабочие подробности остаются у координаторов фаз, а не стекаются наверх. | Frozen HL §11 S10 |
+| **Качество мышления координатора неизменно во всех режимах**: критика, Working Backwards, видимые гипотезы и осмысленное упрощение. | Frozen HL §11 S11/S17/S18 |
+| **Перечисление новых требований не отменяет прежних**. Владелец не обязан каждый раз вспоминать весь контракт, включая выбор модели и глубины рассуждения. | Frozen HL §11 S21 |
+| **Цена субагентов — также шум и расход контекста координатора**; поэтому компактный режим ограничен небольшими задачами. | Frozen HL §11 S5/S12; this is the owner's design rationale, not measured provider performance |
+| **Успех — сохранённый замысел, не комплект артефактов**. Эксперимент с клоном сохраняем как ваш способ проверки, не вводим обязательным ритуалом. | Frozen HL §11 S19/S20 and Owner-Held Intent Snapshot Experiment |
+
+All frozen-HL citations above identify object `5259851e6f07206a07d022db11ef1cbc91dca775`. These are one human origin with explicit confirmation, not six independently corroborated observations. The earlier knowledge selection qualified only RES F1–F3; their completed retain-only dispositions remain valid. That bounded selection did not qualify the owner's wider intent for future use. This new selection completes that named gap without rewriting the original handovers or pretending the later confirmation existed earlier.
+
+**Prospective scope ruling:** create `knowledge/records/TKL-20260923-PCUX-INTENT.md` as one human-knowledge record through `/tfw-knowledge`, within the already approved direct-child `knowledge/records/TKL-*.md` selector and TS AC-9. The additional necessary constituent raises the forecast from 38 to 39 logical VALUE files, with total touched LOC forecast below 1,200; the immutable denominator remains 38 files / 3,200 LOC. This is below configured prompts and delegated ceilings, changes no workflow/HL/TS/mandate, and requires replacement Candidate accounting and the same independent Reviewer's affected check. The owner has confirmed the selected knowledge content; no new research or Executor round is required.
+
+**Docs disposition:** reuse the already Applied and independently approved Architecture Map and `TKL-20260923-PCUX` technical-reference effect. The selected six statements add human intent, not a new technical design, deprecation or convention. No extra docs write is owed; the existing record retains its original source epoch rather than being silently rewritten as a current-status ledger. Relevant incoming-relation lookup found no conflicting or equivalent PCUX intent record. The new record will preserve scoped clarification/equivalence relations to existing philosophy and stakeholder principles and complement, not replace, the technical reference.
+
+The existing Coordinator owns qualification and recording, not independent acceptance. KNW remains nonterminal while the new final claim is checked. Restore the same Reviewer only for this affected return, preserving its actual unit and vertical gate route; no briefing or new role may substitute. Prior implementation acceptance, the owner's actual Plan-text verdict and F1–F3 limitations remain intact. The prepared release Candidate `61d1cf4d038216c6b99fac4309a39981bf1fff02` is not the final composition once this selected knowledge is added; no tag, push, distribution or DONE is authorized here.
+
 ## 7. Fact Candidates
 
 No fact candidates. The correction adds no new human source or knowledge claim; prior research and owner-report provenance remain for the authorized knowledge workflow.
