@@ -370,6 +370,29 @@ Release 3.6.1, saved-master integration, tag, push and its configured documentat
 explicitly authorized by the owner above, contingent on the independent affected check and exact
 final release checks. Unrelated files, tasks and worktrees remain outside this correction.
 
+### Coordinator patch acceptance and publication boundary — 2026-09-23
+
+The recorded Coordinator received the native APPROVE envelope at
+`ed9116156edbaabf3c115870722b212ba5c92303`, inspected its four returned review paths and integrated
+that exact history. Selected product, release metadata and documentation bytes remain identical
+to independently checked Candidate `09c64f11c10a6021cbcb3a0e423a95ce7d9a0e6e`; no correction or
+new material finding remains. The actual owner-directed patch and its docs/knowledge dispositions
+above are accepted at that bounded scope, without promoting the old PCUX provisioning limitation
+to DONE. The independent return is evidence, not permission to reinterpret previous verdicts.
+
+Native wait confirmed the same Reviewer idle/completed. Its task was archived after durable
+return, and its exact `dd5a/steps-framework` checkout was removed after verifying returned HEAD,
+clean tracked/untracked state, non-reparse ownership and reachability in the release branch.
+Only known generated test/build output was discarded. Its merged Reviewer branch was deleted;
+source and independent result remain recoverable from Git. Section membership had been verified.
+The owner interface, protected clone, unrelated worktrees and unresolved old receipt are untouched.
+
+The release-owned checkout remains only for final composition checks and the already authorized
+3.6.1 tag/push/deployment. Preserve concurrent saved-master task traces without adopting their
+decisions or claiming their completion; they are not PCUX implementation. Verify the exact tagged
+composition and final integrated master independently where their bytes differ. After confirmed
+publication, remove the disposable release checkout/branch only when preserved and clean.
+
 ## 7. Fact Candidates
 
 No fact candidates. The correction adds no new human source or knowledge claim; prior research and owner-report provenance remain for the authorized knowledge workflow.
