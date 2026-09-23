@@ -12,6 +12,7 @@ from __future__ import annotations
 
 import os
 import re
+import subprocess
 from datetime import datetime, timedelta
 from pathlib import Path
 
@@ -98,9 +99,14 @@ COORDINATION_KEYS = {
     "coordination_authority",
 }
 
+# The original five fields remain readable as a complete historical/current carrier. New
+# writes include the two independent current-selection fields; a half-extension is invalid.
+SELECTION_KEYS = {"reporting", "selection_ref"}
+
 STATUS_KEYS = {
     "id", "title", "goal", "value", "lifecycle", "lifecycle_verbatim",
     "owner", "authority", "outcome", "created", "updated", *COORDINATION_KEYS,
+    *SELECTION_KEYS,
 }
 
 REQUIRED_KEYS = ("id", "title", "goal", "value", "lifecycle", "owner", "authority",
@@ -425,6 +431,11 @@ def validate_status(data: dict, task_dir: Path | None = None,
                         "lifecycle — it claims a result that has not happened")
 
     coordination_present = COORDINATION_KEYS.intersection(data)
+    selection_present = SELECTION_KEYS.intersection(data)
+    if selection_present and selection_present != SELECTION_KEYS:
+        problems.append("partial current selection; reporting and selection_ref must occur together")
+    if selection_present and coordination_present != COORDINATION_KEYS:
+        problems.append("current selection requires the complete routing spine")
     if coordination_present and coordination_present != COORDINATION_KEYS:
         missing = sorted(COORDINATION_KEYS - coordination_present)
         problems.append("partial coordination routing spine; missing: " + ", ".join(missing))
@@ -449,8 +460,33 @@ def validate_status(data: dict, task_dir: Path | None = None,
                 r"\S(?:.*\S)? @ [0-9a-f]{40}", authority):
             problems.append(
                 "coordination_authority must contain an exact local reference and full Git epoch")
-        if dialogue == "iterative" and isinstance(gateway, str) and not gateway.startswith("gateway:"):
-            problems.append("iterative dialogue requires a gateway:{native} owner_gateway")
+        # Dialogue and owner-context topology are independent. The exact two-peer
+        # immutable grant is an authority check, not a gateway-shape inference.
+
+    if selection_present == SELECTION_KEYS:
+        if data.get("reporting") not in {"native-gates", "owner-transfer"}:
+            problems.append("reporting must be native-gates or owner-transfer")
+        selection_ref = data.get("selection_ref")
+        if selection_ref == "baseline" and task_dir is not None:
+            problems.extend(verify_baseline_source(data, task_dir))
+        elif selection_ref != "baseline":
+            match = re.fullmatch(
+                r"(?P<path>(?:\.\./)?journal/[0-9]{8}-[0-9]{6}__coordination_selected__[0-9a-f]{4}\.md) @ (?P<sha>[0-9a-f]{40})",
+                selection_ref if isinstance(selection_ref, str) else "")
+            if not match:
+                problems.append("selection_ref must be baseline or an exact coordination_selected journal path @ full commit")
+            elif task_dir is not None:
+                ancestor = match.group("path").startswith("../")
+                is_phase = PHASE_DIR.fullmatch(task_dir.name) is not None
+                if ancestor and not is_phase:
+                    problems.append("ancestor selection_ref is allowed only from a phase")
+                elif ancestor and not (task_dir.parent / "status.md").is_file():
+                    problems.append("ancestor selection_ref requires the governing task status")
+                elif not (task_dir / match.group("path")).is_file():
+                    problems.append("selection_ref event is missing at its scoped path")
+                else:
+                    problems.extend(verify_selection_source(data, task_dir, match.group("path"),
+                                                            match.group("sha")))
 
     for key in ("created", "updated"):
         value = data.get(key)
@@ -463,9 +499,10 @@ def validate_status(data: dict, task_dir: Path | None = None,
     # The identifier must be the one its own directory carries. A state file that names a
     # different task is worse than a missing one: every consumer keys on `id`.
     if task_dir is not None:
-        parsed = parse_identifier(task_dir.name)
+        is_phase = PHASE_DIR.fullmatch(task_dir.name) is not None
+        parsed = parse_identifier(task_dir.parent.name if is_phase else task_dir.name)
         if parsed is None:
-            problems.append(f"directory name {task_dir.name!r} is not a task identifier")
+            problems.append(f"governing directory for {task_dir.name!r} is not a task identifier")
         elif data.get("id") and str(data["id"]) != parsed[1]:
             problems.append(
                 f"id {str(data['id'])!r} disagrees with its directory, which is "
@@ -481,7 +518,92 @@ def validate_new_status(data: dict, task_dir: Path | None = None,
     missing = sorted(COORDINATION_KEYS - set(data))
     if missing:
         problems.append("new status is missing coordination routing fields: " + ", ".join(missing))
+    missing_selection = sorted(SELECTION_KEYS - set(data))
+    if missing_selection:
+        problems.append("new status is missing current selection fields: " + ", ".join(missing_selection))
     return problems
+
+
+def verify_baseline_source(data: dict, task_dir: Path) -> list[str]:
+    """Verify that a baseline selection names a real frozen authority object.
+
+    Human approval and the exact permitted operating choice still require inspection of the
+    governing HL and owner trace; an object existing is necessary, never sufficient.
+    """
+    authority = data.get("coordination_authority")
+    if not isinstance(authority, str) or " @ " not in authority:
+        return ["baseline coordination_authority is missing"]
+    path_text, commit = authority.rsplit(" @ ", 1)
+    if not re.fullmatch(r"[0-9a-f]{40}", commit):
+        return ["baseline immutable epoch is invalid"]
+    authority_path = (task_dir / path_text).resolve()
+    if not authority_path.is_file():
+        return ["baseline authority artifact is unavailable"]
+    try:
+        root = find_project_root(task_dir)
+        relative = authority_path.relative_to(root).as_posix()
+        source = subprocess.run(["git", "show", f"{commit}:{relative}"], cwd=root,
+                                capture_output=True, check=False)
+    except (OSError, SystemExit, ValueError):
+        return ["baseline authority object cannot be inspected"]
+    if source.returncode or not source.stdout.startswith(b"# HL"):
+        return ["baseline authority object/path is missing or mismatched"]
+    return []
+
+
+def verify_selection_source(data: dict, task_dir: Path, event_ref: str,
+                            commit: str) -> list[str]:
+    """Check the immutable object and exact scoped event for a new status write.
+
+    This maintainer-side check does not authenticate the human's actual answer or decide whether
+    a conditional checkpoint has occurred. A receiving role can inspect the same task-local
+    carrier and supplied object by its available means; Python/Git are not workflow prerequisites.
+    """
+    event_path = (task_dir / event_ref).resolve()
+    if not event_path.is_file():
+        return ["selection_ref event is missing"]
+    try:
+        root = find_project_root(task_dir)
+        relative = event_path.relative_to(root).as_posix()
+    except (SystemExit, ValueError):
+        return ["selection_ref event escapes the project or project root is unavailable"]
+    try:
+        kind = subprocess.run(["git", "cat-file", "-t", commit], cwd=root,
+                              capture_output=True, check=False)
+    except OSError:
+        return ["selection_ref commit inspection is unavailable"]
+    if kind.returncode or kind.stdout.strip() != b"commit":
+        return ["selection_ref commit object is unavailable"]
+    try:
+        source = subprocess.run(["git", "show", f"{commit}:{relative}"], cwd=root,
+                                capture_output=True, check=False)
+    except OSError:
+        return ["selection_ref event inspection is unavailable"]
+    # Git may materialize text with CRLF on Windows while the committed blob is LF.
+    # Normalize only that transport representation; all substantive bytes still match.
+    committed_bytes = source.stdout.replace(b"\r\n", b"\n")
+    current_bytes = event_path.read_bytes().replace(b"\r\n", b"\n")
+    if source.returncode or committed_bytes != current_bytes:
+        return ["selection_ref event bytes do not match the immutable commit"]
+    try:
+        event_text = source.stdout.decode("utf-8")
+    except UnicodeDecodeError:
+        return ["selection_ref event is not UTF-8"]
+    match = FRONT_MATTER.match(event_text)
+    if not match:
+        return ["selection_ref event has no valid front matter"]
+    try:
+        event = yaml.safe_load(match.group(1))
+    except yaml.YAMLError:
+        return ["selection_ref event front matter is invalid"]
+    if not isinstance(event, dict) or event.get("kind") != "coordination_selected":
+        return ["selection_ref object is not a coordination_selected event"]
+    envelope_problems = validate_new_event(event, event_path.name)
+    if envelope_problems:
+        return ["selection_ref event envelope is invalid: " + "; ".join(envelope_problems)]
+    if event.get("on_behalf_of") != data.get("owner"):
+        return ["selection_ref event owner does not match status owner"]
+    return []
 
 
 PHASE_DIR = re.compile(r"^phase-(?P<letter>[a-z0-9]+)$")
@@ -498,10 +620,11 @@ def iter_phase_dirs(task_dir: Path) -> list[Path]:
 
 
 def read_phase_status(phase_dir: Path, declared: list[str] | None = None) -> dict | None:
-    """A phase's own state. Same schema as a task's, minus the directory-identifier check.
+    """A phase's own state. Same schema as a task's, with parent identifier lineage.
 
-    The phase directory is named ``phase-a``, not an identifier, so the ``id`` field carries
-    the *task's* identifier and agreement with the directory name is not checked here.
+    The phase directory is named ``phase-a``, not an identifier, so the ``id`` field must
+    agree with its governing parent task directory. Its local or exact-ancestor selection
+    reference is checked against that phase lineage.
     """
     path = phase_dir / "status.md"
     if not path.exists():
@@ -516,7 +639,7 @@ def read_phase_status(phase_dir: Path, declared: list[str] | None = None) -> dic
         return {"_error": explain_yaml_error(match.group(1), exc)}
     if not isinstance(data, dict):
         return {"_error": "front matter is not a mapping"}
-    problems = validate_status(data, None, declared)
+    problems = validate_status(data, phase_dir, declared)
     if problems:
         data["_error"] = "; ".join(problems)
     return data
@@ -552,7 +675,7 @@ LEGACY_EVENT_NAME = re.compile(r"^(?P<stamp>\d{8}-\d{6})__(?P<kind>[a-z_]+)\.md$
 
 #: Closed vocabulary. ``consolidation`` is reserved for Phases B and C and is not yet valid.
 EVENT_KINDS = ("created", "dispatch", "handoff", "transition", "ownership_changed",
-               "amendment_escalated", "gate_answer")
+               "amendment_escalated", "gate_answer", "coordination_selected")
 RESERVED_EVENT_KINDS = ("consolidation",)
 
 #: `actor` stays in the accepted set and is absent from the required one. Every event ever
@@ -889,6 +1012,13 @@ def validate_new_event(data: dict, filename: str,
         if not any(re.search(r"(?:^|/)(?:HL|TS)[^/]*\.md$", ref)
                    for ref in normalized_refs):
             problems.append("gate_answer refs must include the governing HL or TS")
+    if kind == "coordination_selected" and isinstance(refs, list):
+        normalized_refs = [str(ref).replace("\\", "/") for ref in refs]
+        if "status.md" not in normalized_refs:
+            problems.append("coordination_selected refs must include local status.md")
+        if not any(re.search(r"(?:^|/)HL[^/]*\.md$", ref)
+                   for ref in normalized_refs):
+            problems.append("coordination_selected refs must include governing HL")
     return problems
 
 

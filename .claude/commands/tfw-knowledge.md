@@ -105,7 +105,10 @@ Return exact effects, sources/versions, dispositions, acceptance reference, unre
 applicability limits to the existing closing Coordinator. Its `Closing and record recovery` route
 owns applicable final-effect checks and independent judgment. Applied/N/A describes actual selected
 effects; Deferred is not completion. A carrier-only repair adds no publication or capture cycle.
-Stop after the return. Qualification does not close the task or grant release/publication authority.
+Return an explicit Applied effect or substantive source-based N/A to the closing Coordinator; a
+missing/placeholder disposition cannot close. Changed accepted claims need an independent affected
+result check before DONE. Stop after the return. Qualification does not close the task or grant
+release/publication authority.
 
 
 ## Canonical Knowledge Gate algorithm

@@ -16,6 +16,12 @@
 | `/tfw-config` | `.tfw/workflows/config.md` |
 | `/tfw-init` | `.tfw/workflows/init.md` |
 
+At Plan Step 5, GATEWAY's corresponding capability/selection gate, or a changed capability gate,
+read exactly
+`.tfw/adapters/codex/coordinator.md`. This selected profile describes Codex mechanics; it is not
+authority and is not preloaded for every role command. A missing or ambiguous selected path is
+reported, never guessed.
+
 ### Codex native coordination
 
 Before Plan Step 5, inspect the task tools exposed in the current Codex task and report
@@ -25,11 +31,15 @@ creation/fork for provision, exact task-addressed send, task wait/read for readb
 write plus exact title readback. A missing mechanism is owner-assisted or unavailable; capability
 never grants authority or proves reliability.
 
-A `/tfw-*` invocation activates work only when it names the exact skill, task/phase and owner-direct,
-delegated or continuation source. Creating or selecting a task, assigning a role prompt, sending a
+A `/tfw-*` invocation activates work only when its exact skill, task/phase and owner-direct,
+delegated or continuation source resolve. The command-only first message names the command and
+task/phase; native origin and task files supply the source. Creating or selecting a task, assigning
+a role prompt, sending a
 briefing, waiting, or changing a title only provisions/navigates; none activates a workflow. Read and
-validate the task routing spine before material work and report every status change to the unit's
-`coordinator_route`.
+validate the complete current task routing and selection fields before material work and report
+every status change to the unit's `coordinator_route` under native-gates reporting. A newly launched
+role receives only `/tfw-* <task[/phase]>` as its first message; its files supply context. Its
+actual address may be recorded from the receipt or first normal gate, never invented in advance.
 
 For another TFW role task, use cursor-based, event-driven `wait_threads` only for readback or
 continuation; never call `read_thread`, request `includeOutputs`, or inspect raw global state,
@@ -45,6 +55,7 @@ only for the permitted vertical edge. Under `tfw-gates-only`, role units communi
 with their own Coordinator—never peers,
 owner, or GATEWAY. Mutating units use separate worktrees; reuse the same Executor and independent
 Reviewer on returns. Forks, subagents, relays, hidden helpers and provider switches cannot hold TFW
-roles or substitute for unavailable units. Iterative dialogue requires a separately addressable
-GATEWAY task and exact immutable grant; the gateway is not the root Coordinator.
+roles or substitute for unavailable units. Iterative dialogue requires an exact immutable two-peer
+grant independent of GATEWAY selection; a selected gateway is not the root Coordinator. Fully
+manual owner-transfer reporting requires its own explicit human selection.
 <!-- TFW:CODEX:END -->

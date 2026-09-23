@@ -12,6 +12,8 @@
 > **Activation / dispatch source**: {owner-direct activation or immutable dispatch ref}
 > **Coordination authority**: {exact status.md coordination_authority}
 > **Originating proposer**: {principal and unit, or `none`}
+> **Current selection**: {effective reporting and selection_ref, or verified complete-five-field compatibility}
+> **Launch observation**: {requested model/effort, effective settings if observed, delivery, outcome and material rework; unknown where unobserved}
 
 ---
 
@@ -53,6 +55,10 @@ or supply late authority.
 
 - [x] {TS criterion}
 
+Map affected baseline obligations to preserved, relocated without semantic loss, or explicitly
+superseded by a cited approved HL amendment. A new profile or shorter workflow is not by itself
+evidence that old authority, context, review, accounting and close duties survived.
+
 ## 4. Verification
 
 - Lint (`{config.build.lint}`): {result}
@@ -63,6 +69,11 @@ or supply late authority.
 See [EV file](evidence/EV__{ID}.md) for evidence details.
 
 Evidence verdict: {N}/{M} VERIFIED, {X} DEFERRED, {Y} BLOCKED, {Z} N/A
+
+List exact task-owned worktrees, branches, sessions, helpers, processes and temporary files known
+to this Executor with ownership and current/expected disposition. Do not claim final cleanup that
+belongs to the Coordinator after review and capture. A later VALUE document change moves Candidate
+and requires affected independent checking.
 
 ## 6. Observations (out-of-scope, not modified)
 

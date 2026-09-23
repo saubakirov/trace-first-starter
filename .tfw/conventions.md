@@ -335,7 +335,7 @@ Navigation-only; non-authoritative window and thread title formatting:
 - **WORK vocabulary**: `PLAN`, `RESEARCH`, `EXEC`, `REVIEW`, `RESUME`, `DOCS`, `INIT`.
 - **TASK**: Approved root-unique abbreviation (e.g. `CMTR`) or full task ID.
 - **PHASE**: Uppercase phase token (e.g. `PHASE-A`) when applicable; omit if single-phase or ambiguous.
-- **GATEWAY**: Emitted only when `dialogue: iterative` and running in the designated gateway thread. The gateway is separate from the root Coordinator and cannot execute a role workflow.
+- **GATEWAY**: Emitted only in the designated, separately addressable gateway thread. A gateway may use gates-only traffic; its selection grants no peer dialogue or role authority.
 
 Examples:
 - `PLAN · CMTR`
@@ -445,9 +445,11 @@ Example: `[codex/TFW-50/task/coordinator] define minimal commit attribution`
 
 ### Worktrees for concurrent mutation
 
-A delegated run that may mutate the repository uses its own Git worktree; its coordinator creates
-the tree before dispatch. A read-only run may share the current checkout because it contends for no
-writes and creates no landing obligation.
+A delegated run that may mutate the repository uses its own Git worktree unless the selected
+provider route explicitly requires one shared local checkout. A read-only run may share the current
+checkout because it contends for no writes and creates no landing obligation. On an authorized
+shared-checkout route, one active mutation owner serializes writes and exact-path commits; conflicting
+phase work waits. Independent review uses a fixed reachable Candidate while Executor mutation stops.
 
 | Property | Rule |
 |---|---|
@@ -644,9 +646,35 @@ Current statuses also carry the complete five-field routing spine:
 - `coordination_authority`: one quoted exact local authority reference plus immutable epoch.
 
 All five fields are present or absent together. Total absence is legacy-readable but cannot activate
-new work. A partial spine is invalid. Current writers emit and strictly validate all five. An
+new work. A partial spine is invalid. New writers emit and strictly validate all seven current fields. An
 authorized active task may migrate once without a same-state event because no lifecycle transition
 occurred; the authority and exact source are recorded in the new fields.
+
+Two current-selection fields extend a complete spine on every new write:
+
+- `reporting`: `native-gates` (required vertical sends and durable returns) or `owner-transfer`
+  (an explicitly selected fully manual transfer; role artifacts and reserved decisions remain);
+- `selection_ref`: `baseline` for the validated initial human choice under the exact frozen
+  `coordination_authority`, or `journal/<coordination_selected event>.md @ <full commit>` for an
+  effective subsequent owner choice. A phase may use only its exact governing ancestor task's
+  `../journal/` event when that immutable event explicitly covers the phase and roles.
+
+The pair is all-or-none; partial old or new forms refuse. A complete old five-field carrier stays
+readable with its actual authority and native-gates compatibility, without inferring delegation,
+dialogue or owner-transfer. Before changing it, verify the baseline source and migrate truthfully
+with both new fields; do not manufacture an owner decision or same-state event. No original fields
+means legacy read-only. Missing or unverifiable source blocks dependent new authority, not historical
+readability. Phase permission comes from phase status, not continuous root live-state consultation.
+
+`coordination_selected` is one append-only, task-local event for an actual human operating choice.
+Its body preserves the answer source, prior and selected values, exact scope/roles, reservations,
+effect `now` or named checkpoint, and revocation/continuation consequences. `on_behalf_of` alone
+does not prove owner approval. Commit the event before its SHA enters an effective status
+`selection_ref`; a pending event does not change status. At adoption check object, content, actual
+human source, phase lineage and HL ceiling. No parallel replay-derived state or routine HL amendment
+is needed for a selection within that ceiling. A revocation stops new delegated launches and returns
+active work at a safe boundary; inability to deliver the notice remains an open action, never a
+claimed remote halt. A non-revoking switch preserves prior valid activation, units and pending gates.
 
 **`UNDECLARED`: migration never normalizes; an accountable owner may resolve.**
 
@@ -699,7 +727,7 @@ RF/evidence and actual capture or landing effects needed for the claim.
    historical changes and justified non-obligations create no global queue.
    Rule REVIEW §5 dispositions once under existing authority. Complete applicable `/tfw-docs` and
    `/tfw-knowledge` through their existing owners and gates. Both Applied/N/A markers must describe
-   actual effects; Deferred and pending dispositions keep the task open.
+   actual effects and an N/A states its source-based reason; Deferred and pending keep the task open.
 2. Identify which accepted outputs or claims those effects changed. Reuse evidence only where its
    relevant inputs/output, oracle or authority, and environment assumptions still apply. An enclosing
    SHA, unrelated TODO, or record repair alone invalidates no unaffected claim. A changed dependency
@@ -709,10 +737,18 @@ RF/evidence and actual capture or landing effects needed for the claim.
    existing evidence/REVIEW sections; its recording alone starts no full stage restart, formal
    revision, repeated capture or new knowledge candidate. A real cited defect still follows
    `The 🔄 REVISE route` with the same holders; missing authority or uncertain acceptance stops close.
-4. Confirm the required final effects, including actual landing when selected, and validate complete
-   status/event carriers through `Task control files`. Only then write DONE with its actual outcome
-   and append the real transition. Report reviewed, landed and published distinctly; no external
-   effect is authorized by closing.
+4. Preserve one truthful task-attributed entry in the project's selected changelog; a log entry is
+   no release, version, tag, push or publication authority. Confirm accepted Candidate reachability,
+   landing when selected, and every task-owned resource's exact ownership, use and safe disposition.
+   Archive finished child sessions only after durable return and last correction; remove only
+   disposable owned worktrees/branches, processes, containers and temporary files after accepted
+   work is preserved. Shared checkout, persistent gateway, sole result and unrelated resources stay.
+   A retained resource needs a specific reason; pending cleanup names its actor/action and prevents
+   a fully cleaned claim. Archive alone does not remove disk state.
+5. Validate complete status/event carriers through `Task control files`. Only then write DONE with
+   its actual outcome and append the real transition. Report result, docs, knowledge, changelog,
+   reviewed/landed/published state and resource dispositions together. Closing authorizes no
+   external effect.
 
 Record the material grounds once in REVIEW §6: actual capture effects, final accepted output identity,
 applicable evidence and independent judgment, dispositions and any remaining effect. N/A needs its
@@ -880,7 +916,11 @@ or event reference that lets its own Coordinator reconstruct the result without 
 runtime state. Workflow autonomy is the unit's ability to complete authorized in-scope actions after
 valid activation; it is independent of dialogue policy.
 
-Every activation supplies the exact `/tfw-*` skill, task and phase, and one lineage source:
+Every activation supplies the exact `/tfw-*` skill, task and phase, and one lineage source. A new
+Coordinator, worker or admitted compact role receives only `/tfw-* <task[/phase]>` as its first
+message; files and native context supply the lineage source, mandate, route and scope. The source
+need not be repeated in that first message. No inherited conversation,
+briefing, wait instruction, hidden hint or second registration ceremony belongs in that message:
 
 - **owner-direct:** an accountable human starts the role workflow; no agent principal is invented;
 - **delegated:** an actual Coordinator dispatch cites the immutable delegation mandate;
@@ -894,7 +934,7 @@ substitutes for the skill or activation source. Dispatch preserves actual source
 parent, role/scope, native address/channel, governing status/authority and originating proposer.
 
 Before material work the unit reads the governing `status.md` and journal before derived or shared
-inputs; validates bounded scope, actual unit/address/parent, all five routing fields, exact lifecycle
+inputs; validates bounded scope, actual unit and parent, all current routing/selection fields, exact lifecycle
 gate, skill, role, task/phase and lineage; and records producer provenance in its role artifact. Total
 absence is legacy-readable but cannot activate current work. A partial, stale, foreign, unverifiable
 or mismatched spine, role prompt without activation, implicit latest-session lookup, relay, hidden
@@ -904,9 +944,19 @@ failure once and never treat the title as authority. A GATEWAY may provision or 
 Coordinator only when `activation` cites the exact delegated authority; it never invokes
 `/tfw-plan` as its own workflow.
 
-`dialogue: tfw-gates-only` creates only vertical edges: every role unit sends status changes,
-questions, gates and durable returns to its own `coordinator_route`; the Coordinator alone uses
-`owner_gateway`. Peer-role, role-to-owner and role-to-gateway material communication is prohibited.
+An initially unknown child's native address does not block valid command-first activation. The
+creation receipt or first normal gate can bind it later; a pending client handle is not a unit
+address. Record dispatch at the actual observation epoch, without backdating or making address
+binding a second startup gate. Later sends require the exact observed address and refuse foreign
+or ambiguous destinations.
+
+With `reporting: native-gates`, `dialogue: tfw-gates-only` creates only vertical edges: every role
+unit sends status changes, questions, gates and durable returns to its own `coordinator_route`;
+the Coordinator alone uses `owner_gateway`. Peer-role, role-to-owner and role-to-gateway material
+communication is prohibited. `owner-transfer` disables inter-agent sends only when selected by an
+actual owner decision; it presents exact durable manual returns. Manual role creation alone never
+selects owner-transfer. Autonomous gates-only advances ready authorized roles and corrections
+without another owner message, while reserved decisions still return to the owner.
 
 A Reviewer terminal return is emitted only after the REVIEW and authorized status/journal are
 durable and an immediate preflight confirms the exact route and immutable artifact ref. Its complete
@@ -924,8 +974,8 @@ return is reported as unavailable or blocked, never repaired by transcript inspe
 durable return, only the named artifacts and commits become inputs at their stated evidence level.
 
 `dialogue: iterative` is valid only when an owner-approved immutable authority names exactly two peer
-units, their purpose, boundary, consolidator, durable output and stop condition, and names a separate
-directly addressable `GATEWAY` unit. A missing or over-broad grant refuses. The gateway is not the
+units, their purpose, boundary, consolidator, durable output and stop condition. It does not require
+a GATEWAY. A missing or over-broad grant refuses. When selected, the gateway is not the
 root Coordinator, cannot execute a role workflow, receives no raw worker traffic, joins no peer
 dialogue and cannot rewrite authority. A Reviewer for the result cannot be either peer or consolidator.
 
@@ -952,13 +1002,13 @@ role's artifact and return it through that unit's own Coordinator without peer d
 
 Before creating a separate role unit, the Coordinator:
 
-1. **Checks prerequisites:** required context, tools, native availability, authority, an addressable unit and an exact return route. If one is missing, do not launch; name it.
+1. **Checks prerequisites:** required context, tools, native availability, authority and an exact return route. A new child's address may arrive after command-first launch; a later addressed operation requires it. If a real prerequisite is missing, do not launch; name it.
 2. **Sets the quality floor** from uncertainty, dependency breadth, assurance timing and strength, and consequence/reversibility.
-3. **Selects model and reasoning effort separately** from current native options. Choose the least-resource option justified to meet the floor. Name one plausible lower-resource option and either the material failure it risks or `not compared`; do not call the choice minimum without comparison.
+3. **Selects model and reasoning effort separately** from current native options. Choose the least-resource option justified to meet the floor. Name one plausible lower-resource option and either the material failure it risks or `not compared`; do not call a default a reasoned choice or claim a minimum without comparison.
 4. **Applies the choice at launch.** When native and authorized, pass the parameters and record dispatch. Otherwise output exactly:
    `Launch: <command> · <model> · <effort>`
    `Why: <reason>; lower: <option> — <risk | not compared>.`
-5. **Keeps evidence separate:** requested settings, effective settings when observable, delivery, outcome, and material rework. Correct the next launch by the failure cause, not by role name, provider analogy, or completion alone.
+5. **Keeps evidence separate:** requested settings, effective settings when observable, delivery, outcome, and material rework. Provider restrictions are honored; unobserved effective settings stay unknown. Rationale is in dispatch/owner launch advice, never the command-only first message. Correct the next launch by the failure cause, not by role name, provider analogy, or completion alone.
 
 Provider-specific rosters and controls belong to the owning adapter or current native inspection, never this core rule.
 

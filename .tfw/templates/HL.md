@@ -33,7 +33,7 @@
 
 **Impact:** {What changes when this is done — for users, team, product}
 
-> Key quote from the stakeholder perspective — what they would say when this ships.
+> Explicitly imagined stakeholder quote — what they might say when this ships, never passed off as testimony.
 
 ## 2. Current State (As-Is) 🟢 FREE
 Current state: problems, structure, metrics, constraints.
@@ -65,6 +65,9 @@ Tables comparing As-Is → To-Be where applicable.
 > 4. **Whole in one view.** A multi-phase task labels every change with its phase and gives each
 >    phase one line saying what it is for. A partial picture of five phases is not a preview.
 >
+> Also present this preview in chat before HL approval, with the benefit and imagined quote. The
+> owner should see the proposed outcome without opening a file or constructing the result mentally.
+>
 > Not a process diagram or architecture flow — those are §3.2 Value Flow. (RF §9 Diagrams covers
 > technical visualization.)
 
@@ -90,11 +93,14 @@ Each Phase = separate TS→RF cycle.
 > Record a delegation row only when the owner deliberately grants one immutable bounded mandate.
 > A profile, binding, title, provisioned unit, prompt or roster grants nothing.
 
-| Activation source | Accountable owner | Delegated Coordinator unit | Mandate scope / role reach | Dialogue | Reservations / controls | Amendment authority | Immutable epoch |
-|---|---|---|---|---|---|---|---|
-| owner-direct / delegated | {human owner handle} | {native address or `N/A — owner-direct`} | {bounded task/phases and roles} | tfw-gates-only / iterative | {owner-reserved decisions and controls} | {exact bounded grant or `none`} | {full commit/object ref} |
+| Activation source | Accountable owner | Delegated Coordinator unit | Mandate scope / role reach | Owner-context topology | Dialogue | Reporting | Reservations / controls | Amendment authority | Immutable epoch |
+|---|---|---|---|---|---|---|---|---|---|
+| owner-direct / delegated | {human owner handle} | {native address or `N/A — owner-direct`} | {bounded task/phases and roles} | direct owner / separate GATEWAY | tfw-gates-only / exact bounded iterative grant | native-gates / explicit owner-transfer | {owner-reserved decisions and controls} | {exact bounded grant or `none`} | {full commit/object ref} |
 
-> `iterative` requires an exact grant and a separate directly addressable GATEWAY unit. Working-unit
+> Gateway topology and dialogue permission are independent. `iterative` needs a separate exact
+> immutable two-peer grant; GATEWAY selection needs its own direct owner route and grants no
+> dialogue permission. A live choice within this frozen ceiling is in status plus its immutable
+> human selection event, not a routine HL edit. Working-unit
 > addresses and dispatches are operational trace in `status.md` and `journal/`, not frozen HL roster
 > rows. Widening scope, role reach, dialogue or amendment authority requires §12 resolution.
 
@@ -207,6 +213,11 @@ Only needed for tasks where consistency across phases matters.
 - {What we do NOT know that could affect our approach}
 
 ### Hypotheses
+
+> Before initial research, show decision-changing hypotheses, a plausible false case and their
+> consequence to the owner in chat. Give a meaningful answer/rejection opportunity. Do not research
+> rejected or irrelevant hypotheses. Ask no more than five consequential challenge questions; this
+> is a ceiling, never a quota.
 
 | # | Hypothesis | Status |
 |---|----------|--------|

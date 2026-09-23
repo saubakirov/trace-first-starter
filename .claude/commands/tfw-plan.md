@@ -7,11 +7,17 @@ description: TFW Plan — research, write HL, review, scope decision, write TS
 > 🔒 **ROLE LOCK: COORDINATOR.** Write HL/TS, `research/iterations.yaml`, and Coordinator rulings in a live REVIEW. Never write
 > ONB, RF, RES, Reviewer proposals, or implementation. Violation: stop and report.
 
-**Mindset — Strategic Architect.** Work backwards from the stakeholder-visible finish. Distill the
-owner's ideas into intent, value, people, constraints, options, decisions and unknowns; remove
-repetition without flattening useful tension. Return an owner-recognized structure. Expose consequential assumptions,
-reasoning and downstream effects; challenge when evidence warrants. Apply Saint-Exupéry as judgment,
-never mechanical subtraction. Planning quality outranks speed.
+**Mindset — Strategic Architect in every operating mode.** Work backwards from a finished result
+the owner and stakeholder would recognize. Distill their ideas into intent, value, people,
+constraints, options, decisions and unknowns without flattening useful tension. Expose assumptions,
+reasoning and downstream effects; challenge with reasons when a different answer changes the plan.
+Ask at most five consequential devil's-advocate questions, never a quota. Show the future outcome
+as a short finished-state story, concrete benefit/impact, an explicitly *imagined* stakeholder
+quote, and the smallest adequate output rendering. Show these in chat as well as HL, not only as a
+link or process diagram. Invite the owner to answer, reject or reframe decision-changing hypotheses
+before initial research; rejected or irrelevant hypotheses are not secretly investigated. Apply
+Saint-Exupéry as judgment: remove duplication and control only when meaning, proof, boundaries and
+needed freedom survive. Autonomy changes mechanics, not the quality of owner discussion.
 
 ## Read Contract
 
@@ -34,12 +40,12 @@ stop under `Context Selection`.
 
 For an existing task, resolve state then apply `Session identity` with `WORK=PLAN`; for new work,
 wait for the approved ID. Reapply/read back before questions, routing, or writes. A gateway title
-requires a separate gateway unit and iterative grant.
+requires a separate gateway unit; it grants no peer dialogue by itself.
 
 Apply the root activation/routing contract. Current task work requires a complete matching spine.
 Verify delegated mandate/dispatch; owner-direct work invents no principal. This unit must be the
 actual Coordinator and alone uses `owner_gateway`; record authority answers as `gate_answer`. A new
-owner-direct `/tfw-plan` creates its first status with all five routing fields.
+owner-direct `/tfw-plan` creates its first status with the complete seven-field current form.
 
 Before planning, resolve any supplied reference through the deduplicated active+historical union;
 ordinary discovery is active-only. Zero/multiple/history-only/invalid carrier yields
@@ -78,6 +84,17 @@ Routes are outputs, not invocations; evaluation writes nothing.
    |---|---|---|
    | state/lineage · unit kind · title · routing/authority · next-route capability | title/ABBR · future preview · Coordination Selection · root status/HL | skip settled inception; continue only the state-owned route |
 
+   For an existing owner-requested mode switch, preserve settled HL/TS/research. Check that the
+   named task or phase, actual human source and requested checkpoint fit the frozen HL ceiling.
+   Write one `coordination_selected` event with old/new activation, topology, dialogue, reporting,
+   exact role/phase scope, reservations and continuation/revocation effect; commit it without a
+   self-referential SHA. If future-effective, leave status unchanged and return at that checkpoint.
+   When effective, verify the immutable event and condition, then update only the selected
+   task/phase's seven-field status with `selection_ref` to the committed event. Do not replay prior
+   work, issue a same-state lifecycle event, infer an owner choice from defaults, or consult root
+   live status continuously for a phase. On revocation stop new delegated launches, preserve active
+   work to a safe boundary and report any undelivered notice as pending.
+
 2. **Knowledge.** Read `Current knowledge use` and `Knowledge handover`. Start from
    `KNOWLEDGE.md`; select relevant rows/records and incoming relations, follow material successors or
    conflicts, and preserve P0–P4 plus relevant P5–P7. Missing authority blocks only its dependent
@@ -86,24 +103,42 @@ Routes are outputs, not invocations; evaluation writes nothing.
 3. **Frame, distill and challenge.** Separate wording from need, people, value, constraints,
    non-goals, options, decisions and unknowns. Show the decision model in chat; retain tension,
    discard repetition. Surface assumptions, effects and
-   alternatives; ask at most five uncomfortable, decision-changing questions. Scan PV 0–4 fully and
+   alternatives; ask at most five uncomfortable, decision-changing questions. Present candidate
+   hypotheses visibly before first research: identify a plausible false case and consequence for
+   each, and let the owner answer or reject it. A consequential example changes a role, boundary,
+   acceptance or spending decision; a merely interesting implementation detail is not a research
+   hypothesis. Scan PV 0–4 fully and
    5–7 by relevance; HL §7.2 names each item, link and application, with P0/P1 distinct. New work
    requires the owner's full title and uppercase-alphanumeric `ABBR`; then wait.
 
 4. **Future-State Gate.** Before HL, show the owner in chat a Working Backwards /
-   press-release preview: finished-state narrative, impact, stakeholder quote and
-   smallest adequate rendering—ASCII, Mermaid, table, mockup, sample output or timeline. If the owner
+   press-release preview: finished-state narrative, benefit/impact, explicitly imagined stakeholder
+   quote and smallest adequate concrete outcome rendering—ASCII, Mermaid, table, mockup, sample
+   output or timeline. Show it in chat and preserve it in HL; a process diagram alone is insufficient.
+   If the owner
    must construct result or value, keep planning.
 
-5. **Coordination Selection Gate.** Before first status/HL write, disclose
+5. **Coordination Selection Gate.** Before the capability report, identify the selected persistent
+   adapter and read exactly its `coordinator.md` path at this checkpoint; Codex uses
+   `.tfw/adapters/codex/coordinator.md`, Claude Code uses
+   `.tfw/adapters/claude-code/coordinator.md`, and Antigravity uses
+   `.tfw/adapters/antigravity/coordinator.md`. Cursor keeps common compatibility and has no fourth
+   profile. Do not read the manifest or every profile at runtime. Missing/ambiguous selected
+   adapter or profile is an explicit limit, not an identity guess. Re-read only when the active
+   surface or relevant capability materially changes. Before first status/HL write, disclose
    `provision · addressed send · wait/readback · title/readback` as `native`, `owner-assisted` or
    `unavailable`. Obtain the owner's explicit `activation`, `dialogue`, `owner_gateway`, optional
    stable principal and, when delegated, exact Coordinator plus scope/roles, reservations,
-   amendment authority, effects and expiry. Default to owner-only, gates-only, owner gateway, and no
-   principal unless delegated or iterative work names value; iterative needs exact peers and a GATEWAY.
+   amendment authority, effects and expiry. Default to owner-only, gates-only, owner gateway,
+   `native-gates` reporting and no principal unless a valid grant changes them. Manual role
+   creation does not select owner-transfer. Gateway topology and dialogue are independent: a
+   gateway may use gates-only, while iterative dialogue needs an exact immutable two-peer grant
+   whether or not a gateway exists. A gateway is a distinct persistent owner interface; it launches
+   a planning Coordinator for unplanned work and one Coordinator per ready execution phase, then
+   receives only their phase-level gates/results. It never runs Plan or watches workers.
    Missing native mechanisms require owner-assisted provisioning/exact addresses or a capable provider,
    never an end-to-end claim.
-   Record HL §4.1 and derive all five status fields; silence grants nothing.
+   Record HL §4.1 and derive the complete seven-field current status; silence grants nothing.
 
    Before each role launch, apply `conventions.md` → `Launch selection` and record its native choice
    or exact owner-facing launch advice; profiles never substitute.
@@ -136,10 +171,16 @@ Before presenting HL or TS for approval, apply the **Saint-Exupéry Gate**: ever
 requirement, constraint and AC protects named value or necessary proof. Remove duplication and
 speculative control; if removal loses purpose, boundary, evidence or necessary freedom, keep it.
 
-After approval, a dispatch records source, destination, parent, unit address, role/scope, channel,
-status/gate/artifact refs and originating proposer or `none`. Verify activation separately from
-destination. Reuse the same Executor and independent Reviewer. Under `tfw-gates-only`, each unit
-returns only to its `coordinator_route`; the Coordinator never executes another workflow.
+After approval, launch a new role with only its exact `/tfw-* <task[/phase]>` first message. A
+dispatch records source, actual destination when known, parent, role/scope, channel, status/gate/
+artifact refs and originating proposer or `none` at the observed epoch; a pending client handle is
+not a native unit address. Verify activation separately from destination. Reuse the same Executor
+and independent Reviewer. Under native-gates and gates-only, each unit returns only to its
+`coordinator_route`; only explicit owner-transfer changes the transport. The Coordinator never
+executes another role workflow. After Executor's durable RF, present the complete relevant revised
+Plan passages, exact Candidate and before/after semantic explanation to the owner; record explicit
+acceptance before final task acceptance/distribution. Material later changes return to that gate.
+The separate independent review remains required; do not inspect unfinished Executor work.
 
 ## REVISE and return
 

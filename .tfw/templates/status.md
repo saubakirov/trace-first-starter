@@ -11,6 +11,8 @@ owner_gateway: owner:human-handle
 dialogue: tfw-gates-only
 activation: owner-only
 coordination_authority: "HL-PREFIX_YYYYMMDD-HHMMSS_ABBR.md @ full-immutable-epoch"
+reporting: native-gates
+selection_ref: baseline
 created: YYYYMMDD-HHMMSS
 updated: YYYYMMDD-HHMMSS
 ---
@@ -40,6 +42,8 @@ A COMPLETE, VALID EXAMPLE:
     dialogue: tfw-gates-only
     activation: owner-only
     coordination_authority: "HL-20260827-091500__query_redesign.md @ 0123456789abcdef0123456789abcdef01234567"
+    reporting: native-gates
+    selection_ref: baseline
     created: 20260827-091500
     updated: 20260827-114210
     ---
@@ -61,6 +65,8 @@ The key set is closed. Concision guides, never validates; never truncate.
 | `dialogue` | `tfw-gates-only` or `iterative` | current statuses | all workflows |
 | `activation` | `owner-only` or `delegated:{immutable-mandate-ref}` | current statuses | activation checks |
 | `coordination_authority` | quoted exact local authority reference plus immutable epoch | current statuses | all workflows |
+| `reporting` | `native-gates` or `owner-transfer` | current new writes | role return readers |
+| `selection_ref` | `baseline` or exact `coordination_selected` journal path `@` full commit; a phase may cite its governing ancestor task journal | current new writes | authority checks |
 | `outcome` | complete one-line prose | iff terminal | release, humans |
 | `created` | `YYYYMMDD-HHMMSS` or `unrecorded` | always | selected readers |
 | `updated` | `YYYYMMDD-HHMMSS` or `unrecorded` | always | selected readers |
@@ -72,12 +78,27 @@ phase state. Terminal `DONE`/`REJECTED` require `outcome`; nonterminal states fo
 Migration-only `UNDECLARED` requires the verbatim source value. Tools never normalize it; an
 accountable owner resolves it with a paired `transition` event from `UNDECLARED`.
 
-The five coordination fields are an all-or-none routing spine. Total absence is accepted only when
-reading legacy status and cannot activate a current workflow. Partial presence is invalid. Current
-writers require all five. `owner_gateway: gateway:{native-address}` and `dialogue: iterative` require
-an exact immutable grant in `coordination_authority`; otherwise use `owner:{human-handle}` and
-`tfw-gates-only`. An authorized active status may add the complete spine without a same-state event;
-the lifecycle did not change.
+The original five coordination fields are an all-or-none routing spine. Total absence is legacy
+read-only and cannot activate a new workflow. Partial original or partial new form is invalid. New
+writers require all seven fields. A complete five-field status remains readable with its *actual*
+authority and `native-gates` compatibility; it gains no new delegation, dialogue or owner-transfer.
+Migrate it truthfully to `reporting: native-gates` and `selection_ref: baseline` before a current
+write, without inventing an owner choice or same-state event. `baseline` means the verified original
+human choice and frozen ceiling in `coordination_authority`, never permission inferred from the
+template default. If that object cannot be verified, only dependent new authority is blocked.
+
+The two new fields are independent of `activation`, `dialogue`, `owner_gateway` and
+`coordinator_route`. A gateway can use gates-only reporting; bounded peer dialogue can be granted
+without a gateway. Iterative dialogue always needs an exact immutable grant naming two peers,
+purpose, boundary, consolidator, durable output and stop; the Reviewer is neither peer nor
+consolidator. `owner-transfer` requires an explicit human selection and disables inter-agent sends,
+not role artifacts or owner-reserved decisions. A pending selection event changes nothing until its
+named checkpoint; only an effective selection is reflected here. At adoption inspect the referenced
+immutable event and commit, actual human source, old/new values, task/phase/role scope, condition,
+reservations and HL ceiling. A phase may cite only its exact governing ancestor task event whose
+content explicitly covers that phase; sibling or foreign paths refuse. Journal event refs stay
+task-contained. Status remains the only effective selection; do not replay events into parallel
+state or consult root live status continuously for phase permission.
 
 Read second-resolution times from the clock. Use `unrecorded` with no source time and
 `YYYYMMDD-000000` for a known legacy date with unknown time.
