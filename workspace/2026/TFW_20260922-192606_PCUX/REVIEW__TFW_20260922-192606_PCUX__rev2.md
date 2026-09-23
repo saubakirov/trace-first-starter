@@ -305,6 +305,71 @@ Native wait then confirmed the Reviewer idle/completed. Its restored checkout at
 
 This completes the resource created solely for the supplementary check. The earlier unused provisioning receipt still lacks a verified native chat identity/disposition, so PCUX remains **KNW**, not fully cleaned/DONE. The original project, owner clone and nonempty Section are retained for their prior explicit reasons; the release tree remains active for the separately authorized preparation. Producer/closing owner is Coordinator `codex:thread:local:01a0c980-4552-7ed3-b2aa-3c5cc46bc7bc`; next effect is the bounded release composition refresh under `RELEASE.md`, with no missing docs/knowledge permission inferred from a status marker.
 
+### Coordinator owner-directed patch selection — 2026-09-23
+
+Actual producer and parent is Coordinator `codex:thread:local:01a0c980-4552-7ed3-b2aa-3c5cc46bc7bc`;
+actual human source and acceptance authority is owner saubakirov in this task. The owner asked for
+a small direct correction rather than a new task/full cycle, inspected the seven-file draft, then
+authorized **«отлично коммит патч changelog push release»**. After an unclear mode question from a
+new task, the owner approved the additional correction **«да, давай внесем и патч сразу»** and
+explicitly required clear Gateway/direct-Coordinator distinction, who creates agents under real
+platform capabilities, short TFW-only communication, protected purpose/value, and an understandable
+compact agreement card. HL §12 **A13** records this prospective human decision without rewriting
+older optional wording or earlier verdict epochs. Recording follows the actual decisions; it is
+not a claim that the original frozen HL already made grouping mandatory.
+
+Selected patch source starts at `8dc03915ca57bf3e80ac1505bf46d22a4841b5e5`: canonical/installed Plan,
+conventions, HL template and three profiles. The owner-approved UX supplement changes only the same
+Plan pair and shared card. The patch release adds version/config/template identity, one changelog
+entry and `migrations/3.6.1.md`. These are Coordinator-authored direct owner edits, not an Executor RF
+or an extension of its prior tested Candidate. The old APPROVE covers only its actual input bytes.
+No new research, task, role, registry, permanent test or invented execution report is requested.
+
+**Documentation effect:** `tfw-docs: Applied` updates the existing `KNOWLEDGE.md` Coordinator UX row
+and adds the release-owned migration/reference for the changed defaults and receiver preservation.
+The original technical PCUX record remains source-bound to its own epoch. **Knowledge disposition:**
+`tfw-knowledge: N/A — no additional promotion owed`; reuse accepted `TKL-20260923-PCUX-INTENT` claims
+1–4 for manual-equivalent autonomy, owner context, invariant strategic discussion and preservation
+of existing obligations. Incoming-relation lookup found only the selected PCUX record pair and
+their index references, no conflicting successor. The latest human instruction is retained above
+and in A13 as the specific correction authority, not invented independent evidence or a duplicate
+universal fact. Prior F1–F3 retain-only limits, qualified records and protected clone are unchanged.
+
+The existing independent Reviewer receives one affected-result check under Closing and record
+recovery: the exact changed owner-approved claims, connected source/copy/profile consistency,
+authority/continuation safety, documentation/migration and evidence applicability. Use the existing
+REVIEW/stage sections; no blanket restart or supplied verdict. The next immutable handoff binds the
+tested composition. Report any genuine defect through the existing proposal/ruling route; no fixes
+by the Reviewer and no transcript or unfinished-worker inspection. Return only to the actual parent.
+
+The owner then reported a UPM model-name interruption and explicitly preferred the configured
+default model with selected thinking over repeated owner clicks. This is A14's direct owner policy
+source, not an inspection of UPM's transcript or proof of that unit's exact tool exposure. Native
+`create_thread.model` inspected here on 2026-09-23 says to set a model only for a specific owner model
+request and otherwise omit it for the configured default; it does not require a question each time.
+The Codex profile owns that dated constraint and two policy offers. Common Plan/Launch selection
+only admits an explicit scoped owner model policy; it does not inherit Codex's mechanics. Public
+[model-discovery documentation](https://learn.chatgpt.com/docs/app-server#list-models-modellist)
+supports current capability discovery, not a claim about this desktop tool's approval rule.
+
+Launch judgment for this same-role continuation: **retain its model / high** through the native
+addressed continuation control, honoring the owner's selected default/retained-model policy.
+The quality floor is cross-file instruction/authority compatibility, not code throughput. A lower
+**medium** effort is not selected for this continuation because the affected check spans topology,
+owner grants, migration and multiple provider limits; no benchmark or cost optimum is claimed.
+Model comparison is outside the owner's chosen policy, not silently skipped. Requested and
+effective settings remain distinct; unsupported/denied application stops this continuation instead
+of silently falling back. Prior unit, role and scope remain unchanged. The exact saved Reviewer
+checkout may be restored; preserve its result before archival and dispose only this task-owned
+tree/branch when safe.
+
+PCUX remains KNW with the already named unresolved old provisioning receipt; this patch does not
+declare DONE or settle that identity. This Coordinator remains the existing direct closing unit;
+continuing the same Reviewer does not silently introduce a Gateway or reparent active roles.
+Release 3.6.1, saved-master integration, tag, push and its configured documentation deployment are
+explicitly authorized by the owner above, contingent on the independent affected check and exact
+final release checks. Unrelated files, tasks and worktrees remain outside this correction.
+
 ## 7. Fact Candidates
 
 No fact candidates. The correction adds no new human source or knowledge claim; prior research and owner-report provenance remain for the authorized knowledge workflow.

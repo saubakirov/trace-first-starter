@@ -97,8 +97,14 @@ Routes are outputs, not invocations; evaluation writes nothing.
    questions or Step 4's future-state preview, show the single owner-facing startup card required
    by `conventions.md` -> `New-task startup card`, populated from current surface inspection and
    the selected profile. Mark unknown values and platform limits; do not invent future task/phase IDs,
-   child addresses, worktree paths, titles or effective settings. Ask the owner for the initial
-   operating mode (activation, dialogue, reporting and owner-context topology). This is a provisional
+   child addresses, worktree paths, titles or effective settings. Present the choice through owner
+   actions and benefits: who creates/starts agents, what advances automatically, what still needs
+   the owner, and whether this unit is a GATEWAY or a direct Coordinator. Explain that separation
+   protects the owner's context; brief vertical TFW gates preserve control and independent judgment
+   without chatter. Never oppose discussing intent with the owner to using TFW roles: both remain
+   required in either mode. Ask for the initial operating mode; map the answer to activation,
+   dialogue, reporting and owner-context topology, then briefly restate the selected arrangement
+   in the same card, including pending handover or owner actions. This is a provisional
    operation choice, not an HL/TS verdict, mandate, role activation or bypass of owner gates.
    Preserve the owner's answer for Step 5; if unresolved, return to that choice before first
    status/HL write. A GATEWAY uses the same card contract at its new-work selection gate and
@@ -165,8 +171,9 @@ Routes are outputs, not invocations; evaluation writes nothing.
    Record HL §4.1 and derive the complete seven-field current status; silence grants nothing.
 
    **Model and reasoning gate — fit the capability to the work.** Before each new role launch,
-   choose and justify a concrete model and, where supported, reasoning effort under `Launch
-   selection`. Neither default nor maximum is a justification. Apply the choice when authorized;
+   choose and justify a concrete model, or honor the owner's explicit model policy, and separately
+   select supported reasoning effort under `Launch selection`. Neither an unexplained default nor
+   maximum effort is a justification. Apply the choice when authorized;
    otherwise resolve the specific owner action before launch. Do not silently substitute settings.
 
 6. **Write HL.** Resolve owner/activation and create

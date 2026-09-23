@@ -20,15 +20,38 @@ only when each exact title can be set and read back. Create or reuse one task-on
 verify membership after placement. If grouping is unavailable, report the precise limit or owner
 action instead of silently omitting it. Name future task IDs, addresses and phase titles as
 undecided until actually known. Use separate worktrees for mutating
-roles; keep a tested reachable Candidate fixed for independent review. At each launch the
-Coordinator checks current model/effort options, sets the quality floor, selects both separately,
-and records rationale outside the first message; an unobserved effective setting is unknown.
+roles; keep a tested reachable Candidate fixed for independent review. At startup show the model
+policy below; at each launch honor it, set the quality floor and select reasoning effort separately.
+Record rationale outside the first message; an unobserved effective setting is unknown.
 Each new role's first message is only `/tfw-* <task[/phase]>`, with the actual task/phase inserted
 only after assignment. The owner still approves HL/TS, reserved amendments and the actual Plan
 passages and may need to supply an unavailable task operation; autonomous gates do not erase those
 acts. Close after durable role returns, independent verdict, accepted docs/knowledge/changelog
 effects and safe disposition of task-owned tasks and worktrees; never archive before a needed
 correction or delete another owner's resource.
+
+## Model policy — preserve unattended launches
+
+Inspect the current native tool contract. In the Codex app surface inspected on 2026-09-23,
+`create_thread.model` may be set only when the owner explicitly requests a specific model;
+otherwise omit it to use the owner's configured default. This restriction does **not** require
+a model-name question before every launch. Do not export it to other providers or assume it is
+unchanged on a future surface.
+
+In the existing startup card offer these policies in the owner's language, explain the tradeoff,
+and retain the chosen policy and scope in the existing coordination decision, not a new registry:
+
+| Owner choice | Launch behavior | Owner action and tradeoff |
+|---|---|---|
+| Use my configured model; choose reasoning effort for the work | For new tasks omit `model`; for continuations retain the task's current model. Choose and pass a supported `thinking` value with a task-specific reason. | Recommend when uninterrupted mechanics matter most. No per-launch model-name question; underlying model identity may remain unobserved, and no per-role model optimization is claimed. |
+| Use specific models for the selected roles | Pass only model names explicitly requested by the owner for that scope; recommend names when a choice is missing. Select reasoning effort separately. | Resolve the named choice once and reuse it across covered launches. A new uncovered model choice or actual incompatibility may require the owner. |
+
+Neither policy means automatic `high`: judge uncertainty, consequence and verification needs,
+and compare a plausible lower effort when the model is fixed. Unknown effective settings are
+reported honestly, not turned into repetitive approval requests. A real missing capability or
+quality gap still returns through its gate. Do not create with a default and then use a follow-up
+model override as a workaround for a restricted creation choice. Recheck actual controls when
+they change; owner policy and provider capability are distinct from role-launch authority.
 
 ## Offer on the active surface
 

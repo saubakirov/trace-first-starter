@@ -5,6 +5,38 @@ Format: [Keep a Changelog](https://keepachangelog.com/). Versioning: [Semantic V
 
 ## [Unreleased]
 
+## [3.6.1] — 2026-09-23
+
+PCUX correction (`TFW_20260922-192606_PCUX`): choose autonomy by its practical consequences,
+protect the owner's conversation, and make each model/effort choice deliberate.
+
+### Fixed
+
+- The startup card explains who starts agents, what the platform can do or needs a click for,
+  which decisions remain with the owner, and whether the current interface is a GATEWAY or direct
+  Coordinator. It states the benefit and briefly confirms the chosen arrangement; discussing the
+  intent and using TFW roles are no longer presented as alternatives.
+- Brief vertical TFW gate returns are explicitly enabled and required by default, including with
+  manual agent creation. This is neither silence nor permission for peer chatter, solution hints
+  or unrestricted dialogue; an unclear mode answer grants nothing.
+- Full-session delegation requires a separate GATEWAY and a Coordinator per ready phase unless
+  the owner explicitly chooses direct coordination. Inherited routing is not that choice; active
+  work is preserved through a safe handover. The admitted small-task compact route is unchanged.
+- Every role launch requires a justified model choice or the owner's explicit model policy, plus
+  separate supported reasoning effort. An unexplained default, maximum effort or omitted comparison
+  cannot replace judgment. Apply the selection when authorized or resolve the exact owner action.
+- Codex offers configured-default model with per-launch effort selection, or owner-named models
+  reused within the selected scope. Its current creation restriction does not require repeated
+  model-name questions and is not imposed on other providers.
+- Codex tasks use one task-only Section when available, with placement verified. Other platforms
+  use supported grouping and disclose actual limits rather than silently omitting the convenience.
+
+### Compatibility and updating
+
+Read [Updating to TFW 3.6.1](https://github.com/saubakirov/trace-first-starter/blob/v3.6.1/.tfw/migrations/3.6.1.md).
+Refresh the connected Plan/conventions/HL/profile group and installed Plan copies. No task-state
+schema, automatic authority migration, native-tool override or new provider reliability claim.
+
 ## [3.6.0] — 2026-09-23
 
 PCUX — Provider-specific Coordinator UX and Autonomy Guidance (`TFW_20260922-192606_PCUX`).

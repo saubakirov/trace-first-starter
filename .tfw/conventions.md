@@ -1015,14 +1015,30 @@ On a new Plan request, after identifying the request and active platform, show t
 startup card** before substantive framing, planning questions or the future-state preview. Use the
 one exact Coordinator profile selected by the active persistent adapter; a common-only adapter says
 so explicitly and makes no tailored provider offer. The card is a display contract, not a file,
-registry, authority, launch receipt or role's first message. Its fields must together state:
+registry, authority, launch receipt or role's first message. Use the owner's language and concrete
+actions, not protocol terms as unexplained choices. Lead with the value: less launch/copying work,
+a useful owner conversation protected from operating noise, independent role judgment and retained
+control over decisions. Do not promise unattended completion while owner actions remain. The same
+TFW cycle and strategic discussion apply in every mode. Its fields must together state:
 
-1. Active platform and actual surface; current `provision / addressed send / wait/readback / title/readback` classification (`native`, `owner-assisted` or `unavailable`) with unknowns named.
-2. The operating mode offered now: activation, dialogue, reporting and owner interface; the required
-   GATEWAY/Coordinator separation for full-session delegation or the explicit basis for direct coordination.
+1. **Available here:** active platform/surface and what it can do itself, needs the owner to click/do,
+   or cannot do. Ground this in current `provision / addressed send / wait/readback / title/readback`
+   classification (`native`, `owner-assisted`, `unavailable`); name unknowns, not a capability promise.
+2. **Who you talk to:** identify this unit's actual role and any proposed handover separately.
+   A GATEWAY keeps the owner's conversation separate from phase operations, receives only Coordinator
+   gates/results and never plans or supervises workers. A direct Coordinator plans and receives role
+   returns in this same conversation, with the resulting context cost. Full-session delegation uses
+   the separate GATEWAY unless the owner explicitly chooses direct coordination; manual creation
+   and the admitted small-task compact route retain their own boundaries.
 3. The role sequence and return route: Coordinator plans; distinct Researcher, Executor and
    independent Reviewer work only after their gates; roles return vertically to their own
    Coordinator, which presents owner gates/results through the selected owner interface.
+   **Who starts agents** is a separate choice: owner, system, or system with an owner click, only
+   where supported and authorized. Default to owner-started work until selected otherwise. Say what
+   can advance automatically and what still waits for the owner. **Communication is on by default:**
+   brief required status, question and result returns at TFW gates, not silence, peer chatter,
+   solution hints or free dialogue. Only explicit owner-transfer makes the owner carry returns;
+   manual creation alone does not. Explain any separately granted dialogue and its exact boundary.
 4. Visible task titles and task-only grouping: use it when supported; name unavailable mechanics
    and remaining owner actions. Distinguish known titles from names to set later.
 5. Workspace or checkout arrangement, mutation isolation and how an independent Reviewer receives
@@ -1038,8 +1054,11 @@ registry, authority, launch receipt or role's first message. Its fields must tog
 
 The selected profile supplies platform-specific mechanics and current limitations for these fields.
 Unknown future addresses, paths, phase count, title values and settings stay explicitly unknown;
-required mechanics are not optional conveniences. Ask for the initial operating mode with the card. The
-answer is an intended arrangement only. It cannot activate a role, approve HL/TS, satisfy a
+required mechanics are not optional conveniences. Ask for the initial operating mode with the card,
+then briefly restate the selected arrangement and remaining owner actions in that same display.
+Do not turn this readback into another approval, file or registry. Map the understandable answer to
+the technical selection fields; an unclear answer requires clarification, not an inferred grant.
+The answer is an intended arrangement only. It cannot activate a role, approve HL/TS, satisfy a
 reserved owner gate or grant dialogue/delegation. At Plan Step 5 validate and record this choice
 against current capability and immutable authority; reopen it only for a material boundary change
 or an unresolved choice. Existing-task continuation retains its settled selection unless the owner
@@ -1053,9 +1072,9 @@ own roles. Quality sets the floor; resources must serve the intended result. Bef
 
 1. **Check prerequisites:** required context, tools, native availability, authority and an exact return route. A new child's address may arrive after command-first launch; a later addressed operation requires it. If a real prerequisite is missing, do not launch; name it.
 2. **Set the quality floor** from uncertainty, dependency breadth, assurance timing and strength, and consequence/reversibility.
-3. **Choose for the work.** Name an available model and select reasoning effort separately where supported. Choose the least-resource option justified to meet the quality floor; assess one plausible lower-resource alternative against the actual risk. If comparison is unavailable, explain why without claiming an optimum or waiving the recommendation. A known suitable default may be selected; an unknown default is not a choice.
+3. **Choose for the work.** Name an available model, or honor an explicit scoped owner-selected model policy supported by the active surface; select reasoning effort separately where supported. Choose the least-resource option justified to meet the quality floor; assess one plausible lower-resource alternative among the controls still open. If comparison is unavailable, explain why without claiming an optimum or waiving the remaining judgment. A known suitable default may be selected; an unexplained default is not a choice. An explicit owner-selected default policy is not a claim that its underlying model is known or optimal. Reuse that decision without per-launch model questions; only a changed policy, unavailable control or concrete quality/tool gap reopens it.
 4. **Apply or resolve before launch.** Pass the selected parameters when native and authorized and record dispatch. Otherwise give the launch advice below and name the exact owner action or constraint to resolve; stop only the affected launch until resolved. Do not launch with substituted settings and repair them afterward. Reuse an applicable explicit owner decision without asking again. Mark an unsupported effort control as unavailable, not as an invented setting.
-   `Launch: <command> · <model> · <effort>`
+   `Launch: <command> · <model | explicit owner-selected model policy> · <effort>`
    `Why: <reason>; lower: <option> — <risk | reason comparison is unavailable>.`
 5. **Keep evidence separate:** requested settings, effective settings when observable, delivery, outcome, and material rework. Provider restrictions are honored; unobserved effective settings stay unknown. Rationale is in dispatch/owner launch advice, never the command-only first message. Correct the next launch by the failure cause, not by role name, provider analogy, or completion alone.
 
