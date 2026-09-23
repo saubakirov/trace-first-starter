@@ -29,6 +29,11 @@ After Bootstrap resolves the task, apply `Session identity` with `WORK=REVIEW`. 
 activation/routing before Map; require a complete matching spine, cited mandate/dispatch, Reviewer
 gate and independence. Owner-direct work invents no principal. Shared attribution grants no ruling
 authority. Continue in the same Reviewer unit and return only to `coordinator_route`.
+Read effective `reporting` and `selection_ref`; a complete old five-field carrier means verified
+baseline/native gates, while partial new fields refuse. Manual role creation leaves native returns
+intact. Only an actual owner-transfer choice changes transport. A non-revoking selection retains
+this independent Reviewer and prior valid activation. In a selected shared checkout, review only
+the fixed reachable Candidate while Executor mutation is stopped.
 
 Treat RF as claims. Verify reasons, files, tests, AC/DoD/DoF, numbers and evidence; trust only
 human-sourced Fact Candidates for later qualification. Challenge missing/N/A evidence and unsupported
@@ -140,6 +145,8 @@ Use `The 🔄 REVISE route` for recipient, ruling site, governing artifact, life
    verdict, ruling or lifecycle act. Retry identical bytes only when the provider confirms
    non-application and its own mechanism permits one bounded retry. Ambiguous delivery is not claimed
    or blindly retried.
+   Under explicit owner-transfer, present the same exact durable verdict/ref through the selected
+   manual route; do not claim an inter-agent send.
 
 Transport evidence stays provider-specific: accepted AGSK establishes Antigravity UUID extraction
 and native `send_message`; Codex exposes exact `send_message_to_thread`. The payload fits both without

@@ -33,6 +33,13 @@ analysis. Current work requires a complete matching spine and approved Executor/
 delegation/dispatch; owner-direct work invents no principal. Record provenance in ONB/RF and return
 only to `coordinator_route`. Never write or self-answer `gate_answer`.
 
+Resolve current `reporting`/`selection_ref` with the existing five-field compatibility rule.
+Only effective owner-transfer changes return transport; manual creation does not. On a
+non-revoking switch keep this same Executor, its valid activation and pending gates. A new role's
+first message is only the exact command; its address may be learned from receipt or first normal
+gate. Current Codex mutation uses a separate worktree; an explicitly selected shared-local provider
+route serializes one mutation owner and holds Executor writes during fixed-Candidate review.
+
 For REVISE, accept exactly one ruled case:
 
 - **Rung 1:** lifecycle `RF`; unchanged approved TS plus the Coordinator's closed bound appended to
@@ -83,6 +90,9 @@ admit a necessary constituent.
     its full SHA is Candidate. Confirm all changed paths are approved VALUE+ASSURANCE or authorized
     task-local TRACE. Later TRACE/ASSURANCE/non-value DERIVED does not move Candidate; later VALUE
     does and requires recomputation. Keep Candidate reachable through review/landing.
+    Record requested/effective launch settings, delivery and material rework separately; unobserved
+    effective settings stay unknown. Identify exact task-owned temporary resources and their current
+    owner/disposition for the Coordinator's later safe close.
 11. Open the EV template and emit `evidence/EV__{ID}.md` or
     `evidence/EV__phase-{x}__{phase_slug}.md`; append on return. Use only VERIFIED, DEFERRED, BLOCKED,
     N/A; each VERIFIED row resolves to evidence and every other row explains the gap. Add exactly one

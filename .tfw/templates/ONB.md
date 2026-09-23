@@ -21,6 +21,11 @@
 ## 2. Entry Points
 {Key files and code areas relevant to the task}
 
+Identify the affected baseline obligations (authority/selection, Role Locks, ordered reads,
+launch and gates, review/REVISE, accounting, knowledge handover, close and installed copies) that
+the approved TS must preserve or explicitly supersede. Name exact task-owned temporary resources
+and intended later disposition; do not create a separate inventory.
+
 ## 3. Questions (blocking — cannot proceed without answers)
 
 | # | Question | Blocking reason | Answer authority / event ref | Operational effect |

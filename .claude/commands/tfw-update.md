@@ -30,6 +30,9 @@ bodies. Missing/incoherent target workflow, range or required guide stops.
 Apply root activation/routing before pinning or writing; require exact owner-direct `/tfw-update` and,
 when task-bound, the actual Coordinator. Preserve legacy statuses. Add a complete routing spine only
 when accountable authority supplies all five exact values; otherwise report the missing decision.
+For a complete five-field carrier, preserve its actual baseline/native-gates choice and add the
+paired `reporting`/`selection_ref` only after verifying the human source and immutable ceiling.
+Partial original/new forms refuse; do not infer a new delegation, dialogue or owner-transfer.
 
 Resolve `tfw.upstream` to a local Git checkout. The operator names a tag or explicitly authorizes an
 untagged commit. Resolve the object, read its VERSION, and for a tag require `v{VERSION}`. Local
@@ -100,7 +103,8 @@ receiver; partial application, equal version or old receipt never closes checks/
 ## Step 4 — Adapters, verification, receipt, outcome
 
 At adapter sync, if a persistent coordination block changes, read `Workflow activation and routing`;
-otherwise it is uncharged. Validate four adapters and ten manifest commands. Apply exact copies or
+otherwise it is uncharged. Validate four adapters and ten manifest commands plus the three selected
+`coordinator.md` payload paths and persistent exact profile pointers. Apply exact copies or
 one marker-bounded block; preserve unmarked/foreign neighbors. Antigravity installs to plural
 `.agents`; singular `.agent/rules` remains compatible rule location, never inferred workflow support
 or deletion authority. Reject missing/extra commands, wrong roles/paths, duplicate blocks, drift or

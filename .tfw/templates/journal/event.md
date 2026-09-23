@@ -30,7 +30,7 @@ identity; the token means only uniqueness.
 | `actor` | any value already present | never issue; legacy read only |
 
 Current kinds are closed: `created`, `dispatch`, `handoff`, `transition`, `ownership_changed`,
-`amendment_escalated`, `gate_answer`. `consolidation` is reserved. If no kind fits, write no event;
+`amendment_escalated`, `gate_answer`, `coordination_selected`. `consolidation` is reserved. If no kind fits, write no event;
 never invent one.
 
 Optional `writer` names a declared principal; never derive it from `via`, OS/account identity,
@@ -44,6 +44,15 @@ edge. The body/summary plus refs must preserve the actual source, destination an
 workflow role and bounded scope, direct address/channel, governing artifacts, and originating
 proposer `{principal, unit}` or explicit `none`. Identical writers never merge units; forwarding,
 restart or continuation never changes the recorded origin. Add no frontmatter key for these facts.
+
+For `kind: coordination_selected`, omit `from` and `to`. This is an actual human operating
+choice, not a role proposal. Cite task-local status and governing HL; preserve the human's exact
+answer source and immutable authority epoch. The body states previous and selected activation,
+dialogue, topology and reporting values; exact task/phase/role scope; reservations; `now` or a
+named future checkpoint; and revocation/continuation consequences. A pending event does not
+change status. Commit this immutable event before writing its full SHA in an effective
+`selection_ref`; never guess the SHA in the event itself. `on_behalf_of` is attribution, not
+proof of an actual human verdict. No event substitutes for a frozen-HL amendment.
 
 For `kind: gate_answer`, omit `from` and `to`. `refs` must cite the governing `status.md`, the
 blocked role artifact, and the exact governing HL or TS. The body identifies the answer source,

@@ -6,6 +6,9 @@ trigger: always_on
 
 This project follows Trace-First Workflow. Root instructions are already active; do not
 reload them. For `/tfw-*`, invoke the matching repository-local skill. The canonical workflow's Read Contract selects all further inputs.
+At Plan Step 5 or a changed capability gate, read exactly
+`.tfw/adapters/antigravity/coordinator.md`; do not preload other profiles or the tooling manifest.
+Missing or ambiguous selection is reported without guessing the provider.
 
 Before Plan Step 5, report `provision · addressed send · wait/readback · title/readback` from the
 mechanisms exposed in the current Antigravity surface, classifying each as `native`,
@@ -19,8 +22,9 @@ delegated or continuation source. A workspace, role prompt, briefing, wait resul
 activation. Read and validate the complete status routing spine before material work and report every
 status change to `coordinator_route`. Under `tfw-gates-only`, role units communicate materially only
 with their own Coordinator, never peers, owner or GATEWAY. Record actual producer surface/address,
-parent route, activation/dispatch source and immutable authority. Iterative dialogue requires a
-separate native GATEWAY surface and exact immutable grant; if unavailable, refuse that mode.
+parent route, activation/dispatch source and immutable authority. Iterative dialogue requires an
+exact immutable two-peer grant independent of GATEWAY selection. Manual chat creation alone does
+not select `owner-transfer`; a new role's first message is only `/tfw-* <task[/phase]>`.
 Never open or resume another TFW role session, or inspect raw provider-wide state, session logs or
 unrelated task/chat history, to read its chat, reasoning, tool output, terminal or unreturned work.
 Monitor only through addressed TFW messages and exposed event/status/wait mechanisms. After an

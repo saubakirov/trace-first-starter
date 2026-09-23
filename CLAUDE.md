@@ -11,6 +11,9 @@ Version: see `.tfw/VERSION`.
 Root instructions are already active; do not reload them. For `/tfw-*`, open the matching
 `.claude/commands/tfw-*.md` copy and its canonical workflow completely. The workflow's Read
 Contract selects task state, addressed shared ranges, templates, and knowledge inputs.
+At Plan Step 5 or a changed capability gate, read exactly
+`.tfw/adapters/claude-code/coordinator.md`; do not preload other profiles or the tooling manifest.
+Missing or ambiguous selection is reported without guessing the provider.
 
 ### Activation and routing
 
@@ -24,7 +27,8 @@ current surface also exposes their exact readback. Never borrow Codex or receipt
 A slash command activates work only when it names the exact `/tfw-*` skill, task/phase and
 owner-direct, delegated or continuation source. A session, role prompt, briefing, wait result or
 title is not activation. Read and validate the complete task routing spine before material work;
-report every status change to `coordinator_route`. Under `tfw-gates-only`, role units communicate
+report every status change to `coordinator_route` under native-gates reporting. Under
+`tfw-gates-only`, role units communicate
 materially only with their own Coordinator, never peers, owner or GATEWAY. Record actual producer
 session/address, parent route, activation/dispatch source and immutable authority in role artifacts.
 Never open or resume another TFW role session, or inspect raw provider-wide state, session logs or
@@ -34,7 +38,9 @@ unchanged signal, back off; never poll on a short fixed timer or narrate unchang
 stall permits one addressed status request, then is reported as unavailable or blocked. Under
 `tfw-gates-only`, do not harvest or relay another unit's unreturned reasoning, suspicions, prose or
 preferred solution.
-Iterative dialogue requires a separately addressable GATEWAY session and exact immutable grant.
+Iterative dialogue requires an exact immutable two-peer grant independent of GATEWAY selection.
+Only an explicit human `owner-transfer` choice disables inter-agent sends; manual chat creation
+alone does not. A new role's first message is only `/tfw-* <task[/phase]>`.
 
 ### Slash Commands
 

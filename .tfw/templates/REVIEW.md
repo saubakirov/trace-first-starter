@@ -29,6 +29,7 @@ safety/security and authority boundaries, accepted-result identity, evidence ide
 | V-assurance | Evidence applicability/sufficiency and guard detection power | HOLDS / FINDING / BLOCKED | {subject tuples, guard classification and limits} |
 | V-trace | Authority, accepted-result identity and authorized continuation | HOLDS / FINDING / BLOCKED | {actual trace checks and finding IDs} |
 | V-accounting | Independent value-bearing replay | VERIFIED / BLOCKED / N/A / INVALID | Approval ref; full Baseline/Candidate; literal VALUE membership/actions/classes/reasons; adds/deletes/touched LOC; binary N/A; trigger; authority/timing; exact NUL-safe command |
+| V-preservation | Affected baseline obligations and installed/receiver parity | HOLDS / FINDING / BLOCKED | Exact role, ordered-read, authority, research, review, accounting, knowledge and close comparisons; superseding HL amendment where applicable |
 
 Candidate is the first tested Executor VALUE+ASSURANCE commit before traces. Excluded-only later
 writes do not move it; later VALUE requires a new Candidate. Missing/mutable/mismatched/late authority
@@ -115,6 +116,8 @@ record recovery`; markers alone never establish DONE:
 - [ ] Coordinator §5 rulings complete; no pending owed item
 - [ ] tfw-docs: {Applied / N/A — actual effect or reason}
 - [ ] tfw-knowledge: {Applied / N/A / Deferred — actual effect or reason}
+- [ ] one truthful task changelog entry preserved; no release inferred
+- [ ] task-owned sessions, worktrees/branches, helpers, containers/processes and temporary files each removed, specifically retained, or pending with actor/action
 - [ ] final accepted output identity and affected independent judgment recorded
 - [ ] selected landing/final effects complete and status/event validated before terminal write
 

@@ -32,8 +32,10 @@ purpose collision that evidence cannot settle are hard stops.
 
 Apply the active root activation/routing contract before discovery or repair and require exact
 owner-direct `/tfw-init` activation. Full init has no prior status: the first status records this
-Coordinator's complete routing spine. Attach/repair validates existing task routing when task-bound
-and never guesses legacy or partial fields.
+Coordinator's complete routing spine and paired `reporting: native-gates` / `selection_ref: baseline`.
+Attach/repair validates existing task routing when task-bound and adds the pair only after verifying
+the actual initial human source and frozen ceiling; it never guesses delegation, owner-transfer,
+legacy or partial fields.
 
 ## Step 0 — Route Before Discovery
 
@@ -142,7 +144,11 @@ Verify core/config/root files, state, RES, knowledge choice, selected adapter ro
 bytes, idempotence, literal `/tfw-*` routes, VERSION/config agreement, direct setup postconditions, and
 configured build commands. Write RF from its template with findings, decisions, files, and observed
 verification. Check actual producing-role handovers and completed dispositions through `Knowledge handover`;
-no unrelated history/count gate applies. After independent review and applicable knowledge effects, close with `DONE` and a filled outcome; stop with `/tfw-plan`.
+no unrelated history/count gate applies. Include the three selected `coordinator.md` payload paths
+and exact Plan-time discovery; Cursor remains common compatibility without a fourth profile. A
+repeated install must produce no new diff and preserve unrelated marker-bounded root content.
+After independent review and applicable knowledge effects, close with `DONE` and a filled outcome;
+stop with `/tfw-plan`.
 
 ## Anti-patterns
 

@@ -5,6 +5,15 @@ four vendor roots, the exact ten public commands, their canonical workflows and 
 the source/target strategy. Runtime roles never read the manifest; installed vendor files
 route to canonical workflows, which remain authoritative.
 
+Exactly three provider-specific Coordinator profiles live at
+`codex/coordinator.md`, `claude-code/coordinator.md` and `antigravity/coordinator.md`. The selected
+persistent adapter names its one exact path. Plan Step 5 reads only that profile at capability or
+changed-capability selection, after task control and shared rule reads; other role commands do not
+preload it. Cursor keeps common compatibility without a fourth product profile. Profiles own
+mechanics and dated limitations, never authorization, Role Locks or a copied workflow algorithm.
+They are `.tfw/` payload files, so init/update distribute them with the framework; no runtime
+manifest lookup, registry or generated loader is added.
+
 | Tool | Persistent discovery root | Command discovery root |
 |---|---|---|
 | Codex | `AGENTS.md` | `.agents/skills/tfw-*/SKILL.md` |

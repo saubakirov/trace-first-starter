@@ -12,10 +12,13 @@ and incident histories live at the linked authority or durable history source.
 **Meaning:** Resumption by the same working unit under the same immutable authority and routing spine. **Authority:** [conventions.md](conventions.md#7-coordination), `Coordination`.
 
 ### Routing spine
-**Meaning:** The five all-or-none status fields `coordinator_route`, `owner_gateway`, `dialogue`, `activation`, and `coordination_authority`. **Authority:** [conventions.md](conventions.md#5-task-statuses), `Task Statuses`, and `.tfw/templates/status.md`.
+**Meaning:** The original five all-or-none status fields `coordinator_route`, `owner_gateway`, `dialogue`, `activation`, and `coordination_authority`, extended on current writes by paired `reporting` and `selection_ref`. A complete old five-field carrier is compatibility-readable with its actual authority; partial forms refuse. **Authority:** [conventions.md](conventions.md#5-task-statuses), `Task Statuses`, and `.tfw/templates/status.md`.
+
+### Current selection
+**Meaning:** Status alone carries the effective launch, dialogue, owner-context topology and reporting choice. `selection_ref` binds an immutable actual human `coordination_selected` event or the verified baseline; pending events grant nothing. **Authority:** [conventions.md](conventions.md#5-task-statuses), `Task Statuses`, and `.tfw/templates/journal/event.md`.
 
 ### GATEWAY
-**Meaning:** A separately addressable owner-dialogue unit permitted only by an exact `dialogue: iterative` grant; it is not the root Coordinator and executes no role workflow. **Authority:** [conventions.md](conventions.md#7-coordination), `Coordination`.
+**Meaning:** A separately addressable persistent owner interface, independent of dialogue permission. It is not the root Coordinator, runs no role workflow and receives only Coordinator-level gates/results. **Authority:** [conventions.md](conventions.md#7-coordination), `Coordination`.
 
 ### gate_answer
 **Meaning:** An immutable authority-owned event that answers a blocked workflow question and cites status, blocked role artifact, and exact HL/TS authority. **Authority:** [conventions.md](conventions.md#7-coordination), `Coordination`, and `.tfw/templates/journal/event.md`.

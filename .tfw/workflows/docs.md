@@ -79,4 +79,6 @@ If human candidates remain, route them to `/tfw-knowledge`; otherwise record sel
 `tfw-knowledge: N/A` with grounds. Return exact changed ranges, final-output identity, dispositions
 and evidence applicability to the existing closing Coordinator. It applies `Closing and record
 recovery`; independent judgment of material changed output remains required. A marker is not that
-judgment. Stop after the effect return; record-only repair starts no new capture cycle.
+judgment. State Applied with exact effects or a substantive source-based N/A; silence, placeholder
+or Deferred cannot satisfy close. A changed accepted claim needs its own affected-result check
+before DONE. Stop after the effect return; record-only repair starts no new capture cycle.

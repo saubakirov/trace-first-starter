@@ -51,6 +51,13 @@ complete spine; total legacy absence is read-only and partial/mismatched routing
 verifies its cited mandate/direct dispatch; owner-direct work invents no principal. Resolve the
 iteration, keep the same Researcher unit, and record producer/routing provenance in Briefing and RES.
 
+Read effective `reporting` and `selection_ref` from the selected task/phase status. A complete old
+five-field carrier uses its verified baseline with native vertical gates; a partial form refuses.
+On continuation, preserve this same Researcher and its prior valid activation through a
+non-revoking selection. A future checkpoint event grants nothing until effective adoption. Phase
+permission is phase-local even when its selection cites an explicitly scoped ancestor event. Only
+an actual owner-transfer choice replaces direct sends with exact durable manual returns.
+
 ## Knowledge at use and return
 
 At each use/return checkpoint, read and apply `Current knowledge use` and `Knowledge handover`.
