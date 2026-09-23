@@ -163,3 +163,31 @@ Continuation source is `journal/20260923-100853__handoff__c5eb.md @ c7f29c39a19d
 | F-R2 | VALUE | Selected-adapter path ownership, HL §3, TS AC-1/8 | Plan Step 5 enumerates provider/path list despite each persistent adapter's exact pointer; V-R2 | A provider/profile update can leave conflicting route instructions | Shared workflow becomes a second source of provider identity, contrary to accepted architecture and portability | Coordinator rules; same Executor implements; this Reviewer verifies | Plan selects the exact path supplied by the active persistent adapter without a common provider/path roster; missing/ambiguous pointers still refuse; installed copy agrees | Rung 1 within approved TS, live REVIEW ruling then same Executor | Moves: Plan and installed copy are VALUE | Open proposal |
 
 Both findings have existing, approved execution scope and no frozen-HL change. They require a replacement tested Candidate and affected independent check. Unchanged EV accounting/test evidence remains applicable only to the old Candidate's unchanged claims; owner Plan-text acceptance is still open and must use the corrected passages. The current KNW state is nonterminal; this Reviewer issues no lifecycle move for REVISE.
+
+## Round 2 affected verification — 2026-09-23
+
+The Coordinator ruled F-R1/F-R2 once in the live REVIEW at `44d2d3a5076c57a152d1d49c3c79f19fa55f3090`, and the same Executor returned RF/EV Round 2 at `8792281cc5f05dd55241d65574f9db0bc3cc87a3`. Current lifecycle is RF. Replacement tested Candidate `b1a62085f236cba7442f22838137afca7455cb28` is reachable from this review checkout. Previous proof for the 34 unchanged VALUE paths, safety/authority limits, provider reports and citations remains applicable because their actual Candidate bytes and oracles did not change.
+
+### V-R2A — F-R1 correction
+
+- **Subject tuple:** Actual Plan Mindset and byte-identical installed Claude Plan@replacement Candidate, Baseline priority and frozen HL §§3.3.1–3.3.2/TS AC-5/8 oracle, local source environment.
+- **Action/evidence:** Opened the exact prior→replacement diff and complete Mindset. Independently checked canonical/installed equality, the restored sentence “Planning quality outranks speed.”, and retention of finished-state story, benefit/impact, imagined quote, consequential challenge, visible hypothesis triage and Saint-Exupéry judgment.
+- **Observed:** The general quality-over-speed priority now applies to planning, without narrowing it to owner discussion. Canonical and installed Plan are identical. The earlier semantic loss in F-R1 is corrected within the approved TS.
+- **Limit:** The owner has not yet accepted the corrected complete Plan passages; that is the reserved separate authority gate, not this source check.
+- **Result:** HOLDS for F-R1's product completion condition. Candidate moved as required.
+
+### V-R2B — F-R2 correction
+
+- **Subject tuple:** Plan Step 5, three persistent adapter pointers and Cursor common compatibility@replacement Candidate, HL §3/TS AC-1/8 oracle, local source/receiver environment.
+- **Action/evidence:** Inspected exact prior→replacement Step 5 diff, all four persistent adapter templates and canonical/installed Plan parity. Focused assertions checked selected pointer use, no three-provider/path catalogue in common Step 5, explicit missing/duplicate/ambiguous refusal, no name-derived or manifest lookup, and the Cursor common-only designation.
+- **Observed:** Common Plan now consumes only the active persistent adapter's declared exact profile pointer. The three provider-specific paths remain owned by their respective adapters. Missing, duplicate or ambiguous selection cannot produce a provider-specific autonomy offer; common-only compatibility supplies no fourth tailored profile. The earlier second-catalogue defect is corrected without a new registry or provider claim.
+- **Limit:** This establishes source/receiver semantics, not a new live Claude/Antigravity/Cursor role cycle. The original dated provider limits remain.
+- **Result:** HOLDS for F-R2's product completion condition. Candidate moved as required.
+
+### Round 2 evidence and accounting replay
+
+The RF Round 2 and EV Round 2 sections exist, name the same Executor, approved TS, Coordinator rung-1 ruling and replacement Candidate, and explicitly defer the owner and close gates. The independent configured suite returned `14 passed in 3.53s`; `git diff --check 195c77d614d6cc0baa2c74568101450b2f621e6e b1a62085f236cba7442f22838137afca7455cb28` exited 0. Byte comparison of canonical/installed Plan returned true. These are positive/source controls; the negative selection refusal is explicit source behavior, not a claimed native trial.
+
+NUL-safe `git diff --name-status --find-renames=50% -z` and `git diff --numstat --find-renames=50% -z` were independently replayed with full Baseline `991a0da91d97196f1233cfbafd3851edc6f66f8e` and replacement Candidate `b1a62085f236cba7442f22838137afca7455cb28`. Literal VALUE membership came from the approved TS `a5f3b31c9a015a1847ecc7d92b5da0d72f9e14c7`'s 38 whole-file rows, with only direct-child `knowledge/records/TKL-*.md` wildcard membership. Result: 36 logical VALUE members, **641 additions + 123 deletions = 764 touched text LOC**, zero binary/rename/deletion VALUE cases, 24 task-local TRACE paths, no extra product path. The two Plan rows are each M/VALUE/60 additions/18 deletions; the other 34 VALUE rows retain their prior path/action/class/reason/metrics. Actual remains below 50/5,000 prompts and 76/6,400 owner ceiling from the unchanged 38/3,200 approved denominator. The nine absent Cursor receivers remain excluded under the prior prospective ruling. Later VALUE close documentation will require another Candidate and affected check.
+
+**Finding completion check:** F-R1 and F-R2 have observable product corrections and applicable proof at the replacement Candidate. The Coordinator's existing approved rung-1 bounds remain the only disposition rulings; this Reviewer supplies independent completion evidence and proposes no new finding. Final Coordinator §5 accounting, owner Plan-text verdict and docs/knowledge/changelog/resource close remain open.
