@@ -128,3 +128,17 @@ The owner's accepted comments select two previously unproven parts of the frozen
 | TRACE | Fixed Candidate, owner source, approved scope, independent route | ✅: `2d96641e4c246cd076276b48642afe63c5035da1`, owner-input handoff at `e6bb2c61fd1881f5adf8bed9c46d994b4c4fb5ba`, unchanged approved TS and same Reviewer/Coordinator units. KNW remains nonterminal. |
 
 F-R3 and F-R4 are correctable within approved TS AC-1/2/3/4/7/8 and frozen HL §§3.3–3.7. Each is a rung-1 VALUE proposal: the Coordinator rules once in the live REVIEW, the same Executor changes the approved VALUE surface under the existing TS, and this independent Reviewer verifies the replacement Candidate. Neither item authorizes a new owner selection, extra profile, weakened gate, HL/TS amendment or task closure. **Current aggregate verdict: 🔄 REVISE.** It supersedes the previous APPROVE only for this newly selected startup acceptance scope; the earlier implementation/documentation evidence remains historical and reusable where unchanged. REVISE alone does not move lifecycle from KNW.
+
+## Round 3 replacement judgment — 2026-09-23
+
+The approved TS and master HL purpose are unchanged. Verify V-R4A establishes the early-choice sequence; V-R3A establishes the new card but also its wrong safe-close field. The owner's practical mode choice must include a truthful view of the work and close obligations. A shared card that omits the required changelog and names release effects can mislead that choice, especially on common-only Cursor. `.tfw/README.md` NS1's inspectable, authorized continuation and the master HL's truthful close promise are not fully served by this card.
+
+| Ordered layer | Subject | Judgment / evidence |
+|---|---|---|
+| VALUE | F-R3 owner-facing startup arrangement | ❌ residual: unified card exists, but its shared safe-close field contradicts HL §3.7/DoD 15 and the actual close rule; Verify V-R3A. |
+| VALUE | F-R4 early initial operating choice | ✅ at source/receiver level: Step 1 precedes substantive framing and Step 5 validates without habitual repeat; Verify V-R4A. |
+| VALUE | Other behavior, safety/security and owner authority | ✅ at earlier stated scope: unchanged prior claims and the new card's non-authority/command-only limits remain valid; actual owner Plan-text verdict is still required. |
+| ASSURANCE | Evidence for selected completion | ❌ for F-R3's complete safe-close claim: eight present fields, parity and 14 configured passes do not establish the required changelog semantics. Other local evidence applies at its stated scope. |
+| TRACE | Approved bound, Candidate and accounting | ✅: same Executor/Reviewer, reachable `5ee5f190b23af43aa56039be1750d0fba3a7bd9d`, 38/1,003 replay and current RF state; prior ruling remains the bound. |
+
+F-R3 remains a correctable VALUE residual inside the already approved rung-1 bound; the Coordinator routes the same Executor and this Reviewer checks only the changed safe-close claim and affected evidence. F-R4's product condition is complete. No HL/TS amendment, new role, owner choice or external trial is necessary to state this defect. **Round 3 aggregate verdict: 🔄 REVISE** the replacement Candidate. REVISE alone makes no lifecycle transition; owner Plan-text acceptance and resource-complete close remain open.
