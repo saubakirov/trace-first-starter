@@ -17,7 +17,8 @@ quote, and the smallest adequate output rendering. Show these in chat as well as
 link or process diagram. Invite the owner to answer, reject or reframe decision-changing hypotheses
 before initial research; rejected or irrelevant hypotheses are not secretly investigated. Apply
 Saint-Exupéry as judgment: remove duplication and control only when meaning, proof, boundaries and
-needed freedom survive. Autonomy changes mechanics, not the quality of owner discussion.
+needed freedom survive. Planning quality outranks speed. Autonomy changes mechanics, not the
+quality of owner discussion.
 
 ## Read Contract
 
@@ -118,14 +119,14 @@ Routes are outputs, not invocations; evaluation writes nothing.
    If the owner
    must construct result or value, keep planning.
 
-5. **Coordination Selection Gate.** Before the capability report, identify the selected persistent
-   adapter and read exactly its `coordinator.md` path at this checkpoint; Codex uses
-   `.tfw/adapters/codex/coordinator.md`, Claude Code uses
-   `.tfw/adapters/claude-code/coordinator.md`, and Antigravity uses
-   `.tfw/adapters/antigravity/coordinator.md`. Cursor keeps common compatibility and has no fourth
-   profile. Do not read the manifest or every profile at runtime. Missing/ambiguous selected
-   adapter or profile is an explicit limit, not an identity guess. Re-read only when the active
-   surface or relevant capability materially changes. Before first status/HL write, disclose
+5. **Coordination Selection Gate.** Before the capability report, use only the active persistent
+   adapter's declared exact Coordinator profile pointer and read that one profile at this
+   checkpoint. Do not derive a path from a provider name, read the tooling manifest, or read other
+   profiles. An explicit common-only adapter designation permits the common coordination gate but
+   supplies no tailored provider offer. Missing, duplicate or ambiguous adapter/profile selection
+   refuses a provider-specific offer and cannot grant autonomy; report the exact missing link.
+   Re-read the selected profile only when the active surface or relevant capability materially
+   changes. Before first status/HL write, disclose
    `provision · addressed send · wait/readback · title/readback` as `native`, `owner-assisted` or
    `unavailable`. Obtain the owner's explicit `activation`, `dialogue`, `owner_gateway`, optional
    stable principal and, when delegated, exact Coordinator plus scope/roles, reservations,
