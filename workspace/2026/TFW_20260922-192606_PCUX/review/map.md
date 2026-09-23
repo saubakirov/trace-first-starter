@@ -104,3 +104,17 @@ The same Executor returned cumulative RF/EV at `b2082651cf3495abf10b8355abec8850
 ## Supplementary human-knowledge final-effect selection — 2026-09-23
 
 Continuation: `journal/20260923-185541__handoff__ee11.md @ f99455473f8dde17cb955f41770db16bcd89aede`, to this same independent Reviewer. Selected final-effect Candidate `3f203e66e0544452c2374716ce566a184e4c60f1` adds only `knowledge/records/TKL-20260923-PCUX-INTENT.md` to the previously approved VALUE surface. Select the six owner-confirmed meanings, exact human source/qualification authority, legacy/current relation scope, record current-use limits and full Baseline accounting. Reuse earlier implementation, docs/knowledge technical-reference and changelog evidence where bytes and oracles are unchanged. The owner's Plan-text verdict is now recorded as accepted; release composition, old unused receipt and safe resource close remain outside this knowledge verdict.
+
+## Owner-directed 3.6.1 patch selection — 2026-09-23
+
+Continuation: `journal/20260923-225107__handoff__a316.md @ d779e6d24621900f963d0d4b0e8ea2e17ec7959d`, same independent Reviewer, current KNW. Fixed patch Candidate `09c64f11c10a6021cbcb3a0e423a95ce7d9a0e6e` is reachable. Release baseline is `v3.6.0` at `f5d496c19a5a121a2f240649320cd410de757168`; original approved TS and Baseline remain the accounting oracle. The direct human authority is HL A13/A14 and the live REVIEW owner selection, not the earlier implementation APPROVE.
+
+| ID | Layer | Selected accepted claim / boundary | Risk and oracle | Evidence identity |
+|---|---|---|---|---|
+| C-P1 | VALUE | Full-session Gateway/Coordinator separation, explicit direct choice, safe handover, supported grouping | Owner context or role identity can collapse; A13, Coordination and selected profiles | Plan, conventions, HL template and three profiles@Candidate |
+| C-P2 | VALUE | Owner-facing card explains value, actual/proposed interface, launch mechanics, brief vertical gates and choice | Owner may authorize an arrangement they cannot understand; A13 and startup card contract | Canonical and installed Plan, conventions and profiles@Candidate |
+| C-P3 | VALUE/ASSURANCE | A14 scoped configured-default model policy with deliberate supported effort and honest native limits | Repeated owner clicks or silent fallback; A12/A14 and current Codex tool schema | Launch selection, Codex profile, other provider profiles@Candidate |
+| C-P4 | VALUE/TRACE | 3.6.1 release identity, migration, changelog and current knowledge map truthfully describe the changed defaults | Receiver drift or publication of wrong composition; RELEASE.md, A13/A14 | VERSION/config/template, migration, changelog, KNOWLEDGE@Candidate |
+| C-P5 | ASSURANCE/TRACE | Changed bytes, copy parity, tests, selector accounting, Candidate and authority remain reproducible | Old approval or stale tests may be falsely applied to new bytes; approved TS and handoff | Git endpoints, installed Plan, local checks, live routing@HEAD |
+
+Select all 15 changed paths from the release-baseline diff; inspect the four substantive source groups and release-owned files, recheck protected authority, role and result identity, and rerun full original-Baseline accounting. Reuse previous acceptance only for unchanged bytes and claims. The old provisioning receipt, final close, tag/push and deployment are separate Coordinator effects. No new Executor RF/EV or external provider cycle is claimed for this direct owner patch.

@@ -168,3 +168,17 @@ The new record preserves why the owner chose this autonomy design without turnin
 | TRACE | Identity, selector, Candidate and continuation | ✅ New direct-child record within prospective ruling, reachable `3f203e66e0544452c2374716ce566a184e4c60f1`, 39/1,059 replay, same independent Reviewer and KNW route. |
 
 No material item changes the prior implementation acceptance or this affected knowledge publication. **Affected verdict: ✅ APPROVE** the final-effect Candidate at its stated scope. Final release composition and unresolved resource disposition remain with their existing owners; this Reviewer does not declare DONE or authorize publication.
+
+## Owner-directed 3.6.1 patch judgment — 2026-09-23
+
+The changed instructions serve the frozen master HL's Strategic Architect purpose and `.tfw/README.md` NS1: the owner can discuss intent and decide the result while separate roles perform bounded work with an inspectable trace. HL A13/A14 are prospective direct owner amendments for these new bytes. The earlier optional topology/grouping wording remains historical truth for its epoch; this verdict does not backdate the correction.
+
+| Ordered layer | Selected subject | Judgment and limit |
+|---|---|---|
+| VALUE | Gateway/direct choice, owner card and grouping | HOLDS under A13: distinct units and explicit choice protect owner context; supported navigation and clear role/launch/communication explanation are required. Verify C-P1/C-P2. |
+| VALUE | Scoped model policy and quality judgment | HOLDS under A12/A14: configured default avoids repetitive model prompts while deliberate effort, actual native constraints and quality gates remain. Verify C-P3. |
+| VALUE | Safety/security and human acceptance authority | HOLDS: handover grants no role launch or decision authority, no silent route change to PCUX, and owner gates remain reserved. Verified against current spine and changed source. |
+| ASSURANCE | Source, release documentation and applicable controls | HOLDS for the fixed local Candidate: changed-file reading, copy parity, migration/version/knowledge checks, 14 configured passes, MkDocs build and release blob guard. No live external-provider claim is accepted. Verify C-P2/C-P4/C-P5. |
+| TRACE | Exact authority, accounting, accepted-result identity and continuation | HOLDS: direct owner A13/A14, same independent Reviewer, reachable Candidate `09c64f11c10a6021cbcb3a0e423a95ce7d9a0e6e`, 39 VALUE files / 1,174 touched LOC within unchanged TS denominator, current KNW parent route. Verify C-P5. |
+
+No open material VALUE, ASSURANCE or TRACE finding changes acceptance or the next authorized act. **Affected verdict: ✅ APPROVE** this owner-directed 3.6.1 patch at the stated source/build scope. The Coordinator still owns exact release integration/checks, publication and the old unresolved creation receipt; this Reviewer does not declare DONE or release.
