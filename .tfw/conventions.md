@@ -1020,7 +1020,8 @@ registry, authority, launch receipt or role's first message. Its fields must tog
 7. Exact `/tfw-* <task[/phase]>` command-only activation for each new role; no briefing or card in
    that first message. Mark a task ID or phase not yet assigned as unknown, without inventing it.
 8. Remaining owner actions and reservations, followed by safe close: durable returns, independent
-   verdict, required owner acceptance and docs/knowledge/release effects, then archive and dispose
+   verdict, required owner acceptance, applicable docs/knowledge effects and the mandatory truthful
+   task changelog; include release effects only when separately authorized. Then archive and dispose
    only of task-owned resources when safe.
 
 The selected profile supplies platform-specific mechanics and current limitations for these fields.
