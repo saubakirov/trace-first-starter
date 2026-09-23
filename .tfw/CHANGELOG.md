@@ -5,7 +5,50 @@ Format: [Keep a Changelog](https://keepachangelog.com/). Versioning: [Semantic V
 
 ## [Unreleased]
 
-- **PCUX — `TFW_20260922-192606_PCUX`:** added three selected coordinator UX profiles, command-only role launches, source-backed live owner selection and independent GATEWAY/dialogue choices. Preserved strategic planning and per-launch model/effort selection; documented conditional small-task routes, mandatory vertical gates, docs/knowledge capture and safe resource-complete close. Provider reports remain dated and scoped; this entry does not claim a completed cross-platform trial, release or final task acceptance.
+## [3.6.0] — 2026-09-23
+
+PCUX — Provider-specific Coordinator UX and Autonomy Guidance (`TFW_20260922-192606_PCUX`).
+The owner sees one practical startup arrangement and chooses the operating mode before substantive
+planning. Provider mechanics stay in selected profiles; the common TFW role, authority and review
+contracts remain shared.
+
+### Added
+
+- Three selected Coordinator profiles for Codex, Claude Code and Antigravity. The active persistent
+  adapter names its exact profile; runtime roles do not discover profiles through the tooling manifest.
+- One mandatory owner-facing startup card: current capabilities and limits, mode, role topology,
+  titles/grouping, workspaces, model/effort responsibility, exact activation commands, vertical
+  returns, remaining owner actions and safe close. Unknown values remain unknown.
+- Current-selection fields `reporting` and `selection_ref`, plus immutable `coordination_selected`
+  events for actual owner choices, including future-effective switches and revocation.
+
+### Changed
+
+- Plan asks the initial mode at new-task entry. Its later Coordination Selection gate validates and
+  records that answer without routine repeated approval; existing continuations retain settled choices.
+- A new role starts with only `/tfw-* <task[/phase]>`. Task files supply its context; the creation
+  receipt or first normal gate can supply its native address without a second activation ceremony.
+- GATEWAY topology and two-peer dialogue permission are independent. A selected persistent GATEWAY
+  receives Coordinator-level gates/results, not worker traffic, and never runs Plan or monitors workers.
+- Manual creation still requires vertical native gate reporting; only an explicit fully manual
+  owner-transfer choice disables inter-agent sends. Authorized gates-only work advances without
+  per-role mechanical approval, while reserved owner decisions remain gates.
+- Claude guidance distinguishes click-created full chats in one serialized local workspace from a
+  conditional compact role chain. Antigravity full chats remain owner-manual under the dated report;
+  title and compact-tool availability must be checked on the actual surface.
+- Plan preserves strategic architecture, Working Backwards, visible consequential hypotheses and
+  Saint-Exupery judgment, alongside the complete per-launch model and reasoning-effort selection rule.
+- Task closure explicitly requires docs/knowledge dispositions, a truthful task changelog and safe,
+  attributable resource cleanup. A changelog or completed task grants no release authority.
+
+### Compatibility and updating
+
+**Read [Updating to TFW 3.6.0](https://github.com/saubakirov/trace-first-starter/blob/v3.6.0/.tfw/migrations/3.6.0.md), including from 3.5.2 and earlier.**
+Install the connected coordination, state-reader, profile and adapter changes together. Complete
+older five-field routing remains readable at its actual authority; new writes use the complete
+seven-field form after source verification. Never bulk-rewrite task state, immutable journals or
+historical grants. This release does not claim a completed current Claude/Antigravity native cycle
+or browser trial; those offers retain their dated, conditional evidence limits.
 
 ## [3.5.2] — 2026-09-22
 
