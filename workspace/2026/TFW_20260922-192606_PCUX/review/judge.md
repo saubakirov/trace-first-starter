@@ -142,3 +142,16 @@ The approved TS and master HL purpose are unchanged. Verify V-R4A establishes th
 | TRACE | Approved bound, Candidate and accounting | ✅: same Executor/Reviewer, reachable `5ee5f190b23af43aa56039be1750d0fba3a7bd9d`, 38/1,003 replay and current RF state; prior ruling remains the bound. |
 
 F-R3 remains a correctable VALUE residual inside the already approved rung-1 bound; the Coordinator routes the same Executor and this Reviewer checks only the changed safe-close claim and affected evidence. F-R4's product condition is complete. No HL/TS amendment, new role, owner choice or external trial is necessary to state this defect. **Round 3 aggregate verdict: 🔄 REVISE** the replacement Candidate. REVISE alone makes no lifecycle transition; owner Plan-text acceptance and resource-complete close remain open.
+
+## Round 4 residual replacement judgment — 2026-09-23
+
+The shared card now names the actual mandatory changelog and conditions any release on separate authorization. This corrects F-R3's remaining safe-close harm: the owner can read the full launch arrangement without mistaking ordinary closure for release or missing the task changelog. It serves the master HL's truthful close purpose and `.tfw/README.md` NS1's inspectable continuation. The early mode choice and selected provider values were independently established in Round 3 and are unchanged.
+
+| Ordered layer | Subject | Judgment / evidence |
+|---|---|---|
+| VALUE | F-R3 safe-close card and F-R4 early choice | ✅ F-R3 residual corrected by actual field-8 text; F-R4 unchanged and verified; Verify Round 4/Round 3. |
+| VALUE | Other behavior, safety/security and owner authority | ✅ at earlier scope: no changed launch, routing, role or acceptance boundary; owner Plan-text verdict remains a required future act. |
+| ASSURANCE | Evidence existence, applicability and sufficiency | ✅ for affected local claim: exact diff and oracle comparison, Candidate reachability, 14 configured passes, Plan parity and full accounting; no external cycle or owner verdict inferred. |
+| TRACE | Approved route, replacement identity, accounting and continuation | ✅: same Executor/Reviewer under prior rung-1 bound, `e56874d88662b1d6ab67ea328ea99e74be7a98e2`, 38/1,004 replay and current RF state. |
+
+F-R3 and F-R4 product conditions are now independently complete. No new material item changes implementation acceptance or the next authorized act. The Coordinator retains final item accounting, owner verdict and resource-complete close. **Round 4 aggregate verdict: ✅ APPROVE** the replacement Candidate at the stated local/source scope, with RF→KNW trace effect; this is not DONE or owner Plan-text acceptance.

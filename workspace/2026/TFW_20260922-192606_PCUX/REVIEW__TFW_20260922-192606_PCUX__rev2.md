@@ -203,6 +203,16 @@ The complete relevant current Plan passages from Candidate `5ee5f190b23af43aa560
 
 Handover producer/parent is Coordinator `codex:thread:local:01a0c980-4552-7ed3-b2aa-3c5cc46bc7bc`; recipient is the same Executor `codex:thread:local:01a0cc7a-5604-7143-bf0d-ae2cd3affb32` through `/tfw-handoff TFW_20260922-192606_PCUX` and the committed handoff reference. Inspected source is the named Round 3 RF, Candidate and independent return. Material result is the F-R4 disposition and finite F-R3 continuation; no new human Fact Candidate or provider observation. Current RF remains unchanged until Executor acceptance performs RF to ONB. Owner text acceptance and resource-complete final close remain open; no product correction or final acceptance is claimed here.
 
+### Independent Reviewer Round 4 affected return — 2026-09-23
+
+Same independent Reviewer `codex:thread:local:01a0cc9a-747d-7130-869c-b9f0b1e0f354`; Executor cumulative RF/EV at `b2082651cf3495abf10b8355abec8850cdbdbe02`; replacement tested Candidate `e56874d88662b1d6ab67ea328ea99e74be7a98e2`. This is the bounded residual check under the existing F-R3 rung-1 ruling and unchanged approved TS. [Map](review/map.md#round-4-residual-f-r3-selection--2026-09-23), [Verify](review/verify.md#round-4-affected-verification--2026-09-23) and [Judge](review/judge.md#round-4-residual-replacement-judgment--2026-09-23) record the affected proof.
+
+The only changed VALUE path since Round 3 is `.tfw/conventions.md`. Its shared startup-card field 8 now names applicable docs/knowledge effects, the mandatory truthful task changelog and release only when separately authorized, while retaining owner acceptance, independent verdict and safe resource disposition. This matches frozen HL §3.7/DoD 15 and the shared close rule. The three selected profiles and common-only Cursor now receive a coherent card contract. **F-R3's residual product condition is verified; F-R4 remains verified.** No new finding or proposal is added. Coordinator terminal §5 accounting and the owner's explicit verdict on the complete revised Plan passages remain separate.
+
+Full Baseline→Candidate accounting is **38 VALUE files, 864 additions + 140 deletions = 1,004 touched text LOC**, zero binary, unchanged 38/3,200 approval denominator and below trigger/ceiling. Only one approved VALUE member changed from Round 3. Independent configured checks returned **14 passed**, canonical/installed Plan remained byte-identical and `git diff --check` passed. Earlier source/receiver proof is reused only for unchanged claims; no new external provider cycle is claimed.
+
+**Current verdict: ✅ APPROVE** replacement tested Candidate `e56874d88662b1d6ab67ea328ea99e74be7a98e2` for the approved implementation scope. This supersedes the Round 3 REVISE for F-R3's residual; the finding/ruling history remains. RF→KNW is the authorized trace transition. Final task acceptance still requires the owner's explicit current Plan-text verdict, Coordinator item accounting, affected final-effect/landing check and safe resource dispositions. No DONE, release or cleanup is asserted by this return.
+
 ## 7. Fact Candidates
 
 No fact candidates. The correction adds no new human source or knowledge claim; prior research and owner-report provenance remain for the authorized knowledge workflow.
