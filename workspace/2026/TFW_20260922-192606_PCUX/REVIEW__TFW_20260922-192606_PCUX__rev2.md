@@ -105,6 +105,31 @@ The actual qualification authority is the existing owner-approved TS AC-9 and fr
 
 Contributor handover coverage: the Coordinator's frozen HL/TS retain owner decisions; Researcher iter1 retains the selected report and D1–D6, while iter2 at `f3f754fc22fdc7139d22443e8c3ebc6f00842fcb` supplies technical design and justified-none for new human facts. Executor RF/EV and both independent review returns explicitly have no new human candidates. Their technical result is linked by the new source-bound reference. No missing producer return is replaced by another role's summary. This Coordinator's material result is these exact capture effects and dispositions; uncertainty remains the owner verdict and external operation, not a hidden capture queue. Resource disposal and final changed-claim judgment remain open; KNW is nonterminal.
 
+### Coordinator capture return — exact Candidate and affected-check scope
+
+The actual docs/knowledge/changelog effects above are committed at final-effect Candidate `2d96641e4c246cd076276b48642afe63c5035da1`. This is not a final task-acceptance claim. The implementation Candidate's 36 VALUE members remain byte-for-byte unchanged; only the two approved documentation members below were added to that accepted surface. The canonical Plan passages shown to the owner are unchanged from `b1a62085f236cba7442f22838137afca7455cb28`.
+
+| Accounting fact | Recomputed result |
+|---|---|
+| Immutable approval / denominator | TS `a5f3b31c9a015a1847ecc7d92b5da0d72f9e14c7`, owner handoff `8d09f8c7b2a7b19439d889fe404e26a83715f918`; 38 whole-file VALUE rows / 3,200 touched LOC, unchanged |
+| Baseline / Candidate | `991a0da91d97196f1233cfbafd3851edc6f66f8e` / `2d96641e4c246cd076276b48642afe63c5035da1` |
+| Full selected VALUE | 38 logical files, 678 additions + 125 deletions = **803 touched text LOC**; zero binary, rename or deletion VALUE cases |
+| Additional member | `KNOWLEDGE.md`: M / VALUE / +3 −2; affected current component relationships |
+| Additional member | `knowledge/records/TKL-20260923-PCUX.md`: A / VALUE / +34 −0; qualified technical-reference decision |
+| Unaffected membership | All 36 literal members/actions/reasons and numeric fields from RF/EV Round 2 remain unchanged; the direct-child `knowledge/records/TKL-*.md` selector matches this one new record only |
+| Other paths / limits | 28 TRACE paths: selected task-local artifacts and `.tfw/CHANGELOG.md`; no unapproved VALUE path or new permanent assurance file. Below 50/5,000 prompts and 76/6,400 ceiling; denominator not ratcheted |
+
+Both Git commands were NUL-parsed against the literal VALUE rows extracted from the exact approved TS; every remaining path was checked as selected task TRACE or the task changelog. Whole files are counted without line exclusions:
+
+```sh
+git diff --name-status --find-renames=50% -z 991a0da91d97196f1233cfbafd3851edc6f66f8e 2d96641e4c246cd076276b48642afe63c5035da1
+git diff --numstat --find-renames=50% -z 991a0da91d97196f1233cfbafd3851edc6f66f8e 2d96641e4c246cd076276b48642afe63c5035da1
+```
+
+Coordinator checks on the actual capture bytes: configured `python -m pytest tools/tests/ docs/scripts/ -q` returned **14 passed in 3.72s**; all six local links in the new record resolved; `git diff --check` passed; staged blob guard returned PASS for four occurrences. These are producer checks, not independent acceptance of the Coordinator's output. No source/installed workflow bytes changed, so earlier implementation evidence retains its input/output applicability.
+
+The same independent Reviewer receives a bounded final-effect check of the changed Architecture Map/reference claims, actual source/authority and relation handling, retain-only F1–F3 dispositions, truthful changelog boundary and recomputed Candidate accounting. Use existing REVIEW/stage sections under Closing and record recovery; no blanket stage restart, new formal execution round or repeated capture is requested. A genuine material defect still uses its existing rule/role route. This Coordinator neither supplies a verdict nor accepts its own material reference. For the remaining safe-disposal gate, return the Reviewer's exact owned worktree/branch and any restoration or retention dependency in the existing owned return; no archive/removal is requested yet. Owner Plan-text acceptance and actual resource disposition remain open.
+
 ## 7. Fact Candidates
 
 No fact candidates. The correction adds no new human source or knowledge claim; prior research and owner-report provenance remain for the authorized knowledge workflow.
