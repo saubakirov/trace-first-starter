@@ -89,3 +89,17 @@ F-R1 and F-R2 are correctable within the approved TS. Each is routed separately 
 **Current aggregate verdict: 🔄 REVISE.** This supersedes the earlier APPROVE for Candidate `195c77d614d6cc0baa2c74568101450b2f621e6e`. The original approval remains historical evidence of the earlier bounded judgment; it cannot support final acceptance after F-R1/F-R2 are established. REVISE alone does not move lifecycle. The Coordinator must rule the proposals and route the correction under the governing state contract; this Reviewer does not invent a KNW return transition or dispatch the Executor.
 
 Follow-up self-check: both items have accepted claim, observed fact/oracle, concrete harm, material consequence, owner, observable completion, rung and Candidate effect; unchanged evidence was reused; one live verdict is stated.
+
+## Round 2 replacement judgment — 2026-09-23
+
+The approved TS and master HL purpose are unchanged. Verify V-R2A/V-R2B now establishes the two ruled corrections at replacement Candidate `b1a62085f236cba7442f22838137afca7455cb28`. The general planning-quality-over-speed priority again protects the Strategic Architect from fast but inferior planning, and the active persistent adapter again owns the exact profile pointer, protecting portable single-source guidance. Both directly serve the master HL Contract Baseline and `.tfw/README.md` NS1; no extra feature or shifted authority appears.
+
+| Ordered layer | Subject | Status | Evidence / limit |
+|---|---|---|---|
+| VALUE | F-R1 protected planning priority | ✅ | Actual Mindset and installed copy; Verify V-R2A |
+| VALUE | F-R2 selected-adapter ownership | ✅ | Actual Step 5 and persistent pointers; Verify V-R2B |
+| VALUE | Other domain, architecture, safety/security and human-authority claims | ✅ at prior scope | Unchanged Candidate bytes/oracles; prior Verify V1–V4 reused; owner verdict remains a separate required gate |
+| ASSURANCE | Affected proof applies and is sufficient | ✅ at source/receiver scope | Exact diff, parity, configured checks and full accounting; Verify Round 2. No external live provider trial is claimed. |
+| TRACE | Authority, replacement identity, accounting and return route | ✅ | Approved TS/rung-1 ruling, reachable replacement Candidate, 36/764 replay and same Reviewer/Coordinator units |
+
+F-R1/F-R2 are now corrected and independently verified as product conditions. No new material finding changes implementation acceptance or the next authorized act. The Coordinator owns final §5 disposition recording; this Reviewer does not issue a new ruling. The earlier REVISE remains historical and is superseded by the Round 2 verdict artifact. **Round 2 aggregate verdict: ✅ APPROVE** the replacement implementation Candidate. The owner's explicit acceptance of the corrected complete Plan passages, docs/knowledge, changelog, later changed-claim checks, integration and safe resource close remain open before DONE.
