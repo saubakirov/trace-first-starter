@@ -73,3 +73,7 @@ Continuation source: `journal/20260923-100853__handoff__c5eb.md @ c7f29c39a19d93
 | C-R2 | VALUE | Selected persistent adapter owns one exact profile path; common Plan owns only the selection algorithm | A second provider/path catalogue can drift and select stale guidance | Plan Step 5, persistent adapter pointers, profile discovery | Canonical/installed source | Frozen HL §3; TS AC-1/8 | Plan and adapter roots@Candidate | yes |
 
 Selection: compare the exact Baseline/Candidate Plan passages and the three current adapter pointers against the quoted HL/TS clauses. Determine semantic harm rather than treating deletion or duplication count as a verdict. No unrelated evidence or provider cycle is reopened. The owner's actual Plan-text acceptance remains pending.
+
+## Round 2 correction selection — 2026-09-23
+
+The same Executor returned RF Round 2 at `8792281cc5f05dd55241d65574f9db0bc3cc87a3` after the Coordinator ruled F-R1/F-R2 in live REVIEW at `44d2d3a5076c57a152d1d49c3c79f19fa55f3090`. Replacement Candidate is `b1a62085f236cba7442f22838137afca7455cb28`; Baseline and approved TS selector are unchanged. Check only the two corrected Plan VALUE files, their selected adapter pointers and the affected accounting, source parity and configured checks. Reuse earlier evidence for unchanged claims, mandatory safety/authority boundaries and provider limits. The owner's corrected Plan-passage verdict and later close effects remain separate future gates.
