@@ -226,6 +226,12 @@ Existing Coordinator `codex:thread:local:01a0c980-4552-7ed3-b2aa-3c5cc46bc7bc` r
 
 Handover producer is this Coordinator; inspected source/epoch is the durable Round 4 result, independent REVIEW, exact capture-byte comparisons and shown-Plan parity. Material result is completion accounting for F-R3/F-R4 and preserved prior capture applicability. Next required authority is owner saubakirov's explicit verdict on the actual Plan text. A rejection returns only its affected scope through the existing same-unit routes; acceptance permits the remaining safe close checks and disposal, not unapproved external effects.
 
+### Coordinator owner-verdict record — 2026-09-23
+
+Actual human source: owner saubakirov's message in Coordinator task `codex:thread:local:01a0c980-4552-7ed3-b2aa-3c5cc46bc7bc`: **«Принято, доводи до релиза»**. It follows the complete actual Plan-passage package and the explicit request for the separate owner verdict. **The owner accepts the shown Plan text.** Shown Candidate `5ee5f190b23af43aa56039be1750d0fba3a7bd9d` and independently approved replacement `e56874d88662b1d6ab67ea328ea99e74be7a98e2` have identical canonical/installed Plan bytes; the latter differs only in the corrected shared close-card field. This resolves the reserved actual-text checkpoint, not an inferred approval from silence or earlier execution permission.
+
+The same message separately requests this project's release route. It authorizes release preparation under `RELEASE.md`, not an implicit release through PCUX's old TS or a bypass of that contract's post-verification merge/tag/push/publication gates. Resolve SemVer, migration and exact checked composition in an isolated tree under `/tfw-release`; keep the approved implementation and producer lineage. Safe task-resource disposition and final KNW close are still owed. No external effect, release tag or DONE is recorded by this owner-verdict entry.
+
 ## 7. Fact Candidates
 
 No fact candidates. The correction adds no new human source or knowledge claim; prior research and owner-report provenance remain for the authorized knowledge workflow.
