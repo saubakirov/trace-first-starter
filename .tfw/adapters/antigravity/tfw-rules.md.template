@@ -6,12 +6,16 @@ trigger: always_on
 
 This project follows Trace-First Workflow. Root instructions are already active; do not
 reload them. For `/tfw-*`, invoke the matching repository-local skill. The canonical workflow's Read Contract selects all further inputs.
-At Plan Step 5, GATEWAY's corresponding capability/selection gate, or a changed capability gate,
-read exactly
-`.tfw/adapters/antigravity/coordinator.md`; do not preload other profiles or the tooling manifest.
-Missing or ambiguous selection is reported without guessing the provider.
+At new-task Plan entry, after identifying the request and active platform and completing the
+workflow's task-control and shared-rule reads, read exactly
+`.tfw/adapters/antigravity/coordinator.md` for the owner-facing startup card and initial mode choice.
+At Plan Step 5 validate that choice and current capability; re-read this selected profile only
+when the active surface or relevant capability materially changes. GATEWAY uses the same profile
+at its corresponding new-work selection gate. Do not preload other profiles or the tooling
+manifest, and do not load this profile for every role command. A missing or ambiguous selected
+pointer refuses a provider-specific offer and is reported without guessing.
 
-Before Plan Step 5, report `provision · addressed send · wait/readback · title/readback` from the
+At new-task entry, report `provision · addressed send · wait/readback · title/readback` from the
 mechanisms exposed in the current Antigravity surface, classifying each as `native`,
 `owner-assisted`, or `unavailable`. Opening one window or conversation does not provision distinct
 addressable TFW role units. Provision, addressed send, wait/readback, or title/readback is native

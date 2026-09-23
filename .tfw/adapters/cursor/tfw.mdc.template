@@ -9,12 +9,18 @@ This project follows Trace-First Workflow. Root instructions are already active;
 reload them. For `/tfw-*`, open `.cursor/commands/tfw-<command>.md`, then follow the mapped
 canonical workflow's Read Contract. The workflow selects all further inputs.
 
-Before Plan Step 5, report `provision · addressed send · wait/readback · title/readback` from the
+At new-task Plan entry, before substantive framing or questions, report `provision · addressed send · wait/readback · title/readback` from the
 mechanisms exposed in the current Cursor surface, classifying each as `native`, `owner-assisted`, or
 `unavailable`. Loading one editor rule does not provision distinct addressable TFW role units.
 Treat provision and addressed send as owner-assisted, and wait/readback or title/readback as
 unavailable, unless the current surface exposes the exact mechanism and observable result. Never
 borrow another provider's capability or old receipt.
+
+This is an explicitly common-only adapter with no fourth Coordinator profile. At new-task entry
+show the shared startup card with current Cursor classifications and unknowns, and ask the initial
+operating mode; make no provider-tailored offer. Plan Step 5 validates and records the choice,
+reopening it only for an unresolved choice or material boundary change. Existing-task continuation
+preserves its settled choice. The card never belongs in a role's command-only first message.
 
 A command activates work only when its exact skill, task/phase and owner-direct,
 delegated or continuation source resolve. The command-only first message names the command and

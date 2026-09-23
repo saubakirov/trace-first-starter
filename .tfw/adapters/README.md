@@ -7,10 +7,12 @@ route to canonical workflows, which remain authoritative.
 
 Exactly three provider-specific Coordinator profiles live at
 `codex/coordinator.md`, `claude-code/coordinator.md` and `antigravity/coordinator.md`. The selected
-persistent adapter names its one exact path. Plan Step 5 or GATEWAY's corresponding selection gate
-reads only that profile at capability or
-changed-capability selection, after task control and shared rule reads; other role commands do not
-preload it. Cursor keeps common compatibility without a fourth product profile. Profiles own
+persistent adapter names its one exact path. New-task Plan entry reads only that profile after task-control and shared-rule reads, before
+substantive framing, for the mandatory owner-facing startup card and initial mode choice. Plan
+Step 5 validates/records that choice, and re-reads the profile only for a material surface or
+capability change. GATEWAY uses the same card at its corresponding new-work selection gate; other
+role commands do not preload it. Cursor keeps common-only compatibility without a fourth product
+profile. Profiles own
 mechanics and dated limitations, never authorization, Role Locks or a copied workflow algorithm.
 They are `.tfw/` payload files, so init/update distribute them with the framework; no runtime
 manifest lookup, registry or generated loader is added.

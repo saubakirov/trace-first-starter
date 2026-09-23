@@ -998,6 +998,41 @@ Role Lock. Distrust alone creates no repeat-work duty: repetition cites either a
 workflow check or a concrete contradiction/evidence gap. Record a discrepancy once in the detecting
 role's artifact and return it through that unit's own Coordinator without peer debate.
 
+### New-task startup card
+
+On a new Plan request, after identifying the request and active platform, show the owner **one
+startup card** before substantive framing, planning questions or the future-state preview. Use the
+one exact Coordinator profile selected by the active persistent adapter; a common-only adapter says
+so explicitly and makes no tailored provider offer. The card is a display contract, not a file,
+registry, authority, launch receipt or role's first message. Its fields must together state:
+
+1. Active platform and actual surface; current `provision / addressed send / wait/readback / title/readback` classification (`native`, `owner-assisted` or `unavailable`) with unknowns named.
+2. The operating mode offered now: activation, dialogue, reporting and owner interface; whether a
+   separate GATEWAY is optional/selected and how it differs from the planning Coordinator.
+3. The role sequence and return route: Coordinator plans; distinct Researcher, Executor and
+   independent Reviewer work only after their gates; roles return vertically to their own
+   Coordinator, which presents owner gates/results through the selected owner interface.
+4. Visible task titles and optional grouping, distinguishing known titles from names to set later.
+5. Workspace or checkout arrangement, mutation isolation and how an independent Reviewer receives
+   a fixed reachable Candidate; identify any owner action or unresolved provider limit.
+6. Who chooses model and reasoning effort at each launch, where the rationale is recorded, and
+   whether effective settings are observable. Do not invent a future setting.
+7. Exact `/tfw-* <task[/phase]>` command-only activation for each new role; no briefing or card in
+   that first message. Mark a task ID or phase not yet assigned as unknown, without inventing it.
+8. Remaining owner actions and reservations, followed by safe close: durable returns, independent
+   verdict, required owner acceptance and docs/knowledge/release effects, then archive and dispose
+   only of task-owned resources when safe.
+
+The selected profile supplies platform-specific mechanics and current limitations for these fields.
+Unknown future addresses, paths, phase count, title values and settings stay explicitly unknown;
+optional choices are labelled optional. Ask for the initial operating mode with the card. The
+answer is an intended arrangement only. It cannot activate a role, approve HL/TS, satisfy a
+reserved owner gate or grant dialogue/delegation. At Plan Step 5 validate and record this choice
+against current capability and immutable authority; reopen it only for a material boundary change
+or an unresolved choice. Existing-task continuation retains its settled selection unless the owner
+requests a change or a relevant capability actually changes. GATEWAY uses the same card contract at
+its corresponding new-work selection gate, without running Plan itself.
+
 ### Launch selection
 
 Before creating a separate role unit, the Coordinator:

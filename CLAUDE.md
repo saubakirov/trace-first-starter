@@ -11,14 +11,18 @@ Version: see `.tfw/VERSION`.
 Root instructions are already active; do not reload them. For `/tfw-*`, open the matching
 `.claude/commands/tfw-*.md` copy and its canonical workflow completely. The workflow's Read
 Contract selects task state, addressed shared ranges, templates, and knowledge inputs.
-At Plan Step 5, GATEWAY's corresponding capability/selection gate, or a changed capability gate,
-read exactly
-`.tfw/adapters/claude-code/coordinator.md`; do not preload other profiles or the tooling manifest.
-Missing or ambiguous selection is reported without guessing the provider.
+At new-task Plan entry, after identifying the request and active platform and completing the
+workflow's task-control and shared-rule reads, read exactly
+`.tfw/adapters/claude-code/coordinator.md` for the owner-facing startup card and initial mode choice.
+At Plan Step 5 validate that choice and current capability; re-read this selected profile only
+when the active surface or relevant capability materially changes. GATEWAY uses the same profile
+at its corresponding new-work selection gate. Do not preload other profiles or the tooling
+manifest, and do not load this profile for every role command. A missing or ambiguous selected
+pointer refuses a provider-specific offer and is reported without guessing.
 
 ### Activation and routing
 
-Before Plan Step 5, report `provision · addressed send · wait/readback · title/readback` from the
+At new-task entry, report `provision · addressed send · wait/readback · title/readback` from the
 mechanisms exposed in the current Claude Code session, classifying each as `native`,
 `owner-assisted`, or `unavailable`. Starting one session does not provision distinct addressable TFW
 role units. Without an exposed distinct-unit creator and exact recipient send, provision and

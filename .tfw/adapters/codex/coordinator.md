@@ -1,6 +1,30 @@
 # Codex Coordinator profile
 
-Selected by `AGENTS.md` at Plan Step 5, GATEWAY's corresponding selection gate, or a changed capability gate. This file describes Codex mechanics; the current `status.md`, frozen HL, canonical workflow and actual owner choice govern authority. Read this one profile at its checkpoint, not every provider profile or the tooling manifest.
+Selected by `AGENTS.md` at new-task entry and Plan Step 5, GATEWAY's corresponding selection gate, or a changed capability gate. This file describes Codex mechanics; the current `status.md`, frozen HL, canonical workflow and actual owner choice govern authority. Read this one profile at its checkpoint, not every provider profile or the tooling manifest.
+
+## Startup card values on Codex
+
+At new-task entry, render the shared `New-task startup card` as one owner-facing display,
+using current Codex task tools for each capability instead of assuming this profile is a live
+receipt. Offer owner-only or bounded delegated activation with `tfw-gates-only` dialogue;
+reporting stays native-gates
+unless the owner explicitly selects owner-transfer. A separate owner GATEWAY is optional and never
+the planning Coordinator. The Coordinator plans, then distinct visible Researcher, Executor and
+independent Reviewer tasks run at their gates and return vertically to that Coordinator; the
+Coordinator presents owner decisions/results directly or through the selected GATEWAY.
+
+Use `PLAN`, `RESEARCH`, `EXEC` and `REVIEW` titles in the `Session identity` format
+only when each exact title can be set and read back; a task-only sidebar Section is optional. Name future task IDs, addresses,
+phase titles and Section as undecided until actually known. Use separate worktrees for mutating
+roles; keep a tested reachable Candidate fixed for independent review. At each launch the
+Coordinator checks current model/effort options, sets the quality floor, selects both separately,
+and records rationale outside the first message; an unobserved effective setting is unknown.
+Each new role's first message is only `/tfw-* <task[/phase]>`, with the actual task/phase inserted
+only after assignment. The owner still approves HL/TS, reserved amendments and the actual Plan
+passages and may need to supply an unavailable task operation; autonomous gates do not erase those
+acts. Close after durable role returns, independent verdict, accepted docs/knowledge/changelog
+effects and safe disposition of task-owned tasks and worktrees; never archive before a needed
+correction or delete another owner's resource.
 
 ## Offer on the active surface
 

@@ -83,7 +83,21 @@ Routes are outputs, not invocations; evaluation writes nothing.
 
    | Every invocation | New task only | Existing task/phase |
    |---|---|---|
-   | state/lineage · unit kind · title · routing/authority · next-route capability | title/ABBR · future preview · Coordination Selection · root status/HL | skip settled inception; continue only the state-owned route |
+   | state/lineage, unit kind, title, routing/authority, next-route capability | selected-profile disclosure, initial mode choice, title/ABBR, future preview, Coordination Selection, root status/HL | skip settled inception; continue only the state-owned route |
+
+   For a **new task**, identify the request and active platform, then read only the Coordinator
+   profile named by that platform's active persistent adapter after the task-control and shared-rule
+   reads. A declared common-only adapter has no tailored profile; a missing or ambiguous pointer
+   refuses a provider-specific offer. Before Step 2's substantive interpretation, Step 3's framing
+   questions or Step 4's future-state preview, show the single owner-facing startup card required
+   by `conventions.md` -> `New-task startup card`, populated from current surface inspection and
+   the selected profile. Mark unknown and optional values; do not invent future task/phase IDs,
+   child addresses, worktree paths, titles or effective settings. Ask the owner for the initial
+   operating mode (activation, dialogue, reporting and optional GATEWAY). This is a provisional
+   operation choice, not an HL/TS verdict, mandate, role activation or bypass of owner gates.
+   Preserve the owner's answer for Step 5; if unresolved, return to that choice before first
+   status/HL write. A GATEWAY uses the same card contract at its new-work selection gate and
+   routes a distinct planning Coordinator; it never runs these Plan steps.
 
    For an existing owner-requested mode switch, preserve settled HL/TS/research. Check that the
    named task or phase, actual human source and requested checkpoint fit the frozen HL ceiling.
@@ -119,16 +133,19 @@ Routes are outputs, not invocations; evaluation writes nothing.
    If the owner
    must construct result or value, keep planning.
 
-5. **Coordination Selection Gate.** Before the capability report, use only the active persistent
-   adapter's declared exact Coordinator profile pointer and read that one profile at this
-   checkpoint. Do not derive a path from a provider name, read the tooling manifest, or read other
-   profiles. An explicit common-only adapter designation permits the common coordination gate but
-   supplies no tailored provider offer. Missing, duplicate or ambiguous adapter/profile selection
-   refuses a provider-specific offer and cannot grant autonomy; report the exact missing link.
-   Re-read the selected profile only when the active surface or relevant capability materially
-   changes. Before first status/HL write, disclose
-   `provision · addressed send · wait/readback · title/readback` as `native`, `owner-assisted` or
-   `unavailable`. Obtain the owner's explicit `activation`, `dialogue`, `owner_gateway`, optional
+5. **Coordination Selection Gate.** For new work, validate the selected-profile capability
+   disclosure and initial operating-mode choice already shown at entry; re-read that one profile
+   only if the active surface or relevant capability materially changed. For an existing task whose
+   choice is settled, retain it unless an owner-requested switch or material capability change
+   requires this gate. Use only the active persistent adapter's exact Coordinator profile pointer;
+   do not derive a path from a provider name, read the tooling manifest, or read other profiles.
+   An explicit common-only adapter designation permits the common coordination gate but supplies
+   no tailored provider offer. Missing, duplicate or ambiguous selection refuses a provider-specific
+   offer and cannot grant autonomy; report the exact missing link. Before first status/HL write,
+   confirm `provision / addressed send / wait/readback / title/readback` as `native`,
+   `owner-assisted` or `unavailable`. Ask for an operating-mode answer again only when the initial
+   choice is unresolved or a material boundary changed; confirm the owner's explicit
+   `activation`, `dialogue`, `owner_gateway`, optional
    stable principal and, when delegated, exact Coordinator plus scope/roles, reservations,
    amendment authority, effects and expiry. Default to owner-only, gates-only, owner gateway,
    `native-gates` reporting and no principal unless a valid grant changes them. Manual role

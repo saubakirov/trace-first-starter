@@ -43,15 +43,18 @@ common rule, terminology, or project-knowledge libraries here.
 | `/tfw-config` | `.tfw/workflows/config.md` |
 | `/tfw-init` | `.tfw/workflows/init.md` |
 
-At Plan Step 5, GATEWAY's corresponding capability/selection gate, or a changed capability gate,
-read exactly
-`.tfw/adapters/codex/coordinator.md`. This selected profile describes Codex mechanics; it is not
-authority and is not preloaded for every role command. A missing or ambiguous selected path is
-reported, never guessed.
+At new-task Plan entry, after identifying the request and active platform and completing the
+workflow's task-control and shared-rule reads, read exactly
+`.tfw/adapters/codex/coordinator.md` for the owner-facing startup card and initial mode choice.
+At Plan Step 5 validate that choice and current capability; re-read this selected profile only
+when the active surface or relevant capability materially changes. GATEWAY uses the same profile
+at its corresponding new-work selection gate. Do not preload other profiles or the tooling
+manifest, and do not load this profile for every role command. A missing or ambiguous selected
+pointer refuses a provider-specific offer and is reported without guessing.
 
 ### Codex native coordination
 
-Before Plan Step 5, inspect the task tools exposed in the current Codex task and report
+At new-task entry, inspect the task tools exposed in the current Codex task and report
 `provision · addressed send · wait/readback · title/readback`, classifying each as `native`,
 `owner-assisted`, or `unavailable`. `native` requires the corresponding current mechanism: task
 creation/fork for provision, exact task-addressed send, task wait/read for readback, and both title

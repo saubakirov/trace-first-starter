@@ -1,6 +1,29 @@
 # Antigravity Coordinator profile
 
-Selected by `.agents/rules/tfw.md` at Plan Step 5, GATEWAY's corresponding selection gate, or a changed capability gate. Read this one profile, not every provider profile or the tooling manifest. Current task status, frozen HL, canonical workflow and human choice govern authority.
+Selected by `.agents/rules/tfw.md` at new-task entry and Plan Step 5, GATEWAY's corresponding selection gate, or a changed capability gate. Read this one profile, not every provider profile or the tooling manifest. Current task status, frozen HL, canonical workflow and human choice govern authority.
+
+## Startup card values on Antigravity
+
+At new-task entry, render one shared startup card using the current Antigravity surface; the
+dated report below does not establish today's native links. Offer the visible full-chat route
+with owner-created distinct planning Coordinator, Researcher, Executor and independent Reviewer
+chats at ready gates. Owner-only or bounded delegated activation with `tfw-gates-only` dialogue and native-gates
+reporting is an intended choice; only an
+explicit owner selection changes reporting to owner-transfer. A separate GATEWAY is optional and
+receives only Coordinator-level owner gates/results. Each role returns vertically to its own
+Coordinator. The compact route is conditional on the complete prerequisites below and cannot be
+presented as currently proven.
+
+Use role titles only with actual title write and exact readback; unavailable titles or grouping
+are navigation limits, and grouping is optional. State the observed checkout arrangement, keep
+mutation isolated or serialized as that surface permits, and give the independent Reviewer a fixed
+reachable Candidate. Do not invent a worktree path. The Coordinator chooses model and effort
+separately at each launch from current controls and records rationale outside the first message;
+effective settings not observed remain unknown. Each new role's first message is exactly
+`/tfw-* <task[/phase]>` after the ID/phase is assigned, without a briefing or card. Identify the
+owner's chat-creation clicks, HL/TS and reserved decisions still owed. Close after durable role
+returns, independent verdict, required docs/knowledge/changelog effects and safe disposition of
+only task-owned chats and workspace resources.
 
 ## Dated route and active-surface check
 
