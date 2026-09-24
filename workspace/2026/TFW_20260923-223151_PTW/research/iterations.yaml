@@ -1,0 +1,10 @@
+task_id: TFW_20260923-223151_PTW
+title: "Focused Daily naming, placement and Trace architecture challenge"
+min_iterations: 1
+max_iterations: 2
+iterations:
+  - number: 1
+    focus: "Challenge Daily folder/file names, location and template boundary against TFW North Star, field practice, update mechanics and a no-new-folder alternative; return a decision matrix and blind spots."
+    hypotheses: [H1, H7, H11, H12, H13, H14]
+    status: pending
+    res_file: research/iter1/RES.md
