@@ -6,5 +6,7 @@ iterations:
   - number: 1
     focus: "Challenge Daily folder/file names, location and template boundary against TFW North Star, field practice, update mechanics and a no-new-folder alternative; return a decision matrix and blind spots."
     hypotheses: [H1, H7, H11, H12, H13, H14]
-    status: pending
+    status: complete
     res_file: research/iter1/RES.md
+    agent: codex
+    sources: [senselab-field, helpdesk-field, tfw-source, official-git-docs]
