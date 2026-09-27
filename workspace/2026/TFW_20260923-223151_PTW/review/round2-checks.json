@@ -1,0 +1,213 @@
+{
+  "producer": "Independent Reviewer codex:thread:local:01a0e475-3df0-7493-b0c3-4c44908e9e91",
+  "returned_epoch": "bf4f4ff7c971443439d85f14ba7572c4012597dd",
+  "Candidate": "87630d0f26910498a4139134ec0a3480c5e43ca1",
+  "kind": "bounded independent audit and finite replay, not native Daily invocation",
+  "required_checks": {
+    "collect": 14,
+    "passed": 14,
+    "MkDocs_integration": "passed"
+  },
+  "route_replay": {
+    "cases": 18,
+    "all_first_repeat_inventories_decisions_logs_match_return": true,
+    "original_defective_route_rejected": true,
+    "counterfactual": {
+      "early_refusal_zero_writes": true,
+      "generic_before_gate_loses_form": true,
+      "late_gate_false_accept": true,
+      "not_the_shipped_fixed_route": true
+    },
+    "routes": {
+      "update": {
+        "gate": 79,
+        "generic": 98,
+        "apply": 99,
+        "verify": 119
+      },
+      "repair": {
+        "gate_call": 52,
+        "full_apply": 52,
+        "daily_apply_verify": 52,
+        "stop": 54,
+        "gate_definition": 59
+      }
+    },
+    "decisions": {
+      "update-no-opt-in": "ACCEPTED",
+      "update-selected-codex": "ACCEPTED",
+      "update-selected-claude": "ACCEPTED",
+      "update-selected-both": "ACCEPTED",
+      "update-compatible-form": "ACCEPTED",
+      "update-dormant-custom-source": "REFUSED",
+      "update-dormant-ambiguous-form": "REFUSED",
+      "update-foreign-entry": "REFUSED",
+      "update-selected-ambiguous-form": "REFUSED",
+      "repair-no-opt-in": "EXCLUDED",
+      "repair-selected-codex": "ACCEPTED",
+      "repair-selected-claude": "ACCEPTED",
+      "repair-selected-both": "ACCEPTED",
+      "repair-compatible-form": "ACCEPTED",
+      "repair-dormant-custom-source": "EXCLUDED",
+      "repair-dormant-ambiguous-form": "EXCLUDED",
+      "repair-foreign-entry": "REFUSED",
+      "repair-selected-ambiguous-form": "REFUSED"
+    },
+    "all_repeat_no_diff": true,
+    "temporary_root": "own verified OS temporary root; removed on completion"
+  },
+  "accounting": {
+    "paths": [
+      ".tfw/extensions/daily-task/SKILL.md",
+      ".tfw/extensions/daily-task/templates/task.md",
+      ".tfw/extensions/daily-task/installation.md",
+      ".tfw/extensions/daily-task/entries/codex/SKILL.md",
+      ".tfw/extensions/daily-task/entries/claude-code/SKILL.md",
+      ".agents/skills/tfw-daily-task/SKILL.md",
+      ".claude/skills/tfw-daily-task/SKILL.md",
+      ".tfw/conventions.md",
+      ".tfw/glossary.md",
+      ".tfw/adapters/README.md",
+      ".tfw/workflows/init.md",
+      ".tfw/workflows/update.md",
+      ".tfw/workflows/config.md",
+      ".claude/commands/tfw-init.md",
+      ".claude/commands/tfw-update.md",
+      ".claude/commands/tfw-config.md"
+    ],
+    "actions": {
+      ".agents/skills/tfw-daily-task/SKILL.md": "A",
+      ".claude/commands/tfw-config.md": "M",
+      ".claude/commands/tfw-init.md": "M",
+      ".claude/commands/tfw-update.md": "M",
+      ".claude/skills/tfw-daily-task/SKILL.md": "A",
+      ".tfw/adapters/README.md": "M",
+      ".tfw/conventions.md": "M",
+      ".tfw/extensions/daily-task/SKILL.md": "A",
+      ".tfw/extensions/daily-task/entries/claude-code/SKILL.md": "A",
+      ".tfw/extensions/daily-task/entries/codex/SKILL.md": "A",
+      ".tfw/extensions/daily-task/installation.md": "A",
+      ".tfw/extensions/daily-task/templates/task.md": "A",
+      ".tfw/glossary.md": "M",
+      ".tfw/workflows/config.md": "M",
+      ".tfw/workflows/init.md": "M",
+      ".tfw/workflows/update.md": "M"
+    },
+    "additions": 457,
+    "deletions": 151,
+    "touched_LOC": 608,
+    "binary_or_rename": "none",
+    "raw_NUL_outputs_exact": true,
+    "denominator": [
+      13,
+      1700
+    ],
+    "soft_triggers": [
+      50,
+      5000
+    ],
+    "owner_thresholds": [
+      26,
+      3400
+    ],
+    "fired": false,
+    "commands": [
+      [
+        "git",
+        "diff",
+        "--name-status",
+        "--find-renames=50%",
+        "-z",
+        "0c32c50e8d7c0dd2b7c509e5cc0605e64c76d669",
+        "87630d0f26910498a4139134ec0a3480c5e43ca1",
+        "--",
+        ".tfw/extensions/daily-task/SKILL.md",
+        ".tfw/extensions/daily-task/templates/task.md",
+        ".tfw/extensions/daily-task/installation.md",
+        ".tfw/extensions/daily-task/entries/codex/SKILL.md",
+        ".tfw/extensions/daily-task/entries/claude-code/SKILL.md",
+        ".agents/skills/tfw-daily-task/SKILL.md",
+        ".claude/skills/tfw-daily-task/SKILL.md",
+        ".tfw/conventions.md",
+        ".tfw/glossary.md",
+        ".tfw/adapters/README.md",
+        ".tfw/workflows/init.md",
+        ".tfw/workflows/update.md",
+        ".tfw/workflows/config.md",
+        ".claude/commands/tfw-init.md",
+        ".claude/commands/tfw-update.md",
+        ".claude/commands/tfw-config.md"
+      ],
+      [
+        "git",
+        "diff",
+        "--numstat",
+        "--find-renames=50%",
+        "-z",
+        "0c32c50e8d7c0dd2b7c509e5cc0605e64c76d669",
+        "87630d0f26910498a4139134ec0a3480c5e43ca1",
+        "--",
+        ".tfw/extensions/daily-task/SKILL.md",
+        ".tfw/extensions/daily-task/templates/task.md",
+        ".tfw/extensions/daily-task/installation.md",
+        ".tfw/extensions/daily-task/entries/codex/SKILL.md",
+        ".tfw/extensions/daily-task/entries/claude-code/SKILL.md",
+        ".agents/skills/tfw-daily-task/SKILL.md",
+        ".claude/skills/tfw-daily-task/SKILL.md",
+        ".tfw/conventions.md",
+        ".tfw/glossary.md",
+        ".tfw/adapters/README.md",
+        ".tfw/workflows/init.md",
+        ".tfw/workflows/update.md",
+        ".tfw/workflows/config.md",
+        ".claude/commands/tfw-init.md",
+        ".claude/commands/tfw-update.md",
+        ".claude/commands/tfw-config.md"
+      ]
+    ],
+    "literal_selector_identical_to_original_TS_plus_SR1": true
+  },
+  "preservation": {
+    "changed_VALUE_paths": [
+      ".tfw/conventions.md",
+      ".tfw/glossary.md",
+      ".tfw/workflows/init.md",
+      ".tfw/workflows/update.md",
+      ".claude/commands/tfw-init.md",
+      ".claude/commands/tfw-update.md"
+    ],
+    "unchanged_VALUE_paths": 10,
+    "route_source_hash_bindings": 7,
+    "Full_canonical_Claude_Codex_routes": 10,
+    "optional_entry_parity": 2,
+    "protected_manifest_HL_RF_identical_to_Baseline": true,
+    "unchanged_returned_domain_checkpoint_artifacts": 62,
+    "independent_six_case_evidence_reused_from": "8a8a658540a0c0eb0c13ef228f9d23faf895b046",
+    "word_counts": {
+      ".tfw/extensions/daily-task/SKILL.md": 886,
+      ".tfw/extensions/daily-task/installation.md": 622,
+      ".tfw/workflows/init.md": 1397,
+      ".tfw/workflows/update.md": 1227,
+      ".tfw/workflows/config.md": 821
+    }
+  },
+  "integration": {
+    "three_way_glossary_exact": true,
+    "conventions_one_conflict_only_exact_resolution": true,
+    "EV_phase_slug_and_formal_Full_scope_preserved": true,
+    "upstream_other_hunks_retained": true,
+    "proposed_tree": "26005eee1a86437a9479b689dffabe70b0dcd7c5",
+    "all_16_VALUE_paths_match_Candidate": true,
+    "five_public_docs_match_named_main": true,
+    "actual_main_landing": "not performed or claimed"
+  },
+  "limits": [
+    "finite route interpretation, no live provider execution",
+    "original fixture sources remain Executor-authored",
+    "actual landing, human acceptance, field distribution and comparative cost remain pending"
+  ],
+  "independent_route_negative_controls": [
+    "F1-original-update",
+    "F2-original-repair"
+  ]
+}

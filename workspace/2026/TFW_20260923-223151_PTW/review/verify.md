@@ -172,3 +172,128 @@ Contributing returns: named Researcher RES supports default/limits and unadopted
 - [x] AC claims, refs, knowledge citations and accounting audited against actual sources.
 
 Stage complete: YES. F1/F2 keep integrated package acceptance open; unchanged evidence remains reusable.
+
+## Return round 2 — affected Verify, 2026-09-28
+
+Same independent producer/parent. Subject is replacement Candidate
+`87630d0f26910498a4139134ec0a3480c5e43ca1`, returned RF/EV epoch
+`bf4f4ff7c971443439d85f14ba7572c4012597dd`, original Baseline and TS/SR1, and closed
+Coordinator ruling `2465774b4fd53e6e3f7b28fbc273e0d7ae90c659`. Current returned status, all
+seven routing/selection fields, RF gate, native continuation, retained role separation and ONB §9
+resolve before material checks. Exact returned task inputs were crossed at `87e70f1`; their Git
+bytes and producer provenance were preserved, with no shipped implementation imported here.
+
+### Selection and evidence applicability
+
+Bounded Map selects C6/F1 and C1,C6/F2 for changed ordered behavior, C5,C7,C8/O1 for common-rule
+integration/identity, whole accounting, every required configured check and mandatory authority,
+safety and result-identity floors. C2–C4 and unaffected C5 retain the earlier independent evidence:
+all 62 returned domain/record/checkpoint artifacts selected from the original return are exact Git
+bytes at the new return; all ten other VALUE paths are unchanged. Six independent recoveries and
+run/read/render checks at `8a8a658540a0c0eb0c13ef228f9d23faf895b046` remain applicable to their
+unchanged local environments, objects, oracles and authority. No blanket rerun was needed.
+
+### R2-V1 — shipped ordered routes and preservation (HOLDS)
+
+Read complete changed init/update and unchanged installation contract, not just RF or string guards.
+Update Step 2 lines 79–91 now excludes the whole Daily payload and both discovery targets from every
+generic write, requires pinned group classification before Step 3, and keeps refused/preserved paths
+excluded. Step 3 lines 98–99 applies only separately accepted mapped rows; Step 4 line 119 verifies
+those actions. This makes no-opt-in/dormant classification explicit, retains selected adapters from
+actual authority/prior installation and preserves current compatible forms/history.
+
+Init's configured attach/repair branch calls that same optional prewrite contract at line 52 and
+applies/checks accepted Daily rows before terminal stop at line 54. The definition at line 59 is
+explicitly called before writes; no-opt-in excludes Daily, selected foreign/ambiguous ownership
+refuses unchanged, and independent Full repair can proceed. Config/state remain preserved; the
+branch never reaches discovery, interview, research or creation of an init task. Full init also
+references the gate before Step 2 and applies accepted rows with Step 4 adapters.
+
+Independently inspected the finite interpretation against these clauses and replayed it in a fresh
+verified OS temporary root using exact Candidate sources and prior Candidate provenance. All 18
+first/repeat decisions, operation logs, before/after inventories and write sets match returned R2-1/2,
+excluding root identity only. Nine update cases establish accepted selection, compatible-form
+preservation and zero Daily writes on dormant/custom/ambiguous/foreign refusal while independent
+Full writes proceed. Nine terminal-repair cases establish selected usable entries/canonical source,
+no-opt-in exclusion and exact receiver preservation on refusal in otherwise-current fixtures.
+All repeats have no diff; configured checks, history/local split and unselected foreign entries keep
+bytes. Both original defective routes are independently rejected by separate negative controls:
+old update with new init, and new update with old init. The concrete copy-first counterfactual still
+loses the private form and produces false late acceptance. These are finite instruction/filesystem
+diagnostics, not permanent guards or live native execution.
+
+### R2-V2 — parity, protection and configured checks (HOLDS)
+
+Managed isolated checkout `ptw-review-round2` was created at the exact Candidate. Required
+`python -m pytest tools/tests/ docs/scripts/ -q --collect-only` collected 14; the configured test
+command passed 14, including MkDocs integration. Git status and `git diff --check` were clean after
+checks. A prior orchestrated test call's completion output was not retained; the one repeat resolved
+that uncertainty and returned exit 0 / 14 passed. No further suite repeat was made.
+
+Independent Git-blob comparisons verify ten exact Full routes, canonical/Claude and Codex router
+parity, two optional entry copies, seven route/source hash bindings, and Baseline-invariant manifest,
+HL and RF templates. Word counts are canonical 886, installation 622, init 1,397, update 1,227,
+config 821, each within 1,400. Original neutral metadata/template semantics and authority/refusal
+cases retain their established unchanged-source proof. Existing blob/docs guards retain only their
+demonstrated boundary/rendering protection; they do not claim to detect Daily ownership defects.
+
+### R2-V3 — common-rule integration and proposed landing (HOLDS, actual landing pending)
+
+Read named main→Candidate diff: only explicit Daily/Full scope and navigation clauses are added;
+no upstream common-rule hunk is removed. Independently replayed source three-way integration using
+exact original Candidate, common base and named main `1b2b92eab743bc353324e7402e6bc797a5cbeb47`.
+Glossary merges exactly. Conventions has exactly one conflict; resolving only the Evidence subfolder
+paragraph to explicit formal Full scope and `{phase_slug}` yields the exact Candidate blob. All
+reported source/result hashes agree. No implementation repair was written in this review.
+
+Proposed tree `26005eee1a86437a9479b689dffabe70b0dcd7c5` exists; all 16 VALUE blobs equal the
+Candidate and all five named concurrent public docs equal named main. This establishes the proposed
+resolution's identity, not actual landing. O1's current reviewed-source portion holds; Coordinator
+still owns actual landing and truthful final identity/resource/acceptance closure. Full roles,
+activation/selection, independent review, accounting, knowledge and close duties remain intact.
+
+### R2-V4 — independent accounting and authority (VERIFIED)
+
+Reran the original exact NUL-safe `git diff --name-status --find-renames=50% -z` and
+`git diff --numstat --find-renames=50% -z` with full original Baseline
+`0c32c50e8d7c0dd2b7c509e5cc0605e64c76d669`, replacement Candidate and all 16 literal whole paths.
+Selector is identical to original TS plus prospective SR1; raw outputs match both returned `.z`
+files. Every member/action/class/reason and numeric delta matches accounting-round2.json:
+7 CREATE / 9 MODIFY, all VALUE, **457 additions + 151 deletions = 608 touched LOC**. No binary or
+rename; one phase, valid shared upstream attribution, no denominator or Baseline shift.
+
+Original owner-approved denominator stays 13/1,700. Approval `84e1299afa5479826a9a756bf044dd137ad5f8a9`,
+TS source/blob `95da8458b8cbd4d2796b9f2cddab598d4cd4007a` / `d0695859ee4d30a60d83bd99286bd3fd4f99df93`,
+pre-write SR1 `b2c9cf63bab878f83e071fccaec1c2de9677544f`, closed correction ruling and ONB §9's
+16/1,000 forecast retain prospective authority. Whole shared integration is counted. Neither soft
+50/5,000 nor owner 26/3,400 threshold fires. Candidate is the tested VALUE+ASSURANCE implementation
+before appended RF/EV/state; later return and this review are excluded TRACE/ASSURANCE only.
+
+### Current finding / evidence / knowledge disposition
+
+F1 and F2 complete their Coordinator-ruled rung-1 conditions in this replacement; neither has a
+remaining material VALUE or ASSURANCE gap. Original proposal/verdict/ruling remain historical and
+unchanged. O1 retains its original TRACE observation class and existing Coordinator-owned actual
+landing obligation; it is not a new product return. R2-1–5/accounting hold in their stated tuples;
+R2-6's affected independent judgment is now supplied here, while actual landing, human acceptance,
+field adoption and live invocation remain unobserved. Those latter limits never represented Executor
+acceptance claims. Original E4-independent is discharged, not silently relabelled by Executor.
+
+PV P0–P4 and relevant P5–P7/currentness/citations retain round-1 audit for unchanged knowledge inputs.
+Affected conventions/glossary integration preserves P4 authorities and exact current EV naming.
+P0 purpose and P1 methodology remain distinct; D85/F40 preservation-before-write and D54 selected
+repair are now satisfied. No new human-sourced fact, knowledge publication or external claim.
+
+Detailed independent checks, literal selector/commands, decisions and source/tree identity are in
+[round2-checks.json](round2-checks.json). The owned temporary diagnostic root was verified contained
+before scoped cleanup and removed. Clean managed verification checkout was submitted for safe tool
+archival after tests; original Reviewer/Executor resources and disclosed blocked raw cleanup remain
+retained, with no workaround or field deletion.
+
+- [x] Affected Map selection and all mandatory safety, authority and identity floors established.
+- [x] Exact required checks and changed dependencies checked; unchanged evidence reused by tuple.
+- [x] Limits and diagnostic/guard classifications explicit, no volume-based quality inference.
+- [x] Both complete item contracts retained and ruled completion verified independently.
+- [x] RF/EV claims, current citations, provenance and whole immutable accounting audited.
+
+Bounded Verify complete: YES. No open material finding; actual closing effects remain separately owed.
