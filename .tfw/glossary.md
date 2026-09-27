@@ -12,13 +12,13 @@ and incident histories live at the linked authority or durable history source.
 **Meaning:** Resumption by the same working unit under the same immutable authority and routing spine. **Authority:** [conventions.md](conventions.md#7-coordination), `Coordination`.
 
 ### Routing spine
-**Meaning:** The original five all-or-none status fields `coordinator_route`, `owner_gateway`, `dialogue`, `activation`, and `coordination_authority`, extended on current writes by paired `reporting` and `selection_ref`. A complete old five-field carrier is compatibility-readable with its actual authority; partial forms refuse. **Authority:** [conventions.md](conventions.md#5-task-statuses), `Task Statuses`, and `.tfw/templates/status.md`.
+**Meaning:** The seven current status fields binding a unit's route, authority and operating selection. Legacy compatibility and validation belong to the status contract. **Authority:** [conventions.md](conventions.md#5-task-statuses), `Task Statuses`, and `.tfw/templates/status.md`.
 
 ### Current selection
 **Meaning:** Status alone carries the effective launch, dialogue, owner-context topology and reporting choice. `selection_ref` binds an immutable actual human `coordination_selected` event or the verified baseline; pending events grant nothing. **Authority:** [conventions.md](conventions.md#5-task-statuses), `Task Statuses`, and `.tfw/templates/journal/event.md`.
 
 ### GATEWAY
-**Meaning:** A separately addressable persistent owner interface, independent of dialogue permission. It is not the root Coordinator, runs no role workflow and receives only Coordinator-level gates/results. **Authority:** [conventions.md](conventions.md#7-coordination), `Coordination`.
+**Meaning:** A separately addressable persistent interface protecting the owner's context from phase operations. It is not the root Coordinator, runs no role workflow and receives only permitted Coordinator-level gates/results; its selection grants no dialogue permission. **Authority:** [conventions.md](conventions.md#7-coordination), `Coordination`.
 
 ### gate_answer
 **Meaning:** An immutable authority-owned event that answers a blocked workflow question and cites status, blocked role artifact, and exact HL/TS authority. **Authority:** [conventions.md](conventions.md#7-coordination), `Coordination`, and `.tfw/templates/journal/event.md`.
@@ -94,7 +94,7 @@ referenced without requiring the sibling to reach DONE. **Authority:** [conventi
 **Meaning:** A Purpose Check result stating that green local criteria still fail the approved intended outcome. **Authority:** `.tfw/templates/review/judge.md`, `Purpose Check`.
 
 ### Deferral confession
-**Meaning:** An explicit statement that the contract remains unmet when a material gap is deliberately deferred. **Authority:** [.tfw/templates/review/judge.md](templates/review/judge.md#purpose-check--row-2-clause-a), `Purpose Check`.
+**Meaning:** An explicit statement that the contract remains unmet when a material gap is deliberately deferred. **Authority:** [.tfw/templates/review/judge.md](templates/review/judge.md#purpose-check), `Purpose Check`.
 
 ## Knowledge Terms
 
@@ -114,12 +114,12 @@ referenced without requiring the sibling to reach DONE. **Authority:** [conventi
 **Meaning:** RES's analytical visualization of relationships among findings, causes, or alternatives. **Authority:** `.tfw/templates/RES.md`, `Findings Map`.
 
 ### Per-template Naming
-**Meaning:** One cognitive mode keeps one section name, while distinct modes use distinct names. **Authority:** [conventions.md](conventions.md#3-artifact-types-canonical), `Knowledge Capture Sections`.
+**Meaning:** One cognitive mode keeps one section name, while distinct modes use distinct names. **Authority:** [conventions.md](conventions.md#artifact-owned-semantic-sections), `Artifact-owned semantic sections`.
 
 ## Evidence Terms
 
 ### Evidence
-**Meaning:** Observation of completed work in its intended environment, distinct from synthetic verification output. **Authority:** [conventions.md](conventions.md#evidence-sections-per-template), `Evidence Sections`.
+**Meaning:** Observation of completed work in its intended environment, distinct from synthetic verification output. **Authority:** [conventions.md](conventions.md#artifact-owned-semantic-sections), `Artifact-owned semantic sections`.
 
 ### Evidence Plan
 **Meaning:** The TS per-criterion prescription of environment, action, and observable success. **Authority:** `.tfw/templates/TS.md` §5.
@@ -151,7 +151,7 @@ capture, and a terminal outcome. **Authority:** [conventions.md](conventions.md#
 **Meaning:** A non-selectable migration value preserving a legacy status outside the closed vocabulary until an owner resolves it by a two-act transition. **Authority:** [conventions.md](conventions.md#5-task-statuses), `Task Statuses`.
 
 ### KNW (Knowledge Capture)
-**Meaning:** Optional post-review documentation and knowledge consolidation before closure. **Authority:** [conventions.md](conventions.md#5-task-statuses), `Task Statuses`.
+**Meaning:** The post-review stage for applicable documentation, knowledge qualification and checked final effects before closure. **Authority:** [conventions.md](conventions.md#closing-and-record-recovery), `Closing and record recovery`.
 
 ### Revision
 **Meaning:** A repair round whose individual findings retain their class, route and Candidate effect;
@@ -222,13 +222,13 @@ other items or move their Candidate. **Authority:** [conventions.md](conventions
 **Meaning:** The Executor implements and verifies each prerequisite AC before any annotated dependent AC proceeds. **Authority:** [.tfw/workflows/handoff.md](workflows/handoff.md#step-2--implement-and-prove), `Step 2 — Implement and prove`.
 
 ### Pre-TS Gate
-**Meaning:** Planning must inspect the latest dependency RF before specifying a later phase. **Authority:** [.tfw/workflows/plan.md](workflows/plan.md), **Pre-TS Gate**.
+**Meaning:** Planning must inspect the latest dependency RF before specifying a later phase. **Authority:** [.tfw/workflows/plan.md](workflows/plan.md#planning-steps), `Write TS — Executor Freedom Gate`.
 
 ### Pre-RF Gate
 **Meaning:** Before writing RF, the Executor opens `.tfw/templates/RF.md` and reads every section heading. **Authority:** [.tfw/workflows/handoff.md](workflows/handoff.md#step-3--rf-and-stop), `Step 3 — RF and stop`.
 
 ### Session Naming
-**Meaning:** A state-backed, fail-soft navigation title for task-bound work; `plan.md` binds it after creation by design because the task identifier must first exist. **Authority:** `conventions.md` → `Session identity`; workflows only bind their local cue and checkpoint.
+**Meaning:** A non-authoritative navigation title bound to a resolved task/phase. **Authority:** [conventions.md](conventions.md#session-identity), `Session identity`; workflows own the application checkpoint.
 
 ### Phase Dependencies
 **Meaning:** HL §4's graph and table state predecessor, shared-file, and parallel-execution relationships. **Authority:** `.tfw/templates/HL.md` §4.
@@ -261,22 +261,22 @@ completion without owning task lifecycle. **Authority:** `.tfw/workflows/plan.md
 
 ## Research — Dimensional Analysis
 
-**Meaning:** Deep-mode method that maps design dimensions and rejects inconsistent configurations before selecting one. **Authority:** `.tfw/workflows/research/deep.md`, `Dimensional Analysis`.
+**Meaning:** Research method mapping design dimensions and testing configurations before selection. **Authority:** [.tfw/workflows/research/base.md](workflows/research/base.md), `Step 5 — Run Stages (Gather → Extract → Challenge)`.
 
 ### Dimension (Research)
-**Meaning:** An independent design axis with explicit alternatives. **Authority:** `.tfw/workflows/research/deep.md`, `Dimensional Analysis`.
+**Meaning:** An independent design axis with explicit alternatives. **Authority:** [Gather](templates/research/2_gather.md#dimensions).
 
 ### Alternative (Research)
-**Meaning:** One candidate value for a research dimension. **Authority:** `.tfw/workflows/research/deep.md`, `Dimensional Analysis`.
+**Meaning:** One candidate value for a research dimension. **Authority:** [Gather](templates/research/2_gather.md#dimensions).
 
 ### Configuration Space (Research)
-**Meaning:** The combinations induced by selected alternatives across dimensions. **Authority:** `.tfw/workflows/research/deep.md`, `Dimensional Analysis`.
+**Meaning:** The combinations induced by selected alternatives across dimensions. **Authority:** [Extract](templates/research/3_extract.md#configuration-space).
 
 ### Consistency Check (Research)
-**Meaning:** The explicit test that removes configurations whose alternatives conflict. **Authority:** `.tfw/workflows/research/deep.md`, `Dimensional Analysis`.
+**Meaning:** The explicit test that removes configurations whose alternatives conflict. **Authority:** [Challenge](templates/research/4_challenge.md#consistency-check).
 
 ### Surviving Configuration (Research)
-**Meaning:** The configuration remaining after consistency and evidence challenge. **Authority:** `.tfw/workflows/research/deep.md`, `Dimensional Analysis`.
+**Meaning:** The configuration remaining after consistency and evidence challenge. **Authority:** [Challenge](templates/research/4_challenge.md#consistency-check).
 
 ## Phase
 
@@ -303,7 +303,7 @@ not a synonym for a step. **Authority:** the owning workflow and
 
 ## Multi-phase Handoff
 
-**Meaning:** The Coordinator dispatches each approved phase to a separate Executor and reviews its RF before dependent planning. **Authority:** `plan.md` **Pre-TS Gate** and `handoff.md` **Multi-Phase Task Flow**.
+**Meaning:** Each phase's Coordinator launches its authorized roles; dependent planning uses the preceding RF. **Authority:** [plan.md](workflows/plan.md#planning-steps), `Coordination Selection Gate` and `Write TS — Executor Freedom Gate`.
 
 ## Worktree Protocol
 
@@ -315,7 +315,7 @@ not a synonym for a step. **Authority:** the owning workflow and
 
 ## Scope Budget
 
-**Meaning:** The two-measure report over a phase's declared **value-bearing surface**: logical touched `VALUE` files and touched text LOC. `VALUE`, `ASSURANCE`, `TRACE`, and `DERIVED` are purpose classes; accepted-output and necessary-constituent precedence, fixed Baseline/Candidate rules, trigger disposition, and authority are defined only in the canonical section. The configured file/LOC values are soft decomposition prompts, while `owner_escalation_multiplier` bounds prospective Coordinator authority against the immutable owner-approved plan. **Authority:** [conventions.md](conventions.md#6-scope-budgets-per-phase), `Scope Budgets (per Phase)`.
+**Meaning:** Logical touched `VALUE` files and touched text LOC over a phase's declared value-bearing surface. Soft configured triggers prompt decomposition; the owner multiplier limits prospective Coordinator authority against the immutable approved plan. **Authority:** [conventions.md](conventions.md#6-scope-budgets-per-phase), `Scope Budgets (per Phase)` owns classification, accounting and rulings.
 
 ## Topic File
 
@@ -349,12 +349,9 @@ successor/correction/equivalence/conflict checks. Newer time does not resolve co
 
 ## Project Values (PV)
 
-PV is the ordered decision context below. Coordinator and Reviewer independently scan P0–P4;
-P5–P7 are relevance-triggered.
-
-New records join the semantic priority of the corresponding legacy source below. Apply `Current
-knowledge use` to relevant records and incoming relations; this table is a priority map, not a fact
-inventory. P0–P4 remain mandatory and P5–P7 relevance-selected.
+PV is the ordered decision context below, not a fact inventory. New records join the semantic
+priority of their corresponding legacy source. Apply `Current knowledge use` to relevant records
+and incoming relations; role duties follow the table.
 
 ### PV Index (scan order)
 
@@ -384,7 +381,7 @@ Priorities 0 and 1 remain distinct semantic items even when one file contains bo
 
 ## Tool Adapter
 
-**Meaning:** A vendor discovery root plus exact `/tfw-*` command copies that route to the tool-agnostic core. Antigravity uses `.agents/rules/tfw.md` for its persistent rule and `.agents/skills/tfw-{command}/SKILL.md` for commands. **Authority:** [.tfw/adapters/manifest.yaml](adapters/manifest.yaml) for copy/check metadata and [conventions.md](conventions.md#9-tool-adapter-pattern) for runtime behavior.
+**Meaning:** A vendor discovery root and `/tfw-*` command receivers routing to the tool-agnostic core. **Authority:** [conventions.md](conventions.md#9-tool-adapter-pattern) for runtime behavior; [.tfw/adapters/manifest.yaml](adapters/manifest.yaml) for tooling-only copy/check metadata.
 
 ## status.md
 
@@ -402,19 +399,16 @@ gate a transition. **Authority:** [conventions.md](conventions.md#discovery), `D
 
 ## team/
 
-**Meaning:** Human attribution profiles; machine-to-handle bindings remain outside project state. **Authority:** [conventions.md](conventions.md#which-handle-a-machine-acts-as), `Which handle a machine acts as`.
+**Meaning:** Declared human and accountable agent-principal profiles, never per-session identities. Machine bindings remain outside project state. **Authority:** [conventions.md](conventions.md#declared-participants-and-principals), `Declared participants and principals`.
 
 ## Historical Lookup
 
-Debt Registry — retired; see `tasks/DEBT-SNAPSHOT.md` and D61.
+Debt Registry — retired; see `tasks/DEBT-SNAPSHOT.md`.
 
-Task Board — retired; see `tasks/BOARD-SNAPSHOT.md` and D68.
+Task Board — retired; see `tasks/BOARD-SNAPSHOT.md`.
 
 Portfolio index — retired; current Full keeps no shared task cache or freshness duty. See D69,
 D73, D75, and D76.
-
-Compatibility origin details are maintainer-only at `conventions.md` `Terminology Origin` and
-are not ordinary role inputs.
 
 ## Disposition
 
