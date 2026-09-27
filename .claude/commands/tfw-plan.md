@@ -208,7 +208,9 @@ After approval, launch a new role with only its exact `/tfw-* <task[/phase]>` fi
 dispatch records source, actual destination when known, parent, role/scope, channel, status/gate/
 artifact refs and originating proposer or `none` at the observed epoch; a pending client handle is
 not a native unit address. Verify activation separately from destination. Reuse the same Executor
-and independent Reviewer. Under native-gates and gates-only, each unit returns only to its
+and independent Reviewer. Before each send or continuation, apply `Coordination`'s gate-content
+boundary and `Protect the owner's context`, not only the address check. Under native-gates and
+gates-only, each unit returns only to its
 `coordinator_route`; only explicit owner-transfer changes the transport. The Coordinator never
 executes another role workflow. After Executor's durable RF, present the complete relevant revised
 Plan passages, exact Candidate and before/after semantic explanation to the owner; record explicit

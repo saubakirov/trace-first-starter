@@ -928,9 +928,9 @@ briefing, wait instruction, hidden hint or second registration ceremony belongs 
 
 Resolve a machine handle only when stable attribution is explicitly required.
 
-The activation payload contains only those facts and an exact continuation reference when resuming.
-Copied solution text, a long briefing, “wait”, or “you are the role” may provide context but never
-substitutes for the skill or activation source. Dispatch preserves actual source, destination,
+New-role messages contain only `/tfw-* <task[/phase]>`; continuations add only the exact required
+continuation reference. Neither carries briefings, solution hints, copied reasoning, wait prompts
+or unsolicited instructions. Dispatch preserves actual source, destination,
 parent, role/scope, native address/channel, governing status/authority and originating proposer.
 
 Before material work the unit reads the governing `status.md` and journal before derived or shared
@@ -958,6 +958,12 @@ actual owner decision; it presents exact durable manual returns. Manual role cre
 selects owner-transfer. Autonomous gates-only advances ready authorized roles and corrections
 without another owner message, while reserved decisions still return to the owner.
 
+Under `tfw-gates-only`, before sending, identify the real workflow checkpoint and its permitted
+recipient. Carry only the required question, status, decision or result and necessary artifact
+references; include only facts needed to resolve that checkpoint. Calling advice a gate does not
+authorize it. Required role returns remain mandatory; unsolicited progress, solution hints and
+copied working discussion are not returns.
+
 A Reviewer terminal return is emitted only after the REVIEW and authorized status/journal are
 durable and an immediate preflight confirms the exact route and immutable artifact ref. Its complete
 payload is `REVIEW · <reviewer-unit> · <task-or-phase> · <verdict> · <review-artifact@ref>` with no
@@ -979,7 +985,9 @@ a GATEWAY. A missing or over-broad grant refuses. When selected, the gateway is 
 root Coordinator, cannot execute a role workflow, receives no raw worker traffic, joins no peer
 dialogue and cannot rewrite authority. A Reviewer for the result cannot be either peer or consolidator.
 
-**Protect the owner's context.** Full-session delegation uses a persistent GATEWAY and a distinct
+**Protect the owner's context.** GATEWAY protects the owner's attention and independent role
+judgment; it is not an operational supervisor or a progress relay.
+Full-session delegation uses a persistent GATEWAY and a distinct
 Coordinator per ready phase, including a single-phase task. Direct coordination requires an
 explicit owner choice; the admitted small-task compact route keeps its existing boundaries.
 At first delegation or a mandate change, do not treat an inherited direct route as that choice.
@@ -989,6 +997,15 @@ Handover is an action, not a title: preserve task-file context and active work, 
 Coordinator with its exact command, then bind the observed address and return routes at a safe gate
 before further worker launches. The owner-facing unit then acts only as GATEWAY, receiving
 Coordinator-level gates/results. Do not silently reparent workers or replay completed planning.
+
+Coordinators send GATEWAY only phase-level decisions, material blockers, completed results or
+explicitly requested phase status.
+Routine role status, ONB progress and intermediate checks stay with the responsible Coordinator;
+passing them through a Coordinator does not make them Gateway-level traffic. Owner-facing updates
+present decisions needing the owner, material blockers needing owner action, completed phase results
+or explicitly requested status, not an operating log. Strategic discussion with the owner remains
+available. GATEWAY passes authorized owner direction through the existing decision/artifact route,
+without adding its own instructions on how another role should solve the work.
 
 An authority answer is an immutable task-local `gate_answer` event. It cites the governing status,
 the blocked role artifact and the exact HL or TS authority; its body identifies the answer source,

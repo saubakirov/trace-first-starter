@@ -5,6 +5,24 @@ Format: [Keep a Changelog](https://keepachangelog.com/). Versioning: [Semantic V
 
 ## [Unreleased]
 
+### Fixed
+
+- Gate-only launches and continuations exclude briefings, solution hints and copied reasoning.
+  Required messages name a real workflow checkpoint; advice cannot become a gate by relabelling it.
+- GATEWAY protects owner attention and independent role judgment: routine role status, ONB progress
+  and intermediate checks stay with the Coordinator. Phase decisions, material blockers, completed
+  results and explicitly requested phase status remain available, as does strategic owner discussion.
+- Codex GATEWAY waits only on its Coordinators and does not treat incidental wait commentary as a
+  formal return. Task-only Sections use the resolved project's task prefix, not a hard-coded `TFW`.
+
+### Changed
+
+- Claude explicitly offers a single-phase subagent mode for eligible small tasks: the existing
+  `/tfw-plan` agent remains the sole Coordinator and owner interface, without a separate GATEWAY,
+  and leads distinct Researcher, Executor and independent Reviewer subagents through the full TFW
+  cycle under an explicit owner mandate. Command-only launches, gate-only returns, required tools,
+  reserved owner decisions and closing obligations remain; context/noise costs are disclosed.
+
 ## [3.6.1] — 2026-09-23
 
 PCUX correction (`TFW_20260922-192606_PCUX`): choose autonomy by its practical consequences,
