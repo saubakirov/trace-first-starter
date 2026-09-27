@@ -74,3 +74,75 @@ F1 conflicts materially with D85's preservation-before-replacement and instructi
 - [x] Exactly one verdict; no count/volume quality objective.
 
 Stage complete: YES. Existing task sources preserve available owner/role knowledge; review adds source-bound technical findings and limits, no new human-only Fact Candidates.
+
+## Return round 2 — bounded Judge, 2026-09-28
+
+Same independent Reviewer. Judgment subject is fixed replacement Candidate
+`87630d0f26910498a4139134ec0a3480c5e43ca1`, returned RF §10 at
+`bf4f4ff7c971443439d85f14ba7572c4012597dd`, unchanged approved master HL/TS/SR1 and
+Coordinator-ruled F1/F2/O1 at `2465774b4fd53e6e3f7b28fbc273e0d7ae90c659`.
+
+| Layer | Subject | Status | Verify grounds |
+|---|---|---|---|
+| VALUE | Purpose and approved value | holds | Purpose Check below; unchanged six independent recoveries and useful outputs retained by exact subject/oracle identity. |
+| VALUE | Domain behavior / AC | holds | R2-V1 completes update preservation and selected terminal-repair delivery; original AC-2–5 output proof remains applicable. |
+| VALUE | Architecture / HL principles | holds | R2-V1/2/3 preserve neutral source/form, thin selected entries, ten Full routes, prewrite connected-group ownership and explicit Full/Daily scope. |
+| VALUE | Safety/security | holds within observed scope | Refusal precedes optional mutation, compatible form/history/config/unselected foreign bytes survive; no security exploit or native containment guarantee claimed. |
+| VALUE | Human acceptance / reserved effects | holds | Complete retained A3/status spine and original boundary non-effects; checked result does not assert owner acceptance, release or field authority. |
+| ASSURANCE | Evidence exists | holds | All selected returned sources/inventories/scripts and independent round2-checks.json resolve. |
+| ASSURANCE | Evidence applies | holds | Exact Candidate source hashes, prior provenance, current Windows/Git/filesystem oracles and unchanged domain tuple reuse verified independently. |
+| ASSURANCE | Evidence sufficient for material claims | holds within claim limits | R2-V1 actual ordered prose plus 18 finite replay observations and separate F1/F2 original-route negative controls; required checks pass; original helper's limitation remains historical. |
+| ASSURANCE | Permanent guard coverage | holds in existing admitted scope | Existing blob/docs guards pass; finite route/source controls remain diagnostics/governance evidence, no new permanent guard claimed. |
+| TRACE | Authority / independent role lineage | holds | Current native continuation, closed prospective ruling, unchanged TS/SR1, exact returned crossings and separate retained Reviewer. |
+| TRACE | Accepted identity / accounting | holds | R2-V4 original Baseline and literal16, +457/−151=608, original13/1,700 denominator, prospective16/1,000 forecast, no trigger. |
+| TRACE | Reproducibility / relevant sources | holds | R2-V1–4 replay and exact unchanged evidence; common source integration retains upstream and current phase_slug naming. |
+| TRACE | Authorized next action / observations | holds, closing remains open | APPROVE→KNW then existing Coordinator closing. O1 source integration holds; actual landing/owner acceptance/resource disposition remain owed without moving current Candidate or reopening product execution. |
+
+### Purpose Check — distinct Judge-purpose application
+
+Reapplied the master HL at Contract Baseline
+`25b2bd99b785fd21b36e1d0bf2b2b1452880799f`, Vision/Target/DoD/DoF/principles, and Candidate
+North Star NS1–NS3; TS remains a behavior oracle. The served Vision is that another participant can
+see “what was produced and checked, and who owns the next decision.” NS1 protects “purposeful,
+human-governed continuity” and continuation “without rebuilding the original conversation.” The
+concrete harms protected are lost local request/form/history meaning, unusable selected delivery and
+mistaken authority. R2-V1 now closes the two material implementation threats to those purposes.
+P0 purpose remains separate from P1 methodology, including candor, structural enforcement and portability.
+
+Excess/adjacency: no medium route, runtime, eleventh Full command, history migration or unadopted A1.
+Deferral confession: owed independent recovery was completed earlier, and affected route judgment is
+completed now; live invocation/field adoption/cost are expressly outside observed claims. Materiality:
+F1/F2's concrete harms are removed for the accepted instruction/filesystem subject. Actual landing
+and owner acceptance are named closing decisions, not pretended completed work. Outcome: **aligned**,
+no purpose failure or necessarily inconsistent frozen contract.
+
+### Item completion and aggregate verdict
+
+F1 retains VALUE/rung 1: same Executor corrected prewrite update ownership under the exact ruling;
+R2-V1 establishes its full observable preservation/refusal/repeat condition. F2 retains VALUE/rung 1:
+same Executor corrected terminal repair; selected/no-opt-in/refusal/coherent-source/state conditions
+hold. Both are paid in this existing PTW replacement/return, with Candidate moved once for actual
+VALUE and whole accounting replayed. Original proposals, verdict and Coordinator rulings remain visible.
+
+O1 retains TRACE observation and the already-ruled existing Coordinator closing obligation.
+R2-V3 completes independent judgment of integrated sources/proposed exact tree, while actual landing
+still needs its truthful final identity/check. That absence does not change this Candidate's acceptance
+or RF→KNW next act; it never supplies DONE. No second authority ruling or new product return is issued.
+
+**APPROVE.** No open material VALUE, ASSURANCE or TRACE item changes acceptance or the next authorized
+act. Authorize only this workflow's RF→KNW trace effect and compact return to the existing Coordinator.
+Final human acceptance, actual landing, applicable docs/knowledge/changelog and safe resource
+disposition remain Coordinator closing work. No implementation repair, knowledge capture or DONE.
+
+No applicable knowledge contradiction remains: R2-V1 satisfies the D85/F40 prewrite-preservation and
+D54 selected repair concerns. Earlier source/currentness/citation audit remains applicable; no new
+human-only fact or knowledge publication.
+
+- [x] VALUE, ASSURANCE and TRACE judged in order with every mandatory floor.
+- [x] Each status tied to independent Verify evidence and explicit limits.
+- [x] Purpose uses master Contract Baseline plus North Star, with served clause and concrete harm.
+- [x] Evidence existence, applicability and sufficiency remain separate judgments.
+- [x] Full F1/F2 contracts and existing O1 owner/route retained; completion independently verified.
+- [x] Exactly one verdict; no authority reclassification or count-based quality objective.
+
+Bounded Judge complete: YES. Ready to synthesize formal rev2 REVIEW and authorized trace effect.
