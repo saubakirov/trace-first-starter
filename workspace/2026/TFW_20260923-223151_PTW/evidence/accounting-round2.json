@@ -1,0 +1,220 @@
+{
+  "TS_approval": "84e1299afa5479826a9a756bf044dd137ad5f8a9",
+  "approved_TS_source": "95da8458b8cbd4d2796b9f2cddab598d4cd4007a",
+  "approved_TS_blob": "d0695859ee4d30a60d83bd99286bd3fd4f99df93",
+  "prospective_SR1": "b2c9cf63bab878f83e071fccaec1c2de9677544f",
+  "Baseline": "0c32c50e8d7c0dd2b7c509e5cc0605e64c76d669",
+  "Candidate": "87630d0f26910498a4139134ec0a3480c5e43ca1",
+  "members": [
+    {
+      "path": ".tfw/extensions/daily-task/SKILL.md",
+      "action": "CREATE",
+      "class": "VALUE",
+      "reason": "Sole portable semantic source",
+      "additions": 91,
+      "deletions": 0
+    },
+    {
+      "path": ".tfw/extensions/daily-task/templates/task.md",
+      "action": "CREATE",
+      "class": "VALUE",
+      "reason": "Daily-only selected Trace form",
+      "additions": 37,
+      "deletions": 0
+    },
+    {
+      "path": ".tfw/extensions/daily-task/installation.md",
+      "action": "CREATE",
+      "class": "VALUE",
+      "reason": "Pinned optional source/receiver and preservation contract",
+      "additions": 63,
+      "deletions": 0
+    },
+    {
+      "path": ".tfw/extensions/daily-task/entries/codex/SKILL.md",
+      "action": "CREATE",
+      "class": "VALUE",
+      "reason": "Thin Codex entry source",
+      "additions": 11,
+      "deletions": 0
+    },
+    {
+      "path": ".tfw/extensions/daily-task/entries/claude-code/SKILL.md",
+      "action": "CREATE",
+      "class": "VALUE",
+      "reason": "Thin Claude entry source",
+      "additions": 11,
+      "deletions": 0
+    },
+    {
+      "path": ".agents/skills/tfw-daily-task/SKILL.md",
+      "action": "CREATE",
+      "class": "VALUE",
+      "reason": "Selected self Codex receiver",
+      "additions": 11,
+      "deletions": 0
+    },
+    {
+      "path": ".claude/skills/tfw-daily-task/SKILL.md",
+      "action": "CREATE",
+      "class": "VALUE",
+      "reason": "Selected self Claude receiver",
+      "additions": 11,
+      "deletions": 0
+    },
+    {
+      "path": ".tfw/conventions.md",
+      "action": "MODIFY",
+      "class": "VALUE",
+      "reason": "Formal Full / local Daily scope and navigation",
+      "additions": 99,
+      "deletions": 114
+    },
+    {
+      "path": ".tfw/glossary.md",
+      "action": "MODIFY",
+      "class": "VALUE",
+      "reason": "Existing Task/Trace meaning for local Daily",
+      "additions": 34,
+      "deletions": 29
+    },
+    {
+      "path": ".tfw/adapters/README.md",
+      "action": "MODIFY",
+      "class": "VALUE",
+      "reason": "Fixed Full commands versus optional entries",
+      "additions": 11,
+      "deletions": 0
+    },
+    {
+      "path": ".tfw/workflows/init.md",
+      "action": "MODIFY",
+      "class": "VALUE",
+      "reason": "Conditional opt-in installation/preservation",
+      "additions": 16,
+      "deletions": 4
+    },
+    {
+      "path": ".tfw/workflows/update.md",
+      "action": "MODIFY",
+      "class": "VALUE",
+      "reason": "Pinned package update and local receiver preservation",
+      "additions": 17,
+      "deletions": 0
+    },
+    {
+      "path": ".tfw/workflows/config.md",
+      "action": "MODIFY",
+      "class": "VALUE",
+      "reason": "Exact Full and separately selected optional parity",
+      "additions": 6,
+      "deletions": 0
+    },
+    {
+      "path": ".claude/commands/tfw-init.md",
+      "action": "MODIFY",
+      "class": "VALUE",
+      "reason": "SR1 necessary canonical init byte copy",
+      "additions": 16,
+      "deletions": 4
+    },
+    {
+      "path": ".claude/commands/tfw-update.md",
+      "action": "MODIFY",
+      "class": "VALUE",
+      "reason": "SR1 necessary canonical update byte copy",
+      "additions": 17,
+      "deletions": 0
+    },
+    {
+      "path": ".claude/commands/tfw-config.md",
+      "action": "MODIFY",
+      "class": "VALUE",
+      "reason": "SR1 necessary canonical config byte copy",
+      "additions": 6,
+      "deletions": 0
+    }
+  ],
+  "logical_VALUE_files": 16,
+  "additions": 457,
+  "deletions": 151,
+  "touched_text_LOC": 608,
+  "binary_non_text": "N/A \u2014 no binary VALUE selector member",
+  "immutable_owner_denominator": {
+    "files": 13,
+    "touched_LOC": 1700
+  },
+  "approval_timing": "Owner TS/denominator approved before activation; SR1 before all product writes",
+  "triggers": {
+    "configured": [
+      50,
+      5000
+    ],
+    "owner_multiplier_thresholds": [
+      26,
+      3400
+    ],
+    "fired": false
+  },
+  "deviations": "Only three prospective necessary VALUE copies admitted by SR1; no other selector deviation",
+  "shared_provenance": "Whole conventions delta includes inherited Coordinator +21/-4 refinement; no sole-authorship or baseline-shift claim; named main conventions/glossary lineage 1b2b92eab743bc353324e7402e6bc797a5cbeb47 integrated, with Full/Daily scoping and canonical EV phase_slug preserved",
+  "exact_NUL_safe_commands": [
+    [
+      "git",
+      "diff",
+      "--name-status",
+      "--find-renames=50%",
+      "-z",
+      "0c32c50e8d7c0dd2b7c509e5cc0605e64c76d669",
+      "87630d0f26910498a4139134ec0a3480c5e43ca1",
+      "--",
+      ".tfw/extensions/daily-task/SKILL.md",
+      ".tfw/extensions/daily-task/templates/task.md",
+      ".tfw/extensions/daily-task/installation.md",
+      ".tfw/extensions/daily-task/entries/codex/SKILL.md",
+      ".tfw/extensions/daily-task/entries/claude-code/SKILL.md",
+      ".agents/skills/tfw-daily-task/SKILL.md",
+      ".claude/skills/tfw-daily-task/SKILL.md",
+      ".tfw/conventions.md",
+      ".tfw/glossary.md",
+      ".tfw/adapters/README.md",
+      ".tfw/workflows/init.md",
+      ".tfw/workflows/update.md",
+      ".tfw/workflows/config.md",
+      ".claude/commands/tfw-init.md",
+      ".claude/commands/tfw-update.md",
+      ".claude/commands/tfw-config.md"
+    ],
+    [
+      "git",
+      "diff",
+      "--numstat",
+      "--find-renames=50%",
+      "-z",
+      "0c32c50e8d7c0dd2b7c509e5cc0605e64c76d669",
+      "87630d0f26910498a4139134ec0a3480c5e43ca1",
+      "--",
+      ".tfw/extensions/daily-task/SKILL.md",
+      ".tfw/extensions/daily-task/templates/task.md",
+      ".tfw/extensions/daily-task/installation.md",
+      ".tfw/extensions/daily-task/entries/codex/SKILL.md",
+      ".tfw/extensions/daily-task/entries/claude-code/SKILL.md",
+      ".agents/skills/tfw-daily-task/SKILL.md",
+      ".claude/skills/tfw-daily-task/SKILL.md",
+      ".tfw/conventions.md",
+      ".tfw/glossary.md",
+      ".tfw/adapters/README.md",
+      ".tfw/workflows/init.md",
+      ".tfw/workflows/update.md",
+      ".tfw/workflows/config.md",
+      ".claude/commands/tfw-init.md",
+      ".claude/commands/tfw-update.md",
+      ".claude/commands/tfw-config.md"
+    ]
+  ],
+  "unchanged_PowerShell_method": [
+    "git diff --name-status --find-renames=50% -z $ptwBaseline $ptwCandidate -- $ptwValuePaths",
+    "git diff --numstat --find-renames=50% -z $ptwBaseline $ptwCandidate -- $ptwValuePaths"
+  ],
+  "return_ruling": "2465774b4fd53e6e3f7b28fbc273e0d7ae90c659, F1/F2 closed rung 1"
+}
