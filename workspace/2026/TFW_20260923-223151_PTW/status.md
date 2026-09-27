@@ -14,7 +14,7 @@ coordination_authority: "HL-TFW_20260923-223151_PTW.md @ 25b2bd99b785fd21b36e1d0
 reporting: native-gates
 selection_ref: "journal/20260928-001117__coordination_selected__f9a8.md @ 25b2bd99b785fd21b36e1d0bf2b2b1452880799f"
 created: 20260923-223600
-updated: 20260928-005200
+updated: 20260928-013826
 ---
 
 **Task state.** This file is the only authority for this task's live state. Any downstream projection is disposable and never outranks it.

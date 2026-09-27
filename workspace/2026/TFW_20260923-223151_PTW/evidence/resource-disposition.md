@@ -28,3 +28,18 @@ observation. The repository has `core.autocrlf=input`, so Git stores LF text. Fo
   use the immutable pre-action commit and final LF-normalized product hashes; never assume early
 raw Windows hashes equal later Git-normalized blobs. ZIP entry hashes preserve original raw receiver
 bytes exactly. Source/value accounting uses Git blobs and is unaffected by working-tree line endings.
+
+## Return round 2
+
+The same Executor retains all previous resources under the unchanged cleanup refusal. New finite
+roots `evidence/receivers/round2-20260927-203032/` and the current root named in
+`route-proof-round2.json` are task-owned filesystem interpretations of the shipped ordered routes,
+not field projects or live hosts. Their before/after hashes and source text are committed compactly;
+the older ZIP seals only its original inventory and does not cover these later roots.
+`evidence/receivers/round2-integration/` holds six read-only ours/base/upstream merge inputs for the
+named conventions/glossary lineage; immutable Git objects and `integration-round2.json` preserve
+portable replay. It also retains `landing-proof.index`, a temporary Git index for the proposed
+merge-tree resolution in `candidate-bindings-round2.json`; the actual worktree index/branches were
+not changed by that proof. All roots remain local/untracked. No deletion, new role, browser, server or
+background process was attempted in this return. Same worktree/branch and Coordinator-owned later
+disposition remain unchanged. Ignored check caches are disposable, with no unique result.

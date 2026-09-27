@@ -58,7 +58,9 @@ def main():
     assert result.returncode == 0, result.stdout
     report["diff_check"] = "passed"
     report["limits"] = "Source/installed/parity plus actual local fixture observations; no live Claude invocation, universal cost or independent Reviewer judgment"
-    (EV / "delivery-verification.json").write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
+    output = sys.argv[1] if len(sys.argv) > 1 else "delivery-verification.json"
+    assert Path(output).name == output and output.endswith(".json")
+    (EV / output).write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
     print(json.dumps({"Full_routes": 10, "optional_entries": 2, "word_counts": report["word_counts"],
                       "build": {k: v["returncode"] for k, v in report["build"].items()}}))
 
