@@ -1,0 +1,78 @@
+{
+  "copies": {
+    ".claude/commands/tfw-plan.md": "264ff577972048414c1f78444bdbaf7cad8a42df09e78b79841064d652e5ec84",
+    ".agents/skills/tfw-plan/SKILL.md": "813b219286bf7fb6521b836cf3a802806fdc38760aaf9a55c75c49a0d5be7cfe",
+    ".claude/commands/tfw-research.md": "65308faa3414eb54db90c9d692967c624d7acaf9775fcb2e3347960e849445de",
+    ".agents/skills/tfw-research/SKILL.md": "53e734bceb0ddcbc49fe565382c847c88010f0591ab65e3b5925cd37f5e374a0",
+    ".claude/commands/tfw-handoff.md": "62f78bbb54cc40af53d5da4f48f3d23436c26ba7abc6ef15d03f03ede77286a2",
+    ".agents/skills/tfw-handoff/SKILL.md": "c62df85f6fe546dc0266cab6f67ecaa4330963cbc581a72efbb86d3fbfe9b366",
+    ".claude/commands/tfw-review.md": "4b7c801ee9020daaf73a47596142523266cec3f850682b075fb9c40231c534bd",
+    ".agents/skills/tfw-review/SKILL.md": "33d90cb17965fe904054024815e927f91bde31b99e9e48df2cc78a478218f21e",
+    ".claude/commands/tfw-docs.md": "c609203cb8d531b0e2da70020acf97de1388e5868bbb50d5f07c0276342f25e3",
+    ".agents/skills/tfw-docs/SKILL.md": "8fbe734b43a4acf2e8b1b61a623a497322a11b2c6c35b2a16abedb26e2e566f5",
+    ".claude/commands/tfw-knowledge.md": "ed77e2300252152f84732a8c1320b1abd142b635c442a9505ccd5890611978bb",
+    ".agents/skills/tfw-knowledge/SKILL.md": "f5bea3e0deea8a8fa9b3d28b5979778fa869d62537d8c41d0ffe9b1a220f88b0",
+    ".claude/commands/tfw-release.md": "b78839755ce75d875e08fe18c1f35a31e5942e8ae1734c477e05426cdbacf4c3",
+    ".agents/skills/tfw-release/SKILL.md": "c38361a6a188b9888d91c80e3d0d653ee2b15a1d1698f35252e154fbe55153c4",
+    ".claude/commands/tfw-update.md": "3042de854a56064938cfa887e3a6fe37162f08f91bfb4df43c3fd1285c3fbb3e",
+    ".agents/skills/tfw-update/SKILL.md": "be6ea4a42871a70e9bb3cdebf8de295438c46e7a4b6bc356221a054c461b6cc7",
+    ".claude/commands/tfw-config.md": "d8fc838c37b2eaaa623213afa865748f77ffdce271bc76fb1f3f407122a247bc",
+    ".agents/skills/tfw-config/SKILL.md": "a8e3ba99a592e3a6dba9fbea550fd9bc59159fa4b291df08519472a987be8036",
+    ".claude/commands/tfw-init.md": "8ecafc76153a408fa95e4006050a6727ef908f7f7cd0b1d02324e460a51766e2",
+    ".agents/skills/tfw-init/SKILL.md": "5644ecedb871b15992352becb56dfaeda6b7ab814865100eee4388c3e1bc3fc2",
+    ".agents/skills/tfw-daily-task/SKILL.md": "2d5608deca56a6ef017206a2a53f8cd18c20b888511661edf2aa9c7f089d7c64",
+    ".claude/skills/tfw-daily-task/SKILL.md": "2d5608deca56a6ef017206a2a53f8cd18c20b888511661edf2aa9c7f089d7c64"
+  },
+  "word_counts": {
+    ".tfw/extensions/daily-task/SKILL.md": 886,
+    ".tfw/extensions/daily-task/installation.md": 622,
+    ".tfw/workflows/init.md": 1397,
+    ".tfw/workflows/update.md": 1227,
+    ".tfw/workflows/config.md": 821
+  },
+  "metadata": {
+    ".tfw/extensions/daily-task/SKILL.md": {
+      "name": "tfw-daily-task",
+      "description": "Complete a bounded everyday request after project and purpose checks, preserving selected Trace and a checked result without a second planning approval."
+    },
+    ".tfw/extensions/daily-task/entries/codex/SKILL.md": {
+      "name": "tfw-daily-task",
+      "description": "Execute a bounded Daily request using the optional canonical TFW Daily Task skill."
+    },
+    ".tfw/extensions/daily-task/entries/claude-code/SKILL.md": {
+      "name": "tfw-daily-task",
+      "description": "Execute a bounded Daily request using the optional canonical TFW Daily Task skill."
+    }
+  },
+  "commands": {
+    "Full_manifest": [
+      "plan",
+      "research",
+      "handoff",
+      "review",
+      "docs",
+      "knowledge",
+      "release",
+      "update",
+      "config",
+      "init"
+    ]
+  },
+  "build": {
+    "lint": {
+      "command": "python -m pytest tools/tests/ docs/scripts/ -q --collect-only",
+      "returncode": 0,
+      "stdout": "tools/tests/test_git_blob_sizes.py::test_five_mib_boundary_accepts_exact_and_rejects_larger\ndocs/scripts/test_gen_docs.py::test_extract_title_uses_heading\ndocs/scripts/test_gen_docs.py::test_extract_title_falls_back_to_filename\ndocs/scripts/test_gen_docs.py::test_frontmatter_is_yaml_serialized[Quoted \"title\"]\ndocs/scripts/test_gen_docs.py::test_frontmatter_is_yaml_serialized[Title: detail]\ndocs/scripts/test_gen_docs.py::test_frontmatter_is_yaml_serialized[%directive]\ndocs/scripts/test_gen_docs.py::test_existing_frontmatter_is_preserved\ndocs/scripts/test_gen_docs.py::test_normalize_posix_path\ndocs/scripts/test_gen_docs.py::test_posix_relative_path\ndocs/scripts/test_gen_docs.py::test_public_markdown_link_is_rewritten\ndocs/scripts/test_gen_docs.py::test_glob_output_mapping\ndocs/scripts/test_gen_docs.py::test_missing_required_source_refuses\ndocs/scripts/test_integration.py::test_public_core_is_rendered\ndocs/scripts/test_integration.py::test_generated_frontmatter_does_not_render_as_body_text\n\n14 tests collected in 0.05s\n",
+      "stderr": ""
+    },
+    "test": {
+      "command": "python -m pytest tools/tests/ docs/scripts/ -q",
+      "returncode": 0,
+      "stdout": "..............                                                           [100%]\n14 passed in 4.13s\n",
+      "stderr": ""
+    }
+  },
+  "protected_manifest_and_templates": "byte-identical to immutable Baseline",
+  "diff_check": "passed",
+  "limits": "Source/installed/parity plus actual local fixture observations; no live Claude invocation, universal cost or independent Reviewer judgment"
+}

@@ -29,6 +29,8 @@ PATHS = [
 
 def main():
     candidate = sys.argv[1]
+    suffix = sys.argv[2] if len(sys.argv) > 2 else ""
+    assert suffix in ["", "-round2"]
     assert subprocess.check_output(["git", "rev-parse", candidate + "^{commit}"], cwd=ROOT).decode().strip() == candidate
     command1 = ["git", "diff", "--name-status", "--find-renames=50%", "-z", BASELINE, candidate, "--"] + [p for p, _ in PATHS]
     command2 = ["git", "diff", "--numstat", "--find-renames=50%", "-z", BASELINE, candidate, "--"] + [p for p, _ in PATHS]
@@ -49,8 +51,8 @@ def main():
     additions = sum(x["additions"] for x in members)
     deletions = sum(x["deletions"] for x in members)
     assert len(members) < 26 and additions + deletions < 3400
-    (EV / "value-name-status.z").write_bytes(names)
-    (EV / "value-numstat.z").write_bytes(nums)
+    (EV / ("value-name-status" + suffix + ".z")).write_bytes(names)
+    (EV / ("value-numstat" + suffix + ".z")).write_bytes(nums)
     report = {"TS_approval": "84e1299afa5479826a9a756bf044dd137ad5f8a9",
         "approved_TS_source": "95da8458b8cbd4d2796b9f2cddab598d4cd4007a",
         "approved_TS_blob": "d0695859ee4d30a60d83bd99286bd3fd4f99df93",
@@ -66,7 +68,10 @@ def main():
         "exact_NUL_safe_commands": [command1, command2],
         "unchanged_PowerShell_method": ["git diff --name-status --find-renames=50% -z $ptwBaseline $ptwCandidate -- $ptwValuePaths",
                                         "git diff --numstat --find-renames=50% -z $ptwBaseline $ptwCandidate -- $ptwValuePaths"]}
-    (EV / "accounting.json").write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
+    if suffix:
+        report["return_ruling"] = "2465774b4fd53e6e3f7b28fbc273e0d7ae90c659, F1/F2 closed rung 1"
+        report["shared_provenance"] += "; named main conventions/glossary lineage 1b2b92eab743bc353324e7402e6bc797a5cbeb47 integrated, with Full/Daily scoping and canonical EV phase_slug preserved"
+    (EV / ("accounting" + suffix + ".json")).write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
     print(json.dumps({k: report[k] for k in ["Baseline", "Candidate", "logical_VALUE_files", "additions", "deletions", "touched_text_LOC"]}))
 
 
