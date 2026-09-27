@@ -1,0 +1,103 @@
+{
+  "origin": "Actual Executor observation of source-labelled isolated cases, not native discovery or independent Review",
+  "pre_action_commit": "b4a5c67736f109e637c453c64f60e11d0d7f18b0",
+  "cases": [
+    {
+      "receiver": "new-project",
+      "task_id": "20260928-003416_login",
+      "product": "app/login.py",
+      "check": "trimmed login: True\nunknown rejected: True\nregistration: {'email': 'New@Example.org', 'verified': False}",
+      "product_lf_sha256": "34b443fe7f885bb30b6ed9c43c6cf77815977504c9bff36e066c3e87a8d86c7f",
+      "protected_unchanged": true,
+      "accepted": false,
+      "released_or_sent": false
+    },
+    {
+      "receiver": "new-project",
+      "task_id": "20260928-003416_letter",
+      "product": "docs/invitation-v1.md",
+      "check": "Complete Markdown document opened/read: correct initial date/time, confirmation request, no invented venue or sending claim.",
+      "product_lf_sha256": "0bb3d0c7549aef3c0a4cc0d143e72f3dd50dc9786f5c56aa2aa1f373995d3ad5",
+      "protected_unchanged": true,
+      "accepted": false,
+      "released_or_sent": false
+    },
+    {
+      "receiver": "new-project",
+      "task_id": "20260928-003416_pack2",
+      "product": "design/pack2.svg",
+      "check": "Actual SVG parsed and CairoSVG-rendered image visually inspected: teal cloud/rain silhouette, charcoal outline, no crop. Same source bytes in both contexts.",
+      "product_lf_sha256": "412a03f64334fc2cfcec90b06d207fd069aaf8aa7273f2bbbb80bb9f1d5ca655",
+      "protected_unchanged": true,
+      "accepted": false,
+      "released_or_sent": false
+    },
+    {
+      "receiver": "local-split",
+      "task_id": "20260928-003416_login",
+      "product": "app/login.py",
+      "check": "trimmed login: True\nunknown rejected: True\nregistration: {'email': 'New@Example.org', 'verified': False}",
+      "product_lf_sha256": "34b443fe7f885bb30b6ed9c43c6cf77815977504c9bff36e066c3e87a8d86c7f",
+      "protected_unchanged": true,
+      "accepted": false,
+      "released_or_sent": false
+    },
+    {
+      "receiver": "local-split",
+      "task_id": "20260928-003416_letter",
+      "product": "docs/invitation-v1.md",
+      "check": "Complete Markdown document opened/read: correct initial date/time, confirmation request, no invented venue or sending claim.",
+      "product_lf_sha256": "0bb3d0c7549aef3c0a4cc0d143e72f3dd50dc9786f5c56aa2aa1f373995d3ad5",
+      "protected_unchanged": true,
+      "accepted": false,
+      "released_or_sent": false
+    },
+    {
+      "receiver": "local-split",
+      "task_id": "20260928-003416_pack2",
+      "product": "design/pack2.svg",
+      "check": "Actual SVG parsed and CairoSVG-rendered image visually inspected: teal cloud/rain silhouette, charcoal outline, no crop. Same source bytes in both contexts.",
+      "product_lf_sha256": "412a03f64334fc2cfcec90b06d207fd069aaf8aa7273f2bbbb80bb9f1d5ca655",
+      "protected_unchanged": true,
+      "accepted": false,
+      "released_or_sent": false
+    }
+  ],
+  "comparison": {
+    "new-project": {
+      "initial_trace_files_per_task": 1,
+      "initial_trace_writes_per_task": 1,
+      "meaning_revision_trace_files_written": 1,
+      "recovery_inputs": [
+        "source",
+        "Goal/Value",
+        "Boundaries",
+        "current product",
+        "check",
+        "next authority"
+      ],
+      "independent_recovery": "owed to separate Reviewer",
+      "time_or_token_advantage": "not measured"
+    },
+    "local-split": {
+      "initial_trace_files_per_task": 3,
+      "initial_trace_writes_per_task": 3,
+      "meaning_revision_trace_files_written": 2,
+      "recovery_inputs": [
+        "source",
+        "Goal/Value",
+        "Boundaries",
+        "current product",
+        "check",
+        "next authority"
+      ],
+      "independent_recovery": "owed to separate Reviewer",
+      "time_or_token_advantage": "not measured"
+    }
+  },
+  "field_split_source": {
+    "repository_epoch": "13729f4ac3faa7fdae928295f1d81164cde08cc5",
+    "inspected": "Inspected field local skill and daily/README.md, read-only; task/brief/messages contract only adapted neutrally",
+    "scope": "No identity/content copied; no field-project write; current field rules take precedence in real adoption"
+  }
+}

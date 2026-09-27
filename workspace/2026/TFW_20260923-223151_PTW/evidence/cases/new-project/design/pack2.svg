@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="240" height="240" viewBox="0 0 240 240" role="img" aria-labelledby="title">
+  <title id="title">Pack 2 — rain sticker</title>
+  <path d="M48 102a37 37 0 0 1 26-35 50 50 0 0 1 94-4 35 35 0 1 1 17 66H79a31 31 0 0 1-31-27Z" fill="#008080" stroke="#263238" stroke-width="6" stroke-linejoin="round"/>
+  <g stroke="#008080" stroke-width="10" stroke-linecap="round">
+    <path d="m87 150-13 24"/><path d="m128 150-13 24"/><path d="m169 150-13 24"/>
+  </g>
+</svg>

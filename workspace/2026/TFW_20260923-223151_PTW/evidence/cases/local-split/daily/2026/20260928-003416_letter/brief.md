@@ -18,3 +18,9 @@ Title control for these filesystem-only receiving records is unavailable; parent
 - Read `.tfw/extensions/daily-task/SKILL.md` SHA-256 `0d06d1bf683bbd7f12bd5a482ac7ef71187e5bba7b5a636d62176e11d20831b3`
 - Read `.tfw/extensions/daily-task/templates/task.md` SHA-256 `54949bbd0efcb0d7d8040ca0e178d2e579e449bbcdd0cecda7647829adc8ee23`
 - Read `docs/meeting.md` SHA-256 `2ff3a10a927922d77638309aff78cf0137d0d7bbd5ed9fd130e8c746d3db4955`
+
+## v2 — same invitation rescheduled
+
+## Round 2 — pre-action meaning revision, 2026-09-28T00:37:29+05:00
+Exact fixture source requests.md §Letter v2: Change the invitation to 16 October 2026 at 10:00; preserve the former version and request meaning.
+Same invitation/deliverable, same accepting authority and preparation-only boundary. New Goal: invitation for 16 October 2026 at 10:00. Value: accurate rescheduling. Read current meeting.md, existing invitation-v1.md and earlier task record; original request/meaning/result retained. Oracle: new invitation date/time and unchanged v1 hash, no sending.
