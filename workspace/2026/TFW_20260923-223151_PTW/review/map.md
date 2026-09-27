@@ -61,3 +61,40 @@ Original selector gained three necessary Claude byte copies by pre-work SR1 with
 - [x] No classification from filename/count/volume alone.
 
 Stage complete: YES. Knowledge handover: existing HL/RES and returned RF preserve selected owner directions and technical observations; no new human-only knowledge source is introduced by this review.
+
+## Return round 2 — bounded Map, 2026-09-28
+
+Same independent Reviewer and exact parent; native continuation cites RF §10 at
+`bf4f4ff7c971443439d85f14ba7572c4012597dd`. Complete returned status remains RF with the
+same seven-field selection/A3 spine. The closed Coordinator ruling at
+`2465774b4fd53e6e3f7b28fbc273e0d7ae90c659` approves F1/F2 under unchanged TS/SR1 and
+permits named-main integration inside existing VALUE paths. No new role or authority is inferred.
+Exact returned task-local inputs were crossed from that immutable return, retaining Executor and
+Coordinator authorship; governing TS and earlier stages are unchanged. Product bytes are not landed
+in this Reviewer checkout.
+
+Replacement accepted subject: `87630d0f26910498a4139134ec0a3480c5e43ca1`; original Baseline
+and literal 16-path selector remain fixed. Purpose, architecture, domain objects, source/record/check
+oracles and all six prior independent recoveries retain their previous evidence identities.
+
+| Claims / item | Affected dependency and harm | Current oracle / evidence | Selected check and limit |
+|---|---|---|---|
+| C6 / F1 | Update generic writes may erase private form before ownership is known | Step 2 gate and persistent generic exclusions, R2-1 exact route/source inventories | Read complete changed update and installation contract; independently replay prewrite/refusal/preservation/repeat cases. Finite filesystem interpretation, not native execution. |
+| C1,C6 / F2 | Configured repair may terminate without the selected usable package | Step 0 call, accepted apply/check before stop, R2-2 | Read complete changed init and exact Claude copy; selected/no-opt-in/foreign/ambiguous checks preserve configured state and Full rows. No field install. |
+| C5,C7,C8 / O1 | Landing could lose current EV naming or upstream common rules | Named main `1b2b92eab743bc353324e7402e6bc797a5cbeb47`, integrated Candidate, proposed tree | Independently compare main→Candidate and proposed-tree blobs. Actual landing/owner acceptance remain Coordinator closing dependencies. |
+| C7 | Wrong replacement identity, denominator or late authority | Ruling precedes corrections; ONB §9 forecast; first tested Candidate; NUL outputs | Recount whole original Baseline→replacement Candidate with unchanged selector; check all membership, attribution and bounds. |
+| C1,C5,C7,C8 | Parity, reserved human authority and separate Full roles | Manifest/templates and unchanged ten VALUE sources; source-labelled limits | Rerun required 14 configured checks on an isolated exact-Candidate checkout, parity/protected-boundary checks, and affected common-rule semantic comparison. |
+| C2,C3,C4 | Continuation and useful domain result | Original six case subjects/oracles, Reviewer return `8a8a658540a0c0eb0c13ef228f9d23faf895b046` | Verify unchanged Git inputs/outputs and retain existing independent run/read/render/recovery; no blanket rerun. |
+
+RF §10 aligns with this bounded selection. F1/F2 move Candidate for shipped VALUE corrections;
+O1 alone does not. Original denominator remains 13 files/1,700 LOC; current prospective forecast
+16/1,000 precedes writes. No new selector, permanent guard, external effect or knowledge claim.
+PV/citation audit from round 1 is retained for unchanged sources; current conventions/glossary
+integration receives an affected comparison, including separate purpose and methodology obligations.
+
+- [x] Current return, ruling, ONB, complete control spine and unchanged governing TS resolved.
+- [x] All affected material claims and mandatory safety, authority and identity floors selected.
+- [x] Subject tuples, reusable evidence, new checks and limitations recorded.
+- [x] No count or file presence substituted for acceptance evidence.
+
+Bounded Map complete: YES. Same Reviewer continues to affected Verify; no implementation repair.
