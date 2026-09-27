@@ -1,2 +1,2 @@
 def login(email):
-    return email.lower() == "reader@example.org"
+    return email.strip().lower() == "reader@example.org"

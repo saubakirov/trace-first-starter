@@ -139,6 +139,17 @@ referenced without requiring the sibling to reach DONE. **Authority:** [conventi
 
 ## Task Naming
 
+### Local Daily Task
+
+**Meaning:** An optional bounded one-worker application of existing Goal, Value, Context,
+Boundaries, Task and selected Trace meanings outside the formal Full task corpus. It is not a
+cadence, risk grade, edition or formal lifecycle status. Existing project record forms prevail;
+new-project records use an immutable dated folder and a Daily-owned task.md. A local check does
+not assert human acceptance or a Full review verdict. **Authority:**
+[conventions.md](conventions.md#formal-full-task-scope-and-local-daily-work),
+`Formal Full task scope and local Daily work`, and the optional
+[canonical skill](extensions/daily-task/SKILL.md).
+
 **Meaning:** A current task uses the full approved `{PREFIX}_{YYYYMMDD-HHMMSS}_{ABBR}` directory name as its identifier. **Authority:** [conventions.md](conventions.md#identifier), `Identifier`, and `tfw.task_prefix`.
 
 ## Status Flow

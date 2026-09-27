@@ -140,6 +140,18 @@ one exists. Wait wherever the research workflow waits.
 
 ## Step 5 — Verify, RF, and Close
 
+### Optional Daily package
+
+Default Full setup/repair installs only the ten manifest routes. Only explicit Daily opt-in loads
+`.tfw/extensions/daily-task/installation.md`; pin its coherent source and classify the connected
+canonical/template/selected Codex or Claude skill targets before writes. Preserve local forms,
+records and unrelated custom skills; ambiguous ownership refuses that group. Do not infer opt-in
+from an existing field skill. Verify selected optional rows separately from the exact Full set,
+including repeat/no-diff and canonical resolution from the receiving root. Record actual
+applied/preserved/refused paths and evidence level in the setup result; no new ownership registry.
+
+### Full verification and close
+
 Verify core/config/root files, state, RES, knowledge choice, selected adapter roots, exact routes/roles/
 bytes, idempotence, literal `/tfw-*` routes, VERSION/config agreement, direct setup postconditions, and
 configured build commands. Write RF from its template with findings, decisions, files, and observed

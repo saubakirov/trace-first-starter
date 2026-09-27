@@ -1,0 +1,8 @@
+{
+  "time": "2026-09-28T00:37:29+05:00",
+  "receiver": "local-split",
+  "record": "cases/local-split/daily/2026/20260928-003416_letter",
+  "request_source": "requests.md \u00a7Letter v2",
+  "old_result_sha256": "0bb3d0c7549aef3c0a4cc0d143e72f3dd50dc9786f5c56aa2aa1f373995d3ad5",
+  "next_result_exists": false
+}

@@ -102,6 +102,15 @@ receiver; partial application, equal version or old receipt never closes checks/
 
 ## Step 4 — Adapters, verification, receipt, outcome
 
+When Daily is opted in or any receiver Daily payload path already exists, load the pinned target's
+`extensions/daily-task/installation.md`; classify its connected group against verified prior
+source/receipt before copying generic `.tfw/` payload, including dormant customized sources.
+Retain only verified selected adapters; an unrelated custom field skill is not opt-in. Preserve
+project-selected compatible local forms and historical records; custom/ambiguous canonical/entry
+ownership refuses the whole Daily group before writes. Dormant source payload creates no discovery
+entry. Verify exact Full manifest records and selected optional rows separately; record Daily
+source/ref, hashes, applied/preserved/refused paths and limits in the existing immutable receipt.
+
 At adapter sync, if a persistent coordination block changes, read `Workflow activation and routing`;
 otherwise it is uncharged. Validate four adapters and ten manifest commands plus the three selected
 `coordinator.md` payload paths and persistent exact profile pointers. Apply exact copies or
