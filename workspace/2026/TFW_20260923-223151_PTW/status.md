@@ -9,12 +9,12 @@ authority: HL-TFW_20260923-223151_PTW.md
 coordinator_route: "codex:thread:local:01a0cf4d-9254-7633-9ba9-393b0eb8e802"
 owner_gateway: owner:saubakirov
 dialogue: tfw-gates-only
-activation: owner-only
-coordination_authority: "HL-TFW_20260923-223151_PTW.md @ 64278fdfcbfc0f6a59fa069aef45265abd03b0c5"
+activation: "delegated:HL-TFW_20260923-223151_PTW.md @ 25b2bd99b785fd21b36e1d0bf2b2b1452880799f"
+coordination_authority: "HL-TFW_20260923-223151_PTW.md @ 25b2bd99b785fd21b36e1d0bf2b2b1452880799f"
 reporting: native-gates
-selection_ref: baseline
+selection_ref: "journal/20260928-001117__coordination_selected__f9a8.md @ 25b2bd99b785fd21b36e1d0bf2b2b1452880799f"
 created: 20260923-223600
-updated: 20260927-234723
+updated: 20260928-001229
 ---
 
 **Task state.** This file is the only authority for this task's live state. Any downstream projection is disposable and never outranks it.
