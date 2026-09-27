@@ -101,6 +101,12 @@ declared marker range; report and preserve an unmarked file. Reject missing/extr
 roles, unresolved targets, duplicate blocks, drift, or a second-run diff. Preserve unrelated text.
 The manifest is copy/check metadata, never runtime authority.
 
+The optional Daily package is outside that exact ten-command set. If selected Daily entries exist,
+resolve their canonical/source map from `.tfw/extensions/daily-task/installation.md` and verify
+their byte copies separately. A known optional skill is not an eleventh Full command; an unknown
+extra route remains a mismatch. Config verification neither opts in nor repairs a custom field
+skill/template, and creates no new ownership registry.
+
 ## Anti-patterns
 
 - changing config or an inline copy alone;

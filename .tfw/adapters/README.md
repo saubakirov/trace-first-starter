@@ -41,6 +41,17 @@ missing commands, duplicate managed blocks, and receiver-path mismatches are har
 Templates carry no `{version}` substitution. They read `.tfw/VERSION` only when a selected
 workflow actually requires version information.
 
+### Optional Daily entries
+
+The optional Daily package has one canonical source under `.tfw/extensions/daily-task/` and a
+separate explicit [source/receiver map](../extensions/daily-task/installation.md). Selected discovery
+targets are `.agents/skills/tfw-daily-task/SKILL.md` and
+`.claude/skills/tfw-daily-task/SKILL.md`; both are thin byte-copied entry sources. They are not
+manifest commands or Full roles. Full install/update without opt-in creates neither discovery
+target. Verify the manifest's exact ten records and then selected optional entries separately;
+an unknown extra route remains an error. Preserve custom local skills/forms rather than inferring
+package ownership or opt-in. Source, installed, reproduced and live-observed remain distinct levels.
+
 ## Command-entry contract
 
 All four adapters preserve the same boundary from `conventions.md` `Tool Adapter Pattern`:

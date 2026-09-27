@@ -49,11 +49,25 @@ legacy or partial fields.
   Preserve all state; skip discovery, research,
   config creation, and init-task creation. Select the adapter explicitly when it cannot be inferred,
   read `Workflow activation and routing` only when repairing its persistent coordination block,
-  apply its persistent row and all ten command rows, verify bytes/blocks, roles, paths, idempotence, and
-  foreign neighbors, then stop.
+  run the Daily prewrite gate below, apply its persistent row and all ten command rows, then apply/check
+  any accepted Daily group. Verify bytes/blocks, roles, paths, idempotence, foreign neighbors and unchanged
+  configured state; report applied/preserved/refused paths, then stop. Never jump to discovery or research.
 
 Never reset an existing project or guess its adapter. Contradictory source/receiver ownership stops
 before config/state writes. An existing root or `.tfw/README.md` is not a blank starter surface.
+
+### Daily prewrite gate
+
+Without explicit Daily opt-in, exclude Daily writes and create no discovery entry; an unrelated skill
+never selects it. With opt-in, before any setup/repair write load `.tfw/extensions/daily-task/installation.md` from one pinned
+coherent source. Classify canonical/template/selected entry targets against prior source and current
+authority. Preserve compatible local forms, records and unselected/foreign neighbors. Customized or
+ambiguous ownership refuses the whole Daily group unchanged; independent Full repair may continue.
+After classification, apply only accepted rows and verify selected source/target bytes, receiving-root
+canonical resolution, preservation and repeat/no-diff separately from Full. Report evidence level and
+applied/preserved/refused paths in the setup result; no ownership registry. Full init
+runs this gate before Step 2 writes and applies accepted rows with adapters at Step 4; repair runs it
+inside Step 0 before its terminal stop.
 
 ## Step 1 — Discover and Interview
 
@@ -135,8 +149,6 @@ one exists. Wait wherever the research workflow waits.
 4. Offer `.user_preferences.md`, add it to `.gitignore` when accepted, and never commit it.
 5. Finalize project config while preserving its selected active paths; do not re-copy source config.
    Set the init task lifecycle to `RF` with the required event.
-   The repair route reports, then stop; full init continues to research and closure. For the route
-   contract, report, then stop after repair.
 
 ## Step 5 — Verify, RF, and Close
 

@@ -76,6 +76,19 @@ project-purpose or frozen-citation bytes first at
 never inject starter quotation. Reuse identical attachment; different-byte collision stops. If
 purpose remains ambiguous, ask one material question.
 
+### Daily prewrite gate
+
+Exclude `extensions/daily-task/` and both Daily discovery targets from every generic payload/adapter
+write. If target or receiver has any Daily payload, or Daily is selected, load the pinned target's
+`extensions/daily-task/installation.md` now; classify its whole connected group against verified prior
+source/receipt and current authority before Step 3. Retain only verified selected adapters; an unrelated
+custom field skill is not opt-in. Preserve compatible project-selected forms, local split and history.
+Custom/ambiguous canonical or entry ownership, or unresolved form selection, refuses the whole Daily
+group unchanged, including dormant/no-opt-in payload. Keep refused paths excluded; independent Full
+groups may proceed. Absent/verified dormant source rows may update after classification but create no
+discovery entry. Preview accepted/preserved/refused rows and hashes; only the separately accepted Daily
+group may write its mapped rows in Step 3. Never remove these exclusions during generic copying.
+
 For every non-mechanical choice record fact, authority/currentness, semantic effect, permitted action
 and resolving evidence. Preview groups, exclusions, preservation, migrations, checks, unresolved
 choices and exact target; do not demand per-file approval already supplied by update authority.
@@ -83,6 +96,7 @@ choices and exact target; do not demand per-file approval already supplied by up
 ## Step 3 — Apply connected groups
 
 Copy approved pinned payload by connected group while reporting exclusions; merge config separately.
+Apply accepted Daily rows through its installation contract, honoring Step 2's preserved/refused paths.
 Stop a whole group on dependency failure. Diagnostic staging/preservation is a disclosed write.
 Destructive cleanup follows verified preservation and replacement only. Re-entry observes current
 receiver; partial application, equal version or old receipt never closes checks/cleanup/reporting.
@@ -101,6 +115,9 @@ receiver; partial application, equal version or old receipt never closes checks/
   task approvals retain their epoch semantics.
 
 ## Step 4 — Adapters, verification, receipt, outcome
+
+Verify Step 2/3 Daily actions and exact Full manifest records/selected optional rows separately; record Daily
+source/ref, hashes, applied/preserved/refused paths and limits in the existing immutable receipt.
 
 At adapter sync, if a persistent coordination block changes, read `Workflow activation and routing`;
 otherwise it is uncharged. Validate four adapters and ten manifest commands plus the three selected

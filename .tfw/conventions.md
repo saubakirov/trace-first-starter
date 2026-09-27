@@ -19,6 +19,19 @@ inspect and continue work across sessions. Traces do not guarantee identical res
 
 ## 3) Artifact Types (canonical)
 
+### Formal Full task scope and local Daily work
+
+The artifact, identity/discovery, lifecycle, evidence-directory and Role Lock duties below govern
+formal Full tasks/phases selected through `tfw.task_containers`. Unqualified “every task” and “task
+directory” in those duties mean that formal corpus, not every bounded piece of project work.
+Optional [Daily Task](extensions/daily-task/SKILL.md) uses the same Goal, Value, Context, Boundaries,
+Task and selected Trace meanings outside that corpus. Its local `daily/` record follows receiving
+project rules, without mandatory Full HL/TS/ONB/RF/REVIEW, `status.md`, journal or EV. Existing
+local splits remain valid. Daily is no risk/authority exemption: before changing an active formal
+task or a reserved effect, stop that dependent action and use its existing Coordinator/authority
+route. Independent authorized preparation may proceed. Entering formal work preserves all Full
+roles, approvals, evidence and independent review; a Daily title or record cannot supply them.
+
 > See also: [glossary.md](glossary.md) for terminology, [README.md](README.md) for philosophy.
 
 ### HL (High Level)
@@ -162,7 +175,7 @@ survive across templates:
 | Assurance | Verification is synthetic tool output; Evidence is observation in the intended environment. Coordinator specifies the oracle, Executor records EV, RF points to it, and Reviewer audits applicability and completeness. |
 
 Priorities 0 and 1 remain distinct even when one file contains both. Evidence uses
-`VERIFIED / DEFERRED / BLOCKED / N/A`; every task directory contains `evidence/` with a structured EV
+`VERIFIED / DEFERRED / BLOCKED / N/A`; every formal Full task directory contains `evidence/` with a structured EV
 file, and RF references rather than duplicates it. See `.tfw/templates/evidence/EV.md`.
 
 ## 4) Task Identity and Location
@@ -320,6 +333,9 @@ Navigation-only; non-authoritative window and thread title formatting:
 - **Standard format**: `{WORK} · {TASK}` or `{WORK} · {TASK} · {PHASE}`
 - **Gateway format**: `GATEWAY · {TASK}` (or `GATEWAY · {HANDLE} · {TASK}`)
 - **WORK vocabulary**: `PLAN`, `RESEARCH`, `EXEC`, `REVIEW`, `RESUME`, `DOCS`, `INIT`.
+- **Local Daily navigation**: outside the formal Full corpus, the optional Daily skill uses
+  `DAILY · <exact immutable folder ID>` when title write/readback is available. This does not
+  enlarge the Full role vocabulary or grant workflow authority; unavailable control is disclosed.
 - **TASK**: Approved root-unique abbreviation (e.g. `CMTR`) or full task ID.
 - **PHASE**: Uppercase phase token (e.g. `PHASE-A`) when applicable; omit if single-phase or ambiguous.
 - **GATEWAY**: Emitted only in the designated, separately addressable gateway thread. A gateway may use gates-only traffic; its selection grants no peer dialogue or role authority.
@@ -532,7 +548,7 @@ REVIEW synthesizes them; `.tfw/templates/review/` owns their formats.
 
 ### Evidence subfolder
 
-Every task directory (or phase directory for multi-phase tasks) MUST contain an `evidence/` subfolder. The subfolder always contains at least one structured EV file (`EV__{ID}.md` or `EV__phase-{x}__{phase_slug}.md`). Additional binary artifacts (screenshots, API responses, logs) go into the same `evidence/` folder and are indexed in the EV file's Attachments section. Template: `.tfw/templates/evidence/EV.md`.
+Every formal Full task directory (or phase directory for multi-phase tasks) MUST contain an `evidence/` subfolder. The subfolder always contains at least one structured EV file (`EV__{ID}.md` or `EV__phase-{x}__{phase_slug}.md`). Additional binary artifacts (screenshots, API responses, logs) go into the same `evidence/` folder and are indexed in the EV file's Attachments section. Template: `.tfw/templates/evidence/EV.md`.
 
 ### Multi-phase folder structure
 
@@ -1355,7 +1371,7 @@ Uppercase remains reserved for project-root documents — `README.md`, `KNOWLEDG
 
 ## 13) Trace Discipline
 
-Every task produces an **RF file** with results, decisions and observations, a **`status.md`** carrying its live state, and a **`journal/`** recording the events that moved it. Together with its task-local artifacts, these form the project's memory across sessions — and because each lives inside its own task, two tasks can advance without their traces colliding.
+Every formal Full task produces an **RF file** with results, decisions and observations, a **`status.md`** carrying its live state, and a **`journal/`** recording the events that moved it. Together with its task-local artifacts, these form the project's memory across sessions — and because each lives inside its own task, two tasks can advance without their traces colliding. Local Daily work uses its selected receiving-project record under `Formal Full task scope and local Daily work`; it cannot claim a Full lifecycle verdict.
 
 Debt found in a review is part of that trace and lives in the REVIEW that found it, disposed of before the task closes. There is no project-level debt registry: debt is bounded strictly to task review traces.
 
@@ -1419,6 +1435,10 @@ Reverting a result does not revert its trace. Preserve a rejected task's folder 
 ## 15) Role Lock Protocol
 
 Each workflow declares a **🔒 ROLE LOCK** at the top. The agent MUST refuse any action outside the locked role.
+
+These locks and separate-role artifacts apply to formal Full workflow work. The optional Daily
+worker has only its bounded human-request authority outside that corpus; it must not cross an
+active formal task's lock or use a local record to waive Full duties.
 
 **Acceptance authority is named here, not only in the workflow that exercises it.** Deciding whether
 new work exists belongs to the Coordinator; a reviewer that ruled it would be deciding the
