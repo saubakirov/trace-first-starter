@@ -5,6 +5,13 @@ Format: [Keep a Changelog](https://keepachangelog.com/). Versioning: [Semantic V
 
 ## [Unreleased]
 
+### Added
+
+- PTW optional Daily (`TFW_20260923-223151_PTW`): `tfw-daily-task` completes a bounded request
+  after current-source, purpose and authority checks, retaining a separate selected-Trace form.
+  Opt-in Codex/Claude entries and ordered init/update preservation remain outside the ten Full
+  role commands; existing local forms/history and formal Full duties are preserved.
+
 ### Fixed
 
 - Gate-only launches and continuations exclude briefings, solution hints and copied reasoning.
