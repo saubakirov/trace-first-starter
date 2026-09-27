@@ -1,0 +1,10 @@
+task_id: TFW_20260928-015408_ATC
+title: "Explain continuation failures and compare proportionate autonomous coordination arrangements"
+min_iterations: 2
+max_iterations: 4
+iterations:
+  - number: 1
+    focus: "H1-H5: map current activation, stops, vertical returns, phase progression, context and authority sites; distinguish intent fidelity from continuation; gather primary-source provider constraints and morphological dimensions without selecting an architecture."
+    hypotheses: [H1, H2, H3, H4, H5]
+    status: pending
+    res_file: research/iter1/RES.md
