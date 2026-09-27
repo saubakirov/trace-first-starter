@@ -287,7 +287,8 @@ repair are now satisfied. No new human-sourced fact, knowledge publication or ex
 Detailed independent checks, literal selector/commands, decisions and source/tree identity are in
 [round2-checks.json](round2-checks.json). The owned temporary diagnostic root was verified contained
 before scoped cleanup and removed. Clean managed verification checkout was submitted for safe tool
-archival after tests; original Reviewer/Executor resources and disclosed blocked raw cleanup remain
+archival after tests; artifact inventory subsequently confirmed that exact worktree archived. Original
+Reviewer/Executor resources and disclosed blocked raw cleanup remain
 retained, with no workaround or field deletion.
 
 - [x] Affected Map selection and all mandatory safety, authority and identity floors established.
