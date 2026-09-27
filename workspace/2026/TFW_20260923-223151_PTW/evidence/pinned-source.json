@@ -1,0 +1,15 @@
+{
+  "Candidate": "5d57157f8b07b0dc5be3e51756af61b57d5411dd",
+  "snapshot_sha256": "15da3f1238b2286888ba3c2cfebf3e5b8bdc12aec21fcce19187fe5bc9297383",
+  "source_ref": "Git Candidate, untagged; no release claim",
+  "coherent_files": {
+    ".tfw/extensions/daily-task/SKILL.md": "0d06d1bf683bbd7f12bd5a482ac7ef71187e5bba7b5a636d62176e11d20831b3",
+    ".tfw/extensions/daily-task/templates/task.md": "54949bbd0efcb0d7d8040ca0e178d2e579e449bbcdd0cecda7647829adc8ee23",
+    ".tfw/extensions/daily-task/installation.md": "e2d4b2ece867d12bcaf2d86d72de2514595f84249f86f33a2c82a234daf8d121",
+    ".tfw/extensions/daily-task/entries/codex/SKILL.md": "2d5608deca56a6ef017206a2a53f8cd18c20b888511661edf2aa9c7f089d7c64",
+    ".tfw/extensions/daily-task/entries/claude-code/SKILL.md": "2d5608deca56a6ef017206a2a53f8cd18c20b888511661edf2aa9c7f089d7c64"
+  },
+  "filesystem_receiver_proof": "package-proof.json; exact source bytes match Candidate",
+  "live_native_invocation": "Not observed; manually loaded canonical semantics and executed finite local cases",
+  "independent_reconstruction": "Owed to Reviewer"
+}
