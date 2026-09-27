@@ -4,11 +4,10 @@ TFW Editions provide different amounts of discipline for different kinds of work
 
 | Edition | Choose it when | Included discipline | Availability |
 |---|---|---|---|
-| **Light** | Work is compact, one person is responsible, and visible manual updates are acceptable | Goal, task list, trace and durable memory in four short files | [`01-light/`](01-light/) |
 | **Assisted 1.6** | Work repeats, several participants need explicit ownership, or execution and review should be separated | Result-first planning, stable task traces, handoff, independent review, human acceptance, participant identity, safe updates and practical templates | [`02-assisted/`](02-assisted/) |
 | **Full** | Work is long-running, regulated or expensive to get wrong | Formal HL → RES → TS → ONB → RF → REVIEW lifecycle with evidence and knowledge gates | [`.tfw/`](../.tfw/) |
 
-Choose the smallest edition whose missing discipline would create an observable risk. Editions are not maturity levels and copied editions do not depend on one another.
+Offer only **Assisted or Full** for project setup, including education, research and learning requests. Recommend the smallest of these two that meets the work's needs. Editions are not maturity levels and copied editions do not depend on one another.
 
 ## Assisted capability boundary
 
@@ -18,8 +17,7 @@ Assisted ships no lifecycle, identity, update, maintenance, or synchronization r
 
 ## Moving between editions
 
-- **Start Light:** copy `01-light/` contents into a clean project root and follow its README.
-- **Light or an installed Assisted project → Assisted 1.6:** follow [`02-assisted/MIGRATION.md`](02-assisted/MIGRATION.md). Preserve project identity, task history, knowledge, profiles and customization through its exact old-source → new-target map.
+- **Existing project → Assisted 1.6:** follow [`02-assisted/MIGRATION.md`](02-assisted/MIGRATION.md). Preserve project identity, task history, knowledge, profiles and customization through its exact old-source → new-target map; never migrate automatically.
 - **Any edition → Full:** adopt `.tfw/` when the work needs the complete formal lifecycle; do not treat matching directory names as schema compatibility.
 
 Public Assisted maintenance is asymmetric, provider-neutral and human-gated. A publisher documents an exact versioned source outside the replaceable package; the updater materializes a safe closed tree, records a dynamic observed manifest and rechecks it before one explicit write gate. A downstream improvement returns only as a non-mutating privacy-clean generic candidate for separate review. This repository does not claim that a GitHub Release or another public shelf already exists. See [`ASSISTED_MAINTENANCE.md`](ASSISTED_MAINTENANCE.md).

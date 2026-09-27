@@ -34,15 +34,14 @@ For the full philosophical argument, read the **[Project North Star](.tfw/README
 
 ## Editions
 
-TFW Editions provide different amounts of discipline for different kinds of work. They are not ranks of personal maturity: the same person can use Light for one analysis, Assisted for a recurring process, and Full for a costly long-running project.
+TFW offers two Editions for project work: Assisted and Full. They provide different amounts of discipline, not ranks of personal maturity.
 
 | Edition | Choose it when | What you get | Start here |
 |---|---|---|---|
-| **Light** | Work is one-off, educational, or exploratory; one person is responsible; a missed manual update is tolerable | Four short files for the goal, task list, task trace, and durable project memory | [`editions/01-light/`](editions/01-light/) |
-| **Assisted** | Work repeats, two or three participants need separate ownership, or missed trace/status updates recur | Light discipline plus Codex-supported structure and quiet checks; the documented manual order remains the proven fallback | [`editions/02-assisted/`](editions/02-assisted/) |
+| **Assisted** | Work repeats, two or three participants need separate ownership, or missed trace/status updates recur | Result-first planning, task traces, handoff and independent review; the documented manual path remains complete | [`editions/02-assisted/`](editions/02-assisted/) |
 | **Full** | Work is long-running, cross-functional, regulated, or expensive to get wrong; formal research, evidence, review, and knowledge gates are needed | The complete `HL → RES → TS → ONB → RF → REVIEW` lifecycle | [`.tfw/`](.tfw/) |
 
-Choose the smallest Edition that matches the work. Copy the **contents** of its directory into the project root; do not work inside a nested `editions/01-light/` or `editions/02-assisted/` directory. See the [Edition selection and migration guide](editions/README.md).
+Offer only **Assisted or Full** for project setup, including education, research and learning requests. Recommend the smallest of these two that meets the work's needs. Copy the **contents** of the selected directory into the project root; do not work inside a nested edition directory. See the [Edition selection and migration guide](editions/README.md).
 
 ---
 
@@ -74,7 +73,7 @@ Code records what exists, not necessarily why it was built that way. TFW keeps a
 
 ## Quick Start
 
-Start by choosing an Edition. If you are unsure, give the agent the [Edition guide](editions/README.md) and describe the work, participants, duration, and cost of a missed update. The agent should recommend the smallest suitable Edition; the human decides.
+Start by choosing an Edition. If you are unsure, give the agent the [Edition guide](editions/README.md) and describe the work, participants, duration, and cost of a missed update. The agent should recommend Assisted or Full and explain why; the human decides.
 
 ### New project — start from scratch
 
@@ -82,7 +81,7 @@ Copy this prompt into an agent that can read and edit files:
 
     I want to start a new project with Trace-First Workflow (TFW).
     Clone https://github.com/saubakirov/trace-first-starter to a temporary directory.
-    Read editions/README.md, recommend the smallest Edition for my work, and explain the choice.
+    Read editions/README.md, recommend Assisted or Full for my work, and explain the choice.
     After I choose, copy the contents of that Edition into my project root and follow its README.
     If I choose Full, copy .tfw/ and follow .tfw/quickstart.md step by step.
     My project is about: <describe the project, participants, duration, and risk>
@@ -92,12 +91,12 @@ Copy this prompt into an agent that can read and edit files:
     I want to add Trace-First Workflow (TFW) to this existing project.
     First inspect the repository and identify files or traces that must be preserved.
     Clone https://github.com/saubakirov/trace-first-starter to a temporary directory.
-    Read editions/README.md and recommend the smallest suitable Edition.
+    Read editions/README.md and recommend Assisted or Full for my work.
     Do not overwrite project state. Use the selected Edition's migration path;
     for Full, copy .tfw/ into the project root and follow .tfw/quickstart.md.
     My project is about: <describe the project, participants, duration, and risk>
 
-For **Light → Assisted**, follow [`editions/02-assisted/MIGRATION.md`](editions/02-assisted/MIGRATION.md) and preserve the Light goal, tasks, traces, results, and memory. Move to Full when the work needs the complete formal lifecycle.
+To adopt **Assisted** in an existing project, follow [`editions/02-assisted/MIGRATION.md`](editions/02-assisted/MIGRATION.md) and preserve its goal, tasks, traces, results, and memory. Move to Full when the work needs the complete formal lifecycle.
 
 ### Already configured — start working
 
@@ -119,7 +118,7 @@ No. A human can begin with this guide, choose an Edition, and let the agent foll
 Any tool that can read project files can follow the method. Adapter templates exist for Claude Code, Cursor, Antigravity, and Codex. Plain chat can work when you explicitly provide the relevant files and ask it to follow them.
 
 **Can I use TFW for non-code work?**
-Yes. TFW structures decisions and continuity, not programming alone. Light grew from a live non-code educational use case, and the same principles apply to research, analytics, writing, teaching, design, and operations.
+Yes. TFW structures decisions and continuity, not programming alone. The same principles apply to research, analytics, writing, teaching, design, and operations.
 
 **How is TFW different from Confluence or Notion?**
 Those tools can store and publish knowledge. TFW organizes the work itself so selected decisions, evidence, limits, and next steps are written into versioned traces as the work progresses. It still requires human judgment about what is authoritative and worth preserving; it does not document everything automatically.
@@ -140,7 +139,7 @@ Use the [interactive FAQ](https://notebooklm.google.com/notebook/0a4cc544-0c0a-4
 | 🔄 | **Resume from a checkpoint** | A person or agent reads the task's own state file, its journal and the relevant traces, verifies the recorded state, and continues from an explicit handoff instead of relying on a vanished chat |
 | 📈 | **Knowledge can compound** | Task traces preserve candidates; review and knowledge consolidation promote durable facts rather than treating every note as truth |
 | 🤝 | **Humans and agents have different responsibilities** | Humans retain purpose, authority, judgment, acceptance, accountability, and the stop decision; agents perform bounded roles inside the approved contract |
-| 🌐 | **Proportional discipline across domains** | Light, Assisted, and Full apply the same forward continuity contract with different artifacts and gates appropriate to the work and risk |
+| 🌐 | **Proportional discipline across domains** | Assisted and Full apply the same forward continuity contract with different artifacts and gates appropriate to the work and risk |
 
 ---
 
@@ -175,7 +174,7 @@ Use the [interactive FAQ](https://notebooklm.google.com/notebook/0a4cc544-0c0a-4
 | [`.tfw/CHANGELOG.md`](.tfw/CHANGELOG.md) | Framework version history |
 | [tfw.saubakirov.kz](https://tfw.saubakirov.kz/) | Documentation site generated from repository artifacts |
 
-Light and Assisted have their own smaller root structures. Their READMEs are authoritative for those Editions.
+Assisted has its own smaller root structure. Its README is authoritative for that Edition.
 
 ---
 
