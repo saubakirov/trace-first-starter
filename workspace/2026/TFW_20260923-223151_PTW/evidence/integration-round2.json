@@ -1,0 +1,24 @@
+{
+  "authority": "REVIEW O1 @ 2465774b4fd53e6e3f7b28fbc273e0d7ae90c659",
+  "common_base": "b2c9cf63bab878f83e071fccaec1c2de9677544f",
+  "named_main": "1b2b92eab743bc353324e7402e6bc797a5cbeb47",
+  "prior_Candidate": "5d57157f8b07b0dc5be3e51756af61b57d5411dd",
+  "method": "git merge-file --stdout ours base upstream, each exact Git/text input; one explicit content conflict resolution",
+  "paths": {
+    ".tfw/conventions.md": {
+      "base": "3f27ca927f0bd7998ad3ea3f2bea514e0214356c1984ca9870ef48dc64017bac",
+      "upstream": "6bf12489bd8cd495ba6dc721553e320234e797ea98b2ff20a5d98fecd55fb27c",
+      "prior_Candidate": "7e2a848ea65eef686115a17154f564b2707436025577febd96d5f5b90f47404d",
+      "result_LF": "c03b137b435f20a9b5d12b822a1c82f4ecba48ab503b72a54c03b89005d98d42"
+    },
+    ".tfw/glossary.md": {
+      "base": "2b9b1613ac0ee87176f50a5669df533a6a4d5c5266e609597dadfc36a90d1121",
+      "upstream": "9be1a2c6bcb1e853be6a317f7eb876f47aeec6ca950f00c3a4fe9bb4ba183392",
+      "prior_Candidate": "e1d7f07d863702e3128dd1ce2c05ec07ff3b8bebc759eb44b5f05cfeee3e8c35",
+      "result_LF": "ac7055b9f1ce622df224009ad852e4fe6beebb1ff919051eb1e7abf22b5517bc"
+    }
+  },
+  "conflict_resolution": "Only Evidence subfolder conflict: preserve explicit formal Full scope and upstream phase_slug. All other upstream conventions/glossary merge hunks retained.",
+  "attribution": "Shared upstream fde1476/1b2b92e and earlier inherited refinement counted whole; no sole authorship, no new Baseline.",
+  "limits": "Finite source integration; actual final main landing and same independent Reviewer judgment remain Coordinator closing obligations."
+}

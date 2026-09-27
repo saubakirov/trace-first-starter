@@ -2,11 +2,8 @@
 
 ## 1) Purpose
 
-TFW turns work (analytics, documents, code, research) into a reproducible process:
-- context is captured,
-- decisions are traced,
-- results are repeatable,
-- any agent can continue the project in a new session.
+TFW preserves context, decisions, evidence and next actions so an authorized person or agent can
+inspect and continue work across sessions. Traces do not guarantee identical results or grant authority.
 
 ## 2) Required Artifacts (project root)
 
@@ -52,7 +49,7 @@ An approved HL is a contract, not a draft. Approval is the moment it freezes.
 | §12 Amendment Log | 🟢 APPEND-ONLY |
 
 1. **The contract state is artifact state.** The HL header carries a `Contract` field with two values: `📝 DRAFT — not yet approved` and `🔒 FROZEN — approved by {owner} YYYY-MM-DD`. Task status tracks the pipeline; the `Contract` field tracks the artifact. They are not interchangeable.
-2. **Free sections stay free.** Research and the coordinator update §2, §7.2, §8, §9, §10 and §11 directly, with no proposal and no verdict. Risk registers, hypothesis statuses and dependency statuses are required to move.
+2. **Free sections stay free.** The Coordinator updates §2, §7.2, §8, §9, §10 and §11 from research and other returns, with no amendment proposal or verdict. Risk, hypothesis and dependency statuses must stay current.
 3. **A frozen section may not be edited.** The only channel is §12 Amendment Log: propose, resolve and record the rule-8 verdict, then apply. This includes the coordinator that authored the HL.
 4. **§12 is append-only.** Rows are never deleted, rewritten or renumbered. A refused proposal stays visible as an attempt — that visibility is the point.
 5. **The frozen unit is the declarative claim, not the section text.** Frozen at claim level: the phase set and each phase's declared outcome, §3's to-be claims, each §5 and §6 item, each §7 principle, and §1. Rewording a claim without changing it is not an amendment; changing what it commits to is.
@@ -146,8 +143,7 @@ Task definition. Always self-contained: inputs/outputs/constraints/DoD.
 Format: strictly follows `.tfw/templates/TS.md`.
 
 ### RF (Result File)
-Results/facts/data/final text. RF has priority as source of truth.
-Contains mandatory Observations table (structured, typed).
+Executor-owned record of results, verification, evidence and mandatory typed observations.
 Format: strictly follows `.tfw/templates/RF.md`.
 
 ### ONB (Onboarding Report)
@@ -163,7 +159,8 @@ assessment; per-item classification, route and Candidate effect; and one aggrega
 Format: strictly follows `.tfw/templates/REVIEW.md`.
 
 ### Fact Candidates (section in RF, REVIEW, RES)
-Raw observations about the project recorded during work. Cognitive mode: pure reporting — record factual without interpretation. NOT verified facts — they become facts after `/tfw-knowledge` consolidation. Each artifact has a Fact Candidates section with a structured table (Category, Candidate, Source, Confidence). Quality filter: "Would the next agent decide differently knowing this?"
+Unqualified observations, not accepted facts. Templates own their scope and fields; publication follows
+`Knowledge qualification`. Keep only material candidates: "Would the next agent decide differently knowing this?"
 
 ### Artifact-owned semantic sections
 
@@ -201,18 +198,12 @@ Opening history is read-only; continuation requires a separate explicit authoriz
 disposition never declares a task DONE/REJECTED, creates a status, or rewrites its original evidence.
 
 ```
-{container}/{YYYY}/{id}__{slug}/
+{container}/{YYYY}/{ID}/
 ```
 
-The year is the year the task was **created**, and it never changes. A task opened in December
-and closed the following March stays in the earlier folder. Recomputing it would move a
-directory, and moving a directory breaks every reference into it.
-
-**No lifecycle state is expressed by moving a directory.** Not `TODO`, not `DONE`, not
-`REJECTED`. A path is created once and outlives every state the task passes through. Status
-lives in the task's own `status.md`; a folder move would ask a sync engine to relocate a
-directory other participants may be writing inside, and would invalidate references that
-already resolve.
+`YYYY` is the immutable creation year; `ID` follows `Identifier` below.
+**No lifecycle state is expressed by moving a directory.** Keep the original path through closure
+or rejection to preserve references and concurrent work; live state belongs in `status.md`.
 
 The temporary exact `[workspace, tasks]` arrangement may retire empty or established historical-only
 secondary storage through [the 3.3.0 migration](migrations/3.3.0.md). Preserve live/unclear work and
@@ -228,20 +219,16 @@ PREFIX_YYYYMMDD-HHMMSS_ABBR  the whole directory name IS the identifier
 
 `PREFIX` is `tfw.task_prefix`; `ABBR` is the **acronym of the approved full title** — the
 initials of its significant words, uppercase alphanumeric: *Conflict Resistant Shared Workspace*
-→ `CRSW`; *Assisted 1.5 core and synchronization* → `ASSISTED15`, digits being alphanumeric.
+→ `CRSW`; *Data Pipeline 2* → `DP2`.
 Neither field may contain `_`, so the single underscores are unambiguous separators. The timestamp is read from the system clock after the abbreviation is
-approved; it is never composed or adjusted. Every reference, commit subject and index row
-carries the full identifier.
+approved; it is never composed or adjusted. Task references and commit subjects carry the full identifier.
 
 **No participant reads a project-wide maximum to learn which identifier is free.** There is no
 counter, registry or allocation step. Creation performs only one exact-path existence check.
 
-The coordinator proposes the full title and its initials **together, in one exchange**, and
-the owner approves both before a directory is created; the HL header carries them side by side
-as **Title** and **Abbreviation**. *Never derived silently* means two things: never invented
-apart from the title — `UPD` for a task with no title behind it is the anti-pattern, an opaque
-code a person cannot read back — and never created without the owner's approval. A title is
-what makes the approval a decision rather than a formality.
+The Coordinator proposes the full title and its abbreviation **together, in one exchange**; the
+owner approves both before directory creation. Never invent an abbreviation apart from its title
+or without approval. The HL header carries both **Title** and **Abbreviation**.
 
 If the full identifier already exists at creation, creation refuses and asks for a different
 owner-approved abbreviation. It never recomputes the timestamp, adds a suffix or silently
@@ -383,21 +370,10 @@ Unicode NFKC case-folding, replace each non-alphanumeric run with `_`, and trim 
 is invalid. A current producer emits the one matching row and refuses any other new name. Research
 stage files use their fixed names inside `research/iter{N}/`; their owning path supplies identity.
 
-**`{ID}` is the task's whole identifier**, and it means the same thing everywhere: in a path,
-in a filename, in a reference and in `status.md`. For a current-grammar task that is
-`TFW_20260829-172110_ABT` and for a clock task `20260826-143000__query_redesign` — **no title is
-appended** to either. The identifier is the whole name; a filename is `HL-{ID}.md` exactly, and
-`HL-TFW_20260829-172110_ABT__approved_fixture.md` is a name this contract rejects, just as a
-clock task's doubled slug is. The title lives in `status.md` and the HL header, where a person
-reads it; the abbreviation inside the identifier is what makes the filename readable without it.
-
-A legacy task keeps `{PREFIX}-{N}`, where the identifier does *not* carry a slug, so its
-historical filenames have the form `RES__TFW-60__conflict_resistant_shared_workspace.md`.
-Those files are never renamed; the two-part form is history, not a second rule.
-
-Historical clock-task and legacy artifact names remain discoverable exactly as stored. They are
-read inputs only: examples, citations, or existing filenames never authorize a new historical-form
-artifact. Current issuance always uses the table above.
+**`{ID}` is the same whole identifier in paths, filenames, references and `status.md`.** Never append
+a title or second slug; the title belongs in `status.md` and the HL header. Historical clock-task
+and legacy artifact names remain readable exactly as stored and are never renamed. Their examples
+or citations do not authorize new historical-form artifacts; current issuance uses the table above.
 
 #### The revision suffix, and what it generates
 
@@ -506,17 +482,8 @@ replaces the receiver's own task state.
 
 ### Landing a deliverable across sessions
 
-When one session lands a deliverable produced by another, the deliverable gets its own commit. The
-subject names the producer's task and phase; `role` names the acting landing role. TD-178 is the
-measured wrong/right case:
-
-```text
-wrong  [agent/TFW-58/proposal/coordinator] propose the revise protocol
-       └─ also carries TFW-53 phase E board rows
-right  [agent/TFW-53/phase-e/coordinator] land the board rows
-```
-
-The right form lets `git log -- <changed-path>` recover the producing task. When the producer's TS
+When one session lands another's deliverable, give it a separate commit whose subject names the
+producer's task and phase and whose `role` names the acting landing role. When the producer's TS
 fixes a Candidate, that exact commit remains reachable after landing and before worktree removal;
 recreating equivalent bytes under only a new SHA is not equivalent evidence.
 
@@ -527,33 +494,21 @@ Research artifacts live in a single `research/` container at task root. Each ite
 ```
 {task}/research/
   iterations.yaml              ← control file
-  iter1/
+  iter{N}/
     1_briefing.md              ← numbered stage files
     2_gather.md
     3_extract.md
     4_challenge.md
     RES.md                     ← synthesis co-located with stages
-  iter2/
-    1_briefing.md
-    2_gather.md
-    3_extract.md
-    4_challenge.md
-    RES.md
 ```
 
-File existence = stage completion. Stage file format: see `.tfw/templates/research/` (`1_briefing.md`, `2_gather.md`, `3_extract.md`, `4_challenge.md`).
+Stage formats belong to `.tfw/templates/research/`; resume and completion follow
+`research/base.md` and its stage checkpoints.
 
 #### Multi-iteration research
 
-When research spans multiple iterations, each iteration gets its own subfolder and RES:
-
-| Iteration | Stage files folder | RES file |
-|-----------|-------------------|----------|
-| 1 | `research/iter1/` | `research/iter1/RES.md` |
-| 2 | `research/iter2/` | `research/iter2/RES.md` |
-| N | `research/iterN/` | `research/iterN/RES.md` |
-
-**Trace rule:** Iteration folders accumulate — never delete or overwrite previous iteration's files. Each `research/iterN/` folder is a trace. Deleting them = deleting reasoning.
+**Trace rule:** Each `research/iter{N}/` has its own stages and RES. Iterations accumulate;
+never delete or overwrite a previous iteration's files.
 
 **Control file:** `research/iterations.yaml` tracks iteration state. The Coordinator creates and fully
 prepares it in `plan.md` Step 7 before the first research dispatch. Format:
@@ -588,23 +543,24 @@ assigned hypotheses; the Researcher never creates or edits the control file.
 
 ### Review subfolder
 
-Review stage files (`review/map.md`, `review/verify.md`, `review/judge.md`) — intermediate review traces written during the review process. Created in task phase directory. Parallels research stage files (`research/iterN/1_briefing.md`, etc.). The REVIEW artifact synthesizes these files. Stage file format: see `.tfw/templates/review/` (map.md, verify.md, judge.md).
+`review/map.md`, `review/verify.md` and `review/judge.md` live in the selected task or phase.
+REVIEW synthesizes them; `.tfw/templates/review/` owns their formats.
 
 ### Evidence subfolder
 
-Every formal Full task directory (or phase directory for multi-phase tasks) MUST contain an `evidence/` subfolder. The subfolder always contains at least one structured EV file (`EV__{ID}.md` or `EV__phase-{x}__{title}.md`). Additional binary artifacts (screenshots, API responses, logs) go into the same `evidence/` folder and are indexed in the EV file's Attachments section. Template: `.tfw/templates/evidence/EV.md`.
+Every formal Full task directory (or phase directory for multi-phase tasks) MUST contain an `evidence/` subfolder. The subfolder always contains at least one structured EV file (`EV__{ID}.md` or `EV__phase-{x}__{phase_slug}.md`). Additional binary artifacts (screenshots, API responses, logs) go into the same `evidence/` folder and are indexed in the EV file's Attachments section. Template: `.tfw/templates/evidence/EV.md`.
 
 ### Multi-phase folder structure
 
-For multi-phase tasks, master artifacts (HL, RES) stay at task root. Each phase gets a subfolder:
+For multi-phase tasks, master HL and `research/` stay at task root. Each phase gets a subfolder:
 
 ```
-{container}/2026/20260826-143000__query_redesign/
+{container}/2026/PROJ_20260826-143000_QR/
   status.md                           ← Live state — the authority for this task
   journal/                            ← One immutable file per event
-    20260826-143000__created__saubakirov.md
-    20260901-091500__handoff__saubakirov.md
-  HL-20260826-143000__query_redesign.md   ← Master HL
+    20260826-143000__created__a71c.md
+    20260901-091500__handoff__b0f2.md
+  HL-PROJ_20260826-143000_QR.md          ← Master HL
   research/                           ← Master research (if any)
   phase-a/
     HL__phase-a__data_model.md
@@ -641,18 +597,18 @@ For multi-phase tasks, master artifacts (HL, RES) stay at task root. Each phase 
 | 🔬 RES | Research in progress (optional — user can skip to TS_DRAFT) |
 | 🧩 PHASES | The task is multi-phase and its phases are running. **A task-level rollup of phase state is prohibited** — each phase carries its own `status.md`, and a summary would be a second fact that must agree with them |
 | 🟡 TS_DRAFT | TS written, awaiting approval for execution |
-| 🟠 ONB | Onboarding: executor studying the task |
+| 🟠 ONB | Executor onboarding and implementation until RF |
 | 🟢 RF | Execution complete, RF written |
 | 🔍 REV | Review: reviewer checking RF |
 | 📚 KNW | Coordinator completes applicable capture and final-effect acceptance under Closing and record recovery |
 | ✅ DONE | Final accepted effects and complete control records checked; task closed |
 | ❌ BLOCKED | Blocked by dependency |
-| ❌ REJECTED | Task closed unsuccessfully and permanently. Distinct from ❌ BLOCKED, which is waiting and resumes when the dependency clears. Terminal: no status follows it, and the task folder and its board row are never deleted. This is a task status — not the review verdict ❌ REJECT, and not the HL §12 amendment verdict ❌ REJECTED; neither of those is terminal |
+| ❌ REJECTED | Unsuccessful terminal closure; preserve the task and its traces. Unlike BLOCKED, it cannot resume. Distinct from review verdict REJECT and HL amendment verdict REJECTED, neither of which is a terminal task state |
 
 Status lives only in the task's own `status.md`. Its lifecycle is one of the ids above or
 `UNDECLARED` carrying the source value verbatim (→ glossary.md).
 
-Current statuses also carry the complete five-field routing spine:
+Current statuses carry seven routing/selection fields: five core fields below plus the pair that follows.
 
 - `coordinator_route`: one quoted, non-empty native address for the unit that receives every
   workflow status change, question, gate and durable return;
@@ -1138,14 +1094,14 @@ TFW defines the following canonical workflows in `.tfw/workflows/`:
 
 | Workflow | Role | Purpose |
 |----------|------|---------|
-| [init.md](workflows/init.md) | Coordinator | Discover project → interview → knowledge → setup → verify |
-| [plan.md](workflows/plan.md) | Coordinator | Research → HL → RESEARCH gate → scope decision → TS |
+| [init.md](workflows/init.md) | Coordinator | Initialize a project or attach/repair an adapter without resetting state |
+| [plan.md](workflows/plan.md) | Coordinator | Frame → HL → research → TS; route existing work by state |
 | [research/base.md](workflows/research/base.md) | Researcher | Structured investigation → RES artifact (pipeline or standalone) |
 | [handoff.md](workflows/handoff.md) | Executor | Context load → ONB → execute → RF |
 | [review.md](workflows/review.md) | Reviewer | Read RF → checklist → verdict → debt disposed → traces |
-| [docs.md](workflows/docs.md) | Coordinator | Update KNOWLEDGE.md after task completion |
-| [knowledge.md](workflows/knowledge.md) | Coordinator | Consolidate fact candidates into verified project knowledge (Orient → Gather → Consolidate → Prune) |
-| [release.md](workflows/release.md) | Coordinator | Read RELEASE.md → scope release → version bump → CHANGELOG → tag |
+| [docs.md](workflows/docs.md) | Coordinator | Qualify selected technical reference and decisions |
+| [knowledge.md](workflows/knowledge.md) | Coordinator | Qualify selected human-sourced knowledge |
+| [release.md](workflows/release.md) | Coordinator | Prepare project-defined release effects; publication needs separate authority |
 | [update.md](workflows/update.md) | Coordinator | Fetch upstream → compare versions → categorize changes → update checklist → re-sync adapters |
 | [config.md](workflows/config.md) | Coordinator | Interactive config change → propagate to all inline values |
 
@@ -1154,8 +1110,8 @@ TFW defines the following canonical workflows in `.tfw/workflows/`:
 `.tfw/` is the tool-agnostic core — one copy per project. Each development tool reads its own entry point, which references `.tfw/`:
 
 ```
-CLAUDE.md ──→ "Read .tfw/README.md, follow .tfw/conventions.md"
-.cursor/rules ──→ "Read .tfw/README.md, follow .tfw/conventions.md"
+CLAUDE.md + .claude/commands/tfw-*.md ──→ Claude `/tfw-*` command routing
+.cursor/rules/tfw.mdc + .cursor/commands/tfw-*.md ──→ Cursor `/tfw-*` command routing
 .agents/rules/tfw.md ──→ Antigravity persistent project rule
 .agents/skills/tfw-{command}/SKILL.md ──→ Antigravity `/tfw-*` command routing
 AGENTS.md + .agents/skills/tfw-*/SKILL.md ──→ Codex `/tfw-*` command routing
@@ -1381,10 +1337,7 @@ templates/research/1_briefing.md   numeric prefix where stage order is part of t
 Uppercase remains reserved for project-root documents — `README.md`, `KNOWLEDGE.md`,
 `AGENTS.md` — and for `.tfw/` framework docs, `CHANGELOG.md` and `VERSION`.
 
-**A template producing into a directory lives in a directory of that name**, mirroring its
-output: `templates/journal/event.md` → `{task}/journal/<name>.md`. An underscore standing in
-for a directory separator — a `journal_event` shape rather than `journal/event` — is what
-this rule replaced.
+**A template mirrors its output directory:** `templates/journal/event.md` → `{task}/journal/<name>.md`.
 
 ## 11) Quality Standard (no compromises)
 
@@ -1404,7 +1357,7 @@ this rule replaced.
   subprocedure; Gate = pass/stop, routing or authority boundary.
 - **Inline enforcement**: enforcement-critical values MUST be inline (Pattern A: defaults + config key). Pure refs (Pattern B) = broken
 - **DNA/Library**: Role Lock + Mindset = always inline. Reference data = via ref-inside-step. Step self-contained, ref adds precision
-- **Progressive Disclosure**: agent loads only what it needs now. Mode files loaded at Step 2, not at start
+- **Progressive Disclosure**: load only the current checkpoint's inputs in its workflow's read order.
 - **A command written into a workflow must survive its adapter.** No `$0`–`$9` and no `$ARGUMENTS` in any
   shell or `awk` snippet a role runs: adapters may substitute them before the role reads the command.
   Use named variables or literal examples and exercise the command once from the project root before
@@ -1422,7 +1375,7 @@ Every formal Full task produces an **RF file** with results, decisions and obser
 
 Debt found in a review is part of that trace and lives in the REVIEW that found it, disposed of before the task closes. There is no project-level debt registry: debt is bounded strictly to task review traces.
 
-Reverting a result does not revert its trace. A rejected task's folder and its board row are never deleted: the work may leave the working tree, the record that the work happened stays.
+Reverting a result does not revert its trace. Preserve a rejected task's folder and records even when its output is removed.
 
 ## 14) Anti-patterns (prohibited)
 
@@ -1502,26 +1455,21 @@ recipient/artifact/state contract is owned by `The 🔄 REVISE route` in §5.
 | `review.md` | Reviewer — **marks and proposes**; the **Coordinator** holds acceptance authority over dispositions and rules them once at the close of review (Step 6) | review stage files (map.md, verify.md, judge.md), REVIEW, proposed dispositions | ONB, RF, HL, TS, code, **disposition rulings** |
 | `docs.md` | Coordinator | selected KNOWLEDGE.md reference ranges, technical records, current effect reference | code, human-knowledge promotion, historical source edits |
 | `knowledge.md` | Coordinator | selected human-knowledge records and current qualification reference | code, technical decisions, legacy/source/state rewrites |
-| `release.md` | Coordinator | VERSION, CHANGELOG.md | code |
+| `release.md` | Coordinator | selected release artifacts and explicitly authorized project release effects | unrelated code |
 | `update.md` | Coordinator | `.tfw/` files, adapter copies | code |
 | `config.md` | Coordinator | project_config.yaml, workflow files, convention files, adapter copies | code |
 
 ### Hard Stop Rule
 
-When a Coordinator reaches the end of planning (TS approved), the correct action is:
-1. Inform the user that planning is complete
-2. Instruct: "Start `/tfw-handoff` to begin execution"
-3. **Do NOT continue into execution**
+Return through the recorded route under `Coordination`, not directly to the owner unless the
+selected reporting mode requires it. A role boundary stops that unit from doing the next role's
+work; it does not revoke an authorized Coordinator's launch mandate.
 
-When an Executor finishes RF, the correct action is:
-1. Inform the user that execution is complete
-2. Instruct: "Start `/tfw-review` to review the results"
-3. **Do NOT write a REVIEW file**
-
-When a Researcher finishes RES, the correct action is:
-1. Inform the user that research is complete
-2. Instruct: "Continue with `/tfw-plan` to apply research findings"
-3. **Do NOT write HL or TS**
+| Completed checkpoint | Next route | Current unit must not |
+|---|---|---|
+| Coordinator: TS approved | `/tfw-handoff` | execute the TS |
+| Executor: RF complete | `/tfw-review` | write REVIEW |
+| Researcher: RES complete | `/tfw-plan` | write HL or TS |
 
 When a Reviewer reaches a verdict, the correct action is to **name the next act** — a decision with
 no addressee is not a decision:
