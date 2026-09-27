@@ -111,7 +111,7 @@ Actual bindings: Baseline `0c32c50e8d7c0dd2b7c509e5cc0605e64c76d669`; Candidate 
 | `python -m pytest tools/tests/ docs/scripts/ -q --collect-only` on managed Candidate checkout | C1,C6 | exit 0, 14 collected |
 | `python -m pytest tools/tests/ docs/scripts/ -q` on that same Candidate | C1,C6 | exit 0, 14 passed in 5.94s; actual MkDocs build included |
 
-Candidate checks used separately managed `C:/Users/c0rpa/.codex/worktrees/ptw-review-checks/steps-framework`, exact HEAD Candidate. Complete Git status remained clean after checks, no process still used it, and managed archival was requested after artifact verification; initial result was queued. Generated ignored site/cache is disposable and contains no unique result. This current review checkout and original Executor resources remain retained.
+Candidate checks used the separately managed `ptw-review-checks` worktree, exact HEAD Candidate. Complete Git status remained clean after checks, no process still used it, and managed archival completed: this chat's artifact inventory reports that exact worktree as `archived_worktree`. Generated ignored site/cache is disposable and contains no unique result. This current review checkout and original Executor resources remain retained.
 
 ## Claim and Source / Knowledge Citation Checks
 
