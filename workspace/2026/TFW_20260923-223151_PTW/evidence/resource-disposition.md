@@ -38,6 +38,8 @@ not field projects or live hosts. Their before/after hashes and source text are 
 the older ZIP seals only its original inventory and does not cover these later roots.
 `evidence/receivers/round2-integration/` holds six read-only ours/base/upstream merge inputs for the
 named conventions/glossary lineage; immutable Git objects and `integration-round2.json` preserve
-portable replay. All roots remain local/untracked. No deletion, new role, browser, server or
+portable replay. It also retains `landing-proof.index`, a temporary Git index for the proposed
+merge-tree resolution in `candidate-bindings-round2.json`; the actual worktree index/branches were
+not changed by that proof. All roots remain local/untracked. No deletion, new role, browser, server or
 background process was attempted in this return. Same worktree/branch and Coordinator-owned later
 disposition remain unchanged. Ignored check caches are disposable, with no unique result.

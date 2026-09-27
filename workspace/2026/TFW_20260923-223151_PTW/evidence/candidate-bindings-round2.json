@@ -1,0 +1,49 @@
+{
+  "Candidate": "87630d0f26910498a4139134ec0a3480c5e43ca1",
+  "prior_Candidate": "5d57157f8b07b0dc5be3e51756af61b57d5411dd",
+  "route_sources_match_Candidate_LF": {
+    ".tfw/workflows/init.md": "8ecafc76153a408fa95e4006050a6727ef908f7f7cd0b1d02324e460a51766e2",
+    ".tfw/workflows/update.md": "3042de854a56064938cfa887e3a6fe37162f08f91bfb4df43c3fd1285c3fbb3e",
+    ".tfw/extensions/daily-task/SKILL.md": "0d06d1bf683bbd7f12bd5a482ac7ef71187e5bba7b5a636d62176e11d20831b3",
+    ".tfw/extensions/daily-task/templates/task.md": "54949bbd0efcb0d7d8040ca0e178d2e579e449bbcdd0cecda7647829adc8ee23",
+    ".tfw/extensions/daily-task/installation.md": "e2d4b2ece867d12bcaf2d86d72de2514595f84249f86f33a2c82a234daf8d121",
+    ".tfw/extensions/daily-task/entries/codex/SKILL.md": "2d5608deca56a6ef017206a2a53f8cd18c20b888511661edf2aa9c7f089d7c64",
+    ".tfw/extensions/daily-task/entries/claude-code/SKILL.md": "2d5608deca56a6ef017206a2a53f8cd18c20b888511661edf2aa9c7f089d7c64"
+  },
+  "unchanged_VALUE": {
+    ".tfw/extensions/daily-task/SKILL.md": "exact Git bytes unchanged",
+    ".tfw/extensions/daily-task/templates/task.md": "exact Git bytes unchanged",
+    ".tfw/extensions/daily-task/installation.md": "exact Git bytes unchanged",
+    ".tfw/extensions/daily-task/entries/codex/SKILL.md": "exact Git bytes unchanged",
+    ".tfw/extensions/daily-task/entries/claude-code/SKILL.md": "exact Git bytes unchanged",
+    ".agents/skills/tfw-daily-task/SKILL.md": "exact Git bytes unchanged",
+    ".claude/skills/tfw-daily-task/SKILL.md": "exact Git bytes unchanged",
+    ".tfw/adapters/README.md": "exact Git bytes unchanged",
+    ".tfw/workflows/config.md": "exact Git bytes unchanged",
+    ".claude/commands/tfw-config.md": "exact Git bytes unchanged"
+  },
+  "named_main_landing_proof": {
+    "command": [
+      "git",
+      "merge-tree",
+      "--write-tree",
+      "1b2b92eab743bc353324e7402e6bc797a5cbeb47",
+      "87630d0f26910498a4139134ec0a3480c5e43ca1"
+    ],
+    "returncode": 1,
+    "stdout": "a642b1fe193fbfc1cb7c453b30668bcd2504d909\n100644 53a8f3d45777b530631d99ee80d145efc29b28b2 1\t.tfw/conventions.md\n100644 db6718ad66af43ae88994fb23a46a90b39a01f60 2\t.tfw/conventions.md\n100644 393b6071b681320b2b8db51ddb4b288bda442f60 3\t.tfw/conventions.md\n\nAuto-merging .tfw/conventions.md\nCONFLICT (content): Merge conflict in .tfw/conventions.md\nAuto-merging .tfw/glossary.md\n",
+    "resolution": "Replace only conflicted conventions blob with exact reviewed Candidate blob; no new prose/edit. Temporary index read-tree, update-index --cacheinfo, write-tree; no worktree or branch landing.",
+    "Candidate_conventions_blob": "393b6071b681320b2b8db51ddb4b288bda442f60",
+    "resolved_proposed_tree": "26005eee1a86437a9479b689dffabe70b0dcd7c5",
+    "all_16_VALUE_paths_match_Candidate": true,
+    "concurrent_public_docs_match_named_main": [
+      "README.md",
+      "README.ru.md",
+      "README.kk.md",
+      "editions/README.md",
+      "editions/01-light/README.md"
+    ],
+    "local_index": "receivers/round2-integration/landing-proof.index"
+  },
+  "source_limits": "Finite route interpretation, not native invocation. Delivery hashes observe local raw Windows bytes; these bindings use Git LF blobs. Actual landing and same Reviewer affected judgment remain pending."
+}
