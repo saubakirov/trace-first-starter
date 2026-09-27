@@ -1,0 +1,192 @@
+[
+  {
+    "receiver": "new-project",
+    "task_id": "20260928-003416_login",
+    "slug": "login",
+    "time": "2026-09-28T00:34:16+05:00",
+    "phase": "pre-action",
+    "folder": "cases/new-project/daily/2026/20260928-003416_login",
+    "input_hashes": {
+      "AGENTS.md": "71647eb9f9bf63ed854d4c64d327a0478c9d7a125f539d94df219bf7ed743ea1",
+      "README.md": "d5fd221057cd3a274f4621aa0492e4a74fa442f7edd2209e4d62cb6c66025e15",
+      "requests.md": "2408c110d3a038765c3ea1393f684de06373a98438f1dbe5a425e9c1f2f7a4a1",
+      ".agents/skills/tfw-daily-task/SKILL.md": "21b630a12cb8ce3d567d6d3677f258b57161447d823a626bae92dc66576c814b",
+      ".tfw/extensions/daily-task/SKILL.md": "0d06d1bf683bbd7f12bd5a482ac7ef71187e5bba7b5a636d62176e11d20831b3",
+      ".tfw/extensions/daily-task/templates/task.md": "54949bbd0efcb0d7d8040ca0e178d2e579e449bbcdd0cecda7647829adc8ee23",
+      "docs/login.md": "3842329ca8731e241b84353ab366bf251866218fa7ab68cd5deb00d681afd11e",
+      "app/login.py": "34e295cceb2957fe2ac3687e2f0498cac61113531576006fdec8f00bc2a66f19",
+      "app/register.py": "fcf45b4b293ff903d86d9f7d09241a7e71e026a86742b1fe9c7709c153f2e11c",
+      "daily/2026/20260101-120000_login/task.md": "c65184cc84d67b1da278a523c11e996dc88f12ad6de371820f943823af0236e8"
+    },
+    "protected_hashes": {
+      "app/register.py": "fcf45b4b293ff903d86d9f7d09241a7e71e026a86742b1fe9c7709c153f2e11c",
+      "design/pack1.svg": "d632e0a1bbf275153730249c18dffafa0f8f5f3562ccdac46a8c7643bdd4ab30"
+    },
+    "oracle": "Actual run_login.py must print trimmed login True, unknown rejected True, exact registration input preserved.",
+    "record_writes": [
+      "task.md"
+    ],
+    "checkpoint_hashes": {
+      "task.md": "abaee10464abcbc4b87581c3b2647a9e0d996f8d87589571030cef77490b04bc"
+    }
+  },
+  {
+    "receiver": "new-project",
+    "task_id": "20260928-003416_letter",
+    "slug": "letter",
+    "time": "2026-09-28T00:34:16+05:00",
+    "phase": "pre-action",
+    "folder": "cases/new-project/daily/2026/20260928-003416_letter",
+    "input_hashes": {
+      "AGENTS.md": "71647eb9f9bf63ed854d4c64d327a0478c9d7a125f539d94df219bf7ed743ea1",
+      "README.md": "d5fd221057cd3a274f4621aa0492e4a74fa442f7edd2209e4d62cb6c66025e15",
+      "requests.md": "2408c110d3a038765c3ea1393f684de06373a98438f1dbe5a425e9c1f2f7a4a1",
+      ".agents/skills/tfw-daily-task/SKILL.md": "21b630a12cb8ce3d567d6d3677f258b57161447d823a626bae92dc66576c814b",
+      ".tfw/extensions/daily-task/SKILL.md": "0d06d1bf683bbd7f12bd5a482ac7ef71187e5bba7b5a636d62176e11d20831b3",
+      ".tfw/extensions/daily-task/templates/task.md": "54949bbd0efcb0d7d8040ca0e178d2e579e449bbcdd0cecda7647829adc8ee23",
+      "docs/meeting.md": "2ff3a10a927922d77638309aff78cf0137d0d7bbd5ed9fd130e8c746d3db4955"
+    },
+    "protected_hashes": {
+      "app/register.py": "fcf45b4b293ff903d86d9f7d09241a7e71e026a86742b1fe9c7709c153f2e11c",
+      "design/pack1.svg": "d632e0a1bbf275153730249c18dffafa0f8f5f3562ccdac46a8c7643bdd4ab30"
+    },
+    "oracle": "Read complete document: initial 15 October 2026 14:00, request confirmation, no unprovided facts.",
+    "record_writes": [
+      "task.md"
+    ],
+    "checkpoint_hashes": {
+      "task.md": "86e0c5064716e8d55c57ad345e7f320dda9cf488041a56ce4c9aa4542a519267"
+    }
+  },
+  {
+    "receiver": "new-project",
+    "task_id": "20260928-003416_pack2",
+    "slug": "pack2",
+    "time": "2026-09-28T00:34:16+05:00",
+    "phase": "pre-action",
+    "folder": "cases/new-project/daily/2026/20260928-003416_pack2",
+    "input_hashes": {
+      "AGENTS.md": "71647eb9f9bf63ed854d4c64d327a0478c9d7a125f539d94df219bf7ed743ea1",
+      "README.md": "d5fd221057cd3a274f4621aa0492e4a74fa442f7edd2209e4d62cb6c66025e15",
+      "requests.md": "2408c110d3a038765c3ea1393f684de06373a98438f1dbe5a425e9c1f2f7a4a1",
+      ".agents/skills/tfw-daily-task/SKILL.md": "21b630a12cb8ce3d567d6d3677f258b57161447d823a626bae92dc66576c814b",
+      ".tfw/extensions/daily-task/SKILL.md": "0d06d1bf683bbd7f12bd5a482ac7ef71187e5bba7b5a636d62176e11d20831b3",
+      ".tfw/extensions/daily-task/templates/task.md": "54949bbd0efcb0d7d8040ca0e178d2e579e449bbcdd0cecda7647829adc8ee23",
+      "docs/brand.md": "19d928693eb3c888f93836b65ce5524d8501297409303315878e4a9cda5c97cc",
+      "design/pack1.svg": "d632e0a1bbf275153730249c18dffafa0f8f5f3562ccdac46a8c7643bdd4ab30",
+      "daily/2026/20260102-120000_pack1/task.md": "26c18602410dcf05e9200c43a6375331a98349ef44eb25e79e90cbb2a9657254"
+    },
+    "protected_hashes": {
+      "app/register.py": "fcf45b4b293ff903d86d9f7d09241a7e71e026a86742b1fe9c7709c153f2e11c",
+      "design/pack1.svg": "d632e0a1bbf275153730249c18dffafa0f8f5f3562ccdac46a8c7643bdd4ab30"
+    },
+    "oracle": "Open real SVG; 240\u00d7240 teal/charcoal rain motif; pack1 hash unchanged.",
+    "record_writes": [
+      "task.md"
+    ],
+    "checkpoint_hashes": {
+      "task.md": "ff10726cfb1481c703e73b670a5be201158d8742c30a5a00171c4c8da404ae47"
+    }
+  },
+  {
+    "receiver": "local-split",
+    "task_id": "20260928-003416_login",
+    "slug": "login",
+    "time": "2026-09-28T00:34:16+05:00",
+    "phase": "pre-action",
+    "folder": "cases/local-split/daily/2026/20260928-003416_login",
+    "input_hashes": {
+      "AGENTS.md": "1f8484879ebfe4faaadb6446831313f006da7165e9647f0ac46026bba3cc89d0",
+      "README.md": "d5fd221057cd3a274f4621aa0492e4a74fa442f7edd2209e4d62cb6c66025e15",
+      "requests.md": "2408c110d3a038765c3ea1393f684de06373a98438f1dbe5a425e9c1f2f7a4a1",
+      ".agents/skills/tfw-daily-task/SKILL.md": "21b630a12cb8ce3d567d6d3677f258b57161447d823a626bae92dc66576c814b",
+      ".tfw/extensions/daily-task/SKILL.md": "0d06d1bf683bbd7f12bd5a482ac7ef71187e5bba7b5a636d62176e11d20831b3",
+      ".tfw/extensions/daily-task/templates/task.md": "54949bbd0efcb0d7d8040ca0e178d2e579e449bbcdd0cecda7647829adc8ee23",
+      "docs/login.md": "3842329ca8731e241b84353ab366bf251866218fa7ab68cd5deb00d681afd11e",
+      "app/login.py": "34e295cceb2957fe2ac3687e2f0498cac61113531576006fdec8f00bc2a66f19",
+      "app/register.py": "fcf45b4b293ff903d86d9f7d09241a7e71e026a86742b1fe9c7709c153f2e11c",
+      "daily/2026/20260101-120000_login/task.md": "c65184cc84d67b1da278a523c11e996dc88f12ad6de371820f943823af0236e8"
+    },
+    "protected_hashes": {
+      "app/register.py": "fcf45b4b293ff903d86d9f7d09241a7e71e026a86742b1fe9c7709c153f2e11c",
+      "design/pack1.svg": "d632e0a1bbf275153730249c18dffafa0f8f5f3562ccdac46a8c7643bdd4ab30"
+    },
+    "oracle": "Actual run_login.py must print trimmed login True, unknown rejected True, exact registration input preserved.",
+    "record_writes": [
+      "task.md",
+      "brief.md",
+      "messages.md"
+    ],
+    "checkpoint_hashes": {
+      "task.md": "1fff691b46426be4eb734dfd168c6e11117e5e2441c6c7e20bebbfefc15ccb39",
+      "brief.md": "692403a99496f7edf156de857b8553aa79c8ef3d2908237f65137cc8d06d1393",
+      "messages.md": "c3efe66f11411f87464c20116c65bc24eb7974366366bc5158568f4611ea3b3a"
+    }
+  },
+  {
+    "receiver": "local-split",
+    "task_id": "20260928-003416_letter",
+    "slug": "letter",
+    "time": "2026-09-28T00:34:16+05:00",
+    "phase": "pre-action",
+    "folder": "cases/local-split/daily/2026/20260928-003416_letter",
+    "input_hashes": {
+      "AGENTS.md": "1f8484879ebfe4faaadb6446831313f006da7165e9647f0ac46026bba3cc89d0",
+      "README.md": "d5fd221057cd3a274f4621aa0492e4a74fa442f7edd2209e4d62cb6c66025e15",
+      "requests.md": "2408c110d3a038765c3ea1393f684de06373a98438f1dbe5a425e9c1f2f7a4a1",
+      ".agents/skills/tfw-daily-task/SKILL.md": "21b630a12cb8ce3d567d6d3677f258b57161447d823a626bae92dc66576c814b",
+      ".tfw/extensions/daily-task/SKILL.md": "0d06d1bf683bbd7f12bd5a482ac7ef71187e5bba7b5a636d62176e11d20831b3",
+      ".tfw/extensions/daily-task/templates/task.md": "54949bbd0efcb0d7d8040ca0e178d2e579e449bbcdd0cecda7647829adc8ee23",
+      "docs/meeting.md": "2ff3a10a927922d77638309aff78cf0137d0d7bbd5ed9fd130e8c746d3db4955"
+    },
+    "protected_hashes": {
+      "app/register.py": "fcf45b4b293ff903d86d9f7d09241a7e71e026a86742b1fe9c7709c153f2e11c",
+      "design/pack1.svg": "d632e0a1bbf275153730249c18dffafa0f8f5f3562ccdac46a8c7643bdd4ab30"
+    },
+    "oracle": "Read complete document: initial 15 October 2026 14:00, request confirmation, no unprovided facts.",
+    "record_writes": [
+      "task.md",
+      "brief.md",
+      "messages.md"
+    ],
+    "checkpoint_hashes": {
+      "task.md": "ea51f3c5f94db99d6742e3e05b1df49fa6280eb78c4944744cd02661582e72b2",
+      "brief.md": "c12405ffa46ceec713f8eb05895b9fe6349a5058ad4750c4f0fb971f73f2d7a6",
+      "messages.md": "b96e723070fd4f180de25250b67103b48abf7c029263480f63a204616c28f6f2"
+    }
+  },
+  {
+    "receiver": "local-split",
+    "task_id": "20260928-003416_pack2",
+    "slug": "pack2",
+    "time": "2026-09-28T00:34:16+05:00",
+    "phase": "pre-action",
+    "folder": "cases/local-split/daily/2026/20260928-003416_pack2",
+    "input_hashes": {
+      "AGENTS.md": "1f8484879ebfe4faaadb6446831313f006da7165e9647f0ac46026bba3cc89d0",
+      "README.md": "d5fd221057cd3a274f4621aa0492e4a74fa442f7edd2209e4d62cb6c66025e15",
+      "requests.md": "2408c110d3a038765c3ea1393f684de06373a98438f1dbe5a425e9c1f2f7a4a1",
+      ".agents/skills/tfw-daily-task/SKILL.md": "21b630a12cb8ce3d567d6d3677f258b57161447d823a626bae92dc66576c814b",
+      ".tfw/extensions/daily-task/SKILL.md": "0d06d1bf683bbd7f12bd5a482ac7ef71187e5bba7b5a636d62176e11d20831b3",
+      ".tfw/extensions/daily-task/templates/task.md": "54949bbd0efcb0d7d8040ca0e178d2e579e449bbcdd0cecda7647829adc8ee23",
+      "docs/brand.md": "19d928693eb3c888f93836b65ce5524d8501297409303315878e4a9cda5c97cc",
+      "design/pack1.svg": "d632e0a1bbf275153730249c18dffafa0f8f5f3562ccdac46a8c7643bdd4ab30",
+      "daily/2026/20260102-120000_pack1/task.md": "26c18602410dcf05e9200c43a6375331a98349ef44eb25e79e90cbb2a9657254"
+    },
+    "protected_hashes": {
+      "app/register.py": "fcf45b4b293ff903d86d9f7d09241a7e71e026a86742b1fe9c7709c153f2e11c",
+      "design/pack1.svg": "d632e0a1bbf275153730249c18dffafa0f8f5f3562ccdac46a8c7643bdd4ab30"
+    },
+    "oracle": "Open real SVG; 240\u00d7240 teal/charcoal rain motif; pack1 hash unchanged.",
+    "record_writes": [
+      "task.md",
+      "brief.md",
+      "messages.md"
+    ],
+    "checkpoint_hashes": {
+      "task.md": "50f497b2eb16929d89c084f70b14d93508784647f0ce2031c3bdb830856d05a9",
+      "brief.md": "2b1a2dbef33cc5960751505e127d7ca19c07a7cf3d4978f6e6ff92c530ba5adc",
+      "messages.md": "6043eabca5a39350d3983edef0edb70f1f7664355930e2de659c87afd0aca39e"
+    }
+  }
+]
