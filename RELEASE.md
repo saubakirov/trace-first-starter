@@ -22,13 +22,16 @@ only by this project's separately authorized release decision.
 
 ## 4. Release Triggers
 
-Prepare a release when the selected reviewed TFW effect is complete and its migration/compatibility
-obligations are ready. Unrelated open tasks and harmless trace-only arrivals do not require global cleanup.
+Prepare a release when the selected reviewed Full result or owner-accepted, checked Daily result is
+complete and its migration/compatibility obligations are ready. Daily uses its selected record, not
+fabricated Full artifacts; risk or an explicit requirement may still call for independent review.
+Unrelated open tasks and harmless trace-only arrivals do not require global cleanup.
 
 ## 5. Pre-Release Checklist
 
 - [ ] selected shipping effect and audience are explicit;
-- [ ] governing task/phase TS, RF, EV, and REVIEW resolve at their approval epochs;
+- [ ] Full: governing task/phase TS, RF, EV and REVIEW resolve at their approval epochs; Daily:
+      selected record identifies source, scope, result, checks, limits and owner acceptance;
 - [ ] selected VALUE/ASSURANCE composition is complete and isolated;
 - [ ] `KNOWLEDGE.md` and applicable documentation/knowledge closure are updated when required;
 - [ ] `.tfw/CHANGELOG.md` and every applicable version-addressed guide in `.tfw/migrations/` (including
@@ -46,9 +49,9 @@ obligations are ready. Unrelated open tasks and harmless trace-only arrivals do 
 
 ## 6. Release Steps
 
-1. Select the exact reviewed effect and required dependencies in an isolated complete integration/release
+1. Select the exact release-ready effect and required dependencies in an isolated complete integration/release
    tree. Reuse a suitable completed tree; never tag a partial Executor branch blindly.
-2. Resolve the applicable task/phase evidence and retain producer attribution and Candidate reachability.
+2. Resolve the applicable Full or Daily evidence and retain producer attribution and Candidate reachability.
 3. Prepare the version/changelog/config/template/migration result and the still-applicable update route
    in the isolated tree; this includes `.tfw/VERSION`, `.tfw/project_config.yaml`,
    `.tfw/templates/project_config.yaml`, `.tfw/CHANGELOG.md`, `.tfw/templates/briefing.md`,
@@ -70,7 +73,7 @@ the same mechanics mandatory for another project.
 For this repository, apply the single authoritative sequence in §6. The self-hosting intake adds these
 checks at the named §6 steps:
 
-- At §6.1, pin the reviewed source and inspect `.tfw/VERSION`, `.tfw/CHANGELOG.md`, the selected
+- At §6.1, pin the accepted release source and inspect `.tfw/VERSION`, `.tfw/CHANGELOG.md`, the selected
   `.tfw/workflows/`, `.tfw/templates/`, `.tfw/adapters/`, `.claude/commands/`, and `.agents/` files.
 - At §6.2, read every applicable version-addressed guide in `.tfw/migrations/`, including minor and
   patch guides when present; a changelog entry alone is not a migration guide, and each guide must

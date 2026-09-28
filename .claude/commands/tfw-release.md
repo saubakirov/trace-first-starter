@@ -4,11 +4,11 @@ description: TFW Release — prepare a release according to the receiving projec
 
 # TFW Release — Project-Defined Release Workflow
 
-> **Role:** Coordinator
+> **Role:** Coordinator for Full work; authorized Daily worker for a Daily result
 > **Trigger:** explicit release preparation request or the project's recorded release trigger
 > **Prerequisite:** an applicable project release contract, when the project has one
 
-> **🔒 ROLE LOCK: COORDINATOR**
+> **🔒 ROLE LOCK: COORDINATOR (Full) / AUTHORIZED DAILY WORKER (Daily)**
 > Permitted: release preparation and separately authorized project release effects. Forbidden:
 > implementation, task planning/execution/review artifacts, and implicit tag/push/publish/deploy.
 
@@ -18,10 +18,10 @@ Read in order. A project without releases or `RELEASE.md` remains valid for ordi
 
 | Order | Input | Checkpoint purpose | Authority |
 |---|---|---|---|
-| 1 | selected task/phase `status.md` and `journal/`, when task-bound | live routing and lineage before derived readiness evidence | task-local authority |
+| 1 | selected task/phase `status.md` and `journal/` for Full; selected record for Daily | actual route, authority and lineage before readiness evidence | task-local authority |
 | 2 | `RELEASE.md`, when present: `What Is a Release?`, `Audience`, `Version Scheme`, `Release Triggers`, `Pre-Release Checklist`, `Release Steps` | project-defined release contract | project |
 | 3 | project version/output metadata named by that contract | identity and output | project |
-| 4 | selected RF/EV/REVIEW | readiness evidence | governing task artifacts |
+| 4 | selected Full RF/EV/REVIEW or Daily result and checks | readiness evidence required by the project | governing work record |
 | 5 | only selected changelog/migration/notes sources | release explanation and obligations | selected effect |
 | 6 | final output and its checks | final verification | project contract |
 
@@ -31,12 +31,14 @@ state stops the selected release effect, not unrelated routine work.
 
 ## Activation and routing checkpoint
 
-Apply the active root activation/routing contract before material work. Task-bound current work
+Apply the active root activation/routing contract before material work. Full task-bound current work
 requires a complete spine; total legacy absence is read-only and partial/mismatched routing refuses.
-This unit must be the actual Coordinator. A release trigger is not activation, and every external
-effect remains separately authorized by the project contract and actual human owner through the
-task Coordinator's recorded upward route. A historical `owner_gateway` carrier retains its own
-epoch; a phase result cannot grant release authority.
+For Full work this unit must be the actual Coordinator, with authority through its recorded upward
+route. For Daily, resolve the actual owner's release authorization and the selected record; no Full
+role, routing spine or task artifacts are invented. A Daily worker may perform the release effects
+that the owner and project contract authorize. A trigger or completed result alone grants none.
+Every external effect remains separately authorized. A historical `owner_gateway` carrier retains
+its own epoch; a phase result cannot grant release authority.
 
 ## Step 1 — Resolve the Project Release Route
 
@@ -55,10 +57,16 @@ installed TFW version merely because TFW instructions were used.
 
 ## Step 2 — Select Effect and Evidence
 
-Start from the selected shipping effect, then resolve its governing task/phase TS, RF, EV, and REVIEW at
-the applicable approval epoch and topology. A phase-only result does not need an invented root RF or a
-global all-DONE scan. Unrelated open tasks and harmless trace arrivals do not block a selected effect;
-missing proof for that effect does.
+Start from the selected shipping effect and its actual work route:
+
+- **Full:** resolve governing task/phase TS, RF, EV and REVIEW at their approval epoch and topology.
+  A phase-only result needs no invented root RF or global all-DONE scan.
+- **Daily:** use the selected record's source, scope, result, checks, limits and owner acceptance,
+  plus the project's release checks and any required independent review. Do not fabricate Full
+  artifacts or convert the work to Full merely to release it. Daily never waives evidence or review
+  required for an actual Full result; mixed releases retain each result's own lineage.
+
+Unrelated open tasks and harmless traces do not block a selected effect; missing proof for it does.
 
 ## Step 3 — Prepare, Verify, and Report
 
