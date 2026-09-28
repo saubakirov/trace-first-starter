@@ -69,8 +69,6 @@ The Reviewer's validated own successor return remains `economics/roles/866afbae5
 
 The exact current verdict is returned only to `coordinator_route` in a compact REVIEW envelope after this sibling is durable. Coordinator's owner VALUE/economics presentation, applicable qualification, final report, DONE and resource disposition remain open. No new status event, numeric capture or product work is owed by this record repair.
 
-## 7. Fact Candidates
-
 ### Coordinator qualification ruling, 2026-09-29
 
 Under the approved close mandate, F1–F3 are paid as independently assessed above. O1 is handled by distinguishing selected incomplete contributions from preserved excluded files in the task report; it creates no product revision.
@@ -82,6 +80,8 @@ Under the approved close mandate, F1–F3 are paid as independently assessed abo
 Final-claim assessment remains with the independent Reviewer for these qualification effects and the refreshed report. Owner actual-result acceptance, local VALUE landing, DONE, final report delivery and safe disposable cleanup remain pending with their existing holders. These markers do not self-accept those effects.
 
 Actual report receipt identifies one remaining producer-return problem: Reviewer revision 2 file `866afbae…` has `complete:false`. The approved receiver therefore excludes its overlapping range and retains revision 1, yielding 160,345,754 selected tokens rather than the review's provisional 170,769,892. This is not proof of a reader defect. The same producing Reviewer must resolve its finite-bound completeness/return claim without Coordinator edits to producer bytes, then independently assess the report basis. Preserve the old captures; no new source range is needed solely for this correction.
+
+## 7. Fact Candidates
 
 No fact candidates.
 
