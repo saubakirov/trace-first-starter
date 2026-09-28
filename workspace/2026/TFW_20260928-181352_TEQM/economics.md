@@ -1,8 +1,6 @@
 # Task economics — TFW_20260928-181352_TEQM
 
-> Last successful two-unit rendering, preserved as an intermediate snapshot. The Researcher's compact contribution has since been received and validated; updating this report with it failed in the Candidate's pricing code. The actual failure and received bytes are recorded in `journal/20260929-025005__handoff__3ae2.md`. The tables and metadata below therefore do not yet include that received contribution and are not the final TEQM economics.
-
-<!-- tfw-economics-v1 {"calendar_elapsed_seconds":30408.262894,"collector_operation_seconds":0.232565,"cutoff":"2026-09-28T21:40:40.262894+00:00","excluded":[],"failure_only":[],"incomplete":["a5f42644c0cd185bb70c093787d9b1c8741b300894d26ffd3fd2f4896961e6e1","ef80eb0f7221c4f75f0b161e843cc685a115c781aab2ef6fd6a0e963b7907db5"],"keywords":["token-accounting","task-reports","product-costs","distributed-role-returns"],"lifecycle":"RF","measured":["codex:thread:local:01a0e7f5-7791-7ad0-99ff-30068c11b793","codex:thread:local:01a0e9c4-e45c-7940-8515-fd083f4a7886"],"missing":["codex:thread:local:01a0e903-fa15-7e62-8032-956fdd7b7243","codex:thread:local:01a0e9f5-538c-7152-b704-b7f4b7e41784"],"owner":"saubakirov","primary_area":"task-economics","project":"steps-framework","rate_version":"2026-09-29","received":["codex:thread:local:01a0e7f5-7791-7ad0-99ff-30068c11b793","codex:thread:local:01a0e9c4-e45c-7940-8515-fd083f4a7886"],"report_at":"2026-09-28T21:45:33.395749+00:00","schema_version":1,"status_timezone":"+05:00","task":"TFW_20260928-181352_TEQM","totals":{"cached":89439232,"duration_seconds":{"completed_turn":11408.016},"input":92126406,"output":502920,"priced_usd":"93.7930584","tokens":92629326,"undated_tokens":0,"unpriced_tokens":0},"unknown_collector_operations":0} -->
+<!-- tfw-economics-v1 {"calendar_elapsed_seconds":33113.05828,"collector_operation_seconds":0.619376,"cutoff":"2026-09-28T22:25:45.058280+00:00","excluded":["a5f42644c0cd185bb70c093787d9b1c8741b300894d26ffd3fd2f4896961e6e1","ef80eb0f7221c4f75f0b161e843cc685a115c781aab2ef6fd6a0e963b7907db5"],"failure_only":[],"incomplete":["340cd5423a4292a047ac66a57887faf24eececa58e2b7d7caf24dbf07961bd66","a5f42644c0cd185bb70c093787d9b1c8741b300894d26ffd3fd2f4896961e6e1","eaf560cb0c592b440eb6821e7302aa93717ff378604dd472eb7ea96a618a0eb0","ef80eb0f7221c4f75f0b161e843cc685a115c781aab2ef6fd6a0e963b7907db5"],"keywords":["token-accounting","task-reports","product-costs","distributed-role-returns"],"lifecycle":"RF","measured":["codex:thread:local:01a0e7f5-7791-7ad0-99ff-30068c11b793","codex:thread:local:01a0e903-fa15-7e62-8032-956fdd7b7243","codex:thread:local:01a0e9c4-e45c-7940-8515-fd083f4a7886","codex:thread:local:01a0e9f5-538c-7152-b704-b7f4b7e41784"],"missing":[],"owner":"saubakirov","phase_coverage_gaps":[],"phase_roots":[],"primary_area":"task-economics","project":"steps-framework","rate_version":"2026-09-29","received":["codex:thread:local:01a0e7f5-7791-7ad0-99ff-30068c11b793","codex:thread:local:01a0e903-fa15-7e62-8032-956fdd7b7243","codex:thread:local:01a0e9c4-e45c-7940-8515-fd083f4a7886","codex:thread:local:01a0e9f5-538c-7152-b704-b7f4b7e41784"],"report_at":"2026-09-28T22:26:33.576006+00:00","schema_version":1,"source_diagnostics":[{"notes":["unmatched task_started: 1","compacted 62 verified native rows into 1 daily/run/model records"],"sha256":"340cd5423a4292a047ac66a57887faf24eececa58e2b7d7caf24dbf07961bd66","source_qualification":{},"unit":"codex:thread:local:01a0e9f5-538c-7152-b704-b7f4b7e41784"},{"notes":["Codex token_count total 49215738 differs from 325 unique-response native thread total 49765382; chose response stream reconciled to its native thread counter, never added both","unmatched task_started: 1","compacted 326 verified native rows into 2 daily/run/model records"],"sha256":"395036977781bbd57ba6f4e7559b76543b808bfdf97278b2e89395170beb48d1","source_qualification":{},"unit":"codex:thread:local:01a0e9c4-e45c-7940-8515-fd083f4a7886"},{"notes":["unmatched task_started: 1","compacted 481 verified native rows into 6 daily/run/model records"],"sha256":"a5f42644c0cd185bb70c093787d9b1c8741b300894d26ffd3fd2f4896961e6e1","source_qualification":{"tfw.adaptation_reason":"Delivered reader succeeded but its cumulative token_count view omitted usage visible in the same verified prefix; bounded own-source extraction, shared schema/validator/rates unchanged","tfw.alternate_token_count_total":62902737,"tfw.counter_difference_tokens":1502301,"tfw.native_stream":"token_usage_record.usage deduplicated by response_id; per-response sum equals final thread_token_usage"},"unit":"codex:thread:local:01a0e7f5-7791-7ad0-99ff-30068c11b793"},{"notes":["Codex token_count total 72890250 differs from 519 unique-response native thread total 74457766; chose response stream reconciled to its native thread counter, never added both","unmatched task_started: 1","compacted 547 verified native rows into 6 daily/run/model records"],"sha256":"b7740b77054915c87e019a170829a30278a68ab594934077351bb710b41c9497","source_qualification":{},"unit":"codex:thread:local:01a0e7f5-7791-7ad0-99ff-30068c11b793"},{"notes":[],"sha256":"eaf560cb0c592b440eb6821e7302aa93717ff378604dd472eb7ea96a618a0eb0","source_qualification":{},"unit":"codex:thread:local:01a0e903-fa15-7e62-8032-956fdd7b7243"},{"notes":["unmatched task_started: 1","compacted 203 verified native rows into 1 daily/run/model records"],"sha256":"ef80eb0f7221c4f75f0b161e843cc685a115c781aab2ef6fd6a0e963b7907db5","source_qualification":{},"unit":"codex:thread:local:01a0e9c4-e45c-7940-8515-fd083f4a7886"}],"status_timezone":"+05:00","task":"TFW_20260928-181352_TEQM","totals":{"cached":155727616,"duration_seconds":{"completed_turn":18042.940000000002},"input":159611397,"output":734357,"priced_usd":"122.1569688","tokens":160345754,"undated_tokens":0,"unpriced_tokens":0},"unknown_collector_operations":0} -->
 
 ## Purpose, result and value
 
@@ -15,20 +13,20 @@
 
 | Measure | Observed selected contribution |
 |---|---:|
-| Tokens, input + output | 92,629,326 |
-| Input, including cache | 92,126,406 |
-| Cached input subset | 89,439,232 |
-| Output, including reasoning when source says so | 502,920 |
-| API reference estimate on priced rows (USD) | 93.7930584 |
+| Tokens, input + output | 160,345,754 |
+| Input, including cache | 159,611,397 |
+| Cached input subset | 155,727,616 |
+| Output, including reasoning when source says so | 734,357 |
+| API reference estimate on priced rows (USD) | 122.1569688 |
 | Unpriced tokens | 0 |
 | Undated tokens, excluded from date filters | 0 |
-| Collection operation, observed wall seconds | 0.233 (0 files unknown) |
-| Task calendar elapsed, status clock | 30408.263 seconds |
+| Collection operation, observed wall seconds | 0.619 (0 files unknown) |
+| Task calendar elapsed, status clock | 33113.058 seconds |
 
 Time kinds remain separate; task calendar elapsed is read from task control,
 not inferred from summed roles. Parallel role times can overlap.
 
-- completed_turn: 11408.016 observed seconds
+- completed_turn: 18042.940 observed seconds
 
 Money is a dated Standard API token equivalent, not a subscription bill.
 Unknown models, tariff conditions, storage and tools are excluded.
@@ -39,44 +37,68 @@ Unknown models, tariff conditions, storage and tools are excluded.
 
 | Role | Tokens | Priced USD |
 |---|---:|---:|
-| coordinator | 64,405,038 | 86.349740 |
-| executor | 28,224,288 | 7.4433184 |
+| coordinator | 74,457,766 | 99.348052 |
+| executor | 49,765,382 | 13.0194824 |
+| Researcher | 28,923,212 | 7.8227232 |
+| reviewer | 7,199,394 | 1.9667112 |
 
 ### Model
 
 | Model | Tokens | Priced USD |
 |---|---:|---:|
-| gpt-6-astra | 47,914,992 | 81.877080 |
-| gpt-6-sol | 44,714,334 | 11.9159784 |
+| gpt-6-sol | 102,378,034 | 27.2815768 |
+| gpt-6-astra | 57,967,720 | 94.875392 |
 
 ### Consumption date
 
 | Date | Tokens | Priced USD |
 |---|---:|---:|
-| 2026-09-28 | 38,993,311 | 42.485166 |
-| 2026-09-29 | 53,636,015 | 51.3078924 |
+| 2026-09-28 | 67,916,523 | 50.3078892 |
+| 2026-09-29 | 92,429,231 | 71.8490796 |
 
 ## Coverage and provenance
 
 - Expected units: codex:thread:local:01a0e7f5-7791-7ad0-99ff-30068c11b793, codex:thread:local:01a0e903-fa15-7e62-8032-956fdd7b7243, codex:thread:local:01a0e9c4-e45c-7940-8515-fd083f4a7886, codex:thread:local:01a0e9f5-538c-7152-b704-b7f4b7e41784
-- Received units: codex:thread:local:01a0e7f5-7791-7ad0-99ff-30068c11b793, codex:thread:local:01a0e9c4-e45c-7940-8515-fd083f4a7886
-- Measured units: codex:thread:local:01a0e7f5-7791-7ad0-99ff-30068c11b793, codex:thread:local:01a0e9c4-e45c-7940-8515-fd083f4a7886
-- Missing units: codex:thread:local:01a0e903-fa15-7e62-8032-956fdd7b7243, codex:thread:local:01a0e9f5-538c-7152-b704-b7f4b7e41784
+- Received units: codex:thread:local:01a0e7f5-7791-7ad0-99ff-30068c11b793, codex:thread:local:01a0e903-fa15-7e62-8032-956fdd7b7243, codex:thread:local:01a0e9c4-e45c-7940-8515-fd083f4a7886, codex:thread:local:01a0e9f5-538c-7152-b704-b7f4b7e41784
+- Measured units: codex:thread:local:01a0e7f5-7791-7ad0-99ff-30068c11b793, codex:thread:local:01a0e903-fa15-7e62-8032-956fdd7b7243, codex:thread:local:01a0e9c4-e45c-7940-8515-fd083f4a7886, codex:thread:local:01a0e9f5-538c-7152-b704-b7f4b7e41784
+- Missing units: none among declared expected
 - Failure-only units: none
-- Incomplete source captures: 2 (a finite snapshot is not full task coverage).
-- Excluded conflicting/superseded files: 0
-- Capture cutoff: 2026-09-28T21:40:40.262894+00:00
+- Selected phase leaves: none
+- Phase coverage gaps: none
+- Incomplete source captures: 4 (a finite snapshot is not full task coverage).
+- Excluded conflicting/superseded files: 2
+- Capture cutoff: 2026-09-28T22:25:45.058280+00:00
 - Finite tail: later report delivery, final message and cleanup are outside this cutoff.
 - Rate card: 2026-09-29; USD per million text tokens, first-party Standard API reference; short context for OpenAI, no subscription allocation or tools
 
+- codex:thread:local:01a0e9f5-538c-7152-b704-b7f4b7e41784: codex.rollout / 01a0e9f5-538c-7152-b704-b7f4b7e41784 revision 1, range [0, 474), complete False, 1785 bytes, SHA-256 340cd5423a4292a047ac66a57887faf24eececa58e2b7d7caf24dbf07961bd66, source 0ad817b81659abf8c2e78c56d9b67ccd21e227016bf49c326acadb616065b77c.
+- Source diagnostic codex:thread:local:01a0e9f5-538c-7152-b704-b7f4b7e41784: unmatched task_started: 1
+- Source diagnostic codex:thread:local:01a0e9f5-538c-7152-b704-b7f4b7e41784: compacted 62 verified native rows into 1 daily/run/model records
+- codex:thread:local:01a0e9c4-e45c-7940-8515-fd083f4a7886: codex.rollout / 01a0e9c4-e45c-7940-8515-fd083f4a7886 revision 2, range [0, 2426), complete True, 2634 bytes, SHA-256 395036977781bbd57ba6f4e7559b76543b808bfdf97278b2e89395170beb48d1, source 618801fbfa636d84bfc654ecabe6c9b8cf972618b6b24a07787bc7dedc1312b5.
+- Source diagnostic codex:thread:local:01a0e9c4-e45c-7940-8515-fd083f4a7886: Codex token_count total 49215738 differs from 325 unique-response native thread total 49765382; chose response stream reconciled to its native thread counter, never added both
+- Source diagnostic codex:thread:local:01a0e9c4-e45c-7940-8515-fd083f4a7886: unmatched task_started: 1
+- Source diagnostic codex:thread:local:01a0e9c4-e45c-7940-8515-fd083f4a7886: compacted 326 verified native rows into 2 daily/run/model records
 - codex:thread:local:01a0e7f5-7791-7ad0-99ff-30068c11b793: codex.rollout / 01a0e7f5-7791-7ad0-99ff-30068c11b793 revision 1, range [0, 3841), complete False, 5713 bytes, SHA-256 a5f42644c0cd185bb70c093787d9b1c8741b300894d26ffd3fd2f4896961e6e1, source 9c28cb91907a15674fbac6e2f6a0b78d644baa477bc8f275d4e476d6ccb29a7b.
+- Source diagnostic codex:thread:local:01a0e7f5-7791-7ad0-99ff-30068c11b793: unmatched task_started: 1
+- Source diagnostic codex:thread:local:01a0e7f5-7791-7ad0-99ff-30068c11b793: compacted 481 verified native rows into 6 daily/run/model records
+- Source qualification codex:thread:local:01a0e7f5-7791-7ad0-99ff-30068c11b793 / tfw.native_stream: token_usage_record.usage deduplicated by response_id; per-response sum equals final thread_token_usage.
+- Source qualification codex:thread:local:01a0e7f5-7791-7ad0-99ff-30068c11b793 / tfw.adaptation_reason: Delivered reader succeeded but its cumulative token_count view omitted usage visible in the same verified prefix; bounded own-source extraction, shared schema/validator/rates unchanged.
+- Source qualification codex:thread:local:01a0e7f5-7791-7ad0-99ff-30068c11b793 / tfw.alternate_token_count_total: 62902737.
+- Source qualification codex:thread:local:01a0e7f5-7791-7ad0-99ff-30068c11b793 / tfw.counter_difference_tokens: 1502301.
+- codex:thread:local:01a0e7f5-7791-7ad0-99ff-30068c11b793: codex.rollout / 01a0e7f5-7791-7ad0-99ff-30068c11b793 revision 2, range [0, 4252), complete True, 5369 bytes, SHA-256 b7740b77054915c87e019a170829a30278a68ab594934077351bb710b41c9497, source 7a9e1e9e7d916e1417377d1ef95c7be3e87219ea0c1ae3f1db1eb2b6cc72a5fe.
+- Source diagnostic codex:thread:local:01a0e7f5-7791-7ad0-99ff-30068c11b793: Codex token_count total 72890250 differs from 519 unique-response native thread total 74457766; chose response stream reconciled to its native thread counter, never added both
+- Source diagnostic codex:thread:local:01a0e7f5-7791-7ad0-99ff-30068c11b793: unmatched task_started: 1
+- Source diagnostic codex:thread:local:01a0e7f5-7791-7ad0-99ff-30068c11b793: compacted 547 verified native rows into 6 daily/run/model records
+- codex:thread:local:01a0e903-fa15-7e62-8032-956fdd7b7243: codex.rollout / 01a0e903-fa15-7e62-8032-956fdd7b7243 revision 1, range [0, 1858), complete False, 4208 bytes, SHA-256 eaf560cb0c592b440eb6821e7302aa93717ff378604dd472eb7ea96a618a0eb0, source 2c0169a5743948ca29fc623aa0487b77b6d7e98d3e0de17981dfa4f8283d45e5.
 - codex:thread:local:01a0e9c4-e45c-7940-8515-fd083f4a7886: codex.rollout / 01a0e9c4-e45c-7940-8515-fd083f4a7886 revision 1, range [0, 1509), complete False, 1774 bytes, SHA-256 ef80eb0f7221c4f75f0b161e843cc685a115c781aab2ef6fd6a0e963b7907db5, source a9d9edb912aa432ec8046e11fb371db754a2c25f19ed56fe4dde59fbaeb18f39.
+- Source diagnostic codex:thread:local:01a0e9c4-e45c-7940-8515-fd083f4a7886: unmatched task_started: 1
+- Source diagnostic codex:thread:local:01a0e9c4-e45c-7940-8515-fd083f4a7886: compacted 203 verified native rows into 1 daily/run/model records
 
 ## TEQM rollout coverage and numeric reconciliation
 
-This is a pre-close basis, not final acceptance. The current four-unit compact view covers the Coordinator and Executor; the Researcher compact return and independent Reviewer return are still pending. The Researcher has already returned a separate numeric preparation snapshot: 28,923,212 tokens at 2026-09-28T18:41:26.934Z, pending common-format receipt. It is not added again to the table above.
+This is a pre-close basis, not final acceptance. The current four-unit compact view now includes received Coordinator, Researcher, Executor and Reviewer files. Earlier Coordinator/Executor revisions remain preserved but are superseded once; diagnostic preparations and duplicate copies are not added. The Reviewer correction assessment and any later own return remain pending. The Researcher finite snapshot includes 28,923,212 tokens and 3,551.259 completed-turn seconds through 2026-09-28T18:41:26.934Z; subsequent measurement-preparation work is outside that cut.
 
-The Coordinator contribution uses unique native token_usage_record response values whose sum equals the final thread_token_usage at the identical verified prefix. The alternative token_count view was 62,902,737; the selected stream is 64,405,038 (difference 1,502,301). Both are preserved in economics/preparation/coordinator-v1-reconciliation.json. A bounded own-source adaptation produced the standard rows without modifying shared field meanings, validator or tariffs. This discrepancy is an independent-review input, not a claim that the Candidate reader already handles it.
+The earlier Coordinator prefix reconciliation remains preserved in economics/preparation/coordinator-v1-reconciliation.json. The current Coordinator revision 2 was collected by the corrected standard reader from Candidate d0428128; its unique native response sum was independently rechecked against the identical source prefix. Its exact counter-stream qualification appears in the generated diagnostics above. Both native streams are alternatives and are never added. The Researcher and Executor manifests likewise preserve their own native-stream reconciliation. Complete=true means complete for the declared finite bound, not that future final-message/report/cleanup work has been measured.
 
 Earlier task contributors predate the new mandatory return contract. Their returned observations stay visible:
 
