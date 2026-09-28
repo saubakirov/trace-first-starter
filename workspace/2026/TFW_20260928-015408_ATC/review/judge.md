@@ -71,3 +71,13 @@ Excess/adjacency: no unapproved role, host mechanism or runtime was added (V1/V4
 - [x] Derived one verdict from material consequence, not count or checklist volume.
 
 Stage complete: YES
+
+## Round 2 — bounded affected judgment, 2026-09-28
+
+**VALUE.** The replacement Candidate repairs F1 within the existing approved TS. The generated owner-authority selection is now a real 11-column table, allowing the scope, upward route, reservations and epoch to be inspected as linked columns. This serves the frozen master HL §3.7 requirement for a usable shipped workflow/entry and Project NS1's inspectable human-governed continuity. The A/B/V architecture, historical compatibility, human reservations and safety boundaries are unchanged. F1 is paid for the local shipped result; live external receiving-agent activation and idle-parent wake remain unobserved, exactly as before.
+
+**ASSURANCE.** The rendered HTML and independent rebuild establish the affected presentation claim at replacement Candidate `bddccf8e1287e30db2ca4bf43ad0bcf68d0d0f65`. The full Baseline→replacement VALUE accounting, digest and tokenizer rows independently match. Existing route, parser and receiver-parity evidence remains applicable because its subject paths and dependencies did not change. EV E2.1's optional fragment SHA-256 is wrong; direct committed-file and rebuilt-content equality establish the relevant claim without that number. The correct hashes are recorded in Verify as a non-material TRACE observation.
+
+**TRACE.** The same Executor accepted the Coordinator's rung-1 ruling at `c944f6b`, produced one VALUE correction and a new fixed Candidate, then returned cumulative RF/EV at `a40e02c`. Current status is valid `RF`; the approved TS/denominator and Coordinator route are unchanged. The new live REVIEW sibling may record APPROVE and the authorized `RF → KNW` transition. The Coordinator still owes the owner-facing pre-merge comparison, docs/knowledge alignment, final owner acceptance and any later effects. No new material item remains; the digest observation is disposed in the current review record with Candidate unchanged.
+
+**Round 2 aggregate verdict:** ✅ APPROVE for the replacement Candidate and affected result. F1 is paid. This Reviewer returns to the same Coordinator for the canonical closing route and remains available for changed final claims; it does not capture knowledge or declare DONE.
