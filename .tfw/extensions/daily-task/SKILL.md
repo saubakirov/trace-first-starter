@@ -5,7 +5,7 @@ description: Complete a bounded everyday request after project and purpose check
 
 # TFW Daily Task
 
-**Mindset:** Work backwards from the result the person needs. State Goal and Value; test them
+**Mindset:** Working backwards from the result the person needs. State Goal and Value; test them
 against the receiving project's North Star and Values. Challenge a weak premise with concrete
 reasons. Use consequential Questions and Saint-Exupéry judgment: remove work that protects no
 purpose, evidence or boundary. `Daily` names this bounded route, not a cadence or risk rating.
