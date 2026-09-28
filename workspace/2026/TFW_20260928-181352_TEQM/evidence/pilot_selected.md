@@ -1,7 +1,7 @@
 # Selected task economics
 
 Filters: {}
-Selected roots: E:\TEMP\teqm-economics-assurance-_n_1b1c7\HD_20260916-201328_UPM, E:\TEMP\teqm-economics-assurance-_n_1b1c7\HOME_20260928-185146_DARYN
+Selected task IDs: HD_20260916-201328_UPM, HOME_20260928-185146_DARYN
 Rate basis: USD per million text tokens, first-party Standard API reference; short context for OpenAI, no subscription allocation or tools (2026-09-29)
 
 | Project | Tokens | Priced USD | Time by kind (seconds) |

@@ -232,18 +232,24 @@ def main():
             e.receive(args)
             e.receive(args)
             check("idempotent receive " + root.name, len(e.selected_files(received)) == 1)
+            pilot_name = "pilot_" + ("upm" if "UPM" in root.name else "daryn") + ".md"
             report_args = type("Args", (), dict(task_root=str(root), project=saved["project"],
                 rates=str(ROOT / ".tfw/economics/rates.json"),
                 expected_unit=[s["session_id"] for s in saved["sessions"]],
                 primary_area=saved["primary_area"], keyword=saved["keywords"][:5],
                 accepted_result="saved sample only", status_timezone="+05:00",
-                out=str(TASK / "evidence" /
-                        ("pilot_" + ("upm" if "UPM" in root.name else "daryn") + ".md"))))
+                out=str(temp / pilot_name)))
             e.render_report(report_args)
             check("pilot report total " + root.name,
                   e.metadata_block(report_args.out)["totals"]["tokens"] ==
                   saved["tokens"]["total_tokens"])
             shutil.copyfile(report_args.out, root / "economics.md")
+            pilot = TASK / "evidence" / pilot_name
+            if not pilot.exists():
+                shutil.copyfile(report_args.out, pilot)
+            check("saved pilot total " + root.name,
+                  e.metadata_block(pilot)["totals"]["tokens"] ==
+                  saved["tokens"]["total_tokens"])
         args = type("Args", (), dict(task_root=[str(x[1]) for x in sources],
              rates=str(ROOT / ".tfw/economics/rates.json"), date_from=None,
              date_to=None, project=None, task=None, role=None, model=None, tag=None,

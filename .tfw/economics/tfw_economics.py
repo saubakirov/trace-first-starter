@@ -1128,7 +1128,7 @@ def render_summary(args):
             by_project[row["project"]]["duration"][row["duration_kind"]] += row["duration_seconds"]
     lines = ["# Selected task economics", "",
              "Filters: " + json.dumps({k: v for k, v in filters.items() if v}, sort_keys=True),
-             "Selected roots: " + ", ".join(str(x) for x in roots),
+             "Selected task IDs: " + ", ".join(x.name for x in roots),
              "Rate basis: " + rates["basis"] + " (" + rates["rate_epoch"] + ")",
              "", "| Project | Tokens | Priced USD | Time by kind (seconds) |",
              "|---|---:|---:|---|"]
