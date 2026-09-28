@@ -1,8 +1,8 @@
 ---
 id: TFW_20260928-201325_SHI
 title: "Идентичность общего рабочего компьютера"
-goal: "Define honest shared-host launch provenance and a real team-computer scenario for Full TFW."
-value: "A team can pool computation while reconstructing declared initiator, execution host, project and authority without false identity or subscription claims."
+goal: "Let a team run several Full TFW projects on one named computer and pursue one permitted shared AI subscription while preserving launch provenance."
+value: "Long-running work can share costly computation and potentially one subscription; each project retains its intent, declared initiator, execution host and mandate."
 lifecycle: HL_DRAFT
 owner: saubakirov
 authority: HL-TFW_20260928-201325_SHI.md
@@ -14,7 +14,7 @@ coordination_authority: "HL-TFW_20260928-201325_SHI.md @ fc94b67b35df567d679d01e
 reporting: native-gates
 selection_ref: baseline
 created: 20260928-201755
-updated: 20260928-201755
+updated: 20260928-221319
 ---
 
 **Task state.** This file is the only authority for this task's live state. Any downstream projection is disposable and never outranks it.
