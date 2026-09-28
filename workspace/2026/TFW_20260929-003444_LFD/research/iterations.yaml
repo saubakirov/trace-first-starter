@@ -13,5 +13,7 @@ iterations:
   - number: 2
     focus: "Focused mode. H2 from existing evidence only: the update receipts of receivers on this machine (read-only; anonymized; no receiver names or machine paths copied) and iteration 1's measured download times, estimating what share of an update session is download versus procedure. Subtraction challenge: walk update.md step by step and name each mandated step or habit that costs time without protecting receiver state, pinning or owner decisions (for example repeated re-hashing, project checks that .tfw/ changes cannot affect, receipt length), each with its evidence and why removing or narrowing it keeps preservation; settle iteration 1 open thread 2 (staging exposure: order against a local exclude). One light GitHub run each of S2 and of S3 with a tag is allowed, each stopped and reported if its size check exceeds 2 MiB. No trial update execution, no receiver change, no other GitHub transfer; local-only binding otherwise unchanged. The owner's rulings on HL §12 A1 and A2 are not awaited."
     hypotheses: [H2]
-    status: pending
+    status: complete
     res_file: research/iter2/RES.md
+    agent: claude-code in-session agent lfd-researcher (focused mode)
+    sources: [external, codebase, receiver receipts, local trials]
