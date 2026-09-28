@@ -94,7 +94,7 @@ Each Phase = separate TS→RF cycle.
 > A profile, binding, title, provisioned unit, prompt or roster grants nothing.
 
 | Activation source | Accountable owner | Task Coordinator unit | Phase Coordinator rule | Mandate scope / role reach | Upward route | Dialogue | Reporting | Reservations / controls | Amendment authority | Immutable epoch |
-|---|---|---|---|---|---|---|---|---|---|
+|---|---|---|---|---|---|---|---|---|---|---|
 | owner-direct / delegated | {human owner handle} | {actual native address or pending until receipt} | {none for one phase; exact bounded unit per ready phase of long work} | {bounded task/phases and roles} | {task: owner handle; phase: actual task Coordinator address} | tfw-gates-only / exact bounded iterative grant | native-gates / explicit owner-transfer | {owner-reserved decisions and controls} | {exact bounded grant or `none`} | {full commit/object ref} |
 
 > One-phase work has one task Coordinator. In long work, that unit owns strategy, dependencies,
