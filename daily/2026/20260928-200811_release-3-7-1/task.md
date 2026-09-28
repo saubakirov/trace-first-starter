@@ -81,6 +81,19 @@ guard passed. Current master advanced to `7a97665d4a9c0f37799a7ce9cb663f519ab0c6
 planning traces only. Preserve those committed records through integration without changing their
 authority or lifecycle; uncommitted unrelated work is outside the publication selection.
 
-Next: verify the combined commit, integrate it into saved master, publish master and `v3.7.1`, and
-verify the remote refs. Retire the task-owned release tree only after successful integration and
-verification. Acceptance covers the owner-selected Daily route and patch, not native behavior.
+The owner then prioritized immediate tag delivery: “из неё сделай тег запуш, потом будешь заниматься
+слияниями”. Published and verified `v3.7.1` on origin first: annotated tag object
+`e39a0371d887cc209bf77eb1a94948f75345d956`, target commit
+`1e3e00e9b7bf0c706cdc12094eadeb4103fc6bbb`. The exact target passed all 14 configured tests and the
+release-history guard (34 occurrences; no violations).
+
+Integrated the published result into master at `0bc9ffe90b636694a381d58ce907c9fe97f87ba3`, preserving
+a concurrent committed planning change. Verified framework, adapter and release-contract bytes
+against the tag; post-integration tests passed (14). The original selected dirty inputs were
+temporarily preserved, compared with their landed result and removed from the temporary stash only
+after preservation was proven. Unrelated uncommitted work remains untouched.
+
+The managed release worktree is archived with a recoverable snapshot; its fully merged local branch
+is retired. The published tag remains the immutable installation source. The owner can update to
+`v3.7.1` using its migration guide; no additional owner decision is needed for this release.
+Acceptance covers the selected Daily route and patch, not native behavior or downstream checks.
