@@ -14,7 +14,7 @@ coordination_authority: "HL-TFW_20260928-181352_TEQM.md @ 7db1148c057300e06f6396
 reporting: native-gates
 selection_ref: baseline
 created: 20260928-181352
-updated: 20260928-225335
+updated: 20260928-225536
 ---
 
 **Task state.** This file is the only authority for this task's live state. Any downstream projection is disposable and never outranks it.
