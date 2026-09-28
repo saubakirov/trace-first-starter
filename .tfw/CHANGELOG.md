@@ -5,6 +5,14 @@ Format: [Keep a Changelog](https://keepachangelog.com/). Versioning: [Semantic V
 
 ## [Unreleased]
 
+### Added
+
+- TEQM (`TFW_20260928-181352_TEQM`): portable compact role economics, shared validation and
+  task/phase reports with selected project/date/tag/model/role views and CSV export. Three bounded
+  numeric-source recipes distinguish tokens, native time and conditional API prices. Full role
+  returns now supply their own files; final economics presentation precedes safe disposable cleanup.
+  The optional standard-library helper preserves the ordinary lifecycle's runtime independence.
+
 ## [3.7.1] — 2026-09-28
 
 This patch restores strategic depth before HL approval and permits checked, owner-accepted Daily
