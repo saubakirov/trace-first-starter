@@ -1,0 +1,29 @@
+{
+  "source_id": "01a0e7f5-7791-7ad0-99ff-30068c11b793",
+  "source_prefix_sha256": "9c28cb91907a15674fbac6e2f6a0b78d644baa477bc8f275d4e476d6ccb29a7b",
+  "source_prefix_bytes": 22391501,
+  "source_lines": 3841,
+  "cutoff": "2026-09-28T21:40:40.262894+00:00",
+  "candidate": "83227789c5218a01d669acb42903844c5dc21bd9",
+  "helper_token_count_total": 62902737,
+  "token_usage_record_unique_responses": 460,
+  "token_usage_record_sum": {
+    "input_tokens": 64017392,
+    "cached_input_tokens": 61701760,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 387646,
+    "reasoning_output_tokens": 143825,
+    "total_tokens": 64405038
+  },
+  "native_thread_token_usage": {
+    "input_tokens": 64017392,
+    "cached_input_tokens": 61701760,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 387646,
+    "reasoning_output_tokens": 143825,
+    "total_tokens": 64405038
+  },
+  "difference_total_tokens": 1502301,
+  "status": "two native streams disagree on identical prefix; not additive",
+  "raw_transcript_exported": false
+}

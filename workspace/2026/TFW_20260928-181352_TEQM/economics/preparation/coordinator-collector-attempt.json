@@ -1,0 +1,7 @@
+{
+  "candidate": "83227789c5218a01d669acb42903844c5dc21bd9",
+  "source_id": "01a0e7f5-7791-7ad0-99ff-30068c11b793",
+  "exit_code": 0,
+  "stdout": "{\"cutoff\": \"2026-09-28T21:40:40.262894+00:00\", \"file\": \"workspace\\\\2026\\\\TFW_20260928-181352_TEQM\\\\economics\\\\preparation\\\\coordinator-v1-capture.jsonl\", \"rows\": 6, \"sha256\": \"780a65e4eebd099de2229528d953aa318f71f89a4c38c342a4826f72e88d6107\"}\n",
+  "stderr": ""
+}
