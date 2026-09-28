@@ -45,6 +45,10 @@ For a material goal/boundary change or reserved release, publication or communic
 prepared work and route the specific decision to its existing authority. Silence is never approval.
 Perform independent authorized preparation when a separate effect is blocked.
 
+An owner-authorized Daily release follows `/tfw-release` and the project's release contract using
+this selected record and its checks. No Full conversion or fabricated TS/RF/REVIEW is required;
+release, publication and other external effects still need their applicable authorization.
+
 Continue an existing record only when this request revises the same bounded deliverable under its
 still-governing authority. Preserve prior request meaning, result and material decisions through
 dated additions, justified versions or ordinary file history. A separately accepted outcome, owner

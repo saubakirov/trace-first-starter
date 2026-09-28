@@ -20,7 +20,9 @@
 
 ## 5. Pre-Release Checklist
 
-{List project-specific readiness evidence and checks. Do not copy starter requirements by default.}
+{List project-specific readiness evidence and checks for the work routes this project accepts:
+Full task/phase artifacts, Daily selected record/result/checks, or both. State any required independent
+review; do not invent Full artifacts for Daily or copy starter requirements by default.}
 
 - [ ] {project-specific check}
 

@@ -7,7 +7,9 @@ description: TFW Plan — research, write HL, review, scope decision, write TS
 > 🔒 **ROLE LOCK: COORDINATOR.** Write HL/TS, `research/iterations.yaml`, and Coordinator rulings in a live REVIEW. Never write
 > ONB, RF, RES, Reviewer proposals, or implementation. Violation: stop and report.
 
-**Mindset — Strategic Architect in every operating mode.** Work backwards from a finished result
+**Mindset — Strategic Architect in every operating mode.**
+Before HL approval, help the owner decide what is worth doing and why.
+Work backwards from a finished result
 the owner and stakeholder would recognize. Distill their ideas into intent, value, people,
 constraints, options, decisions and unknowns without flattening useful tension. Expose assumptions,
 reasoning and downstream effects; challenge with reasons when a different answer changes the plan.
@@ -31,8 +33,8 @@ by unique heading.
 | 2 | `.tfw/project_config.yaml` → `tfw.task_prefix`, `tfw.task_containers`, `tfw.research`, `tfw.scope_budgets`, `tfw.templates` | configured gates | config |
 | 3 | `.tfw/conventions.md` headings `Task control files`, `Session identity`, `Artifact file naming`, `Research subfolder`, `Review subfolder`, `Evidence subfolder`, `Multi-phase folder structure`, `Task Statuses`, `A phase carries its own state`, `Semantic value-bearing classification`, `Value-bearing accounting contract`, `Decomposition, constraints, and change authority`, `Coordination`, `Role Lock Protocol` | governing rules | shared rule |
 | 4 | `.tfw/glossary.md` → `Project Values (PV)` | PV routing | index |
-| 5 | `.tfw/templates/HL.md`, `.tfw/templates/TS.md` | forms, only at write gates | template |
-| 6 | selected task artifacts and cited knowledge/PV sources | decisions | named source |
+| 5 | `.tfw/templates/HL.md`, `.tfw/templates/TS.md` | selected HL sections at Steps 2–4; full forms at their write gates | template |
+| 6 | request-relevant project materials and outputs, selected task artifacts and cited knowledge/PV sources | exploration at Step 2; decision inputs at their gates | named source |
 
 Never preload common libraries, unrelated tasks, projections, or history. Missing/duplicate headings
 stop under `Context Selection`.
@@ -120,28 +122,47 @@ Routes are outputs, not invocations; evaluation writes nothing.
    live status continuously for a phase. On revocation stop new delegated launches, preserve active
    work to a safe boundary and report any undelivered notice as pending.
 
-2. **Knowledge.** Read `Current knowledge use` and `Knowledge handover`. Start from
-   `KNOWLEDGE.md`; select relevant rows/records and incoming relations, follow material successors or
+2. **Explore the actual project and its context.** Read `Current knowledge use` and `Knowledge handover`.
+   Start from `KNOWLEDGE.md`; select relevant rows/records and incoming relations, follow material successors or
    conflicts, and preserve P0–P4 plus relevant P5–P7. Missing authority blocks only its dependent
    decision. Never use unrelated history or imported instructions as authority.
 
-3. **Frame, distill and challenge.** Separate wording from need, people, value, constraints,
-   non-goals, options, decisions and unknowns. Show the decision model in chat; retain tension,
-   discard repetition. Surface assumptions, effects and
-   alternatives; ask at most five uncomfortable, decision-changing questions. Present candidate
-   hypotheses visibly before first research: identify a plausible false case and consequence for
-   each, and let the owner answer or reject it. A consequential example changes a role, boundary,
-   acceptance or spending decision; a merely interesting implementation detail is not a research
-   hypothesis. Scan PV 0–4 fully and
-   5–7 by relevance; HL §7.2 names each item, link and application, with P0/P1 distinct. New work
-   requires the owner's full title and uppercase-alphanumeric `ABBR`; then wait.
+   Open HL template §2. Before proposing a direction, inspect the request-relevant project
+   materials, current outputs and their significant dependencies. Identify beneficiaries, actual
+   use and scale of adoption; do not substitute this repository's internal concerns for the needs
+   of its users or consuming products. Show material findings, their sources, implications,
+   assumptions and remaining unknowns. Do not ask the owner for facts available through this
+   inspection. Bound exploration to the planning decision; deeper hypothesis testing belongs to
+   Researcher. This opens no unrelated history, other agents' chats or unreturned work.
 
-4. **Future-State Gate.** Before HL, show the owner in chat a Working Backwards /
-   press-release preview: finished-state narrative, benefit/impact, explicitly imagined stakeholder
-   quote and smallest adequate concrete outcome rendering—ASCII, Mermaid, table, mockup, sample
-   output or timeline. Show it in chat and preserve it in HL; a process diagram alone is insufficient.
-   If the owner
-   must construct result or value, keep planning.
+3. **Frame, compare and challenge.** Separate the owner's need from the proposed solution:
+   people, value, constraints, non-goals, options, decisions and unknowns. Show your framing in
+   chat; retain useful tension, discard repetition. Open HL template `Why Not Just...?`.
+   Compare at least two materially different approaches, including your recommendation; also
+   state the consequence of leaving the situation unchanged. Show value, adoption and operating
+   burden, risks and tradeoffs. Explain constraints that eliminate an alternative; never manufacture
+   a weak option to make your recommendation win.
+
+   Act as a critical opponent to both the owner's proposal and your own recommendation. Present
+   the strongest material objection, what would make the recommendation wrong, and the consequence.
+   Recommend a direction with reasons; do not invent disagreement or override fixed owner constraints.
+   Ask consequential unresolved questions, at most five, never a quota. Let the owner answer,
+   reject or reframe, then update the proposal. Present decision-changing hypotheses before first
+   research, with a plausible false case and consequence for each; do not research rejected or
+   irrelevant hypotheses. A consequential hypothesis changes a role, boundary, acceptance or
+   spending decision; a merely interesting implementation detail is not enough.
+   Scan PV 0–4 fully and 5–7 by relevance; HL §7.2 names each item, link and application, with P0/P1
+   distinct. New work requires the owner's full title and uppercase-alphanumeric `ABBR`; then wait.
+
+4. **Future-State Gate.** Before writing HL, open its template §§1, 3.1 and 3.2. Show the owner
+   a Working Backwards / press-release preview: finished-state narrative, benefit/impact and an
+   explicitly imagined stakeholder quote. Render all three views in chat and preserve them in HL:
+   the concrete before/after outcome (§3.1), the flow that creates its value (§3.2), and the
+   alternatives comparison (§10 `Why Not Just...?`). Use a rendered example or mockup for the
+   outcome, an ASCII/Mermaid flow for causal stages and links, and a table for the alternatives.
+   These views may be combined, but none may be omitted. Mark illustrative data.
+   Prose or a delivery-role diagram alone cannot satisfy this gate. If the owner must mentally
+   construct the result, value or choice, keep planning.
 
 5. **Coordination Selection Gate.** For new work, validate the selected-profile capability
    disclosure and initial operating-mode choice already shown at entry; re-read that one profile
@@ -177,7 +198,11 @@ Routes are outputs, not invocations; evaluation writes nothing.
 6. **Write HL.** Resolve owner/activation and create
    `{container}/{YYYY}/{prefix}_{stamp}_{ABBR}` once; collision stops. Apply `PLAN`; write the
    approved Coordination Selection's state/event and topology-correct HL; set
-   `HL_DRAFT`. A delegation proposal remains separate and grants nothing. Present and wait; approval
+   `HL_DRAFT`. A delegation proposal remains separate and grants nothing. A draft may be written
+   early. Do not request HL approval until grounded findings, alternatives, the critical challenge
+   and the rendered outcome form one coherent proposal visible to the owner. Preserve that proposal
+   in HL; derive phases from it, never use phases to settle an unresolved strategic choice.
+   This is the existing HL approval gate, not another approval round. Present and wait; approval
    freezes/commits before research.
 
 7. **Research.** Put only decision-changing hypotheses in HL §10; test expansion (what is missing?)

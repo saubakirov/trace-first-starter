@@ -5,6 +5,27 @@ Format: [Keep a Changelog](https://keepachangelog.com/). Versioning: [Semantic V
 
 ## [Unreleased]
 
+## [3.7.1] — 2026-09-28
+
+This patch restores strategic depth before HL approval and permits checked, owner-accepted Daily
+results to follow the project's release route without artificial Full artifacts. See
+[Updating to TFW 3.7.1](https://github.com/saubakirov/trace-first-starter/blob/v3.7.1/.tfw/migrations/3.7.1.md).
+
+### Fixed
+
+- Plan preserves its Strategic Architect mindset and explicitly requires helping the owner decide
+  what is worth doing and why before HL approval. Grounded project exploration precedes a direction;
+  planning compares at least two meaningful approaches and the consequence of leaving things unchanged,
+  and challenges both the owner's proposal and the Coordinator's recommendation.
+- Plan and the HL template require three views in chat and HL: the concrete before/after outcome,
+  the flow that creates its value, and the alternatives comparison. Template criteria are read before
+  the preview; the existing HL approval gate requires one coherent strategic proposal before phases.
+  Coordination, role authority and model/reasoning selection rules remain unchanged.
+- Release selects evidence by the result's actual Full or Daily route. Daily workers may perform
+  explicitly authorized release effects using their selected record, checks and owner acceptance;
+  project-required review and separate publication permissions remain in force. The Daily skill,
+  release entries and project release-contract template carry the same distinction.
+
 ## [3.7.0] — 2026-09-28
 
 This release combines the independently reviewed optional Daily route (PTW) and the owner-accepted

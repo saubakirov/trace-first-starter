@@ -36,12 +36,13 @@
 > Explicitly imagined stakeholder quote — what they might say when this ships, never passed off as testimony.
 
 ## 2. Current State (As-Is) 🟢 FREE
-Current state: problems, structure, metrics, constraints.
-Tables with REAL data where applicable.
+Material findings from inspecting the actual project and its context: beneficiaries, use,
+problems, structure, metrics and constraints. Cite sources and implications; distinguish
+observations, assumptions and unknowns. Use real data, never invented current-state figures.
 
 ## 3. Target State (To-Be) 🔒 FROZEN
-What it should look like after. Clear deliverables.
-Tables comparing As-Is → To-Be where applicable.
+The chosen direction and clear deliverables: what changes, for whom and why.
+Render As-Is → To-Be; preserve the alternatives and choice rationale in §10 `Why Not Just...?`.
 
 ### 3.1 Result Visualization
 
@@ -65,26 +66,24 @@ Tables comparing As-Is → To-Be where applicable.
 > 4. **Whole in one view.** A multi-phase task labels every change with its phase and gives each
 >    phase one line saying what it is for. A partial picture of five phases is not a preview.
 >
-> Also present this preview in chat before HL approval, with the benefit and imagined quote. The
-> owner should see the proposed outcome without opening a file or constructing the result mentally.
+> Before HL approval, show the concrete before/after outcome, §3.2 value flow and §10 alternatives
+> comparison in chat and preserve them here, with the benefit and imagined quote. These views may
+> be combined, but none may be omitted. Mark illustrative data; do not make the owner open a file
+> or mentally construct the result, value or choice.
 >
 > Not a process diagram or architecture flow — those are §3.2 Value Flow. (RF §9 Diagrams covers
 > technical visualization.)
 
 ### 3.2 Value Flow
 
-> Visualize HOW value gets created — the machine, not the outcome.
-> Show the flow from user pain → pipeline steps → value delivered.
->
-> Formats:
-> - **ASCII flow** — `INPUT → PROCESSING → OUTCOME` with value labels
-> - **Mermaid diagram** — for complex multi-path flows
-> - **Value stream table** — columns: Step, Input, Transformation, Value Created
->
-> This is NOT the outcome preview (§3.1) — this is the process that creates the outcome.
+> Visualize HOW value gets created: user need → causal stages and links → value delivered.
+> Render an ASCII or Mermaid flow with value labels. Show the solution's significant steps,
+> not just the TFW role sequence and not an implementation recipe.
+> This is NOT the outcome preview (§3.1); both views are required and may share one rendering.
 
 ## 4. Phases 🔒 FROZEN
-Break into Phases (A, B, C...) with priorities 🔴🟡🟢.
+Derive Phases (A, B, C...) with priorities 🔴🟡🟢 from the chosen outcome.
+Phases do not settle an unresolved strategic choice.
 Each Phase = separate TS→RF cycle.
 
 ### 4.1 Coordination Selection 🔒 FROZEN
@@ -235,8 +234,20 @@ Only needed for tasks where consistency across phases matters.
 3. **Challenge**: {specific question}
 
 ### Why Not Just...?
-- Why not {obvious alternative A}? — {reason}
-- Why not {obvious alternative B}? — {reason}
+
+> Preserve the comparison shown to the owner: at least two materially different approaches,
+> including the recommendation. State why constraints eliminate an option; do not invent weak
+> alternatives. Include the consequence of leaving things unchanged.
+
+| Approach | Value | Adoption / operating burden | Risks / tradeoffs | Decision and reason |
+|---|---|---|---|---|
+| {recommended approach} | {benefit} | {cost and effort} | {limits and risks} | {why recommended} |
+| {strongest materially different alternative} | {benefit} | {cost and effort} | {limits and risks} | {why not selected} |
+
+**Leave unchanged:** {consequence for the need and stakeholders}
+
+**Critical challenge:** {strongest objection to the owner's proposal and recommendation; what
+would make the recommendation wrong, its consequence, and the answer or unresolved hypothesis}
 
 ## 11. Strategic Insights (Planning) 🟢 FREE
 
