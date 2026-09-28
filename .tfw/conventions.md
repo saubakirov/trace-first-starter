@@ -413,10 +413,13 @@ or build gate. A human may approve a rename; readers never normalize one. Genera
 create one hidden landing per recognized task solely to keep direct links resolvable, but no
 public task catalogue or default current-status page follows from that infrastructure.
 
-Full ships no executable, dependency, collector, portfolio cache, or freshness duty. Rules
-required for ordinary lifecycle work are complete in workflows and templates and must remain
-usable without Python or PyYAML. The upstream repository may keep optional maintainer tools
-outside `.tfw/`; they are not copied by init/update and hold no authority over receiver state.
+Full ships no executable needed for ordinary lifecycle, dependency, portfolio cache, or
+freshness duty. The narrow owner-approved task-economics exception ships
+`.tfw/economics/tfw_economics.py` as an optional standard-library collector/validator/
+reporter with the complete readable contract in `.tfw/economics/README.md`. Status,
+coordination, review and the Knowledge Gate remain usable without Python or PyYAML.
+The upstream repository may keep other optional maintainer tools outside `.tfw/`;
+they are not copied by init/update and hold no authority over receiver state.
 
 ### A major release ships a migration guide
 
@@ -690,6 +693,24 @@ Review verdicts:
 
 ### Closing and record recovery
 
+For participating new or continued task-bound Full units, apply the common
+`.tfw/economics/README.md` contract at activation/resumption and orderly return.
+Each Researcher, Executor, Reviewer and task/phase Coordinator may write only
+its own task-local numeric JSONL or typed capture-failure receipt as TRACE,
+without crossing its artifact Role Lock. The unit binds exact native source,
+task/phase, role, working-unit address, declared owner, source range and
+timezone; validates its own file; returns actual bytes/revision/hash through
+the normal vertical result route. A correction or resumed bound range is a new
+revision or disjoint contribution, never an overwrite of another producer.
+An ordinary intermediate chat reply needs no new file. Taskless adapter
+maintenance mints no fictional task. Already completed historical tasks are
+not retrospectively noncompliant. The Coordinator checks expected units from
+actual dispatch/return lineage, reads received bytes, diagnoses missing,
+failure-only, overlapping and conflicting coverage, and counts unique
+underlying rows once. A remote path alone is not receipt. Missing/unreadable
+unit bytes keep reconciliation incomplete; optional unsupported metrics and
+the disclosed finite final-message/cleanup tail do not block acceptance.
+
 The existing authorized **Coordinator** owns closing a selected task or phase. Use this contract
 directly; Plan's selected-return route exposes it and stops. No new task, bootstrap, phase matrix or phase-choice
 question is required for an already selected close. This route grants no missing mandate or scope.
@@ -718,19 +739,29 @@ RF/evidence and actual capture or landing effects needed for the claim.
 4. Preserve one truthful task-attributed entry in the project's selected changelog; a log entry is
    no release, version, tag, push or publication authority. Confirm accepted Candidate reachability,
    landing when selected, and every task-owned resource's exact ownership, use and safe disposition.
-   Archive finished child sessions only after durable return and last correction; remove only
-   disposable owned worktrees/branches, processes, containers and temporary files after accepted
-   work is preserved. Shared checkout, persistent gateway, sole result and unrelated resources stay.
-   A retained resource needs a specific reason; pending cleanup names its actor/action and prevents
-   a fully cleaned claim. Archive alone does not remove disk state.
-5. Validate complete status/event carriers through `Task control files`. Only then write DONE with
-   its actual outcome and append the real transition. Report result, docs, knowledge, changelog,
-   reviewed/landed/published state and resource dispositions together. Closing authorizes no
-   external effect.
+   Preserve sources and resources needed for final economics collection/reporting. Archive finished
+   child sessions only after durable return and last correction, and only when their sources are no
+   longer needed. A retained resource needs a specific reason; pending cleanup names its actor/action.
+5. Reconcile actual received economic contributions, including the Coordinator's bounded own
+   contribution; prepare the task/phase economics.md basis and link its purpose/value to status/HL
+   and accepted change to RF/REVIEW. Use one primary product area and 3–5 product keywords at
+   close. Report distinct token, compatible time and dated API-reference money meanings, missing
+   coverage and a finite cutoff. Do not add a parent report to phase leaves or fabricate an
+   unavailable metric. Validate complete status/event carriers through `Task control files`.
+   Only then write DONE with its actual outcome and append the real transition.
+6. After DONE, save and present the durable final economics.md and concise owner-facing
+   purpose/change/value/cost result. Then perform safe final disposal of task-owned
+   disposable worktrees/branches, processes, containers and temporary files whose accepted
+   work and source returns are preserved. Shared checkouts, persistent gateways, sole
+   results and unrelated resources stay. Record completed, retained or pending cleanup
+   truthfully; DONE never asserts deletion succeeded. Archive alone does not remove disk
+   state. Final report delivery and cleanup do not trigger recursive recapture. Closing
+   authorizes no external effect.
 
 Record the material grounds once in REVIEW §6: actual capture effects, final accepted output identity,
 applicable evidence and independent judgment, dispositions and any remaining effect. N/A needs its
-reason. No new closing artifact, registry or mandatory executable is introduced; receiving projects
+reason. Economics.md is a derived report, not a new closing authority, registry or mandatory
+executable; receiving projects
 use their own checks. If a material failure blocks KNW, record that actual BLOCKED dependency and
 route the cited condition. After the existing ruler supplies an executable bound, return from BLOCKED
 to the rung table's required state; never fabricate a direct KNW-to-ONB edge or an acceptance.
@@ -1455,7 +1486,10 @@ Reverting a result does not revert its trace. Preserve a rejected task's folder 
 
 Each workflow declares a **🔒 ROLE LOCK** at the top. The agent MUST refuse any action outside the locked role.
 
-These locks and separate-role artifacts apply to formal Full workflow work. The optional Daily
+These locks and separate-role artifacts apply to formal Full workflow work. Each listed
+role may additionally write only its own task-local numeric economics contribution or
+typed capture-failure TRACE under the common contract; this does not permit another
+role's artifact, product code or lifecycle decision. The optional Daily
 worker has only its bounded human-request authority outside that corpus; it must not cross an
 active formal task's lock or use a local record to waive Full duties.
 

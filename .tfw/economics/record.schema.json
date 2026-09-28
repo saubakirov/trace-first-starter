@@ -1,0 +1,163 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/saubakirov/trace-first-starter/blob/main/.tfw/economics/record.schema.json",
+  "title": "TFW economics JSONL row, version 1",
+  "description": "The first line is one manifest, followed by usage rows or one failure row. Cross-row and arithmetic rules are in README.md and tfw_economics.py.",
+  "oneOf": [
+    { "$ref": "#/$defs/manifest" },
+    { "$ref": "#/$defs/usage" },
+    { "$ref": "#/$defs/failure" }
+  ],
+  "$defs": {
+    "id": { "type": "string", "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:/-]*$" },
+    "text": { "type": "string", "minLength": 1 },
+    "timestamp": { "type": "string", "format": "date-time" },
+    "date": { "type": "string", "format": "date" },
+    "hash": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+    "count": { "type": "integer", "minimum": 0 },
+    "maybeCount": { "type": ["integer", "null"], "minimum": 0 },
+    "extensions": {
+      "type": "object",
+      "propertyNames": { "pattern": "^[^.]+\\..*[^.]$" },
+      "additionalProperties": true
+    },
+    "unavailableManifest": {
+      "type": "object",
+      "properties": {
+        "tfw_version": { "$ref": "#/$defs/text" },
+        "coordination_mode": { "$ref": "#/$defs/text" },
+        "operation_seconds": { "$ref": "#/$defs/text" }
+      },
+      "additionalProperties": false
+    },
+    "unavailableUsage": {
+      "type": "object",
+      "properties": {
+        "observed_at": { "$ref": "#/$defs/text" },
+        "consumption_date": { "$ref": "#/$defs/text" },
+        "model": { "$ref": "#/$defs/text" },
+        "effort": { "$ref": "#/$defs/text" },
+        "duration_seconds": { "$ref": "#/$defs/text" },
+        "fresh": { "$ref": "#/$defs/text" },
+        "cached": { "$ref": "#/$defs/text" },
+        "cache_write": { "$ref": "#/$defs/text" },
+        "reasoning": { "$ref": "#/$defs/text" },
+        "cache_write_5m": { "$ref": "#/$defs/text" },
+        "cache_write_1h": { "$ref": "#/$defs/text" }
+      },
+      "additionalProperties": false
+    },
+    "tokens": {
+      "type": "object",
+      "required": [
+        "fresh", "cached", "cache_write", "cache_write_5m",
+        "cache_write_1h", "input", "output", "reasoning", "total"
+      ],
+      "properties": {
+        "fresh": { "$ref": "#/$defs/maybeCount" },
+        "cached": { "$ref": "#/$defs/maybeCount" },
+        "cache_write": { "$ref": "#/$defs/maybeCount" },
+        "cache_write_5m": { "$ref": "#/$defs/maybeCount" },
+        "cache_write_1h": { "$ref": "#/$defs/maybeCount" },
+        "input": { "$ref": "#/$defs/count" },
+        "output": { "$ref": "#/$defs/count" },
+        "reasoning": { "$ref": "#/$defs/maybeCount" },
+        "total": { "$ref": "#/$defs/count" }
+      },
+      "additionalProperties": false
+    },
+    "manifest": {
+      "type": "object",
+      "required": [
+        "kind", "schema_version", "project", "task", "phase", "owner",
+        "role", "unit", "source_namespace", "source_id", "source_version",
+        "source_label", "source_sha256", "source_size", "collector",
+        "revision", "predecessor_sha256", "range_start", "range_end",
+        "complete", "captured_at", "cutoff", "timezone", "operation_seconds",
+        "tfw_version", "coordination_mode", "unavailable", "extensions"
+      ],
+      "properties": {
+        "kind": { "const": "manifest" },
+        "schema_version": { "const": 1 },
+        "project": { "$ref": "#/$defs/text" },
+        "task": { "$ref": "#/$defs/id" },
+        "phase": { "anyOf": [{ "$ref": "#/$defs/id" }, { "type": "null" }] },
+        "owner": { "$ref": "#/$defs/id" },
+        "role": { "$ref": "#/$defs/id" },
+        "unit": { "$ref": "#/$defs/id" },
+        "source_namespace": { "$ref": "#/$defs/id" },
+        "source_id": { "$ref": "#/$defs/id" },
+        "source_version": { "$ref": "#/$defs/id" },
+        "source_label": { "$ref": "#/$defs/text" },
+        "source_sha256": { "$ref": "#/$defs/hash" },
+        "source_size": { "$ref": "#/$defs/count" },
+        "collector": { "$ref": "#/$defs/id" },
+        "revision": { "type": "integer", "minimum": 1 },
+        "predecessor_sha256": {
+          "anyOf": [{ "$ref": "#/$defs/hash" }, { "type": "null" }]
+        },
+        "range_start": { "$ref": "#/$defs/count" },
+        "range_end": { "$ref": "#/$defs/count" },
+        "complete": { "type": "boolean" },
+        "captured_at": { "$ref": "#/$defs/timestamp" },
+        "cutoff": { "$ref": "#/$defs/timestamp" },
+        "timezone": {
+          "type": "string",
+          "pattern": "^(Z|[+-](0[0-9]|1[0-4]):[0-5][0-9])$"
+        },
+        "operation_seconds": { "type": ["number", "null"], "minimum": 0 },
+        "tfw_version": { "type": ["string", "null"], "minLength": 1 },
+        "coordination_mode": { "type": ["string", "null"], "minLength": 1 },
+        "unavailable": { "$ref": "#/$defs/unavailableManifest" },
+        "extensions": { "$ref": "#/$defs/extensions" }
+      },
+      "additionalProperties": false
+    },
+    "usage": {
+      "type": "object",
+      "required": [
+        "kind", "schema_version", "event_id", "source_index", "observed_at",
+        "consumption_date", "timezone", "model", "effort", "tokens",
+        "duration_seconds", "duration_kind", "unavailable", "extensions"
+      ],
+      "properties": {
+        "kind": { "const": "usage" },
+        "schema_version": { "const": 1 },
+        "event_id": { "$ref": "#/$defs/id" },
+        "source_index": { "$ref": "#/$defs/count" },
+        "observed_at": {
+          "anyOf": [{ "$ref": "#/$defs/timestamp" }, { "type": "null" }]
+        },
+        "consumption_date": {
+          "anyOf": [{ "$ref": "#/$defs/date" }, { "type": "null" }]
+        },
+        "timezone": {
+          "type": "string",
+          "pattern": "^(Z|[+-](0[0-9]|1[0-4]):[0-5][0-9])$"
+        },
+        "model": { "anyOf": [{ "$ref": "#/$defs/id" }, { "type": "null" }] },
+        "effort": { "anyOf": [{ "$ref": "#/$defs/id" }, { "type": "null" }] },
+        "tokens": { "$ref": "#/$defs/tokens" },
+        "duration_seconds": { "type": ["number", "null"], "minimum": 0 },
+        "duration_kind": {
+          "enum": ["completed_turn", "model_generation", "provider_run", null]
+        },
+        "unavailable": { "$ref": "#/$defs/unavailableUsage" },
+        "extensions": { "$ref": "#/$defs/extensions" }
+      },
+      "additionalProperties": false
+    },
+    "failure": {
+      "type": "object",
+      "required": ["kind", "schema_version", "code", "detail", "extensions"],
+      "properties": {
+        "kind": { "const": "failure" },
+        "schema_version": { "const": 1 },
+        "code": { "$ref": "#/$defs/id" },
+        "detail": { "$ref": "#/$defs/text" },
+        "extensions": { "$ref": "#/$defs/extensions" }
+      },
+      "additionalProperties": false
+    }
+  }
+}

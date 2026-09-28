@@ -42,6 +42,10 @@ its own epoch; a phase result cannot grant release authority.
 
 ## Step 1 — Resolve the Project Release Route
 
+For task-bound Full work, bind this Coordinator's exact native source range
+and select `.tfw/economics/README.md`. A Daily or taskless release does
+not mint a Full task to log cost.
+
 The selected effect first resolves **Scope and Version** under the project's contract. If no trigger
 fires, stop before preparation; a pre-release failure is also a stop.
 Apply `RELEASE.md` Release Triggers before preparing any release metadata.
@@ -88,6 +92,11 @@ Use the project's own build/package/render checks. No common route requires Pyth
 worktree and producer commits; if integration changes operational contents, verify the changed result.
 
 ## Step 4 — Trace and safety boundary
+
+Before a task-bound Full release-effect return, validate this Coordinator's
+own bounded economics JSONL or typed capture-failure receipt and include its
+resolvable file/revision/hash through the normal route. This numeric TRACE
+does not grant the release effect or relax the external-effect authority.
 
 Classify incidental sibling traces by semantic effect. A selected stable trace-only path may accompany an
 authorized exact-path commit after inspection; it does not make a sibling task DONE or authorize editing

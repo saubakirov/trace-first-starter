@@ -58,6 +58,11 @@ non-revoking selection. A future checkpoint event grants nothing until effective
 permission is phase-local even when its selection cites an explicitly scoped ancestor event. Only
 an actual owner-transfer choice replaces direct sends with exact durable manual returns.
 
+For task-bound work, bind this Researcher unit's exact native source and range
+on start/resume under `.tfw/economics/README.md`. Only its own numeric JSONL
+or typed failure receipt is writable as additional TRACE; stage and HL Role
+Locks remain unchanged.
+
 ## Knowledge at use and return
 
 At each use/return checkpoint, read and apply `Current knowledge use` and `Knowledge handover`.
@@ -118,7 +123,11 @@ Present findings and ≤3 questions; mark `Stage complete: YES`; recommend close
 5. **Findings Map** — visualize findings, or state "No findings map."
 6. **Iteration Status block** (mandatory) — see RES template
 7. Conclusion (1 paragraph)
-8. **STOP.** "Research iteration {N} complete. Continue with `/tfw-plan` to review iterations and decide next step."
+8. Before the durable RES return, validate this unit's bounded economics
+   contribution or typed capture-failure receipt; include its resolvable
+   file/revision/hash and finite cutoff in the normal return. A missing source
+   field remains null with reason; a failed attempt is not measured coverage.
+9. **STOP.** "Research iteration {N} complete. Continue with `/tfw-plan` to review iterations and decide next step."
 
 ## Trust Protocol
 

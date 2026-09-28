@@ -33,6 +33,11 @@ analysis. Current work requires a complete matching spine and approved Executor/
 delegation/dispatch; owner-direct work invents no principal. Record provenance in ONB/RF and return
 only to `coordinator_route`. Never write or self-answer `gate_answer`.
 
+At this task-bound activation/resumption, bind the Executor's exact native
+source, range and declared task/role identity under
+`.tfw/economics/README.md`. Own numeric JSONL or typed capture-failure
+TRACE is permitted without writing another role's artifact.
+
 Resolve current `reporting`/`selection_ref` with the existing five-field compatibility rule.
 Only effective owner-transfer changes return transport; manual creation does not. On a
 non-revoking switch keep this same Executor, its valid activation and pending gates. A new role's
@@ -108,8 +113,12 @@ admit a necessary constituent.
     return. Fill all mandatory sections, bind Candidate/approval/accounting/authority, point §5 to EV
     with verdict counts, and write explicit empty §7–§9 declarations. Observations include only
     consequential unmodified issues and an allowed type.
-14. Set lifecycle `RF` and append a valid `transition` event with one clock reading. Return the exact
-    Candidate, evidence and limitations to `coordinator_route`.
+14. Validate and preserve this Executor's own compact economics JSONL or typed
+    capture-failure receipt at its finite cutoff. Record its exact file/revision/
+    SHA-256 in RF and return actual resolvable bytes with the ordinary result.
+    A failed capture never proves measured cost.
+15. Set lifecycle `RF` and append a valid `transition` event with one clock reading. Return the exact
+    Candidate, evidence, economics contribution and limitations to `coordinator_route`.
 
 **STOP.** Tell the user: “RF is complete. Start `/tfw-review` to review the results.” Never write
 REVIEW or continue into another role.

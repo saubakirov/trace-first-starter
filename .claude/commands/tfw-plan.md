@@ -50,6 +50,11 @@ Verify delegated mandate/dispatch; owner-direct work invents no principal. This 
 actual Coordinator and alone uses its status `upstream_route`; record authority answers as `gate_answer`. A new
 owner-direct `/tfw-plan` creates its first status with the complete seven-field current form.
 
+For task-bound work, bind this Coordinator's exact native source range and
+select `.tfw/economics/README.md` at activation or resumption. The Coordinator may
+write only its own numeric economics TRACE; phase and worker sources belong to
+their producing units. A project-wide taskless action creates no economics task.
+
 Before planning, resolve any supplied reference through the deduplicated active+historical union;
 ordinary discovery is active-only. Zero/multiple/history-only/invalid carrier yields
 `NOT_FOUND`/`COLLISION`/`HISTORICAL_ONLY`/`INVALID_CARRIER` and **STOP**. One active match reads local
@@ -256,3 +261,9 @@ stop; never execute the round.
 Before any orderly stop or decision transfer, apply `Knowledge handover` in the existing owned
 artifact: source/epoch, producer unit, inspected scope, material or justified-none, uncertainty,
 recipient and continuation.
+At a task/phase Coordinator return or selected close, export and validate its
+own bounded economics JSONL or typed failure receipt, return resolvable bytes/
+revision/hash through the normal route, and reconcile actual received worker
+files against task-local dispatch/return lineage. A missing unit is a named
+gap, not zero spend. The approved REVIEW, owner acceptance and
+`Closing and record recovery` remain the governing close gates.

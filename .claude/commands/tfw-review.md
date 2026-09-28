@@ -35,6 +35,11 @@ intact. Only an actual owner-transfer choice changes transport. A non-revoking s
 this independent Reviewer and prior valid activation. In a selected shared checkout, review only
 the fixed reachable Candidate while Executor mutation is stopped.
 
+At task-bound activation/resumption bind this independent Reviewer's exact
+native source/range under `.tfw/economics/README.md`. Its own numeric JSONL
+or typed failure receipt is additional TRACE, never permission to alter RF,
+implementation, verdict authority or another unit's contribution.
+
 Treat RF as claims. Verify reasons, files, tests, AC/DoD/DoF, numbers and evidence; trust only
 human-sourced Fact Candidates for later qualification. Challenge missing/N/A evidence and unsupported
 empty sections. At each gate apply `Current knowledge use` and `Knowledge handover`.
@@ -137,10 +142,15 @@ Use `The 🔄 REVISE route` for recipient, ruling site, governing artifact, life
 2. Every §5 item retains its class, completion route and Candidate effect. Pending material or owed
    record work keeps close open; it does not automatically change the product verdict.
 3. REVISE returns to the Coordinator for one ruling; Reviewer creates no bound or dispatch.
-4. After durable REVIEW and the authorized status/journal effect exist, preflight the exact
+4. Before the orderly verdict return, validate and preserve this Reviewer's
+   own compact economics JSONL or typed capture-failure receipt. Record its
+   resolvable file/revision/hash in REVIEW for the Coordinator to read with
+   the ordinary result; this does not alter the exact compact verdict
+   envelope or postpone judgment for optional unavailable metrics.
+5. After durable REVIEW and the authorized status/journal effect exist, preflight the exact
    `coordinator_route` and immutable REVIEW ref, then send exactly one logical envelope:
    `REVIEW · <reviewer-unit> · <task-or-phase> · <verdict> · <review-artifact@ref>`.
-5. The envelope contains no findings prose and never routes to owner, Executor or peer under
+6. The envelope contains no findings prose and never routes to owner, Executor or peer under
    `tfw-gates-only`. Its exact tuple is its logical identity; duplicate receipt creates no second
    verdict, ruling or lifecycle act. Retry identical bytes only when the provider confirms
    non-application and its own mechanism permits one bounded retry. Ambiguous delivery is not claimed

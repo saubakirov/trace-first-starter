@@ -32,6 +32,10 @@ Apply the active root activation/routing contract to the exact `/tfw-config` req
 Verify Mode. This project-wide command preserves the request's owner-direct or delegated source but
 creates no task identity, principal, routing carrier, or permission beyond the selected operation.
 
+If the exact config request is task-bound Full work, bind this Coordinator's
+own native source range and select `.tfw/economics/README.md`.
+Project-wide taskless verify/edit creates no economics task.
+
 ## Edit Mode
 
 1. Ask what config key and value should change.
@@ -39,11 +43,17 @@ creates no task identity, principal, routing carrier, or permission beyond the s
 3. Present one batch preview with old/new values and exact files/headings.
 4. Wait for approval, then update config and every resolved row atomically.
 5. Sync only affected installed adapters through `Adapter Sync`; verify and report all results.
+6. For task-bound work, validate and return this Coordinator's own bounded
+   economics JSONL or typed capture-failure receipt with resolvable file/
+   revision/hash. Numeric TRACE changes no config approval rule.
 
 ## Verify Mode
 
 For `/tfw-config verify`, resolve all config values and every registry target, then report each exact
 match/mismatch. Write nothing. A mismatch is reported, never silently repaired.
+Task-bound verification additionally returns this Coordinator's own validated
+economics JSONL or typed failure receipt by exact file/revision/hash; project-wide
+taskless verification does not create a task.
 
 ## Config Sync Registry
 

@@ -37,6 +37,11 @@ Attach/repair validates existing task routing when task-bound and adds the pair 
 the actual initial human source and frozen ceiling; it never guesses delegation, owner-transfer,
 legacy or partial fields.
 
+At Full init's first task binding or task-bound attach/repair, bind this
+Coordinator's exact native source range and select
+`.tfw/economics/README.md`. Taskless adapter repair creates no
+fictional economics task; the optional helper never gates setup.
+
 ## Step 0 — Route Before Discovery
 
 **Detect Full Init vs Adapter Attach/Repair** before reading broad project context.
@@ -146,6 +151,10 @@ one exists. Wait wherever the research workflow waits.
    necessary fallback exists. Preserve human versus technical qualification and source authority.
 3. Install selected adapters from the manifest's persistent row and exact ten command records. Preserve
    unrelated/unmarked content; reject missing/extra routes, duplicate blocks, drift, or second-run diff.
+   Confirm the pinned Full economics group has all five product files under
+   `.tfw/economics/` and `.tfw/templates/economics.md`. A repeated
+   install leaves identical bytes stable and preserves customized/conflicting
+   receiver files and all prior task-local economics records.
 4. Offer `.user_preferences.md`, add it to `.gitignore` when accepted, and never commit it.
 5. Finalize project config while preserving its selected active paths; do not re-copy source config.
    Set the init task lifecycle to `RF` with the required event.
@@ -156,6 +165,8 @@ Verify core/config/root files, state, RES, knowledge choice, selected adapter ro
 bytes, idempotence, literal `/tfw-*` routes, VERSION/config agreement, direct setup postconditions, and
 configured build commands. Write RF from its template with findings, decisions, files, and observed
 verification. Check actual producing-role handovers and completed dispositions through `Knowledge handover`;
+for task-bound work also validate this Coordinator's own bounded economics
+JSONL or typed failure receipt and return its resolvable file/revision/hash.
 no unrelated history/count gate applies. Include the three selected `coordinator.md` payload paths
 and exact Plan-time discovery; Cursor remains common compatibility without a fourth profile. A
 repeated install must produce no new diff and preserve unrelated marker-bounded root content.

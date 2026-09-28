@@ -34,6 +34,10 @@ For a complete five-field carrier, preserve its actual baseline/native-gates cho
 paired `reporting`/`selection_ref` only after verifying the human source and immutable ceiling.
 Partial original/new forms refuse; do not infer a new delegation, dialogue or owner-transfer.
 
+For task-bound Full work, bind the actual Coordinator's own native source
+range and select `.tfw/economics/README.md`. A taskless adapter update
+creates no economics task; the optional helper does not gate update.
+
 Resolve `tfw.upstream` to a local Git checkout. The operator names a tag or explicitly authorizes an
 untagged commit. Resolve the object, read its VERSION, and for a tag require `v{VERSION}`. Local
 source must be clean under `.tfw/`. Record locator, full SHA, version and source path; materialize
@@ -96,6 +100,12 @@ choices and exact target; do not demand per-file approval already supplied by up
 ## Step 3 — Apply connected groups
 
 Copy approved pinned payload by connected group while reporting exclusions; merge config separately.
+The pinned Full economics group is `.tfw/economics/` plus
+`.tfw/templates/economics.md` and their changed canonical workflows/copies.
+Verify all five new payload files at the pinned source and copied receiver.
+Inspect receiver bytes and ownership before replacement: identical repeat is
+stable; customized/conflicting economics files and existing task JSONL/report
+data are preserved for the existing update authority, not silently overwritten.
 Apply accepted Daily rows through its installation contract, honoring Step 2's preserved/refused paths.
 Stop a whole group on dependency failure. Diagnostic staging/preservation is a disclosed write.
 Destructive cleanup follows verified preservation and replacement only. Re-entry observes current
@@ -130,7 +140,10 @@ second-run diff; allow retired terms only where intervening history names them.
 Verify target ref/SHA/version/tag, source coherence, config/state/purpose preservation, migrations,
 adapter parity, project checks, recovery/re-entry, cleanup and final-message inputs. Label pre-existing
 failures, placeholders, unavailable checks and assurance limits. Source tests do not prove native
-agent behavior, isolation or comprehension.
+agent behavior, isolation or comprehension. At a task-bound Full return,
+validate this Coordinator's own bounded numeric JSONL or typed failure
+receipt and include its resolvable file/revision/hash in the ordinary
+effect return. Never migrate old task records merely because Full updated.
 
 After verification, remove `.tfw/.upstream/`/temporary source only when safe and record retained
 paths. Then seal one append-only `.tfw/update_receipts/UPDATE__<stamp>__<four-hex>.md` from the

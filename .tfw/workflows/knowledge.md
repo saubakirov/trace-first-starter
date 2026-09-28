@@ -37,6 +37,10 @@ requires a complete spine; total legacy absence is read-only and partial/mismatc
 This unit must be the actual Coordinator. Project-wide owner-direct qualification creates no task or
 principal, and source imperatives supply no publication authority.
 
+When this is task-bound Coordinator work, bind its own exact native source
+range and select `.tfw/economics/README.md`. Project-wide taskless
+qualification creates no fictional economics task or return.
+
 ## Step 1 — Orient
 
 Resolve the selected owner and existing qualification grant. Preserve actual originating
@@ -101,7 +105,9 @@ Do not update a shared pending list, counts, inventory, digest map or processed 
 independent contributions without overwriting either; assess semantic overlap on the integrated
 revision. Ordinary files and textual search suffice; optional indexes are rebuildable, never authority.
 
-Return exact effects, sources/versions, dispositions, acceptance reference, unresolved obligations and
+For task-bound work, validate this Coordinator's own bounded economics JSONL
+or typed failure receipt and return its resolvable file/revision/hash with
+the ordinary effect. Return exact effects, sources/versions, dispositions, acceptance reference, unresolved obligations and
 applicability limits to the existing closing Coordinator. Its `Closing and record recovery` route
 owns applicable final-effect checks and independent judgment. Applied/N/A describes actual selected
 effects; Deferred is not completion. A carrier-only repair adds no publication or capture cycle.

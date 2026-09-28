@@ -35,6 +35,10 @@ requires a complete spine; total legacy absence is read-only and partial/mismatc
 This unit must be the actual Coordinator. Manual batch work requires owner-direct activation, creates
 no task/principal, and never answers authority by editing a producer-owned artifact.
 
+When this is task-bound Coordinator work, bind its own exact native source
+range and select `.tfw/economics/README.md`. Project-wide taskless
+documentation creates no fictional economics task or return.
+
 ## Step 1 — Select and Triage
 
 Modes: Auto uses the approved REVIEW selection. Manual resolves the named task's live REVIEW/RF.
@@ -76,7 +80,9 @@ decision. Never roll back a whole file/map or silently choose the newest conflic
 Apply only authorized effects; preserve old D rows and sources, no mass conversion, marker rewrite,
 inventory or knowledge-state write. Record `tfw-docs: Applied/N/A` for actual effects and sources.
 If human candidates remain, route them to `/tfw-knowledge`; otherwise record selected
-`tfw-knowledge: N/A` with grounds. Return exact changed ranges, final-output identity, dispositions
+`tfw-knowledge: N/A` with grounds. For task-bound work, validate this Coordinator's own
+bounded economics JSONL or typed failure receipt and return its resolvable
+file/revision/hash with the ordinary effect. Return exact changed ranges, final-output identity, dispositions
 and evidence applicability to the existing closing Coordinator. It applies `Closing and record
 recovery`; independent judgment of material changed output remains required. A marker is not that
 judgment. State Applied with exact effects or a substantive source-based N/A; silence, placeholder
