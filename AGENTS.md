@@ -47,10 +47,12 @@ At new-task Plan entry, after identifying the request and active platform and co
 workflow's task-control and shared-rule reads, read exactly
 `.tfw/adapters/codex/coordinator.md` for the owner-facing startup card and initial mode choice.
 At Plan Step 5 validate that choice and current capability; re-read this selected profile only
-when the active surface or relevant capability materially changes. GATEWAY uses the same profile
-at its corresponding new-work selection gate. Do not preload other profiles or the tooling
+when the active surface or relevant capability materially changes. The task Coordinator uses the selected profile for new work. Do not preload other profiles or the tooling
 manifest, and do not load this profile for every role command. A missing or ambiguous selected
 pointer refuses a provider-specific offer and is reported without guessing.
+For new work, one task Coordinator handles a one-phase task; long work uses distinct phase
+Coordinators with bounded upward returns. Historical GATEWAY/LEAD carriers remain readable,
+but a principal, title or host never supplies a route or mandate.
 
 ### Codex native coordination
 
@@ -83,9 +85,9 @@ Coordinator, Researcher, Executor and Reviewer. Record their actual task address
 shared principal attribution never merges units or grants authority. Use `send_message_to_thread`
 only for the permitted vertical edge. Under `tfw-gates-only`, role units communicate materially only
 with their own Coordinator—never peers,
-owner, or GATEWAY. Mutating units use separate worktrees; reuse the same Executor and independent
+owner. Mutating units use separate worktrees; reuse the same Executor and independent
 Reviewer on returns. Forks, subagents, relays, hidden helpers and provider switches cannot hold TFW
 roles or substitute for unavailable units. Iterative dialogue requires an exact immutable two-peer
-grant independent of GATEWAY selection; a selected gateway is not the root Coordinator. Fully
+grant independent of task/phase topology. Fully
 manual owner-transfer reporting requires its own explicit human selection.
 <!-- TFW:CODEX:END -->

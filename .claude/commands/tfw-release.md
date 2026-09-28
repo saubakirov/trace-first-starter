@@ -34,7 +34,9 @@ state stops the selected release effect, not unrelated routine work.
 Apply the active root activation/routing contract before material work. Task-bound current work
 requires a complete spine; total legacy absence is read-only and partial/mismatched routing refuses.
 This unit must be the actual Coordinator. A release trigger is not activation, and every external
-effect remains separately authorized by the project contract and owner gateway.
+effect remains separately authorized by the project contract and actual human owner through the
+task Coordinator's recorded upward route. A historical `owner_gateway` carrier retains its own
+epoch; a phase result cannot grant release authority.
 
 ## Step 1 — Resolve the Project Release Route
 

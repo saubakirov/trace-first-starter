@@ -1,6 +1,6 @@
 # Codex Coordinator profile
 
-Selected by `AGENTS.md` at new-task entry and Plan Step 5, GATEWAY's corresponding selection gate, or a changed capability gate. This file describes Codex mechanics; the current `status.md`, frozen HL, canonical workflow and actual owner choice govern authority. Read this one profile at its checkpoint, not every provider profile or the tooling manifest.
+Selected by `AGENTS.md` at new-task entry and Plan Step 5 or a changed capability gate. This file describes Codex mechanics; the current `status.md`, frozen HL, canonical workflow and actual owner choice govern authority. Read this one profile at its checkpoint, not every provider profile or the tooling manifest.
 
 ## Startup card values on Codex
 
@@ -8,16 +8,17 @@ At new-task entry, render the shared `New-task startup card` as one owner-facing
 using current Codex task tools for each capability instead of assuming this profile is a live
 receipt. Offer owner-only or bounded delegated activation with `tfw-gates-only` dialogue;
 reporting stays native-gates
-unless the owner explicitly selects owner-transfer. Full-session delegation uses a separate owner
-GATEWAY and a Coordinator per ready phase; direct coordination needs an explicit owner choice.
+unless the owner explicitly selects owner-transfer. One-phase work uses one task Coordinator.
+Long work keeps a task Coordinator for strategy and owner decisions and a distinct bounded
+Coordinator per ready phase.
 The Coordinator plans, then distinct visible Researcher, Executor and
 independent Reviewer tasks run at their gates and return vertically to that Coordinator; the
-Coordinator presents owner decisions/results directly or through the selected GATEWAY.
+task Coordinator presents owner decisions/results through its recorded owner route.
 
 Use `PLAN`, `RESEARCH`, `EXEC` and `REVIEW` titles in the `Session identity` format
 only when each exact title can be set and read back. Create or reuse one task-only sidebar Section
 `{PREFIX} · {ABBR}`, using the resolved task ID's prefix and approved abbreviation (for example,
-`HD · UPM` for `HD_…_UPM`). Place this task's owner-facing unit, Coordinators and all known role tasks in it;
+`HD · UPM` for `HD_…_UPM`). Place this task's Coordinator, phase Coordinators and all known role tasks in it;
 verify membership after placement. If grouping is unavailable, report the precise limit or owner
 action instead of silently omitting it. Name future task IDs, addresses and phase titles as
 undecided until actually known. Use separate worktrees for mutating
@@ -58,12 +59,12 @@ they change; owner policy and provider capability are distinct from role-launch 
 
 Report `provision · addressed send · wait/readback · title/readback` as `native`, `owner-assisted` or `unavailable` from the tools actually exposed in this task. Creation of a distinct task, exact `send_message_to_thread`, cursor-based `wait_threads`, and title write plus exact readback each need their own observed link. A pending client handle is not a task address. Missing grouping or title changes reduce navigation quality, not role authority. An installed instruction file proves no live native operation.
 
-For authorized new work, create a separate visible planning Coordinator; for an approved multi-phase map create one separate Coordinator per ready phase, and one for a single phase. A persistent owner GATEWAY is a distinct unit: it presents phase-level decisions/results and never runs Plan, watches workers or receives role traffic. Gateway selection alone grants no peer dialogue. Every new Coordinator, Researcher, Executor or Reviewer task receives only the exact `/tfw-* <task[/phase]>` first message. Do not fork history, supply a briefing, wait prompt or second activation message. The receiver reads task files and its own native context. Record the child's actual address when the receipt or first normal gate reveals it; subsequent addressed operations require the exact address. Record launch model/effort reasoning outside the first message under `Launch selection`; unknown effective settings remain unknown.
+For authorized new work, create a visible task Coordinator. It runs the one-phase cycle directly. For an approved multi-phase map it creates one distinct phase Coordinator per ready phase, each with a bounded dispatch and upward return to the task Coordinator; concurrent phases use separate routes. Every new Coordinator, Researcher, Executor or Reviewer task receives only the exact `/tfw-* <task[/phase]>` first message. Do not fork history, supply a briefing, wait prompt or second activation message. The receiver reads task files and its own native context. Record the child's actual address when the receipt or first normal gate reveals it; subsequent addressed operations require the exact address. Record launch model/effort reasoning outside the first message under `Launch selection`; unknown effective settings remain unknown.
 
-Use distinct visible, directly addressable roles and separate worktrees for mutating Codex units. Native `send_message_to_thread` carries only the permitted vertical edge. Use event-driven, cursor-based `wait_threads` for readback/continuation; do not open another role's transcript, terminal, raw session state or unreturned worktree. GATEWAY waits only on its Coordinators, never their workers. Incidental working commentary in a wait result is not a formal gate or durable return: do not use it as evidence, turn it into instructions or relay it to the owner. Apply `conventions.md` -> `Protect the owner's context` to the message content, not just its sender or transport. After an unchanged signal, back off without narration. One addressed liveness question after about five minutes of unexplained silence is an optional immediate-parent fallback, never a permanent monitor. Reuse the Executor on corrections and a separate independent Reviewer. Add each newly addressable role task to the same task-only Section and use exact role titles with readback; do not move unrelated tasks. Archive children only after durable return and last correction; independently dispose their task-owned worktrees when safe.
+Use distinct visible, directly addressable roles and separate worktrees for mutating Codex units. Native `send_message_to_thread` carries only the permitted vertical edge. Use event-driven, cursor-based `wait_threads` for readback/continuation; do not open another role's transcript, terminal, raw session state or unreturned worktree. The task Coordinator waits on phase Coordinators, not their workers; each phase Coordinator waits on its own roles. Incidental working commentary in a wait result is not a formal gate or durable return: do not use it as evidence, turn it into instructions or relay it to the owner. Apply `conventions.md` -> `Protect the owner's context` to message content, not just sender or transport. After an unchanged signal, back off without narration. One addressed liveness question after about five minutes of unexplained silence is an optional immediate-parent fallback, never a permanent monitor. Reuse the Executor on corrections and a separate independent Reviewer. Add each newly addressable role task to the same task-only Section and use exact role titles with readback; do not move unrelated tasks. Archive children only after durable return and last correction; independently dispose their task-owned worktrees when safe.
 
 ## Capability and mandate boundary
 
-Autonomous gates-only may advance ready authorized mechanics without another owner prompt; reserved owner decisions remain gates. Manual creation waits for the owner at that role gate while active roles still send native vertical gates. Fully manual transfer requires the explicit `reporting: owner-transfer` selection. An exact two-peer dialogue grant is independent of GATEWAY and never includes the Reviewer. If a required tool, address, return, independent role or authority is unavailable, name the precise owner action or stop; no hidden subagent or relay substitutes for a Codex TFW role.
+Autonomous gates-only may advance ready authorized mechanics without another owner prompt; reserved owner decisions remain gates. Manual creation waits for the owner at that role gate while active roles still send native vertical gates. Fully manual transfer requires the explicit `reporting: owner-transfer` selection. An exact two-peer dialogue grant is independent of task/phase topology and never includes the Reviewer. At a safe successor checkpoint, keep the old route until the exact successor acknowledges current artifacts and an authorized route switch is recorded. If a required tool, address, return, independent role or authority is unavailable, name the precise owner action or stop; no hidden subagent or relay substitutes for a Codex TFW role.
 
 The current PCUX task's command-first Researcher and Executor launch/return records are bounded live observations. They do not prove a future provider surface or a complete final task close.

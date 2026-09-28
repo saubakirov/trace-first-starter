@@ -257,7 +257,7 @@ def _artifact_set(task_id: str, lifecycle: str, *, approved_ts: bool = False) ->
         "owner: saubakirov\n"
         f"authority: {authority}\n"
         f'coordinator_route: "fixture:coordinator:{task_id}"\n'
-        "owner_gateway: owner:saubakirov\n"
+        "upstream_route: owner:saubakirov\n"
         "dialogue: tfw-gates-only\n"
         "activation: owner-only\n"
         f'coordination_authority: "{authority} @ 0123456789abcdef0123456789abcdef01234567"\n'

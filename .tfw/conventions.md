@@ -331,14 +331,14 @@ which principal the session acts as; it does not prove who is present or what th
 Navigation-only; non-authoritative window and thread title formatting:
 
 - **Standard format**: `{WORK} · {TASK}` or `{WORK} · {TASK} · {PHASE}`
-- **Gateway format**: `GATEWAY · {TASK}` (or `GATEWAY · {HANDLE} · {TASK}`)
 - **WORK vocabulary**: `PLAN`, `RESEARCH`, `EXEC`, `REVIEW`, `RESUME`, `DOCS`, `INIT`.
 - **Local Daily navigation**: outside the formal Full corpus, the optional Daily skill uses
   `DAILY · <exact immutable folder ID>` when title write/readback is available. This does not
   enlarge the Full role vocabulary or grant workflow authority; unavailable control is disclosed.
 - **TASK**: Approved root-unique abbreviation (e.g. `CMTR`) or full task ID.
 - **PHASE**: Uppercase phase token (e.g. `PHASE-A`) when applicable; omit if single-phase or ambiguous.
-- **GATEWAY**: Emitted only in the designated, separately addressable gateway thread. A gateway may use gates-only traffic; its selection grants no peer dialogue or role authority.
+- A Coordinator uses `PLAN · {TASK}` for task scope or `PLAN · {TASK} · {PHASE}` for phase scope. `COORD · TASK` and `COORD · TASK · PHASE-A` may describe navigation in a provider that supports role labels; neither changes the Role Lock.
+- Historical `GATEWAY` and `LEAD` titles remain readable at their original epochs; never issue them for new work.
 
 Examples:
 - `PLAN · CMTR`
@@ -608,19 +608,24 @@ For multi-phase tasks, master HL and `research/` stay at task root. Each phase g
 Status lives only in the task's own `status.md`. Its lifecycle is one of the ids above or
 `UNDECLARED` carrying the source value verbatim (→ glossary.md).
 
-Current statuses carry seven routing/selection fields: five core fields below plus the pair that follows.
+New statuses carry seven routing/selection fields: four shared fields, one upward route, and the selection pair.
 
 - `coordinator_route`: one quoted, non-empty native address for the unit that receives every
   workflow status change, question, gate and durable return;
-- `owner_gateway`: either `owner:{human-handle}` or `gateway:{native-address}`;
+- `upstream_route`: `owner:{human-handle}` for a task Coordinator or `coordinator:{native-address}` for a phase Coordinator;
 - `dialogue`: `tfw-gates-only` or `iterative`;
 - `activation`: `owner-only` or `delegated:{immutable-mandate-ref}`;
 - `coordination_authority`: one quoted exact local authority reference plus immutable epoch.
 
-All five fields are present or absent together. Total absence is legacy-readable but cannot activate
-new work. A partial spine is invalid. New writers emit and strictly validate all seven current fields. An
-authorized active task may migrate once without a same-state event because no lifecycle transition
-occurred; the authority and exact source are recorded in the new fields.
+The shared fields are `coordinator_route`, `dialogue`, `activation` and
+`coordination_authority`. Exactly one upward-route name is allowed: `upstream_route` for new
+writes or historical `owner_gateway` for existing carriers. The field set is closed. Total absence
+is legacy-readable but cannot activate new work; missing, partial or both-name spines refuse.
+New writers emit all seven current fields. `coordinator_route` receives lower-role returns;
+`upstream_route` carries only the Coordinator's upward decisions and phase-level return. For a
+task, its `owner:` handle must match `owner`; for a phase, the `coordinator:` address must match
+the actual governing task Coordinator and differ from its local `coordinator_route`. A missing,
+unknown or wrong parent refuses. Concurrent phases keep separate local routes.
 
 Two current-selection fields extend a complete spine on every new write:
 
@@ -631,12 +636,13 @@ Two current-selection fields extend a complete spine on every new write:
   effective subsequent owner choice. A phase may use only its exact governing ancestor task's
   `../journal/` event when that immutable event explicitly covers the phase and roles.
 
-The pair is all-or-none; partial old or new forms refuse. A complete old five-field carrier stays
-readable with its actual authority and native-gates compatibility, without inferring delegation,
-dialogue or owner-transfer. Before changing it, verify the baseline source and migrate truthfully
-with both new fields; do not manufacture an owner decision or same-state event. No original fields
-means legacy read-only. Missing or unverifiable source blocks dependent new authority, not historical
-readability. Phase permission comes from phase status, not continuous root live-state consultation.
+The pair is all-or-none. A complete old five-field `owner_gateway` carrier, with or without the
+selection pair, remains readable under its actual authority; it is never silently rewritten or
+reparented. Before a live migration, verify a safe checkpoint, exact new recipient and immutable
+selection source, then change the carrier truthfully without inventing a same-state event. No
+coordination fields means legacy read-only. Missing or unverifiable source blocks dependent new
+authority, not historical readability. Phase permission comes from phase status, not continuous
+root live-state consultation.
 
 `coordination_selected` is one append-only, task-local event for an actual human operating choice.
 Its body preserves the answer source, prior and selected values, exact scope/roles, reservations,
@@ -912,9 +918,9 @@ absence is legacy-readable but cannot activate current work. A partial, stale, f
 or mismatched spine, role prompt without activation, implicit latest-session lookup, relay, hidden
 helper or ambiguous address is a pre-work refusal.
 Apply the session title at the earliest valid state checkpoint, read it back where supported, report
-failure once and never treat the title as authority. A GATEWAY may provision or activate a separate
-Coordinator only when `activation` cites the exact delegated authority; it never invokes
-`/tfw-plan` as its own workflow.
+failure once and never treat the title as authority. The task Coordinator activates a phase
+Coordinator only within the exact delegated authority and ready-phase boundary; a title or
+provisioned unit cannot expand that boundary.
 
 An initially unknown child's native address does not block valid command-first activation. The
 creation receipt or first normal gate can bind it later; a pending client handle is not a unit
@@ -924,8 +930,9 @@ or ambiguous destinations.
 
 With `reporting: native-gates`, `dialogue: tfw-gates-only` creates only vertical edges: every role
 unit sends status changes, questions, gates and durable returns to its own `coordinator_route`;
-the Coordinator alone uses `owner_gateway`. Peer-role, role-to-owner and role-to-gateway material
-communication is prohibited. `owner-transfer` disables inter-agent sends only when selected by an
+the phase Coordinator sends only phase-level gates and returns to its `upstream_route`, and the task
+Coordinator uses its owner route. Peer-role and worker-to-owner material communication are
+prohibited. `owner-transfer` disables inter-agent sends only when selected by an
 actual owner decision; it presents exact durable manual returns. Manual role creation alone never
 selects owner-transfer. Autonomous gates-only advances ready authorized roles and corrections
 without another owner message, while reserved decisions still return to the owner.
@@ -953,31 +960,45 @@ durable return, only the named artifacts and commits become inputs at their stat
 
 `dialogue: iterative` is valid only when an owner-approved immutable authority names exactly two peer
 units, their purpose, boundary, consolidator, durable output and stop condition. It does not require
-a GATEWAY. A missing or over-broad grant refuses. When selected, the gateway is not the
-root Coordinator, cannot execute a role workflow, receives no raw worker traffic, joins no peer
-dialogue and cannot rewrite authority. A Reviewer for the result cannot be either peer or consolidator.
+a special owner interface. A missing or over-broad grant refuses. A Reviewer for the result cannot
+be either peer or consolidator.
 
-**Protect the owner's context.** GATEWAY protects the owner's attention and independent role
-judgment; it is not an operational supervisor or a progress relay.
-Full-session delegation uses a persistent GATEWAY and a distinct
-Coordinator per ready phase, including a single-phase task. Direct coordination requires an
-explicit owner choice; the admitted small-task compact route keeps its existing boundaries.
-At first delegation or a mandate change, do not treat an inherited direct route as that choice.
-Use the selected profile's native or owner-assisted creation; an unavailable mechanism is a named
-limit, not permission to collapse roles. This topology grants no launch authority by itself.
-Handover is an action, not a title: preserve task-file context and active work, activate the separate
-Coordinator with its exact command, then bind the observed address and return routes at a safe gate
-before further worker launches. The owner-facing unit then acts only as GATEWAY, receiving
-Coordinator-level gates/results. Do not silently reparent workers or replay completed planning.
+**Protect the owner's context.** The task Coordinator is the owner's strategic conversation and
+the single owner of cross-phase direction, dependencies, phase readiness, reserved decisions and
+successor selection. It plans a one-phase task directly; no extra phase Coordinator is issued for
+appearance. In long work it activates a separate, bounded phase Coordinator for each ready phase.
+That phase Coordinator owns its phase TS, worker gates, independent review route and durable phase
+return, not task strategy or another phase's authority. Concurrent phases have separate local
+routes. The task Coordinator receives only phase-level decisions, material blockers, completed
+results and requested status; worker ONB progress and intermediate checks stay with the phase
+Coordinator. The owner receives only decisions, material blockers, completed results and requested
+status, while strategic discussion remains available.
 
-Coordinators send GATEWAY only phase-level decisions, material blockers, completed results or
-explicitly requested phase status.
-Routine role status, ONB progress and intermediate checks stay with the responsible Coordinator;
-passing them through a Coordinator does not make them Gateway-level traffic. Owner-facing updates
-present decisions needing the owner, material blockers needing owner action, completed phase results
-or explicitly requested status, not an operating log. Strategic discussion with the owner remains
-available. GATEWAY passes authorized owner direction through the existing decision/artifact route,
-without adding its own instructions on how another role should solve the work.
+| Unit | Purpose and value | Owned decisions / parent | Forbidden authority |
+|---|---|---|---|
+| Human owner | Holds the goal, values and strategic judgments | Approves frozen claims, exact TS/denominator, material overruns and final acceptance; root of every mandate | No role artifact is written on the owner's behalf without the actual ruling |
+| Task Coordinator | Preserves purpose and advances the whole task | Plans the task, owns dependencies, ready phases, owner route and safe successor; parent is the human owner | Cannot write RES, ONB, RF, REVIEW or implementation, or self-approve owner reservations |
+| Phase Coordinator | Bounds long-work context and returns one coherent phase | Plans its phase, directs its own workers and returns phase-level result; parent is the recorded task Coordinator | Cannot own task strategy, sibling phases or an ancestor's mandate |
+| Researcher | Tests decision-changing uncertainty | Owns RES and research-stage traces; parent is its local Coordinator | Cannot approve architecture, TS or implementation |
+| Executor | Delivers the approved order and proof | Owns ONB, implementation, EV and RF; parent is its local Coordinator | Cannot change HL/TS, rule its own gate or judge its result |
+| Reviewer | Gives independent judgment of fixed output and purpose | Owns REVIEW and its verdict; parent is its local Coordinator | Cannot repair implementation, rule authority or replace the owner verdict |
+
+`Coordinator` remains one Role Lock; task and phase name its scope. A principal may identify who
+acts but is optional attribution. A task title, principal, provider account, host or device never
+becomes a working unit, return route or mandate.
+
+**Ready action and successor.** At each durable return the responsible Coordinator validates the
+current status, immutable mandate, dependencies, recipient and next gate. It starts the next ready
+authorized role or phase without a routine owner command. If required authority, unit, delivery or
+provider wake is absent, record the pending action, responsible actor, condition and exact owner
+decision if one is reserved; never report completion from a send receipt alone. A task Coordinator
+may hand over at a safe checkpoint after saving current authority, state, open gates and results in
+task files. It activates one exact successor Coordinator with a bounded dispatch and observed
+address. The predecessor remains the effective route until the successor acknowledges those files
+and the owner-authorized route switch is recorded. Do not silently reparent workers, replay accepted
+work, or use inherited chat as authority. If acknowledgement or delivery is ambiguous, the switch
+remains pending with its named owner. No title, principal, host, device or optional read-only checker
+supplies a route or mandate.
 
 An authority answer is an immutable task-local `gate_answer` event. It cites the governing status,
 the blocked role artifact and the exact HL or TS authority; its body identifies the answer source,
@@ -1013,15 +1034,13 @@ TFW cycle and strategic discussion apply in every mode. Its fields must together
 1. **Available here:** active platform/surface and what it can do itself, needs the owner to click/do,
    or cannot do. Ground this in current `provision / addressed send / wait/readback / title/readback`
    classification (`native`, `owner-assisted`, `unavailable`); name unknowns, not a capability promise.
-2. **Who you talk to:** identify this unit's actual role and any proposed handover separately.
-   A GATEWAY keeps the owner's conversation separate from phase operations, receives only Coordinator
-   gates/results and never plans or supervises workers. A direct Coordinator plans and receives role
-   returns in this same conversation, with the resulting context cost. Full-session delegation uses
-   the separate GATEWAY unless the owner explicitly chooses direct coordination; manual creation
-   and the admitted small-task compact route retain their own boundaries.
+2. **Who you talk to:** identify the actual task Coordinator and any proposed phase Coordinator
+   separately. The task Coordinator carries purpose, owner decisions and cross-phase strategy. For
+   one phase it also receives the role returns. For long work a phase Coordinator absorbs local
+   operating detail and returns a bounded phase result; name the resulting context cost and limits.
 3. The role sequence and return route: Coordinator plans; distinct Researcher, Executor and
    independent Reviewer work only after their gates; roles return vertically to their own
-   Coordinator, which presents owner gates/results through the selected owner interface.
+   Coordinator, which presents only bounded owner gates/results upward.
    **Who starts agents** is a separate choice: owner, system, or system with an owner click, only
    where supported and authorized. Default to owner-started work until selected otherwise. Say what
    can advance automatically and what still waits for the owner. **Communication is on by default:**
@@ -1051,13 +1070,13 @@ The answer is an intended arrangement only. It cannot activate a role, approve H
 reserved owner gate or grant dialogue/delegation. At Plan Step 5 validate and record this choice
 against current capability and immutable authority; reopen it only for a material boundary change
 or an unresolved choice. Existing-task continuation retains its settled selection unless the owner
-requests a change or a relevant capability actually changes. GATEWAY uses the same card contract at
-its corresponding new-work selection gate, without running Plan itself.
+requests a change or a relevant capability actually changes.
 
 ### Launch selection
 
-The direct launcher owns this judgment: GATEWAY for its Coordinators, each Coordinator for its
-own roles. Quality sets the floor; resources must serve the intended result. Before each new launch:
+The direct launcher owns this judgment: the task Coordinator for phase Coordinators or its own
+roles, each phase Coordinator for its local roles. Quality sets the floor; resources must serve the
+intended result. Before each new launch:
 
 1. **Check prerequisites:** required context, tools, native availability, authority and an exact return route. A new child's address may arrive after command-first launch; a later addressed operation requires it. If a real prerequisite is missing, do not launch; name it.
 2. **Set the quality floor** from uncertainty, dependency breadth, assurance timing and strength, and consequence/reversibility.
@@ -1085,7 +1104,7 @@ partial receipts:
 Missing a stage, translated documentation, provider switching, separate demonstrations or a partial
 receipt does not admit the provider. Resource limits may bound use but never prove reliability.
 
-Historical `CL`, `AG`, `AT`, `LEAD`, `Autonomous from` and `G1`–`G8` records remain readable at their
+Historical `CL`, `AG`, `AT`, `LEAD`, `GATEWAY`, `Autonomous from` and `G1`–`G8` records remain readable at their
 original epochs but are not current controls and are never newly issued.
 
 ## 8) Workflows

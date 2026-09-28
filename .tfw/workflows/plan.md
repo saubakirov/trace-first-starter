@@ -40,12 +40,12 @@ stop under `Context Selection`.
 ## Identity, activation, and existing work
 
 For an existing task, resolve state then apply `Session identity` with `WORK=PLAN`; for new work,
-wait for the approved ID. Reapply/read back before questions, routing, or writes. A gateway title
-requires a separate gateway unit; it grants no peer dialogue by itself.
+wait for the approved ID. Reapply/read back before questions, routing, or writes. Task and phase
+Coordinator titles describe scope only; neither grants role authority.
 
 Apply the root activation/routing contract. Current task work requires a complete matching spine.
 Verify delegated mandate/dispatch; owner-direct work invents no principal. This unit must be the
-actual Coordinator and alone uses `owner_gateway`; record authority answers as `gate_answer`. A new
+actual Coordinator and alone uses its status `upstream_route`; record authority answers as `gate_answer`. A new
 owner-direct `/tfw-plan` creates its first status with the complete seven-field current form.
 
 Before planning, resolve any supplied reference through the deduplicated active+historical union;
@@ -75,16 +75,16 @@ Routes are outputs, not invocations; evaluation writes nothing.
 
 1. **Entry and Continuation Gate.** Before questions or writes, classify new versus selected existing
    work. Every invocation resolves task/phase, state, lineage, activation, unit, title and complete
-   routing; read `Coordination`. An exact configured GATEWAY never runs Plan: route the existing
-   Coordinator or provision/activate one only under exact delegation, then stop. Existing work never
+   routing; read `Coordination`. A task Coordinator owns task inception and a phase Coordinator
+   owns only its selected ready phase. Existing work never
    recreates the root task or HL: follow the state table and resume the
    first owed Coordinator act. Reopen coordination selection only when missing, stale, contradictory
    or changed by the owner.
 
-   **Protect the owner's context.** Before first delegation or a mandate change, resolve the
-   GATEWAY-to-Coordinator handover under `Coordination`. Full-session delegation requires this
-   separation unless the owner explicitly chooses direct coordination. An inherited direct route
-   is not that choice; preserve active work until a safe handover, without replaying planning.
+   **Protect the owner's context.** For one phase use the task Coordinator directly. For long work
+   the task Coordinator retains strategy and owner decisions while distinct phase Coordinators
+   absorb bounded operating detail. A successor requires the safe handover in `Coordination`;
+   preserve active work and never infer a mandate from inherited chat.
 
    | Every invocation | New task only | Existing task/phase |
    |---|---|---|
@@ -99,16 +99,15 @@ Routes are outputs, not invocations; evaluation writes nothing.
    the selected profile. Mark unknown values and platform limits; do not invent future task/phase IDs,
    child addresses, worktree paths, titles or effective settings. Present the choice through owner
    actions and benefits: who creates/starts agents, what advances automatically, what still needs
-   the owner, and whether this unit is a GATEWAY or a direct Coordinator. Explain that separation
-   protects the owner's context; brief vertical TFW gates preserve control and independent judgment
+   the owner, and whether this unit is the task Coordinator or a bounded phase Coordinator. Explain
+   how phase separation protects the owner's context; brief vertical TFW gates preserve independent judgment
    without chatter. Never oppose discussing intent with the owner to using TFW roles: both remain
    required in either mode. Ask for the initial operating mode; map the answer to activation,
    dialogue, reporting and owner-context topology, then briefly restate the selected arrangement
    in the same card, including pending handover or owner actions. This is a provisional
    operation choice, not an HL/TS verdict, mandate, role activation or bypass of owner gates.
    Preserve the owner's answer for Step 5; if unresolved, return to that choice before first
-   status/HL write. A GATEWAY uses the same card contract at its new-work selection gate and
-   routes a distinct planning Coordinator; it never runs these Plan steps.
+   status/HL write.
 
    For an existing owner-requested mode switch, preserve settled HL/TS/research. Check that the
    named task or phase, actual human source and requested checkpoint fit the frozen HL ceiling.
@@ -156,16 +155,15 @@ Routes are outputs, not invocations; evaluation writes nothing.
    confirm `provision / addressed send / wait/readback / title/readback` as `native`,
    `owner-assisted` or `unavailable`. Ask for an operating-mode answer again only when the initial
    choice is unresolved or a material boundary changed; confirm the owner's explicit
-   `activation`, `dialogue`, `owner_gateway`, optional
+   `activation`, `dialogue`, `upstream_route`, optional
    stable principal and, when delegated, exact Coordinator plus scope/roles, reservations,
-   amendment authority, effects and expiry. Default to owner-only, gates-only, owner gateway,
-   `native-gates` reporting and no principal unless a valid grant changes them. Full-session
-   delegation includes the GATEWAY handover; manual provisioning does not waive it or select
-   owner-transfer. Gateway topology and dialogue are independent: a
-   gateway may use gates-only, while iterative dialogue needs an exact immutable two-peer grant
-   whether or not a gateway exists. A gateway is a distinct persistent owner interface; it launches
-   a planning Coordinator for unplanned work and one Coordinator per ready execution phase, then
-   receives only their phase-level gates/results. It never runs Plan or watches workers.
+   amendment authority, effects and expiry. Default to owner-only, gates-only,
+   `upstream_route: owner:{human}`, `native-gates` reporting and no principal unless a valid grant
+   changes them. Manual provisioning does not select owner-transfer. Iterative dialogue needs an
+   exact immutable two-peer grant independent of task/phase topology. A one-phase task uses its
+   task Coordinator for the whole local cycle; a multi-phase task gives the task Coordinator
+   cross-phase readiness and owner decisions, and each ready phase a separate Coordinator with
+   `upstream_route: coordinator:{task-Coordinator-address}`. Neither watches unreturned workers.
    Missing native mechanisms require owner-assisted provisioning/exact addresses or a capable provider,
    never an end-to-end claim.
    Record HL §4.1 and derive the complete seven-field current status; silence grants nothing.
@@ -197,8 +195,11 @@ Routes are outputs, not invocations; evaluation writes nothing.
 9. **Write TS — Executor Freedom Gate.** From the TS template specify Goal, Value, outputs, ACs, DoF,
    boundaries, evidence and authority. Guidance stays non-binding; prescribe mechanics only for
    genuine architecture, safety, compatibility or owner constraints. Bind VALUE, immutable
-   accounting/authority and AC evidence. For multi-phase work read the preceding RF and write only
-   derived Phase HL/TS. Obtain exact TS+denominator approval, name `/tfw-handoff`, and stop.
+   accounting/authority and AC evidence. For multi-phase work the task Coordinator validates
+   dependencies and activates one phase Coordinator per ready phase; that unit reads applicable
+   predecessor RFs and writes only its derived Phase HL/TS. Obtain exact TS+denominator approval,
+   launch `/tfw-handoff` within scope, and stop this Plan invocation. A ready next role or phase
+   remains the responsible Coordinator's continuation action, not a routine owner command.
 
 Before presenting HL or TS for approval, apply the **Saint-Exupéry Gate**: every section, phase,
 requirement, constraint and AC protects named value or necessary proof. Remove duplication and
@@ -215,7 +216,10 @@ gates-only, each unit returns only to its
 executes another role workflow. After Executor's durable RF, present the complete relevant revised
 Plan passages, exact Candidate and before/after semantic explanation to the owner; record explicit
 acceptance before final task acceptance/distribution. Material later changes return to that gate.
-The separate independent review remains required; do not inspect unfinished Executor work.
+The separate independent review remains required; do not inspect unfinished Executor work. At a
+phase result, validate authority, dependencies and receipt, then send a bounded durable return to
+the recorded task Coordinator. The task Coordinator starts every next ready authorized phase or
+records the exact pending actor and condition. Parallel phases keep separate status and routes.
 
 ## REVISE and return
 

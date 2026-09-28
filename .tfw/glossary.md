@@ -12,19 +12,28 @@ and incident histories live at the linked authority or durable history source.
 **Meaning:** Resumption by the same working unit under the same immutable authority and routing spine. **Authority:** [conventions.md](conventions.md#7-coordination), `Coordination`.
 
 ### Routing spine
-**Meaning:** The seven current status fields binding a unit's route, authority and operating selection. Legacy compatibility and validation belong to the status contract. **Authority:** [conventions.md](conventions.md#5-task-statuses), `Task Statuses`, and `.tfw/templates/status.md`.
+**Meaning:** The seven new status fields binding lower-role recipient, upward route, authority and operating selection. Existing `owner_gateway` carriers retain their original meaning. Legacy compatibility and validation belong to the status contract. **Authority:** [conventions.md](conventions.md#5-task-statuses), `Task Statuses`, and `.tfw/templates/status.md`.
 
 ### Current selection
 **Meaning:** Status alone carries the effective launch, dialogue, owner-context topology and reporting choice. `selection_ref` binds an immutable actual human `coordination_selected` event or the verified baseline; pending events grant nothing. **Authority:** [conventions.md](conventions.md#5-task-statuses), `Task Statuses`, and `.tfw/templates/journal/event.md`.
 
-### GATEWAY
-**Meaning:** A separately addressable persistent interface protecting the owner's context from phase operations. It is not the root Coordinator, runs no role workflow and receives only permitted Coordinator-level gates/results; its selection grants no dialogue permission. **Authority:** [conventions.md](conventions.md#7-coordination), `Coordination`.
+### Task Coordinator
+**Meaning:** The actual Coordinator unit that carries task purpose, owner decisions, dependencies, ready-phase launch and safe successor selection. In a one-phase task it runs the local cycle directly. It owns the owner upward route, never another Role Lock's artifact. **Authority:** [conventions.md](conventions.md#7-coordination), `Coordination`.
+
+### Phase Coordinator
+**Meaning:** A distinct Coordinator unit bounded to one phase of long work. It owns that phase's TS, worker gates, independent review route and durable phase return to the task Coordinator named in `upstream_route`; it does not own task strategy or sibling phases. **Authority:** [conventions.md](conventions.md#7-coordination), `Coordination`.
+
+### Successor Coordinator
+**Meaning:** An exact replacement unit activated at a safe checkpoint, after reconstructing task authority and open work from durable files. The old route remains effective until acknowledgement and an authorized route switch. **Authority:** [conventions.md](conventions.md#7-coordination), `Coordination`.
+
+### GATEWAY (historical)
+**Meaning:** A separately addressable owner interface selected under earlier authority epochs. Existing carriers remain readable; new work does not issue this unit. **Authority:** the governing historical status and selection at its epoch.
 
 ### gate_answer
 **Meaning:** An immutable authority-owned event that answers a blocked workflow question and cites status, blocked role artifact, and exact HL/TS authority. **Authority:** [conventions.md](conventions.md#7-coordination), `Coordination`, and `.tfw/templates/journal/event.md`.
 
 ### Historical execution labels
-**Meaning:** `CL`, `AG`, `AT`, `LEAD`, `Autonomous from`, and `G1`–`G8` remain readable only at their original epochs and are never current controls. **Authority:** [conventions.md](conventions.md#7-coordination), `Coordination`.
+**Meaning:** `CL`, `AG`, `AT`, `LEAD`, `GATEWAY`, `Autonomous from`, and `G1`–`G8` remain readable only at their original epochs and are never issued as new controls. A named principal is optional attribution, not a unit, route or mandate. **Authority:** [conventions.md](conventions.md#7-coordination), `Coordination`.
 
 ## Artifact Types
 

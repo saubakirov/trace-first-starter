@@ -93,15 +93,14 @@ Each Phase = separate TS→RF cycle.
 > Record a delegation row only when the owner deliberately grants one immutable bounded mandate.
 > A profile, binding, title, provisioned unit, prompt or roster grants nothing.
 
-| Activation source | Accountable owner | Delegated Coordinator unit | Mandate scope / role reach | Owner-context topology | Dialogue | Reporting | Reservations / controls | Amendment authority | Immutable epoch |
+| Activation source | Accountable owner | Task Coordinator unit | Phase Coordinator rule | Mandate scope / role reach | Upward route | Dialogue | Reporting | Reservations / controls | Amendment authority | Immutable epoch |
 |---|---|---|---|---|---|---|---|---|---|
-| owner-direct / delegated | {human owner handle} | {native address or `N/A — owner-direct`} | {bounded task/phases and roles} | direct owner / separate GATEWAY | tfw-gates-only / exact bounded iterative grant | native-gates / explicit owner-transfer | {owner-reserved decisions and controls} | {exact bounded grant or `none`} | {full commit/object ref} |
+| owner-direct / delegated | {human owner handle} | {actual native address or pending until receipt} | {none for one phase; exact bounded unit per ready phase of long work} | {bounded task/phases and roles} | {task: owner handle; phase: actual task Coordinator address} | tfw-gates-only / exact bounded iterative grant | native-gates / explicit owner-transfer | {owner-reserved decisions and controls} | {exact bounded grant or `none`} | {full commit/object ref} |
 
-> Gateway topology and dialogue permission are independent. `iterative` needs a separate exact
-> immutable two-peer grant; GATEWAY selection needs its own direct owner route and grants no
-> dialogue permission. Full-session delegation uses a separate GATEWAY and one Coordinator per
-> ready phase; direct coordination needs an explicit owner choice or the admitted compact route.
-> An inherited direct route is not evidence of that choice. A live choice within this frozen ceiling
+> One-phase work has one task Coordinator. In long work, that unit owns strategy, dependencies,
+> ready phases, owner decisions and successor selection; each phase Coordinator owns one bounded
+> local cycle and returns only to that task Coordinator. `iterative` needs a separate exact
+> immutable two-peer grant. A live choice within this frozen ceiling
 > is in status plus its immutable human selection event, not a routine HL edit. Working-unit
 > addresses and dispatches are operational trace in `status.md` and `journal/`, not frozen HL roster
 > rows. Widening scope, role reach, dialogue or amendment authority requires §12 resolution.

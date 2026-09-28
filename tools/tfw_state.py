@@ -94,13 +94,14 @@ DEFAULT_CONTAINERS = ["workspace"]
 
 TERMINAL = {"DONE", "REJECTED"}
 
-COORDINATION_KEYS = {
-    "coordinator_route", "owner_gateway", "dialogue", "activation",
-    "coordination_authority",
+COMMON_COORDINATION_KEYS = {
+    "coordinator_route", "dialogue", "activation", "coordination_authority",
 }
+UPWARD_ROUTE_KEYS = {"upstream_route", "owner_gateway"}
+COORDINATION_KEYS = COMMON_COORDINATION_KEYS | UPWARD_ROUTE_KEYS
 
-# The original five fields remain readable as a complete historical/current carrier. New
-# writes include the two independent current-selection fields; a half-extension is invalid.
+# Historical owner_gateway carriers remain readable. New writes use upstream_route and
+# the independent selection pair; both upward-route names or a half-extension refuse.
 SELECTION_KEYS = {"reporting", "selection_ref"}
 
 STATUS_KEYS = {
@@ -434,19 +435,46 @@ def validate_status(data: dict, task_dir: Path | None = None,
     selection_present = SELECTION_KEYS.intersection(data)
     if selection_present and selection_present != SELECTION_KEYS:
         problems.append("partial current selection; reporting and selection_ref must occur together")
-    if selection_present and coordination_present != COORDINATION_KEYS:
+    route_names = coordination_present & UPWARD_ROUTE_KEYS
+    missing_common = COMMON_COORDINATION_KEYS - coordination_present
+    if coordination_present and (missing_common or len(route_names) != 1):
+        missing = sorted(missing_common)
+        if not route_names:
+            missing.append("upstream_route or owner_gateway")
+        if missing:
+            problems.append("partial coordination routing spine; missing: " + ", ".join(missing))
+        if len(route_names) == 2:
+            problems.append("both upward route names are present")
+    if selection_present and (not coordination_present or missing_common or len(route_names) != 1):
         problems.append("current selection requires the complete routing spine")
-    if coordination_present and coordination_present != COORDINATION_KEYS:
-        missing = sorted(COORDINATION_KEYS - coordination_present)
-        problems.append("partial coordination routing spine; missing: " + ", ".join(missing))
-    elif coordination_present:
+    if "upstream_route" in route_names and selection_present != SELECTION_KEYS:
+        problems.append("new upstream_route requires reporting and selection_ref")
+    if coordination_present and not missing_common and len(route_names) == 1:
         route = data.get("coordinator_route")
         if not isinstance(route, str) or not route.strip():
             problems.append("coordinator_route must be a non-empty native address string")
-        gateway = data.get("owner_gateway")
-        if not isinstance(gateway, str) or not re.fullmatch(
-                r"(?:owner:[a-z0-9][a-z0-9-]*|gateway:\S+)", gateway):
-            problems.append("owner_gateway must be owner:{human} or gateway:{native}")
+        if "owner_gateway" in route_names:
+            gateway = data.get("owner_gateway")
+            if not isinstance(gateway, str) or not re.fullmatch(
+                    r"(?:owner:[a-z0-9][a-z0-9-]*|gateway:\S+)", gateway):
+                problems.append("owner_gateway must be owner:{human} or gateway:{native}")
+        else:
+            upward = data.get("upstream_route")
+            is_phase = task_dir is not None and PHASE_DIR.fullmatch(task_dir.name) is not None
+            if not isinstance(upward, str):
+                problems.append("upstream_route must be a string")
+            elif is_phase:
+                parent = read_status(task_dir.parent, declared)
+                if not upward.startswith("coordinator:") or not upward[len("coordinator:"):].strip():
+                    problems.append("phase upstream_route must be coordinator:{native address}")
+                elif not parent or parent.get("_error") or not parent.get("coordinator_route"):
+                    problems.append("phase upstream_route has no valid governing task Coordinator")
+                elif upward[len("coordinator:"):] != parent["coordinator_route"]:
+                    problems.append("phase upstream_route disagrees with governing task Coordinator")
+                if isinstance(route, str) and upward == "coordinator:" + route:
+                    problems.append("phase upward route cannot name its own Coordinator")
+            elif not re.fullmatch(r"owner:[a-z0-9][a-z0-9-]*", upward) or upward != "owner:" + str(data.get("owner")):
+                problems.append("task upstream_route must name its human owner")
         dialogue = data.get("dialogue")
         if dialogue not in {"tfw-gates-only", "iterative"}:
             problems.append("dialogue must be tfw-gates-only or iterative")
@@ -513,11 +541,13 @@ def validate_status(data: dict, task_dir: Path | None = None,
 
 def validate_new_status(data: dict, task_dir: Path | None = None,
                         declared: list[str] | None = None) -> list[str]:
-    """Strict pre-write gate: current statuses require the complete routing spine."""
+    """Strict pre-write gate: new statuses require the seven-field upstream route."""
     problems = validate_status(data, task_dir, declared)
-    missing = sorted(COORDINATION_KEYS - set(data))
+    missing = sorted((COMMON_COORDINATION_KEYS | {"upstream_route"}) - set(data))
     if missing:
         problems.append("new status is missing coordination routing fields: " + ", ".join(missing))
+    if "owner_gateway" in data:
+        problems.append("new status must not issue historical owner_gateway")
     missing_selection = sorted(SELECTION_KEYS - set(data))
     if missing_selection:
         problems.append("new status is missing current selection fields: " + ", ".join(missing_selection))

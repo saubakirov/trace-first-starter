@@ -102,7 +102,8 @@ envelope with no findings prose:
 The exact tuple is the logical identity. Duplicate receipt creates no second verdict, ruling or
 lifecycle act. Only a provider-confirmed non-applied failure may use one provider-specific bounded
 identical retry; ambiguous delivery is neither claimed nor blindly retried. Never route the signal to
-owner, Executor, peer or GATEWAY under `tfw-gates-only`.
+owner, Executor or peer under `tfw-gates-only`. The phase Coordinator returns only its phase-level
+verdict/result upward after receiving this local Reviewer signal.
 
 - [ ] durable REVIEW and applicability limits recorded at immutable ref
 - [ ] authorized lifecycle/status and journal effect recorded

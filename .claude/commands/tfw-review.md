@@ -140,7 +140,7 @@ Use `The 🔄 REVISE route` for recipient, ruling site, governing artifact, life
 4. After durable REVIEW and the authorized status/journal effect exist, preflight the exact
    `coordinator_route` and immutable REVIEW ref, then send exactly one logical envelope:
    `REVIEW · <reviewer-unit> · <task-or-phase> · <verdict> · <review-artifact@ref>`.
-5. The envelope contains no findings prose and never routes to owner, Executor, peer or GATEWAY under
+5. The envelope contains no findings prose and never routes to owner, Executor or peer under
    `tfw-gates-only`. Its exact tuple is its logical identity; duplicate receipt creates no second
    verdict, ruling or lifecycle act. Retry identical bytes only when the provider confirms
    non-application and its own mechanism permits one bounded retry. Ambiguous delivery is not claimed

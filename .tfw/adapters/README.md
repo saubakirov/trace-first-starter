@@ -10,7 +10,8 @@ Exactly three provider-specific Coordinator profiles live at
 persistent adapter names its one exact path. New-task Plan entry reads only that profile after task-control and shared-rule reads, before
 substantive framing, for the mandatory owner-facing startup card and initial mode choice. Plan
 Step 5 validates/records that choice, and re-reads the profile only for a material surface or
-capability change. GATEWAY uses the same card at its corresponding new-work selection gate; other
+capability change. The task Coordinator uses the card for new work; a phase Coordinator receives
+its bounded dispatch and current phase status. Other
 role commands do not preload it. Cursor keeps common-only compatibility without a fourth product
 profile. Profiles own
 mechanics and dated limitations, never authorization, Role Locks or a copied workflow algorithm.

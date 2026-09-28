@@ -1,6 +1,6 @@
 # Antigravity Coordinator profile
 
-Selected by `.agents/rules/tfw.md` at new-task entry and Plan Step 5, GATEWAY's corresponding selection gate, or a changed capability gate. Read this one profile, not every provider profile or the tooling manifest. Current task status, frozen HL, canonical workflow and human choice govern authority.
+Selected by `.agents/rules/tfw.md` at new-task entry and Plan Step 5 or a changed capability gate. Read this one profile, not every provider profile or the tooling manifest. Current task status, frozen HL, canonical workflow and human choice govern authority.
 
 ## Startup card values on Antigravity
 
@@ -9,12 +9,11 @@ dated report below does not establish today's native links. Offer the visible fu
 with owner-created distinct planning Coordinator, Researcher, Executor and independent Reviewer
 chats at ready gates. Owner-only or bounded delegated activation with `tfw-gates-only` dialogue and native-gates
 reporting is an intended choice; only an
-explicit owner selection changes reporting to owner-transfer. Full-session delegation uses an
-owner-created separate GATEWAY and a Coordinator per ready phase. Direct coordination needs an
-explicit owner choice; the admitted compact route remains separate. GATEWAY receives only
-Coordinator-level owner gates/results. Each role returns vertically to its own
-Coordinator. The compact route is conditional on the complete prerequisites below and cannot be
-presented as currently proven.
+explicit owner selection changes reporting to owner-transfer. One-phase work uses one task
+Coordinator with distinct worker roles. Long work keeps the task Coordinator for strategy and
+owner decisions and uses a bounded phase Coordinator per ready phase, with owner creation clicks
+when required. Each role returns vertically to its own Coordinator, and phase-level returns reach
+the task Coordinator. A hidden subagent is not a TFW role unit.
 
 Use role titles only with actual title write and exact readback. Use task-only grouping when
 supported; report unavailable title/grouping mechanics or the required owner action. Do not assume
@@ -36,8 +35,8 @@ The owner reported on 2026-09-23 that full Antigravity agent chats in the tested
 
 At each ready role gate the owner creates the needed full chat. Its first message is only `/tfw-* <task[/phase]>`; the role reads its mandate, parent route and evidence from task files. A created chat or title is no activation authority. Actual address may arrive on a receipt or first normal gate; later exact sends refuse ambiguous destinations. Each active role still owes direct Coordinator-directed status/gate and durable return when the surface exposes the reported addressed send. Manual chat creation alone never changes reporting to `owner-transfer`; only an explicit human selection does. Unattended full completion cannot be promised while a required owner creation action or reserved decision remains.
 
-## Conditional compact route and limits
+## One-phase and successor limits
 
-For a genuinely small bounded one-phase task or small debt/fix, assess whether separate complete Researcher, Executor and independent Reviewer subagents can load their exact commands, own artifacts, return/continue directly, use all needed tools including browser when relevant, hold a stable Candidate and fit Coordinator context/noise. Reassess growth. A large or multi-phase task is ineligible even if launched sequentially. A missing link routes to the visible full-chat offer with the exact owner action; no hidden substitute or weakened review. Earlier subagent observations and absence of a P3/P4 field trial permit this conditional description but prove no complete run.
+A one-phase task needs no extra phase Coordinator, but Researcher, Executor and independent Reviewer still need distinct full role chats. When owner creation is required, the next launch remains pending with that exact owner action and no unattended-completion claim. A successor task Coordinator needs a safe checkpoint, exact address and dispatch, current-file reconstruction, acknowledgement and authorized route switch; the old route remains effective meanwhile. Earlier subagent observations and absence of a P3/P4 field trial prove no complete run.
 
 Historical PCUX observations do not select a current task's topology, grant dialogue or change reporting; the current owner mandate and shared coordination contract govern them.

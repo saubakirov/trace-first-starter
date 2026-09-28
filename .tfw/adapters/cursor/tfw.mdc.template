@@ -27,10 +27,13 @@ delegated or continuation source resolve. The command-only first message names t
 task/phase; native origin and task files supply the source. A workspace, role prompt, briefing, wait result or title is not
 activation. Read and validate the complete status routing spine before material work and report every
 status change to `coordinator_route`. Under `tfw-gates-only`, role units communicate materially only
-with their own Coordinator, never peers, owner or GATEWAY. Record actual producer surface/address,
+with their own Coordinator, never peers, owner. Record actual producer surface/address,
 parent route, activation/dispatch source and immutable authority. Iterative dialogue requires an
-exact immutable two-peer grant independent of GATEWAY selection. This common compatibility adapter
+exact immutable two-peer grant independent of task/phase topology. This common compatibility adapter
 has no fourth UX profile; report missing native mechanisms and exact owner action.
+For new work, one task Coordinator handles a one-phase task; long work uses distinct phase
+Coordinators with bounded upward returns. Historical GATEWAY/LEAD carriers remain readable,
+but a principal, title or host never supplies a route or mandate.
 Never open or resume another TFW role session, or inspect raw provider-wide state, session logs or
 unrelated task/chat history, to read its chat, reasoning, tool output, terminal or unreturned work.
 Monitor only through addressed TFW messages and exposed event/status/wait mechanisms. After an
