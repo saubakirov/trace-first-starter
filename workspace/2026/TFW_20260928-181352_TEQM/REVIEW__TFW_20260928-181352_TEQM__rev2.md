@@ -71,6 +71,18 @@ The exact current verdict is returned only to `coordinator_route` in a compact R
 
 ## 7. Fact Candidates
 
+### Coordinator qualification ruling, 2026-09-29
+
+Under the approved close mandate, F1–F3 are paid as independently assessed above. O1 is handled by distinguishing selected incomplete contributions from preserved excluded files in the task report; it creates no product revision.
+
+`tfw-docs: Applied` — commit `c6fa14cc80652d96d269c6687e6d4c7d24c7f9b0` adds `knowledge/records/TKL-20260929-TEQM.md`, the selected Task Economics Architecture Map relationship and narrow D82 exception, and the task-attributed Unreleased changelog entry. Sources are the owner-approved HL/TS at `31cd8e19`, tested Candidate `d0428128`, RF/EV `b44b28e8`, and independent APPROVE `2660b008` now carried by this formal sibling at `7962ca785617b6168f44e15b4e56551354eff8de`. Historical D82/D86 rows and sources remain preserved. The record distinguishes approved specification/Candidate from pending owner result acceptance and landing. No version, publication or external-project update is asserted.
+
+`tfw-knowledge: N/A` for new human-knowledge publication. Research iteration 1 FC1–2 (owner's AGY CLI/Git Bash directions), iteration 2 FC1–2 (one-pass/child-test directions) and iteration 3 FC1 (autonomous iteration direction) are retained task-local execution instructions; they are not enduring organizational policy and owe no additional publication. Iteration 3 FC2–4 are technical source observations covered by the research/recipe and Docs qualification, not human-only knowledge. Iteration 4, RF and REVIEW return no further Fact Candidates. The owner's economics purpose, constraints and MVP choice remain in the approved HL/TS; no universal staff, accounting or surveillance policy is inferred. No historical candidate/state marker was rewritten.
+
+Final-claim assessment remains with the independent Reviewer for these qualification effects and the refreshed report. Owner actual-result acceptance, local VALUE landing, DONE, final report delivery and safe disposable cleanup remain pending with their existing holders. These markers do not self-accept those effects.
+
+Actual report receipt identifies one remaining producer-return problem: Reviewer revision 2 file `866afbae…` has `complete:false`. The approved receiver therefore excludes its overlapping range and retains revision 1, yielding 160,345,754 selected tokens rather than the review's provisional 170,769,892. This is not proof of a reader defect. The same producing Reviewer must resolve its finite-bound completeness/return claim without Coordinator edits to producer bytes, then independently assess the report basis. Preserve the old captures; no new source range is needed solely for this correction.
+
 No fact candidates.
 
 ### Material handover at this return
