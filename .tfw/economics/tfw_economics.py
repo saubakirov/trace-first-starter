@@ -324,6 +324,9 @@ def source_lines(path):
 
 def codex_rows(raw, args):
     result = []
+    response_rows = []
+    responses = {}
+    thread_total = None
     active = None
     model = effort = None
     total = None
@@ -342,18 +345,61 @@ def codex_rows(raw, args):
         kind = event.get("type")
         payload = event.get("payload") or {}
         if kind == "session_meta":
-            seen_session = payload.get("id") or payload.get("session_id")
+            current_session = payload.get("id") or payload.get("session_id")
+            require(seen_session is None or seen_session == current_session,
+                    "Codex source contains multiple session IDs")
+            seen_session = current_session
         if kind == "turn_context":
             model = payload.get("model")
             effort = payload.get("effort") or payload.get("reasoning_effort")
             active = payload.get("turn_id") or active
+        if kind == "token_usage_record":
+            require(isinstance(payload, dict) and payload.get("session_id") == args.source_id,
+                    "Codex response usage has a different session ID")
+            response_id = payload.get("response_id")
+            identity(response_id, "Codex response id")
+            fields = ("input_tokens", "cached_input_tokens", "cache_write_input_tokens",
+                      "output_tokens", "reasoning_output_tokens", "total_tokens")
+            native = payload.get("usage")
+            require(isinstance(native, dict) and
+                    all(type(native.get(k)) is int and native[k] >= 0 for k in fields),
+                    "Codex response usage malformed")
+            require(native["input_tokens"] + native["output_tokens"] == native["total_tokens"],
+                    "Codex response total mismatch")
+            fresh = native["input_tokens"] - native["cached_input_tokens"] - native["cache_write_input_tokens"]
+            require(fresh >= 0 and native["reasoning_output_tokens"] <= native["output_tokens"],
+                    "Codex response token subsets malformed")
+            previous = responses.get(response_id)
+            require(previous is None or all(previous[k] == native[k] for k in fields),
+                    "Codex repeated response changed numeric usage")
+            if previous is None:
+                responses[response_id] = {k: native[k] for k in fields}
+                if in_range:
+                    tok = zero_tokens(fresh, native["cached_input_tokens"],
+                                      native["cache_write_input_tokens"], native["output_tokens"],
+                                      native["reasoning_output_tokens"])
+                    if tok["cache_write"]:
+                        tok["cache_write_5m"] = tok["cache_write_1h"] = None
+                    response_rows.append(usage("response:" + response_id, line_no,
+                                               event.get("timestamp"), args.timezone,
+                                               model, effort, tok))
+                    if active:
+                        turns.setdefault(active, {"start": line_no, "last": None,
+                                                  "response_last": None})["response_last"] = response_rows[-1]
+            thread = payload.get("thread_token_usage")
+            require(isinstance(thread, dict) and
+                    all(type(thread.get(k)) is int and thread[k] >= 0 for k in fields),
+                    "Codex thread usage absent or malformed")
+            thread_total = {k: thread[k] for k in fields}
+            continue
         if kind != "event_msg":
             continue
         sub = payload.get("type")
         if sub == "task_started":
             active = payload.get("turn_id") or active
             if active:
-                turns.setdefault(active, {"start": line_no, "last": None})
+                turns.setdefault(active, {"start": line_no, "last": None,
+                                          "response_last": None})
         elif sub == "token_count":
             info = payload.get("info")
             if not isinstance(info, dict) or not isinstance(info.get("total_token_usage"), dict):
@@ -387,14 +433,18 @@ def codex_rows(raw, args):
                         args.timezone, model, effort, tok)
             result.append(row)
             if active:
-                turns.setdefault(active, {"start": line_no, "last": None})["last"] = len(result) - 1
+                turns.setdefault(active, {"start": line_no, "last": None,
+                                          "response_last": None})["last"] = len(result) - 1
         elif sub == "task_complete":
             turn = payload.get("turn_id") or active
             milliseconds = payload.get("duration_ms")
             if in_range and type(milliseconds) in (int, float) and milliseconds >= 0 and turn:
                 item = turns.get(turn)
-                if item and item["start"] >= args.start and item["last"] is not None and turn not in completed:
-                    prior_row = result[item["last"]]
+                prior_row = None
+                if item:
+                    prior_row = (item["response_last"] or
+                                 (result[item["last"]] if item["last"] is not None else None))
+                if item and item["start"] >= args.start and prior_row is not None and turn not in completed:
                     result.append(usage("complete:" + turn, line_no, event.get("timestamp"),
                                         args.timezone, prior_row["model"], prior_row["effort"],
                                         zero_tokens(0, 0, 0, 0, 0),
@@ -408,8 +458,27 @@ def codex_rows(raw, args):
             diagnostics.append("aborted turn has no completed-turn duration")
             active = None
     require(seen_session == args.source_id, "Codex session_meta does not match exact source ID")
+    if responses:
+        sums = {k: sum(item[k] for item in responses.values()) for k in fields}
+        require(sums == thread_total,
+                "Codex response sum disagrees with final native thread usage")
+        if total is not None and total != sums:
+            require(all(total[k] <= sums[k] for k in fields),
+                    "Codex token_count exceeds final response thread usage in this source tail")
+            diagnostics.append("Codex token_count total {} differs from {} unique-response "
+                               "native thread total {}; chose response stream reconciled to its "
+                               "native thread counter, never added "
+                               "both".format(total["total_tokens"], len(responses),
+                                             sums["total_tokens"]))
+        else:
+            diagnostics.append("Codex response sum equals final native thread usage; "
+                               "token_count stream agrees or is absent")
+        result = response_rows + [r for r in result if r["duration_seconds"] is not None]
+    else:
+        diagnostics.append("Codex token_count is the only observed native usage stream")
     diagnostics.append("unmatched task_started: " + str(sum(1 for turn, v in turns.items()
-                       if v["last"] is not None and turn not in completed)))
+                       if (v["last"] is not None or v["response_last"] is not None)
+                       and turn not in completed)))
     return result, diagnostics
 
 
@@ -759,15 +828,58 @@ def receive(args):
 
 
 def selected_files(task_root):
-    folder = Path(task_root) / "economics" / "roles"
-    return sorted(folder.glob("*.jsonl")) if folder.is_dir() else []
+    return task_sources(task_root)[0]
+
+
+def task_sources(task_root):
+    """Select root coordination and immediate phase leaves, never nested reports."""
+    root = Path(task_root)
+    folder = root / "economics" / "roles"
+    files = sorted(folder.glob("*.jsonl")) if folder.is_dir() else []
+    if root.name.startswith("phase-"):
+        return files, [root.name], ([] if files else [root.name + ": no returned role bytes"])
+    phases, gaps = [], []
+    for phase in sorted(root.glob("phase-*")):
+        if not phase.is_dir():
+            continue
+        if not (phase / "status.md").is_file():
+            gaps.append(phase.name + ": status missing")
+            continue
+        state = status_fields(phase)
+        require(state["id"] == root.name, "phase belongs to a different task")
+        phases.append(phase.name)
+        role_dir = phase / "economics" / "roles"
+        leaf_files = sorted(role_dir.glob("*.jsonl")) if role_dir.is_dir() else []
+        if not leaf_files:
+            gaps.append(phase.name + ": no returned role bytes")
+        files.extend(leaf_files)
+    return files, phases, gaps
+
+
+def check_task_sources(task_root, files):
+    root = Path(task_root)
+    task_id = status_fields(root)["id"]
+    for item in files:
+        path = Path(item["path"])
+        relative = path.relative_to(root)
+        phase = root.name if root.name.startswith("phase-") else (
+            relative.parts[0] if relative.parts[0].startswith("phase-") else None)
+        m = item["manifest"]
+        require(m["task"] == task_id and m["phase"] == phase,
+                "returned task/phase differs from selected root")
 
 
 def reconcile(paths, expected_units=()):
-    files = [validate_file(p) for p in paths]
-    by_hash = {f["sha256"]: f for f in files}
-    require(len(by_hash) == len(files), "duplicate content under multiple paths")
     excluded, active, diagnostics = set(), set(), []
+    by_hash = {}
+    for path in paths:
+        item = validate_file(path)
+        if item["sha256"] in by_hash:
+            diagnostics.append("identical returned bytes present at multiple paths; counted once: " +
+                               item["sha256"])
+        else:
+            by_hash[item["sha256"]] = item
+    files = list(by_hash.values())
     groups = defaultdict(list)
     for f in files:
         m = f["manifest"]
@@ -783,8 +895,10 @@ def reconcile(paths, expected_units=()):
                     diagnostics.append("missing predecessor for " + f["sha256"])
                     continue
                 p = prior["manifest"]
-                same = (p["source_namespace"], p["source_id"], p["unit"], p["project"], p["task"])
-                cur = (m["source_namespace"], m["source_id"], m["unit"], m["project"], m["task"])
+                same = (p["source_namespace"], p["source_id"], p["unit"], p["project"],
+                        p["task"], p["phase"])
+                cur = (m["source_namespace"], m["source_id"], m["unit"], m["project"],
+                       m["task"], m["phase"])
                 if same != cur or m["revision"] <= p["revision"]:
                     excluded.add(f["sha256"])
                     diagnostics.append("invalid successor identity/revision " + f["sha256"])
@@ -858,10 +972,12 @@ def price(tokens, model, rates):
         return None, "cache write category unavailable"
     if writes and (tokens["cache_write_5m"] is None or tokens["cache_write_1h"] is None):
         return None, "cache write tariff split unavailable"
+    write_5m = tokens["cache_write_5m"] if writes else 0
+    write_1h = tokens["cache_write_1h"] if writes else 0
     value = (Decimal(tokens["fresh"]) * Decimal(str(card["fresh"]))
              + Decimal(tokens["cached"]) * Decimal(str(card["cached"]))
-             + Decimal(tokens["cache_write_5m"]) * Decimal(str(card["cache_write_5m"]))
-             + Decimal(tokens["cache_write_1h"]) * Decimal(str(card["cache_write_1h"]))
+             + Decimal(write_5m) * Decimal(str(card["cache_write_5m"]))
+             + Decimal(write_1h) * Decimal(str(card["cache_write_1h"]))
              + Decimal(tokens["output"]) * Decimal(str(card["output"]))) / 1_000_000
     return value, None
 
@@ -958,9 +1074,12 @@ def metadata_block(path):
 def render_report(args):
     task = Path(args.task_root)
     state = status_fields(task)
-    require(args.task_root and state["id"] == task.name, "task root/name mismatch")
+    expected_name = task.parent.name if task.name.startswith("phase-") else task.name
+    require(args.task_root and state["id"] == expected_name, "task root/name mismatch")
     rates = load_rates(args.rates)
-    data = reconcile(selected_files(task), args.expected_unit)
+    paths, phases, phase_gaps = task_sources(task)
+    data = reconcile(paths, args.expected_unit)
+    check_task_sources(task, data["files"])
     require(all(f["manifest"]["project"] == args.project and
                 f["manifest"]["task"] == state["id"] for f in data["files"]),
             "received project/task differs from selected report root")
@@ -990,6 +1109,14 @@ def render_report(args):
     operation_seconds = sum(f["manifest"]["operation_seconds"] or 0 for f in data["files"])
     unknown_operations = sum(f["manifest"]["operation_seconds"] is None for f in data["files"])
     incomplete = sorted(f["sha256"] for f in data["files"] if not f["manifest"]["complete"])
+    source_note_keys = ("tfw.native_stream", "tfw.adaptation_reason",
+                        "tfw.alternate_token_count_total", "tfw.counter_difference_tokens")
+    source_diagnostics = [
+        dict(unit=f["manifest"]["unit"], sha256=f["sha256"],
+             notes=f["manifest"]["extensions"].get("tfw.diagnostics", []),
+             source_qualification={k: f["manifest"]["extensions"][k] for k in source_note_keys
+                                   if k in f["manifest"]["extensions"]})
+        for f in data["files"]]
     block = dict(schema_version=1, project=args.project, task=state["id"],
                  lifecycle=state["lifecycle"], owner=state["owner"],
                  primary_area=args.primary_area, keywords=keywords,
@@ -1008,7 +1135,9 @@ def render_report(args):
                  received=sorted(data["received"]), measured=sorted(data["measured"]),
                  missing=sorted(data["missing"]),
                  failure_only=sorted(data["failure_only"]),
-                 excluded=sorted(data["excluded"]), incomplete=incomplete)
+                 excluded=sorted(data["excluded"]), incomplete=incomplete,
+                 source_diagnostics=source_diagnostics,
+                 phase_roots=phases, phase_coverage_gaps=phase_gaps)
     lines = ["# Task economics — " + state["id"], "",
              "<!-- tfw-economics-v1 " + json.dumps(block, ensure_ascii=False,
                                                   sort_keys=True, separators=(",", ":")) + " -->",
@@ -1058,6 +1187,8 @@ def render_report(args):
               "- Measured units: " + (", ".join(sorted(data["measured"])) or "none"),
               "- Missing units: " + (", ".join(sorted(data["missing"])) or "none among declared expected"),
               "- Failure-only units: " + (", ".join(sorted(data["failure_only"])) or "none"),
+              "- Selected phase leaves: " + (", ".join(phases) or "none"),
+              "- Phase coverage gaps: " + (", ".join(phase_gaps) or "none"),
               "- Incomplete source captures: " + str(len(incomplete)) +
               " (a finite snapshot is not full task coverage).",
               "- Excluded conflicting/superseded files: " + str(len(data["excluded"])),
@@ -1070,6 +1201,12 @@ def render_report(args):
             m["unit"], m["source_namespace"], m["source_id"], m["revision"],
             m["range_start"], m["range_end"], m["complete"],
             f["bytes"], f["sha256"], m["source_sha256"]))
+        for note in m["extensions"].get("tfw.diagnostics", []):
+            lines.append("- Source diagnostic {}: {}".format(m["unit"], note))
+        for key in source_note_keys:
+            if key in m["extensions"]:
+                lines.append("- Source qualification {} / {}: {}.".format(
+                    m["unit"], key, m["extensions"][key]))
     for item in data["diagnostics"]:
         lines.append("- Diagnostic: " + item)
     output = "\n".join(lines) + "\n"
@@ -1089,10 +1226,21 @@ def render_summary(args):
             day(value, "summary filter date")
     require(not (args.date_from and args.date_to and args.date_from > args.date_to),
             "summary date range reversed")
-    roots = [Path(x) for x in args.task_root]
+    requested = [Path(x) for x in args.task_root]
+    selected_paths = {x.resolve() for x in requested}
+    roots = []
+    seen_roots = set()
+    for root in requested:
+        resolved = root.resolve()
+        if resolved in seen_roots or (root.name.startswith("phase-") and
+                                      root.parent.resolve() in selected_paths):
+            continue
+        roots.append(root)
+        seen_roots.add(resolved)
     selected = []
     task_meta = {}
     included_roots = []
+    phase_gaps = []
     for root in roots:
         state = status_fields(root)
         report = metadata_block(root / "economics.md")
@@ -1101,7 +1249,10 @@ def render_summary(args):
                          and args.tag != report.get("primary_area")):
             continue
         included_roots.append(root)
-        data = reconcile(selected_files(root))
+        paths, _, gaps = task_sources(root)
+        phase_gaps.extend(root.name + "/" + gap for gap in gaps)
+        data = reconcile(paths)
+        check_task_sources(root, data["files"])
         selected.extend(data["records"])
     filters = {k: getattr(args, k) for k in ("date_from", "date_to", "project", "task", "role", "model")}
     total, flat = summarize(selected, rates, filters)
@@ -1142,7 +1293,9 @@ def render_summary(args):
                                                         kinds or "unavailable"))
     lines += ["", "Token ranking, time kinds and priced money are distinct; unknown time and",
               "unpriced tokens are not zeros. Dates without a proved source join are excluded",
-              "from date-filtered totals.", "", "## Task lifetime and completed-task comparison", ""]
+              "from date-filtered totals.",
+              "Phase coverage gaps: " + (", ".join(phase_gaps) or "none"),
+              "", "## Task lifetime and completed-task comparison", ""]
     for label, key in (("Token", lambda x: x[1]["tokens"]),
                        ("Priced USD", lambda x: x[1]["priced"])):
         order = sorted(by_project.items(), key=key, reverse=True)
@@ -1154,6 +1307,8 @@ def render_summary(args):
         lines.append("- {}: {:,} selected tokens; {} USD priced.".format(task, box["tokens"], box["priced"]))
     completed = []
     for root in included_roots:
+        if root.name.startswith("phase-"):
+            continue
         task = root.name
         state = task_meta[task][0]
         if state["lifecycle"] == "DONE" and task in by_task and (not args.task or task == args.task) and (not args.project or args.project in

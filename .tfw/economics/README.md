@@ -31,12 +31,19 @@ diagnostics only for a concrete reconciliation question.
 
 Source: one exact Codex rollout JSONL bound by session_meta.id to the unit.
 Current observed surface is the Codex local task rollout. The collector reads only
-session metadata, turn_context model/effort, event_msg token_count numeric
-counters, task_started and task_complete/turn_aborted timing fields. It does not
-export message text. Positive differences between cumulative total_token_usage
-snapshots are consumption. Repeated snapshots are no-ops; each positive delta
-must match last_token_usage. A reset, mismatch, missing session ID or malformed
-counter refuses measured output. Cached input and cache writes are subsets of
+session metadata, turn_context model/effort, event_msg token_count,
+token_usage_record numeric usage/thread counters and
+task_started/task_complete/turn_aborted timing fields. It does not export
+message text. Native response records are deduplicated by response_id and
+their sum must equal the final thread_token_usage. When that verified stream
+exists it supplies consumption; the cumulative token_count stream is checked
+separately and any disagreement is recorded with both totals in source
+diagnostics and the readable task report. The streams are never added.
+Without response records, positive token_count cumulative differences supply
+consumption: repeated snapshots are no-ops and each positive delta must match
+last_token_usage. A reset, inconsistent native thread total, changed
+response usage, missing session ID or malformed counter refuses measured
+output. Cached input and cache writes are subsets of
 input; reasoning is a subset of output. Model comes from the preceding turn
 context, not the last model in the session. A matched native task_complete
 duration is completed-turn time. Open or aborted turns have unknown duration
@@ -128,9 +135,12 @@ available. A complete successor naming a verified predecessor and covering
 its range replaces it for totals only when the earlier captured native source
 prefix still hashes identically; disjoint ranges add. Missing predecessor,
 unproved overlap, attribution conflict or one native source claimed by
-multiple units is excluded and diagnosed. Underlying unique usage rows roll
-up once from phases and task-root work; no parent report is added to child
-facts. Failed and retried measured work remains. Old tasks need no
+multiple units is excluded and diagnosed. A root task selection reads its
+direct economics/roles files and each immediate phase-*/economics/roles leaf
+whose phase status matches the task ID. Missing phase return bytes are shown
+as coverage gaps; identical returned bytes are counted once. A phase report
+selects only its own leaf. No parent report is added to child facts. Failed
+and retried measured work remains. Old tasks need no
 retroactive role file; an old partial export is labeled partial.
 
 The finite cutoff can omit the producer's final message and later cleanup.
@@ -172,7 +182,9 @@ assigned at close. The area is additive, while overlapping keywords are
 filters and never multiply totals. Changing classification edits only the
 report metadata, not consumption rows.
 
-Period spending uses dated events in the selected period, including ongoing
+Observed zero cache writes cost zero even if the optional five-minute and
+one-hour split fields are null; positive unsplit writes remain explicitly
+unpriced. Period spending uses dated events in the selected period, including ongoing
 and unsuccessful work. Undated rows remain in lifetime totals and are
 explicitly excluded from date filters. Completed-task mean/median use
 selected completed task lifetime totals, count and range; partial coverage is

@@ -13,6 +13,7 @@ Rate basis: USD per million text tokens, first-party Standard API reference; sho
 Token ranking, time kinds and priced money are distinct; unknown time and
 unpriced tokens are not zeros. Dates without a proved source join are excluded
 from date-filtered totals.
+Phase coverage gaps: none
 
 ## Task lifetime and completed-task comparison
 
