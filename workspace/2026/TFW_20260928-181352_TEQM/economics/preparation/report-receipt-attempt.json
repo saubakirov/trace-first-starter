@@ -1,0 +1,11 @@
+{
+  "candidate": "83227789c5218a01d669acb42903844c5dc21bd9",
+  "operation": "report over actual Coordinator, Executor and Researcher role files",
+  "researcher_file_sha256": "eaf560cb0c592b440eb6821e7302aa93717ff378604dd472eb7ea96a618a0eb0",
+  "receive_and_validate": "passed",
+  "report_exit_code": 1,
+  "error": "TypeError: conversion from NoneType to Decimal is not supported",
+  "location": ".tfw/economics/tfw_economics.py:863 price Decimal(tokens[cache_write_5m])",
+  "previous_report": "preserved; no updated combined total was written",
+  "observed_at": "2026-09-29T02:50:05.761232+05:00"
+}
