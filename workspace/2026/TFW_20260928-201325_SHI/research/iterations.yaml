@@ -11,5 +11,10 @@ iterations:
   - number: 2
     focus: "Resolve available non-secret entitlement evidence and economic decision limits; map the minimum provenance contract to exact current/new files and templates; challenge subtraction and design the later real two-person/two-project trial without executing it."
     hypotheses: [H1, H2, H3]
-    status: pending
+    status: complete
     res_file: research/iter2/RES.md
+  - number: 3
+    focus: "Test the newly found official pay-as-you-go ChatGPT service-account and Codex access-token route against H1's one-common-paid-access goal, the H2 human-versus-service identity boundary, interface support, cost evidence, and the existing E2 file/trial map without any account or host mutation."
+    hypotheses: [H1, H2, H4]
+    status: pending
+    res_file: research/iter3/RES.md
