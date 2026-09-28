@@ -51,6 +51,22 @@ General Claude Code usage articles found via search describe a 200K-token contex
 
 Per the `list_sessions` tool's own description: passing `linked: true` restricts the listing to "your own family" — sessions this session started, the session that started this one, and their own linked sessions — each row carrying its own `model`/`permissionMode` (the latter "reported only for sessions this session started"). `get_usage`/`get_session` accept an explicit `session_id` for any such sibling, but `context` reports `"unavailable"` for "an idle, starting or archived session" — i.e., a child's numeric snapshot must be pulled while it is still running, or it may become unrecoverable. This iteration did not spawn a child (no `Agent` call was made), so this dimension is documented from the tool schema, not independently observed this session — flagged accordingly, not asserted as tested.
 
+### G5: Live child-session probe — addendum, added after the owner's follow-up direction ("проверить параллельные сессии рядом")
+
+Executed after the initial four-stage pass and after RES was first written. Spawned one trivial background sub-agent via the `Agent` tool (task: answer "what is 2+2?", nothing else) and, while it was outstanding, immediately called `list_sessions({linked: true})` and then `list_sessions({include_archived: true})` with no filter.
+
+**Result: neither call showed the spawned sub-agent.** `linked: true` returned "No other sessions found"; the unfiltered listing returned 19 real other CCD sessions from unrelated projects/tasks, none of them the probe. This is a direct, observed answer (not merely schema-documented): an in-conversation `Agent`-tool sub-agent is **not** a "CCD session" in the `ccd_session_mgmt` sense at all, and is invisible to `list_sessions`/`get_usage` regardless of the `linked` filter.
+
+**But a second, different mechanism did carry numeric data.** When the sub-agent finished, its completion arrived as a task-notification event carrying its own usage block, unprompted:
+
+```
+<usage><subagent_tokens>53901</subagent_tokens><tool_uses>0</tool_uses><duration_ms>2519</duration_ms></usage>
+```
+
+For a one-token answer with zero tool calls, the sub-agent still consumed 53,901 tokens — almost entirely its own fresh system prompt/tool-schema overhead, not the trivial task itself. `duration_ms: 2519` is a genuine, precise, per-unit execution interval, in the same shape as iter1's Claude Code CLI `duration_ms: 2810` — the closest thing either surface has produced yet to an exact task/role-bound execution interval.
+
+This resolves Q3 (below) with an observed, not merely documented, answer: **two separate, non-overlapping child-visibility mechanisms exist on this surface** — `list_sessions`/`get_usage` for separate top-level CCD sessions (pull, on demand, but blind to `Agent`-tool sub-agents), and the task-notification event for `Agent`-tool sub-agents (push, automatic, but no token-direction split and — per its own documented caveat — "the same task-id may notify more than once" on resumption, so a collector must not double-count a re-notified id).
+
 ## Checkpoint
 
 | Found | Remaining |
@@ -58,7 +74,8 @@ Per the `list_sessions` tool's own description: passing `linked: true` restricts
 | This session exposes context-window occupancy + account quota + session/model/effort identity; no token-direction split, no thinking counter, no dollar cost. | Whether `contextWindow: 1,000,000` reflects a documented plan/model allowance or an undocumented exception. |
 | Two live samples show the gauge moving in real time with real work (+12,872 tokens / ~153s). | Whether this delta is a faithful proxy for actual API-billed tokens consumed in that interval, or merely context-window growth (see Challenge). |
 | OTel/CLI path (iter1 + public docs) has a genuinely richer, documented schema (token-type split, USD cost, active-time split) unavailable from inside this Desktop session. | Whether that OTel path can be attached to a *Desktop* app session at all, or only to a separate CLI process (iter1 already left Claude Desktop's own event route unverified). |
-| Child/sibling session visibility is schema-documented via `list_sessions`. | Not exercised this iteration; a live parent/child join remains unobserved for the Claude family, same gap iter1 flagged for AGY/Codex. |
+| Child/sibling session visibility is schema-documented via `list_sessions` — **and now observed**: it does not cover `Agent`-tool sub-agents at all. | Whether `list_sessions`/`get_usage` cover any *other* kind of child (e.g., a separately started linked CCD session) in practice — still unobserved, no such child exists in this account right now. |
+| **New:** `Agent`-tool sub-agent completion pushes its own `subagent_tokens`/`tool_uses`/`duration_ms` automatically via the task-notification event, sidestepping the earlier "must poll before it archives" risk entirely. | Whether this event is guaranteed exactly-once per unit of work, given its own documented note that a resumed agent may notify again under the same task-id; whether nested (grandchild) sub-agents roll up into one notification or produce their own. |
 
 **Sufficiency:**
 - [x] External source used? (Claude Code OTel monitoring doc; Desktop usage-limit web search incl. two GitHub issues)
