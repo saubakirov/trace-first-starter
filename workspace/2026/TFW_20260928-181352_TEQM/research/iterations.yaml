@@ -1,12 +1,33 @@
 task_id: TFW_20260928-181352_TEQM
 title: "Session economics capture in local Antigravity, Claude Desktop, and Codex"
-min_iterations: 2
-max_iterations: 2
+min_iterations: 4
+max_iterations: 4
 iterations:
   - number: 1
     focus: "Map exact local surfaces and supported session/token/time/money hooks or exports for Antigravity, Claude Desktop, and Codex; make bounded practical attempts under the local-probe grant, label documented versus observed capability, and recommend the first capture path."
     hypotheses: [H1, H4]
-    status: pending
+    status: complete
     res_file: research/iter1/RES.md
     agent: codex
     sources: [external, codebase, local-diagnostic]
+  - number: 2
+    focus: "Claude self-inspection, independently and in parallel with iteration 3. Owner launches /tfw-research for this task inside Claude; that launch selects THIS iteration, not the first globally pending entry. Identify the current surface/mode/version and inspect only this session's accessible numeric metadata: session/model identity, input/output/cache/thinking tokens, duration and money basis. Demonstrate one small safe observation where possible; state exactly what this session exposes, how economics.md could collect it, and which differences from Claude CLI are observed or unknown. One short focused pass, no intermediate approval waits; save the stage traces and RES only under research/iter2. Do not inspect the other active iterations. Selection authority and the owner's task-specific parallel exception are in HL section 4.1 and the dispatch journal."
+    hypotheses: [H1, H4]
+    status: pending
+    res_file: research/iter2/RES.md
+    agent: claude
+    sources: [own-session-metadata, external, local-diagnostic]
+  - number: 3
+    focus: "Antigravity self-inspection, independently and in parallel with iteration 2. Owner launches /tfw-research for this task inside Antigravity; that launch selects THIS iteration, even while iteration 2 is pending. Identify the current surface/mode/version and inspect only this session's accessible numeric metadata: session/model identity, input/output/cache/thinking tokens, duration and money basis. Demonstrate one small safe observation where possible; state exactly what this session exposes, how economics.md could collect it, and which differences from agy CLI are observed or unknown. One short focused pass, no intermediate approval waits; save the stage traces and RES only under research/iter3. Do not inspect the other active iterations. Selection authority and the owner's task-specific parallel exception are in HL section 4.1 and the dispatch journal."
+    hypotheses: [H1, H4]
+    status: pending
+    res_file: research/iter3/RES.md
+    agent: antigravity
+    sources: [own-session-metadata, external, local-diagnostic]
+  - number: 4
+    focus: "The existing Codex Researcher's second personal iteration, after the Coordinator accepts durable RES from iterations 1, 2 and 3. Reconcile the independent surface observations and CLI evidence, resolve material contradictions, and test task/role binding, counter and time semantics, period versus lifetime totals, money basis, 3-5 product keywords with a primary area, classifier overhead and the single economics.md contract. Recommend the smallest supported first implementation with explicit platform coverage. Do not start until a Coordinator continuation dispatch names the accepted three inputs."
+    hypotheses: [H1, H2, H3, H4]
+    status: pending
+    res_file: research/iter4/RES.md
+    agent: codex
+    sources: [accepted-research-returns, external, codebase, local-diagnostic]
