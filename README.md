@@ -209,7 +209,7 @@ The complete Full lifecycle is visible in each task's state, journal and trace f
 | Concept | Practical meaning | Reference |
 |---|---|---|
 | Roles | Coordinator plans, Researcher investigates, Executor implements, Reviewer independently verifies | [glossary](.tfw/glossary.md) |
-| Execution modes | CL (Chat Loop) is default; AG (Autonomous) requires explicit authorization | [conventions](.tfw/conventions.md) |
+| Coordination | A task Coordinator directs one-phase work; long work uses separate phase Coordinators with bounded returns. Launch, dialogue, and reporting follow the recorded task selection | [conventions](.tfw/conventions.md) |
 | Scope budgets | File, new-file, line, and modified-file ceilings are configured per project and checked before execution | [project config](.tfw/project_config.yaml) |
 | Evidence | A TS says what evidence is needed; the RF reports what was collected; REVIEW audits sufficiency | [conventions](.tfw/conventions.md) |
 | Task memory | `HL`, `RES`, `TS`, `ONB`, `RF`, `REVIEW`, and knowledge traces serve different decisions; they are not raw chat logs | [templates](.tfw/templates/) |
