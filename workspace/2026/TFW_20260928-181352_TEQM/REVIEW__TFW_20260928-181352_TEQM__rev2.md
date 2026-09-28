@@ -93,6 +93,12 @@ The changed final qualification claims at `c6fa14cc80652d96d269c6687e6d4c7d24c7f
 
 **Current bounded assessment: APPROVE remains.** Qualification records have no material changed-claim defect; the corrected Reviewer receipt yields a reproducible replacement report basis. Owner result acceptance, actual Coordinator report refresh, selected landing, DONE and cleanup remain open. This follow-up authorizes no new lifecycle transition or product edit and adds no new Fact Candidate.
 
+### Coordinator actual receipt and pre-close report basis
+
+Received the independent final-claim APPROVE at `d541aacc22f987cbcb2c7fe2517f00cc3c9ef6d8` and exact Reviewer revision-3 bytes, preserved on main at `534c180a`. The standard Candidate reporter now regenerates the actual task `economics.md` from all received files. Its selected hashes and totals match the independent oracle: four files, 16 JSONL lines, 15,073 bytes, 170,769,892 tokens, conditional USD 125.0246288 and 18,903.674 native completed-turn seconds. SHA-256 of each selected returned file matches its filename. One selected Researcher snapshot remains marked incomplete, all four have finite cutoffs, and earlier Claude/AGY/probe observations remain separately disclosed rather than silently counted as zero or added without source proof.
+
+The owner-facing presentation is prepared from the immutable Candidate and this actual report. The exact 26 VALUE paths still have no unrelated main change relative to the accounting Baseline, so selected local landing has no currently observed file-content conflict. The accepted 2,204 touched lines, 125 focused checks and 14 existing tests remain applicable. Product landing, owner actual-result acceptance, DONE, final report delivery after DONE and safe cleanup are not asserted here. Executor/Reviewer checkouts and returned traces are retained for that acceptance/landing boundary; they hold no pending implementation or independent product correction.
+
 ## 7. Fact Candidates
 
 No fact candidates.
