@@ -62,6 +62,32 @@ The Antigravity Customization System ([`hooks.json`](file:///C:/Users/c0rpa/.gem
   - Antigravity IDE persists full turn-by-turn history in SQLite with nanosecond timestamps, separate thinking/content breakdown, and explicit cached prompt counters.
   - `agy` CLI provides cumulative session aggregates in JSON stdout. Both share the underlying token accounting model (`thinking` is part of candidate output; cache reads reduce billed input).
 
+### G5: Cross-Session Numeric Telemetry Extraction (`dbf9e905-1f6a-406d-ae62-8f49d5ec42ef`)
+To test whether the SQLite extraction mechanism generalizes beyond the current session to arbitrary completed/historical Antigravity sessions without reading private chat text, session `dbf9e905-1f6a-406d-ae62-8f49d5ec42ef` was inspected:
+- **Session Identification:** Global `conversation_summaries.db` resolves:
+  - Title: "Брейншторм Пользы Jev Для Tfw"
+  - Total steps: 14; status: `CASCADE_RUN_STATUS_IDLE`
+  - Workspace: `file:///d%3A/projects/research/steps-framework`
+  - Timestamps: Created/last modified 2026-09-22 19:11:50 UTC.
+- **Protobuf Telemetry Extraction (`conversations/dbf9e905-1f6a-406d-ae62-8f49d5ec42ef.db`):**
+  - Table `gen_metadata` contains exactly 7 model turns.
+  - Model: `gemini-3.8-flash` across all 7 turns.
+  - Turn 0: Fresh prompt = 23,502, Cached = 0, Output = 324 (Thinking = 265, Content = 59).
+  - Turn 1: Fresh prompt = 3,530, Cached = 20,372, Output = 162 (Thinking = 118, Content = 44).
+  - Turn 2: Fresh prompt = 4,446, Cached = 20,368, Output = 240 (Thinking = 192, Content = 48).
+  - Turn 3: Fresh prompt = 5,424, Cached = 20,364, Output = 272 (Thinking = 213, Content = 59).
+  - Turn 4: Fresh prompt = 2,130, Cached = 24,432, Output = 143 (Thinking = 80, Content = 63).
+  - Turn 5: Fresh prompt = 27,164, Cached = 0, Output = 81 (Thinking = 15, Content = 66).
+  - Turn 6: Fresh prompt = 2,961, Cached = 24,419, Output = 4,248 (Thinking = 2,412, Content = 1,836).
+- **Session Totals:**
+  - Fresh Input Tokens: 69,157
+  - Cached Input Tokens: 109,955 (Context caching reduced billed input by 61.4%)
+  - Candidate Output Tokens: 5,470
+  - Thinking Tokens: 3,295
+  - Content Tokens: 2,175
+  - Total Model Latency: 21.73 seconds.
+- **Verification:** In 7/7 turns (100%), `Candidate == Thinking + Content` held true. Zero chat messages, prompts, or thoughts were extracted or logged.
+
 ## Checkpoint
 
 | Found | Remaining |

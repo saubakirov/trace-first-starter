@@ -68,6 +68,12 @@ In Iteration 1, the Researcher noted that `18,136 + 98 = 18,234` in `agy` CLI di
   - Writers do not block readers.
   - Python scripts opening the database with `sqlite3.connect('...db', timeout=1.0)` or `mode=ro` execute in < 25 ms without any lock contention, file locks, or interference with `language_server.exe`.
 
+### C5: Cross-Session Token Arithmetic & Cache Invariant Validation (`dbf9e905-1f6a-406d-ae62-8f49d5ec42ef`)
+To challenge the hypothesis that the arithmetic identity `Candidate == Thinking + Content` was an artifact of this specific conversation or session configuration, historical session `dbf9e905-1f6a-406d-ae62-8f49d5ec42ef` (dating from 2026-09-22) was subjected to the same validation:
+- Across all 7 turns, Candidate Tokens (`f3`) matched Thinking Tokens (`f9`) + Content Tokens (`f10`) with zero discrepancy (7/7 turns = 100% precision).
+- Context cache activation was verified: Turn 0 had 0 cache; turns 1-4 and 6 consistently cached 20,364 to 24,432 tokens, proving prompt cache telemetry is stable across sessions and time.
+- The extraction test proved that an external collector can extract full task economics from any referenced Antigravity conversation without entering or resuming the session.
+
 ## Checkpoint
 
 | Found | Remaining |
