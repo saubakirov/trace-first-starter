@@ -16,19 +16,22 @@ Format: [Keep a Changelog](https://keepachangelog.com/). Versioning: [Semantic V
 
 - Gate-only launches and continuations exclude briefings, solution hints and copied reasoning.
   Required messages name a real workflow checkpoint; advice cannot become a gate by relabelling it.
-- GATEWAY protects owner attention and independent role judgment: routine role status, ONB progress
-  and intermediate checks stay with the Coordinator. Phase decisions, material blockers, completed
-  results and explicitly requested phase status remain available, as does strategic owner discussion.
-- Codex GATEWAY waits only on its Coordinators and does not treat incidental wait commentary as a
-  formal return. Task-only Sections use the resolved project's task prefix, not a hard-coded `TFW`.
+- ATC (`TFW_20260928-015408_ATC`) keeps the owner-facing task Coordinator responsible for strategy,
+  phase advancement and bounded owner updates. Phase Coordinators keep local role traffic and
+  return only phase-level decisions, blockers and results. Required vertical gates and strategic
+  owner discussion remain available without a separate mandatory GATEWAY.
+- Codex task Coordinators use addressed role/phase returns and do not treat incidental wait
+  commentary as a formal gate. Task-only Sections still use the resolved project's task prefix.
 
 ### Changed
 
-- Claude explicitly offers a single-phase subagent mode for eligible small tasks: the existing
-  `/tfw-plan` agent remains the sole Coordinator and owner interface, without a separate GATEWAY,
-  and leads distinct Researcher, Executor and independent Reviewer subagents through the full TFW
-  cycle under an explicit owner mandate. Command-only launches, gate-only returns, required tools,
-  reserved owner decisions and closing obligations remain; context/noise costs are disclosed.
+- ATC makes the direct task Coordinator the proportionate one-phase route and gives long work
+  separate bounded phase Coordinators, with a safe acknowledged successor handover. New task/phase
+  statuses issue `upstream_route: owner:{human}` / `coordinator:{native-address}`; historical
+  `owner_gateway` carriers, GATEWAY and LEAD remain readable under their original authority.
+- Claude and Antigravity state their owner-assisted full-role limits; subagents no longer substitute
+  for TFW Researcher, Executor or independent Reviewer units. A named principal, host or optional
+  read-only route checker grants no mandate, and no mandatory MCP server or new permanent test ships.
 
 ## [3.6.1] — 2026-09-23
 
