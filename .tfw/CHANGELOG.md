@@ -5,6 +5,12 @@ Format: [Keep a Changelog](https://keepachangelog.com/). Versioning: [Semantic V
 
 ## [Unreleased]
 
+## [3.7.0] — 2026-09-28
+
+This release combines the independently reviewed optional Daily route (PTW) and the owner-accepted
+task/phase coordination model (ATC). New-work topology changes from 3.6.1; active historical carriers
+remain readable under their actual authority. See [Updating to TFW 3.7.0](https://github.com/saubakirov/trace-first-starter/blob/v3.7.0/.tfw/migrations/3.7.0.md).
+
 ### Added
 
 - PTW optional Daily (`TFW_20260923-223151_PTW`): `tfw-daily-task` completes a bounded request
@@ -14,7 +20,7 @@ Format: [Keep a Changelog](https://keepachangelog.com/). Versioning: [Semantic V
 
 ### Fixed
 
-- Gate-only launches and continuations exclude briefings, solution hints and copied reasoning.
+- ATC gate-only launches and continuations exclude briefings, solution hints and copied reasoning.
   Required messages name a real workflow checkpoint; advice cannot become a gate by relabelling it.
 - ATC (`TFW_20260928-015408_ATC`) keeps the owner-facing task Coordinator responsible for strategy,
   phase advancement and bounded owner updates. Phase Coordinators keep local role traffic and
