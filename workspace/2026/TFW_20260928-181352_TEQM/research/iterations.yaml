@@ -27,7 +27,7 @@ iterations:
   - number: 4
     focus: "The existing Codex Researcher's second personal iteration, after the Coordinator accepts durable RES from iterations 1, 2 and 3. Reconcile the independent surface observations and CLI evidence, resolve material contradictions, and test task/role binding, counter and time semantics, period versus lifetime totals, money basis, 3-5 product keywords with a primary area, classifier overhead and the single economics.md contract. Recommend the smallest supported first implementation with explicit platform coverage. Do not start until a Coordinator continuation dispatch names the accepted three inputs."
     hypotheses: [H1, H2, H3, H4]
-    status: pending
+    status: complete
     res_file: research/iter4/RES.md
     agent: codex
     sources: [accepted-research-returns, external, codebase, local-diagnostic]
