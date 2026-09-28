@@ -6,5 +6,10 @@ iterations:
   - number: 1
     focus: "Establish H1-H3 from official provider terms, current TFW carriers, and read-only facts from saubakirov-home-linux-01; identify architecture choices that change the owner's decision."
     hypotheses: [H1, H2, H3]
-    status: pending
+    status: complete
     res_file: research/iter1/RES.md
+  - number: 2
+    focus: "Resolve available non-secret entitlement evidence and economic decision limits; map the minimum provenance contract to exact current/new files and templates; challenge subtraction and design the later real two-person/two-project trial without executing it."
+    hypotheses: [H1, H2, H3]
+    status: pending
+    res_file: research/iter2/RES.md
