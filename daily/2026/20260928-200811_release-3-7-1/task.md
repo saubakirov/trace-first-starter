@@ -74,8 +74,13 @@ Pre-action checkpoint only. No new output or release check is claimed yet.
 
 ## 5. Next or close
 
-The selected release product is prepared and checked; the local commit is on `codex/release-3.7.1`.
-Before external delivery, recheck the exact final commit and obtain the owner's explicit authority
-for saved-master integration, `v3.7.1` and push. No tag or publication is claimed. Keep this release
-tree until its result has been integrated and verified; preserve the original checkout and unrelated
-work. Acceptance here covers the owner-selected Daily route and patch, not unobserved native behavior.
+2026-09-28 — the owner answered the explicit master/tag/push question with
+“запушил? пуш сделай”. This authorizes integration and publication of the prepared 3.7.1 release.
+The accepted product Candidate is `d20c79451526b3ef03256b94fb1285f01ecafb76`; its exact release-history
+guard passed. Current master advanced to `7a97665d4a9c0f37799a7ce9cb663f519ab0c62b` through unrelated
+planning traces only. Preserve those committed records through integration without changing their
+authority or lifecycle; uncommitted unrelated work is outside the publication selection.
+
+Next: verify the combined commit, integrate it into saved master, publish master and `v3.7.1`, and
+verify the remote refs. Retire the task-owned release tree only after successful integration and
+verification. Acceptance covers the owner-selected Daily route and patch, not native behavior.
