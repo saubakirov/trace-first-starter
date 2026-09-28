@@ -1,0 +1,23 @@
+{
+  "surface": "separate temporary file-backed project probe",
+  "candidate": "7dfed8bf5350e10f889f66c606a672a52e88f9a3",
+  "copied_paths": [
+    "AGENTS.md",
+    ".tfw/workflows/handoff.md",
+    "workspace\\2026\\TFW_20260928-015408_ATC\\status.md",
+    "workspace\\2026\\TFW_20260928-015408_ATC\\HL-TFW_20260928-015408_ATC.md",
+    "workspace\\2026\\TFW_20260928-015408_ATC\\TS__TFW_20260928-015408_ATC.md",
+    "workspace\\2026\\TFW_20260928-015408_ATC\\ONB__TFW_20260928-015408_ATC.md",
+    "workspace\\2026\\TFW_20260928-015408_ATC\\journal\\20260928-150816__dispatch__aa7f.md"
+  ],
+  "instruction_read": true,
+  "workflow_read": true,
+  "authority_read": true,
+  "lifecycle": "ONB",
+  "responsible_executor_present": true,
+  "parent_route": "codex:thread:local:01a0e442-ef8f-7e83-99fd-5efb81c52927",
+  "next_action": "Executor records EV and RF, then returns to the exact Coordinator",
+  "live_agent_activation": "unobserved",
+  "idle_parent_wake": "unobserved",
+  "immutable_git_validation_in_copy": "unobserved; temporary copy has no Git objects"
+}
