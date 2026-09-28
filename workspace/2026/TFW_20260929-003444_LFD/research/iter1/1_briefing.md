@@ -142,7 +142,18 @@ only as an input to it.
   `tfw.research` file and web limits stay in force.
 - **Session title (Coordinator):** an in-session agent cannot set its own title; recorded as
   unavailable.
-- **Guiding questions:** awaiting the Coordinator's answers.
+- **Guiding questions (Coordinator ruling, [gate answer](../../journal/20260929-010420__gate_answer__f52c.md)
+  in `40a589444c51f799782cbecc3b590b7390fce09d`):** Briefing approved; proceed to Gather in deep mode.
+  - 1(a) `codex sandbox`: approved with no login, no model call, no change to Codex configuration
+    or system settings, no elevation. If it asks for setup or elevation, or would write outside
+    scratch and its ordinary per-run state, stop and report it unobserved with the reason.
+  - 1(b) WSL Ubuntu: approved with the Git already installed there, in a scratch directory inside
+    WSL; no package installation or system change. If Git is absent or lacks a needed feature,
+    report that with its version.
+  - 2: one no-flag run against GitHub (≈114 MiB) approved whether or not the local control
+    reproduces the prefetch, because iteration 2 needs the old method's download time. Exactly
+    once, scratch only, deleted after measuring.
+  - Existing limits, HL non-goals and owner reservations stay in force; no new scope.
 
 **Knowledge handover.** Producer and recipient as in the header. Inspected: `status.md`, the
 journal, the frozen HL, `iterations.yaml`, `tfw.research`, the `conventions.md` sections the
