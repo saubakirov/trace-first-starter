@@ -13,14 +13,14 @@ iterations:
   - number: 2
     focus: "Claude self-inspection, independently and in parallel with iteration 3. Owner launches /tfw-research for this task inside Claude; that launch selects THIS iteration, not the first globally pending entry. Identify the current surface/mode/version and inspect only this session's accessible numeric metadata: session/model identity, input/output/cache/thinking tokens, duration and money basis. Demonstrate one small safe observation where possible; state exactly what this session exposes, how economics.md could collect it, and which differences from Claude CLI are observed or unknown. One short focused pass, no intermediate approval waits; save the stage traces and RES only under research/iter2. Do not inspect the other active iterations. Selection authority and the owner's task-specific parallel exception are in HL section 4.1 and the dispatch journal."
     hypotheses: [H1, H4]
-    status: pending
+    status: complete
     res_file: research/iter2/RES.md
     agent: claude
     sources: [own-session-metadata, external, local-diagnostic]
   - number: 3
     focus: "Antigravity self-inspection, independently and in parallel with iteration 2. Owner launches /tfw-research for this task inside Antigravity; that launch selects THIS iteration, even while iteration 2 is pending. Identify the current surface/mode/version and inspect only this session's accessible numeric metadata: session/model identity, input/output/cache/thinking tokens, duration and money basis. Demonstrate one small safe observation where possible; state exactly what this session exposes, how economics.md could collect it, and which differences from agy CLI are observed or unknown. One short focused pass, no intermediate approval waits; save the stage traces and RES only under research/iter3. Do not inspect the other active iterations. Selection authority and the owner's task-specific parallel exception are in HL section 4.1 and the dispatch journal."
     hypotheses: [H1, H4]
-    status: pending
+    status: complete
     res_file: research/iter3/RES.md
     agent: antigravity
     sources: [own-session-metadata, external, local-diagnostic]
