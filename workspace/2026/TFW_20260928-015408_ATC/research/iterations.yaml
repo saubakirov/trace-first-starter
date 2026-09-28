@@ -11,5 +11,5 @@ iterations:
   - number: 2
     focus: "Deep counter-evidence for H1-H5: compare the shortest direct route with a bounded task-strategy/phase or successor route on idle-parent wake, complete versus omitted intent, long and branching handover, and ambiguous delivery. Distinguish current desktop observations from proposed scheduler/API capabilities; report unsupported native claims rather than assuming them."
     hypotheses: [H1, H2, H3, H4, H5]
-    status: pending
+    status: complete
     res_file: research/iter2/RES.md
