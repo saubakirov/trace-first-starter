@@ -54,3 +54,11 @@ No applicable contradiction in the governing knowledge. The Candidate behavior c
 ## Checkpoint
 
 **Self-check:** VALUE → ASSURANCE → TRACE applied; Purpose checked against baseline HL and North Star; evidence existence separated from sufficiency; both items have full routes and Candidate effects; one verdict derived from material harm. Stage complete: YES.
+
+## Bounded follow-up judgment — ruled Round 1, 2026-09-29
+
+The previous REVISE remains the historical verdict on Candidate `83227789c5218a01d669acb42903844c5dc21bd9`. For replacement Candidate `d0428128c83767d78eaa7edd34ffb3e2741f4ed3`, F1–F3 are satisfied by the independent observations in the Verify addendum: the routine Codex path reconciles native responses and qualifies conflicting counts, task-root aggregation includes phase leaves once, and an actual zero-write Researcher return renders in the three-role report.
+
+VALUE now serves the HL purpose and North Star with inspectable source bounds and correct affected arithmetic. ASSURANCE establishes the affected claims with 125 focused checks, actual returned files, configured checks and finite limitations. TRACE retains the original owner approval, one Coordinator ruling, same Executor, immutable replacement Candidate, exact approved accounting and independent Reviewer address. Human acceptance, final report and DONE remain reserved Coordinator/owner gates; they are not claimed by this judgment.
+
+The report wording about four incomplete source captures is a non-material TRACE presentation observation: two listed files are excluded old revisions, and the report also lists exclusions and each selected source. Coordinator can clarify selected coverage in its final report. No VALUE Candidate change is required. **Current aggregate verdict: APPROVE** for the replacement Candidate; no open material item changes acceptance or the next authorized act. Follow-up self-check: VALUE → ASSURANCE → TRACE and mandatory safety, authority and result identity floors checked; YES.

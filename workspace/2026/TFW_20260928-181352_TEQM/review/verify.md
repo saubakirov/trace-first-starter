@@ -149,3 +149,17 @@ ONB §7 names this Executor's inspected scope and source epoch; RF §7 says no n
 ## Checkpoint
 
 **Self-check:** All mapped claims and mandatory floors checked; required TS checks and affected probes run; evidence limits, controls and two complete material finding routes recorded; citations and accounting replayed. Stage complete: YES.
+
+## Bounded follow-up — ruled Round 1, 2026-09-29
+
+The Coordinator approved F1–F3 at `94ebaf4908fb167db42cfb81582752b70e256e4f`; the same Executor returned replacement Candidate `d0428128c83767d78eaa7edd34ffb3e2741f4ed3` and EV/RF at `b44b28e8ac850d54dd202882ced59f6f73f45fb0`. This follow-up checks only affected behavior and dependencies; unchanged PV, authority, source-surface and workflow checks above remain applicable.
+
+| Claim | Independent result | Bound |
+|---|---|---|
+| F1, Codex usage | Corrected reader chooses 460 deduplicated response records / 64,405,038 tokens for the original Coordinator prefix and visibly qualifies the smaller 62,902,737-token count stream. The later standard Coordinator revision 2 has 519 unique responses / 74,457,766 tokens; its file hash and usage-row sum were independently checked. The Executor's revision 2 selects 49,765,382 rather than the smaller count stream. | Each capture is a finite source prefix; later work is outside its cutoff. |
+| F2, root/phase rollup | Replayed task-local fixture: root 7 + phase 5 = 12 tokens, October period 5; absent phase bytes stay named and duplicate bytes do not add. | Structural fixture, not a claim of current real phase work. |
+| F3, valid zero-write return | Replayed actual three-role return: 121,552,538 tokens and $101.6157816 conditional API equivalent, without crash. Zero cache writes price to zero; unknown positive split remains unpriced. | Final task report is a later Coordinator act. |
+| Accounting | Reparsed NUL-delimited `--name-status -z` and `--numstat -z` with the exact TS 26-path literal selector from Baseline `a669ff6ef1289e9bab2a565496cffb93d2a3210c` to replacement Candidate: five A, 21 M, 2,173 additions + 31 deletions = 2,204 touched text LOC; no rename/binary. | Below immutable 52-file / 5,000-line owner ceiling. |
+| Assurance | Task-local `verify_economics.py`: 125 PASS; configured `tools/tests/ docs/scripts/`: 14 PASS; Python compile PASS. Four-current-role pre-close report at `b4983c82fba180640950c72be9b9db5a2a39e6e6` independently reconciles Coordinator 74,457,766 + Executor 49,765,382 + Researcher 28,923,212 + initial Reviewer 7,199,394 = 160,345,754. | Report explicitly retains historical other-product and finite-tail limits. The Reviewer's later revision 2 is a successor still to be incorporated by Coordinator. |
+
+No open material F1–F3 gap remains. One record presentation observation remains: the pre-close report's “Incomplete source captures: 4” counts two excluded superseded revisions as well as two selected finite snapshots. Its detailed file list and exclusion count disclose this; a final report can distinguish selected incomplete coverage from preserved excluded files without changing Candidate. Follow-up self-check: affected behavior, accounting, mandatory boundaries, new actual returns and limits checked; YES.
