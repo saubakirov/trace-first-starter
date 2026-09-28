@@ -1,0 +1,162 @@
+{
+ "MEASURE (this session, README задача из TFW)": {
+  "file": "24b16148-68a5-4483-a9ed-de7703088aaa.jsonl",
+  "sessionIds": [
+   "24b16148-68a5-4483-a9ed-de7703088aaa"
+  ],
+  "first": "2026-09-28T19:01:52.748000+00:00",
+  "last": "2026-09-28T19:09:18.400000+00:00",
+  "span_h": 0.12,
+  "active_h_gap5m": 0.12,
+  "cw_split_mismatch": 0,
+  "agent_results": [],
+  "per_model": {
+   "claude-sonnet-5": {
+    "calls": 15,
+    "input": 30,
+    "cw5m": 0,
+    "cw1h": 62366,
+    "cread": 1377923,
+    "output": 24709,
+    "thinking": 10053,
+    "ws": 0,
+    "wf": 0
+   },
+   "claude-opus-5-5": {
+    "calls": 11,
+    "input": 22,
+    "cw5m": 0,
+    "cw1h": 134316,
+    "cread": 1397149,
+    "output": 12955,
+    "thinking": 5880,
+    "ws": 0,
+    "wf": 0
+   }
+  }
+ },
+ "PLAN · ROBBIE (coordinator, main thread)": {
+  "file": "4ef441df-2766-4845-9456-1d6a63638d85.jsonl",
+  "sessionIds": [
+   "4ef441df-2766-4845-9456-1d6a63638d85"
+  ],
+  "first": "2026-09-28T08:05:31.968000+00:00",
+  "last": "2026-09-28T19:09:08.030000+00:00",
+  "span_h": 11.06,
+  "active_h_gap5m": 2.02,
+  "cw_split_mismatch": 0,
+  "agent_results": [
+   [
+    "adb0478c58f827410",
+    "async_launched"
+   ],
+   [
+    "a53c7153c7e53dee1",
+    "async_launched"
+   ],
+   [
+    "a7e389d39ef7f5d57",
+    "async_launched"
+   ]
+  ],
+  "per_model": {
+   "claude-opus-5-5": {
+    "calls": 23,
+    "input": 46,
+    "cw5m": 0,
+    "cw1h": 613456,
+    "cread": 3031337,
+    "output": 110951,
+    "thinking": 96644,
+    "ws": 0,
+    "wf": 0
+   },
+   "claude-fable-5-1": {
+    "calls": 86,
+    "input": 2120,
+    "cw5m": 0,
+    "cw1h": 448980,
+    "cread": 31211330,
+    "output": 181284,
+    "thinking": 76289,
+    "ws": 0,
+    "wf": 0
+   }
+  }
+ },
+ "researcher-robbie": {
+  "file": "4ef441df-2766-4845-9456-1d6a63638d85\\subagents\\agent-adb0478c58f827410.jsonl",
+  "sessionIds": [
+   "4ef441df-2766-4845-9456-1d6a63638d85"
+  ],
+  "first": "2026-09-28T12:29:53.930000+00:00",
+  "last": "2026-09-28T13:42:38.337000+00:00",
+  "span_h": 1.21,
+  "active_h_gap5m": 1.21,
+  "cw_split_mismatch": 0,
+  "agent_results": [],
+  "per_model": {
+   "claude-opus-5-5": {
+    "calls": 155,
+    "input": 320,
+    "cw5m": 696278,
+    "cw1h": 0,
+    "cread": 57508725,
+    "output": 347443,
+    "thinking": 191722,
+    "ws": 0,
+    "wf": 0
+   }
+  }
+ },
+ "reviewer-robbie": {
+  "file": "4ef441df-2766-4845-9456-1d6a63638d85\\subagents\\agent-a7e389d39ef7f5d57.jsonl",
+  "sessionIds": [
+   "4ef441df-2766-4845-9456-1d6a63638d85"
+  ],
+  "first": "2026-09-28T16:01:18.664000+00:00",
+  "last": "2026-09-28T19:09:18.664000+00:00",
+  "span_h": 3.13,
+  "active_h_gap5m": 1.07,
+  "cw_split_mismatch": 0,
+  "agent_results": [],
+  "per_model": {
+   "claude-opus-5-5": {
+    "calls": 188,
+    "input": 378,
+    "cw5m": 2576700,
+    "cw1h": 0,
+    "cread": 76793589,
+    "output": 279902,
+    "thinking": 135631,
+    "ws": 0,
+    "wf": 0
+   }
+  }
+ },
+ "executor-robbie": {
+  "file": "4ef441df-2766-4845-9456-1d6a63638d85\\subagents\\agent-a53c7153c7e53dee1.jsonl",
+  "sessionIds": [
+   "4ef441df-2766-4845-9456-1d6a63638d85"
+  ],
+  "first": "2026-09-28T13:59:09.208000+00:00",
+  "last": "2026-09-28T19:08:19.368000+00:00",
+  "span_h": 5.15,
+  "active_h_gap5m": 3.57,
+  "cw_split_mismatch": 0,
+  "agent_results": [],
+  "per_model": {
+   "claude-opus-5-5": {
+    "calls": 470,
+    "input": 944,
+    "cw5m": 6363402,
+    "cw1h": 0,
+    "cread": 239312921,
+    "output": 794470,
+    "thinking": 402086,
+    "ws": 0,
+    "wf": 0
+   }
+  }
+ }
+}
