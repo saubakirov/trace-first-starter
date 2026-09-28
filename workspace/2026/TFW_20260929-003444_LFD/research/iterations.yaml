@@ -1,0 +1,10 @@
+task_id: TFW_20260929-003444_LFD
+title: Lightweight framework delivery — light fetch and install methods, version-check cost, update time split and subtraction
+min_iterations: 2
+max_iterations: 3
+iterations:
+  - number: 1
+    focus: "Test H1, H3 and H4 empirically on this machine. H1: candidate light-fetch methods for update (partial clone limited to framework paths; blobless clone plus git archive --worktree-attributes) in Windows Git Bash and Windows PowerShell, measuring transferred bytes, time and per-file hash equality against the v3.7.1 framework tree, line endings included; archive-only .gitattributes behaviour for a local git archive, and every git archive use in maintainer procedures. H3: latest-release check cost and failure behaviour (unreachable host, no network, pre-release tags ignored). H4: which files install actually needs beyond .tfw/ and editions/. Report Codex sandbox availability as observed or unavailable, never assumed. Scratch directories outside the repository only; no receiver, remote or GitHub-side change; no private receiver names or machine paths in research files."
+    hypotheses: [H1, H3, H4]
+    status: pending
+    res_file: research/iter1/RES.md
