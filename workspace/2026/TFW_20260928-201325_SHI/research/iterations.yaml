@@ -1,0 +1,10 @@
+task_id: TFW_20260928-201325_SHI
+title: Shared host, human launch provenance, subscription permission and parallel project isolation
+min_iterations: 2
+max_iterations: 3
+iterations:
+  - number: 1
+    focus: "Establish H1-H3 from official provider terms, current TFW carriers, and read-only facts from saubakirov-home-linux-01; identify architecture choices that change the owner's decision."
+    hypotheses: [H1, H2, H3]
+    status: pending
+    res_file: research/iter1/RES.md
