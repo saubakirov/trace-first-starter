@@ -1,0 +1,12 @@
+task_id: TFW_20260928-181352_TEQM
+title: "Session economics capture in local Antigravity, Claude Desktop, and Codex"
+min_iterations: 2
+max_iterations: 2
+iterations:
+  - number: 1
+    focus: "Map exact local surfaces and supported session/token/time/money hooks or exports for Antigravity, Claude Desktop, and Codex; make bounded practical attempts under the local-probe grant, label documented versus observed capability, and recommend the first capture path."
+    hypotheses: [H1, H4]
+    status: pending
+    res_file: research/iter1/RES.md
+    agent: codex
+    sources: [external, codebase, local-diagnostic]
