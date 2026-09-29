@@ -122,3 +122,63 @@ and the text requires disclosure.
 Scratch receivers, clones and install folders were deleted after measuring; the WSL folders were
 removed. The local mirror and the scratch logs stay in the Executor's scratch area until RF is
 returned, then are deleted.
+
+---
+
+## Round 2 (TS revision 2): the version line's limit
+
+Round 2 changes one clause of one file: the limit of the version line in `.tfw/conventions.md`, from
+about 5 s to about 13 s (HL §12 A5). Candidate `cd4fe89a624897e2d0da2a58e31edb63cce052c7` on branch
+`lfd/exec` is one commit after the accepted Candidate `0b755dca`; the difference between them is that one
+line. Every trial below ran on 2026-09-29 by the round-2 Executor (`lfd-executor-r2`) in its scratch
+area outside every real receiver; paths are shown by role. Nothing in a real receiver, a remote or
+GitHub changed. The only remote traffic is `git ls-remote --tags --refs` (about 3 KB, read-only) to the
+public upstream and, for the unreachable case, to a documentation-range address that answers nobody.
+
+### Method
+
+- **The rule as written.** A scratch harness (not committed) applies the Candidate's rule text: it reads
+  the receiver's `.tfw/VERSION` and `tfw.upstream` (from `.tfw/project_config.yaml`), makes no call when
+  `tfw.installed_from` is `"self"`, otherwise makes one `git ls-remote --tags --refs <tfw.upstream>`,
+  keeps the exact `vX.Y.Z` tags and prints the row. It enforces no time limit itself.
+- **The limit belongs to the tool.** Each check ran as one call of this unit's Claude Code shell tool
+  with its `timeout` parameter set to 13,000 ms, the mechanism the rule names. The tool's own message
+  is the observation at the limit.
+- **Scratch receivers.** `behind` (`.tfw/VERSION` 3.1.0) and `current` (3.7.1) point at the public
+  upstream; `blackhole` (3.7.1) points at `https://192.0.2.1/…` (TEST-NET-1); `offline` (3.7.1) at an
+  `.invalid` host; `self` carries `installed_from: "self"`.
+- **Slow-link stand-in.** A scratch CONNECT proxy on 127.0.0.1 (standard library only, refusing every
+  target but `github.com:443`) waits 6.0 s before it opens the tunnel. It is injected through Git's
+  environment configuration (`GIT_CONFIG_COUNT`, key `http.proxy`), so the harness and the rule's command
+  stay unchanged. It emulates a slow link in front of the real upstream; it is not a real slow network.
+
+### Results
+
+| # | Case | Tool limit | Observed | Row as the rule shows it |
+|---|---|---:|---|---|
+| R2-1 | behind: 3.1.0 against the public upstream | 13,000 ms | completed, exit 0, 1.28 s; 50 tags, 45 exact | installed 3.1.0 · newest 3.7.1 · 11 releases newer · `/tfw-update` now or after this task |
+| R2-2 | current: 3.7.1 | 13,000 ms | completed, 1.11 s | installed 3.7.1 · current · no offer |
+| R2-3 | three more ordinary checks (behind), one call | 13,000 ms | 1.31 s, 1.21 s, 1.07 s; the same row | as R2-1 |
+| R2-4 | **unreachable**: upstream at a blackholed address | 13,000 ms | the tool returned at its limit with `Command did not complete within its 13s timeout and was moved to the background`; no answer had arrived; the command ended by itself after 21.21 s with `git` exit 128; no process remained | installed 3.7.1 · newest unknown (no answer within about 13 s) · nothing blocked |
+| R2-5 | offline control: upstream on an `.invalid` host (not affected by the limit) | 13,000 ms | exit 128 after 0.38 s (round 1: 0.35 s) | newest unknown (host not found) · nothing blocked |
+| R2-6 | slow-answer stand-in: 6.0 s in front of the real upstream | 13,000 ms | completed, exit 0, 7.26 s; 50 tags | as R2-1: the real answer is shown |
+| R2-7 | the same stand-in under the round-1 limit | 5,000 ms | the tool returned at 5 s with no answer; the command finished by itself, exit 0, 7.29 s after its start, with the same 11-releases-newer answer | would have shown `unknown` although the upstream answered: the case that motivated A5 |
+
+Calibration of the stand-in without a tool limit: 7.34 s, one tunnel. The upstream-itself case makes no
+call and is unchanged from round 1; the harness printed its no-call row once as a parse check. No case
+ran `/tfw-update`. At the tool's limit the command is not stopped: it runs to its own end and a
+completion notice follows, which changes nothing in the row.
+
+### Release archive of the new Candidate (dependency check)
+
+`git archive --format=zip cd4fe89a` (attributes from the tree, as GitHub archives): 525,789 bytes; 130
+members equal to the allow-list computed from `git ls-tree`; 130/130 byte-equal to their tree blobs;
+`.gitattributes` absent. The same computation for `0b755dca` gives 525,788 bytes and 130/130, so the
+one added character is the whole difference.
+
+### Round 2 cleanup
+
+The scratch receivers, the harness, the proxy script with its log, the two archives and the tool's
+task output files stay in the Executor's scratch area until this round's RF is committed, then are
+deleted by this Executor. The proxy process was stopped after checking that its process ID belonged to
+the scratch script; no listener remained on its port and no trial process remained.
