@@ -5,7 +5,7 @@ Selected by `CLAUDE.md` at new-task entry and Plan Step 5 or a changed capabilit
 ## Startup card values on Claude Code
 
 At new-task entry, render one shared startup card from mechanisms actually exposed in this
-Claude surface; the dated Helpdesk report below is context, not today's capability receipt.
+Claude surface; the owner's dated Claude Desktop report below is context, not today's capability receipt.
 Offer the visible full-chat route: the owner may need to click-create each separate Coordinator,
 Researcher, Executor and independent Reviewer chat, with native addressed gates where current
 tools support them. Owner-only or bounded delegated activation with `tfw-gates-only` dialogue and native-gates
@@ -30,7 +30,7 @@ and checkout disposition. Archive is not disk cleanup.
 
 ## Dated source and current check
 
-The owner-supplied Claude Desktop Helpdesk report selected in PCUX HL §2 is dated 2026-09-23 and scoped to that setup. It reports that click-created full chats require a nonempty first prompt, a local launch shares the current checkout, tested isolated launches used a different base, subagents could be created, and exact addressed sends to known sessions were described. It did not demonstrate a complete TFW cycle, reliable title readback, browser access in every role, or every Claude surface. Report `provision · addressed send · wait/readback · title/readback` separately from current tools and observed receipts; classify each `native`, `owner-assisted` or `unavailable`. An owner report is a bounded source, not a live current-surface trial.
+The owner-supplied Claude Desktop report selected in PCUX HL §2 is dated 2026-09-23 and scoped to that setup. It reports that click-created full chats require a nonempty first prompt, a local launch shares the current checkout, tested isolated launches used a different base, subagents could be created, and exact addressed sends to known sessions were described. It did not demonstrate a complete TFW cycle, reliable title readback, browser access in every role, or every Claude surface. Report `provision · addressed send · wait/readback · title/readback` separately from current tools and observed receipts; classify each `native`, `owner-assisted` or `unavailable`. An owner report is a bounded source, not a live current-surface trial.
 
 On 2026-09-27 the owner reported good results with a single Coordinator and TFW subagents in other
 projects using TFW 3.6.1 on Claude Desktop. This supports offering the mode, not a claim of independently
