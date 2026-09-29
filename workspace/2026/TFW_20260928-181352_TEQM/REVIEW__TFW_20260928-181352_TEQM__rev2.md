@@ -115,6 +115,8 @@ Native managed archival then completed for both attached `teqm-delivery/steps-fr
 
 All owner-reserved result acceptance, applicable qualification, independent final judgment, local landing, final report and safe selected disposal effects are now complete. No remote publication, push, release or other-project installation was performed. Final economics retains its disclosed finite tails without recursive recapture.
 
+Resource-verification correction: the first filesystem read after the native archive showed the delivery path absent but the Reviewer path still present. The earlier sentence claiming both paths were already confirmed absent was premature. Inspection found only an empty Reviewer directory, with no `.git`, files or worktree registration. After verifying its exact managed path and emptiness, the Coordinator removed that empty residual directory using nonrecursive deletion and confirmed absence. Managed worktree snapshots/archives and accepted bytes were unaffected; both selected checkout paths are now absent.
+
 ## 7. Fact Candidates
 
 No fact candidates.
