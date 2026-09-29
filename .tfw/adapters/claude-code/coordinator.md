@@ -5,7 +5,7 @@ Selected by `CLAUDE.md` at new-task entry and Plan Step 5 or a changed capabilit
 ## Startup card values on Claude Code
 
 At new-task entry, render one shared startup card from mechanisms actually exposed in this
-Claude surface; the owner's dated Claude Desktop report below is context, not today's capability receipt.
+Claude surface.
 Offer the visible full-chat route: the owner may need to click-create each separate Coordinator,
 Researcher, Executor and independent Reviewer chat, with native addressed gates where current
 tools support them. Owner-only or bounded delegated activation with `tfw-gates-only` dialogue and native-gates
@@ -18,7 +18,7 @@ Coordinator. No subagent substitutes for a visible, directly addressable TFW rol
 
 Show role-specific visible titles when the surface can set and read them. Use task-only grouping
 when supported; report an unavailable mechanism or required owner action. Do not assume a Codex
-Section exists here. For the reported Desktop route, use the owner-selected local
+Section exists here. On Claude Desktop, use the owner-selected local
 checkout, serialize mutation and hold the Executor while an independent Reviewer examines a fixed
 reachable Candidate; do not invent a path. The Coordinator selects model and effort separately at
 each launch from actual available choices and records rationale outside the first message; report
@@ -28,19 +28,11 @@ Name owner clicks, HL/TS and reserved verdicts still owed. Close only after dura
 returns, independent acceptance, selected docs/knowledge/changelog effects and safe chat/archive
 and checkout disposition. Archive is not disk cleanup.
 
-## Dated source and current check
-
-The owner-supplied Claude Desktop report is dated 2026-09-23 and scoped to that setup. It reports that click-created full chats require a nonempty first prompt, a local launch shares the current checkout, tested isolated launches used a different base, subagents could be created, and exact addressed sends to known sessions were described. It did not demonstrate a complete TFW cycle, reliable title readback, browser access in every role, or every Claude surface. Report `provision · addressed send · wait/readback · title/readback` separately from current tools and observed receipts; classify each `native`, `owner-assisted` or `unavailable`. An owner report is a bounded source, not a live current-surface trial.
-
-On 2026-09-27 the owner reported good results with a single Coordinator and TFW subagents in other
-projects using TFW 3.6.1 on Claude Desktop. This supports offering the mode, not a claim of independently
-verified tool coverage, browser access or reliability on every surface.
-
 ## Visible full-chat route
 
 At each ready role gate, request the owner click if full-chat creation is owner-assisted. The nonempty initial prompt is exactly `/tfw-* <task[/phase]>`; do not create an empty waiting pool or attach a briefing. A pool is conditional only on a surface that actually permits command-only later activation. A creation receipt or first normal gate may supply transport readiness/address without a compulsory second handshake. Existing chats can use exact addressed sends when exposed; manual creation alone does not select fully manual reporting. Active Researcher, Executor and Reviewer still return native vertical gates to their own Coordinator unless the owner explicitly selected `owner-transfer`. This route cannot claim unattended completion while future owner clicks or reserved decisions remain.
 
-Use one owner-selected local checkout/worktree for visible full chats on the reported Desktop route. Serialize repository mutation with one active owner and exact-path commits; preserve foreign work. Hold Executor mutation while the independent Reviewer examines a fixed reachable Candidate. Sequence conflicting phase work in that same checkout. Do not silently move the chain to provider-created isolated trees with a stale base. Archive is recoverable conversation disposition, not disk cleanup; preserve its restoration dependencies or expose the remaining disposal decision.
+Use one owner-selected local checkout/worktree for visible full chats on Claude Desktop. Serialize repository mutation with one active owner and exact-path commits; preserve foreign work. Hold Executor mutation while the independent Reviewer examines a fixed reachable Candidate. Sequence conflicting phase work in that same checkout. Do not silently move the chain to provider-created isolated trees with a stale base. Archive is recoverable conversation disposition, not disk cleanup; preserve its restoration dependencies or expose the remaining disposal decision.
 
 ## One-phase and successor limits
 
