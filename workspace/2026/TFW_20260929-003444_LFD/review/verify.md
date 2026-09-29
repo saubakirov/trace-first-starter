@@ -337,3 +337,220 @@ Coordinator's close.
 - [x] Verified RF AC claims, evidence references, citations and immutable accounting against actual artifacts?
 
 Stage complete: YES
+
+---
+
+## Round 2 — bounded follow-up for TS revision 2 (2026-09-29)
+
+> Map: [map.md](map.md) round 2 at `b2638056aeea9daa34726062952965766f57ada9`. Accepted subject: Candidate `cd4fe89a624897e2d0da2a58e31edb63cce052c7` on `lfd/exec` (tree `c3f5fbb8e5e347883de42a3585ca236473e520f8`); Baseline `49703481e1b02ac725428dfd8da19c4d7c954c86`. Reviewer unit `claude-code:agent:local_e821cd09-6696-482b-bd88-ca93dba929a2/lfd-reviewer-r2`.
+
+All runs below took place on 2026-09-29 between about 12:55 and 13:20 +05:00 on the owner's Windows 11 machine, in this Reviewer's own scratch area (`<scratch>`, outside the repository and every real receiver), with Git 2.42.0.windows.1, Windows PowerShell 5.1.26100.9549, Python 3.13 and Claude Code 2.1.284 (this unit's own shell and PowerShell tools, whose `timeout` parameter is the mechanism the rule names). The accepted subject was read from the shared object store. Remote traffic was read-only `git ls-remote` (about 3 KB each) to the public upstream, one attempt to a documentation-range address that answers nobody, and one local stand-in on the loopback interface. No receiver, remote or GitHub state changed. One process-listing query of mine was broader than intended and printed unrelated tool command lines; nothing from it is recorded here or in any committed file, and it is disclosed in the REVIEW.
+
+### Selection Argument (round 2)
+
+| Claim IDs | Risk / criticality | Affected behavior / dependencies | Environment | Oracle / authority | Evidence gap / limit | Selected verification and why |
+|---|---|---|---|---|---|---|
+| R2-C1 | High: the number ships to every receiver | one clause of `conventions.md`; any other carrier of the limit | text | TS rev 2 AC-6; HL §12 A5, DoD 6 | none | read the clause, diff both Candidates and the Baseline, search the whole Candidate tree and the task records (V-R2-1) |
+| R2-C2 | High: DoF 3, the owner's control of the start | tool `timeout`; Git on a blackholed address; leftover process | Claude Code shell and PowerShell tools, Windows, Git 2.42 | TS rev 2 AC-6 bullet 2; DoF 3 | Executor's run is not mine | re-run through my own tools at 13,000 ms; record the tool's behavior, Git's own end and leftovers (V-R2-2) |
+| R2-C3 | Medium: A5's purpose | same tool limit; ordinary `ls-remote`; a slow answer between the limits | same; public upstream; loopback stand-in | TS rev 2 AC-6 bullet 2 | the 3–5 s window may not recur; a stand-in is not a real slow network | ordinary checks for behind and current, then my own delayed-answer stand-in under 13,000 ms and 5,000 ms (V-R2-3) |
+| R2-C4 | Medium | path set, bytes, budget, archive, no new tool | Git, Python | TS rev 2 §4, AC-8; HL DoD 5, 8 | none | Git diffs, `wc -w`, blob ids, token search, archive audit against an allow-list derived from the AC-5 text (V-R2-4) |
+| R2-C5 | Identity floor | Candidate history and order | Git | TS §4 Candidate rule | none | branch, parentage, commit contents and times (V-R2-5) |
+| R2-C6 | Authority floor | accounting method | PowerShell 5.1 | TS rev 2 §4 | none | TS commands verbatim for both Candidates (V-R2-6) |
+| R2-C7 | Human authority floor | A5 row, freeze, gate answer, no push or tag | task records; local refs; read-only remote listing | HL §4.1, §12 A5, HL Contract rules 3, 5, 8, 9, 12, 14 | the owner's words are read only through the journal | freeze diff, §4.1 identity, TS diff, gate-answer read, refs and remote listing (V-R2-7) |
+| R2-C8 | Safety floor | every file this round commits | local guard | TS §4 M1; HL DoF 6 | pattern-based | guard over eleven commits and positive controls (V-R2-8) |
+| R2-C9, R2-C10 | Medium / low | named limits; build gate | Python 3.13 | HL principle 7; project config | tests do not exercise instruction text | wording audit; gate on an extracted tree (V-R2-9, V-R2-10) |
+| R2-C11 | Low | economics file | Python 3.13 | economics README | reconciliation is the Coordinator's | helper validate and hash (V-R2-11) |
+| Reuse | Medium | round-1 evidence E1–E17, E20–E22 | unchanged | round-1 verify at `de5af646` | dependency state | blob equality of unchanged paths, `update.md` does not read the clause, remote tag object unchanged, no PV source changed (V-R2-12) |
+
+Safety/security, human acceptance authority and accepted-result identity are mandatory floors and were verified regardless of sampling (V-R2-5, V-R2-7, V-R2-8).
+
+### Verification Log (round 2)
+
+#### V-R2-1: R2-C1 — the rule text and every carrier of the limit
+- **Accepted claim / authority:** the version line requires one `git ls-remote --tags --refs <tfw.upstream>` under about 13 s on the agent's own tool; all other clauses unchanged (TS rev 2 AC-6 bullet 1; HL §12 A5).
+- **Subject tuple:** `.tfw/conventions.md` blob `66b1d877` at `cd4fe89a`, lines 1094–1101; text; no dependency state.
+- **Action or evidence:** printed the paragraph; `git diff` against `0b755dca`; compared each AC-6 clause; `git grep` over the Candidate tree outside `workspace/` and `site/` for `about 5 s`, `5 s`, `5,000`, `13 s`; `plan.md` and `update.md` searched for the card and the line; the HL and TS revision 2 searched for old-limit statements.
+- **Observed:** the diff is the single line 1096, "about 5 s" to "about 13 s"; the paragraph carries exact `vX.Y.Z` with suffixed tags never counted, one `ls-remote` under the limit "because Git has no connect limit", a tool that cannot bound time skipping the call, how many newer and the `/tfw-update` now-or-after offer, "never starts an update", `unknown` with the reason for a skipped, failed or limited call, and no call and no offer when `tfw.installed_from` is `"self"`; every AC-6 element is present. The limit appears in framework text once, at line 1096; `plan.md` (lines 104–105) reaches the card only by pointer to the rule; `update.md` and the receipt template never read it. In the task records the current statements say 13 s (HL DoD 6, A5, TS revision 2 AC-6 and §6); the remaining "about 5 s" mentions are labelled history (HL §9 row, §10 H3 row) or are A5's own text. The changelog has no LFD entry yet.
+- **Limit:** textual search.
+- **Result:** HOLDS
+
+#### V-R2-2: R2-C2 — unreachable upstream under the 13,000 ms limit
+- **Accepted claim / authority:** the tool returns control at the limit, the row reads `unknown` with the reason, nothing blocked (AC-6 bullet 2; DoF 3).
+- **Subject tuple:** rule text at `cd4fe89a`; a scratch receiver whose `tfw.upstream` is a TEST-NET-1 address; a harness written for this review that applies only the rule's reading steps and enforces no limit; this unit's Bash tool and PowerShell tool with `timeout` 13,000 ms; Windows, Git 2.42.
+- **Action or evidence:** one call per tool; harness log for the process's own end; a check for processes left over.
+- **Observed:** both tools returned control at the limit with `Command did not complete within its 13s timeout and was moved to the background` and no answer, so the row the rule requires is `newest unknown (no answer within about 13 s) · nothing blocked`. The command then ended by itself: 21.36 s in the Bash run, 21.18 s in the PowerShell run ("Failed to connect ... after 21055 ms"), exit 128. No process of the trial remained, checked after each.
+- **Limit:** these two Claude Code tools on Windows. On Linux Git holds a blackholed connect for 131 s (HL §2), so there the tool's limit is the only bound; Linux, macOS, WSL, the Codex sandbox and other tools are unobserved. At the limit the command is not stopped; it runs to its own end and a completion notice follows, as in round 1 at 5 s.
+- **Result:** HOLDS
+
+#### V-R2-3: R2-C3 — ordinary and slow answers under the new and the old limit
+- **Accepted claim / authority:** an ordinary check completes under the new limit; an answer slower than the old limit and faster than the new completes, and the old limit would have cut it (AC-6 bullet 2; A5).
+- **Subject tuple:** same rule text, harness and tools; ordinary: the public upstream for installed 3.1.0 and 3.7.1; slow: a scratch bare repository (five exact tags, two suffixed) served by my own standard-library server on the loopback interface that waits 7.0 s and then returns the genuine Git ref advertisement; the server stops by itself after four requests or 150 s.
+- **Observed:** behind 3.1.0: 1.35 s inside Git, exit 0, 50 tags listed, 45 exact, row `newest 3.7.1 · 11 releases newer · /tfw-update now or after this task`; current 3.7.1: 1.22 s, `current · no offer`; three more whole-harness calls took 1.98–2.30 s. Slow stand-in under 13,000 ms: completed in 7.40 s, exit 0, correct row (`newest 3.7.1 · 3 releases newer`, 7 tags listed, 5 exact, suffixed ignored). The same stand-in under 5,000 ms: the tool returned at 5 s with no answer while the command ended by itself at 7.31 s with the same correct answer. The server log shows two requests, each held 7.0 s, and its own stop; the port was free afterwards.
+- **Limit:** the round-1 window of 3.2–4.8 s did not recur in any later observation (round-1 Reviewer 1.02–1.51 s, round-2 Executor 1.07–1.31 s, this review 1.22–1.35 s in Git and about 2 s per whole call), so the slow-link case rests on emulation: the Executor's proxy at 7.26 s and my stand-in at 7.40 s, two independent designs with the same result. Any answer within the limit completes by construction of the tool's limit.
+- **Result:** HOLDS; the window's non-recurrence is observation R2-O1.
+
+#### V-R2-4: R2-C4 — one clause, byte-identical elsewhere, budget, archive
+- **Accepted claim / authority:** TS rev 2 §4 and AC-8; HL DoD 5, 8.
+- **Subject tuple:** `cd4fe89a` against `0b755dca` and the Baseline; Git 2.42; Python 3.13.
+- **Observed:** `git diff --stat 0b755dca cd4fe89a`: `.tfw/conventions.md`, 1 insertion, 1 deletion, nothing else; so the seven other VALUE paths and the derived copy are byte-identical (same blobs, `update.md` and its copy both `c630386e`). Baseline to Candidate outside `workspace/`: exactly the nine paths of TS §4 (eight VALUE, one derived), one added file (`.gitattributes`, mode 100644, no script or hook). `update.md` 1,492 words (ceiling 1,500). No `$0`–`$9` or `$ARGUMENTS` in any added line. `git diff --name-only Baseline..Candidate` returns 15 paths: those nine plus the six task-record paths of round-1 O5. Archive: `git archive --format=zip cd4fe89a` is 525,789 bytes (round 1: 525,788), 130 members equal to an allow-list derived independently from the AC-5 text, 130/130 byte-equal to their tree blobs, no `.gitattributes`, none from `workspace/`, `tasks/` or `docs/`.
+- **Limit:** GitHub's own archive stays unobserved until the owner's push (E17).
+- **Result:** HOLDS
+
+#### V-R2-5: R2-C5 — accepted-result identity
+- **Observed:** `lfd/exec` is `cd4fe89a`, the only commit after `0b755dca`, changing only `.tfw/conventions.md`; commit times: ONB round 2 `cf5085bb` 12:31:01, state `ae156ec8` 12:31:50, Candidate 12:36:48, RF/EV/economics `1e84191f` 12:44:52, return state `8ce93d13` 12:46:47; no commit after the Candidate on the branch, so Executor mutation has stopped. Executor commits name only ONB, RF, EV, trials, economics, own status and journal paths; Coordinator commits name only HL, TS revision 2, status and journal paths. The Executor's worktree was not inspected.
+- **Result:** HOLDS
+
+#### V-R2-6: R2-C6 — accounting replay
+- **Observed:** see Accounting Replay below; the TS commands reproduce RF and EV exactly for both Candidates.
+- **Result:** HOLDS
+
+#### V-R2-7: R2-C7 — human authority, freeze and reserved acts
+- **Accepted claim / authority:** an owner-initiated change to a frozen claim is one §12 row recording the owner and their explicit decision, with evidence, cost and a considered alternative (HL Contract rules 9 and 12); the freeze uses the reserved `freeze` scope (rule 14).
+- **Observed:** the A5 row names proposer `owner saubakirov`, states the change (DoD 6, "a few seconds" to "about 13 s"), evidence (3.2–4.8 s against about 5 s; 21 s and 131 s blackholes), cost (a start up to about 13 s later on a network that drops packets, a bounded Executor round and this re-check), alternatives (about 5 s, about 10 s, no limit) and the verdict `APPROVED — saubakirov, 2026-09-29 (owner-initiated, rule 9)`. The freeze `243a9c0b` changes only the header status line, DoD 6, two free rows and the A5 row, and adds TS revision 2; HL §4.1 hashes identically at `c4044d2e`, `975fed5f` and `243a9c0b`; the freeze subject uses the reserved `freeze` scope. TS revision 2 differs from revision 1 in the header status, revision and scope lines, AC-6 (5 to 13 with the A5 citation and the round-2 re-observation sentence) and one Technical Guidance bullet; the denominator is unchanged. Gate answer 7417 quotes the owner's words ("сделай 13 секунд, остальное апрув, но тег делать не надо, только changelog дополнить") and records rulings that match A5, the acknowledgement of round-1 O4 and O6, and no tag, bump, release or push. The Coordinator did not rule its own proposal. No local tag contains the Candidate, the Candidate is on no remote-tracking branch, and a read-only remote listing shows one branch (`master`, equal to the local tracking ref) and 50 tags whose newest exact tag, `v3.7.1`, equals the local newest exact tag.
+- **Limit:** the owner's words are read through the journal record; this review cannot independently observe the conversation.
+- **Result:** HOLDS
+
+#### V-R2-8: R2-C8 — private names and machine paths
+- **Observed:** the repository's local guard (private-name list, machine-path and e-mail patterns), run in manual mode over the ten round-2 task commits (`243a9c0b`, `93a283d9`, `239a13bf`, `bd575c43`, `cf5085bb`, `ae156ec8`, `cd4fe89a`, `1e84191f`, `8ce93d13`, `fd43cc21`) and my map commit `b2638056`: no output. Positive control in a scratch repository with the same private-name list and planted values: the guard flagged a Windows user-folder path, a Git Bash drive path, a personal e-mail and a private name (name redacted in my output).
+- **Limit:** pattern scan; the guard runs in warn mode.
+- **Result:** HOLDS
+
+#### V-R2-9: R2-C9 — named limits
+- **Observed:** EV keeps E9 (Codex sandbox) and E17 (GitHub archive) DEFERRED with the reason, states the cumulative verdict 30/32 with E9 and E17 open for the Coordinator's close, and the RF handover names other tools that may not bound a command, the unobserved card rendering (round-1 O3) and the emulated slow link. E18 and E19 stay as round-1 history and are marked superseded for AC-6 by E25–E28.
+- **Result:** HOLDS
+
+#### V-R2-10: R2-C10 — build gate
+- **Observed:** the Candidate tree extracted with a temporary index outside the repository (213 files; `workspace/` and `tasks/` left out): `python -m pytest tools/tests/ docs/scripts/ -q --collect-only` 14 collected; `-q` 14 passed in 4.67 s.
+- **Limit:** these tests do not exercise instruction text; labelled a positive control (G-R2-2).
+- **Result:** HOLDS
+
+#### V-R2-11: R2-C11 — round-2 Executor economics
+- **Observed:** `economics/roles/a7509c86….jsonl` SHA-256 equals its name; the helper's `validate` passes (exit 0, one row); manifest: role `executor`, unit `…/lfd-executor-r2`, source ID `31abf4fc-cdf2-4d07-9252-bc458855a801/aeff3ecaee01ea08e` (the `<sessionId>/<agentId>` form), label `subagents/agent-aeff3ecaee01ea08e.jsonl`, revision 1, range [0, 451), `complete: false`, cutoff `2026-09-29T07:41:58.326431+00:00`, model `claude-sonnet-5-5`. The round-1 Executor's file was not touched (round-1 O9 stays with the Coordinator).
+- **Result:** HOLDS
+
+#### V-R2-12: reuse conditions for round-1 evidence and record structure
+- **Observed:** E1–E17 and E20–E22 rest on paths whose blobs are identical at both Candidates (V-R2-4); `update.md` and the receipt template never read the startup card (V-R2-1), so the whole-workflow trial E12 and the removal costs E22 apply to `cd4fe89a`; the dependency state is unchanged: the remote `v3.7.1` tag object is still `e39a0371…` (commit `1e3e00e9…`), Git is still 2.42, and none of the PV sources changed on master since the round-1 verify commit. The upstream's read-only structural diagnostic (`tools/tfw_doctor.py check tasks`, authority over nothing) reads this task's status and journal without a finding; its exit 2 comes from other tasks' records.
+- **Result:** HOLDS
+
+### Commands Executed (round 2)
+
+| # | Command | Claim IDs | Result |
+|---|---|---|---|
+| 1 | `git diff --stat` / `--name-only` `0b755dca cd4fe89a`; Baseline to Candidate `--name-status` outside `workspace/`; `git grep` for the limit; `git diff -U0` token search | R2-C1, R2-C4 | 1 file, 1/1; nine product paths; one carrier; no `$` tokens |
+| 2 | `wc -w` and blob ids of `update.md` and its copy at three commits | R2-C4 | 1,348 / 1,492 / 1,492; copy equal |
+| 3 | Bash tool, `timeout` 13,000: harness on the `behind` and `current` receivers | R2-C3 | 1.35 s, 11 newer; 1.22 s, current |
+| 4 | Bash tool, `timeout` 13,000: harness on the blackholed receiver | R2-C2 | control back at the limit; Git ended at 21.36 s, exit 128 |
+| 5 | PowerShell tool, `timeout` 13,000: `git ls-remote` to the blackholed address | R2-C2 | control back at the limit; Git ended at 21.18 s, exit 128 |
+| 6 | stand-in server (7.0 s) + harness under 13,000 ms and under 5,000 ms | R2-C3 | 7.40 s, correct row; cut at 5 s, command ended at 7.31 s |
+| 7 | three whole-harness ordinary calls | R2-C3 | 1.98–2.30 s |
+| 8 | TS §4 PowerShell `--name-status` and `--numstat` `-z` with `$valuePaths`, both Candidates | R2-C6 | 8 files, 122 / 29 / 151 for both |
+| 9 | archive audit script: `git archive --format=zip` of both Candidates, allow-list from the AC-5 text, blob comparison | R2-C4 | 525,789 and 525,788 bytes; 130/130; no `.gitattributes` |
+| 10 | local guard, manual mode, eleven commits; positive controls | R2-C8 | no output; four controls flagged |
+| 11 | `git tag --contains`, `git branch -r --contains`, read-only `ls-remote --heads`/`--tags` | R2-C7 | none; none; one head, 50 tags, newest `v3.7.1` |
+| 12 | `git log`, `git branch --contains`, per-commit `git show --name-only` | R2-C5 | one commit after `0b755dca`; role-clean |
+| 13 | `git diff` of HL and TS across `975fed5f`, `ce30a943`, `243a9c0b`; `sed` hash of HL §4.1 at three freezes | R2-C7 | A5-only freeze; §4.1 identical |
+| 14 | temporary-index extraction; `pytest … --collect-only`; `pytest … -q` | R2-C10 | 14 collected; 14 passed |
+| 15 | `tfw_economics.py validate`; `sha256sum`; manifest read | R2-C11 | valid; hash equals name |
+| 16 | `git ls-remote origin refs/tags/v3.7.1` | reuse | `e39a0371…` unchanged |
+| 17 | `tools/tfw_doctor.py status` and `check tasks` | record structure | no finding for this task |
+
+### Claim and Source Checks (round 2)
+
+| # | Claim / citation | Where | Primary artifact / source | Holds? |
+|---|---|---|---|---|
+| C-R2-1 | the limit is stated once in framework text | ONB §8.2, EV E25 | V-R2-1 `git grep` | ✅ |
+| C-R2-2 | unreachable case returns at the 13 s limit; command ends at 21.21 s, exit 128 | EV E26 | V-R2-2: 21.36 s and 21.18 s | ✅ |
+| C-R2-3 | ordinary checks 1.07–1.31 s; 3.2–4.8 s window did not recur | EV E27 | V-R2-3: 1.22–1.35 s | ✅ (connection-dependent) |
+| C-R2-4 | slow answer 7.26 s completes under 13 s and is cut at 5 s | EV E28 | V-R2-3: 7.40 s and 5 s cut | ✅ (independent stand-in) |
+| C-R2-5 | 1,492 words; byte-equal copy; archive 525,789 bytes, 130 members | EV E29 | V-R2-4 | ✅ |
+| C-R2-6 | 9 product paths plus 6 task-record paths in `git diff --name-only` | EV E29 | V-R2-4 | ✅ |
+| C-R2-7 | accounting 8 / 122 / 29 / 151 for both Candidates | RF, EV | V-R2-6 | ✅ |
+| C-R2-8 | build gate 14 / 14 | EV E30 | V-R2-10 | ✅ |
+| C-R2-9 | 30/32 cumulative, 7/7 round 2 | EV, RF §5.2 | round-1 23/25 plus seven rows E25–E30 and the accounting row; E9 and E17 open | ✅ |
+| C-R2-10 | economics file validates, `<sessionId>/<agentId>` | RF §5.2 | V-R2-11 | ✅ |
+
+### Guard and Check Admission (round 2)
+
+| # | Kind | Protected behavior / invariant | Failure consequence | Counterfactual detection | Admission |
+|---|---|---|---|---|---|
+| G-R2-1 | permanent rule (the limit on the tool) | a new task's start is never held by an unreachable upstream | a start delayed 21–131 s (DoF 3) | V-R2-2: without the limit Git ends only at 21.2–21.4 s; V-R2-3: at 5,000 ms a 7.3 s answer is cut, at 13,000 ms it completes, so the number has demonstrated effect | admitted, on tools that can bound time; others skip by rule |
+| G-R2-2 | positive control | the repository's own tests still pass | unrelated regression | none needed | labelled control; not product assurance for instruction text |
+| G-R2-3 | governance assertion | no private name or machine path is committed | permanent public leak (DoF 6) | positive controls flagged four pattern kinds | admitted as a pattern scan |
+| G-R2-4 | temporary diagnostics | harness, blackhole address, loopback stand-in | none: scratch only | n/a | temporary; removed after the review, not evidence beyond the runs recorded |
+
+### Candidate Findings (round 2)
+
+No material findings. The following observations keep the full item contract; none changes acceptance or the next authorized act.
+
+| ID | Class | Subject | Affected claim / authority | Observed fact + oracle | Concrete harm | Material consequence or named absence | Owner | Observable completion | Route / rung | Candidate effect | Status |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| R2-O1 | ASSURANCE (limit) | AC-6 bullet 2, "an ordinary check (3–5 s on 2026-09-29) now completes" | TS rev 2 AC-6; HL §12 A5 evidence | V-R2-3: the 3.2–4.8 s window did not recur in three later observations (1.02–1.51 s, 1.07–1.31 s, 1.22–1.35 s in Git, about 2 s per whole call); the slow-link case is shown by two independent emulations (7.26 s, 7.40 s) | a reader of the TS could believe the window recurred | none: every answer within the limit completes by construction of the tool limit, and the 13 s value is the owner's ruling, not a function of the window | Task Coordinator | recorded here; nothing to repair | observation | unchanged | observation |
+| R2-O2 | TRACE (unit lineage) | round-1 REVIEW statement that the round-1 Reviewer "stays addressable"; HL §4.1 "one independent Reviewer" | HL §4.1; REVIEW round 1 §6; `conventions.md` → `The 🔄 REVISE route` ("a fresh role holder resolves lineage") | the round-1 Reviewer cannot be resumed in the restarted session (dispatch ffae); this fresh unit carries the follow-up from artifacts; one Reviewer is active at a time; no owner reservation is crossed | the record says addressable where it no longer is | none: authority, independence and lineage hold (V-R2-5, V-R2-7) | Task Coordinator | at close, the round-1 Reviewer unit's disposition is recorded with the other task-owned units | close-time disposition | unchanged | observation |
+| R2-O3 | TRACE (carrier) | the task changelog entry (owner ruling 7417; TS §2) | HL DoD 9 "a truthful changelog entry" | `.tfw/CHANGELOG.md` `[Unreleased]` has no LFD entry yet; round-1 REVIEW, RF and EV mention the limit as about 5 s as history | an entry written from round-1 text would state the wrong limit | none yet: the entry does not exist | Task Coordinator | the entry states the limit as about 13 s, when written at close | current-carrier act at close | unchanged | observation |
+
+### Evidence Verification (round 2)
+
+| # | RF evidence ref | Subject tuple | Artifact exists? | Establishes the claim? | Limit |
+|---|---|---|---|---|---|
+| E25 | `conventions.md` lines 1094–1101 at `cd4fe89a` | Candidate text | ✅ | ✅ (V-R2-1) | textual search |
+| E26 | trials R2-4 | Claude Code shell tool, 13,000 ms, blackholed address | ✅ | ✅ reproduced in two tools (V-R2-2) | Windows; other tools unobserved |
+| E27 | trials R2-1 to R2-3, R2-5 | same, public upstream | ✅ | ✅ reproduced (V-R2-3) | window did not recur (R2-O1) |
+| E28 | trials R2-6, R2-7 | proxy stand-in | ✅ | ✅ reproduced with an independent stand-in (V-R2-3) | emulation |
+| E29 | `wc`, `cmp`, name-only, archive | Git | ✅ | ✅ (V-R2-4) | GitHub archive DEFERRED |
+| E30 | pytest | Candidate tree | ✅ inline | ✅ reproduced as a positive control (V-R2-10) | does not exercise text |
+| E-accounting (round 2) | TS §4 commands | PowerShell 5.1 | ✅ inline | ✅ reproduced (V-R2-6) | — |
+| E1–E17, E20–E22 | reused | byte-identical paths, unchanged dependency state | ✅ | ✅ reuse conditions hold (V-R2-12) | as in round 1 |
+| E18, E19 | round-1 rows at about 5 s | Candidate `0b755dca` | ✅ | superseded for AC-6 by E25–E28; the offline and upstream-itself cases do not depend on the limit | history |
+
+EV round 2's verdict line (7/7 VERIFIED; cumulative 30/32 with E9 and E17 DEFERRED) matches its rows; RF §5.2 names the same EV and trials sections.
+
+### Knowledge Citations Verified (round 2)
+
+PV scan, read for this round: P0 NS1–NS3 and P1 `Methodology values` and `Success Criteria` (`.tfw/README.md`); P2 `knowledge/philosophy.md` in full; P3 `KNOWLEDGE.md` §1 (D1–D87) in full with a search of `knowledge/records/` for successors of D2, D63, D64, D70, D72, D76, D77, D79, D81, D82, D85, D86 and F23, F35, F37, F39, F42; P4 `conventions.md` `HL (High Level)` with the HL Contract, `Design Rules` and `Anti-patterns (prohibited)` in full; P5 to P7 by relevance. No PV source changed on master since the round-1 verify commit `de5af646`. Records found: `TKL-20260913-01` (scoped successor to D37 and D82 for the global Knowledge Gate) and `TKL-20260929-TEQM` (scoped successor to D82 only for the optional economics helper) preserve D82's meaning for ordinary lifecycle operation; `TKL-20260928-ATC` (coordination topology, scoped successor to PCUX for the gateway topology) and `TKL-20260923-PCUX` (the adapter and concurrent-mutation rows, whose exact-path and reachable-Candidate requirements remain) do not change any cited item. Relevant P5–P7 items: `process.md` F37 (a count in shipped prose: the number is the point, so it stays) and F38 (a bound must have a reader at the act it governs: the agent sets the tool limit before the call), `stakeholder.md` F12 (the owner may change the question after a review and the trace must survive it, which the appended A5 and this follow-up do), `risk.md` F1 (exact-path staging in a shared tree). D63, D64, D81 and D86 govern the amendment channel, the Purpose Check, human-rooted authority and independent acceptance of a material final change.
+
+| # | Artifact | Priority + exact citation | Resolves? | Item exists? | Meaning matches? | Relevant? |
+|---|---|---|---|---|---|---|
+| 1 | HL §7.2 #1 | P0 NS1 "not the production of more text or more process" | ✅ `#ns1` | ✅ | ✅ | ✅ one number changes, no process added |
+| 2 | HL §7.2 #2 | P0 NS2 principle 2 | ✅ `#ns2` | ✅ | ✅ | ✅ nothing else compacted or added |
+| 3 | HL §7.2 #3 | P0 NS2 principle 7 | ✅ | ✅ | ✅ | ✅ bounded re-check, unchanged claims keep their verdict |
+| 4 | HL §7.2 #4 | P0 NS3 vendor-bound tool | ✅ `#ns3` | ✅ | ✅ | ✅ the limit is set on whatever tool the agent has; no host coupling |
+| 5 | HL §7.2 #5 | P1 Structural Enforcement | ✅ `#methodology-values` | ✅ | ✅ | ✅ the limit is an observable value on the card row |
+| 6 | HL §7.2 #6 | P1 Portability | ✅ | ✅ | ✅ | ✅ plain Git and the agent's own tool |
+| 7 | HL §7.2 #7 | P1 Success Criteria 4 | ✅ `#success-criteria` | ✅ | ✅ | ✅ unchanged by round 2 |
+| 8 | HL §7.2 #8 | P2 `philosophy.md` F23 | ✅ | ✅ | ✅ | ✅ no payload or state file changes |
+| 9 | HL §7.2 #9 | P3 D70 | ✅ | ✅ | ✅ | ✅ the line never updates; pin untouched |
+| 10 | HL §7.2 #10 | P3 D82 (and its two scoped successors) | ✅ | ✅ | ✅ | ✅ no shipped code; the economics helper is the recorded exception |
+| 11 | HL §7.2 #11 | P3 D2 | ✅ | ✅ | ✅ | ✅ unchanged by round 2 |
+| 12 | HL §7.2 #12 | P4 Design Rules | ✅ | ✅ | ✅ | ✅ the clause carries no `$0`–`$9` or `$ARGUMENTS` |
+| 13 | HL §7.2 #13 | P4 Anti-patterns — Authority and role | ✅ | ✅ | ✅ | ✅ role-clean commits (V-R2-5) |
+| 14 | HL §7.2 #14 | P4 HL Contract rule 15 | ✅ | ✅ | ✅ | ✅ unchanged by round 2; freeze subject recovery form used in V-R2-7 |
+| 15 | ONB §7 #15 | P4 §9 Tool Adapter Pattern (marker-bounded blocks) | ✅ | ✅ line 1172 | ✅ | ✅ unaffected by round 2 |
+| 16 | ONB §7 #16 | P4 `Exact-path staging`, `Worktrees for concurrent mutation` | ✅ | ✅ | ✅ | ✅ V-R2-5, and this review's own commits |
+| 17 | ONB §7 #17 = ONB §8.7 #17 | `.tfw/economics/README.md` Claude Code recipe | ✅ | ✅ | ✅ subagent source `<sessionId>/<agentId>` | ✅ V-R2-11 |
+| 18 | ONB §8.7 #15 | HL §12 A5 | ✅ | ✅ | ✅ owner-initiated amendment, frozen at `243a9c0b` | ✅ V-R2-7 |
+| 19 | ONB §8.7 #16 | P4 `Task Statuses` → `The 🔄 REVISE route` | ✅ | ✅ | ✅ "a fresh role holder resolves lineage from state/artifact references"; the Executor's route `TS_DRAFT → ONB` matches the rung-2 row | ✅ used by the Coordinator's route after the owner's post-review change |
+
+### Accounting Replay (round 2)
+
+| Approval / authority | Baseline | Candidate | Literal VALUE membership / actions / classes / reasons | Adds | Deletes | Touched LOC | Binary | Trigger disposition | Exact NUL-safe command | Verdict |
+|---|---|---|---|---:|---:|---:|---|---|---|---|
+| owner approval of TS revision 2 in gate answer 7417, frozen at `243a9c0b` (denominator 8 / 160 unchanged from gate answer 02ae) | `49703481e1b02ac725428dfd8da19c4d7c954c86` | `cd4fe89a624897e2d0da2a58e31edb63cce052c7` | `.gitattributes` A 14/0; `.tfw/conventions.md` M 9/0; `.tfw/quickstart.md` M 13/3; `.tfw/templates/update_receipt.md` M 4/4; `.tfw/workflows/update.md` M 31/10; `README.kk.md` M 17/4; `README.md` M 17/4; `README.ru.md` M 17/4 — all VALUE with TS §4 reasons; no renames; single phase | 122 | 29 | 151 | N/A — no binary | 8 / 151 within 8 / 160; owner ceiling 16 / 320 and prompts 50 / 5,000 not reached | `git diff --name-status --find-renames=50% -z 49703481… cd4fe89a… -- $valuePaths`; `git diff --numstat --find-renames=50% -z …` (TS §4, PowerShell) | VERIFIED |
+| comparison only: the round-1 Candidate | same Baseline | `0b755dcada76fe0f22bf285a77b40f812c365c45` | same eight paths, same per-file numbers | 122 | 29 | 151 | N/A | same | same commands | identical: the changed line lies inside the 9 lines `.tfw/conventions.md` already added |
+
+The Candidate is the first tested implementation commit of round 2, before EV, RF and the state commits (V-R2-5). Later commits on `master` are TRACE only. Protected boundaries hold: no VALUE path outside TS §4 changed, past migration guides, `plan.md`, `init.md`, coordinator profiles and the Codex `tfw-update` skill are untouched by the Candidate.
+
+### Selected Knowledge Evidence (round 2)
+
+Lineage checked against dispatches 9c6f (round-2 Executor) and ffae (this Reviewer), gate answer 7417, transition events `f8ea`, `bc7c`, handoff `d829` and transition `c1fd`. Returns: ONB §8 at `cf5085bb`; RF, EV, trials and the round-2 Executor's economics file at `1e84191f`; return state `8ce93d13`. RF round 2 §7 has no Fact Candidates and §8 no Strategic Insights; the only human-sourced statement of the round is the owner's ruling in gate answer 7417, already recorded in HL §12 A5. No knowledge publication is owed from this review; qualification remains with the Coordinator's close.
+
+### Checkpoint (round 2)
+
+**Self-check:**
+- [x] Replayed the Map selection and verified all mandatory safety/security, authority and identity floors?
+- [x] Established evidence applicability and ran every TS-required or dependency-affected check?
+- [x] Recorded explicit limits instead of substituting file, discrepancy, test, commit or artifact counts?
+- [x] Classified guards and controls by protected behavior, consequence and counterfactual detection?
+- [x] Recorded every candidate finding with the complete item contract and material consequence test?
+- [x] Verified RF AC claims, evidence references, citations and immutable accounting against actual artifacts?
+
+Stage complete: YES
