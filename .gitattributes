@@ -1,0 +1,14 @@
+# Release archives (GitHub "Download ZIP", tag archives, git archive) carry only framework material.
+/* export-ignore
+/.tfw -export-ignore
+/.tfw/project_config.yaml export-ignore
+/.tfw/knowledge_state.yaml export-ignore
+/.tfw/update_receipts export-ignore
+/editions -export-ignore
+/README.md -export-ignore
+/README.ru.md -export-ignore
+/README.kk.md -export-ignore
+/LICENSE -export-ignore
+/tools -export-ignore
+/tools/* export-ignore
+/tools/migrations -export-ignore

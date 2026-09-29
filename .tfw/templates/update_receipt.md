@@ -19,7 +19,7 @@ credentials, tokens, private keys, or other secrets here.
 | Receiver baseline | `<full SHA or explicit uncommitted state>` |
 | Source ref | `<tag/branch/commit/path>` |
 | Source full SHA | `<full SHA or N/A for non-Git source>` |
-| Source provenance | `<official/package/local provenance>` |
+| Source provenance | `<official/package/local provenance; tag's ls-remote line; fetch size-pack>` |
 | Target workflow read | `<exact path and revision>` |
 | Attempt time | `<actual clock value>` |
 
@@ -56,7 +56,7 @@ matters. Do not silently overwrite receiver state or split one semantic group ac
 
 ## 4. Verification
 
-| Check | Result | Artifact or command |
+| Check | Result | Command and its result, or evidence path |
 |---|---|---|
 | Source integrity and provenance | `VERIFIED / DEFERRED / BLOCKED / N/A` | `<ref>` |
 | Receiver state/config exclusions | `VERIFIED / DEFERRED / BLOCKED / N/A` | `<ref>` |
@@ -65,8 +65,8 @@ matters. Do not silently overwrite receiver state or split one semantic group ac
 | Maintainer checks | `VERIFIED / DEFERRED / BLOCKED / N/A` | `<ref>` |
 | Receiver proof | `VERIFIED / DEFERRED / BLOCKED / N/A` | `<ref>` |
 
-Explain every non-`VERIFIED` result. Link exact evidence; screenshots or summaries without a resolving
-path do not prove the receiver state.
+Explain every non-`VERIFIED` result. Give each check's command and its result, or an evidence path,
+never pasted output; screenshots or summaries without a resolving path do not prove the receiver state.
 
 ## 5. Cleanup, continuation, and final-message input
 

@@ -19,9 +19,19 @@ You are a **TFW Guide** — you help the user adopt and navigate TFW.
 
 ## Step 1: Get TFW files
 
-If the `.tfw/` directory is not already in the project, clone the starter:
+If the `.tfw/` directory is not already in the project, fetch only the framework of one release into
+a new temporary directory `<temp>` outside the project. `<tag>` is the release the user names, else
+the highest exact `vX.Y.Z` that `git ls-remote --tags --refs https://github.com/saubakirov/trace-first-starter`
+lists; suffixed pre-release tags never count.
 
-    git clone https://github.com/saubakirov/trace-first-starter
+    git clone -c core.autocrlf=false -c core.attributesFile= --filter=blob:none --sparse --depth 1 --branch <tag> https://github.com/saubakirov/trace-first-starter <temp>
+    git -C <temp> sparse-checkout set .tfw editions
+    git -C <temp> count-objects -vH
+
+About 1 MiB of `size-pack` is expected; much more means a full download, so say so. If Git rejects
+an option, repeat without `--filter=blob:none`, `--sparse` and `sparse-checkout` (clone
+`--no-checkout`), writing only `.tfw` and `editions` by `git -C <temp> checkout HEAD -- .tfw editions`,
+and say so.
 
 For a new receiver, copy only framework-owned `.tfw/` content from the selected source.
 Exclude its `project_config.yaml`, `knowledge_state.yaml`, `update_receipts/`, `.upstream/`

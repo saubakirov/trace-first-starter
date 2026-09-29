@@ -72,20 +72,26 @@ Trace-First Workflow (TFW) делает работу проверяемой и �
 Скопируйте этот запрос в агента, который умеет читать и изменять файлы:
 
     Я хочу начать новый проект с Trace-First Workflow (TFW).
-    Клонируй https://github.com/saubakirov/trace-first-starter во временный каталог.
+    Скачай во временный каталог <temp> только фреймворк последнего выпуска; <tag> — самый новый
+    тег vX.Y.Z без суффикса в выводе git ls-remote --tags --refs https://github.com/saubakirov/trace-first-starter:
+    git clone -c core.autocrlf=false -c core.attributesFile= --filter=blob:none --sparse --depth 1 --branch <tag> https://github.com/saubakirov/trace-first-starter <temp>
+    git -C <temp> sparse-checkout set .tfw editions
     Прочитай editions/README.md, предложи Assisted или Full для моей работы и объясни выбор.
     После моего решения скопируй содержимое этой редакции в корень проекта и следуй инструкциям в README этой редакции.
-    Если я выберу Full, скопируй .tfw/ и пошагово следуй инструкциям в .tfw/quickstart.md.
+    Если я выберу Full, пошагово следуй инструкциям в .tfw/quickstart.md из <temp>.
     Мой проект: <опишите проект, участников, длительность и риски>
 
 ### Существующий проект — добавить TFW и сохранить состояние
 
     Я хочу добавить Trace-First Workflow (TFW) в существующий проект.
     Сначала изучи репозиторий и определи файлы и Следы, которые нужно сохранить.
-    Клонируй https://github.com/saubakirov/trace-first-starter во временный каталог.
+    Скачай во временный каталог <temp> только фреймворк последнего выпуска; <tag> — самый новый
+    тег vX.Y.Z без суффикса в выводе git ls-remote --tags --refs https://github.com/saubakirov/trace-first-starter:
+    git clone -c core.autocrlf=false -c core.attributesFile= --filter=blob:none --sparse --depth 1 --branch <tag> https://github.com/saubakirov/trace-first-starter <temp>
+    git -C <temp> sparse-checkout set .tfw editions
     Прочитай editions/README.md и предложи Assisted или Full для моей работы.
     Не перезаписывай состояние проекта. Используй путь миграции выбранной редакции;
-    для Full скопируй .tfw/ в корень проекта и выполни инструкции из .tfw/quickstart.md.
+    для Full выполни инструкции из .tfw/quickstart.md в <temp>.
     Мой проект: <опишите проект, участников, длительность и риски>
 
 При внедрении **Assisted** в существующий проект следуйте [`editions/02-assisted/MIGRATION.md`](editions/02-assisted/MIGRATION.md), сохранив цель, задачи, Следы, результаты и память проекта. На Full стоит переходить, когда работе требуется полный формальный цикл.
@@ -225,6 +231,13 @@ TFW не зависит от инструмента. Адаптер перево
 > `/tfw-update`
 
 Процесс обновления обращается к настроенному upstream, сравнивает версии, классифицирует изменения как безопасные, требующие слияния или нарушающие совместимость и применяет выбранные изменения, не считая состояние конкретного проекта одноразовым. Точный порядок находится в [`.tfw/workflows/update.md`](.tfw/workflows/update.md), история — в [`.tfw/CHANGELOG.md`](.tfw/CHANGELOG.md).
+
+В проекте на TFW 3.7.1 и более ранних версиях ещё действует старое описание загрузки, и обновление скачивает около 114 МиБ. Для ближайшего обновления один раз попросите лёгкую загрузку:
+
+    /tfw-update <tag> — скачай этот выпуск командами
+    git clone -c core.autocrlf=false -c core.attributesFile= --filter=blob:none --sparse --depth 1 --branch <tag> <upstream> .tfw/.upstream/.clone
+    и git -C .tfw/.upstream/.clone sparse-checkout set .tfw, затем продолжи Step 0
+    из .tfw/.upstream/.clone/.tfw/workflows/update.md с проверки размера.
 
 ---
 

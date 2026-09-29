@@ -72,20 +72,26 @@ TFW жұмыс жобалары үшін екі редакцияны ұсына�
 Файлдарды оқып, өзгерте алатын агентке мына сұрауды беріңіз:
 
     Жаңа жобаны Trace-First Workflow (TFW) арқылы бастағым келеді.
-    https://github.com/saubakirov/trace-first-starter репозиторийін уақытша каталогқа клонда.
+    Соңғы релиздің тек фреймворкін уақытша <temp> каталогына жүктеп ал; <tag> —
+    git ls-remote --tags --refs https://github.com/saubakirov/trace-first-starter шығысындағы жұрнақсыз ең жаңа vX.Y.Z тегі:
+    git clone -c core.autocrlf=false -c core.attributesFile= --filter=blob:none --sparse --depth 1 --branch <tag> https://github.com/saubakirov/trace-first-starter <temp>
+    git -C <temp> sparse-checkout set .tfw editions
     editions/README.md файлын оқып, жұмысыма сай Assisted немесе Full редакциясын ұсын және себебін түсіндір.
     Мен таңдаған соң, сол редакцияның ішіндегі файлдарды жоба түбіріне көшіріп, оның README нұсқауын орында.
-    Full таңдасам, .tfw/ каталогын көшіріп, .tfw/quickstart.md қадамдарын ретімен орында.
+    Full таңдасам, <temp> ішіндегі .tfw/quickstart.md қадамдарын ретімен орында.
     Жобам: <жобаны, қатысушыларды, ұзақтықты және тәуекелді сипаттаңыз>
 
 ### Қолданыстағы жоба — күйін жоғалтпай TFW қосу
 
     Қолданыстағы жобаға Trace-First Workflow (TFW) қосқым келеді.
     Алдымен репозиторийді қарап, сақталуға тиіс файлдар мен Іздерді анықта.
-    https://github.com/saubakirov/trace-first-starter репозиторийін уақытша каталогқа клонда.
+    Соңғы релиздің тек фреймворкін уақытша <temp> каталогына жүктеп ал; <tag> —
+    git ls-remote --tags --refs https://github.com/saubakirov/trace-first-starter шығысындағы жұрнақсыз ең жаңа vX.Y.Z тегі:
+    git clone -c core.autocrlf=false -c core.attributesFile= --filter=blob:none --sparse --depth 1 --branch <tag> https://github.com/saubakirov/trace-first-starter <temp>
+    git -C <temp> sparse-checkout set .tfw editions
     editions/README.md файлын оқып, жұмысыма сай Assisted немесе Full редакциясын ұсын.
     Жобаның бар күйін жоғалтпа және қолданыстағы файлдарды қайта жазба. Таңдалған редакцияның көшу жолын пайдалан;
-    Full үшін .tfw/ каталогын жоба түбіріне көшіріп, .tfw/quickstart.md нұсқауын орында.
+    Full үшін <temp> ішіндегі .tfw/quickstart.md нұсқауын орында.
     Жобам: <жобаны, қатысушыларды, ұзақтықты және тәуекелді сипаттаңыз>
 
 Қолданыстағы жобаға **Assisted** енгізгенде [`editions/02-assisted/MIGRATION.md`](editions/02-assisted/MIGRATION.md) нұсқауын орындап, жобаның мақсатын, тапсырмаларын, Іздерін, нәтижелері мен жадын сақтаңыз. Толық ресми цикл керек болғанда Full редакциясына өтіңіз.
@@ -226,6 +232,13 @@ Full редакциясының толық циклі тапсырманың ж�
 > `/tfw-update`
 
 Жаңарту үдерісі бапталған upstream дереккөзін алып, нұсқаларды салыстырады, өзгерістерді қауіпсіз, біріктіруді қажет ететін немесе үйлесімділікті бұзатын топтарға бөледі және таңдалғанын жобаға тән күйді жоймай қолданады. Нақты тәртіп [`.tfw/workflows/update.md`](.tfw/workflows/update.md) ішінде, нұсқалар тарихы [`.tfw/CHANGELOG.md`](.tfw/CHANGELOG.md) ішінде берілген.
+
+TFW 3.7.1 немесе одан ертерек нұсқадағы жобада жүктеудің ескі сипаттамасы әлі тұр, сондықтан жаңарту шамамен 114 МиБ жүктейді. Келесі жаңартуда жеңіл жүктеуді бір рет сұраңыз:
+
+    /tfw-update <tag> — бұл релизді мына пәрмендермен жүктеп ал:
+    git clone -c core.autocrlf=false -c core.attributesFile= --filter=blob:none --sparse --depth 1 --branch <tag> <upstream> .tfw/.upstream/.clone
+    және git -C .tfw/.upstream/.clone sparse-checkout set .tfw, содан кейін
+    .tfw/.upstream/.clone/.tfw/workflows/update.md ішіндегі Step 0 қадамын өлшем тексеруінен бастап жалғастыр.
 
 ---
 
