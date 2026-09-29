@@ -28,6 +28,20 @@ Format: [Keep a Changelog](https://keepachangelog.com/). Versioning: [Semantic V
   this mode the full-chat route and its subagent limits are unchanged. The Claude profile also drops
   its dated-source section, which repeated rules stated elsewhere and still argued for the mode that
   3.7.0 removed (Daily `20260929-130629_single-phase-agent-mode`).
+- LFD (`TFW_20260929-003444_LFD`): install and update fetch only the framework. `update.md` Step 0
+  names one Git-only method — a blobless, depth-1, cone-mode sparse clone of the pinned tag (or an
+  authorized untagged commit) into `.tfw/.upstream/.clone` with `core.autocrlf=false` and an empty
+  `core.attributesFile`, a `count-objects` size check that discloses a full download, one fallback,
+  a raw-byte check of every file and deletion of the clone — about 0.66 MiB instead of about
+  114 MiB, with the pin and provenance guarantees unchanged. `quickstart.md` and the root README
+  prompts fetch only `.tfw/` and `editions/` (about 0.76 MiB instead of a ≈123 MiB full clone). A new
+  root `.gitattributes` keeps release archives framework-only (≈0.5 MiB instead of 178.9 MiB). The
+  new-task startup card compares the installed version with the newest exact release through one
+  `ls-remote` bounded by about 13 s and never updates by itself. The update drops a repeated
+  adapter-sync run and a third payload check, replaces "only when safe" with a pre-seal check that
+  staging never entered Git, and asks receipts for commands and results instead of pasted output.
+  Projects on 3.7.1 or earlier still fetch once by their installed text; README "Updating TFW" shows
+  the one-time light-fetch request.
 
 ## [3.7.1] — 2026-09-28
 
