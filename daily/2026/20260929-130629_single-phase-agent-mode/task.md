@@ -75,7 +75,31 @@ copies; the local guard is clean; the configured tests pass.
 
 Pre-action checkpoint: no product change is applied yet and no check result is claimed.
 
+Completion addition — 2026-09-29:
+
+- Deletion (commit `828f674b`), exactly as shown to the owner: Claude line 8 ends at “Claude
+  surface.”; line 21 reads “On Claude Desktop, use …”; the “Dated source and current check” section
+  (old lines 31–38) is gone; line 35 ends “… full chats on Claude Desktop.” The profile shrinks from
+  782 to 611 words.
+- Mode (next commit), the same in both profiles: the startup-card paragraph offers the mode for a
+  really small one-phase task; the ban now starts “Outside the single-phase agent mode below, …”; a
+  new “Single-phase agent mode” section follows the full-chat route; the one-phase limit accepts
+  distinct agents in the mode; the leftover sentences go (Claude “Historical subagent reports …”,
+  Antigravity “Earlier subagent observations … prove no complete run.”). `.tfw/CHANGELOG.md`
+  `[Unreleased]` gains one “Changed” entry.
+- Decision: the new section keeps the 3.6.1 safeguards in shorter form: each role its own workflow
+  and artifact, returns only to the Coordinator, a new Reviewer on a fixed Candidate, one phase only,
+  exit to full chats. One text serves both profiles; the check “the current surface can start an
+  agent with exactly `/tfw-* <task>` and receive its return” replaces any claim about a provider's
+  tools.
+- Checks: in both profiles every remaining ban is scoped to outside the mode (search for
+  “subagent”, “full role chat”, “hidden”); the guard's name list finds nothing in the changed files;
+  `git diff --check` clean; `python -B -m pytest tools/tests/ docs/scripts/ -q -p no:cacheprovider`:
+  14 passed.
+- Limits: these are source checks. How agents behave under the new text is not tried here; the
+  owner's three good runs are the owner's account, not observed in this Daily.
+
 ## 5. Next or close
 
-Next: apply the deletion, then the mode, then the changelog entry; check; merge into local `master`;
-show the owner every change with its place, reason and purpose.
+Prepared and checked. Next, as instructed: merge into local `master` without disturbing the shared
+checkout; no push. The owner reviews the per-change report in chat; acceptance is not inferred.

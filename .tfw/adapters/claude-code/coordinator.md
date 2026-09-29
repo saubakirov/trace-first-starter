@@ -8,13 +8,14 @@ At new-task entry, render one shared startup card from mechanisms actually expos
 Claude surface.
 Offer the visible full-chat route: the owner may need to click-create each separate Coordinator,
 Researcher, Executor and independent Reviewer chat, with native addressed gates where current
-tools support them. Owner-only or bounded delegated activation with `tfw-gates-only` dialogue and native-gates
+tools support them. For a really small one-phase task, also offer the single-phase agent mode below.
+Owner-only or bounded delegated activation with `tfw-gates-only` dialogue and native-gates
 reporting is the initial operating choice;
 owner-transfer requires explicit selection. One-phase work has one task Coordinator and distinct
 worker roles. Long work keeps that task Coordinator for strategy, owner decisions and ready-phase
 launch while each ready phase has a separate bounded Coordinator, with owner creation clicks when
 required. Roles return vertically to their own Coordinator; phase-level results return to the task
-Coordinator. No subagent substitutes for a visible, directly addressable TFW role unit.
+Coordinator. Outside the single-phase agent mode below, no subagent substitutes for a visible, directly addressable TFW role unit.
 
 Show role-specific visible titles when the surface can set and read them. Use task-only grouping
 when supported; report an unavailable mechanism or required owner action. Do not assume a Codex
@@ -34,11 +35,22 @@ At each ready role gate, request the owner click if full-chat creation is owner-
 
 Use one owner-selected local checkout/worktree for visible full chats on Claude Desktop. Serialize repository mutation with one active owner and exact-path commits; preserve foreign work. Hold Executor mutation while the independent Reviewer examines a fixed reachable Candidate. Sequence conflicting phase work in that same checkout. Do not silently move the chain to provider-created isolated trees with a stale base. Archive is recoverable conversation disposition, not disk cleanup; preserve its restoration dependencies or expose the remaining disposal decision.
 
+## Single-phase agent mode
+
+For a really small one-phase task, such as a small fix or debt item, the owner may choose this mode
+instead of full role chats. Offer it only where the current surface can start an agent with exactly
+`/tfw-* <task>` and receive its return. The task Coordinator stays the owner's only conversation and
+launches each needed role (Researcher, Executor, independent Reviewer) as a distinct agent. Each
+agent reads its context from task files, owns its artifact and returns only its TFW gates to the
+Coordinator, which does none of their work. The Reviewer is a new agent, never the continued
+Executor, and examines a fixed Candidate. This saves owner clicks, not Coordinator context. If the
+task outgrows one phase or an agent cannot load its workflow or a required tool, stop that
+delegation, name the limit and offer full role chats; never switch modes silently.
+
 ## One-phase and successor limits
 
 A one-phase task needs no extra phase Coordinator, but Researcher, Executor and Reviewer still need
-distinct full role chats and independent judgment. If a needed chat must be created by the owner,
+distinct full role chats, or distinct agents in the single-phase agent mode, and independent judgment. If a needed chat must be created by the owner,
 name that pending action and do not promise unattended completion. A successor task Coordinator
 requires a safe checkpoint, exact address and dispatch, reconstruction from current task files,
 acknowledgement, then an authorized route switch; the old route remains effective meanwhile.
-Historical subagent reports are bounded observations, not admission of a substitute TFW role.

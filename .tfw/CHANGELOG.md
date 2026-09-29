@@ -19,6 +19,16 @@ Format: [Keep a Changelog](https://keepachangelog.com/). Versioning: [Semantic V
   (Daily `20260929-104929_claude-subagent-economics`).
   Project comparisons use selected sources; the project-specific demonstration flag was removed.
 
+### Changed
+
+- The Claude Code and Antigravity Coordinator profiles again allow separate role agents for small
+  one-phase work, as 3.6.x did, now as an offered owner choice: in the single-phase agent mode the
+  task Coordinator stays the owner's only conversation and launches each needed role as a distinct
+  agent with only `/tfw-* <task>`; the Reviewer is a new agent examining a fixed Candidate. Outside
+  this mode the full-chat route and its subagent limits are unchanged. The Claude profile also drops
+  its dated-source section, which repeated rules stated elsewhere and still argued for the mode that
+  3.7.0 removed (Daily `20260929-130629_single-phase-agent-mode`).
+
 ## [3.7.1] — 2026-09-28
 
 This patch restores strategic depth before HL approval and permits checked, owner-accepted Daily
