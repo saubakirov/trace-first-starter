@@ -23,7 +23,7 @@ from decimal import Decimal
 from pathlib import Path
 
 VERSION = 1
-COLLECTOR = "tfw-economics/1.0"
+COLLECTOR = "tfw-economics/1.1"
 TOKEN_KEYS = ("fresh", "cached", "cache_write", "cache_write_5m",
               "cache_write_1h", "input", "output", "reasoning", "total")
 KINDS = {"manifest", "usage", "failure"}
@@ -332,6 +332,7 @@ def codex_rows(raw, args):
     total = None
     turns = {}
     seen_session = None
+    usage_sessions = set()
     diagnostics = []
     completed = set()
     for line_no, line in enumerate(raw.splitlines()):
@@ -349,13 +350,15 @@ def codex_rows(raw, args):
             require(seen_session is None or seen_session == current_session,
                     "Codex source contains multiple session IDs")
             seen_session = current_session
+            # A child agent's rollout declares its root session; its usage names that session.
+            usage_sessions |= {current_session, payload.get("session_id")} - {None}
         if kind == "turn_context":
             model = payload.get("model")
             effort = payload.get("effort") or payload.get("reasoning_effort")
             active = payload.get("turn_id") or active
         if kind == "token_usage_record":
-            require(isinstance(payload, dict) and payload.get("session_id") == args.source_id,
-                    "Codex response usage has a different session ID")
+            require(isinstance(payload, dict) and payload.get("session_id") in usage_sessions,
+                    "Codex response usage names a session outside this rollout's metadata")
             response_id = payload.get("response_id")
             identity(response_id, "Codex response id")
             fields = ("input_tokens", "cached_input_tokens", "cache_write_input_tokens",
@@ -483,8 +486,14 @@ def codex_rows(raw, args):
 
 
 def claude_rows(raw, args):
+    # The session's own lines carry no agentId. A subagent's own file repeats the
+    # parent sessionId on every line, so its source is <sessionId>/<agentId>.
+    require(re.fullmatch(r"[^/]+(/[^/]+)?", args.source_id),
+            "Claude source ID must be <sessionId> or <sessionId>/<agentId>")
+    session, _, agent = args.source_id.partition("/")
     best = {}
     seen_sessions = set()
+    others = set()
     earlier_ids = set()
     for line_no, line in enumerate(raw.splitlines()):
         if args.end is not None and line_no >= args.end:
@@ -500,6 +509,9 @@ def claude_rows(raw, args):
             continue
         u = message.get("usage")
         if not isinstance(u, dict):
+            continue
+        if event.get("agentId") != (agent or None):
+            others.add(event.get("agentId"))
             continue
         mid = message.get("id")
         identity(mid, "Claude message id")
@@ -536,16 +548,21 @@ def claude_rows(raw, args):
                 tok["reasoning"] = reasoning
         best[mid] = dict(index=line_no, at=event.get("timestamp"),
                          model=message.get("model"), tokens=tok)
-    require(seen_sessions == {args.source_id},
+    require(seen_sessions == {session},
             "Claude session IDs disagree with exact source ID")
+    owners = ", ".join(session + "/" + a if a else session for a in sorted(others, key=str))
+    require(best or not others,
+            "Claude usage in this file belongs to " + owners + ", not " + args.source_id)
     result = []
     for mid, rec in best.items():
         result.append(usage("message:" + mid, rec["index"], rec["at"],
                             args.timezone, rec["model"], None, rec["tokens"],
                             unavailable={"duration_seconds": "Claude Code JSONL has no native agent interval"}))
-    return sorted(result, key=lambda r: r["source_index"]), [
-        "repeated assistant blocks reconciled by message id and maximum output",
-        "gap-based active time excluded from native duration"]
+    notes = ["repeated assistant blocks reconciled by message id and maximum output",
+             "gap-based active time excluded from native duration"]
+    if others:
+        notes.append("usage of other Claude units left to their own sources: " + owners)
+    return sorted(result, key=lambda r: r["source_index"]), notes
 
 
 def varint(data, at):
@@ -609,6 +626,8 @@ def antigravity_rows(source, args):
     raw_digest = hashlib.sha256()
     total_size = 0
     result = []
+    unmeasured = 0
+    last = None
     query = "select idx, data from gen_metadata where idx >= ?"
     params = [args.start]
     if args.end is not None:
@@ -621,6 +640,7 @@ def antigravity_rows(source, args):
         raw_digest.update(len(blob).to_bytes(8, "big"))
         raw_digest.update(blob)
         total_size += len(blob) + 16
+        last = idx
         top = proto_fields(blob)
         outer_blob = one(top, 1, bytes)
         require(outer_blob is not None, "Antigravity outer numeric field missing")
@@ -628,18 +648,18 @@ def antigravity_rows(source, args):
         usage_blob = one(outer, 4, bytes)
         require(usage_blob is not None, "Antigravity usage field missing")
         u = proto_fields(usage_blob)
+        # proto3 omits zero-valued scalars: an absent counter beside reported ones is 0, but a
+        # usage message reporting no counter at all (seen for failed calls) measures nothing.
+        counters = (2, 5, 3, 9, 10)
+        if not any(k in u for k in counters):
+            unmeasured += 1
+            continue
         model_blob = one(outer, 19, bytes)
         try:
             model = model_blob.decode("utf-8") if model_blob is not None else None
         except UnicodeError as exc:
             raise EconomicsError("Antigravity model encoding changed") from exc
-        fresh = one(u, 2, int)
-        cached = one(u, 5, int, 0)
-        output = one(u, 3, int)
-        reasoning = one(u, 9, int)
-        content = one(u, 10, int)
-        require(all(type(x) is int and x >= 0 for x in (fresh, cached, output, reasoning, content)),
-                "Antigravity numeric mapping changed")
+        fresh, cached, output, reasoning, content = (one(u, k, int, 0) for k in counters)
         require(output == reasoning + content, "Antigravity candidate inclusion changed")
         timing_blob = one(outer, 11, bytes)
         timing = proto_fields(timing_blob) if timing_blob is not None else None
@@ -655,10 +675,13 @@ def antigravity_rows(source, args):
         result.append(row)
     copy.close()
     require(result, "selected Antigravity range has no numeric rows")
-    return result, raw_digest.hexdigest(), total_size, [
-        "Antigravity DB copied through SQLite read-only backup",
-        "daily date omitted: no proved gen_metadata to timestamp join",
-        "model generation duration is not agent session time"]
+    notes = ["Antigravity DB copied through SQLite read-only backup",
+             "daily date omitted: no proved gen_metadata to timestamp join",
+             "model generation duration is not agent session time"]
+    if unmeasured:
+        notes.append(str(unmeasured) + " generation rows report no usage counter; not counted")
+    # The bound range ends after the last row read, counted or not, so its digest stays exact.
+    return result, raw_digest.hexdigest(), total_size, last + 1, notes
 
 
 def compact_rows(rows):
@@ -749,13 +772,13 @@ def collect(args):
         require(p["source_namespace"] == args.provider and p["source_id"] == args.source_id
                 and p["unit"] == args.unit, "predecessor source/unit mismatch")
     if args.provider == "antigravity.ide":
-        rows, source_hash, source_size, diagnostics = antigravity_rows(source, args)
-        end = max(r["source_index"] for r in rows) + 1 if args.end is None else args.end
+        rows, source_hash, source_size, read_end, diagnostics = antigravity_rows(source, args)
+        end = read_end if args.end is None else args.end
         if predecessor and args.start <= predecessor["manifest"]["range_start"]:
             prior_end = predecessor["manifest"]["range_end"]
             prior_args = argparse.Namespace(**vars(args))
             prior_args.start, prior_args.end = predecessor["manifest"]["range_start"], prior_end
-            _, prefix_hash, _, _ = antigravity_rows(source, prior_args)
+            _, prefix_hash, _, _, _ = antigravity_rows(source, prior_args)
     else:
         raw, lines = source_lines(source)
         end = len(lines) if args.end is None else args.end
@@ -955,9 +978,12 @@ def reconcile(paths, expected_units=()):
             records.append((m, row, f["sha256"]))
     received = {f["manifest"]["unit"] for f in files}
     measured = {m["unit"] for m, _, _ in records}
+    reported = {f["manifest"]["unit"] for f in files
+                if any(row["kind"] == "usage" for row in f["rows"])}
     expected = set(expected_units)
     return dict(records=records, received=received, measured=measured,
-                missing=expected - received, failure_only=received - measured,
+                missing=expected - received, failure_only=received - reported,
+                omitted=reported - measured,
                 excluded=excluded, diagnostics=diagnostics, files=files)
 
 
@@ -1134,7 +1160,7 @@ def render_report(args):
                  unknown_collector_operations=unknown_operations,
                  received=sorted(data["received"]), measured=sorted(data["measured"]),
                  missing=sorted(data["missing"]),
-                 failure_only=sorted(data["failure_only"]),
+                 failure_only=sorted(data["failure_only"]), omitted=sorted(data["omitted"]),
                  excluded=sorted(data["excluded"]), incomplete=incomplete,
                  source_diagnostics=source_diagnostics,
                  phase_roots=phases, phase_coverage_gaps=phase_gaps)
@@ -1162,7 +1188,10 @@ def render_report(args):
              "| Task calendar elapsed, status clock | {} |".format(
                  "{:.3f} seconds".format(calendar_seconds) if calendar_seconds is not None
                  else "unavailable (status timezone/cutoff not supplied)"),
-             "", "Time kinds remain separate; task calendar elapsed is read from task control,",
+             "", *(["Totals omit measured units whose files reconciliation excluded: " +
+                    ", ".join(sorted(data["omitted"])) + "; see Coverage and provenance.", ""]
+                   if data["omitted"] else []),
+             "Time kinds remain separate; task calendar elapsed is read from task control,",
              "not inferred from summed roles. Parallel role times can overlap.",
              ""]
     for kind, seconds in sorted(total["duration"].items()):
@@ -1187,6 +1216,7 @@ def render_report(args):
               "- Measured units: " + (", ".join(sorted(data["measured"])) or "none"),
               "- Missing units: " + (", ".join(sorted(data["missing"])) or "none among declared expected"),
               "- Failure-only units: " + (", ".join(sorted(data["failure_only"])) or "none"),
+              "- Measured units omitted from totals: " + (", ".join(sorted(data["omitted"])) or "none"),
               "- Selected phase leaves: " + (", ".join(phases) or "none"),
               "- Phase coverage gaps: " + (", ".join(phase_gaps) or "none"),
               "- Incomplete source captures: " + str(len(incomplete)) +
@@ -1214,7 +1244,8 @@ def render_report(args):
         Path(args.out).parent.mkdir(parents=True, exist_ok=True)
         Path(args.out).write_text(output, encoding="utf-8")
         print(json.dumps({"report": str(args.out), "records": len(flat),
-                          "tokens": total["tokens"], "missing": sorted(data["missing"])}))
+                          "tokens": total["tokens"], "missing": sorted(data["missing"]),
+                          "omitted": sorted(data["omitted"])}))
     else:
         print(output)
 

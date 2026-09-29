@@ -10,13 +10,15 @@ charge, human time sheet or quality score.
 
 A participating unit selects its exact platform surface and native source when it
 starts or resumes. Record the task/phase, declared owner from status/team, role,
-actual working-unit address, exact session/conversation ID, numeric source path,
-range start and timezone. Never select a source by latest title, account username,
+actual working-unit address, exact source ID, numeric source path, range start
+and timezone. Never select a source by latest title, account username,
 project-wide history scan or a shared account's most recent session. A reused
-source splits at proven bound ranges. Child sources are separate unless the parent
-counter is proved exclusive of them. If a parent total is known to include a
-child, declare each exact namespace:source-id with --includes-source; the
-receiver excludes that inclusive parent while a named child is present.
+source splits at proven bound ranges. The source ID names the stream the unit
+writes itself — its own file, rollout or database — not an ID it merely inherits
+from a parent or a shared session, so each child agent is its own source whose
+totals add to its parent's. If a parent total is known to include a child,
+declare each exact namespace:source-id with --includes-source; the receiver
+excludes that inclusive parent while a named child is present.
 
 The three recipes below are selected independently. All produce the same version 1
 JSONL, pass the same validation and return through the existing role artifact
@@ -30,7 +32,12 @@ diagnostics only for a concrete reconciliation question.
 ### Codex rollout recipe
 
 Source: one exact Codex rollout JSONL bound by session_meta.id to the unit.
-Current observed surface is the Codex local task rollout. The collector reads only
+Current observed surface is the Codex local task rollout. A child agent writes its
+own rollout: its session_meta.id is its source ID, while its session_meta.session_id
+and usage records name the root session. Usage must name the rollout's own ID or
+the session its own metadata declares; any other session refuses the source. One
+observed child (2026-09-29) shared no response ID with its parent's rollout.
+The collector reads only
 session metadata, turn_context model/effort, event_msg token_count,
 token_usage_record numeric usage/thread counters and
 task_started/task_complete/turn_aborted timing fields. It does not export
@@ -54,7 +61,13 @@ the finite cutoff is recorded.
 ### Claude Code JSONL recipe
 
 Source: the exact session's Claude Code JSONL (including the Code tab/CLI source
-actually observed). Each assistant message ID is one response. Repeated blocks
+actually observed). A subagent in the same chat writes its own
+`<sessionId>/subagents/agent-<agentId>.jsonl` and repeats the parent sessionId on
+every line, so its source ID is `<sessionId>/<agentId>`; the session's own stays
+`<sessionId>`. Only lines of the selected unit count, and a file whose lines belong
+to another unit is refused with that unit's ID. In one observed Claude Code
+2.1.281–2.1.284 session, the session file held no subagent lines and shared no
+message ID with its subagents. Each assistant message ID is one response. Repeated blocks
 for that ID retain the largest reported output after input/cache consistency
 checks. Fresh input, cache read, five-minute and one-hour cache writes, and
 output are preserved separately. Thinking is a diagnostic subset only when the
@@ -71,7 +84,12 @@ opens SQLite read-only and takes a consistent in-memory backup; it reads only
 gen_metadata.idx and gen_metadata.data. The bounded, observed protobuf mapping
 is outer field 1 / nested field 4: fresh input field 2, cached input field 5,
 candidate output field 3, thinking field 9, content field 10 and generation
-duration field 11 (seconds/nanoseconds). Model is outer field 19. The observed
+duration field 11 (seconds/nanoseconds). Model is outer field 19. An absent
+counter beside reported ones is zero, because proto3 omits zero-valued scalars.
+A usage message that reports no counter at all, as observed for failed API calls,
+measures nothing: the row is not counted and the source diagnostics give how many
+were left out. A missing usage message is refused. A subagent writes its own
+conversation database under its own UUID. The observed
 invariant candidate = thinking + content is checked per row. Candidate already
 includes thinking. Generation duration is model time, not full agent time.
 gen_metadata alone does not prove a calendar date; rows remain undated until a
@@ -135,7 +153,12 @@ available. A complete successor naming a verified predecessor and covering
 its range replaces it for totals only when the earlier captured native source
 prefix still hashes identically; disjoint ranges add. Missing predecessor,
 unproved overlap, attribution conflict or one native source claimed by
-multiple units is excluded and diagnosed. A root task selection reads its
+multiple units is excluded and diagnosed. A unit whose measured files are all
+excluded is reported as omitted, not as a failure, and the summary names it
+beside the totals. A file captured under a source ID later shown wrong is not a
+revision and cannot be superseded: keep it outside economics/roles/ with the
+reason in the task record, then collect and return the corrected file.
+A root task selection reads its
 direct economics/roles files and each immediate phase-*/economics/roles leaf
 whose phase status matches the task ID. Missing phase return bytes are shown
 as coverage gaps; identical returned bytes are counted once. A phase report
