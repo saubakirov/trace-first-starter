@@ -1091,6 +1091,15 @@ TFW cycle and strategic discussion apply in every mode. Its fields must together
    task changelog; include release effects only when separately authorized. Then archive and dispose
    only of task-owned resources when safe.
 
+**Version line.** The card's first row compares the installed `.tfw/VERSION` with the newest exact
+`vX.Y.Z` tag at `tfw.upstream`; pre-release and other suffixed tags never count. It comes from one
+`git ls-remote --tags --refs <tfw.upstream>` under a limit of about 13 s set on the agent's own
+command tool, because Git has no connect limit; a tool that cannot bound time skips the call. When
+newer releases exist, the row names how many and offers `/tfw-update` now or after the current task;
+it never starts an update. A skipped or failed call, or the limit, shows the newest as `unknown` with
+the reason and blocks nothing. The upstream itself (`tfw.installed_from: "self"`) makes no call and
+no offer.
+
 The selected profile supplies platform-specific mechanics and current limitations for these fields.
 Unknown future addresses, paths, phase count, title values and settings stay explicitly unknown;
 required mechanics are not optional conveniences. Ask for the initial operating mode with the card,

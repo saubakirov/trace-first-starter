@@ -80,20 +80,26 @@ Start by choosing an Edition. If you are unsure, give the agent the [Edition gui
 Copy this prompt into an agent that can read and edit files:
 
     I want to start a new project with Trace-First Workflow (TFW).
-    Clone https://github.com/saubakirov/trace-first-starter to a temporary directory.
+    Fetch only the framework of its newest release into a temporary directory <temp>, with <tag> the
+    highest vX.Y.Z without a suffix in git ls-remote --tags --refs https://github.com/saubakirov/trace-first-starter:
+    git clone -c core.autocrlf=false -c core.attributesFile= --filter=blob:none --sparse --depth 1 --branch <tag> https://github.com/saubakirov/trace-first-starter <temp>
+    git -C <temp> sparse-checkout set .tfw editions
     Read editions/README.md, recommend Assisted or Full for my work, and explain the choice.
     After I choose, copy the contents of that Edition into my project root and follow its README.
-    If I choose Full, copy .tfw/ and follow .tfw/quickstart.md step by step.
+    If I choose Full, follow .tfw/quickstart.md from <temp> step by step.
     My project is about: <describe the project, participants, duration, and risk>
 
 ### Existing project — add TFW without losing state
 
     I want to add Trace-First Workflow (TFW) to this existing project.
     First inspect the repository and identify files or traces that must be preserved.
-    Clone https://github.com/saubakirov/trace-first-starter to a temporary directory.
+    Fetch only the framework of its newest release into a temporary directory <temp>, with <tag> the
+    highest vX.Y.Z without a suffix in git ls-remote --tags --refs https://github.com/saubakirov/trace-first-starter:
+    git clone -c core.autocrlf=false -c core.attributesFile= --filter=blob:none --sparse --depth 1 --branch <tag> https://github.com/saubakirov/trace-first-starter <temp>
+    git -C <temp> sparse-checkout set .tfw editions
     Read editions/README.md and recommend Assisted or Full for my work.
     Do not overwrite project state. Use the selected Edition's migration path;
-    for Full, copy .tfw/ into the project root and follow .tfw/quickstart.md.
+    for Full, follow .tfw/quickstart.md from <temp>.
     My project is about: <describe the project, participants, duration, and risk>
 
 To adopt **Assisted** in an existing project, follow [`editions/02-assisted/MIGRATION.md`](editions/02-assisted/MIGRATION.md) and preserve its goal, tasks, traces, results, and memory. Move to Full when the work needs the complete formal lifecycle.
@@ -227,6 +233,13 @@ Check the installed semantic version in [`.tfw/VERSION`](.tfw/VERSION). To compa
 > `/tfw-update`
 
 The update workflow fetches the configured upstream, compares versions, classifies changes as safe, merge-sensitive, or breaking, and applies the selected changes without treating project-specific state as disposable. Read the exact procedure in [`.tfw/workflows/update.md`](.tfw/workflows/update.md) and the version history in [`.tfw/CHANGELOG.md`](.tfw/CHANGELOG.md).
+
+A project on TFW 3.7.1 or earlier still carries the old fetch text, under which an update downloads about 114 MiB. For its next update, ask once for the light fetch:
+
+    /tfw-update <tag> — fetch it with
+    git clone -c core.autocrlf=false -c core.attributesFile= --filter=blob:none --sparse --depth 1 --branch <tag> <upstream> .tfw/.upstream/.clone
+    and git -C .tfw/.upstream/.clone sparse-checkout set .tfw, then continue with Step 0
+    of .tfw/.upstream/.clone/.tfw/workflows/update.md from its size check.
 
 ---
 

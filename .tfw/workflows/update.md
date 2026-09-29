@@ -38,11 +38,30 @@ For task-bound Full work, bind the actual Coordinator's own native source
 range and select `.tfw/economics/README.md`. A taskless adapter update
 creates no economics task; the optional helper does not gate update.
 
-Resolve `tfw.upstream` to a local Git checkout. The operator names a tag or explicitly authorizes an
-untagged commit. Resolve the object, read its VERSION, and for a tag require `v{VERSION}`. Local
-source must be clean under `.tfw/`. Record locator, full SHA, version and source path; materialize
-exactly that object with `git archive` into `.tfw/.upstream/`. Recheck immutability before adapter
-sync. Version equality or a prior receipt never proves completion.
+The operator names a tag or explicitly authorizes an untagged commit; `<upstream>` is `tfw.upstream`.
+Remove a leftover `.tfw/.upstream/` first, disclosing it. Fetch a tag from the receiver root:
+
+    git clone -c core.autocrlf=false -c core.attributesFile= --filter=blob:none --sparse --depth 1 --branch <tag> <upstream> .tfw/.upstream/.clone
+    git -C .tfw/.upstream/.clone sparse-checkout set .tfw
+    git -C .tfw/.upstream/.clone count-objects -vH
+
+An untagged commit:
+
+    git init .tfw/.upstream/.clone
+    git -C .tfw/.upstream/.clone sparse-checkout set .tfw
+    git -C .tfw/.upstream/.clone fetch --depth 1 --filter=blob:none <upstream> <SHA>
+    git -C .tfw/.upstream/.clone -c core.autocrlf=false -c core.attributesFile= checkout FETCH_HEAD
+    git -C .tfw/.upstream/.clone count-objects -vH
+
+Disclose a `size-pack` above about 2 MiB as a full download. If Git rejects an option, repeat without
+`--filter=blob:none`, `--sparse` and `sparse-checkout` (clone `--no-checkout`), writing only `.tfw`
+by `git -C .tfw/.upstream/.clone -c core.autocrlf=false -c core.attributesFile= checkout <SHA> -- .tfw`.
+Record locator, full SHA, size, the clone's `.tfw/VERSION` (a tag requires `v{VERSION}`) and a tag's
+`git ls-remote <upstream> refs/tags/<tag>` line, rechecked unchanged before adapter sync. Copy the
+clone's `.tfw` to `.tfw/.upstream/.tfw`; for every path in
+`git -C .tfw/.upstream/.clone ls-tree -r <SHA> -- .tfw`, `git hash-object --no-filters .tfw/.upstream/<path>`
+must print its blob id (paths as arguments). Then delete `.tfw/.upstream/.clone`. Version equality
+or a prior receipt never proves completion.
 
 For an authorized untagged Candidate, set installed version from target VERSION and
 `tfw.installed_from` to configured upstream plus full Candidate SHA; receipt/outcome label it
@@ -99,7 +118,8 @@ choices and exact target; do not demand per-file approval already supplied by up
 
 ## Step 3 — Apply connected groups
 
-Copy approved pinned payload by connected group while reporting exclusions; merge config separately.
+Copy approved pinned payload by connected group while reporting exclusions, then check copied files
+raw-byte-equal to staging (the last payload check); merge config separately.
 The pinned Full economics group is `.tfw/economics/` plus
 `.tfw/templates/economics.md` and their changed canonical workflows/copies.
 Verify all five new payload files at the pinned source and copied receiver.
@@ -134,8 +154,8 @@ otherwise it is uncharged. Validate four adapters and ten manifest commands plus
 `coordinator.md` payload paths and persistent exact profile pointers. Apply exact copies or
 one marker-bounded block; preserve unmarked/foreign neighbors. Antigravity installs to plural
 `.agents`; singular `.agent/rules` remains compatible rule location, never inferred workflow support
-or deletion authority. Reject missing/extra commands, wrong roles/paths, duplicate blocks, drift or
-second-run diff; allow retired terms only where intervening history names them.
+or deletion authority. Reject missing/extra commands, wrong roles/paths, duplicate blocks or drift;
+allow retired terms only where intervening history names them.
 
 Verify target ref/SHA/version/tag, source coherence, config/state/purpose preservation, migrations,
 adapter parity, project checks, recovery/re-entry, cleanup and final-message inputs. Label pre-existing
@@ -145,8 +165,9 @@ validate this Coordinator's own bounded numeric JSONL or typed failure
 receipt and include its resolvable file/revision/hash in the ordinary
 effect return. Never migrate old task records merely because Full updated.
 
-After verification, remove `.tfw/.upstream/`/temporary source only when safe and record retained
-paths. Then seal one append-only `.tfw/update_receipts/UPDATE__<stamp>__<four-hex>.md` from the
+After verification, remove `.tfw/.upstream/`/temporary source and record retained paths; before
+sealing, `git ls-files -- .tfw/.upstream` must print nothing; disclose any entry. Then seal one
+append-only `.tfw/update_receipts/UPDATE__<stamp>__<four-hex>.md` from the
 template, recording source/provenance, groups, authority, effects, preservation, checks, cleanup,
 next action and delivery state `planned/not-yet-observed`. Never overwrite or later rewrite it.
 
