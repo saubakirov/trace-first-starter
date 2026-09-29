@@ -19,6 +19,9 @@
 - Related: `daily/2026/20260929-104929_claude-subagent-economics/task.md` (on local `master` at
   `0cd723a2`, not yet on this branch) found the same name in this profile, lines 8 and 33, and left
   it outside that Daily. This record acts on that finding.
+- Follow-up excerpts (owner, this chat, 2026-09-29, after commit `8d7ee923`): «про pcux тоже недо
+  убрать не понимаю зачкм лно там для кого в чем ценность? докажи покажи» and «что еще странного
+  попало в конвенции ридми и т.д.?»
 
 ## 2. Goal, Value and Boundaries
 
@@ -39,6 +42,9 @@ Completion oracle: the guard's own name list and matching (whole word, case-inse
 in the file; the diff changes exactly two lines and only the name phrase in each, so dates and
 capability statements are otherwise byte-identical; the local pre-commit guard reports no leak for
 the committed paths; no other copy requires parity.
+
+Revision — 2026-09-29: the owner's follow-up widens the change to the PCUX pointer in line 33 of
+the same profile. The second question asks for a read-only inventory and authorizes no other change.
 
 ## 3. Context before action
 
@@ -116,6 +122,35 @@ Completion addition — 2026-09-29:
   until they update. The out-of-scope places named in §3 still contain it. These checks prove the
   source text only; the change asks nothing new of any host.
 
+Revision — 2026-09-29 (owner's follow-up):
+
+- Result: line 33 now begins “The owner-supplied Claude Desktop report is dated 2026-09-23 and
+  scoped to that setup.”; only the words “selected in PCUX HL §2” are gone.
+- Evidence shown to the owner: the Claude Code Coordinator reads this profile at every new task, in
+  this repository and in every project that installs TFW, because it ships in `.tfw/`. The pointer
+  names section 2 of `workspace/2026/TFW_20260922-192606_PCUX/HL-TFW_20260922-192606_PCUX.md`,
+  outside `.tfw/`, so no receiver has it, and it gives no path. That section is a working record
+  that opens with the report's machine-local location and the private project's path. The date,
+  scope and limits a reader needs stay in the profile; maintainers find the source with `git log -S`
+  on this file (`1893cd27`, `5ee5f190`).
+- Open point put to the owner: in a receiving project “the owner” means that project's owner, so
+  “the owner's” (line 8, the owner's example label), “owner-supplied” (line 33) and “the owner
+  reported … in other projects” (line 35) attribute the upstream maintainer's reports to the wrong
+  person. No wording is changed for this until the owner chooses.
+- Checks: `git diff --numstat` against `8d7ee923`: `1 1`; the word diff removes only that phrase;
+  no “PCUX” left in the file; LF endings kept; `git diff --check` clean; the local guard on the
+  staged paths reports nothing. Blob `fec79d213c3f230f2418778df774c0cef52a8d4f`, SHA-256
+  `41ecb0034f94f59af7ed1ae18735f17c7f08cdd66f7441c65a124eaf034c8914`.
+- Read-only inventory reported in chat, nothing changed: shipped text that only makes sense inside
+  this repository — `.tfw/adapters/codex/coordinator.md:70` (PCUX), `.tfw/adapters/antigravity/coordinator.md:32`
+  (“The owner reported”) and `:42` (PCUX), `.tfw/workflows/review.md:151` (AGSK) and
+  `.tfw/workflows/knowledge.md:116` (TKL and a Git object of this repository), each with its
+  `.claude/commands/` byte copy, `.tfw/compilable_contract.md:134` (TKL, SLC), `README.md:269`
+  (TFW-60). Checked and left as they are: illustrative examples in conventions and templates, task
+  history in migration guides, `.tfw/knowledge_state.yaml` (never created by init, never overwritten
+  by update, left out of LFD's archive). No machine-local path or personal e-mail in current shipped
+  text, `KNOWLEDGE.md`, `knowledge/`, `docs/` outside `docs/feedback/`, `tools/` or `team/`.
+
 ## 5. Next or close
 
 Prepared and checked; committed on branch `claude/hungry-moser-da2ce2` in the commit that carries
@@ -125,3 +160,10 @@ Next authority: the owner accepts the wording and decides how to publish it. Thi
 `origin/master` plus this one commit, so it can be published alone. Pushing local `master` as it
 stands would also publish its unpushed commits; the Related record reports that some of them carry
 the private name.
+
+Revision — 2026-09-29: the PCUX removal is a second commit on the same branch. The local pre-push
+guard, run as a dry run, passes for this branch; at the time of the check it warned for 17 of the
+166 unpushed non-merge commits on local `master` (10 with a private name, 9 with a machine-local
+path). Waiting for the
+owner: acceptance of the wording, the choice on “owner” attribution, which inventory items to fix
+and under which route, and whether and how to push.

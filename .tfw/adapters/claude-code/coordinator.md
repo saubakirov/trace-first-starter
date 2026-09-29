@@ -30,7 +30,7 @@ and checkout disposition. Archive is not disk cleanup.
 
 ## Dated source and current check
 
-The owner-supplied Claude Desktop report selected in PCUX HL §2 is dated 2026-09-23 and scoped to that setup. It reports that click-created full chats require a nonempty first prompt, a local launch shares the current checkout, tested isolated launches used a different base, subagents could be created, and exact addressed sends to known sessions were described. It did not demonstrate a complete TFW cycle, reliable title readback, browser access in every role, or every Claude surface. Report `provision · addressed send · wait/readback · title/readback` separately from current tools and observed receipts; classify each `native`, `owner-assisted` or `unavailable`. An owner report is a bounded source, not a live current-surface trial.
+The owner-supplied Claude Desktop report is dated 2026-09-23 and scoped to that setup. It reports that click-created full chats require a nonempty first prompt, a local launch shares the current checkout, tested isolated launches used a different base, subagents could be created, and exact addressed sends to known sessions were described. It did not demonstrate a complete TFW cycle, reliable title readback, browser access in every role, or every Claude surface. Report `provision · addressed send · wait/readback · title/readback` separately from current tools and observed receipts; classify each `native`, `owner-assisted` or `unavailable`. An owner report is a bounded source, not a live current-surface trial.
 
 On 2026-09-27 the owner reported good results with a single Coordinator and TFW subagents in other
 projects using TFW 3.6.1 on Claude Desktop. This supports offering the mode, not a claim of independently
