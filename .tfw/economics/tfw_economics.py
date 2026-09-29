@@ -23,7 +23,7 @@ from decimal import Decimal
 from pathlib import Path
 
 VERSION = 1
-COLLECTOR = "tfw-economics/1.0"
+COLLECTOR = "tfw-economics/1.1"
 TOKEN_KEYS = ("fresh", "cached", "cache_write", "cache_write_5m",
               "cache_write_1h", "input", "output", "reasoning", "total")
 KINDS = {"manifest", "usage", "failure"}
@@ -332,6 +332,7 @@ def codex_rows(raw, args):
     total = None
     turns = {}
     seen_session = None
+    usage_sessions = set()
     diagnostics = []
     completed = set()
     for line_no, line in enumerate(raw.splitlines()):
@@ -349,13 +350,15 @@ def codex_rows(raw, args):
             require(seen_session is None or seen_session == current_session,
                     "Codex source contains multiple session IDs")
             seen_session = current_session
+            # A child agent's rollout declares its root session; its usage names that session.
+            usage_sessions |= {current_session, payload.get("session_id")} - {None}
         if kind == "turn_context":
             model = payload.get("model")
             effort = payload.get("effort") or payload.get("reasoning_effort")
             active = payload.get("turn_id") or active
         if kind == "token_usage_record":
-            require(isinstance(payload, dict) and payload.get("session_id") == args.source_id,
-                    "Codex response usage has a different session ID")
+            require(isinstance(payload, dict) and payload.get("session_id") in usage_sessions,
+                    "Codex response usage names a session outside this rollout's metadata")
             response_id = payload.get("response_id")
             identity(response_id, "Codex response id")
             fields = ("input_tokens", "cached_input_tokens", "cache_write_input_tokens",
@@ -483,8 +486,14 @@ def codex_rows(raw, args):
 
 
 def claude_rows(raw, args):
+    # The session's own lines carry no agentId. A subagent's own file repeats the
+    # parent sessionId on every line, so its source is <sessionId>/<agentId>.
+    require(re.fullmatch(r"[^/]+(/[^/]+)?", args.source_id),
+            "Claude source ID must be <sessionId> or <sessionId>/<agentId>")
+    session, _, agent = args.source_id.partition("/")
     best = {}
     seen_sessions = set()
+    others = set()
     earlier_ids = set()
     for line_no, line in enumerate(raw.splitlines()):
         if args.end is not None and line_no >= args.end:
@@ -500,6 +509,9 @@ def claude_rows(raw, args):
             continue
         u = message.get("usage")
         if not isinstance(u, dict):
+            continue
+        if event.get("agentId") != (agent or None):
+            others.add(event.get("agentId"))
             continue
         mid = message.get("id")
         identity(mid, "Claude message id")
@@ -536,16 +548,21 @@ def claude_rows(raw, args):
                 tok["reasoning"] = reasoning
         best[mid] = dict(index=line_no, at=event.get("timestamp"),
                          model=message.get("model"), tokens=tok)
-    require(seen_sessions == {args.source_id},
+    require(seen_sessions == {session},
             "Claude session IDs disagree with exact source ID")
+    owners = ", ".join(session + "/" + a if a else session for a in sorted(others, key=str))
+    require(best or not others,
+            "Claude usage in this file belongs to " + owners + ", not " + args.source_id)
     result = []
     for mid, rec in best.items():
         result.append(usage("message:" + mid, rec["index"], rec["at"],
                             args.timezone, rec["model"], None, rec["tokens"],
                             unavailable={"duration_seconds": "Claude Code JSONL has no native agent interval"}))
-    return sorted(result, key=lambda r: r["source_index"]), [
-        "repeated assistant blocks reconciled by message id and maximum output",
-        "gap-based active time excluded from native duration"]
+    notes = ["repeated assistant blocks reconciled by message id and maximum output",
+             "gap-based active time excluded from native duration"]
+    if others:
+        notes.append("usage of other Claude units left to their own sources: " + owners)
+    return sorted(result, key=lambda r: r["source_index"]), notes
 
 
 def varint(data, at):
@@ -633,13 +650,8 @@ def antigravity_rows(source, args):
             model = model_blob.decode("utf-8") if model_blob is not None else None
         except UnicodeError as exc:
             raise EconomicsError("Antigravity model encoding changed") from exc
-        fresh = one(u, 2, int)
-        cached = one(u, 5, int, 0)
-        output = one(u, 3, int)
-        reasoning = one(u, 9, int)
-        content = one(u, 10, int)
-        require(all(type(x) is int and x >= 0 for x in (fresh, cached, output, reasoning, content)),
-                "Antigravity numeric mapping changed")
+        # proto3 omits zero-valued scalars: an absent counter in a present usage message is 0.
+        fresh, cached, output, reasoning, content = (one(u, k, int, 0) for k in (2, 5, 3, 9, 10))
         require(output == reasoning + content, "Antigravity candidate inclusion changed")
         timing_blob = one(outer, 11, bytes)
         timing = proto_fields(timing_blob) if timing_blob is not None else None
@@ -955,9 +967,12 @@ def reconcile(paths, expected_units=()):
             records.append((m, row, f["sha256"]))
     received = {f["manifest"]["unit"] for f in files}
     measured = {m["unit"] for m, _, _ in records}
+    reported = {f["manifest"]["unit"] for f in files
+                if any(row["kind"] == "usage" for row in f["rows"])}
     expected = set(expected_units)
     return dict(records=records, received=received, measured=measured,
-                missing=expected - received, failure_only=received - measured,
+                missing=expected - received, failure_only=received - reported,
+                omitted=reported - measured,
                 excluded=excluded, diagnostics=diagnostics, files=files)
 
 
@@ -1134,7 +1149,7 @@ def render_report(args):
                  unknown_collector_operations=unknown_operations,
                  received=sorted(data["received"]), measured=sorted(data["measured"]),
                  missing=sorted(data["missing"]),
-                 failure_only=sorted(data["failure_only"]),
+                 failure_only=sorted(data["failure_only"]), omitted=sorted(data["omitted"]),
                  excluded=sorted(data["excluded"]), incomplete=incomplete,
                  source_diagnostics=source_diagnostics,
                  phase_roots=phases, phase_coverage_gaps=phase_gaps)
@@ -1162,7 +1177,10 @@ def render_report(args):
              "| Task calendar elapsed, status clock | {} |".format(
                  "{:.3f} seconds".format(calendar_seconds) if calendar_seconds is not None
                  else "unavailable (status timezone/cutoff not supplied)"),
-             "", "Time kinds remain separate; task calendar elapsed is read from task control,",
+             "", *(["Totals omit measured units whose files reconciliation excluded: " +
+                    ", ".join(sorted(data["omitted"])) + "; see Coverage and provenance.", ""]
+                   if data["omitted"] else []),
+             "Time kinds remain separate; task calendar elapsed is read from task control,",
              "not inferred from summed roles. Parallel role times can overlap.",
              ""]
     for kind, seconds in sorted(total["duration"].items()):
@@ -1187,6 +1205,7 @@ def render_report(args):
               "- Measured units: " + (", ".join(sorted(data["measured"])) or "none"),
               "- Missing units: " + (", ".join(sorted(data["missing"])) or "none among declared expected"),
               "- Failure-only units: " + (", ".join(sorted(data["failure_only"])) or "none"),
+              "- Measured units omitted from totals: " + (", ".join(sorted(data["omitted"])) or "none"),
               "- Selected phase leaves: " + (", ".join(phases) or "none"),
               "- Phase coverage gaps: " + (", ".join(phase_gaps) or "none"),
               "- Incomplete source captures: " + str(len(incomplete)) +
@@ -1214,7 +1233,8 @@ def render_report(args):
         Path(args.out).parent.mkdir(parents=True, exist_ok=True)
         Path(args.out).write_text(output, encoding="utf-8")
         print(json.dumps({"report": str(args.out), "records": len(flat),
-                          "tokens": total["tokens"], "missing": sorted(data["missing"])}))
+                          "tokens": total["tokens"], "missing": sorted(data["missing"]),
+                          "omitted": sorted(data["omitted"])}))
     else:
         print(output)
 
