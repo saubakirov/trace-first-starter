@@ -22,6 +22,9 @@
 - Follow-up excerpts (owner, this chat, 2026-09-29, after commit `8d7ee923`): «про pcux тоже недо
   убрать не понимаю зачкм лно там для кого в чем ценность? докажи покажи» and «что еще странного
   попало в конвенции ридми и т.д.?»
+- Close excerpt (owner, this chat, 2026-09-29, after commit `4e3e2e6e`): «просто слей в мастер и
+  закрывай задачу». The owner also asked what the 2026-09-23 date is for; answered in chat: it
+  marks when the observations were made, so a reader knows they may be out of date.
 
 ## 2. Goal, Value and Boundaries
 
@@ -167,3 +170,10 @@ guard, run as a dry run, passes for this branch; at the time of the check it war
 path). Waiting for the
 owner: acceptance of the wording, the choice on “owner” attribution, which inventory items to fix
 and under which route, and whether and how to push.
+
+Close — 2026-09-29: the owner accepts the result as it stands and closes this Daily (excerpt in §1).
+The proposals on “owner” attribution and the inventory are not taken up here; they stay recorded
+above for a later decision. Landing, as instructed: this branch is merged into local `master`. The
+merge commit is built outside the shared main checkout and brought in by fast-forward, because that
+checkout's index holds another session's staged files and `git merge` needs an index that matches
+HEAD. Nothing is pushed; pushing remains the owner's decision.
