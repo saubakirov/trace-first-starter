@@ -558,7 +558,7 @@ Codex-чата и известного тестового подагента. Э
 
 ## 14. Codex — убрать названия проектов из общего интерфейса, 2026-09-29T12:05:15.562462+05:00
 
-Источник: владелец в текущем чате: «а что за show helpdesk afd ключ такой интересный?
+Источник: владелец в текущем чате: «а что за show <частные проекты> ключ такой интересный?
 просочился в общий репо получается?». Это дополнительное исправление общего помощника после
 проверки основного пакета. Исследованы текущие summary/parser и economics README, найдено
 ровно 3 действующих вхождения: специальное множество проектов в summary, аргумент parser,
@@ -567,7 +567,7 @@ Codex-чата и известного тестового подагента. Э
 Цель: общий сборщик сравнивает проекты выбранных данных и не содержит бизнес-имён владельца
 как особой функции. Ценность и соответствие North Star: переносимый понятный инструмент,
 минимум условий и обслуживание без частных исключений.
-Граница: удалить специальный флаг, ветку добавления helpdesk/afd и её описание; отметить
+Граница: удалить специальный флаг, ветку добавления <частных проектов> и её описание; отметить
 изменение в changelog. Новых флагов, схемы, утилит и постоянных тестов не добавлять.
 Исторические TEQM требования/примеры и числовые результаты сохраняются.
 Проверка: summary --help не предлагает частный флаг; реальная выбранная TEQM сводка по-прежнему
@@ -649,10 +649,10 @@ summary flag) belongs to the Codex session and does not touch `reconcile` or `su
 
 ### Результат дополнительного исправления и замера — 2026-09-29 12:08
 
-Удалены специальный show-helpdesk-afd флаг и ветка, добавлявшая эти названия в сводку.
+Удалены специальный флаг `--show-<частные проекты>` и ветка, добавлявшая эти названия в сводку.
 README и changelog согласованы с общим интерфейсом: проекты берутся только из выбранных
 источников. Проверены summary --help и сводка по реальной TEQM: 170769892 токена сохранились,
-искусственных строк helpdesk/afd нет. Исторические примеры TEQM не редактировались.
+искусственных строк <частных проектов> нет. Исторические примеры TEQM не редактировались.
 
 Отчёт владельцу: [economics-codex-chat.md](economics-codex-chat.md).
 Два штатно собранных и проверенных файла в economics/: родитель codex-parent-20260929-120253.jsonl,
@@ -767,3 +767,23 @@ Daily и снимки не требовали выдуманного стату�
 форматов платформ, а не текст скилла. Сервер, БД, автоматический обход истории и хуки в MVP
 не нужны. Без скилла расчёт уже работает, но связывание источников и оформление останутся
 ручными и будут повторять сегодняшние ошибки.
+
+
+## 19. Claude — the summary-flag change lands with this Daily, 2026-09-29 12:14
+
+Source: the owner, this chat: “правки кодекс тоже по задаче, то что он убрал <частные проекты>”.
+This assigns the TEQM Coordinator's uncommitted change (§14) to this Daily. It removes the
+project-specific summary flag and its named rows from `tfw_economics.py` and replaces their
+description in the economics README and changelog with neutral sentences. Collectors,
+reconciliation and the task report are untouched.
+
+Checked on master before committing: configured tests 14 passed; `summary --help` shows no such
+flag; the TEQM summary still gives 170,769,892 tokens; the one-off Codex, Antigravity and
+received-file checks pass, 20 of 20. The Claude section needs the discarded LFD log copy and was
+not rerun; the collectors did not change.
+
+After commit `714c574a` the local guard flagged a private project name in this record. The four
+places in §14 and its appendix now carry the neutral label `<частные проекты>`. The name stays in
+unpushed history, in `714c574a` and in the TEQM commits that introduced the flag; whether to
+rewrite that history before a push is the owner's decision. The same name also appears in the
+already published `.tfw/adapters/claude-code/coordinator.md` (lines 8 and 33), outside this Daily.

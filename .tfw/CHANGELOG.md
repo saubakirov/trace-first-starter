@@ -17,6 +17,7 @@ Format: [Keep a Changelog](https://keepachangelog.com/). Versioning: [Semantic V
   absent beside reported ones decodes as a proto3 zero while a row reporting none is left out and
   disclosed, and reports name measured units that reconciliation omitted
   (Daily `20260929-104929_claude-subagent-economics`).
+  Project comparisons use selected sources; the project-specific demonstration flag was removed.
 
 ## [3.7.1] — 2026-09-28
 

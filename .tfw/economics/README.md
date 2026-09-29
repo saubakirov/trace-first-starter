@@ -194,8 +194,7 @@ Run the helper with an available Python 3 standard-library interpreter:
   remains unavailable.
 - summary: repeat --task-root for selected roots; combine --date-from,
   --date-to, --project, --task, --tag, --role and --model; use --csv and
-  --out for rebuildable exports. --show-helpdesk-afd renders the requested
-  two-project view with an explicit no-captured-data row.
+  --out for rebuildable exports. Project comparisons use the selected sources.
 
 The task report lives beside status.md; a phase may have its own economics.md.
 Numeric JSONL has no result narrative or quality score. Purpose and value

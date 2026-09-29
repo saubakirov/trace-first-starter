@@ -1314,14 +1314,10 @@ def render_summary(args):
              "Rate basis: " + rates["basis"] + " (" + rates["rate_epoch"] + ")",
              "", "| Project | Tokens | Priced USD | Time by kind (seconds) |",
              "|---|---:|---:|---|"]
-    for name in sorted(set(by_project) | ({"helpdesk", "afd"} if args.show_helpdesk_afd else set())):
-        box = by_project.get(name)
-        if box is None:
-            lines.append("| {} | no captured data | no captured data | no captured data |".format(name))
-        else:
-            kinds = ", ".join("{}: {:.3f}".format(k, v) for k, v in sorted(box["duration"].items()))
-            lines.append("| {} | {:,} | {} | {} |".format(name, box["tokens"], box["priced"],
-                                                        kinds or "unavailable"))
+    for name, box in sorted(by_project.items()):
+        kinds = ", ".join("{}: {:.3f}".format(k, v) for k, v in sorted(box["duration"].items()))
+        lines.append("| {} | {:,} | {} | {} |".format(name, box["tokens"], box["priced"],
+                                                    kinds or "unavailable"))
     lines += ["", "Token ranking, time kinds and priced money are distinct; unknown time and",
               "unpriced tokens are not zeros. Dates without a proved source join are excluded",
               "from date-filtered totals.",
@@ -1427,7 +1423,6 @@ def parser():
             q.add_argument("--role")
             q.add_argument("--model")
             q.add_argument("--tag")
-            q.add_argument("--show-helpdesk-afd", action="store_true")
     return p
 
 
