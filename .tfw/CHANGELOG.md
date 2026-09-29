@@ -13,8 +13,9 @@ Format: [Keep a Changelog](https://keepachangelog.com/). Versioning: [Semantic V
   returns now supply their own files; final economics presentation precedes safe disposable cleanup.
   The optional standard-library helper preserves the ordinary lifecycle's runtime independence.
   Each child agent is its own source named by the stream it writes — a Claude Code subagent is
-  `<sessionId>/<agentId>`, a Codex child its rollout's `session_meta.id` — absent Antigravity
-  counters decode as proto3 zeros, and reports name measured units that reconciliation omitted
+  `<sessionId>/<agentId>`, a Codex child its rollout's `session_meta.id` — an Antigravity counter
+  absent beside reported ones decodes as a proto3 zero while a row reporting none is left out and
+  disclosed, and reports name measured units that reconciliation omitted
   (Daily `20260929-104929_claude-subagent-economics`).
 
 ## [3.7.1] — 2026-09-28

@@ -626,6 +626,8 @@ def antigravity_rows(source, args):
     raw_digest = hashlib.sha256()
     total_size = 0
     result = []
+    unmeasured = 0
+    last = None
     query = "select idx, data from gen_metadata where idx >= ?"
     params = [args.start]
     if args.end is not None:
@@ -638,6 +640,7 @@ def antigravity_rows(source, args):
         raw_digest.update(len(blob).to_bytes(8, "big"))
         raw_digest.update(blob)
         total_size += len(blob) + 16
+        last = idx
         top = proto_fields(blob)
         outer_blob = one(top, 1, bytes)
         require(outer_blob is not None, "Antigravity outer numeric field missing")
@@ -645,13 +648,18 @@ def antigravity_rows(source, args):
         usage_blob = one(outer, 4, bytes)
         require(usage_blob is not None, "Antigravity usage field missing")
         u = proto_fields(usage_blob)
+        # proto3 omits zero-valued scalars: an absent counter beside reported ones is 0, but a
+        # usage message reporting no counter at all (seen for failed calls) measures nothing.
+        counters = (2, 5, 3, 9, 10)
+        if not any(k in u for k in counters):
+            unmeasured += 1
+            continue
         model_blob = one(outer, 19, bytes)
         try:
             model = model_blob.decode("utf-8") if model_blob is not None else None
         except UnicodeError as exc:
             raise EconomicsError("Antigravity model encoding changed") from exc
-        # proto3 omits zero-valued scalars: an absent counter in a present usage message is 0.
-        fresh, cached, output, reasoning, content = (one(u, k, int, 0) for k in (2, 5, 3, 9, 10))
+        fresh, cached, output, reasoning, content = (one(u, k, int, 0) for k in counters)
         require(output == reasoning + content, "Antigravity candidate inclusion changed")
         timing_blob = one(outer, 11, bytes)
         timing = proto_fields(timing_blob) if timing_blob is not None else None
@@ -667,10 +675,13 @@ def antigravity_rows(source, args):
         result.append(row)
     copy.close()
     require(result, "selected Antigravity range has no numeric rows")
-    return result, raw_digest.hexdigest(), total_size, [
-        "Antigravity DB copied through SQLite read-only backup",
-        "daily date omitted: no proved gen_metadata to timestamp join",
-        "model generation duration is not agent session time"]
+    notes = ["Antigravity DB copied through SQLite read-only backup",
+             "daily date omitted: no proved gen_metadata to timestamp join",
+             "model generation duration is not agent session time"]
+    if unmeasured:
+        notes.append(str(unmeasured) + " generation rows report no usage counter; not counted")
+    # The bound range ends after the last row read, counted or not, so its digest stays exact.
+    return result, raw_digest.hexdigest(), total_size, last + 1, notes
 
 
 def compact_rows(rows):
@@ -761,13 +772,13 @@ def collect(args):
         require(p["source_namespace"] == args.provider and p["source_id"] == args.source_id
                 and p["unit"] == args.unit, "predecessor source/unit mismatch")
     if args.provider == "antigravity.ide":
-        rows, source_hash, source_size, diagnostics = antigravity_rows(source, args)
-        end = max(r["source_index"] for r in rows) + 1 if args.end is None else args.end
+        rows, source_hash, source_size, read_end, diagnostics = antigravity_rows(source, args)
+        end = read_end if args.end is None else args.end
         if predecessor and args.start <= predecessor["manifest"]["range_start"]:
             prior_end = predecessor["manifest"]["range_end"]
             prior_args = argparse.Namespace(**vars(args))
             prior_args.start, prior_args.end = predecessor["manifest"]["range_start"], prior_end
-            _, prefix_hash, _, _ = antigravity_rows(source, prior_args)
+            _, prefix_hash, _, _, _ = antigravity_rows(source, prior_args)
     else:
         raw, lines = source_lines(source)
         end = len(lines) if args.end is None else args.end

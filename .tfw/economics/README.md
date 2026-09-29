@@ -85,8 +85,10 @@ gen_metadata.idx and gen_metadata.data. The bounded, observed protobuf mapping
 is outer field 1 / nested field 4: fresh input field 2, cached input field 5,
 candidate output field 3, thinking field 9, content field 10 and generation
 duration field 11 (seconds/nanoseconds). Model is outer field 19. An absent
-counter inside a present usage message is zero, because proto3 omits zero-valued
-scalars; a missing usage message still refuses the row. A subagent writes its own
+counter beside reported ones is zero, because proto3 omits zero-valued scalars.
+A usage message that reports no counter at all, as observed for failed API calls,
+measures nothing: the row is not counted and the source diagnostics give how many
+were left out. A missing usage message is refused. A subagent writes its own
 conversation database under its own UUID. The observed
 invariant candidate = thinking + content is checked per row. Candidate already
 includes thinking. Generation duration is model time, not full agent time.
