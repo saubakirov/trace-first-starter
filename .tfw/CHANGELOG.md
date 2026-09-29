@@ -5,6 +5,13 @@ Format: [Keep a Changelog](https://keepachangelog.com/). Versioning: [Semantic V
 
 ## [Unreleased]
 
+## [3.8.0] — 2026-09-29
+
+This minor release adds portable task economics and light framework delivery: install and update
+fetch only the framework, release archives carry only framework material, and a new task shows a
+lagging version. See
+[Updating to TFW 3.8.0](https://github.com/saubakirov/trace-first-starter/blob/v3.8.0/.tfw/migrations/3.8.0.md).
+
 ### Added
 
 - TEQM (`TFW_20260928-181352_TEQM`): portable compact role economics, shared validation and
@@ -32,10 +39,11 @@ Format: [Keep a Changelog](https://keepachangelog.com/). Versioning: [Semantic V
   names one Git-only method — a blobless, depth-1, cone-mode sparse clone of the pinned tag (or an
   authorized untagged commit) into `.tfw/.upstream/.clone` with `core.autocrlf=false` and an empty
   `core.attributesFile`, a `count-objects` size check that discloses a full download, one fallback,
-  a raw-byte check of every file and deletion of the clone — about 0.66 MiB instead of about
-  114 MiB, with the pin and provenance guarantees unchanged. `quickstart.md` and the root README
-  prompts fetch only `.tfw/` and `editions/` (about 0.76 MiB instead of a ≈123 MiB full clone). A new
-  root `.gitattributes` keeps release archives framework-only (≈0.5 MiB instead of 178.9 MiB). The
+  a raw-byte check of every file and deletion of the clone — about 0.70 MiB for this release
+  instead of about 114 MiB (the old fetch, measured at `v3.7.1`), with the pin and provenance
+  guarantees unchanged. `quickstart.md` and the root README prompts fetch only `.tfw/` and
+  `editions/` (about 0.79 MiB instead of a ≈123 MiB full clone). A new root `.gitattributes` keeps
+  release archives framework-only (≈0.50 MiB instead of 178.9 MiB at `v3.7.1`). The
   new-task startup card compares the installed version with the newest exact release through one
   `ls-remote` bounded by about 13 s and never updates by itself. The update drops a repeated
   adapter-sync run and a third payload check, replaces "only when safe" with a pre-seal check that
