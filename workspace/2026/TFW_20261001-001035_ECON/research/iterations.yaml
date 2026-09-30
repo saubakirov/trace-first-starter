@@ -1,0 +1,12 @@
+task_id: TFW_20261001-001035_ECON
+title: Focused compatibility and cumulative Daily capture research
+min_iterations: 2
+max_iterations: 2
+iterations:
+- number: 1
+  focus: 'H1: identify the smallest compatible Daily record, attribution and product/temporal
+    selection route; test synthetic-state and schema-redesign false cases before TS'
+  hypotheses:
+  - H1
+  status: pending
+  res_file: research/iter1/RES.md
