@@ -16,4 +16,6 @@ Recommend **focused**: the approved HL and pending iteration narrow the question
 
 Required decision: confirm focused, or choose deep. A mode/template preview was read to locate the next stage form; it is not adopted and stage work has not begun. Status: **WAIT — mode decision**.
 
+Resolved on continuation: Coordinator selected focused in `journal/20261001-005930__gate_answer__39d2.md @ 9453421f99006dcb66757615d6305c25cd9f04db`; actual dispatch is in the paired `20261001-005930__dispatch__c6cd.md`. Both immutable TRACE were transferred without content changes by `83f3480c`. Same producer, source binding, route and H1 scope remain effective. Next blocked artifact is `iter1/1_briefing.md`.
+
 Knowledge handover at this entry: no findings yet; inspected governing task routing/journal, frozen HL, pending iteration, research workflow, selected conventions and economics source contract. H1 is open. Next action after a valid answer: complete named knowledge reads and prepare Briefing, then return its mandatory gate.
