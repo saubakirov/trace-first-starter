@@ -23,5 +23,12 @@ iterations:
     compliance and preserving H1 v1/forms/typed-gap boundaries'
   hypotheses:
   - H2
-  status: pending
+  status: complete
   res_file: research/iter2/RES.md
+  agent: codex:thread:local:01a0f3df-52c7-7890-abdb-c4e6240540b3
+  sources:
+  - codebase
+  - external
+  - own_native_probes
+  - illustrative_failure_probes
+  - observational_timing
