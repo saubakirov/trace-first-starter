@@ -5,6 +5,13 @@ Format: [Keep a Changelog](https://keepachangelog.com/). Versioning: [Semantic V
 
 ## [Unreleased]
 
+### Added
+
+- ECON (`TFW_20261001-001035_ECON`): independently reviewed optional `/tfw-economics` product
+  analysis and cumulative Daily return/final-summary capture, with precise last-good/failure and
+  project-context accounting, coherent optional preservation, and complete text/table reports.
+  Candidate `e766107fa90029a5e81e10e7418b798a9998fb49`; no release or production distribution.
+
 ## [3.8.0] — 2026-09-29
 
 This minor release adds portable task economics and light framework delivery: install and update
