@@ -101,13 +101,14 @@ Four values govern how these principles are practiced:
 
 ## Operational routes
 
-Optional `/tfw-economics` connects intended and achieved product work to observed AI resources:
+Standard `/tfw-economics` connects intended and achieved product work to observed AI resources:
 executive explanation, sourced product map, inspectable numbers, grounded improvements and
-coverage. [Its canonical skill](extensions/economics/SKILL.md) provides complete prose/table
+coverage. [Its canonical workflow](workflows/economics.md) provides complete prose/table
 reports; visuals are supplementary and PDF is explicit-request-only outside the repository.
 [Daily](extensions/daily-task/SKILL.md) supplies cumulative own-source snapshots before each
 orderly return and a final economic summary, preserving its ordinary local form and authority.
-Both optional discovery routes follow pinned installation contracts, separate from formal roles.
+Economics follows default pinned manifest distribution; Daily discovery remains explicitly optional.
+Both preserve the existing formal roles and acceptance routes.
 
 Use `/tfw-update` for a pinned, receiver-safe upstream update. Each attempt leaves an immutable
 receipt under `.tfw/update_receipts/`; the receipt records what was applied, preserved, skipped, or
@@ -149,3 +150,12 @@ This Project North Star owns TFW’s stable purpose, principles, boundaries, and
 Selected task-local traces, [verified knowledge](../KNOWLEDGE.md), the [changelog](CHANGELOG.md), and Git history preserve why the project became what it is. A future approved and versioned Body of Knowledge may expand concepts, contradictions, hypotheses, and evidence limits, but it will remain subordinate to this North Star and requires a separate task. A working draft outside this repository is not current authority.
 
 That separation lets stable meaning remain clear while implementations, evidence, and explanations continue to change.
+
+Standard `/tfw-economics` is installed/updated by default with selected adapters through the
+manifest and [core workflow](workflows/economics.md). It connects results to unique resources,
+uses sourced conditional API prices and preserves task-owned used quote/report epochs. Public
+provider/month observations live at `~/.tfw/rates`, fresh for the exact model/profile for less than
+30 days; lookup uses working first-party tools. Daily remains optional; four formal roles and
+existing authority/acceptance/source routes remain. Old optional/custom installations follow the
+core migration guide before connected writes. Neither API equivalents nor cache freshness prove
+subscription charges, historical unchanged prices, ROI or native cross-host behavior.

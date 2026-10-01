@@ -280,3 +280,12 @@ vocabulary is in [`.tfw/glossary.md`](.tfw/glossary.md).
 > Before 2.0.0 a root live table was rewritten by every lifecycle transition. Two
 > people advancing two unrelated tasks edited the same file and collided over work that had
 > nothing to do with each other. Removing it is what TFW-60 was for.
+
+Standard `/tfw-economics` is installed/updated by default with selected adapters through the
+manifest and [core workflow](.tfw/workflows/economics.md). It connects results to unique resources,
+uses sourced conditional API prices and preserves task-owned used quote/report epochs. Public
+provider/month observations live at `~/.tfw/rates`, fresh for the exact model/profile for less than
+30 days; lookup uses working first-party tools. Daily remains optional; four formal roles and
+existing authority/acceptance/source routes remain. Old optional/custom installations follow the
+core migration guide before connected writes. Neither API equivalents nor cache freshness prove
+subscription charges, historical unchanged prices, ROI or native cross-host behavior.

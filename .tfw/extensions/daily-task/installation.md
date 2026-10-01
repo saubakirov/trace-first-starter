@@ -1,6 +1,6 @@
 # Optional Daily Task installation and update
 
-This is an opt-in package for Full receivers, separate from the exact ten-command tooling manifest.
+This is an opt-in package for Full receivers, separate from the standard tooling manifest.
 No executable, service, registry or historical-record migration is required. Existing local Daily
 skills/forms are project-owned until actual source/authority evidence proves otherwise.
 
@@ -26,10 +26,11 @@ released Git payload. Accepted distribution uses the returned immutable Candidat
 | `.tfw/economics/rates.json` | same path | dated reference prices |
 | `.tfw/templates/economics.md` | same path | concise/final report model |
 
-Daily capture's common numeric dependency does not select optional analytical discovery entries.
-If Economics analysis is separately selected, classify shared dependencies once using
-`../economics/installation.md`; refuse every dependent group on unresolved customization before
-writes. Preserve an authority-selected compatible custom rate card with its actual epoch/hash.
+Daily capture's common numeric dependency does not opt into Daily beyond its actual receiving authority.
+Economics is standard, while Daily discovery remains optional. Classify shared numeric
+dependencies once under the core migration/update group; refuse dependent writes on unresolved
+customization. Preserve compatible selected rate cards with actual epoch/hash, public home
+observations and task-owned used quotes; framework updates never rewrite them.
 No helper availability gate is added to ordinary Full lifecycle or authorized Daily product work;
 unavailable capture must leave a truthful outcome.
 
@@ -37,7 +38,7 @@ Dormant canonical payload may travel with Full `.tfw/`; it is not opt-in or nati
 Existing receiver payload paths still require ownership/customization classification before generic
 Full copying, even without opt-in; dormancy never authorizes overwriting a local source or form.
 Without opt-in, create no Daily discovery target. Only selected Codex/Claude targets are installed;
-never create an eleventh `.claude/commands/` route or add a manifest record. This repository explicitly
+never add Daily as a `.claude/commands/` route or add a manifest record. This repository explicitly
 selects both self-receivers. Thin targets must be byte-identical to their declared entry sources.
 
 ## Before any connected-group write

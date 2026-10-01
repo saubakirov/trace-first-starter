@@ -1,11 +1,11 @@
 ---
 name: tfw-economics
-description: Analyze task, project, period or product-interest economics using the optional canonical TFW Economics skill.
+description: Command /tfw-economics explains task, project, period or product-interest economics with sourced prices and preserved valuation basis.
 ---
 
-# TFW Economics entry
+# /tfw-economics
 
-Resolve the receiving project root and read `.tfw/extensions/economics/SKILL.md` completely before
-analysis. Follow its source, selection, numerical and report contract; preserve an active formal
-role's authority and return route. A missing or ambiguous canonical source stops this route.
-This thin entry adds no algorithm and is outside the exact ten formal Full commands.
+Resolve the receiving project root and read `.tfw/workflows/economics.md` completely.
+Follow its selection, source, quote and report contract. Preserve an active formal role's authority
+and sole return route; standalone analysis grants no lifecycle or acceptance. Missing or ambiguous
+canonical source stops the route. This standard thin entry adds no algorithm or fifth formal role.

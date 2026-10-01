@@ -21,13 +21,16 @@ inspect and continue work across sessions. Traces do not guarantee identical res
 
 ### Formal Full task scope and local Daily work
 
-Optional `/tfw-economics` is product analysis over existing returned evidence, outside the exact
-ten formal commands. Its canonical contract is `.tfw/extensions/economics/SKILL.md`; installation
-is opt-in and grants no formal role. Daily's canonical route requires exact own-source binding,
-cumulative snapshots before every orderly return and a final concise economics summary through
-`.tfw/economics/README.md`. Preserve its selected receiving form, truthful nonmeasured gaps and
-last-good measurement without Full status or retroactive history conversion. Analysis in a formal
-role preserves that Role Lock and vertical Coordinator route. Bytes/parity never prove live use.
+Standard `/tfw-economics` analyzes existing returned evidence through
+`.tfw/workflows/economics.md` and default selected-adapter distribution. Standalone analysis uses
+Coordinator scope; task-bound analysis preserves its active formal Role Lock and vertical route.
+It adds no fifth role or lifecycle. Public provider/month quotes at `~/.tfw/rates` use exact-model/
+profile 30-day freshness and append-preserved history; each used basis is copied into the task.
+Prices/conditions/effective dates remain sourced; conditional API equivalents never invent bills.
+Daily remains optional and requires exact own-source binding, cumulative snapshots before each
+orderly return and final concise economics through `.tfw/economics/README.md`. Preserve selected
+forms, truthful gaps and last-good measurement without fabricated Full state/history conversion.
+Bytes/parity never prove live use.
 
 The artifact, identity/discovery, lifecycle, evidence-directory and Role Lock duties below govern
 formal Full tasks/phases selected through `tfw.task_containers`. Unqualified “every task” and “task

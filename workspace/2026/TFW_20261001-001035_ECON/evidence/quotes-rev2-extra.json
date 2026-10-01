@@ -1,0 +1,8 @@
+{
+  "qualification": "bounded temporary fixtures, not live outage/catalogue",
+  "exact_30_day_boundary": "PASS",
+  "same_time_ambiguity": "PASS",
+  "malformed_month_last_good": "PASS",
+  "unsupported_currency": "PASS",
+  "offline_distinct_model_bundle": "PASS"
+}

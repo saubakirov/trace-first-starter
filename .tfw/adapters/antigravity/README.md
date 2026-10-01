@@ -3,14 +3,14 @@
 Antigravity's current canonical workspace rule root is `.agents/rules/`, and its default skills
 surface is `.agents/skills/`.
 
-The exact ten commands, canonical sources, and roles are declared once in `../manifest.yaml`.
+The exact manifest commands, canonical sources, and roles are declared once in `../manifest.yaml`.
 
 ## Install or Repair
 
 1. Copy `tfw-rules.md.template` to `.agents/rules/tfw.md`.
 2. Copy every manifest command skill to `.agents/skills/tfw-{command}/SKILL.md`.
 3. Preserve foreign neighbors and customized/unowned content.
-4. Repeating install must be a no-op. Verify the vendor root and literal ten-command/role set against
+4. Repeating install must be a no-op. Verify the vendor root and literal manifest command/role set against
    the manifest; do not accept whatever files already exist as parity.
 
 The persistent rule is a compact router. It does not preload full conventions, glossary, or KNOWLEDGE
@@ -31,3 +31,8 @@ Under `tfw-gates-only`, TFW role units report gate transitions to their Coordina
 Cross-session addressed messaging between active Antigravity threads is fully supported by the
 platform. Role units must send formal notifications directly upon completing gate work instead of
 delegating status delivery to the human owner.
+
+Economics is installed/updated by default from the manifest with selected adapters and resolves
+`.tfw/workflows/economics.md`. Four formal roles remain; analysis retains an active Role Lock.
+Daily opt-in is separate. Public tariff cache/used task copies follow the common economics README;
+old optional/custom receivers follow `migrations/economics-core.md` before connected writes.

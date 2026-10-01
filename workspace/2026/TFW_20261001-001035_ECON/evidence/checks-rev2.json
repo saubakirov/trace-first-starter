@@ -1,0 +1,55 @@
+{
+  "candidate": "1fafca12ebe912f30115335c5931aade482659f2",
+  "configured_lint": "14 collected, 0.05 s",
+  "configured_tests": "14 passed, 3.83 s",
+  "configured_commands": [
+    "python -m pytest tools/tests/ docs/scripts/ -q --collect-only",
+    "python -m pytest tools/tests/ docs/scripts/ -q"
+  ],
+  "doc_site": "E:\\TEMP\\tfw-econ-vvvliapj\\rev2-htxr_sr6\\site-candidate",
+  "helper_ast": "PASS",
+  "diff_check": "PASS",
+  "fixed_candidate_receiver": "distribution-rev2-candidate.json: four adapter groups PASS; actual Git bytes; no native init claim",
+  "final_numeric_oracles": "accounting-rev2-results.json: 8 PASS on final helper; fixtures separate from formal ledger",
+  "final_quote_oracles": "quotes-rev2-candidate.json: 6 PASS on exact Candidate, plus quotes-rev2-extra.json boundary/ambiguity/currency/bundle cases",
+  "source_hashes": {
+    ".agents/skills/tfw-economics/SKILL.md": "4e1b45b3e166bcd153d863dfb8763dbcc8ef48bf96f9c993c39eb87223033b08",
+    ".tfw/workflows/economics.md": "59ea01a32f387288f16267911f544dc3084dd820c9dc35ac8c069efb6c2b3af8",
+    ".tfw/economics/README.md": "5f48a48b3af786e31f45958dc4b7c83583600abc516389709b313fdb07e4b233",
+    ".tfw/economics/tfw_economics.py": "447d01694f82f3b9b57d700491cfcf93281c66a1df9d211489088dff5bb4e9da"
+  },
+  "preserved_schema_rates_cab": "byte-equal to their original epochs",
+  "new_permanent_tests_scripts": "none",
+  "native": "manual delivered Codex core entry/complete contract used in this own unit; no automatic discovery reliability claim",
+  "unavailable_hosts": [
+    "Claude Code",
+    "Cursor",
+    "Antigravity"
+  ],
+  "PDF": "N/A not requested",
+  "material_repairs": [
+    "Preliminary transformed config indentation restored from exact entry before-images and parsed both configs before Candidate.",
+    "Temporary receiver oracle corrected its own managed-block selection and stable legacy backup semantics; no installed product alteration from fixture bug.",
+    "Concrete raw-observation freeze return used original unnormalized quote_id and raised KeyError; fixed to validated observations before Candidate, extra oracle and fixed-Candidate fixture replay passed."
+  ],
+  "receipts": {
+    "distribution-rev2-candidate.json": "78c88399c70e4d4e75fc776ea3d142185469929db2d807d5bf718406c2d3abd8",
+    "accounting-rev2-results.json": "1f4757129047d9e36725d4f6c30b34f022bef5d30ade81d572e66faf2a3673e2",
+    "quotes-rev2-candidate.json": "a62f1d501bb74a31e2ed49347846a945e53925e91d5933ead4cffc42d3894cd2",
+    "quotes-rev2-extra.json": "32990147a10c67db8f75f9b194f165c3ceff1a0ef6c10d9d86e58f76ae71fa2d"
+  },
+  "receipt_hash_epoch_before_git_normalization": {
+    "distribution-rev2-candidate.json": "78c88399c70e4d4e75fc776ea3d142185469929db2d807d5bf718406c2d3abd8",
+    "accounting-rev2-results.json": "39af55dd9fb59e4919622a5269343f3d5a85f8dc0c781d3697dc5a1fb16ee787",
+    "quotes-rev2-candidate.json": "a62f1d501bb74a31e2ed49347846a945e53925e91d5933ead4cffc42d3894cd2",
+    "quotes-rev2-extra.json": "32990147a10c67db8f75f9b194f165c3ceff1a0ef6c10d9d86e58f76ae71fa2d"
+  },
+  "git_readback": {
+    "first_trace_commit": "e03b04569945a964d4596a3614baba2fd7cf3ea4",
+    "normalized_working_crlf_to_committed_lf": [
+      "workspace/2026/TFW_20261001-001035_ECON/economics/report-rev2-calculated.md",
+      "workspace/2026/TFW_20261001-001035_ECON/evidence/accounting-rev2-results.json"
+    ],
+    "meaning": "Git text normalization only; own JSONL/quote/report numeric semantics preserved. Final receipts use canonical committed bytes, preceding working-byte hash epoch retained."
+  }
+}

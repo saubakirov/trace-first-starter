@@ -45,6 +45,7 @@ preferred solution.
 | Commands | Roles |
 |---|---|
 | `/tfw-plan`, `/tfw-docs`, `/tfw-knowledge`, `/tfw-release`, `/tfw-update`, `/tfw-config`, `/tfw-init` | Coordinator |
+| `/tfw-plan`, `/tfw-docs`, `/tfw-knowledge`, `/tfw-release`, `/tfw-update`, `/tfw-config`, `/tfw-economics` | Coordinator |
 | `/tfw-research` | Researcher |
 | `/tfw-handoff` | Executor |
 | `/tfw-review` | Reviewer |

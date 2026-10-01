@@ -3,10 +3,10 @@
 This directory is a Full payload copied by init/update. The task's status, journal,
 HL, TS, RF and REVIEW remain authority for lifecycle, work and acceptance. This
 contract gives those roles a small, task-owned account of measured AI resource
-consumption. It does not create a command, service, live portfolio cache, account
+consumption. It does not create a service, live usage portfolio, account
 charge, human time sheet or quality score.
 
-Optional product analysis lives in [TFW Economics](../extensions/economics/SKILL.md).
+Standard product analysis lives in [TFW Economics](../workflows/economics.md).
 [Daily](../extensions/daily-task/SKILL.md) uses its own selected record and authority with the
 same numeric v1 contract; no Full status/profile is fabricated. Its routine obligation is a
 cumulative snapshot before every orderly turn return and a final snapshot/concise summary.
@@ -283,15 +283,67 @@ ordinary conflict-preserving receiver rules. Inspect destination ownership
 and existing bytes before replacement. A customized or ambiguous receiver
 file is preserved for an explicit owner decision; no updater silently
 overwrites or migrates task JSONL, status, role returns or a customized
-price card. A repeat with identical source bytes is stable. The ten canonical
-Full workflows and their ten Claude installed copies are the selected
-entrypoints; Codex/Antigravity thin routers keep selecting canonical
-workflows. Optional analysis and Daily dependencies follow their respective
-installation contracts before connected writes. Daily/analysis discovery needs
-explicit selection; Light, Assisted and Cursor targets remain unchanged.
+price card. A repeat with identical source bytes is stable. All current manifest
+commands, including standard Economics, are selected entrypoints for the chosen
+adapter; Codex/Antigravity thin routers select canonical workflows, while
+Claude/Cursor commands copy them. The core transition guide classifies old
+optional entries before connected writes. Daily discovery alone needs explicit
+selection and its installation contract. No unrelated receiver mode is migrated.
 
 The package requires no pip module, daemon, shared database or account
 change. If no Python interpreter is available, ordinary TFW continues and
 the producer uses an equivalent checked extractor or a specific failure
 receipt. Real distribution into another production project follows that
 project's existing init/update authority.
+
+## Official public quote history and task-owned used basis
+
+Standard Economics installs by default; Daily remains opt-in. Participating task-bound Full units
+use this same price/source contract on their existing own-return route. Numerical v1 facts and the
+legacy dated `rates.json` remain unchanged. The helper performs local validation/storage only;
+agents fetch actual first-party sources with working documentation/web tools, no network service.
+
+Actual home `~/.tfw/rates/<provider>/YYYY-MM.json` contains public quotes only. Use exact model and
+conditions, never guessed aliases. Freshness is checked timestamp for that model/profile, strictly
+less than 30 days; inspect prior month files too. Missing model/conditions, expiry or an explicit
+today-check triggers official lookup. File mtime, another model's freshness and each token-counter
+change do not. Record observed/publication/effective dates separately; unknown effective date is null.
+Source failure leaves exact cause and last-known quote/date; current valuation stays qualified.
+
+Create an observation JSON with schema_version 1; provider, model, currency, unit; a nonempty
+conditions object; checked_at with UTC offset; nullable effective_from/published_on; rates keys
+fresh/cached/cache_write_5m/cache_write_1h/output as nonnegative Decimal strings or null; source_urls,
+source_evidence mapping fetched public URLs to SHA-256, and notes. Unit supported for USD numerical
+valuation is `per_1M_text_tokens`. Provider/model/profile must be verified by the agent. An absent
+positive category stays unpriced; a null unused category does not invent consumption.
+
+Run `python .tfw/economics/tfw_economics.py quote-store --observation <actual-public-quote-file>`.
+The default root is actual `Path.home()/.tfw/rates`; --cache-root is only an explicitly selected
+receiving root or bounded fixture. Provider OS locks serialize read/merge/write and release on
+process death. Atomic same-directory replacement leaves the last good month on failure; repeat
+quote IDs are no-ops. Keep every prior observation/month, including changed same-model prices;
+no global task/usage/owner data or full-provider catalogue belongs here. Ambiguous equal-time
+quotes refuse selection; do not overwrite custom/malformed cache data.
+
+Run `quote-select --provider <observed-provider> --model <exact-model> --conditions <JSON-object>
+--task-root <actual-selected-task-root>`. It checks current UTC by default; --at is an explicit
+observed epoch/fixture, --verify-today requires lookup even with a fresh quote. Missing/expired
+returns exit 2 plus typed lookup_required reason/last_known, never silent zero. Fresh selection
+creates immutable `economics/quotes/<sha256>.json` and returns its hash/quote IDs. This file is
+task-owned public price evidence; native source locators/tokens remain in separate original JSONL.
+For distinct models, `quote-bundle --basis <captured-file> ... --task-root <root>` freezes a bundle;
+different conditions for the same model require separate named valuations, not overwrite.
+
+Use `report` or `summary --rates <captured-basis>` to reproduce offline/on another computer.
+Reports expose used basis hash, profiles, checked/source/effective dates and valuation kind.
+Original cards still load without migration. Recorded basis, historical_reconstruction,
+current_revaluation and last_known_source_failure are distinct. Historical reconstruction needs
+evidenced effective date/consumption interval; the helper refuses unknown effective dates and
+leaves rows outside the evidenced interval unpriced. Freshness itself proves no historical price.
+Unknown actual request band/tier/region means conditional scenario(s), never subscription charges.
+
+Preserve earlier report and basis bytes before creating a changed quote/report epoch. A mutable
+economics.md is only a current projection backed by retained dated report/quote data. Framework
+install/update does not overwrite public home cache, task bases, original usage or historical cards.
+Internal collector, integration/native duration, subscription/credit invoices and product value
+remain distinct. Prices are sourced API equivalents, not ROI or agent quality rankings.

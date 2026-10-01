@@ -13,17 +13,21 @@ import datetime as dt
 import hashlib
 import json
 import math
+import os
 import re
 import sqlite3
 import statistics
 import sys
+import tempfile
 import time
 from collections import defaultdict
+from contextlib import contextmanager
 from decimal import Decimal
 from pathlib import Path
+from urllib.parse import urlsplit
 
 VERSION = 1
-COLLECTOR = "tfw-economics/1.2"
+COLLECTOR = "tfw-economics/1.3"
 TOKEN_KEYS = ("fresh", "cached", "cache_write", "cache_write_5m",
               "cache_write_1h", "input", "output", "reasoning", "total")
 KINDS = {"manifest", "usage", "failure"}
@@ -1030,16 +1034,215 @@ def price(tokens, model, rates):
         return None, "cache write tariff split unavailable"
     write_5m = tokens["cache_write_5m"] if writes else 0
     write_1h = tokens["cache_write_1h"] if writes else 0
-    value = (Decimal(tokens["fresh"]) * Decimal(str(card["fresh"]))
-             + Decimal(tokens["cached"]) * Decimal(str(card["cached"]))
-             + Decimal(write_5m) * Decimal(str(card["cache_write_5m"]))
-             + Decimal(write_1h) * Decimal(str(card["cache_write_1h"]))
-             + Decimal(tokens["output"]) * Decimal(str(card["output"]))) / 1_000_000
+    value = Decimal(0)
+    for key, amount in (("fresh", tokens["fresh"]), ("cached", tokens["cached"]),
+                        ("cache_write_5m", write_5m), ("cache_write_1h", write_1h),
+                        ("output", tokens["output"])):
+        if not amount:
+            continue
+        if card.get(key) is None:
+            return None, "positive " + key + " has no applicable quote"
+        value += Decimal(amount) * Decimal(str(card[key]))
+    value /= 1_000_000
     return value, None
+
+
+QUOTE_FIELDS = ("schema_version", "provider", "model", "currency", "unit", "conditions",
+                "checked_at", "effective_from", "published_on", "rates", "source_urls",
+                "source_evidence", "notes")
+QUOTE_RATES = ("fresh", "cached", "cache_write_5m", "cache_write_1h", "output")
+VALUATIONS = ("recorded_basis", "historical_reconstruction", "current_revaluation",
+              "last_known_source_failure")
+
+
+def json_bytes(value):
+    return (json.dumps(value, ensure_ascii=False, sort_keys=True, indent=2) + "\n").encode("utf-8")
+
+
+def validate_quote(value):
+    """Validate public price evidence; no usage/owner/task fields belong in the home cache."""
+    exact_keys(value, QUOTE_FIELDS, ("quote_id",), "quote")
+    require(value["schema_version"] == 1, "unsupported quote version")
+    require(isinstance(value["provider"], str) and
+            re.fullmatch(r"[a-z0-9][a-z0-9._-]*", value["provider"]), "invalid quote provider")
+    nonempty(value["model"], "exact quote model")
+    require(isinstance(value["currency"], str) and re.fullmatch(r"[A-Z]{3}", value["currency"]),
+            "invalid quote currency")
+    nonempty(value["unit"], "quote unit")
+    require(isinstance(value["conditions"], dict) and value["conditions"] and
+            all(isinstance(k, str) and k and isinstance(v, str) and v
+                for k, v in value["conditions"].items()), "exact quote conditions required")
+    timestamp(value["checked_at"], "quote checked_at")
+    for key in ("effective_from", "published_on"):
+        if value[key] is not None:
+            day(value[key], "quote " + key)
+    exact_keys(value["rates"], QUOTE_RATES, where="quote rates")
+    for key, rate in value["rates"].items():
+        if rate is not None:
+            require(isinstance(rate, str) and re.fullmatch(r"\d+(?:\.\d+)?", rate),
+                    "quote rate must be a nonnegative Decimal string: " + key)
+    require(isinstance(value["source_urls"], list) and value["source_urls"], "quote sources required")
+    for url in value["source_urls"]:
+        require(isinstance(url, str), "invalid quote URL")
+        parsed = urlsplit(url)
+        require(parsed.scheme == "https" and parsed.hostname and not parsed.username and
+                not parsed.password, "public HTTPS quote source required")
+    require(isinstance(value["source_evidence"], dict) and value["source_evidence"] and
+            all(url in value["source_urls"] and isinstance(digest, str) and HASH.fullmatch(digest)
+                for url, digest in value["source_evidence"].items()), "quote source hashes required")
+    require(isinstance(value["notes"], list) and all(isinstance(x, str) for x in value["notes"]),
+            "quote notes must be text")
+    payload = {k: value[k] for k in QUOTE_FIELDS}
+    quote_id = hashlib.sha256(json_bytes(payload)).hexdigest()
+    require(value.get("quote_id", quote_id) == quote_id, "quote identity/hash mismatch")
+    return dict(payload, quote_id=quote_id)
+
+
+@contextmanager
+def quote_lock(root, provider):
+    require(re.fullmatch(r"[a-z0-9][a-z0-9._-]*", provider), "invalid quote provider")
+    cache_root = Path(root).expanduser().resolve()
+    directory = cache_root / provider
+    directory.mkdir(parents=True, exist_ok=True)
+    require(directory.resolve().is_relative_to(cache_root) and not (directory / ".lock").is_symlink(),
+            "quote cache path escapes selected root")
+    # OS locks survive exceptions and are released on process death; never unlink a held lock.
+    with (directory / ".lock").open("a+b") as lock:
+        if lock.seek(0, 2) == 0:
+            lock.write(b"0"); lock.flush()
+        deadline = time.monotonic() + 10
+        acquired = False
+        while not acquired:
+            try:
+                lock.seek(0)
+                if os.name == "nt":
+                    import msvcrt
+                    msvcrt.locking(lock.fileno(), msvcrt.LK_NBLCK, 1)
+                else:
+                    import fcntl
+                    fcntl.flock(lock.fileno(), fcntl.LOCK_EX | fcntl.LOCK_NB)
+                acquired = True
+            except OSError as exc:
+                if time.monotonic() >= deadline:
+                    raise EconomicsError("quote cache busy; last good files untouched") from exc
+                time.sleep(0.05)
+        try:
+            yield directory
+        finally:
+            lock.seek(0)
+            if os.name == "nt":
+                msvcrt.locking(lock.fileno(), msvcrt.LK_UNLCK, 1)
+            else:
+                fcntl.flock(lock.fileno(), fcntl.LOCK_UN)
+
+
+def atomic_json(path, value):
+    path = Path(path)
+    path.parent.mkdir(parents=True, exist_ok=True)
+    temporary = None
+    try:
+        with tempfile.NamedTemporaryFile(dir=path.parent, prefix="." + path.name + ".",
+                                         delete=False) as stream:
+            temporary = Path(stream.name)
+            stream.write(json_bytes(value)); stream.flush(); os.fsync(stream.fileno())
+        os.replace(temporary, path)
+    finally:
+        if temporary is not None and temporary.exists():
+            temporary.unlink()
+
+
+def read_quote_month(path, provider):
+    value = json.loads(Path(path).read_text(encoding="utf-8"))
+    exact_keys(value, ("schema_version", "provider", "month", "observations"), where="quote month")
+    require(value["schema_version"] == 1 and value["provider"] == provider and
+            value["month"] == Path(path).stem, "quote month identity mismatch")
+    require(isinstance(value["observations"], list), "quote observations must be a list")
+    for quote in value["observations"]:
+        require(isinstance(quote, dict) and "quote_id" in quote, "stored quote identity required")
+        checked = validate_quote(quote)
+        require(checked["provider"] == provider and
+                timestamp(checked["checked_at"], "checked_at").astimezone(dt.timezone.utc).strftime("%Y-%m") ==
+                value["month"], "quote observation in wrong provider/month")
+    return value
+
+
+def store_quote(root, value):
+    quote = validate_quote(value)
+    month = timestamp(quote["checked_at"], "checked_at").astimezone(dt.timezone.utc).strftime("%Y-%m")
+    require(timestamp(quote["checked_at"], "checked_at") <= dt.datetime.now(dt.timezone.utc),
+            "quote checked timestamp is in the future")
+    with quote_lock(root, quote["provider"]) as directory:
+        path = directory / (month + ".json")
+        require(not path.is_symlink(), "quote month symlink: preserve and resolve ownership")
+        value = read_quote_month(path, quote["provider"]) if path.exists() else dict(
+            schema_version=1, provider=quote["provider"], month=month, observations=[])
+        if not any(x["quote_id"] == quote["quote_id"] for x in value["observations"]):
+            value["observations"].append(quote)
+            atomic_json(path, value)
+        return dict(path=str(path), quote_id=quote["quote_id"], observations=len(value["observations"]))
+
+
+def find_quote(directory, provider, model, conditions, at, verify_today=False):
+    matches = []
+    for path in sorted(Path(directory).glob("????-??.json")):
+        for raw in read_quote_month(path, provider)["observations"]:
+            quote = validate_quote(raw)
+            if quote["model"] == model and quote["conditions"] == conditions:
+                checked = timestamp(quote["checked_at"], "checked_at")
+                if checked <= at:
+                    matches.append((checked, quote))
+    matches.sort(key=lambda x: x[0], reverse=True)
+    if not matches:
+        return dict(status="lookup_required", reason="exact_model_conditions_missing", last_known=None)
+    latest, quote = matches[0]
+    tied = {x[1]["quote_id"] for x in matches if x[0] == latest}
+    require(len(tied) == 1, "ambiguous same-time exact-model quote; preserve history and resolve source")
+    reason = "explicit_today_verification" if verify_today else (
+        "quote_expired" if at - latest >= dt.timedelta(days=30) else None)
+    return dict(status="lookup_required" if reason else "fresh", reason=reason, last_known=quote)
+
+
+def validate_basis(value):
+    exact_keys(value, ("schema_version", "kind", "valuation_kind", "observations"), where="task price basis")
+    require(value["schema_version"] == 1 and value["kind"] == "task_price_basis" and
+            value["valuation_kind"] in VALUATIONS, "invalid task price basis")
+    require(isinstance(value["observations"], list) and value["observations"], "used quotes required")
+    quotes = [validate_quote(x) for x in value["observations"]]
+    require(len({q["model"] for q in quotes}) == len(quotes),
+            "one quote profile per exact model per valuation; separate conditional scenarios")
+    if value["valuation_kind"] == "historical_reconstruction":
+        require(all(q["effective_from"] for q in quotes), "unknown effective date: historical basis unproved")
+    return dict(value, observations=quotes)
+
+
+def freeze_basis(task_root, quotes, valuation_kind):
+    value = validate_basis(dict(schema_version=1, kind="task_price_basis",
+                                valuation_kind=valuation_kind, observations=quotes))
+    content = json_bytes(value); digest = hashlib.sha256(content).hexdigest()
+    root = Path(task_root).resolve()
+    require(root.is_dir(), "existing task-owned root required for used quotes")
+    path = root / "economics" / "quotes" / (digest + ".json")
+    require(path.resolve().is_relative_to(root), "task price basis escapes selected root")
+    if path.exists():
+        require(path.read_bytes() == content, "task price basis changed; never overwrite original")
+    else:
+        atomic_json(path, value)
+    return dict(path=str(path), sha256=digest, quote_ids=[q["quote_id"] for q in value["observations"]],
+                valuation_kind=valuation_kind)
 
 
 def load_rates(path):
     rates = json.loads(Path(path).read_text(encoding="utf-8"))
+    if rates.get("kind") == "task_price_basis":
+        basis = validate_basis(rates)
+        require(all(q["currency"] == "USD" and q["unit"] == "per_1M_text_tokens"
+                    for q in basis["observations"]), "unsupported quote currency/unit; do not convert implicitly")
+        return dict(version=1, rate_epoch=max(q["checked_at"] for q in basis["observations"]),
+                    basis="Captured " + basis["valuation_kind"] +
+                    "; exact quoted profiles; actual request conditions must be established or conditional",
+                    models={q["model"]: q["rates"] for q in basis["observations"]},
+                    price_basis=dict(path=str(path), sha256=hashlib.sha256(Path(path).read_bytes()).hexdigest(),
+                                     **basis))
     require(rates.get("version") == 1 and isinstance(rates.get("models"), dict),
             "unsupported rate card")
     return rates
@@ -1065,11 +1268,19 @@ def summarize(records, rates, filters=None):
                  unpriced_tokens=0, undated_tokens=0, duration=defaultdict(float),
                  by_role=defaultdict(lambda: dict(tokens=0, usd=Decimal(0))),
                  by_model=defaultdict(lambda: dict(tokens=0, usd=Decimal(0))),
+                 by_effort=defaultdict(lambda: dict(tokens=0, usd=Decimal(0))),
                  by_date=defaultdict(lambda: dict(tokens=0, usd=Decimal(0))))
     flat = []
     for m, row, digest in selected:
         tok = row["tokens"]
         cost, reason = price(tok, row["model"], rates)
+        basis = rates.get("price_basis")
+        if basis and basis["valuation_kind"] == "historical_reconstruction":
+            quote = next((q for q in basis["observations"] if q["model"] == row["model"]), None)
+            if quote and (row["consumption_date"] is None or
+                          row["consumption_date"] < quote["effective_from"] or
+                          row["consumption_date"] > quote["checked_at"][:10]):
+                cost, reason = None, "consumption outside evidenced historical quote interval"
         total["tokens"] += tok["total"]
         total["input"] += tok["input"]
         total["output"] += tok["output"]
@@ -1085,7 +1296,8 @@ def summarize(records, rates, filters=None):
             total["priced_usd"] += cost
         if row["duration_seconds"] is not None:
             total["duration"][row["duration_kind"]] += row["duration_seconds"]
-        for bucket, key in (("by_role", m["role"]), ("by_model", row["model"] or "unknown")):
+        for bucket, key in (("by_role", m["role"]), ("by_model", row["model"] or "unknown"),
+                            ("by_effort", row["effort"] or "unknown")):
             total[bucket][key]["tokens"] += tok["total"]
             if cost is not None:
                 total[bucket][key]["usd"] += cost
@@ -1099,6 +1311,7 @@ def summarize(records, rates, filters=None):
                          source_revision=m["revision"], file_sha256=digest,
                          event_id=row["event_id"], date=row["consumption_date"],
                          model=row["model"], tokens=tok["total"], input=tok["input"],
+                         effort=row["effort"],
                          cached=tok["cached"], output=tok["output"],
                          duration_seconds=row["duration_seconds"],
                          duration_kind=row["duration_kind"],
@@ -1216,6 +1429,7 @@ def render_report(args):
                  primary_area=args.primary_area, keywords=keywords,
                  report_at=dt.datetime.now(dt.timezone.utc).isoformat(),
                  cutoff=cutoff, rate_version=rates["rate_epoch"],
+                 price_basis=rates.get("price_basis"),
                  calendar_elapsed_seconds=calendar_seconds,
                  status_timezone=args.status_timezone,
                  totals=dict(tokens=total["tokens"], input=total["input"],
@@ -1249,7 +1463,9 @@ def render_report(args):
              "| Cached input subset | {} |".format(
                  "{:,}".format(total["cached"]) if total["cached"] is not None else "unavailable"),
              "| Output, including reasoning when source says so | {:,} |".format(total["output"]),
-             "| API reference estimate on priced rows (USD) | {} |".format(total["priced_usd"]),
+             "| API reference estimate on priced rows (USD) | {} |".format(
+                 str(total["priced_usd"]) if total["unpriced_tokens"] < total["tokens"] or
+                 not total["tokens"] else "unavailable (no applicable priced rows)"),
              "| Unpriced tokens | {:,} |".format(total["unpriced_tokens"]),
              "| Undated tokens, excluded from date filters | {:,} |".format(total["undated_tokens"]),
              "| Collection operation, observed wall seconds | {:.3f} ({} files unknown) |".format(
@@ -1268,7 +1484,7 @@ def render_report(args):
     lines += ["", "Money is a dated Standard API token equivalent, not a subscription bill.",
               "Unknown models, tariff conditions, storage and tools are excluded.",
               "", "## By role and model", ""]
-    for group, title in (("by_role", "Role"), ("by_model", "Model")):
+    for group, title in (("by_role", "Role"), ("by_model", "Model"), ("by_effort", "Effort")):
         lines += ["### " + title, "", "| " + title + " | Tokens | Priced USD |",
                   "|---|---:|---:|"]
         for key, item in sorted(total[group].items(), key=lambda x: -x[1]["tokens"]):
@@ -1294,6 +1510,17 @@ def render_report(args):
               "- Capture cutoff: " + (cutoff or "no received contribution"),
               "- Finite tail: later report delivery, final message and cleanup are outside this cutoff.",
               "- Rate card: " + rates["rate_epoch"] + "; " + rates["basis"], ""]
+    if rates.get("price_basis"):
+        basis = rates["price_basis"]
+        lines += ["- Captured price basis: SHA-256 " + basis["sha256"] +
+                  "; valuation " + basis["valuation_kind"] + "; " + basis["path"] + "."]
+        for quote in basis["observations"]:
+            lines.append("- Quote {} / {}: checked {}; effective from {}; published {}; profile {}; sources {}.".format(
+                quote["quote_id"], quote["model"], quote["checked_at"], quote["effective_from"] or "unknown",
+                quote["published_on"] or "unknown", json.dumps(quote["conditions"], sort_keys=True),
+                ", ".join(quote["source_urls"])))
+    if total["unpriced_tokens"]:
+        lines.append("- Whole money total is unknown: unpriced consumption is not observed zero.")
     for f in data["files"]:
         m = f["manifest"]
         lines.append("- {}: {} / {} revision {}, range [{}, {}), complete {}, {} bytes, SHA-256 {}, source {}.".format(
@@ -1508,6 +1735,22 @@ def parser():
     r.add_argument("--task", required=True)
     r.add_argument("--expected-unit", required=True)
     r.add_argument("--record", help="explicit selected Daily record; never infer one from missing status")
+    cache = argparse.ArgumentParser(add_help=False)
+    cache.add_argument("--cache-root", default=str(Path.home() / ".tfw" / "rates"),
+                       help="public quotes only; override only for an explicitly selected receiving root/fixture")
+    store = sub.add_parser("quote-store", parents=[cache], help="append agent-verified public quote, no network")
+    store.add_argument("--observation", required=True)
+    select = sub.add_parser("quote-select", parents=[cache], help="select exact fresh profile and capture task basis")
+    select.add_argument("--provider", required=True)
+    select.add_argument("--model", required=True)
+    select.add_argument("--conditions", required=True, help="JSON object of exact requested quote conditions")
+    select.add_argument("--at", help="offset timestamp; default current UTC, explicit epochs for bounded checks")
+    select.add_argument("--verify-today", action="store_true")
+    select.add_argument("--task-root", required=True)
+    select.add_argument("--valuation-kind", choices=VALUATIONS, default="current_revaluation")
+    bundle = sub.add_parser("quote-bundle", help="freeze used task quote bases for distinct models, offline")
+    bundle.add_argument("--basis", action="append", required=True)
+    bundle.add_argument("--task-root", required=True)
     for command in ("report", "summary"):
         q = sub.add_parser(command)
         q.add_argument("--task-root", action="append", required=True)
@@ -1550,6 +1793,25 @@ def main(argv=None):
                               (validate_file(p) for p in args.files)], sort_keys=True))
         elif args.command == "receive":
             receive(args)
+        elif args.command == "quote-store":
+            print(json.dumps(store_quote(args.cache_root,
+                                         json.loads(Path(args.observation).read_text(encoding="utf-8")))))
+        elif args.command == "quote-select":
+            conditions = json.loads(args.conditions)
+            require(isinstance(conditions, dict) and conditions, "requested exact quote conditions required")
+            at = timestamp(args.at, "quote selection time") if args.at else dt.datetime.now(dt.timezone.utc)
+            with quote_lock(args.cache_root, args.provider) as directory:
+                result = find_quote(directory, args.provider, args.model, conditions, at, args.verify_today)
+                if result["status"] != "fresh":
+                    print(json.dumps(result)); return 2
+                result["basis"] = freeze_basis(args.task_root, [result["last_known"]], args.valuation_kind)
+            print(json.dumps(result))
+        elif args.command == "quote-bundle":
+            bases = [validate_basis(json.loads(Path(p).read_text(encoding="utf-8"))) for p in args.basis]
+            require(len({b["valuation_kind"] for b in bases}) == 1, "do not combine different valuation kinds")
+            quotes = {q["quote_id"]: q for b in bases for q in b["observations"]}
+            print(json.dumps(freeze_basis(args.task_root, sorted(quotes.values(), key=lambda q: q["quote_id"]),
+                                          bases[0]["valuation_kind"])))
         elif args.command == "report":
             require(len(args.task_root) == 1, "report takes one task root")
             args.task_root = args.task_root[0]

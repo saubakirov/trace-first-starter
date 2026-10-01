@@ -1,0 +1,79 @@
+[
+  {
+    "case": "duplicate/successor/incomplete/prefix/identity/missing/disjoint",
+    "actual": [
+      19,
+      28,
+      19,
+      19,
+      19,
+      19,
+      28
+    ],
+    "oracle": "explicit assertions in temporary script"
+  },
+  {
+    "case": "linked",
+    "actual": {
+      "tokens": 19,
+      "cause_visible": true,
+      "operation_seconds": null
+    },
+    "oracle": "explicit assertions in temporary script"
+  },
+  {
+    "case": "unlinked-overlap",
+    "actual": {
+      "tokens": 19,
+      "cause_visible": true,
+      "operation_seconds": null
+    },
+    "oracle": "explicit assertions in temporary script"
+  },
+  {
+    "case": "disjoint-failure",
+    "actual": {
+      "tokens": 19,
+      "cause_visible": true,
+      "operation_seconds": null
+    },
+    "oracle": "explicit assertions in temporary script"
+  },
+  {
+    "case": "cross-project same ID context and overlapping-interest union",
+    "actual": {
+      "tokens": 28,
+      "areas": {
+        "alpha": "Area A",
+        "beta": "Area B"
+      }
+    },
+    "oracle": "explicit assertions in temporary script"
+  },
+  {
+    "case": "explicit Daily split; period vs lifetime; nonmeasured gap readback",
+    "actual": {
+      "period": 12,
+      "lifetime": 17,
+      "attempted_extraction": false
+    },
+    "oracle": "explicit assertions in temporary script"
+  },
+  {
+    "case": "Full refusal without explicit record; wrong unit; duplicate receipt",
+    "actual": {
+      "refusal_exit": 2,
+      "repeat": "no-op"
+    },
+    "oracle": "explicit assertions in temporary script"
+  },
+  {
+    "case": "Full phase/root union and leaf classification",
+    "actual": {
+      "root": 24,
+      "phase": 5,
+      "union": 24
+    },
+    "oracle": "explicit assertions in temporary script"
+  }
+]

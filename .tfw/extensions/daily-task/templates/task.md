@@ -46,3 +46,11 @@ nonmeasured with actual producer, known facts/reasons and whether extraction was
 Name the exact next act and its authority, including any blocked dependent effect and available
 independent work. Claim close only with actual applicable acceptance. Another authorized worker must
 be able to recover source, purpose, boundary, result and check from this record and linked objects.
+
+## Used quote and valuation basis
+
+When money is valued, link the immutable task-owned used quote file/hash, exact model/profile,
+official source URL/hash and checked time; distinguish known effective date from unknown.
+Name recorded basis, historical reconstruction or current/conditional revaluation. Preserve old
+report epochs and original numeric revisions. A failed lookup shows its precise cause, last-known
+quote/date and current-valuation gap; reused fresh quotes need no lookup each cumulative turn.

@@ -1,0 +1,114 @@
+{
+  "candidate_epoch": "1fafca12ebe912f30115335c5931aade482659f2",
+  "helper_sha256": "447d01694f82f3b9b57d700491cfcf93281c66a1df9d211489088dff5bb4e9da",
+  "temporary_root": "E:\\TEMP\\tfw-econ-vvvliapj\\rev2-htxr_sr6\\quote-oracles-0tcyrm4k",
+  "cases": [
+    {
+      "case": "fresh previous month despite new current month",
+      "status": "fresh",
+      "checked_at": "2026-09-30T23:30:00+00:00"
+    },
+    {
+      "case": "missing model / conditions / today / expired",
+      "oracles": [
+        "lookup_required",
+        "lookup_required",
+        "lookup_required",
+        "lookup_required"
+      ]
+    },
+    {
+      "case": "changed quote append / old month / offline task basis",
+      "old_month": "byte-identical",
+      "monthly_observations": 2,
+      "saved_fresh_rate": "3",
+      "new_home_fresh_rate": "9"
+    },
+    {
+      "case": "controlled atomic-replace failure",
+      "last_good": "byte-identical",
+      "partial_temporary": "removed",
+      "native_outage": false
+    },
+    {
+      "case": "five actual concurrent subprocess writers",
+      "all_received": true,
+      "previous_two_retained": true,
+      "monthly_observations": 7
+    },
+    {
+      "case": "independent Decimal / positive unknown / history/date / public-only shape",
+      "calculation": "(2*3+3*.1+4*10)/1M=0.0000463",
+      "unknown_positive": "unpriced",
+      "unknown_effective": "refused",
+      "task_metadata": "refused"
+    }
+  ],
+  "real_public_home_observation": {
+    "checked_at": "2026-10-01T12:05:38.068248+00:00",
+    "home_root": "C:\\Users\\c0rpa\\.tfw\\rates",
+    "store": {
+      "path": "C:\\Users\\c0rpa\\.tfw\\rates\\openai\\2026-10.json",
+      "quote_id": "93e9faa400de1713329452b0841f1db45897c364a2b5cf0c4087ec2ce5ee7a1c",
+      "observations": 1
+    },
+    "repeat": "no change",
+    "before_month_hashes": {},
+    "basis": {
+      "path": "C:\\Users\\c0rpa\\.codex\\worktrees\\a0c7\\steps-framework\\workspace\\2026\\TFW_20261001-001035_ECON\\economics\\quotes\\db5d7ea15fa4175c7f5cfb8bc58ceeb91355d7c33e50a002e0181efba3c7e8c3.json",
+      "sha256": "db5d7ea15fa4175c7f5cfb8bc58ceeb91355d7c33e50a002e0181efba3c7e8c3",
+      "quote_ids": [
+        "93e9faa400de1713329452b0841f1db45897c364a2b5cf0c4087ec2ce5ee7a1c"
+      ],
+      "valuation_kind": "current_revaluation"
+    },
+    "quote": {
+      "schema_version": 1,
+      "provider": "openai",
+      "model": "gpt-6.1-sol",
+      "currency": "USD",
+      "unit": "per_1M_text_tokens",
+      "conditions": {
+        "context_band": "input<=272K",
+        "modality": "text",
+        "region": "global",
+        "tier": "standard"
+      },
+      "checked_at": "2026-10-01T12:05:38.068248+00:00",
+      "effective_from": null,
+      "published_on": "2026-09-29",
+      "rates": {
+        "cache_write_1h": "2.50",
+        "cache_write_5m": "2.50",
+        "cached": "0.10",
+        "fresh": "2",
+        "output": "10"
+      },
+      "source_urls": [
+        "https://developers.openai.com/api/docs/models/gpt-6.1-sol",
+        "https://developers.openai.com/api/docs/pricing",
+        "https://developers.openai.com/api/docs/changelog#september-2026"
+      ],
+      "source_evidence": {
+        "https://developers.openai.com/api/docs/changelog#september-2026": "f522b9829ae047a2e2ae28b124762dbfffaefdbcd6965a695507f238ba6dc4bd",
+        "https://developers.openai.com/api/docs/models/gpt-6.1-sol": "c55d2db5f3b463b94f41bee9b458dfc465f26f92b4fc1881e5d7d22272ce08c2",
+        "https://developers.openai.com/api/docs/pricing": "b672bd03a1405d705a460d38eb56c80d939abbed26bd9c87bb141a4296113d10"
+      },
+      "notes": [
+        "Observed official quote, not a subscription/credit invoice.",
+        "Publication date is evidenced by dated launch text; effective start of every historical pricing interval remains unknown.",
+        "Actual request tier/band/region is not established by compact ECON returns; this is a named conditional Standard short/global equivalent.",
+        "Official flat write rate is represented in both portable retention buckets; native positive unknown token categories remain qualified."
+      ],
+      "quote_id": "93e9faa400de1713329452b0841f1db45897c364a2b5cf0c4087ec2ce5ee7a1c"
+    },
+    "public_source_hashes": {
+      "model": "c55d2db5f3b463b94f41bee9b458dfc465f26f92b4fc1881e5d7d22272ce08c2",
+      "pricing": "b672bd03a1405d705a460d38eb56c80d939abbed26bd9c87bb141a4296113d10",
+      "launch": "f522b9829ae047a2e2ae28b124762dbfffaefdbcd6965a695507f238ba6dc4bd"
+    },
+    "acquisition": "OpenAI Docs search/fetch actual first-party pages; general official-domain fallback/read also recorded",
+    "assumption": "named conditional profile, no actual request-band/tier/region or subscription-bill attribution"
+  },
+  "fixture_qualification": "All non-real cases explicitly illustrative; no invented actual provider price/owner verdict; no permanent test or network client."
+}

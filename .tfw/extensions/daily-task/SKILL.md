@@ -117,3 +117,13 @@ result and any specific remaining decision. Do not leave authorized work unfinis
 a record exists.
 
 Installation/update is separately governed by `installation.md`; do not preload it for ordinary work.
+
+## Used price basis on current returns
+
+Follow the common economics README for the observed exact models/price profiles. Reuse a checked
+quote under 30 days old across month boundaries; counter changes alone trigger no lookup. A missing
+or expired exact quote/today-check requires bounded official acquisition with working tools.
+Retain shared public observations and copy the actually used quote basis into this selected Daily
+record root. Unknown request conditions produce explicit conditional scenarios; source failure
+shows last-known quote/date and current-valuation limits. Never reprice historical snapshots from
+changed home state, fabricate a zero bill or stop independent useful work merely for capture failure.

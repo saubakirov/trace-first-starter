@@ -1,0 +1,54 @@
+{
+  "checked_at": "2026-10-01T12:05:38.068248+00:00",
+  "official_source_hashes": {
+    "model": "c55d2db5f3b463b94f41bee9b458dfc465f26f92b4fc1881e5d7d22272ce08c2",
+    "pricing": "b672bd03a1405d705a460d38eb56c80d939abbed26bd9c87bb141a4296113d10",
+    "launch": "f522b9829ae047a2e2ae28b124762dbfffaefdbcd6965a695507f238ba6dc4bd"
+  },
+  "scenarios": [
+    {
+      "name": "standard-short-global",
+      "basis": {
+        "path": "C:\\Users\\c0rpa\\.codex\\worktrees\\a0c7\\steps-framework\\workspace\\2026\\TFW_20261001-001035_ECON\\economics\\quotes\\db5d7ea15fa4175c7f5cfb8bc58ceeb91355d7c33e50a002e0181efba3c7e8c3.json",
+        "sha256": "db5d7ea15fa4175c7f5cfb8bc58ceeb91355d7c33e50a002e0181efba3c7e8c3",
+        "quote_ids": [
+          "93e9faa400de1713329452b0841f1db45897c364a2b5cf0c4087ec2ce5ee7a1c"
+        ],
+        "valuation_kind": "current_revaluation"
+      }
+    },
+    {
+      "name": "standard-long",
+      "basis": {
+        "path": "C:\\Users\\c0rpa\\.codex\\worktrees\\a0c7\\steps-framework\\workspace\\2026\\TFW_20261001-001035_ECON\\economics\\quotes\\4606e480758e6e45f04f8b4ed54b3dc2fb738ad4e871a65a9a91a5fc431d444f.json",
+        "sha256": "4606e480758e6e45f04f8b4ed54b3dc2fb738ad4e871a65a9a91a5fc431d444f",
+        "quote_ids": [
+          "e02bd85599ef3279ad108c264659752e3e4369cbb39fc62a80a810ce9646cc20"
+        ],
+        "valuation_kind": "current_revaluation"
+      }
+    },
+    {
+      "name": "fast-short",
+      "basis": {
+        "path": "C:\\Users\\c0rpa\\.codex\\worktrees\\a0c7\\steps-framework\\workspace\\2026\\TFW_20261001-001035_ECON\\economics\\quotes\\6d8aca39ab27f59157d34f96e743dd55cc9de77017db604afde4e1c8038fa375.json",
+        "sha256": "6d8aca39ab27f59157d34f96e743dd55cc9de77017db604afde4e1c8038fa375",
+        "quote_ids": [
+          "4dd42f45ed1efa194136aeb69519dc93ebc2f31ee06e417c17e2936edabdb5af"
+        ],
+        "valuation_kind": "current_revaluation"
+      }
+    },
+    {
+      "name": "standard-short-regional",
+      "basis": {
+        "path": "C:\\Users\\c0rpa\\.codex\\worktrees\\a0c7\\steps-framework\\workspace\\2026\\TFW_20261001-001035_ECON\\economics\\quotes\\431f50b70b97cde63262ded61af52854e46d3dd623d70fb389eea1b1bb939d8b.json",
+        "sha256": "431f50b70b97cde63262ded61af52854e46d3dd623d70fb389eea1b1bb939d8b",
+        "quote_ids": [
+          "4d3313e7f8d2229621cff0a2c6fa691a275274d934b643180a68cc38d2993280"
+        ],
+        "valuation_kind": "current_revaluation"
+      }
+    }
+  ]
+}
