@@ -1,0 +1,45 @@
+{
+  "kind": "task_price_basis",
+  "observations": [
+    {
+      "checked_at": "2026-10-01T12:05:38.068248+00:00",
+      "conditions": {
+        "context_band": "input>272K",
+        "modality": "text",
+        "region": "global",
+        "tier": "standard"
+      },
+      "currency": "USD",
+      "effective_from": null,
+      "model": "gpt-6.1-sol",
+      "notes": [
+        "Named conditional standard-long API equivalent from official source at the same checked epoch; actual request conditions unknown.",
+        "Effective date remains unknown; publication date does not prove historic applicability."
+      ],
+      "provider": "openai",
+      "published_on": "2026-09-29",
+      "quote_id": "e02bd85599ef3279ad108c264659752e3e4369cbb39fc62a80a810ce9646cc20",
+      "rates": {
+        "cache_write_1h": "5",
+        "cache_write_5m": "5",
+        "cached": "0.20",
+        "fresh": "4",
+        "output": "15"
+      },
+      "schema_version": 1,
+      "source_evidence": {
+        "https://developers.openai.com/api/docs/changelog#september-2026": "f522b9829ae047a2e2ae28b124762dbfffaefdbcd6965a695507f238ba6dc4bd",
+        "https://developers.openai.com/api/docs/models/gpt-6.1-sol": "c55d2db5f3b463b94f41bee9b458dfc465f26f92b4fc1881e5d7d22272ce08c2",
+        "https://developers.openai.com/api/docs/pricing": "b672bd03a1405d705a460d38eb56c80d939abbed26bd9c87bb141a4296113d10"
+      },
+      "source_urls": [
+        "https://developers.openai.com/api/docs/models/gpt-6.1-sol",
+        "https://developers.openai.com/api/docs/pricing",
+        "https://developers.openai.com/api/docs/changelog#september-2026"
+      ],
+      "unit": "per_1M_text_tokens"
+    }
+  ],
+  "schema_version": 1,
+  "valuation_kind": "current_revaluation"
+}
