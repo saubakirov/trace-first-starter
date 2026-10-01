@@ -1,0 +1,113 @@
+{
+  "source": {
+    "kind": "immutable-Git-Candidate",
+    "candidate": "e766107fa90029a5e81e10e7418b798a9998fb49",
+    "sha256": "d207cc2a7d97c65bc3c669248d2a17cf4d4364cdd39391535366c1435925fa23",
+    "version": "3.8.0",
+    "locator": "C:\\Users\\c0rpa\\.codex\\worktrees\\a0c7\\steps-framework",
+    "files": {
+      ".tfw/extensions/economics/entries/claude-code/SKILL.md": "8ba4cc02cb946280fa09b50c5d14e881dc2b8106e7f4257e3c24ad8b0ae0568c",
+      ".tfw/extensions/economics/entries/codex/SKILL.md": "8ba4cc02cb946280fa09b50c5d14e881dc2b8106e7f4257e3c24ad8b0ae0568c",
+      ".tfw/extensions/economics/installation.md": "5d6b273e046f0daf24e37f659828095b9146ae61638f0218bafd7896c10fc34a",
+      ".tfw/extensions/economics/SKILL.md": "b17bfb92f00d432a982f4d0f5fc76f4f70a956ca346c23a5b87270bc41b3d488",
+      ".tfw/extensions/daily-task/entries/claude-code/SKILL.md": "2d5608deca56a6ef017206a2a53f8cd18c20b888511661edf2aa9c7f089d7c64",
+      ".tfw/extensions/daily-task/entries/codex/SKILL.md": "2d5608deca56a6ef017206a2a53f8cd18c20b888511661edf2aa9c7f089d7c64",
+      ".tfw/extensions/daily-task/installation.md": "227ee39c152efbdbc4b16846181be0b8ace94618b987d09b6a23245d7a52a6dc",
+      ".tfw/extensions/daily-task/SKILL.md": "370614a2b1968dedbcdc839f0804bc556764b927a5f999e725e2f42238f28ed4",
+      ".tfw/extensions/daily-task/templates/task.md": "1b15a71021c5fc9494969bbde7b90cc448f482de3cc3a1a001956bee5cd0b9fe",
+      ".tfw/economics/README.md": "5b09d35862f0931e5b5db6a773b1c979087ec6a132734baa63899d1e96fea168",
+      ".tfw/economics/tfw_economics.py": "011075616b2a8306d1581680599f7468e58cc57380a7ac35d988e28571f8a469",
+      ".tfw/economics/record.schema.json": "c7ea48231a2ecbabe6e0d519190ed27698d1848aa8a47df9179719ff72c89a98",
+      ".tfw/economics/rates.json": "0da4db4c0135caee98ae6dc7a9378325c8adf7d4672427432e18ccacb1b0836f",
+      ".tfw/templates/economics.md": "40ad59e945dd17296a4f2010a81a620526f32cff81bfb3bfa6a4777a2b746e5b"
+    },
+    "path": "E:\\TEMP\\tfw-econ-vvvliapj\\candidate-replay-dlk452yy\\payload"
+  },
+  "cases": [
+    {
+      "case": "no-opt-in",
+      "rows": 14,
+      "repeat": "stable",
+      "history_neighbor": "unchanged"
+    },
+    {
+      "case": "selected",
+      "rows": 18,
+      "repeat": "stable",
+      "history_neighbor": "unchanged"
+    },
+    {
+      "case": "custom canonical",
+      "result": {
+        "action": "REFUSED",
+        "paths": [
+          ".tfw/extensions/economics/SKILL.md"
+        ],
+        "unchanged": true
+      }
+    },
+    {
+      "case": "custom entry/ambiguous ownership",
+      "result": {
+        "action": "REFUSED",
+        "paths": [
+          ".agents/skills/tfw-economics/SKILL.md"
+        ],
+        "unchanged": true
+      }
+    },
+    {
+      "case": "explicit fixture-authorized compatible local form/card",
+      "preserved": {
+        ".tfw/economics/rates.json": "b4739725c9c2e8386515b69a0de614b5246f1739773956c37cb784825fa110a3",
+        ".tfw/extensions/daily-task/templates/task.md": "8b8eea4b6251863fa0c426b61db2984d25a9584228fab7d56fff9ccc1ac86abc"
+      },
+      "parity_claim": "only applied rows"
+    }
+  ],
+  "qualification": "Five bounded filesystem execution oracles, not native init/update/config activation or cross-host proof. Custom compatible selection is explicit fixture authority, not an owner verdict. No production receiver changed.",
+  "self_receiver_parity": [
+    {
+      "source": ".tfw/extensions/economics/entries/codex/SKILL.md",
+      "target": ".agents/skills/tfw-economics/SKILL.md",
+      "sha256": "8ba4cc02cb946280fa09b50c5d14e881dc2b8106e7f4257e3c24ad8b0ae0568c",
+      "result": "exact Git-byte parity"
+    },
+    {
+      "source": ".tfw/extensions/economics/entries/claude-code/SKILL.md",
+      "target": ".claude/skills/tfw-economics/SKILL.md",
+      "sha256": "8ba4cc02cb946280fa09b50c5d14e881dc2b8106e7f4257e3c24ad8b0ae0568c",
+      "result": "exact Git-byte parity"
+    },
+    {
+      "source": ".tfw/workflows/init.md",
+      "target": ".claude/commands/tfw-init.md",
+      "sha256": "a687b7aba9c5da741a24b52364550a66a5ba242ba82f6e404e4a91c3c08a8c0a",
+      "result": "exact Git-byte parity"
+    },
+    {
+      "source": ".tfw/workflows/update.md",
+      "target": ".claude/commands/tfw-update.md",
+      "sha256": "373901c442c231e9e90e9f1160c1d4492ce0e3e7c37c1f33b4316a5486250c10",
+      "result": "exact Git-byte parity"
+    },
+    {
+      "source": ".tfw/workflows/config.md",
+      "target": ".claude/commands/tfw-config.md",
+      "sha256": "051e41e833e2f9dda752cb74313cb5f037ab3fef754454ac59f909d19b76cacc",
+      "result": "exact Git-byte parity"
+    }
+  ],
+  "ten_formal_commands": [
+    "tfw-config.md",
+    "tfw-docs.md",
+    "tfw-handoff.md",
+    "tfw-init.md",
+    "tfw-knowledge.md",
+    "tfw-plan.md",
+    "tfw-release.md",
+    "tfw-research.md",
+    "tfw-review.md",
+    "tfw-update.md"
+  ]
+}

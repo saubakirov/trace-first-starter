@@ -1,0 +1,306 @@
+{
+  "baseline": "9e585cc1786fd7ea181e65da620315ff0b71a241",
+  "candidate": "e766107fa90029a5e81e10e7418b798a9998fb49",
+  "rows": [
+    {
+      "path": ".tfw/extensions/economics/SKILL.md",
+      "action": "CREATE",
+      "class": "VALUE",
+      "reason": "Canonical portable analysis instructions and report mental model.",
+      "status": "A",
+      "additions": 95,
+      "deletions": 0
+    },
+    {
+      "path": ".tfw/extensions/economics/installation.md",
+      "action": "CREATE",
+      "class": "VALUE",
+      "reason": "Coherent optional source/receiver map and preservation/update contract.",
+      "status": "A",
+      "additions": 64,
+      "deletions": 0
+    },
+    {
+      "path": ".tfw/extensions/economics/entries/codex/SKILL.md",
+      "action": "CREATE",
+      "class": "VALUE",
+      "reason": "Thin discovery source.",
+      "status": "A",
+      "additions": 11,
+      "deletions": 0
+    },
+    {
+      "path": ".tfw/extensions/economics/entries/claude-code/SKILL.md",
+      "action": "CREATE",
+      "class": "VALUE",
+      "reason": "Thin discovery source.",
+      "status": "A",
+      "additions": 11,
+      "deletions": 0
+    },
+    {
+      "path": ".agents/skills/tfw-economics/SKILL.md",
+      "action": "CREATE",
+      "class": "VALUE",
+      "reason": "Selected self-receiver Codex entry.",
+      "status": "A",
+      "additions": 11,
+      "deletions": 0
+    },
+    {
+      "path": ".claude/skills/tfw-economics/SKILL.md",
+      "action": "CREATE",
+      "class": "VALUE",
+      "reason": "Selected self-receiver Claude entry.",
+      "status": "A",
+      "additions": 11,
+      "deletions": 0
+    },
+    {
+      "path": ".tfw/extensions/daily-task/SKILL.md",
+      "action": "MODIFY",
+      "class": "VALUE",
+      "reason": "Cumulative-per-return and final economics obligation within existing authority.",
+      "status": "M",
+      "additions": 24,
+      "deletions": 0
+    },
+    {
+      "path": ".tfw/extensions/daily-task/templates/task.md",
+      "action": "MODIFY",
+      "class": "VALUE",
+      "reason": "Recoverable economic binding/returns in new default records, preserving local forms.",
+      "status": "M",
+      "additions": 11,
+      "deletions": 0
+    },
+    {
+      "path": ".tfw/extensions/daily-task/installation.md",
+      "action": "MODIFY",
+      "class": "VALUE",
+      "reason": "Necessary economics dependency and coherent preservation rules.",
+      "status": "M",
+      "additions": 12,
+      "deletions": 0
+    },
+    {
+      "path": ".tfw/economics/tfw_economics.py",
+      "action": "MODIFY",
+      "class": "VALUE",
+      "reason": "Narrow existing accounting/receiver/report compatibility and defect corrections.",
+      "status": "M",
+      "additions": 146,
+      "deletions": 35
+    },
+    {
+      "path": ".tfw/economics/README.md",
+      "action": "MODIFY",
+      "class": "VALUE",
+      "reason": "Truthful selected-record, binding-gap, completeness/failure and metric contract.",
+      "status": "M",
+      "additions": 60,
+      "deletions": 2
+    },
+    {
+      "path": ".tfw/templates/economics.md",
+      "action": "MODIFY",
+      "class": "VALUE",
+      "reason": "Product/executive-to-detail report with usable source/coverage sections.",
+      "status": "M",
+      "additions": 50,
+      "deletions": 31
+    },
+    {
+      "path": ".tfw/workflows/init.md",
+      "action": "MODIFY",
+      "class": "VALUE",
+      "reason": "Selected optional package/dependency installation.",
+      "status": "M",
+      "additions": 15,
+      "deletions": 0
+    },
+    {
+      "path": ".tfw/workflows/update.md",
+      "action": "MODIFY",
+      "class": "VALUE",
+      "reason": "Pinned coherent update and custom/history preservation.",
+      "status": "M",
+      "additions": 12,
+      "deletions": 0
+    },
+    {
+      "path": ".tfw/workflows/config.md",
+      "action": "MODIFY",
+      "class": "VALUE",
+      "reason": "Separate optional entry parity; no extra formal command.",
+      "status": "M",
+      "additions": 7,
+      "deletions": 0
+    },
+    {
+      "path": ".claude/commands/tfw-init.md",
+      "action": "MODIFY",
+      "class": "VALUE",
+      "reason": "Necessary installed canonical copy.",
+      "status": "M",
+      "additions": 15,
+      "deletions": 0
+    },
+    {
+      "path": ".claude/commands/tfw-update.md",
+      "action": "MODIFY",
+      "class": "VALUE",
+      "reason": "Necessary installed canonical copy.",
+      "status": "M",
+      "additions": 12,
+      "deletions": 0
+    },
+    {
+      "path": ".claude/commands/tfw-config.md",
+      "action": "MODIFY",
+      "class": "VALUE",
+      "reason": "Necessary installed canonical copy.",
+      "status": "M",
+      "additions": 7,
+      "deletions": 0
+    },
+    {
+      "path": ".tfw/conventions.md",
+      "action": "MODIFY",
+      "class": "VALUE",
+      "reason": "Relevant optional economics/Daily boundaries remain coherent.",
+      "status": "M",
+      "additions": 8,
+      "deletions": 0
+    },
+    {
+      "path": ".tfw/adapters/codex/README.md",
+      "action": "MODIFY",
+      "class": "VALUE",
+      "reason": "Discoverability, supported scope and opt-in guidance.",
+      "status": "M",
+      "additions": 6,
+      "deletions": 0
+    },
+    {
+      "path": ".tfw/adapters/claude-code/README.md",
+      "action": "MODIFY",
+      "class": "VALUE",
+      "reason": "Discoverability and honest filesystem/native proof distinction.",
+      "status": "M",
+      "additions": 6,
+      "deletions": 0
+    },
+    {
+      "path": ".tfw/README.md",
+      "action": "MODIFY",
+      "class": "VALUE",
+      "reason": "User-facing capability and boundaries.",
+      "status": "M",
+      "additions": 8,
+      "deletions": 0
+    },
+    {
+      "path": "docs/scripts/gen_docs.py",
+      "action": "MODIFY if needed",
+      "class": "VALUE",
+      "reason": "Narrow named public-source/link inclusion when required; preserve the publication allowlist.",
+      "status": "M",
+      "additions": 6,
+      "deletions": 0
+    }
+  ],
+  "approval": "c2f1f17b22d8f60ededa0376df703f5f7d261f87",
+  "planned_files": 23,
+  "planned_touched_loc": 2200,
+  "logical_files": 23,
+  "additions": 608,
+  "deletions": 68,
+  "touched_text_loc": 676,
+  "phase": "one phase; all members resolved to TFW_20261001-001035_ECON; no INVALID attribution",
+  "binary_nontext": "N/A: all rows numeric text",
+  "deviations": [],
+  "trigger": "none: 23 < 46 escalation / 50 prompt, 676 < 4400 escalation / 5000 prompt; file consumption 1.0x plan, LOC 0.3072727273x plan; immutable denominators unchanged",
+  "raw": {
+    "name-status": {
+      "argv": [
+        "git",
+        "diff",
+        "--name-status",
+        "--find-renames=50%",
+        "-z",
+        "9e585cc1786fd7ea181e65da620315ff0b71a241",
+        "e766107fa90029a5e81e10e7418b798a9998fb49",
+        "--",
+        ".tfw/extensions/economics/SKILL.md",
+        ".tfw/extensions/economics/installation.md",
+        ".tfw/extensions/economics/entries/codex/SKILL.md",
+        ".tfw/extensions/economics/entries/claude-code/SKILL.md",
+        ".agents/skills/tfw-economics/SKILL.md",
+        ".claude/skills/tfw-economics/SKILL.md",
+        ".tfw/extensions/daily-task/SKILL.md",
+        ".tfw/extensions/daily-task/templates/task.md",
+        ".tfw/extensions/daily-task/installation.md",
+        ".tfw/economics/tfw_economics.py",
+        ".tfw/economics/README.md",
+        ".tfw/templates/economics.md",
+        ".tfw/workflows/init.md",
+        ".tfw/workflows/update.md",
+        ".tfw/workflows/config.md",
+        ".claude/commands/tfw-init.md",
+        ".claude/commands/tfw-update.md",
+        ".claude/commands/tfw-config.md",
+        ".tfw/conventions.md",
+        ".tfw/adapters/codex/README.md",
+        ".tfw/adapters/claude-code/README.md",
+        ".tfw/README.md",
+        "docs/scripts/gen_docs.py"
+      ],
+      "path": "workspace/2026/TFW_20261001-001035_ECON/evidence/accounting-nul-outputs.json",
+      "sha256": "8e2c87f2c1affd7cbf61d3830e1887f716f7c5f73e09bf81d07691355144387d",
+      "encoded_key": "name-status",
+      "encoding": "base64",
+      "original_temp_path": "E:\\TEMP\\tfw-econ-vvvliapj\\accounting-nul-originals\\accounting-name-status.bin"
+    },
+    "numstat": {
+      "argv": [
+        "git",
+        "diff",
+        "--numstat",
+        "--find-renames=50%",
+        "-z",
+        "9e585cc1786fd7ea181e65da620315ff0b71a241",
+        "e766107fa90029a5e81e10e7418b798a9998fb49",
+        "--",
+        ".tfw/extensions/economics/SKILL.md",
+        ".tfw/extensions/economics/installation.md",
+        ".tfw/extensions/economics/entries/codex/SKILL.md",
+        ".tfw/extensions/economics/entries/claude-code/SKILL.md",
+        ".agents/skills/tfw-economics/SKILL.md",
+        ".claude/skills/tfw-economics/SKILL.md",
+        ".tfw/extensions/daily-task/SKILL.md",
+        ".tfw/extensions/daily-task/templates/task.md",
+        ".tfw/extensions/daily-task/installation.md",
+        ".tfw/economics/tfw_economics.py",
+        ".tfw/economics/README.md",
+        ".tfw/templates/economics.md",
+        ".tfw/workflows/init.md",
+        ".tfw/workflows/update.md",
+        ".tfw/workflows/config.md",
+        ".claude/commands/tfw-init.md",
+        ".claude/commands/tfw-update.md",
+        ".claude/commands/tfw-config.md",
+        ".tfw/conventions.md",
+        ".tfw/adapters/codex/README.md",
+        ".tfw/adapters/claude-code/README.md",
+        ".tfw/README.md",
+        "docs/scripts/gen_docs.py"
+      ],
+      "path": "workspace/2026/TFW_20261001-001035_ECON/evidence/accounting-nul-outputs.json",
+      "sha256": "fc3bb458ba62900488f01dd3d3116acd37b050a659c0f3e2ecfe0d13a47da8de",
+      "encoded_key": "numstat",
+      "encoding": "base64",
+      "original_temp_path": "E:\\TEMP\\tfw-econ-vvvliapj\\accounting-nul-originals\\accounting-numstat.bin"
+    }
+  }
+}

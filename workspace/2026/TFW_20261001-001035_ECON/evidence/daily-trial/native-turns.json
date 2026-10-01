@@ -1,0 +1,106 @@
+{
+  "source_id": "01a0f5ab-30e9-7c02-8a65-a823f75973b0",
+  "unit": "codex:thread:local:01a0f5ab-30e9-7c02-8a65-a823f75973b0",
+  "source_path": "C:\\Users\\c0rpa\\.codex\\sessions\\2026\\10\\01\\rollout-2026-10-01T09-13-53-01a0f5ab-30e9-7c02-8a65-a823f75973b0.jsonl",
+  "bound_start": 373,
+  "first_turn": "01a0f5ab-3d16-7aa2-9ae8-473aa83a47ac",
+  "second_turn": "01a0f5d2-018f-7812-85b2-9c17908bc75e",
+  "events": [
+    {
+      "line": 1,
+      "timestamp": "2026-10-01T04:13:55.732Z",
+      "kind": "task_started",
+      "turn_id": "01a0f5ab-3d16-7aa2-9ae8-473aa83a47ac"
+    },
+    {
+      "line": 7,
+      "timestamp": "2026-10-01T04:13:56.851Z",
+      "kind": "turn_context",
+      "turn_id": "01a0f5ab-3d16-7aa2-9ae8-473aa83a47ac",
+      "model": "gpt-6.1-sol",
+      "effort": "high"
+    },
+    {
+      "line": 485,
+      "timestamp": "2026-10-01T04:51:13.776Z",
+      "kind": "task_complete",
+      "turn_id": "01a0f5ab-3d16-7aa2-9ae8-473aa83a47ac"
+    },
+    {
+      "line": 487,
+      "timestamp": "2026-10-01T04:56:16.127Z",
+      "kind": "task_started",
+      "turn_id": "01a0f5d2-018f-7812-85b2-9c17908bc75e"
+    },
+    {
+      "line": 490,
+      "timestamp": "2026-10-01T04:56:16.185Z",
+      "kind": "turn_context",
+      "turn_id": "01a0f5d2-018f-7812-85b2-9c17908bc75e",
+      "model": "gpt-6.1-sol",
+      "effort": "high"
+    },
+    {
+      "line": 504,
+      "timestamp": "2026-10-01T04:59:30.067Z",
+      "kind": "turn_context",
+      "turn_id": "01a0f5d2-018f-7812-85b2-9c17908bc75e",
+      "model": "gpt-6.1-sol",
+      "effort": "high"
+    }
+  ],
+  "first_completion_coordinator_gate": "journal/20261001-095442__gate_answer__7821.md @ 4bac4e3324a48685db5333c75dc92aeb69f4d310",
+  "second_completion": "pending current actual return; Coordinator/Reviewer must read native completion after it",
+  "final_product": "E:\\TEMP\\tfw-econ-vvvliapj\\receiver-selected\\notes\\economics-reading-checklist.md",
+  "final_product_sha256": "b38a2143a0a3735a0413c107685e429ae1bb74fcfd5a620d23aea63fb8ccd5bb",
+  "preserved_draft_sha256": "b8a36b674736a5b435db94d0e5b2234780a4deb16c59ba4c487933903f621638",
+  "capture_argv": [
+    "python",
+    "C:\\Users\\c0rpa\\.codex\\worktrees\\a0c7\\steps-framework\\.tfw\\economics\\tfw_economics.py",
+    "collect",
+    "--provider",
+    "codex.rollout",
+    "--project",
+    "economics-reading-trial",
+    "--task",
+    "20261001-094050_economics-reading-checklist",
+    "--owner",
+    "saubakirov",
+    "--role",
+    "daily",
+    "--unit",
+    "codex:thread:local:01a0f5ab-30e9-7c02-8a65-a823f75973b0",
+    "--source-id",
+    "01a0f5ab-30e9-7c02-8a65-a823f75973b0",
+    "--source-version",
+    "0.159.2",
+    "--source",
+    "C:\\Users\\c0rpa\\.codex\\sessions\\2026\\10\\01\\rollout-2026-10-01T09-13-53-01a0f5ab-30e9-7c02-8a65-a823f75973b0.jsonl",
+    "--timezone",
+    "+05:00",
+    "--start",
+    "373",
+    "--end",
+    "580",
+    "--revision",
+    "4",
+    "--predecessor",
+    "E:\\TEMP\\tfw-econ-vvvliapj\\receiver-selected\\daily\\2026\\20261001-094050_economics-reading-checklist\\economics\\snapshot-r3.jsonl",
+    "--complete",
+    "--tfw-version",
+    "3.8.0",
+    "--out",
+    "E:\\TEMP\\tfw-econ-vvvliapj\\receiver-selected\\daily\\2026\\20261001-094050_economics-reading-checklist\\economics\\snapshot-r4.jsonl"
+  ],
+  "report_totals": {
+    "cached": 4420352,
+    "duration_seconds": {},
+    "input": 4511183,
+    "output": 32762,
+    "priced_usd": "0",
+    "tokens": 4543945,
+    "undated_tokens": 0,
+    "unpriced_tokens": 4543945
+  },
+  "snapshot4_sha256": "b5589d3045bdd5f6d230475651c2a2049fdb4d0adf18602e8e92d4e8bc1b9449"
+}

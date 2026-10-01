@@ -1,0 +1,168 @@
+{
+  "path": "workspace/2026/TFW_20261001-001035_ECON/economics/executor-final-20261001-r2.jsonl",
+  "revision": 2,
+  "sha256": "04ae1f5aac9ee0ea2c67834d839947121df2fdb74b51c762e1cacb43f48ec2a8",
+  "manifest": {
+    "captured_at": "2026-10-01T05:11:40.318785+00:00",
+    "collector": "tfw-economics/1.2",
+    "complete": true,
+    "coordination_mode": "native-gates",
+    "cutoff": "2026-10-01T05:11:40.318785+00:00",
+    "extensions": {
+      "tfw.diagnostics": [
+        "Codex token_count total 11498557 differs from 85 unique-response native thread total 11852381; chose response stream reconciled to its native thread counter, never added both",
+        "unmatched task_started: 1",
+        "compacted 86 verified native rows into 2 daily/run/model records"
+      ],
+      "tfw.includes_sources": [],
+      "tfw.predecessor_source_prefix_sha256": "5c613ca47350f216d9f6c73a56fa556adc4bd129ed8616ec9b8bf4d8410211f8"
+    },
+    "kind": "manifest",
+    "operation_seconds": 0.039266,
+    "owner": "saubakirov",
+    "phase": null,
+    "predecessor_sha256": "82d53e4c03cfc9ba8e31d207641f4372ede33bf1631119ecf85d9c5cc99be560",
+    "project": "my-project",
+    "range_end": 638,
+    "range_start": 0,
+    "revision": 2,
+    "role": "Executor",
+    "schema_version": 1,
+    "source_id": "01a0f5ab-30e9-7c02-8a65-a823f75973b0",
+    "source_label": "rollout-2026-10-01T09-13-53-01a0f5ab-30e9-7c02-8a65-a823f75973b0.jsonl",
+    "source_namespace": "codex.rollout",
+    "source_sha256": "d054d89cbbdebec66a77685895c5a13223893a50e42cf70f11214afadbc51025",
+    "source_size": 4816537,
+    "source_version": "0.159.2",
+    "task": "TFW_20261001-001035_ECON",
+    "tfw_version": "3.8.0",
+    "timezone": "+05:00",
+    "unavailable": {},
+    "unit": "codex:thread:local:01a0f5ab-30e9-7c02-8a65-a823f75973b0"
+  },
+  "collect_argv": [
+    "python",
+    "C:\\Users\\c0rpa\\.codex\\worktrees\\a0c7\\steps-framework\\.tfw\\economics\\tfw_economics.py",
+    "collect",
+    "--provider",
+    "codex.rollout",
+    "--project",
+    "my-project",
+    "--task",
+    "TFW_20261001-001035_ECON",
+    "--owner",
+    "saubakirov",
+    "--role",
+    "Executor",
+    "--unit",
+    "codex:thread:local:01a0f5ab-30e9-7c02-8a65-a823f75973b0",
+    "--source-id",
+    "01a0f5ab-30e9-7c02-8a65-a823f75973b0",
+    "--source-version",
+    "0.159.2",
+    "--source",
+    "C:\\Users\\c0rpa\\.codex\\sessions\\2026\\10\\01\\rollout-2026-10-01T09-13-53-01a0f5ab-30e9-7c02-8a65-a823f75973b0.jsonl",
+    "--timezone",
+    "+05:00",
+    "--start",
+    "0",
+    "--end",
+    "638",
+    "--revision",
+    "2",
+    "--predecessor",
+    "workspace\\2026\\TFW_20261001-001035_ECON\\economics\\executor-interim-20261001-r1.jsonl",
+    "--complete",
+    "--tfw-version",
+    "3.8.0",
+    "--coordination-mode",
+    "native-gates",
+    "--out",
+    "workspace\\2026\\TFW_20261001-001035_ECON\\economics\\executor-final-20261001-r2.jsonl"
+  ],
+  "unique_total": {
+    "tokens": 11852381,
+    "input": 11762583,
+    "output": 89798,
+    "cached": 11449728,
+    "priced_usd": "0",
+    "unpriced_tokens": 11852381,
+    "undated_tokens": 0,
+    "duration": {
+      "completed_turn": 2238.424
+    },
+    "by_role": {
+      "Executor": {
+        "tokens": 11852381,
+        "usd": "0"
+      }
+    },
+    "by_model": {
+      "gpt-6.1-sol": {
+        "tokens": 11852381,
+        "usd": "0"
+      }
+    },
+    "by_date": {
+      "2026-10-01": {
+        "tokens": 11852381,
+        "usd": "0"
+      }
+    }
+  },
+  "selected_compact_rows": [
+    {
+      "project": "my-project",
+      "task": "TFW_20261001-001035_ECON",
+      "phase": null,
+      "owner": "saubakirov",
+      "role": "Executor",
+      "unit": "codex:thread:local:01a0f5ab-30e9-7c02-8a65-a823f75973b0",
+      "source": "codex.rollout",
+      "source_id": "01a0f5ab-30e9-7c02-8a65-a823f75973b0",
+      "source_revision": 2,
+      "file_sha256": "04ae1f5aac9ee0ea2c67834d839947121df2fdb74b51c762e1cacb43f48ec2a8",
+      "event_id": "aggregate:d82b31eba23aff77193d6cbc:time",
+      "date": "2026-10-01",
+      "model": "gpt-6.1-sol",
+      "tokens": 0,
+      "input": 0,
+      "cached": 0,
+      "output": 0,
+      "duration_seconds": 2238.424,
+      "duration_kind": "completed_turn",
+      "api_reference_usd": null,
+      "price_gap": "unknown exact model or rate"
+    },
+    {
+      "project": "my-project",
+      "task": "TFW_20261001-001035_ECON",
+      "phase": null,
+      "owner": "saubakirov",
+      "role": "Executor",
+      "unit": "codex:thread:local:01a0f5ab-30e9-7c02-8a65-a823f75973b0",
+      "source": "codex.rollout",
+      "source_id": "01a0f5ab-30e9-7c02-8a65-a823f75973b0",
+      "source_revision": 2,
+      "file_sha256": "04ae1f5aac9ee0ea2c67834d839947121df2fdb74b51c762e1cacb43f48ec2a8",
+      "event_id": "aggregate:adcaeb1f8bf9815a37c20308:tokens",
+      "date": "2026-10-01",
+      "model": "gpt-6.1-sol",
+      "tokens": 11852381,
+      "input": 11762583,
+      "cached": 11449728,
+      "output": 89798,
+      "duration_seconds": null,
+      "duration_kind": null,
+      "api_reference_usd": null,
+      "price_gap": "unknown exact model or rate"
+    }
+  ],
+  "excluded": [
+    "82d53e4c03cfc9ba8e31d207641f4372ede33bf1631119ecf85d9c5cc99be560"
+  ],
+  "diagnostics": [],
+  "expected_unit": "codex:thread:local:01a0f5ab-30e9-7c02-8a65-a823f75973b0",
+  "missing": [],
+  "finite_tail": "Later RF/economics text, transition, trace commit, send, final answer and cleanup beyond this cutoff. Do not recursively recollect."
+}
