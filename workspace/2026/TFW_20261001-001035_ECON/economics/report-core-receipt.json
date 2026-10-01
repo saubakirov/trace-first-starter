@@ -32,6 +32,7 @@
     "9039073d55323876c8b8769e88d5709183be761efd80969c01fd416240c9cf2c",
     "9b5b8ce900953d9fb1724b5fed4990baf098ef8cc19a3d708c04ce15866e15ef",
     "9e79263ce4ff0b4e8ce170a880058d368163742c868eb23d2454f8bca421f524",
+    "acacd489983df08269de92b054328869319615386e1db98adba67d41cdf3edfd",
     "b3a0fa79c7e2f8720878108d5d8130764e74fef1e5d15aa7000e35c2e2de006d",
     "b3e06281c8f132d2e53f436735816112ae3cfb36283b37ba12e68d25726249af",
     "b51b119b67d19465aa01614ecfd7dabee6165bcb680ce52b1438d8a4139a261d",
@@ -41,6 +42,7 @@
     "d6efcd81288a248594394203489933b45bc1105e2f6960eaf467265a74fb75d7",
     "d8949aab74705575141279c07f803b0d53c1c08ba4361ccd05f72054f57a024c",
     "dc62a1ec151eeebcda22c68c13d38532a0be7f8950b5a6c6c53a10122d976015",
+    "dd597aeef7ee284d11c4b9276316e82275eacd96dc25e1745e6c03bb5b9d05d7",
     "e9caf4ffbf159b4b7e30a577c7b77fe6dd9c9a17a736dc322329705252a421c1",
     "ea977e0e0d177ebc519a7de32159ef91f695b0bf030895affd34c3bdc0e36498",
     "fd28373dbd46b854b0893b18f44ef01b6ecce97e406c454bc65efe4a660dda1f"
@@ -54,7 +56,7 @@
     "codex:thread:local:01a0ec08-7c1d-7570-9ec2-e3e00275687e": {
       "role": "coordinator",
       "source_id": "01a0ec08-7c1d-7570-9ec2-e3e00275687e",
-      "tokens": 57675174,
+      "tokens": 60046284,
       "ranges": [
         {
           "start": 641,
@@ -209,6 +211,13 @@
           "cutoff": "2026-10-01T13:19:17.937950+00:00",
           "revision": 22,
           "sha256": "85ef85f16ade1da0c71a1948bfabe17560fa26febf8666d21ffcfe7259b8d030"
+        },
+        {
+          "start": 4310,
+          "end": 4479,
+          "cutoff": "2026-10-01T13:46:09.102126+00:00",
+          "revision": 23,
+          "sha256": "dd597aeef7ee284d11c4b9276316e82275eacd96dc25e1745e6c03bb5b9d05d7"
         }
       ]
     },
@@ -250,7 +259,7 @@
     "codex:thread:local:01a0f5ec-dc43-7820-ad0d-9e7e32fdc850": {
       "role": "Reviewer",
       "source_id": "01a0f5ec-dc43-7820-ad0d-9e7e32fdc850",
-      "tokens": 15784944,
+      "tokens": 17849156,
       "ranges": [
         {
           "start": 0,
@@ -272,32 +281,39 @@
           "cutoff": "2026-10-01T13:05:31.671999+00:00",
           "revision": 3,
           "sha256": "62448124d9b5e6b56af745ae4f74cae17e232df4c994452de6d47f35564109f7"
+        },
+        {
+          "start": 849,
+          "end": 1016,
+          "cutoff": "2026-10-01T13:38:37.546568+00:00",
+          "revision": 4,
+          "sha256": "acacd489983df08269de92b054328869319615386e1db98adba67d41cdf3edfd"
         }
       ]
     }
   },
   "categories": {
-    "fresh": 4202128,
-    "cached": 103298432,
+    "fresh": 4381825,
+    "cached": 107511680,
     "cache_write_5m": 0,
     "cache_write_1h": 0,
-    "output": 821369,
-    "reasoning": 301864,
-    "input": 107500560,
-    "total": 108321929
+    "output": 863746,
+    "reasoning": 316146,
+    "input": 111893505,
+    "total": 112757251
   },
   "category_usd": {
-    "fresh": "8.404256",
-    "cached": "10.3298432",
+    "fresh": "8.76365",
+    "cached": "10.751168",
     "cache_write": "0",
-    "output": "8.21369"
+    "output": "8.63746"
   },
-  "tokens": 108321929,
-  "usd": "26.9477892",
+  "tokens": 112757251,
+  "usd": "28.1522780",
   "by_role": {
     "coordinator": {
-      "tokens": 57675174,
-      "usd": "13.8244136"
+      "tokens": 60046284,
+      "usd": "14.3945040"
     },
     "Executor": {
       "tokens": 19719989,
@@ -308,45 +324,45 @@
       "usd": "4.0442216"
     },
     "Reviewer": {
-      "tokens": 15784944,
-      "usd": "3.3934368"
+      "tokens": 17849156,
+      "usd": "4.0278352"
     }
   },
   "by_effort": {
     "xhigh": {
-      "tokens": 57675174,
-      "usd": "13.8244136"
+      "tokens": 60046284,
+      "usd": "14.3945040"
     },
     "high": {
-      "tokens": 49476560,
-      "usd": "12.7900064"
+      "tokens": 50391310,
+      "usd": "13.0320504"
     },
     "medium": {
-      "tokens": 1170195,
-      "usd": "0.3333692"
+      "tokens": 2319657,
+      "usd": "0.7257236"
     }
   },
   "by_model": {
     "gpt-6.1-sol": {
-      "tokens": 108321929,
-      "usd": "26.9477892"
+      "tokens": 112757251,
+      "usd": "28.1522780"
     }
   },
   "scenarios": {
     "Standard short/global": {
-      "usd": "26.9477892",
+      "usd": "28.1522780",
       "basis_sha256": "db5d7ea15fa4175c7f5cfb8bc58ceeb91355d7c33e50a002e0181efba3c7e8c3"
     },
     "Standard long/global": {
-      "usd": "49.7887334",
+      "usd": "51.9858260",
       "basis_sha256": "4606e480758e6e45f04f8b4ed54b3dc2fb738ad4e871a65a9a91a5fc431d444f"
     },
     "Fast short/global": {
-      "usd": "53.8955784",
+      "usd": "56.3045560",
       "basis_sha256": "6d8aca39ab27f59157d34f96e743dd55cc9de77017db604afde4e1c8038fa375"
     },
     "Standard short/regional": {
-      "usd": "29.64256812",
+      "usd": "30.96750580",
       "basis_sha256": "431f50b70b97cde63262ded61af52854e46d3dd623d70fb389eea1b1bb939d8b"
     }
   },
@@ -359,5 +375,7 @@
   "diagnostics": [],
   "valuation_kind": "current_revaluation",
   "basis_sha256": "db5d7ea15fa4175c7f5cfb8bc58ceeb91355d7c33e50a002e0181efba3c7e8c3",
-  "finite_tail": "Later capture/commit/send/final-message/cleanup and bounded Reviewer final-effect return are outside this finite received set; only actual received disjoint/verified successor bytes may update it."
+  "finite_tail": "Actual last Reviewer r4 and own Coordinator r23 are included. Later append/commit/final-message/owner-decision/cleanup is a disclosed finite tail. Final presentation does not recursively trigger capture.",
+  "bounded_review": "f4c891f962a0110ab3521b07d14494cf520e9ae9",
+  "final_reconciliation": "Last two ordinary portable contributions incorporated using unchanged independently checked membership and valuation rules; separate Decimal category/role oracle agrees. Bounded Reviewer at f4c891f9 checked the preceding108321929/USD26.9477892 report epoch, its meaning and method; it did not pretend to observe this future slice."
 }
