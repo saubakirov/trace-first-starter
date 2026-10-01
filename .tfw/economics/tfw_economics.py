@@ -23,7 +23,7 @@ from decimal import Decimal
 from pathlib import Path
 
 VERSION = 1
-COLLECTOR = "tfw-economics/1.1"
+COLLECTOR = "tfw-economics/1.2"
 TOKEN_KEYS = ("fresh", "cached", "cache_write", "cache_write_5m",
               "cache_write_1h", "input", "output", "reasoning", "total")
 KINDS = {"manifest", "usage", "failure"}
@@ -748,7 +748,7 @@ def manifest(args, source_hash, source_size, end, operation_seconds, diagnostics
                 revision=args.revision, predecessor_sha256=predecessor,
                 range_start=args.start, range_end=end, complete=args.complete,
                 captured_at=now, cutoff=now, timezone=args.timezone,
-                operation_seconds=round(operation_seconds, 6),
+                operation_seconds=(round(operation_seconds, 6) if operation_seconds is not None else None),
                 tfw_version=args.tfw_version, coordination_mode=args.coordination_mode,
                 unavailable={k: "not present in a bound task source" for k in
                              ("tfw_version", "coordination_mode") if getattr(args, k) is None},
@@ -817,7 +817,8 @@ def failure_receipt(args):
     require(args.end is not None and args.end > args.start, "failure receipt needs attempted range")
     source_hash = sha(Path(args.source).read_bytes()) if Path(args.source).is_file() else sha(b"")
     source_size = Path(args.source).stat().st_size if Path(args.source).is_file() else 0
-    m = manifest(args, source_hash, source_size, args.end, 0, ["capture failed"])
+    m = manifest(args, source_hash, source_size, args.end, None, ["capture failed"])
+    m["unavailable"]["operation_seconds"] = "failed collect invocation was not timed by this receipt"
     row = dict(kind="failure", schema_version=VERSION, code=args.code,
                detail=args.detail, extensions={})
     digest = write_jsonl(args.out, [m, row])
@@ -831,10 +832,12 @@ def receive(args):
     require(m["project"] == args.project and m["task"] == args.task
             and m["unit"] == args.expected_unit, "received contributor identity mismatch")
     task = Path(args.task_root).resolve()
-    status = task / "status.md"
-    require(status.is_file(), "task root has no status.md")
-    require(re.search(r"(?m)^id: " + re.escape(args.task) + r"$",
-                      status.read_text(encoding="utf-8")), "task-root ID mismatch")
+    state = status_fields(task, args.record)
+    require(state["id"] == args.task, "task-root ID mismatch")
+    if args.record:
+        require(state["project"] == args.project, "Daily record project mismatch")
+        require(state["owner"] == m["owner"], "Daily record owner mismatch")
+        require(m["phase"] is None, "Daily record is not a Full phase")
     dest_dir = task / "economics" / "roles"
     dest_dir.mkdir(parents=True, exist_ok=True)
     dest = dest_dir / (item["sha256"] + ".jsonl")
@@ -854,11 +857,14 @@ def selected_files(task_root):
     return task_sources(task_root)[0]
 
 
-def task_sources(task_root):
+def task_sources(task_root, record=None):
     """Select root coordination and immediate phase leaves, never nested reports."""
     root = Path(task_root)
     folder = root / "economics" / "roles"
     files = sorted(folder.glob("*.jsonl")) if folder.is_dir() else []
+    if record:
+        status_fields(root, record)
+        return files, [], []
     if root.name.startswith("phase-"):
         return files, [root.name], ([] if files else [root.name + ": no returned role bytes"])
     phases, gaps = [], []
@@ -879,9 +885,10 @@ def task_sources(task_root):
     return files, phases, gaps
 
 
-def check_task_sources(task_root, files):
+def check_task_sources(task_root, files, record=None):
     root = Path(task_root)
-    task_id = status_fields(root)["id"]
+    state = status_fields(root, record)
+    task_id = state["id"]
     for item in files:
         path = Path(item["path"])
         relative = path.relative_to(root)
@@ -890,6 +897,16 @@ def check_task_sources(task_root, files):
         m = item["manifest"]
         require(m["task"] == task_id and m["phase"] == phase,
                 "returned task/phase differs from selected root")
+        if record:
+            require(m["project"] == state["project"] and
+                    (m["owner"] == state["owner"] if state["owner"] is not None else
+                     item["sha256"] in {x["last_good"] for x in state.get("binding_outcomes", [])}),
+                    "returned identity differs from selected Daily record")
+    for outcome in state.get("binding_outcomes", []):
+        if outcome["last_good"]:
+            require(any(f["sha256"] == outcome["last_good"] and
+                        any(row["kind"] == "usage" for row in f["rows"]) for f in files),
+                    "binding gap last-good measured bytes not received")
 
 
 def reconcile(paths, expected_units=()):
@@ -904,8 +921,20 @@ def reconcile(paths, expected_units=()):
             by_hash[item["sha256"]] = item
     files = list(by_hash.values())
     groups = defaultdict(list)
+    failures = []
     for f in files:
         m = f["manifest"]
+        failed = [row for row in f["rows"] if row["kind"] == "failure"]
+        if failed:
+            excluded.add(f["sha256"])
+            failures.append(dict(unit=m["unit"], project=m["project"], task=m["task"],
+                                 source=m["source_namespace"] + ":" + m["source_id"],
+                                 revision=m["revision"], cutoff=m["cutoff"],
+                                 range_start=m["range_start"], range_end=m["range_end"],
+                                 sha256=f["sha256"], code=failed[0]["code"],
+                                 detail=failed[0]["detail"]))
+            diagnostics.append("nonmeasured failed attempt retained: " + f["sha256"])
+            continue
         groups[(m["source_namespace"], m["source_id"])].append(f)
     for source, group in groups.items():
         group.sort(key=lambda f: (f["manifest"]["revision"], f["manifest"]["range_start"]))
@@ -984,7 +1013,8 @@ def reconcile(paths, expected_units=()):
     return dict(records=records, received=received, measured=measured,
                 missing=expected - received, failure_only=received - reported,
                 omitted=reported - measured,
-                excluded=excluded, diagnostics=diagnostics, files=files)
+                excluded=excluded, diagnostics=diagnostics, files=files,
+                failures=sorted(failures, key=lambda x: (x["unit"], x["cutoff"], x["revision"])))
 
 
 def price(tokens, model, rates):
@@ -1027,6 +1057,7 @@ def summarize(records, rates, filters=None):
             continue
         if any(filters.get(k) and value != filters[k] for k, value in
                (("project", m["project"]), ("task", m["task"]), ("role", m["role"]),
+                ("owner", m["owner"]), ("unit", m["unit"]),
                 ("model", row["model"]))):
             continue
         selected.append((m, row, digest))
@@ -1076,14 +1107,51 @@ def summarize(records, rates, filters=None):
     return total, flat
 
 
-def status_fields(task_root):
+def status_fields(task_root, record=None):
+    if record:
+        root = Path(task_root).resolve()
+        path = Path(record).resolve()
+        require(path.is_file() and path.is_relative_to(root), "selected Daily record outside root or missing")
+        blocks = re.findall(r"<!-- tfw-economics-record-v1 (\{[^\n]*\}) -->",
+                            path.read_text(encoding="utf-8"))
+        require(len(blocks) == 1, "Daily record needs one explicit economics binding block")
+        fields = json.loads(blocks[0])
+        exact_keys(fields, ("schema_version", "id", "project", "goal", "value", "owner", "created"),
+                   ("result_state", "binding_outcomes"), "Daily record binding")
+        require(fields["schema_version"] == 1, "unsupported Daily binding version")
+        identity(fields["id"], "Daily ID")
+        require(fields["id"] == root.name, "Daily record/root ID mismatch")
+        for key in ("project", "goal", "value", "created"):
+            nonempty(fields[key], "Daily " + key)
+        if fields["owner"] is not None:
+            identity(fields["owner"], "Daily owner")
+        fields["lifecycle"] = fields.get("result_state") or "not supplied in selected Daily record"
+        fields["work_kind"] = "Daily"
+        outcomes = fields.get("binding_outcomes", [])
+        require(isinstance(outcomes, list), "Daily binding outcomes must be a list")
+        for outcome in outcomes:
+            exact_keys(outcome, ("kind", "producer", "observed_at", "code", "detail", "known",
+                                "unavailable", "attempted_extraction", "last_good"), where="binding outcome")
+            require(outcome["kind"] == "binding_unavailable" and outcome["attempted_extraction"] is False,
+                    "binding gap is nonmeasured and precedes extraction")
+            for key in ("producer", "code", "detail"):
+                nonempty(outcome[key], "binding outcome " + key)
+            timestamp(outcome["observed_at"], "binding observation")
+            require(isinstance(outcome["known"], dict) and isinstance(outcome["unavailable"], dict)
+                    and outcome["unavailable"], "binding gap needs known facts and missing reasons")
+            for reason in outcome["unavailable"].values():
+                nonempty(reason, "binding unavailable reason")
+            require(outcome["last_good"] is None or isinstance(outcome["last_good"], str)
+                    and HASH.fullmatch(outcome["last_good"]), "last-good reference must be a file SHA-256 or null")
+        return fields
     path = Path(task_root) / "status.md"
     require(path.is_file(), "missing task status")
     fields = {}
     for line in path.read_text(encoding="utf-8").splitlines():
-        match = re.match(r"^([a-z_]+):\s*(.*)$", line)
+        match = re.match(r'^"?([a-z_]+)"?:\s*(.*)$', line)
         if match:
-            fields[match.group(1)] = match.group(2).strip().strip('"')
+            value = match.group(2).strip()
+            fields[match.group(1)] = json.loads(value) if value.startswith('"') else value
     for key in ("id", "goal", "value", "lifecycle", "owner", "created"):
         require(fields.get(key), "status missing " + key)
     return fields
@@ -1099,13 +1167,13 @@ def metadata_block(path):
 
 def render_report(args):
     task = Path(args.task_root)
-    state = status_fields(task)
+    state = status_fields(task, args.record)
     expected_name = task.parent.name if task.name.startswith("phase-") else task.name
     require(args.task_root and state["id"] == expected_name, "task root/name mismatch")
     rates = load_rates(args.rates)
-    paths, phases, phase_gaps = task_sources(task)
+    paths, phases, phase_gaps = task_sources(task, args.record)
     data = reconcile(paths, args.expected_unit)
-    check_task_sources(task, data["files"])
+    check_task_sources(task, data["files"], args.record)
     require(all(f["manifest"]["project"] == args.project and
                 f["manifest"]["task"] == state["id"] for f in data["files"]),
             "received project/task differs from selected report root")
@@ -1121,7 +1189,7 @@ def render_report(args):
         raise EconomicsError("keywords need primary area")
     cutoff = max((f["manifest"]["cutoff"] for f in data["files"]), default=None)
     calendar_seconds = None
-    if args.status_timezone and cutoff:
+    if args.status_timezone and cutoff and not args.record:
         tz = timezone(args.status_timezone)
         try:
             created = dt.datetime.strptime(state["created"], "%Y%m%d-%H%M%S").replace(tzinfo=tz)
@@ -1162,7 +1230,8 @@ def render_report(args):
                  missing=sorted(data["missing"]),
                  failure_only=sorted(data["failure_only"]), omitted=sorted(data["omitted"]),
                  excluded=sorted(data["excluded"]), incomplete=incomplete,
-                 source_diagnostics=source_diagnostics,
+                 source_diagnostics=source_diagnostics, failed_attempts=data["failures"],
+                 binding_outcomes=state.get("binding_outcomes", []),
                  phase_roots=phases, phase_coverage_gaps=phase_gaps)
     lines = ["# Task economics — " + state["id"], "",
              "<!-- tfw-economics-v1 " + json.dumps(block, ensure_ascii=False,
@@ -1237,6 +1306,15 @@ def render_report(args):
             if key in m["extensions"]:
                 lines.append("- Source qualification {} / {}: {}.".format(
                     m["unit"], key, m["extensions"][key]))
+    for failure in data["failures"]:
+        lines.append("- Failed attempt {} revision {}, range [{}, {}), SHA-256 {}: {} — {}. No measured coverage.".format(
+            failure["unit"], failure["revision"], failure["range_start"], failure["range_end"],
+            failure["sha256"], failure["code"], failure["detail"]))
+    for outcome in state.get("binding_outcomes", []):
+        lines.append("- Nonmeasured binding outcome: " + json.dumps(outcome, ensure_ascii=False, sort_keys=True))
+        if outcome["last_good"]:
+            require(any(f["sha256"] == outcome["last_good"] for f in data["files"]),
+                    "binding gap last-good bytes not received")
     for item in data["diagnostics"]:
         lines.append("- Diagnostic: " + item)
     output = "\n".join(lines) + "\n"
@@ -1270,25 +1348,45 @@ def render_summary(args):
         seen_roots.add(resolved)
     selected = []
     task_meta = {}
+    record_map = {}
+    for record in args.record:
+        matches = [root for root in selected_paths if Path(record).resolve().is_relative_to(root)]
+        require(len(matches) == 1 and matches[0] not in record_map,
+                "Daily record needs one unambiguous selected root")
+        record_map[matches[0]] = record
+    context_by_hash = {}
+    root_data = {}
     included_roots = []
     phase_gaps = []
     for root in roots:
-        state = status_fields(root)
+        record = record_map.get(root.resolve())
+        state = status_fields(root, record)
         report = metadata_block(root / "economics.md")
-        task_meta[state["id"]] = (state, report)
+        task_meta[root.resolve()] = (state, report)
         if args.tag and (report is None or args.tag not in report.get("keywords", [])
                          and args.tag != report.get("primary_area")):
             continue
         included_roots.append(root)
-        paths, _, gaps = task_sources(root)
+        paths, _, gaps = task_sources(root, record)
         phase_gaps.extend(root.name + "/" + gap for gap in gaps)
         data = reconcile(paths)
-        check_task_sources(root, data["files"])
+        check_task_sources(root, data["files"], record)
+        root_data[root.resolve()] = data
+        for m, _, digest in data["records"]:
+            context_root = root / m["phase"] if m["phase"] and not root.name.startswith("phase-") else root
+            context_report = metadata_block(context_root / "economics.md") or report or {}
+            require(context_report.get("project", m["project"]) == m["project"] and
+                    context_report.get("task", m["task"]) == m["task"],
+                    "classification metadata differs from selected project/work")
+            context_by_hash[digest] = (context_report, str(context_root.resolve()))
         selected.extend(data["records"])
-    filters = {k: getattr(args, k) for k in ("date_from", "date_to", "project", "task", "role", "model")}
-    total, flat = summarize(selected, rates, filters)
+    filters = {k: getattr(args, k) for k in ("date_from", "date_to", "project", "task", "role", "model", "owner", "unit")}
+    # Reconcile the union again so a root/phase/duplicate selection never adds a view twice.
+    union = reconcile([f["path"] for data in root_data.values() for f in data["files"]])
+    total, flat = summarize(union["records"], rates, filters)
     for row in flat:
-        meta = task_meta[row["task"]][1] or {}
+        meta, selected_root = context_by_hash[row["file_sha256"]]
+        row["selected_root"] = selected_root
         row["primary_area"] = meta.get("primary_area")
         row["keywords"] = ",".join(meta.get("keywords", []))
     if args.csv:
@@ -1302,7 +1400,7 @@ def render_summary(args):
     by_project = defaultdict(lambda: dict(tokens=0, priced=Decimal(0), duration=defaultdict(float)))
     by_task = defaultdict(lambda: dict(tokens=0, priced=Decimal(0)))
     for row in flat:
-        for box in (by_project[row["project"]], by_task[row["task"]]):
+        for box in (by_project[row["project"]], by_task[(row["project"], row["task"])]):
             box["tokens"] += row["tokens"]
             if row["api_reference_usd"] is not None:
                 box["priced"] += Decimal(row["api_reference_usd"])
@@ -1330,18 +1428,19 @@ def render_summary(args):
     for kind in sorted({k for box in by_project.values() for k in box["duration"]}):
         order = sorted(by_project.items(), key=lambda x: x[1]["duration"][kind], reverse=True)
         lines.append("- {} time ranking: {}.".format(kind, ", ".join(x[0] for x in order)))
-    for task, box in sorted(by_task.items(), key=lambda x: -x[1]["tokens"]):
-        lines.append("- {}: {:,} selected tokens; {} USD priced.".format(task, box["tokens"], box["priced"]))
+    for (project, task), box in sorted(by_task.items(), key=lambda x: -x[1]["tokens"]):
+        lines.append("- {} / {}: {:,} selected tokens; {} USD priced.".format(project, task, box["tokens"], box["priced"]))
     completed = []
     for root in included_roots:
         if root.name.startswith("phase-"):
             continue
         task = root.name
-        state = task_meta[task][0]
-        if state["lifecycle"] == "DONE" and task in by_task and (not args.task or task == args.task) and (not args.project or args.project in
-            {f["manifest"]["project"] for f in reconcile(selected_files(root))["files"]}):
-            lifetime_data = reconcile(selected_files(root))
-            lifetime, _ = summarize(lifetime_data["records"], rates)
+        state = task_meta[root.resolve()][0]
+        if state["lifecycle"] == "DONE" and any(key[1] == task for key in by_task) and (not args.task or task == args.task):
+            lifetime_filters = {k: v for k, v in filters.items() if k not in ("date_from", "date_to")}
+            lifetime, _ = summarize(root_data[root.resolve()]["records"], rates, lifetime_filters)
+            if not lifetime["tokens"]:
+                continue
             completed.append((task, lifetime["tokens"], lifetime["priced_usd"]))
     if completed:
         token_values = [v[1] for v in completed]
@@ -1354,6 +1453,13 @@ def render_summary(args):
             statistics.median(usd_values), min(usd_values), max(usd_values)))
     else:
         lines += ["", "Completed tasks: none among selected roots; no mean or median."]
+    for failure in union["failures"]:
+        lines.append("- Nonmeasured failed attempt: " + json.dumps(failure, ensure_ascii=False, sort_keys=True))
+    for root in included_roots:
+        for outcome in task_meta[root.resolve()][0].get("binding_outcomes", []):
+            lines.append("- Nonmeasured binding outcome: " + json.dumps(outcome, ensure_ascii=False, sort_keys=True))
+    for note in union["diagnostics"]:
+        lines.append("- Reconciliation: " + note)
     lines += ["", "Period spending includes ongoing and unsuccessful tasks with dated",
               "observations. Lifetime figures use all received dates; both retain partial coverage.", ""]
     output = "\n".join(lines)
@@ -1401,12 +1507,14 @@ def parser():
     r.add_argument("--project", required=True)
     r.add_argument("--task", required=True)
     r.add_argument("--expected-unit", required=True)
+    r.add_argument("--record", help="explicit selected Daily record; never infer one from missing status")
     for command in ("report", "summary"):
         q = sub.add_parser(command)
         q.add_argument("--task-root", action="append", required=True)
         q.add_argument("--rates", default=str(Path(__file__).with_name("rates.json")))
         q.add_argument("--out")
         if command == "report":
+            q.add_argument("--record", help="explicit selected Daily record")
             q.add_argument("--project", required=True)
             q.add_argument("--primary-area")
             q.add_argument("--keyword", action="append")
@@ -1415,6 +1523,7 @@ def parser():
             q.add_argument("--status-timezone",
                            help="explicit offset of task status created/updated clock, e.g. +05:00")
         else:
+            q.add_argument("--record", action="append", default=[], help="selected Daily record under one requested root")
             q.add_argument("--csv")
             q.add_argument("--date-from")
             q.add_argument("--date-to")
@@ -1422,6 +1531,8 @@ def parser():
             q.add_argument("--task")
             q.add_argument("--role")
             q.add_argument("--model")
+            q.add_argument("--owner")
+            q.add_argument("--unit")
             q.add_argument("--tag")
     return p
 
@@ -1445,7 +1556,7 @@ def main(argv=None):
             render_report(args)
         else:
             render_summary(args)
-    except (EconomicsError, OSError, sqlite3.Error) as exc:
+    except (EconomicsError, OSError, sqlite3.Error, json.JSONDecodeError) as exc:
         print("tfw-economics: " + str(exc), file=sys.stderr)
         return 2
     return 0

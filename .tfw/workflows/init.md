@@ -76,6 +76,21 @@ inside Step 0 before its terminal stop.
 
 ## Step 1 — Discover and Interview
 
+### Optional Economics prewrite gate
+
+Economics analytical discovery is separate from the exact ten formal commands. Before any
+setup/repair write, exclude `extensions/economics/` and both economics discovery targets from
+generic copying. If analysis is selected or any canonical payload exists, load its pinned
+`.tfw/extensions/economics/installation.md` and classify the connected skill/shared numeric group
+before writes. Apply accepted dormant sources without discovery; only explicit or verified prior
+selection permits entry installation. Preserve customized/ambiguous rows, compatible selected
+rate cards/forms, historical returns and unrelated neighbors. Refuse the whole dependent group
+before writes on unresolved ownership; independent Full groups can proceed. Classify shared Daily
+dependencies once; refusal stops every dependent selected group. Verify exact accepted rows and
+selected entry parity, receiving-root canonical resolution and repeat stability at Step 4, or
+before attach/repair's terminal stop. Record actual source SHA, actions/hashes and evidence level
+in the existing setup result; no ownership registry or native-behavior claim from a byte copy.
+
 **Interview + Mini-Setup** applies only to full init; attach/repair has no second interview.
 
 For full init, inspect purpose, docs, structure, process, people, conventions, build/tests, dependencies,

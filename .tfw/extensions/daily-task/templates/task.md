@@ -30,6 +30,17 @@ without erasing earlier meaning, exact checks and observed outputs, and limits/u
 prepared, checked, accepted and released claims separate. An optional material Fact Candidate retains
 its exact source, scope and uncertainty; it does not publish a project fact.
 
+### Economics binding and cumulative returns
+
+Before work, bind the exact producer/unit, own numeric source ID/recipe/version, proven range start,
+offset and actual owner/project. Use `.tfw/economics/README.md` to retain one explicit selected-record
+binding block in this form or a compatible local form; this metadata grants no Full authority.
+Before each orderly return retain actual cumulative numbers and immutable file/revision/hash/range/
+cutoff links. Preserve prior revisions, latest exact failures/unknown reasons and last-good bytes.
+At completion link the final snapshot and concise economic summary with contributor membership,
+token/money/time meaning, partial coverage and finite final-message/cleanup tail. A binding gap is
+nonmeasured with actual producer, known facts/reasons and whether extraction was attempted.
+
 ## 5. Next or close
 
 Name the exact next act and its authority, including any blocked dependent effect and available

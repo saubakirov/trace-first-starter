@@ -21,6 +21,14 @@ inspect and continue work across sessions. Traces do not guarantee identical res
 
 ### Formal Full task scope and local Daily work
 
+Optional `/tfw-economics` is product analysis over existing returned evidence, outside the exact
+ten formal commands. Its canonical contract is `.tfw/extensions/economics/SKILL.md`; installation
+is opt-in and grants no formal role. Daily's canonical route requires exact own-source binding,
+cumulative snapshots before every orderly return and a final concise economics summary through
+`.tfw/economics/README.md`. Preserve its selected receiving form, truthful nonmeasured gaps and
+last-good measurement without Full status or retroactive history conversion. Analysis in a formal
+role preserves that Role Lock and vertical Coordinator route. Bytes/parity never prove live use.
+
 The artifact, identity/discovery, lifecycle, evidence-directory and Role Lock duties below govern
 formal Full tasks/phases selected through `tfw.task_containers`. Unqualified “every task” and “task
 directory” in those duties mean that formal corpus, not every bounded piece of project work.

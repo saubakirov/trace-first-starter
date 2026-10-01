@@ -117,6 +117,13 @@ their byte copies separately. A known optional skill is not an eleventh Full com
 extra route remains a mismatch. Config verification neither opts in nor repairs a custom field
 skill/template, and creates no new ownership registry.
 
+Apply the same separate optional check to selected `tfw-economics` entries using
+`.tfw/extensions/economics/installation.md`. Resolve canonical/source/dependency paths at the
+actual receiving root and compare selected entry bytes to the pinned source. Keep the exact ten
+formal commands; unknown extra routes still fail. Verification never opts in or overwrites a
+custom analytical entry, rate card or Daily form. Report source presence, installed parity and
+native invocation separately; repair requires current authority and prewrite group classification.
+
 ## Anti-patterns
 
 - changing config or an inline copy alone;

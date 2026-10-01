@@ -7,6 +7,12 @@ workflow selects all further reads.
 
 ## Install or Repair
 
+Optional `/tfw-economics` and Daily discovery remain separate from the ten-command manifest.
+Their selected thin entries route to `.tfw/extensions/economics/SKILL.md` and
+`.tfw/extensions/daily-task/SKILL.md`. Use each pinned installation contract before connected
+writes; preserve custom entries/forms/rates and unselected neighbors. Source/target equality
+proves filesystem parity; actual Codex invocation/load and subsequent behavior require live evidence.
+
 1. Require `.tfw/`; otherwise obtain the framework source before `/tfw-init`.
 2. For each manifest command, copy
    `.tfw/adapters/codex/skills/tfw-{command}/SKILL.md` to

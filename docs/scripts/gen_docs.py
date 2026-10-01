@@ -25,6 +25,12 @@ STATIC_SOURCES = [
     (".tfw/glossary.md", "reference/glossary.md", True),
     (".tfw/CHANGELOG.md", "reference/changelog.md", True),
     (".tfw/compilable_contract.md", "reference/compilable-contract.md", True),
+    (".tfw/economics/README.md", "reference/economics.md", True),
+    (".tfw/extensions/economics/SKILL.md", "reference/extensions/economics/skill.md", True),
+    (".tfw/extensions/economics/installation.md", "reference/extensions/economics/installation.md", True),
+    (".tfw/extensions/daily-task/SKILL.md", "reference/extensions/daily-task/skill.md", True),
+    (".tfw/extensions/daily-task/installation.md", "reference/extensions/daily-task/installation.md", True),
+    (".tfw/extensions/daily-task/templates/task.md", "reference/extensions/daily-task/templates/task.md", True),
 ]
 
 GLOB_SOURCES = [

@@ -101,6 +101,14 @@ Four values govern how these principles are practiced:
 
 ## Operational routes
 
+Optional `/tfw-economics` connects intended and achieved product work to observed AI resources:
+executive explanation, sourced product map, inspectable numbers, grounded improvements and
+coverage. [Its canonical skill](extensions/economics/SKILL.md) provides complete prose/table
+reports; visuals are supplementary and PDF is explicit-request-only outside the repository.
+[Daily](extensions/daily-task/SKILL.md) supplies cumulative own-source snapshots before each
+orderly return and a final economic summary, preserving its ordinary local form and authority.
+Both optional discovery routes follow pinned installation contracts, separate from formal roles.
+
 Use `/tfw-update` for a pinned, receiver-safe upstream update. Each attempt leaves an immutable
 receipt under `.tfw/update_receipts/`; the receipt records what was applied, preserved, skipped, or
 refused and never replaces task-local state.

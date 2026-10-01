@@ -1,10 +1,15 @@
-# Task economics: portable Full contribution contract
+# Task economics: portable contribution contract
 
 This directory is a Full payload copied by init/update. The task's status, journal,
 HL, TS, RF and REVIEW remain authority for lifecycle, work and acceptance. This
 contract gives those roles a small, task-owned account of measured AI resource
 consumption. It does not create a command, service, live portfolio cache, account
 charge, human time sheet or quality score.
+
+Optional product analysis lives in [TFW Economics](../extensions/economics/SKILL.md).
+[Daily](../extensions/daily-task/SKILL.md) uses its own selected record and authority with the
+same numeric v1 contract; no Full status/profile is fabricated. Its routine obligation is a
+cumulative snapshot before every orderly turn return and a final snapshot/concise summary.
 
 ## Choose a source recipe
 
@@ -134,6 +139,44 @@ task files during normal update is forbidden.
 
 ## Producer, transfer and reconciliation
 
+### Explicit selected Daily record
+
+Pass `--record` to receive/report, or one `--record` per selected Daily root to summary. The
+record must be an existing file contained by its exact `--task-root`; never infer Daily merely
+because status is missing. Preserve the chosen receiving form/split and append one single-line
+HTML comment beginning `<!-- tfw-economics-record-v1 `, followed by one JSON object and ` -->`.
+This is analytical binding metadata, not lifecycle, identity authentication or permission.
+The selected record's request/checkpoint remains authority for its human/worker and work.
+
+| Binding key | Actual content |
+|---|---|
+| schema_version | 1, independent of the unchanged numeric schema |
+| id | Exact immutable Daily folder ID, matching selected root name |
+| project, goal, value, created | Declared receiving project, actual intended result/value, observed creation clock |
+| owner | Actual declared accountable human; null if unresolved, never a guessed account handle |
+| result_state (optional) | Actual prepared/checked/accepted state in the local form; never Full lifecycle |
+| binding_outcomes (optional) | Retained typed nonmeasured binding-gap objects, not numeric usage rows |
+
+A binding-gap object has kind `binding_unavailable`, actual producer, offset-aware observed_at,
+precise code/detail, known facts object, unavailable reasons object, attempted_extraction false,
+and last_good (returned numeric file SHA-256 or null). Required unavailable binding is distinct
+from an attempted extraction failure; a manifest with unknown core fields remains invalid.
+Keep the actual producer attributable in the record even if a required numeric unit/source ID
+cannot be resolved. Receive known-binding v1 JSONL into this root's economics/roles under its
+exact hash. For report/summary, prior known-binding rows must match record project/owner/task;
+unknown historical ownership needs an explicit independent selection, never automatic relabeling.
+The report displays record-local gaps even with no numeric rows. A last_good digest requires
+resolvable received bytes; a path alone proves no receipt.
+
+Before each Daily return, bind the current physical source end, validate a cumulative capture
+and return its actual numbers plus hash/range/revision/cutoff. `--complete` asserts completeness
+of the selected bound only, with grounds; open turns and later consumption remain unknown tails.
+A verified covering successor checks predecessor identity, revision and unchanged source prefix.
+Alternatively retain exact disjoint facts and a checked cumulative view/membership before return.
+Never sum cumulative revisions. Capture the final snapshot and concise summary on completion;
+retain prior revisions and precise failures. Interruptions are gaps; later reconstruction cannot
+prove a snapshot existed at its original return. Final-answer/cleanup tail is disclosed once.
+
 At the normal return gate, a role captures its own source, validates its file,
 records its SHA-256 and returns resolvable bytes/revision with RF, REVIEW, RES
 or Coordinator return. On resume it produces a new file for the new bound range
@@ -173,6 +216,13 @@ readable failure receipt satisfies the return obligation but proves no
 measurement. Optional unavailable metrics and a small finite tail do not
 block an otherwise accepted task.
 
+Nonmeasured failed attempts never arbitrate or supersede measured ranges. Retain their hashes,
+attempted bounds, precise code/detail and chronological latest outcome alongside usable prior
+measurement, whether linked, overlapping or disjoint. Excluded means not selected for totals;
+it never suppresses failure readback. A failure receipt leaves operation_seconds null with a
+reason when the failed invocation was not timed; it does not assert zero handling cost.
+Collector operation, whole invocation/integration wall time and native duration are distinct.
+
 ## Commands, reports and prices
 
 Run the helper with an available Python 3 standard-library interpreter:
@@ -195,6 +245,12 @@ Run the helper with an available Python 3 standard-library interpreter:
 - summary: repeat --task-root for selected roots; combine --date-from,
   --date-to, --project, --task, --tag, --role and --model; use --csv and
   --out for rebuildable exports. Project comparisons use the selected sources.
+
+Summary also supports `--owner` and `--unit` predicates. `--record` explicitly binds Daily roots;
+without it Full status/root/phase behavior remains required. Compose cohort/event and richer
+product-interest membership from cited current records before accounting when no direct selector
+exists. Deduplicate the selected union. Contextual metadata is associated with the exact selected
+root and returned file identity, never a cross-project bare task ID.
 
 The task report lives beside status.md; a phase may have its own economics.md.
 Numeric JSONL has no result narrative or quality score. Purpose and value
@@ -230,7 +286,9 @@ overwrites or migrates task JSONL, status, role returns or a customized
 price card. A repeat with identical source bytes is stable. The ten canonical
 Full workflows and their ten Claude installed copies are the selected
 entrypoints; Codex/Antigravity thin routers keep selecting canonical
-workflows. Daily, Light, Assisted and Cursor targets are unchanged.
+workflows. Optional analysis and Daily dependencies follow their respective
+installation contracts before connected writes. Daily/analysis discovery needs
+explicit selection; Light, Assisted and Cursor targets remain unchanged.
 
 The package requires no pip module, daemon, shared database or account
 change. If no Python interpreter is available, ordinary TFW continues and

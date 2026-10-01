@@ -20,6 +20,18 @@ released Git payload. Accepted distribution uses the returned immutable Candidat
 | `.tfw/extensions/daily-task/entries/claude-code/SKILL.md` | same path | Claude entry source |
 | `.tfw/extensions/daily-task/entries/codex/SKILL.md` | `.agents/skills/tfw-daily-task/SKILL.md` | explicit Codex opt-in |
 | `.tfw/extensions/daily-task/entries/claude-code/SKILL.md` | `.claude/skills/tfw-daily-task/SKILL.md` | explicit Claude opt-in |
+| `.tfw/economics/README.md` | same path | required numeric contract |
+| `.tfw/economics/tfw_economics.py` | same path | required capture/receipt/report helper |
+| `.tfw/economics/record.schema.json` | same path | unchanged v1 schema |
+| `.tfw/economics/rates.json` | same path | dated reference prices |
+| `.tfw/templates/economics.md` | same path | concise/final report model |
+
+Daily capture's common numeric dependency does not select optional analytical discovery entries.
+If Economics analysis is separately selected, classify shared dependencies once using
+`../economics/installation.md`; refuse every dependent group on unresolved customization before
+writes. Preserve an authority-selected compatible custom rate card with its actual epoch/hash.
+No helper availability gate is added to ordinary Full lifecycle or authorized Daily product work;
+unavailable capture must leave a truthful outcome.
 
 Dormant canonical payload may travel with Full `.tfw/`; it is not opt-in or native discovery.
 Existing receiver payload paths still require ownership/customization classification before generic

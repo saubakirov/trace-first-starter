@@ -118,6 +118,18 @@ choices and exact target; do not demand per-file approval already supplied by up
 
 ## Step 3 — Apply connected groups
 
+Before any generic write, also exclude `extensions/economics/` and both economics discovery
+targets. When present or selected, load the pinned `.tfw/extensions/economics/installation.md`
+and classify the whole analytical group with its shared numeric dependencies against verified
+prior source/provenance and receiving authority. This is a Step 2 prewrite requirement, not
+post-copy repair. Preserve custom/ambiguous entries, chosen compatible rate card/local Daily form,
+history and unrelated neighbors. Unresolved shared dependency refuses all dependent groups
+unchanged; independent Full groups may proceed. Absent/package-owned dormant rows may travel
+without discovery. New selected adapters require explicit opt-in; prior verified selection may
+continue. Apply only accepted map rows from one pinned source, then verify exact copied rows,
+preserved before-images, receiving-root resolution and stable repeat. Record every disposition
+and hash in this attempt's existing immutable update receipt; retain the exact ten formal commands.
+
 Copy approved pinned payload by connected group while reporting exclusions, then check copied files
 raw-byte-equal to staging (the last payload check); merge config separately.
 The pinned Full economics group is `.tfw/economics/` plus

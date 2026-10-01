@@ -66,6 +66,13 @@ otherwise disclose unavailable control once and continue authorized work. Naviga
 
 ## 3. Execute and check
 
+At start/resume, before product writes, read `.tfw/economics/README.md` and bind the producer's exact
+own numeric source and proven Daily range. Preserve the receiving form; keep an explicit selected
+record binding as described there, never a fabricated Full status. Known owner/unit/source uses
+v1 capture; unknown required binding leaves a typed nonmeasured record-local outcome with actual
+producer, known facts, missing reasons, attempted_extraction false and last-good reference.
+Missing capture binding does not invent measurement or erase independently authorized useful work.
+
 After those internal checks, complete the bounded work without a second HL/brief approval or generic
 question sequence. Resolve routine gaps from inspected sources. Ask only for a missing consequential
 fact/choice/authority and hold only its dependent action. Record material human words as exact
@@ -79,6 +86,23 @@ If a check fails, fix within the boundary and recheck affected claims; a require
 keeps its claim open. Never invent acceptance, release or an unobserved effect.
 
 ## 4. Leave the selected Trace and return
+
+Before **each orderly turn return**, capture and validate an actual cumulative snapshot through
+the current proven source end. Retain immutable previous revisions, receive resolvable bytes into
+the selected record's economics leaf, and reconcile a verified covering successor once. Complete
+means complete selected bytes, not completed work; a successor needs unchanged predecessor prefix
+and matching identity/revision. Alternatively a checked cumulative view may reference exact disjoint
+facts, but it must expose the actual cumulative numbers and membership before the return. Never
+sum cumulative snapshots. An interruption or failed capture remains an explicit gap.
+
+Link revision/hash/range/cutoff and compact cumulative numbers from the selected record; a full
+analytical report is unnecessary each turn. Preserve last successful measurement after capture
+failure and expose the latest exact code/detail and unmeasured attempted interval. At completion,
+update the final snapshot and add a concise economics summary: unique tokens, supported money/time,
+coverage and actual contributor/source membership. Disclose the finite final-answer/cleanup tail
+once, including unknown intervals/open-turn duration; no recursive capture. Historical after-return
+recollection cannot establish cadence. Use a checked equivalent or truthful typed failure if the
+helper/runtime/source is unavailable; retain the useful Daily result and exact missing prerequisite.
 
 Update the selected local record with result paths, material decisions/revisions, actual checks and
 limits, and the authoritative next action or an actually accepted close. Prepared, checked,
