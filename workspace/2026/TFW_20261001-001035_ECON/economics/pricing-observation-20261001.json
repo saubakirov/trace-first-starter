@@ -1,0 +1,87 @@
+{
+  "kind": "pricing_observation",
+  "schema_version": 1,
+  "checked_on": "2026-10-01",
+  "quote": {
+    "version": 1,
+    "rate_epoch": "2026-10-01",
+    "basis": "USD/1M text tokens. Official Standard API equivalent, global processing, each prompt <=272K input tokens. Not subscription billing.",
+    "models": {
+      "gpt-6.1-sol": {
+        "fresh": 2,
+        "cached": 0.1,
+        "cache_write_5m": 2.5,
+        "cache_write_1h": 2.5,
+        "output": 10,
+        "source": "https://developers.openai.com/api/docs/pricing"
+      }
+    },
+    "observation": {
+      "recorded_at": "2026-10-01T14:28:12+05:00",
+      "checked_on": "2026-10-01",
+      "model_source": "https://developers.openai.com/api/docs/models/gpt-6.1-sol",
+      "launch_source": "https://developers.openai.com/api/docs/changelog#september-2026",
+      "launch_price_publication": "2026-09-29",
+      "source_markdown": "api-pricing.source.md",
+      "actual_request_tier_and_context_band": "Not established by compact returned rows. Conditional equivalent only."
+    },
+    "limitations": [
+      "Long context >272K: input/cached/write x2, output x1.5.",
+      "Fast: Standard x2; regional processing may add 10%.",
+      "Current revaluation of observed consumption; no subscription charge or ROI.",
+      "Finite source ranges and tails remain as in returned numeric receipts."
+    ]
+  },
+  "usage_epoch": {
+    "cutoff": "2026-10-01T09:42:13.398849+00:00",
+    "selected_hashes": [
+      "04ae1f5aac9ee0ea2c67834d839947121df2fdb74b51c762e1cacb43f48ec2a8",
+      "164bb4c0f167b456c8bdff90fc7848bb9e4bc1f59e6198bc4043ad942bc8a728",
+      "19b8a953af801f5cf2c2c5b30e322daf8c62e1622d93409ba156c9cea82df6a0",
+      "1a75a6fa408aea8083b95cbd490142433c15c14ac4815d1533d1b76a9723119c",
+      "23a2d7887da3ea9b49b494bd01f35d075a378ab0720b06d181d1bc54496d42a1",
+      "4b4611568663a5e003cae5b54cd12043c4fd5edbcf5f2655f1a6a0d5456b1816",
+      "5f3948dab0dc09620ec7fe86aaba6e05f671027475a503de1e2b9ebecd0e5b26",
+      "5fe00e560e73a775988f3563f94859e5d01d6d7f38115baaf0183ce6a9d91b54",
+      "67782f9dfd71eadc76326733f07d928d19c9aef4e45199b2177af63001d0f455",
+      "771677da1a60de85c7a94a93aa8a12ebd19d73d40c0c0e53d6452a3b8d35a46b",
+      "7df7f5b4a58b5aa391e386d3f0ad86faee854b54d0d05121e826a9e38fb69699",
+      "9039073d55323876c8b8769e88d5709183be761efd80969c01fd416240c9cf2c",
+      "9b5b8ce900953d9fb1724b5fed4990baf098ef8cc19a3d708c04ce15866e15ef",
+      "9e79263ce4ff0b4e8ce170a880058d368163742c868eb23d2454f8bca421f524",
+      "b3a0fa79c7e2f8720878108d5d8130764e74fef1e5d15aa7000e35c2e2de006d",
+      "b3e06281c8f132d2e53f436735816112ae3cfb36283b37ba12e68d25726249af",
+      "b51b119b67d19465aa01614ecfd7dabee6165bcb680ce52b1438d8a4139a261d",
+      "b7ed5685c5055c25db2dd1e9b029082e399eaff5fc680a52a0ab2f878cd943ac",
+      "be2d91d12ab4d12a1af586703e7369924a437eec54bfa4c2adbcac6c71343fb4",
+      "d6efcd81288a248594394203489933b45bc1105e2f6960eaf467265a74fb75d7",
+      "d8949aab74705575141279c07f803b0d53c1c08ba4361ccd05f72054f57a024c",
+      "dc62a1ec151eeebcda22c68c13d38532a0be7f8950b5a6c6c53a10122d976015",
+      "e9caf4ffbf159b4b7e30a577c7b77fe6dd9c9a17a736dc322329705252a421c1",
+      "ea977e0e0d177ebc519a7de32159ef91f695b0bf030895affd34c3bdc0e36498",
+      "fd28373dbd46b854b0893b18f44ef01b6ecce97e406c454bc65efe4a660dda1f"
+    ],
+    "excluded": [
+      "82d53e4c03cfc9ba8e31d207641f4372ede33bf1631119ecf85d9c5cc99be560"
+    ],
+    "tokens": 73703007
+  },
+  "valuation_kind": "conditional_current_standard_api_equivalent",
+  "usd": "18.4774364",
+  "previous_preserved_epoch": {
+    "tokens": 70352045,
+    "usd": "17.3402308",
+    "cutoff": "2026-10-01T06:27:23.559919+00:00"
+  },
+  "artifact_temp_root": "E:\\TEMP\\tfw-econ-priced-report-cicxo5xm",
+  "artifacts_sha256": {
+    "api-pricing.source.md": "f1b74f5a4e08cdf2582bbcdf9f4719751750066d08fe580ed12f6731aca62970",
+    "economics-calculated.md": "03b67ade93c69c4b0c1d1b387b551d6af795e1c638256c026735c5e06c9f613e",
+    "economics-latest-calculated.md": "3c50d373de538327603a80310ce8b021993dd6b93b5f6b08c5af688a545dfc0b",
+    "economics-report-latest.ru.md": "1939eb13cbcd3bbad01a56f8a2474331b418a2ff22a3481eb70ea3018827f99d",
+    "economics-report.ru.md": "83d22270bc1fc19ec7b505d6bc39d48258b8fb9db8d364010255d2859d10b21e",
+    "gpt-6.1-sol.source.md": "aecbede1cdef1d652f1a37fb6b937f5af4b42084f9fa1a4b9ba2bc53cfc9f770",
+    "rates-20261001-gpt-6.1-sol.json": "20d5b65b97ff7d285189804483bbd7f417cd0ae3ea62bbacfeea5fa160c0419b"
+  },
+  "proposed_default_policy": "TS rev1 unapproved; no product implementation implied"
+}
