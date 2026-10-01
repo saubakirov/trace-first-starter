@@ -81,3 +81,7 @@ a new temp run. Both original evidence sets retained, neither a product/source r
 EV template was read early during helper inspection; no EV emission/verdict or Candidate occurred.
 Its proper writing/accounting gate remains after the tested Candidate. ONB event correction
 c38521a6ae32ba1f65b022979150f83ec011f600 preserves original erroneous event without reactivation.
+
+### Returned-byte qualification
+
+Post-commit readback at 289007be7478d6b3fd2d10337acf5e912948e38d verifies formal contribution and all three trial JSONL files are byte-identical in Git and working/temp sources; their numeric hashes above resolve exactly. Git normalizes text/JSON CRLF to LF. The two JSON hashes above name original OS-temp/working bytes, which remain preserved. Committed accounting-results.json SHA-256 is 1f4757129047d9e36725d4f6c30b34f022bef5d30ade81d572e66faf2a3673e2; committed distribution-preliminary.json SHA-256 is 9c361135bbf45ae0edfe8e51cd8f7326760c9962dbfe93d3c7be2ff64993f770. Parsed numerical content is unchanged. Markdown trace copies use Git text normalization too; source snapshots/revisions and immutable original native bytes are not rewritten.
