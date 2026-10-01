@@ -59,6 +59,11 @@ tfw:
     init: .tfw/workflows/init.md
     knowledge: .tfw/workflows/knowledge.md
     config: .tfw/workflows/config.md
+    economics: .tfw/workflows/economics.md
+
+  economics:
+    rate_cache: "~/.tfw/rates"  # Public provider/month quotes only; no usage portfolio
+    quote_fresh_days: 30        # Exact model/profile, including across month boundaries
 
   research:                           # ← FRAMEWORK: updated by tfw-update
     max_web_queries_per_stage: 5

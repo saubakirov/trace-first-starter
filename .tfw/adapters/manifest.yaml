@@ -42,6 +42,11 @@ commands:
     route: /tfw-init
     workflow: .tfw/workflows/init.md
     role: Coordinator
+  economics:
+    route: /tfw-economics
+    workflow: .tfw/workflows/economics.md
+    role: Coordinator
+    preserve_active_role: true
 
 adapters:
   codex:

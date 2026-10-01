@@ -26,6 +26,7 @@ STATIC_SOURCES = [
     (".tfw/CHANGELOG.md", "reference/changelog.md", True),
     (".tfw/compilable_contract.md", "reference/compilable-contract.md", True),
     (".tfw/economics/README.md", "reference/economics.md", True),
+    (".tfw/migrations/economics-core.md", "reference/migrations/economics-core.md", True),
     (".tfw/extensions/economics/SKILL.md", "reference/extensions/economics/skill.md", True),
     (".tfw/extensions/economics/installation.md", "reference/extensions/economics/installation.md", True),
     (".tfw/extensions/daily-task/SKILL.md", "reference/extensions/daily-task/skill.md", True),

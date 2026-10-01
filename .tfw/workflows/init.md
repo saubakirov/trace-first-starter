@@ -54,7 +54,7 @@ fictional economics task; the optional helper never gates setup.
   Preserve all state; skip discovery, research,
   config creation, and init-task creation. Select the adapter explicitly when it cannot be inferred,
   read `Workflow activation and routing` only when repairing its persistent coordination block,
-  run the Daily prewrite gate below, apply its persistent row and all ten command rows, then apply/check
+  run the Core Economics and Daily prewrite gates below before any repair write, apply its persistent row and all manifest command rows, then apply/check
   any accepted Daily group. Verify bytes/blocks, roles, paths, idempotence, foreign neighbors and unchanged
   configured state; report applied/preserved/refused paths, then stop. Never jump to discovery or research.
 
@@ -76,20 +76,18 @@ inside Step 0 before its terminal stop.
 
 ## Step 1 — Discover and Interview
 
-### Optional Economics prewrite gate
+### Core Economics prewrite gate
 
-Economics analytical discovery is separate from the exact ten formal commands. Before any
-setup/repair write, exclude `extensions/economics/` and both economics discovery targets from
-generic copying. If analysis is selected or any canonical payload exists, load its pinned
-`.tfw/extensions/economics/installation.md` and classify the connected skill/shared numeric group
-before writes. Apply accepted dormant sources without discovery; only explicit or verified prior
-selection permits entry installation. Preserve customized/ambiguous rows, compatible selected
-rate cards/forms, historical returns and unrelated neighbors. Refuse the whole dependent group
-before writes on unresolved ownership; independent Full groups can proceed. Classify shared Daily
-dependencies once; refusal stops every dependent selected group. Verify exact accepted rows and
-selected entry parity, receiving-root canonical resolution and repeat stability at Step 4, or
-before attach/repair's terminal stop. Record actual source SHA, actions/hashes and evidence level
-in the existing setup result; no ownership registry or native-behavior claim from a byte copy.
+Before setup/repair writes read the pinned `migrations/economics-core.md` when an old optional
+installation exists or the core transition is incomplete, including equal-version re-entry.
+Economics workflow/numeric/template/config and selected manifest entries are a default connected
+group. Classify all destinations against verified prior source/provenance and current authority;
+custom/ambiguous old canonical/entries or shared dependencies refuse dependent writes unchanged.
+Preserve history, chosen compatible cards/forms and unrelated neighbours. Exclude legacy
+`extensions/economics/` and optional aliases from generic copying; use only the explicit migration
+dispositions. Verify new core resolution/parity and stable repeat at Step 4 or before repair's stop.
+Standard Economics does not select Daily. Record source SHA, hashes, applied/preserved/retired/
+refused paths and evidence level; no ownership registry or native proof from a copy.
 
 **Interview + Mini-Setup** applies only to full init; attach/repair has no second interview.
 
@@ -164,10 +162,10 @@ one exists. Wait wherever the research workflow waits.
    Keep its stable ordinary-file entry and record-directory route; create no invented facts or
    maintained inventory. Use the record/handover forms only when an actual qualified claim or
    necessary fallback exists. Preserve human versus technical qualification and source authority.
-3. Install selected adapters from the manifest's persistent row and exact ten command records. Preserve
+3. Install selected adapters from the manifest's persistent row and exact manifest command records. Preserve
    unrelated/unmarked content; reject missing/extra routes, duplicate blocks, drift, or second-run diff.
-   Confirm the pinned Full economics group has all five product files under
-   `.tfw/economics/` and `.tfw/templates/economics.md`. A repeated
+   Confirm the pinned Full economics group has the numeric files and core workflow under
+   `.tfw/economics/`, `.tfw/workflows/economics.md` and `.tfw/templates/economics.md`. A repeated
    install leaves identical bytes stable and preserves customized/conflicting
    receiver files and all prior task-local economics records.
 4. Offer `.user_preferences.md`, add it to `.gitignore` when accepted, and never commit it.

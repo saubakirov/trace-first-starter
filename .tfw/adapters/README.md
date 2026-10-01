@@ -1,7 +1,7 @@
 # TFW Adapters
 
 `.tfw/adapters/manifest.yaml` is the single tooling-only copy/check map. It declares the
-four vendor roots, the exact ten public commands, their canonical workflows and roles, and
+four vendor roots, the exact standard public commands, their canonical workflows and roles, and
 the source/target strategy. Runtime roles never read the manifest; installed vendor files
 route to canonical workflows, which remain authoritative.
 
@@ -37,7 +37,7 @@ missing commands, duplicate managed blocks, and receiver-path mismatches are har
 3. Marker-bounded project roots update only the managed block; an unmarked existing file is
    reported and left untouched.
 4. Installation is idempotent and preserves unrelated receiver content.
-5. The clean-receiver test must resolve exactly the manifest's ten commands and roles.
+5. The clean-receiver test must resolve exactly the manifest's commands and roles.
 
 Templates carry no `{version}` substitution. They read `.tfw/VERSION` only when a selected
 workflow actually requires version information.
@@ -49,7 +49,7 @@ separate explicit [source/receiver map](../extensions/daily-task/installation.md
 targets are `.agents/skills/tfw-daily-task/SKILL.md` and
 `.claude/skills/tfw-daily-task/SKILL.md`; both are thin byte-copied entry sources. They are not
 manifest commands or Full roles. Full install/update without opt-in creates neither discovery
-target. Verify the manifest's exact ten records and then selected optional entries separately;
+target. Verify the manifest's exact records and then selected optional entries separately;
 an unknown extra route remains an error. Preserve custom local skills/forms rather than inferring
 package ownership or opt-in. Source, installed, reproduced and live-observed remain distinct levels.
 
@@ -76,3 +76,8 @@ Keep these availability facts distinct for every route:
 | installed | the receiver exists at the active host's discovery root | that the command ran |
 | clean-receiver reproduced | installation creates the exact declared target | that an external vendor host is live-tested |
 | live-observed | one named host/model trace reached an evidence level | that another host or later action behaves the same |
+
+Economics is installed/updated by default from the manifest with selected adapters and resolves
+`.tfw/workflows/economics.md`. Four formal roles remain; analysis retains an active Role Lock.
+Daily opt-in is separate. Public tariff cache/used task copies follow the common economics README;
+old optional/custom receivers follow `migrations/economics-core.md` before connected writes.

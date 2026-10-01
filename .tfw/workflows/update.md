@@ -118,23 +118,21 @@ choices and exact target; do not demand per-file approval already supplied by up
 
 ## Step 3 — Apply connected groups
 
-Before any generic write, also exclude `extensions/economics/` and both economics discovery
-targets. When present or selected, load the pinned `.tfw/extensions/economics/installation.md`
-and classify the whole analytical group with its shared numeric dependencies against verified
-prior source/provenance and receiving authority. This is a Step 2 prewrite requirement, not
-post-copy repair. Preserve custom/ambiguous entries, chosen compatible rate card/local Daily form,
-history and unrelated neighbors. Unresolved shared dependency refuses all dependent groups
-unchanged; independent Full groups may proceed. Absent/package-owned dormant rows may travel
-without discovery. New selected adapters require explicit opt-in; prior verified selection may
-continue. Apply only accepted map rows from one pinned source, then verify exact copied rows,
-preserved before-images, receiving-root resolution and stable repeat. Record every disposition
-and hash in this attempt's existing immutable update receipt; retain the exact ten formal commands.
+Before generic writes, read the pinned `migrations/economics-core.md` for old optional or
+incomplete/equal-version transition. Include Economics by default in every selected adapter's
+manifest set and connected core workflow/numeric/template/config group. Classify old/target
+ownership before any dependent write; preserve custom/ambiguous rows, compatible selected cards,
+Daily forms/history and unrelated neighbours. Exclude old extension sources/optional aliases from
+generic overwrites, use the guide's explicit verified bridge/retirement actions, and refuse the
+whole dependent group unchanged on unresolved ownership. Merge missing config registrations/
+defaults without resetting selected project values. One pinned tree supplies all accepted rows;
+record hashes/actions in the existing receipt. No default Economics action opts into Daily.
 
 Copy approved pinned payload by connected group while reporting exclusions, then check copied files
 raw-byte-equal to staging (the last payload check); merge config separately.
-The pinned Full economics group is `.tfw/economics/` plus
+The pinned Full economics group is `.tfw/workflows/economics.md`, `.tfw/economics/` plus
 `.tfw/templates/economics.md` and their changed canonical workflows/copies.
-Verify all five new payload files at the pinned source and copied receiver.
+Verify all declared core group files at the pinned source and copied receiver.
 Inspect receiver bytes and ownership before replacement: identical repeat is
 stable; customized/conflicting economics files and existing task JSONL/report
 data are preserved for the existing update authority, not silently overwritten.
@@ -162,7 +160,7 @@ Verify Step 2/3 Daily actions and exact Full manifest records/selected optional 
 source/ref, hashes, applied/preserved/refused paths and limits in the existing immutable receipt.
 
 At adapter sync, if a persistent coordination block changes, read `Workflow activation and routing`;
-otherwise it is uncharged. Validate four adapters and ten manifest commands plus the three selected
+otherwise it is uncharged. Validate four adapters and all exact manifest commands plus the three selected
 `coordinator.md` payload paths and persistent exact profile pointers. Apply exact copies or
 one marker-bounded block; preserve unmarked/foreign neighbors. Antigravity installs to plural
 `.agents`; singular `.agent/rules` remains compatible rule location, never inferred workflow support

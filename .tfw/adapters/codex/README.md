@@ -1,16 +1,16 @@
 # TFW Codex Adapter
 
 Codex discovers persistent project guidance in root `AGENTS.md` and repository skills in
-`.agents/skills/`. The public interface is the exact ten `/tfw-*` commands declared by
+`.agents/skills/`. The public interface is the exact `/tfw-*` command set declared by
 `../manifest.yaml`; the command's repository skill opens its canonical workflow and that
 workflow selects all further reads.
 
 ## Install or Repair
 
-Optional `/tfw-economics` and Daily discovery remain separate from the ten-command manifest.
-Their selected thin entries route to `.tfw/extensions/economics/SKILL.md` and
-`.tfw/extensions/daily-task/SKILL.md`. Use each pinned installation contract before connected
-writes; preserve custom entries/forms/rates and unselected neighbors. Source/target equality
+Standard `/tfw-economics` is a default manifest entry routing to `.tfw/workflows/economics.md`.
+Only Daily remains optional and routes to `.tfw/extensions/daily-task/SKILL.md`. Read the pinned
+core migration and separate Daily installation contract before connected writes; preserve custom
+entries/forms/rates and unselected neighbors. Source/target equality
 proves filesystem parity; actual Codex invocation/load and subsequent behavior require live evidence.
 
 1. Require `.tfw/`; otherwise obtain the framework source before `/tfw-init`.
@@ -21,7 +21,7 @@ proves filesystem parity; actual Codex invocation/load and subsequent behavior r
    `AGENTS.md`. If the destination exists without markers, report it and leave it untouched.
 4. Remove a legacy `source-command-tfw-*` directory only when its own content proves it is
    an obsolete imported TFW copy.
-5. Verify the literal ten-command set, roles, source equality, one managed block, retained
+5. Verify the literal manifest command set, four formal roles, source equality, one managed block, retained
    `/tfw-plan` routing, and absence of retired command paths. File existence alone is not success.
 
 The install is idempotent. The root block is already active and must not order a reload of
@@ -48,3 +48,8 @@ JSONL plus the final Git diff, and recomputes rates and the production decision 
 It is assurance tooling only: no root, skill, or canonical workflow reads its generated
 evidence. Missing live observations for Claude Code, Cursor, or Antigravity stay untested; a
 Codex clean-receiver result must not be relabelled as their runtime behavior.
+
+Economics is installed/updated by default from the manifest with selected adapters and resolves
+`.tfw/workflows/economics.md`. Four formal roles remain; analysis retains an active Role Lock.
+Daily opt-in is separate. Public tariff cache/used task copies follow the common economics README;
+old optional/custom receivers follow `migrations/economics-core.md` before connected writes.

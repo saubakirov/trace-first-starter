@@ -111,18 +111,19 @@ declared marker range; report and preserve an unmarked file. Reject missing/extr
 roles, unresolved targets, duplicate blocks, drift, or a second-run diff. Preserve unrelated text.
 The manifest is copy/check metadata, never runtime authority.
 
-The optional Daily package is outside that exact ten-command set. If selected Daily entries exist,
+The optional Daily package is outside that exact standard manifest command set. If selected Daily entries exist,
 resolve their canonical/source map from `.tfw/extensions/daily-task/installation.md` and verify
-their byte copies separately. A known optional skill is not an eleventh Full command; an unknown
+their byte copies separately. Daily is not a standard command or formal role; an unknown
 extra route remains a mismatch. Config verification neither opts in nor repairs a custom field
 skill/template, and creates no new ownership registry.
 
-Apply the same separate optional check to selected `tfw-economics` entries using
-`.tfw/extensions/economics/installation.md`. Resolve canonical/source/dependency paths at the
-actual receiving root and compare selected entry bytes to the pinned source. Keep the exact ten
-formal commands; unknown extra routes still fail. Verification never opts in or overwrites a
-custom analytical entry, rate card or Daily form. Report source presence, installed parity and
-native invocation separately; repair requires current authority and prewrite group classification.
+Economics is a standard manifest row, not an optional discovery check. Verify its canonical
+workflow, config registration and selected native copies with all exact manifest records. Read
+the core migration guide for legacy optional aliases; verification preserves custom/ambiguous
+files and reports the needed repair rather than opts in, retires or overwrites them. Verify
+`tfw.economics.rate_cache: ~/.tfw/rates` and `quote_fresh_days: 30` as current defaults; changing
+these config-only values does not rewrite historical task bases or move public quote observations.
+Keep four formal roles and active-role preservation. Source presence/parity/native use differ.
 
 ## Anti-patterns
 

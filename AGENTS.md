@@ -42,6 +42,7 @@ common rule, terminology, or project-knowledge libraries here.
 | `/tfw-update` | `.tfw/workflows/update.md` |
 | `/tfw-config` | `.tfw/workflows/config.md` |
 | `/tfw-init` | `.tfw/workflows/init.md` |
+| `/tfw-economics` | `.tfw/workflows/economics.md` |
 
 At new-task Plan entry, after identifying the request and active platform and completing the
 workflow's task-control and shared-rule reads, read exactly

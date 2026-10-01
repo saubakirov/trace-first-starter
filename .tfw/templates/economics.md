@@ -2,7 +2,7 @@
 
 Keep one actual `tfw-economics-v1` report metadata block when rendering through the helper.
 It is a reproducible view, never work authority. Unknowns remain null with their causes.
-The optional analytical skill owns interpretation; this is its adaptable report model.
+The standard analytical workflow owns interpretation; this is its adaptable report model.
 
 ## Executive summary
 
@@ -60,3 +60,13 @@ Formal roles retain their return/acceptance gates; this report grants no new rol
 Prepare the report basis before terminal acceptance, retain needed resources, then follow the
 existing Coordinator-owned DONE/final-report/safe-cleanup order. Daily links its final snapshot
 and concise summary without fabricated Full state.
+
+## Used price basis and report epoch
+
+Link task-owned used quote file/hash, exact model/provider/conditions, currency/unit/category rates,
+checked timestamp/source URL/hash, publication and known/unknown effective date. Distinguish
+recorded-basis valuation, official historical reconstruction and current revaluation. Unknown
+request band/tier/region produces named conditional scenarios, not an invented actual allocation.
+Show role/model/effort and token-category money detail when supported. Retain prior report/basis
+and date epochs; offline reproduction uses captured bytes, never mutable home prices. The 30-day
+lookup policy is not evidence of unchanged market price. API equivalent is never a subscription bill.
