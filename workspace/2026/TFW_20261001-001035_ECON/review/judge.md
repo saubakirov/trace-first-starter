@@ -69,3 +69,46 @@ No applicable contradiction. TEQM's narrow Python/finite-report exception and cu
 - [x] Exactly one verdict, no quality inference from file/test/artifact count.
 
 Stage complete: YES.
+
+## Round 2 Judge — changed product, preserved first judgment
+
+Source: Map Round2 @9b41d884 and Verify Round2 @6bbc7502. Accepted subject: replacement Candidate **1fafca12ebe912f30115335c5931aade482659f2** under complete TS rev2 and owner A1 @3a40ff0077bbc3ea9fd5153636058ab6cdd967d0. Original Candidate and verdict above remain historical, not silently extended to changed VALUE. Actual judgment follows completed Verify in VALUE → ASSURANCE → TRACE order.
+
+### 1. VALUE
+
+| Subject | Status | Grounds and protected harm |
+|---|---|---|
+| Purpose and approved value | HOLDS | Complete frozen master HL @de943efbc77914243112a89ab6e97b14ea52bfc1 read again, independently of Verify; §1 asks for a clear report connecting observed AI resources to intended/achieved work. A1 §12 makes the capability standard and adds explicit public monetary profiles. R2-V1/V3 protect against a useful report being absent from normal installation or management treating a tariff scenario as achieved value/actual invoice |
+| Domain behavior and AC1–10 | HOLDS | Exact unique role/category accounting, saved offline quote basis, fresh/expired/missing selection, last-good failure/concurrency behavior and complete Russian interpretation independently established in R2-V1–V4. Actual request conditions remain unknown and all four price scenarios are conditional. Original Daily capture and CAB retain their original proofs and rates |
+| Architecture and design | HOLDS | One compact canonical workflow, four thin/default adapters, additive quote support in the existing v1 helper, no new service, role, permanent test or schema. R2-V1/V2/V4 establish ownership-safe migration, same algorithm and original obligations; core size is a constraint, not a quality oracle |
+| Safety/security | HOLDS | Public-only home quotes, contained provider path, atomic locked append, unknown-rate/currency refusal, before-image/custom receiver protection, own native source only and returned numeric files only. R2-V1/V2/V5 establish the actual trust boundaries |
+| Human acceptance authority | HOLDS | Actual concrete owner A1 decision precedes executable TS/dispatch; no future-SHA inspection is attributed to owner. Frozen HL §4.1 reserves owner result acceptance and final effects. Reviewer APPROVE supplies neither those effects nor DONE |
+
+Purpose inputs also reread designated NS1–NS3 and README How It Works. NS1 inspectable material grounds and NS2.4 selected Trace protect against vendor-log-only memory; unique received bytes and immutable task quote basis meet this. NS2.5 human authority protects against replacing owner acceptance with agent arithmetic. NS3 excludes documentation bureaucracy and untested capability promises; the standard readable workflow requires no extra native service or unavailable host claim. Default delivery is within A1, not adjacent expansion. No purpose failure, excess scope or contract defect. Original lifecycle/role/accounting/knowledge/closing protections continue; future close is explicitly the existing Coordinator's authorized act, not an implementation deferral.
+
+### 2. ASSURANCE
+
+| Subject | Status | Grounds |
+|---|---|---|
+| Evidence existence | HOLDS | Exact replacement Git object, RF/EV Round2, official current model/pricing/launch pages, saved quote bytes, all29 returned role files and own replay outputs resolve |
+| Evidence applicability | HOLDS | Current Candidate source used in all changed helper/receiver checks; task bases bind exact profile/model/source/hash. All41 selected blobs unchanged after Candidate. Original native Daily/CAB and relevant PV claims reused only at unchanged input/output/dependency bytes |
+| Sufficiency for material claims | HOLDS | Independent Decimal/unique-range sum and NUL-safe accounting, actual concurrent writers and injected last-good faults, four-adapter mechanical receivers, exact identity/unknown-rate controls cover selected risks. An actual offline report uses saved bytes without home/network reliance |
+| Guard detection | HOLDS | Existing14 documentation/integration/blob tests passed with relevant original positive/negative consequences. New quote/numeric/receiver risk probes are temporary proof, not permanent guards; count/size/governance controls are not outcome-quality evidence |
+
+Limits: filesystem/read-contract adapter proof is not native init/update execution on four hosts; unavailable native Claude/Cursor/Antigravity and unrequested PDF are N/A. Public prices prove current named conditions, not native request bands, subscription charges or historical effective intervals. General adoption, reliability, ROI and savings are unmeasured. Finite additional Reviewer/Coordinator/owner-close costs belong to later received contributions. None is a required accepted claim concealed as a gap.
+
+### 3. TRACE
+
+| Subject | Status | Grounds |
+|---|---|---|
+| Governing authority/lineage | HOLDS | Frozen HL ceiling plus actual A1/current TS rev2 @3a40ff0077bbc3ea9fd5153636058ab6cdd967d0, Executor dispatch @fdd93ca44a0c0a4a2a76e855d25206cd8694cd1f and review dispatch @6e245a5e16a8f31a92da1be7592627e3308d0d8a; stopped rev1 grants no authority |
+| Accepted identity/accounting | HOLDS | First tested replacement Candidate, unchanged subsequent VALUE, exact prospective41-path selector and raw hashes;40 net files/1375 LOC, original23/2200 denominators and prospective A1. No hidden scope or threshold breach; R2-V5 |
+| Reproducibility/currentness | HOLDS | Exact saved bases, returned-file hashes, retained own temporary scripts/outputs, original unchanged PV/citation currentness and newly fetched official pricing sources; R2-V1–V5 |
+| Continuation/route | HOLDS | Seven current spine fields resolve sole Coordinator recipient. Record new durable REVIEW and RF→KNW; return one immutable compact envelope. Existing Coordinator handles observations, applicable capture/log, owner acceptance, selected landing, final received economics and resources |
+| Observations | NON-MATERIAL | R2-O1 duplicates a same-role persistent row without route/behavior harm; R2-O2 own temporary harness/early template-read deviations repaired/disclosed before actual judgment. Neither changes acceptance, next act or Candidate. Proposed acknowledgment only, no product repair duty |
+
+### 4. Aggregate verdict
+
+**APPROVE** replacement Candidate **1fafca12ebe912f30115335c5931aade482659f2**. No material VALUE, ASSURANCE or TRACE item remains. VALUE meets original purpose with owner-authorized standard delivery/current conditional money; independent evidence establishes changed risks, and TRACE preserves prospective authority and accepted identity. New sibling REVIEW records this changed-product verdict and its predecessor, under the actual owner-authorized Round2 continuation; it is not an invented REVISE history or a record-only full restart. Observations remain proposed dispositions for the existing Coordinator, with unchanged Candidate. No applicable knowledge contradiction or new Fact Candidate.
+
+Checkpoint: all mandatory floors judged; purpose independently read against frozen contract/North Star; evidence existence/applicability/sufficiency distinct; every limit has a scope reason; no open material item or quality-by-count inference; next act and recipient exact. **Round2 stage complete: YES.**
