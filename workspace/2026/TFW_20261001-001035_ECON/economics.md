@@ -107,7 +107,7 @@
 
 ## 7. Источники и воспроизведение
 
-Цены проверены **2026-10-01T12:05:38.068248+00:00**: [официальная модель](https://developers.openai.com/api/docs/models/gpt-6.1-sol), [официальные цены](https://developers.openai.com/api/docs/pricing), [датированная публикация](https://developers.openai.com/api/docs/changelog#september-2026). Общая домашняя история: `C:/Users/c0rpa/.tfw/rates/openai/2026-10.json`; в ней только публичные котировки.
+Цены проверены **2026-10-01T12:05:38.068248+00:00**: [официальная модель](https://developers.openai.com/api/docs/models/gpt-6.1-sol), [официальные цены](https://developers.openai.com/api/docs/pricing), [датированная публикация](https://developers.openai.com/api/docs/changelog#september-2026). Общая домашняя история: `~/.tfw/rates/openai/2026-10.json`; в ней только публичные котировки.
 
 Источники результата: [HL](HL-TFW_20261001-001035_ECON.md) и [TS rev2](TS__TFW_20261001-001035_ECON__rev2.md) @3a40ff0077bbc3ea9fd5153636058ab6cdd967d0; [RF Round2](RF__TFW_20261001-001035_ECON.md) @b3cb3b27e6d0e123c93dfe3092f8534a4292e0d6; [независимый APPROVE](REVIEW__TFW_20261001-001035_ECON__rev2.md) @18861591d565a8df798dca7bdf6c52e147bfe746. Candidate: `1fafca12ebe912f30115335c5931aade482659f2`, 40 net VALUE-файлов / 1375 затронутых строк; исходный знаменатель 23/2200 сохранён.
 
