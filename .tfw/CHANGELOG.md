@@ -7,10 +7,13 @@ Format: [Keep a Changelog](https://keepachangelog.com/). Versioning: [Semantic V
 
 ### Added
 
-- ECON (`TFW_20261001-001035_ECON`): independently reviewed optional `/tfw-economics` product
-  analysis and cumulative Daily return/final-summary capture, with precise last-good/failure and
-  project-context accounting, coherent optional preservation, and complete text/table reports.
-  Candidate `e766107fa90029a5e81e10e7418b798a9998fb49`; no release or production distribution.
+- ECON (`TFW_20261001-001035_ECON`): independently reviewed standard `/tfw-economics` product
+  analysis across four default adapter installations/updates, with optional cumulative Daily capture
+  and complete executive/detail text-table reports. Shared public monthly quotes reuse exact
+  model/profile prices for less than 30 days; immutable task-owned price bases preserve offline
+  recorded estimates and distinguish historical reconstruction from current revaluation.
+  Last-good/failure, custom receivers and dated history are preserved. Replacement Candidate
+  `1fafca12ebe912f30115335c5931aade482659f2`; no release or production distribution.
 
 ## [3.8.0] — 2026-09-29
 
