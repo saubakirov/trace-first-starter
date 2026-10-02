@@ -5,6 +5,17 @@ Format: [Keep a Changelog](https://keepachangelog.com/). Versioning: [Semantic V
 
 ## [Unreleased]
 
+### Changed
+
+- The Claude Code Coordinator profile lets a Coordinator on Claude Desktop create full role chats
+  itself: `claude -p "/tfw-* <task[/phase]>" --session-id <uuid> -n <title>` with the launch's model,
+  effort and permission mode, then `claude --desktop --resume <uuid>` to show the session in the
+  Desktop list. Because Desktop takes the permission mode from the last recorded turn and a
+  slash-command turn records none, one fixed plain turn with the same flags records the launch mode
+  before presentation. A probe for `--desktop` decides whether `provision` and `title/readback` are
+  native; sends and returns use Desktop cross-session messages. A failed probe or launch falls back
+  to the owner-click route for that launch.
+
 ## [3.8.1] — 2026-10-02
 
 This patch release makes product economics a standard command, keeps Daily optional and adds
