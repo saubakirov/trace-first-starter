@@ -5,6 +5,12 @@ Format: [Keep a Changelog](https://keepachangelog.com/). Versioning: [Semantic V
 
 ## [Unreleased]
 
+## [3.8.1] — 2026-10-02
+
+This patch release makes product economics a standard command, keeps Daily optional and adds
+shared official quote history with reproducible task-owned monetary bases. See
+[Updating to TFW 3.8.1](https://github.com/saubakirov/trace-first-starter/blob/v3.8.1/.tfw/migrations/3.8.1.md).
+
 ### Added
 
 - ECON (`TFW_20261001-001035_ECON`): independently reviewed standard `/tfw-economics` product
@@ -13,7 +19,7 @@ Format: [Keep a Changelog](https://keepachangelog.com/). Versioning: [Semantic V
   model/profile prices for less than 30 days; immutable task-owned price bases preserve offline
   recorded estimates and distinguish historical reconstruction from current revaluation.
   Last-good/failure, custom receivers and dated history are preserved. Replacement Candidate
-  `1fafca12ebe912f30115335c5931aade482659f2`; no release or production distribution.
+  `1fafca12ebe912f30115335c5931aade482659f2`; native host limits remain as recorded in its independent review.
 
 ## [3.8.0] — 2026-09-29
 
