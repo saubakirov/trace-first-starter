@@ -245,4 +245,61 @@ default-mode behaviour unobserved, Codex app and `elevated` sandbox documented o
 documented only; no knowledge publication. Continuation: on the Coordinator's answer, Extract.
 
 Stage complete: YES
-→ User decision: ___
+→ User decision: Coordinator's ruling (addressed message, 2026-10-04): Gather closed; go to Extract.
+1. Claude Code trial: path (a). Signing in is the owner's action and the Coordinator asks the owner
+   separately; Extract does not wait. If the sign-in appears before synthesis, the trial is added
+   here as a separate dated section without rewriting what is recorded; if not, RES records that
+   the DoD 9 trial for Claude Code awaits the owner's sign-in and that the current basis for Claude
+   Code is vendor documentation. The trial is not counted as done and removing the criterion is not
+   proposed (the owner decides at the TS stop).
+2. Auto-mode rule accepted: a classifier pass is outcome (a), marked "automatic check,
+   nondeterministic"; a classifier block is outcome (b). Record the Claude Code version and the
+   exact mode string.
+3. Extract inputs: the three H2 cases where a verdict rested on executor data and the outcome of the
+   169 H7 lines feed the decisions on C1, C3 and C5; for each tool where a location gave outcome (b),
+   name the setting that removes it.
+
+## Addendum 2026-10-04 23:01 +05:00 — Claude Code trials after the owner's sign-in
+
+Added on the Coordinator's instruction after the owner ran `claude auth login`; the sections above
+are unchanged. Same four locations, same oracle, the auto-mode rule from the ruling above.
+
+- **Surface:** Claude Code console CLI **2.1.289** (it updated itself from 2.1.283 since G1), signed
+  in with a claude.ai account; this session's own engine is 2.1.286. Headless `claude -p` from a
+  throwaway git workspace outside the repository.
+- **Isolation:** `--setting-sources project` (the owner's user settings — `bypassPermissions`,
+  allow-lists, additional directories — not loaded; the workspace has no project settings),
+  `--strict-mcp-config`, `--safe-mode`, `--no-session-persistence`, and this session's `CLAUDE*`
+  environment variables removed. `--permission-prompts none`: a prompt nobody can answer is denied,
+  which is the Q1 rule.
+- **Proof of mode:** `permissionMode` in each run's init event. A run with no mode flag reported
+  `default`: headless `-p` starts in Manual. Per the vendor page, interactive terminal and VS Code
+  sessions start in `auto` from 2.1.283.
+- **Channels:** file tools (Write, then Read) and shell (one Bash block per location:
+  `mkdir`, write, `cat`, `rm`, `rmdir`). Model reported: `claude-fable-5-1` in both trials.
+
+| Mode string | Channel | Workspace (control) | `~/.tfw/work/<ID>` | `%LOCALAPPDATA%\tfw\work\<ID>` | `%TEMP%\tfw\work\<ID>` |
+|---|---|---|---|---|---|
+| `auto` | Write, Read | ok | ok | ok | ok |
+| `auto` | Bash | ok | ok | ok | ok |
+| `default` (Manual) | Write | denied: needs approval | denied | denied | denied |
+| `default` (Manual) | Read | allowed without approval | denied: needs approval | denied | denied |
+| `default` (Manual) | Bash | denied: needs approval | denied | denied | denied |
+
+- **`auto`:** zero denials in 12 steps. Outcome **(a), automatic check, nondeterministic**, at all
+  three outside locations. Per the vendor page, Write outside the working directory and
+  non-read-only Bash both go to the background classifier. The stream does not record which
+  approval path passed each call.
+- **`default` (Manual):** every write needs a human, the workspace included, so the location changes
+  nothing for writes. Reading back outside the working directory needs an approval the control did
+  not need: outcome **(b)** at all three outside locations. No unattended role can write anywhere in
+  this mode.
+- **Temporary directory vs TFW root:** for Claude Code on Windows they behave the same in both
+  modes. There is no sandbox on native Windows, and the permission layer treats both as outside the
+  working directory.
+- **Slip, corrected:** in the first Manual run, three Write steps failed with "File has not been
+  read yet", because the auto trial's files were still in place (my cleanup was late). The
+  leftovers were removed and the Manual trial was repeated with a new nonce; the table shows the
+  repeat. The first run's other nine steps agree with it; its Read in the workspace ran without
+  approval.
+- **Side effects:** no files remain in any location; no Claude Code session was saved.
