@@ -150,6 +150,23 @@ limits are as in iteration 1: they may be exceeded when every file and query is 
 file with the hypothesis or check it serves. The hard limit of 3 questions per turn stays. The
 economics range from line 970 is accepted as a disjoint contribution.
 
+Coordinator's answer to this Briefing (addressed message, 2026-10-04): the plan is accepted.
+
+1. **H6 evidence base:** allowed for one receiver, named R3 in the trace. Count its Daily files by
+   type and by record, and mark for each record only two facts: whether the record links a product
+   at an ordinary project path, and whether files that are not the record sit next to it. No file
+   names, paths, quotes or content; stage files and RES carry only aggregate numbers. The owner's S6
+   and the HL §2 size figures remain the second basis.
+2. **H4 oracle accepted:** a commit is required when a current `.tfw/` rule names it or a recovery
+   path reads it; everything else is habit. The decision is made per commit kind, not by one fact.
+   "Committing at role returns" allows the ordered commits a rule requires at that point.
+3. **Subtraction reach:** frozen items are tested too. Where evidence, cost and a considered
+   alternative exist, return an amendment proposal, classified and not applied, which the
+   Coordinator puts to the owner; otherwise a refinement or nothing. DoD 3 and DoD 6 are admissible
+   targets.
+
+Continue with Gather, then stop.
+
 ## Sources and knowledge handover
 
 **Inspected at this checkpoint:**
