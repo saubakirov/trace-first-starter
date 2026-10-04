@@ -298,4 +298,28 @@ No receiver file was opened in this stage.
 - **Continuation:** on the Coordinator's answer, the RES.
 
 Stage complete: YES
-→ User decision: ___
+→ User decision: Coordinator's ruling (addressed message, 2026-10-05): Challenge closed; go to RES.
+1. **The duplicate Coordinator row in the Antigravity template** is fixed in this task under
+   deliverable 5: the template and the installed copies change anyway, and the row is a defect. Only
+   this row changes in that file. RES records it as a refinement of the deliverable list (free under
+   rule 6), not as an amendment.
+2. **The Reviewer reads the working-material rule at Decide**, with no change to `review.md`. The two
+   checks stand in `verify.md`, which it opens during Verify; that is enough.
+3. **Accepted:**
+   - the short list of forbidden kinds returns: checkability rests on it, and it forbids moving
+     into names, strings and docstrings;
+   - working material links to nothing in the project, and its removal follows no link;
+   - a Daily worker continuing a record removes visible leftovers under the record's ID;
+   - both subsections sit inside `Safety and Execution Honesty`.
+4. **RES adds a separate section of proposed wordings:** the exact text and place of every rule
+   change.
+   - The places: the root line (one per adapter, inside the updated block), the two `conventions.md`
+     subsections, the `Evidence subfolder` sentence, the classification line, the prohibition item
+     and the EV template columns.
+   - Also: `handoff.md` steps 8, 10 and 11 with word counts, the two `verify.md` lines, the Daily
+     skill sentences and record template, and the migration-guide plan with the three answers and
+     the receipt entry.
+   - The owner wants these words and places at the TS stop; the section is TS input, not an HL
+     amendment.
+5. **Before returning,** validate and attach the economics for the new range (revision or disjoint
+   contribution, file, hash, cutoff). Stop after RES.
