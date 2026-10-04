@@ -330,4 +330,22 @@ unchanged; the Codex trials used the correct path.
 - **Continuation:** on the Coordinator's answer, Challenge.
 
 Stage complete: YES
-→ User decision: ___
+→ User decision: Coordinator's ruling (addressed message, 2026-10-04): Extract closed; go to Challenge.
+1. The role-private temporary folder (K5) is the Coordinator's call, not the owner's: it fits C1
+   (outside the project, under the task ID, created by the role, does not outlive the task) and C3
+   (no verdict rests on another role's material); the §3.2 picture is a value flow, not a claim of
+   shared access; the owner sees K5 in the exact architecture at the TS stop. Challenge tests it: a
+   role interrupted and resumed in a new session with a different temp path — does the registry stay
+   complete; and a subtraction test — must the rule name a path at all, or is "outside the project,
+   in a temporary place the role owns, never passed between roles and never referenced by path"
+   enough.
+2. The two chatter lines (`workflows/knowledge.md:122`, `adapters/antigravity/coordinator.md:55`)
+   are removed in this task (C7, negligible size). The four GATEWAY/LEAD repeats in the adapter root
+   templates are not touched: they go to the agreed separate task on repetition and the word limit;
+   RES says so.
+3. Both untried checks are skipped (Codex `elevated` sandbox; Antigravity `write_file` path rule):
+   they change the system or the owner's settings and matter only if a TFW root were chosen; RES
+   records them as untested with that reason.
+4. Added for Challenge: would "temp is the only default location" survive a vendor fix of the Codex
+   `writable_roots` defect; and where printed output in a row is not enough (observations that
+   cannot be repeated), what exactly the TS must be able to say.
