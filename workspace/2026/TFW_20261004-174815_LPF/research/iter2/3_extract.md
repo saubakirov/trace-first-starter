@@ -399,4 +399,21 @@ ID, removed at the end of this iteration.
 - **Continuation:** on the Coordinator's answer, Challenge.
 
 Stage complete: YES
-→ User decision: ___
+→ User decision: Coordinator's ruling (addressed message, 2026-10-05): Extract closed; go to Challenge.
+1. **Main carrier to test.** One root line states both rules itself (working material and
+   comments). It sits inside the updated block for Codex and Claude and in the Rules list for
+   Cursor and Antigravity; a short `conventions.md` subsection is the source. Second lever: which
+   Read Contract lines in `handoff.md`, `verify.md` and the Daily skill must name that subsection so
+   that roles creating working material read the source, and what it costs against `handoff.md`'s
+   1,400-word limit.
+2. **A Daily product with no place in the project.** The worker picks an existing project place and
+   records the path in the record. One question goes to the person only when no suitable place
+   exists at all, and the answer may be "working material, do not keep". No new mechanism: the skill
+   already has one consequential question with a hold.
+3. **Test beyond the plan:**
+   - whether update delivers the root line to existing receivers through the updated block, given
+     that the Claude rule list sits outside it;
+   - whether the comment rule loses checkability without the list of forbidden kinds, which
+     supplies the words for the Reviewer's commands (D11); a rule that cannot reveal its violation is
+     only advice;
+   - whether the Daily rule holds over several turns while the temporary folder lives between turns.
