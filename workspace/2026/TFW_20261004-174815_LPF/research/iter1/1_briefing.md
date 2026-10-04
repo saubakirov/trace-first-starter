@@ -143,6 +143,26 @@ Coordinator's ruling at the mode gate (addressed message, 2026-10-04):
   outside the repository and is deleted once the observation is recorded in the stage file. Only
   stage files and RES enter the repository. The `credentials` folder is not opened.
 
+Coordinator's answer to this Briefing (addressed message, 2026-10-04): the plan is accepted as
+written; exceeding the soft limits with every query and file named is allowed.
+
+1. Q1 accepted: only outcome (a), in the tool's default mode, qualifies a location; (b) is reported
+   as a DoF 2 risk with the setting that removes it. Added: for each tool, quote the vendor document
+   that names the default mode of the surface people use (for Codex the interactive `codex` and the
+   app, not only `codex exec`). If `codex exec` starts read-only, the labelled second run with
+   `--sandbox workspace-write` counts.
+2. The owner's surfaces, from this repository's files: Codex through the Codex desktop app
+   (`codex:thread:local:…` routes; app worktrees in `git worktree list`) and the CLI; Claude Code
+   through the Code tab of Claude Desktop; Antigravity installed, with an adapter; Cursor has an
+   adapter but is not installed here. This machine is Windows 11; nothing is known about other OS.
+   POSIX rests on documentation, no live trial; DoD 1 must still name both OS families. The Codex
+   app cannot be driven headless: rely on documentation for whether its sandbox matches the CLI and
+   mark that as a limitation.
+3. Receivers' stacks (field reports and size-only observations): mainly Python (FastAPI services,
+   scripts), some JavaScript/TypeScript for the web, some Markdown-only projects without code; YAML
+   configuration everywhere. Receiver projects are not scanned; the H5 inventory follows these
+   stacks.
+
 ## Sources and knowledge handover
 
 Inspected at this checkpoint: `status.md`; journal events created, transition and dispatch; the HL
@@ -168,4 +188,4 @@ to this Briefing, copy `2_gather.md` and run Gather.
 ---
 Stage complete: YES
 
-**Gate status: WAIT — Briefing decision (research/base.md Step 4).** Gather has not started.
+**Gate status: answered — plan accepted; Gather started.**
