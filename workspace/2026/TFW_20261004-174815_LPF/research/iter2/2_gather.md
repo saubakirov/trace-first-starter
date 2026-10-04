@@ -322,4 +322,15 @@ directory under this task's ID. They are removed at the end of this iteration.
 - **Continuation:** on the Coordinator's answer, Extract.
 
 Stage complete: YES
-→ User decision: ___
+→ User decision: Coordinator's ruling (addressed message, 2026-10-05): Gather closed; go to Extract.
+1. R3: narrow the bounds with one more fact per record: whether at least one file the record links
+   changed in Git after the record was created. Numbers only, no names or paths.
+2. Second receiver: count the same facts by the same rules, named R4 in the trace; no name, no file
+   names, paths or content; nothing else is inspected there.
+3. Extract singles out four findings that touch delivery:
+   - `handoff.md` step 10 hands the Executor's temporary files to the Coordinator, against D3–D4;
+   - the Claude root template keeps its rule list outside the updated block and the Codex template
+     has none, which hits DoD 6;
+   - `review.md` is already above 1,400 words while DoD 3 forbids growth;
+   - `.tfw/` has no anchor for the comment rule.
+   For each: what the rules already say and what can be removed from the proposal.
