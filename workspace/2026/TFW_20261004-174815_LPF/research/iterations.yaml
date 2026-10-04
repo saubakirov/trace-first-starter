@@ -6,7 +6,14 @@ iterations:
   - number: 1
     focus: "Decision inputs for HL claims C1, C3 and C5. H1: write, read and delete trials under TFW's machine-local root (~/.tfw/ on POSIX, %LOCALAPPDATA%\\tfw\\ on Windows) and under the system temporary directory, run from Claude Code and from Codex CLI on this machine with ordinary sandbox settings, plus documented sandbox scopes for Antigravity and Cursor; recommend one root for both OS families given the existing bindings/worktrees/rates split. H2: find whether any REVIEW or review/verify.md in this repository established or refuted a claim only through an executor's raw evidence file rather than by repeating a command or opening a result. H5: identify what consumes docstrings in receivers' typical stacks and how a Reviewer can check without code that explanations did not move into docstrings, identifiers or commit messages; propose the exception list for program-read comments. H7: count and sample the 'historical … remains readable, never issued' wording in .tfw/ and classify it as protective rule or inter-agent chatter."
     hypotheses: [H1, H2, H5, H7]
-    status: pending
+    status: complete
     res_file: research/iter1/RES.md
     agent: claude-code in-session agent lpf-researcher
     sources: [local trials, codebase, external]
+  - number: 2
+    focus: "Close the remaining decision inputs and test the proposal for subtraction. H3: search tasks closed in this repository for any later task, review or knowledge record that needed bytes from a closed task's evidence/ rather than its EV, to decide whether TS-named retention (RES D7 item 5) is ever needed. H4: count commits per role return in recent tasks (CMTR, PCUX, RWNR, PTW, LFD) and check whether any rule or recovery path in .tfw/ relies on intermediate commits, to decide whether committing at role returns cuts commits without harming continuation or review. H6: inventory Daily products in this repository's daily/ and the local Daily record form for products with no ordinary project path (one-off charts, videos, exports) and test D1–D4 against C4's 'before each orderly return'. Subtraction challenge: for each of D1–D12 and each Phase A deliverable ask what can be removed without losing purpose, proof, boundary or needed freedom, and which rule text already carries the meaning."
+    hypotheses: [H3, H4, H6]
+    status: pending
+    res_file: research/iter2/RES.md
+    agent: claude-code in-session agent lpf-researcher
+    sources: [codebase, local records, external]
