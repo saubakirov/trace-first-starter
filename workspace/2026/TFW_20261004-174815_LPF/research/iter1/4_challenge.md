@@ -336,4 +336,18 @@ probe folders and the scratch files are removed; Codex ran with `--ephemeral`.
   remain for iteration 2 (`min_iterations: 2`).
 
 Stage complete: YES
-→ User decision: ___
+→ User decision: Coordinator's ruling (addressed message, 2026-10-04): Challenge closed; go to Synthesis.
+1. Orphaned folders stay within C1, with no §12 amendment. The duty "removed no later than step 6"
+   stays with the roles. The closing rule already requires an honest record of completed, left and
+   pending cleanup and forbids claiming in DONE that removal succeeded. "Remove what you see, report
+   what you cannot" refines that existing rule. RES classifies it as a refinement, not an amendment
+   proposal.
+2. RES separates refinements of free sections from amendment proposals for frozen sections, each
+   proposal with evidence, cost and the alternative considered. It marks which TS inputs touch
+   frozen claims and which do not. The inputs: the row entered when an observation is made (the
+   `handoff.md` step 8/11 gap), the five things for unrepeatable observations, the bound on
+   "observed", a commit reference instead of a tree copy, the comment-exception draft, and the
+   docstring options.
+3. H3, H4 and H6 stay for iteration 2; the Coordinator prepares its `iterations.yaml` entry after
+   this return. Before returning, validate and attach this unit's economics record (file, revision,
+   hash, finite cutoff). Stop after RES.
