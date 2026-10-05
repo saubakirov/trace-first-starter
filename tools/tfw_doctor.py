@@ -301,7 +301,7 @@ def main(argv: list[str] | None = None) -> int:
     }
     try:
         result = functions[operation](root)
-    except Exception as exc:  # CLI boundary: an incomplete read must be explicit and exit 2.
+    except Exception as exc:
         result = report(operation, root)
         result["indeterminate_findings"].append(f"unresolved diagnostic input: {exc}")
     if args.format == "json":

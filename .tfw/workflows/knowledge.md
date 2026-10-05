@@ -119,9 +119,6 @@ release/publication authority.
 
 ## Canonical Knowledge Gate algorithm
 
-**Retired historical destination.** Before TKL, this section defined the global pending/digest
-gate. Its original wording remains in Git object
-`ec91c56007c20cda79f740fec15c85e4af74d17c:.tfw/workflows/knowledge.md`, under this same heading.
-It no longer governs planning or qualification. Current work follows the selected handover,
-source, authority and incoming-relation checks above; this legacy link reinstates no task sweep,
-count, digest, processed marker or state write.
+**Retired historical destination.** This heading no longer governs planning or qualification.
+Current work follows the selected handover, source, authority and incoming-relation checks above;
+a link to this heading reinstates no task sweep, count, digest, processed marker or state write.

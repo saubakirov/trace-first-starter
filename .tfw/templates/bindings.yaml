@@ -8,10 +8,6 @@
 # acts as. Ordinary owner-direct workflow activation does not require a binding or invent an agent
 # principal. A binding grants nothing, proves nothing, and activates nothing.
 #
-# WHY IT LIVES OUTSIDE THE PROJECT. A project-local file can be gitignored but not
-# sync-ignored, so under file synchronization a per-user file reaches every participant who
-# shares the folder. This one is per-machine by construction, not by a rule someone remembers.
-#
 # WHEN YOU NEED IT. Read it only when stable attribution is required. If that attribution is
 # required and absent or ambiguous, ask one short question before a durable write. Do not ask an
 # identity question merely because `team/` contains multiple profiles.
@@ -27,8 +23,7 @@ bindings:
 # stop and ask rather than inventing one here.
 #
 # A HANDLE MUST NAME A VALID PROFILE in that project's team/. An agent principal is valid only
-# when its profile names an existing accountable human. Historical Boolean amendment fields are
-# readable but never supply current authority.
+# when its profile names an existing accountable human.
 # A binding pointing at a missing or invalid profile sends a session back to asking exactly one
 # short identity question; correct the binding rather than recreating a deleted profile.
 #
@@ -37,5 +32,4 @@ bindings:
 # to bind one run.
 #
 # IDENTITY IS NEVER INFERRED from an OS username, a hostname, a folder name or an account
-# display string. A machine does not know who is sitting at it, and a guess becomes a durable
-# attribution nobody made. This file exists so the answer is declared instead of guessed.
+# display string.

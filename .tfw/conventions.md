@@ -562,7 +562,7 @@ REVIEW synthesizes them; `.tfw/templates/review/` owns their formats.
 
 ### Evidence subfolder
 
-Every formal Full task directory (or phase directory for multi-phase tasks) MUST contain an `evidence/` subfolder. The subfolder always contains at least one structured EV file (`EV__{ID}.md` or `EV__phase-{x}__{phase_slug}.md`). Additional binary artifacts (screenshots, API responses, logs) go into the same `evidence/` folder and are indexed in the EV file's Attachments section. Template: `.tfw/templates/evidence/EV.md`.
+Every formal Full task directory (or phase directory for multi-phase tasks) MUST contain an `evidence/` subfolder. The subfolder always contains at least one structured EV file (`EV__{ID}.md` or `EV__phase-{x}__{phase_slug}.md`). It holds nothing else — no attachments, binaries, logs, archives or copies, however small: each EV row carries what was verified, how (command or action and the Candidate commit or live target), what was observed and the result. Template: `.tfw/templates/evidence/EV.md`.
 
 ### Multi-phase folder structure
 
@@ -845,7 +845,7 @@ Budget the accepted **value-bearing surface**; classify paths by purpose:
 |---|---|---:|
 | `VALUE` | Accepted output or its necessary constituent | Yes |
 | `ASSURANCE` | Ordinary tests/checks/fixtures | No; yes only when assurance is the accepted product |
-| `TRACE` | Lifecycle, decision, review, evidence, and log records | Never |
+| `TRACE` | Lifecycle, decision, review, evidence, and log records; raw run logs are working material, never in the repository | Never |
 | `DERIVED` | Reproducible output not independently accepted | No; yes when that output is accepted |
 
 | Examples | Class |
@@ -1437,7 +1437,28 @@ Uppercase remains reserved for project-root documents — `README.md`, `KNOWLEDG
 
 - Never claim something was "run" or "tested" outside the observed session and recorded evidence.
 - Never request secrets in plain text. Use environment variables.
-- Evidence requires real-environment observation — deploying, opening, running, or viewing completed work in conditions beyond the build/test toolchain. VERIFIED status requires an artifact reference (file path or inline output).
+- Evidence requires real-environment observation — deploying, opening, running, or viewing completed work in conditions beyond the build/test toolchain. VERIFIED status requires the observed deciding values in the EV row.
+
+### Working material
+
+Working material is what a role makes for its own work and is neither result nor selected trace:
+raw output, logs, exports, screenshots, archives, copies and helper scripts. The role that needs it
+creates it in the system temporary directory of its own environment (`$TMPDIR`, else `/tmp`, on
+POSIX; `%TEMP%` on Windows) under `tfw/<task or Daily record ID>/`, never in the project. It stays
+private to that role: no other role relies on it, a trace names at most `<temp>/tfw/<ID>/`, it holds
+no link into the project, and its removal follows no link. The creating role removes it when its
+work ends, or names at its return what it keeps and why; `Closing and record recovery` step 6
+removes what remains and records what it could not.
+
+### Comments
+
+In a value file — code, tests, configuration, prompts, templates — a comment exists only when it
+carries value for that file's reader or a program reads it. Program-read comments are interpreter
+and encoding lines, tool directives, license headers and TFW managed-block markers. Reader value
+includes what a setting means, the instruction a template gives and, in a docstring a program
+publishes, what the reader of that output needs. Comments are not a channel: no messages to other
+agents, excuses, deferred-work notes, legacy chatter, jokes or notifications, and none of these
+moves into names, strings or docstrings. The reason for a decision lives in the trace.
 
 ## 13) Trace Discipline
 
@@ -1476,8 +1497,8 @@ Reverting a result does not revert its trace. Preserve a rejected task's folder 
   objective without a named protected subject, harm and material consequence.
 - A task closes with an undisposed observation, debt or finding, or with a disposition that names no
   existing phase/round and cited condition.
-- Work is left unfinished because it can be called debt, or a parallel project/task debt registry is
-  introduced.
+- Work is left unfinished because it can be called debt, a comment is used as a channel, or a
+  parallel project/task debt registry is introduced.
 
 ### State and trace
 
@@ -1487,7 +1508,7 @@ Reverting a result does not revert its trace. Preserve a rejected task's folder 
   allocated from a corpus-wide counter or another task.
 - A journal event is edited or deleted, copies artifact/chat bodies instead of referencing them, or an
   unknown status is silently normalized.
-- A per-user file is stored in the shared tree.
+- A per-user file or working material is stored in the shared tree.
 - Broad staging mixes sibling work, an unrelated landing hides its producer, or a whole-tree restore
   overwrites later recorded state.
 - A workflow command contains `$0`–`$9` or `$ARGUMENTS`.

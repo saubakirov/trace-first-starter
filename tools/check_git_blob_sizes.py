@@ -14,7 +14,7 @@ TAG = re.compile(r"v(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)\Z")
 
 
 class Refusal(Exception):
-    """The requested range cannot be checked completely."""
+    pass
 
 
 class Git:
@@ -52,7 +52,6 @@ class Git:
 
 
 def changed_blobs(raw):
-    """Return (path, new object id) pairs from NUL-delimited Git raw output."""
     tokens = raw.split(b"\0")
     result = set()
     index = 0

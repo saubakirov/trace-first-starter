@@ -5,6 +5,23 @@ Format: [Keep a Changelog](https://keepachangelog.com/). Versioning: [Semantic V
 
 ## [Unreleased]
 
+### Changed
+
+- Working material — raw output, logs, exports, screenshots and scratch scripts — lives in the
+  system temporary directory under `tfw/<ID>/`, private to the role that made it and removed when
+  its work ends. `evidence/` holds only EV registry rows (verified · how · observed · result); the
+  Attachments section is gone.
+- A comment in a value file carries value for its reader or is read by a program; comments are not
+  a channel between agents. Every adapter root states both rules in one line.
+- Daily records list every product with its project path; the record folder holds only record and
+  economics files before each orderly turn return.
+
+### Fixed
+
+- The Cursor and Antigravity rule templates list the Coordinator commands in one row.
+
+See the migration guide for the optional comment cleanup.
+
 ## [3.8.1] — 2026-10-02
 
 This patch release makes product economics a standard command, keeps Daily optional and adds

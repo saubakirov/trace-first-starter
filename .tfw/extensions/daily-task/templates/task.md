@@ -25,7 +25,7 @@ Do not retrospectively fill a missing gate as if observed earlier.
 
 ## 4. Result, decisions and check
 
-Link the current product result at its ordinary path. Record material decisions and dated revisions
+Link every product at its ordinary project path. Record material decisions and dated revisions
 without erasing earlier meaning, exact checks and observed outputs, and limits/uncertainty. Keep
 prepared, checked, accepted and released claims separate. An optional material Fact Candidate retains
 its exact source, scope and uncertainty; it does not publish a project fact.

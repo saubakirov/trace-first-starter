@@ -21,19 +21,20 @@
 
 ## Evidence
 
-Use only VERIFIED / DEFERRED / BLOCKED / N/A. Give VERIFIED a resolving artifact and explain every other
-result. Combine ACs only when one check resolves them.
+Use only VERIFIED / DEFERRED / BLOCKED / N/A, and explain every result other than VERIFIED.
+Combine ACs only when one check resolves them. A claim that cannot be repeated is attested: its row
+says why, how its values were captured and what the Reviewer checks instead.
 
-In the existing row or its resolving attachment, identify the claim's relevant input/output,
+In the row, identify the claim's relevant input/output,
 oracle or authority and environment assumptions only as needed to judge reuse. An enclosing commit
 or record-only edit is not blanket invalidation or blanket PASS. Changed dependencies or uncertain
 coverage require affected evidence. Preserve earlier rows; append later final-output observations
 and their independent judgment references instead of relabeling the earlier epoch.
 
-| # | AC | What was verified | Environment | Result | Artifact |
+| # | AC | Verified | How | Observed | Result |
 |---|---|---|---|---|---|
-| E1 | AC-{N} | {observed result} | {specific environment} | {VERIFIED/DEFERRED/BLOCKED/N/A} | {path or inline output} |
-| E-accounting | {accounting AC} | Exactly one row: approval ref; full Baseline/Candidate; selector and path/action/class/reason membership; phase-attribution detail including INVALID when unresolved; logical files; additions + deletions = touched LOC; binary/non-text N/A; trigger disposition; immutable-denominator authority/timing; exact NUL-safe method | {repo/Git/runtime} | {VERIFIED/DEFERRED/BLOCKED/N/A} | {command and result} |
+| E1 | AC-{N} | {claim checked} | {command or action; Candidate or target; environment} | {deciding values, not raw output} | {VERIFIED/DEFERRED/BLOCKED/N/A} |
+| E-accounting | {accounting AC} | Exactly one row: approval ref; full Baseline/Candidate; selector and path/action/class/reason membership; phase-attribution detail including INVALID when unresolved; logical files; additions + deletions = touched LOC; binary/non-text N/A; trigger disposition; immutable-denominator authority/timing; exact NUL-safe method | {command; repo/Git/runtime} | {numbers} | {VERIFIED/DEFERRED/BLOCKED/N/A} |
 
 `E-accounting` reproduces the approved TS selector. It cannot define one, move Candidate, ratchet the
 denominator, or supply late authority.
@@ -41,12 +42,6 @@ denominator, or supply late authority.
 ## Verdict
 
 Evidence verdict: {N}/{M} VERIFIED, {X} DEFERRED, {Y} BLOCKED, {Z} N/A
-
-## Attachments
-
-| File | Description |
-|---|---|
-| `{filename}` | {binary artifact; omit section when none} |
 
 ---
 

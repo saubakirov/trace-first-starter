@@ -1,5 +1,3 @@
-"""Small unit suite for the public documentation generator."""
-
 import sys
 from pathlib import Path
 
