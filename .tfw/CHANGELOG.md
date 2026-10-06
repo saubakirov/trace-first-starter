@@ -5,7 +5,19 @@ Format: [Keep a Changelog](https://keepachangelog.com/). Versioning: [Semantic V
 
 ## [Unreleased]
 
+## [3.9.0] — 2026-10-06
+
+This minor release keeps every TFW project to its result and its selected trace: working material
+leaves the project, `evidence/` becomes a registry, Daily keeps its record folder clean, and comments
+stop being a channel between agents. See
+[Updating to TFW 3.9.0](https://github.com/saubakirov/trace-first-starter/blob/v3.9.0/.tfw/migrations/3.9.0.md);
+it explains the harm of comment correspondence and offers an optional cleanup task, never applied
+silently.
+
 ### Changed
+
+Lean Project Footprint (`TFW_20261004-174815_LPF`), independently reviewed; Candidate
+`0863d299d86a1ca1776ffb966d54a1b848e7c348`:
 
 - Working material — raw output, logs, exports, screenshots and scratch scripts — lives in the
   system temporary directory under `tfw/<ID>/`, private to the role that made it and removed when
@@ -18,9 +30,8 @@ Format: [Keep a Changelog](https://keepachangelog.com/). Versioning: [Semantic V
 
 ### Fixed
 
-- The Cursor and Antigravity rule templates list the Coordinator commands in one row.
-
-See the migration guide for the optional comment cleanup.
+- LPF (`TFW_20261004-174815_LPF`): the Cursor and Antigravity rule templates list the Coordinator
+  commands in one row.
 
 ## [3.8.1] — 2026-10-02
 
