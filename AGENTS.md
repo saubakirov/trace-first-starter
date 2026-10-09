@@ -30,6 +30,12 @@ common rule, terminology, or project-knowledge libraries here.
 
 `.tfw/` traces are truth/memory. For `/tfw-*`, invoke its skill or read the canonical workflow completely. Root instructions are active; the workflow's read contract selects all further inputs and owns Role Lock, gates, templates, evidence, stop and route. The command must work without a wrapper.
 
+**Working material and comments.** Keep raw output, logs, exports, screenshots and scratch
+scripts in the system temporary directory under `tfw/<task or record ID>/`, never in the project,
+and remove them when your work ends. A comment exists only when it carries value for its file's
+reader or a program reads it, never as a note to agents, deferred work, history or an excuse
+(`conventions.md` → `Working material`, `Comments`).
+
 | Command | Canonical workflow |
 |---------|--------------------|
 | `/tfw-plan` | `.tfw/workflows/plan.md` |

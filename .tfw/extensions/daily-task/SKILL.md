@@ -59,7 +59,9 @@ Honor the receiving project's established form, including a three-file task/brie
 Otherwise create `daily/YYYY/YYYYMMDD-HHMMSS_slug/task.md` using the Daily-owned
 `.tfw/extensions/daily-task/templates/task.md`. Read the clock once; use the whole immutable folder
 name as ID. If occupied, add a distinguishing suffix without changing or moving the existing record.
-Keep products at their ordinary project paths. No `daily/README.md`, formal HL/RF/status/journal,
+Keep products at their ordinary project paths, giving an output with no evident place an existing
+one; ask only when none suits, and 'working material' is a valid answer.
+No `daily/README.md`, formal HL/RF/status/journal,
 new lifecycle vocabulary or per-task knowledge file is required. Do not adopt a no-folder alternative
 by implication. Where title write and readback are supported, use `DAILY · <exact folder ID>`;
 otherwise disclose unavailable control once and continue authorized work. Navigation grants nothing.
@@ -104,7 +106,12 @@ once, including unknown intervals/open-turn duration; no recursive capture. Hist
 recollection cannot establish cadence. Use a checked equivalent or truthful typed failure if the
 helper/runtime/source is unavailable; retain the useful Daily result and exact missing prerequisite.
 
-Update the selected local record with result paths, material decisions/revisions, actual checks and
+Before each orderly turn return, the record folder holds only record and economics files and the
+record lists every product with its project path. Working material stays under the system
+temporary `tfw/<folder ID>/`; a continuing worker removes leftovers it sees there, and the final
+turn removes it.
+
+Update the selected local record with material decisions/revisions, actual checks and
 limits, and the authoritative next action or an actually accepted close. Prepared, checked,
 human-accepted and released are different claims. Make source, Goal/Value, Boundaries, current result,
 check and next authority recoverable without the original chat. A checked result awaiting its human

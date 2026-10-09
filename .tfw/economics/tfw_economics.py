@@ -354,7 +354,6 @@ def codex_rows(raw, args):
             require(seen_session is None or seen_session == current_session,
                     "Codex source contains multiple session IDs")
             seen_session = current_session
-            # A child agent's rollout declares its root session; its usage names that session.
             usage_sessions |= {current_session, payload.get("session_id")} - {None}
         if kind == "turn_context":
             model = payload.get("model")
@@ -490,8 +489,6 @@ def codex_rows(raw, args):
 
 
 def claude_rows(raw, args):
-    # The session's own lines carry no agentId. A subagent's own file repeats the
-    # parent sessionId on every line, so its source is <sessionId>/<agentId>.
     require(re.fullmatch(r"[^/]+(/[^/]+)?", args.source_id),
             "Claude source ID must be <sessionId> or <sessionId>/<agentId>")
     session, _, agent = args.source_id.partition("/")
@@ -652,8 +649,6 @@ def antigravity_rows(source, args):
         usage_blob = one(outer, 4, bytes)
         require(usage_blob is not None, "Antigravity usage field missing")
         u = proto_fields(usage_blob)
-        # proto3 omits zero-valued scalars: an absent counter beside reported ones is 0, but a
-        # usage message reporting no counter at all (seen for failed calls) measures nothing.
         counters = (2, 5, 3, 9, 10)
         if not any(k in u for k in counters):
             unmeasured += 1
@@ -684,18 +679,10 @@ def antigravity_rows(source, args):
              "model generation duration is not agent session time"]
     if unmeasured:
         notes.append(str(unmeasured) + " generation rows report no usage counter; not counted")
-    # The bound range ends after the last row read, counted or not, so its digest stays exact.
     return result, raw_digest.hexdigest(), total_size, last + 1, notes
 
 
 def compact_rows(rows):
-    """Aggregate verified native events at date × bound run × model × effort.
-
-    The manifest preserves native source identity/range/hash. Individual call
-    identifiers are digested for proof, not shipped as a routine event archive.
-    Duration is a separate row, so a partially matched timer never appears to
-    describe all tokens in its day/model bucket.
-    """
     groups = defaultdict(list)
     for row in rows:
         base = (row["consumption_date"], row["model"], row["effort"], row["timezone"])
@@ -862,7 +849,6 @@ def selected_files(task_root):
 
 
 def task_sources(task_root, record=None):
-    """Select root coordination and immediate phase leaves, never nested reports."""
     root = Path(task_root)
     folder = root / "economics" / "roles"
     files = sorted(folder.glob("*.jsonl")) if folder.is_dir() else []
@@ -1060,7 +1046,6 @@ def json_bytes(value):
 
 
 def validate_quote(value):
-    """Validate public price evidence; no usage/owner/task fields belong in the home cache."""
     exact_keys(value, QUOTE_FIELDS, ("quote_id",), "quote")
     require(value["schema_version"] == 1, "unsupported quote version")
     require(isinstance(value["provider"], str) and
@@ -1106,7 +1091,6 @@ def quote_lock(root, provider):
     directory.mkdir(parents=True, exist_ok=True)
     require(directory.resolve().is_relative_to(cache_root) and not (directory / ".lock").is_symlink(),
             "quote cache path escapes selected root")
-    # OS locks survive exceptions and are released on process death; never unlink a held lock.
     with (directory / ".lock").open("a+b") as lock:
         if lock.seek(0, 2) == 0:
             lock.write(b"0"); lock.flush()
@@ -1608,7 +1592,6 @@ def render_summary(args):
             context_by_hash[digest] = (context_report, str(context_root.resolve()))
         selected.extend(data["records"])
     filters = {k: getattr(args, k) for k in ("date_from", "date_to", "project", "task", "role", "model", "owner", "unit")}
-    # Reconcile the union again so a root/phase/duplicate selection never adds a view twice.
     union = reconcile([f["path"] for data in root_data.values() for f in data["files"]])
     total, flat = summarize(union["records"], rates, filters)
     for row in flat:

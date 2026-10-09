@@ -147,12 +147,6 @@ def _frontmatter(text: str) -> str:
 
 
 def strengthened_skill(current: str) -> str:
-    """Sharpen the pre-action boundary without adding workflow logic.
-
-    The transformation preserves every command-specific permission, template, and stop
-    clause already present in the source proxy.  It adds only the tested no-algorithm,
-    pre-action, complete-load, and ordered-read cues.
-    """
     text = current.replace("\r\n", "\n").replace("\r", "\n")
     marker = "## Contract\n"
     if text.count(marker) != 1:
@@ -184,7 +178,6 @@ def strengthened_skill(current: str) -> str:
 
 
 def direct_skill(current: str, workflow: str) -> str:
-    """Build a schema-valid receiver whose body is the canonical workflow itself."""
     front = _frontmatter(current)
     body = _strip_frontmatter(workflow)
     direct = front + "\n" + body
@@ -861,7 +854,6 @@ def wilson_interval(successes: int, total: int, z: float = 1.959963984540054) ->
 
 
 def newcombe_difference(a_success: int, a_total: int, b_success: int, b_total: int) -> tuple[float, float]:
-    """Newcombe score interval for independent proportions, reported as A minus B."""
     pa, pb = a_success / a_total, b_success / b_total
     la, ua = wilson_interval(a_success, a_total)
     lb, ub = wilson_interval(b_success, b_total)

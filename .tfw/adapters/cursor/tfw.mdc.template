@@ -44,8 +44,7 @@ preferred solution.
 
 | Commands | Roles |
 |---|---|
-| `/tfw-plan`, `/tfw-docs`, `/tfw-knowledge`, `/tfw-release`, `/tfw-update`, `/tfw-config`, `/tfw-init` | Coordinator |
-| `/tfw-plan`, `/tfw-docs`, `/tfw-knowledge`, `/tfw-release`, `/tfw-update`, `/tfw-config`, `/tfw-economics` | Coordinator |
+| `/tfw-plan`, `/tfw-docs`, `/tfw-knowledge`, `/tfw-release`, `/tfw-update`, `/tfw-config`, `/tfw-init`, `/tfw-economics` | Coordinator |
 | `/tfw-research` | Researcher |
 | `/tfw-handoff` | Executor |
 | `/tfw-review` | Reviewer |
@@ -55,3 +54,8 @@ preferred solution.
 - **No sycophancy.** Be direct, precise, concrete.
 - **No placeholders.** All code and text must be production-ready.
 - **Language.** Reply in the user's latest message language.
+- **Working material and comments.** Keep raw output, logs, exports, screenshots and scratch
+  scripts in the system temporary directory under `tfw/<task or record ID>/`, never in the project,
+  and remove them when your work ends. A comment exists only when it carries value for its file's
+  reader or a program reads it, never as a note to agents, deferred work, history or an excuse
+  (`conventions.md` → `Working material`, `Comments`).

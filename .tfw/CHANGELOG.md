@@ -5,16 +5,43 @@ Format: [Keep a Changelog](https://keepachangelog.com/). Versioning: [Semantic V
 
 ## [Unreleased]
 
+
 ### Changed
 
-- The Claude Code Coordinator profile lets a Coordinator on Claude Desktop create full role chats
-  itself: `claude -p "/tfw-* <task[/phase]>" --session-id <uuid> -n <title>` with the launch's model,
-  effort and permission mode, then `claude --desktop --resume <uuid>` to show the session in the
-  Desktop list. Because Desktop takes the permission mode from the last recorded turn and a
-  slash-command turn records none, one fixed plain turn with the same flags records the launch mode
-  before presentation. A probe for `--desktop` decides whether `provision` and `title/readback` are
-  native; sends and returns use Desktop cross-session messages. A failed probe or launch falls back
-  to the owner-click route for that launch.
+- The Claude Code Coordinator profile lets a Coordinator create full role chats itself at each ready
+  gate and activate them with a cross-session message carrying only `/tfw-* <task[/phase]>`. On
+  Claude Desktop a fixed task-free `claude -p` turn creates the session with its title, model, effort
+  and permission mode, and `claude --desktop --resume` (or the owner's `/resume` where the CLI
+  refuses `--desktop`) shows it. On a Remote Control machine a detached `tmux` session runs
+  `claude --remote-control` and the owner follows it at claude.ai/code, in the app or in Desktop. A
+  failed step returns that launch to the owner-click route.
+## [3.9.0] — 2026-10-06
+
+This minor release keeps every TFW project to its result and its selected trace: working material
+leaves the project, `evidence/` becomes a registry, Daily keeps its record folder clean, and comments
+stop being a channel between agents. See
+[Updating to TFW 3.9.0](https://github.com/saubakirov/trace-first-starter/blob/v3.9.0/.tfw/migrations/3.9.0.md);
+it explains the harm of comment correspondence and offers an optional cleanup task, never applied
+silently.
+
+### Changed
+
+Lean Project Footprint (`TFW_20261004-174815_LPF`), independently reviewed; Candidate
+`0863d299d86a1ca1776ffb966d54a1b848e7c348`:
+
+- Working material — raw output, logs, exports, screenshots and scratch scripts — lives in the
+  system temporary directory under `tfw/<ID>/`, private to the role that made it and removed when
+  its work ends. `evidence/` holds only EV registry rows (verified · how · observed · result); the
+  Attachments section is gone.
+- A comment in a value file carries value for its reader or is read by a program; comments are not
+  a channel between agents. Every adapter root states both rules in one line.
+- Daily records list every product with its project path; the record folder holds only record and
+  economics files before each orderly turn return.
+
+### Fixed
+
+- LPF (`TFW_20261004-174815_LPF`): the Cursor and Antigravity rule templates list the Coordinator
+  commands in one row.
 
 ## [3.8.1] — 2026-10-02
 

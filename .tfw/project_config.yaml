@@ -4,15 +4,13 @@ project:
   branch: main
 
 tfw:
-  version: "3.8.1"   # Installed TFW version (update via tfw-update)
+  version: "3.9.0"   # Installed TFW version (update via tfw-update)
   installed_from: "self"   # this repository IS the upstream; a receiving project names source@tag
   upstream: "https://github.com/saubakirov/trace-first-starter"  # Source for tfw-update
   content_language: en      # Language for filled artifact content (en, ru, etc.)
 
   # Current work uses workspace. The owner-retained pre-2.0.0 corpus stays readable
   # at its original paths through the reference union, outside ordinary discovery/gates.
-  # Historical disposition changes no task state; exact digest reconciliation follows
-  # migrations/3.3.0.md with preserved affected pairs under update_receipts/.
   task_containers: [workspace]
   historical_containers: [tasks]
 
@@ -118,7 +116,6 @@ tfw:
       description: "Closed unsuccessfully, terminal, trace retained"
 
 build:
-  # Upstream maintainer and documentation tests. A receiver configures its own product
-  # commands; optional tools/tfw_doctor.py diagnostics are never a default gate.
+  # Upstream maintainer and documentation tests.
   lint: python -m pytest tools/tests/ docs/scripts/ -q --collect-only
   test: python -m pytest tools/tests/ docs/scripts/ -q

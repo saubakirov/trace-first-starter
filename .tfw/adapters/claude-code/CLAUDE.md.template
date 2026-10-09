@@ -18,6 +18,12 @@
 This project follows Trace-First Workflow. The tool-agnostic core lives in `.tfw/`.
 Version: see `.tfw/VERSION`.
 
+**Working material and comments.** Keep raw output, logs, exports, screenshots and scratch
+scripts in the system temporary directory under `tfw/<task or record ID>/`, never in the project,
+and remove them when your work ends. A comment exists only when it carries value for its file's
+reader or a program reads it, never as a note to agents, deferred work, history or an excuse
+(`conventions.md` → `Working material`, `Comments`).
+
 ### Command Routing
 
 Root instructions are already active; do not reload them. For `/tfw-*`, open the matching

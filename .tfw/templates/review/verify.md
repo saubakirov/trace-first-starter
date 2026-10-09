@@ -32,7 +32,9 @@ the existence or count of discrepancies never selects depth by itself.
 
 Run TS-required checks and checks needed by the selection argument. When reusing evidence, explain
 why its subject tuple and assumptions still apply. If a required check cannot run, name the exact
-unresolved material claim and missing environment; this is not PASS.
+unresolved material claim and missing environment; this is not PASS. List comments, docstrings and
+channel words (`todo`, `legacy`, `old`, `temp`) the Candidate's VALUE diff adds; each must meet
+`conventions.md` → `Comments`.
 
 ## Claim and Source Checks
 
@@ -71,13 +73,11 @@ current-carrier repair; it cannot restart product execution.
 
 ## Evidence Verification
 
-Evidence applies to `{accepted subject, revision/Candidate, relevant environment, oracle/authority,
-dependency state}`. Changed dependencies or insufficient proof require an affected check; an enclosing
-SHA or unrelated record change does not invalidate adequate evidence.
+`evidence/` holds only EV files; no verdict rests on working material.
 
-| # | RF evidence ref | Subject tuple | Artifact exists? | Establishes the claim? | Limit |
+| # | EV row | Subject tuple | Repeated or opened? | Establishes the claim? | Limit |
 |---|---|---|---|---|---|
-| E1 | {evidence/file or inline ref} | {tuple} | ✅ / ❌ | ✅ / ❌ / ⚠️ | {none or limit} |
+| E1 | {EV row ID} | {tuple} | ✅ / ❌ | ✅ / ❌ / ⚠️ | {none or limit} |
 
 If RF §5 has no evidence items: state `N/A — no evidence artifacts to verify` and why that can satisfy
 the mapped claims.

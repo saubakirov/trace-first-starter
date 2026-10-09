@@ -86,7 +86,6 @@ Evidence: {real-environment check/status}
 | File | Description |
 |---|---|
 | `evidence/EV__{ID}.md` | Per-AC evidence and verdict (required) |
-| `evidence/{file}` | {additional artifact, if applicable} |
 
 ## 6. Technical Guidance
 

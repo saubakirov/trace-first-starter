@@ -1,5 +1,3 @@
-"""One cheap contract test for the repository's useful Git-blob guard."""
-
 import importlib.util
 from pathlib import Path
 

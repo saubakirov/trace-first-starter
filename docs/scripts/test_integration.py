@@ -1,5 +1,3 @@
-"""Rendered-site checks sharing one MkDocs build."""
-
 import os
 from pathlib import Path
 import re

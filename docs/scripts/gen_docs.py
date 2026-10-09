@@ -1,5 +1,3 @@
-"""Generate the public site from README and the core .tfw documentation only."""
-
 import re
 from pathlib import Path, PurePosixPath
 
@@ -16,7 +14,6 @@ def _find_root(start: Path) -> Path:
 
 ROOT = _find_root(Path(__file__).resolve().parent)
 
-# Explicit allowlists are the publication boundary. Project traces are not documentation inputs.
 STATIC_SOURCES = [
     ("README.md", "index.md", True),
     (".tfw/README.md", "concepts/philosophy.md", True),
@@ -88,7 +85,6 @@ def _source_map(root: Path) -> dict[str, str]:
 
 
 def rewrite_markdown_links(content: str, source_path: str, mapping: dict[str, str]) -> str:
-    """Rewrite links only when both source and destination are in the public allowlist."""
     source_dir = str(PurePosixPath(source_path).parent)
 
     def replace(match: re.Match) -> str:

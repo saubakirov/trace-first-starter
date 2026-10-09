@@ -51,5 +51,3 @@ delegation, name the limit and offer full role chats; never switch modes silentl
 ## One-phase and successor limits
 
 A one-phase task needs no extra phase Coordinator, but Researcher, Executor and independent Reviewer still need distinct full role chats, or distinct agents in the single-phase agent mode. When owner creation is required, the next launch remains pending with that exact owner action and no unattended-completion claim. A successor task Coordinator needs a safe checkpoint, exact address and dispatch, current-file reconstruction, acknowledgement and authorized route switch; the old route remains effective meanwhile.
-
-Historical PCUX observations do not select a current task's topology, grant dialogue or change reporting; the current owner mandate and shared coordination contract govern them.

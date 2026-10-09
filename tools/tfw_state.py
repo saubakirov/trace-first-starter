@@ -1,13 +1,3 @@
-"""Semantic readers for the upstream TFW repository.
-
-Task-local ``status.md`` and journal files remain authoritative.  This module only reads
-their declared carriers and resolves whole task identifiers.  It has no command-line interface,
-report presentation, repair, aggregate rendering, shared write, or authority over the files it reads.
-
-The module lives under root ``tools/`` deliberately: it is upstream maintainer support and
-is not part of the copied Full payload or the prompt-first Assisted edition.
-"""
-
 from __future__ import annotations
 
 import os
@@ -18,33 +8,12 @@ from pathlib import Path
 
 import yaml
 
-# Project root
-
-#: The marker that identifies a project root. A TFW project is a directory containing this.
 ROOT_MARKER = ".tfw"
 
-#: A staging directory `update.md` Step 0 creates by cloning upstream. It contains a complete
-#: `.tfw/`, so it satisfies the marker and could capture a semantic read inside the upstream
-#: clone instead of the receiver. Skipped by name, never by depth.
 STAGING_SEGMENT = ".upstream"
 
 
 def find_project_root(start: Path | None = None) -> Path:
-    """The project root, found by walking upward for a ``.tfw/`` directory.
-
-    Depth arithmetic — ``Path(__file__).parents[2]`` — was the previous answer, and it made
-    the tools' own location load-bearing: a project that placed them anywhere else had to
-    edit ``.tfw/`` and forfeit clean updates. It was also *silently* wrong rather than
-    loudly wrong, because from the former payload location the third parent happened to be the root.
-
-    The search starts at this file's own directory, so it answers for wherever the tools
-    were put rather than for wherever they were invoked from. A candidate whose path
-    contains ``.upstream`` is skipped: that directory holds a full upstream clone and would
-    otherwise capture the search one level early.
-
-    Raises ``SystemExit`` when no root is found. There is no fallback — guessing a root
-    means writing files into a directory nobody chose.
-    """
     start = (start or Path(__file__)).resolve()
     base = start if start.is_dir() else start.parent
     for candidate in (base, *base.parents):
@@ -58,36 +27,22 @@ def find_project_root(start: Path | None = None) -> Path:
     )
 
 
-# ---------------------------------------------------------------------------
-# Shared task resolver
-# ---------------------------------------------------------------------------
-
-#: Clock-derived identifier shipped during the TFW 2.0.0 dirty line. The WHOLE
-#: directory name is the identifier: ``YYYYMMDD-HHMMSS__slug``.
-#: The timestamp alone is not an identifier — two mutually offline participants can reach
-#: the same second, and only the slug distinguishes them. Two who reach the same second AND
-#: the same slug created the same task, which is a signal rather than a collision to prevent.
 CLOCK_ID = re.compile(r"^(?P<stamp>\d{8}-\d{6})__(?P<slug>.+)$")
 
-#: Current identifier: project, moment, approved subject abbreviation. Single
-#: underscores are unambiguous separators because no field may contain one.
 CURRENT_ID = re.compile(
     r"^(?P<prefix>[A-Z][A-Z0-9]*)_(?P<stamp>\d{8}-\d{6})_(?P<abbr>[A-Z0-9]+)$"
 )
 
-#: A bare timestamp. Never a valid identifier; matched only so consumers can say why.
 BARE_STAMP = re.compile(r"^\d{8}-\d{6}$")
 
-#: Legacy identifier grammar: ``{PREFIX}-{seq}``, optionally followed by a slug.
 LEGACY_ID = re.compile(r"^(?P<prefix>[A-Z][A-Z0-9]*)-(?P<seq>\d+)(?:__(?P<slug>.+))?$")
 
 
 class IdentifierCollisionError(ValueError):
-    """Two directory occurrences resolve to the same task identifier."""
+    pass
 
 NEWLINE = chr(10)
 
-#: A leading YAML front-matter block.
 FRONT_MATTER = re.compile("^---" + chr(92) + "r?" + chr(92) + "n(.*?)" + chr(92) + "r?" + chr(92) + "n---" + chr(92) + "r?" + chr(92) + "n", re.S)
 
 DEFAULT_CONTAINERS = ["workspace"]
@@ -100,8 +55,6 @@ COMMON_COORDINATION_KEYS = {
 UPWARD_ROUTE_KEYS = {"upstream_route", "owner_gateway"}
 COORDINATION_KEYS = COMMON_COORDINATION_KEYS | UPWARD_ROUTE_KEYS
 
-# Historical owner_gateway carriers remain readable. New writes use upstream_route and
-# the independent selection pair; both upward-route names or a half-extension refuse.
 SELECTION_KEYS = {"reporting", "selection_ref"}
 
 STATUS_KEYS = {
@@ -113,12 +66,9 @@ STATUS_KEYS = {
 REQUIRED_KEYS = ("id", "title", "goal", "value", "lifecycle", "owner", "authority",
                  "created", "updated")
 
-#: Fallback vocabulary when project_config.yaml cannot be read.
 DECLARED_LIFECYCLES = ("TODO", "HL_DRAFT", "RES", "PHASES", "TS_DRAFT", "ONB", "RF", "REV",
                        "KNW", "DONE", "BLOCKED", "REJECTED")
 
-# New writes use this graph. Historical events remain readable through ``validate_event`` even
-# when an older workflow recorded a no-op or shortcut; immutable history is never normalized.
 FORWARD_TRANSITIONS = {
     ("TODO", "HL_DRAFT"),
     ("HL_DRAFT", "RES"), ("HL_DRAFT", "TS_DRAFT"), ("HL_DRAFT", "PHASES"),
@@ -131,45 +81,24 @@ FORWARD_TRANSITIONS = {
     ("KNW", "DONE"),
 }
 
-#: Not selectable by a person. Migration writes it when a source held a value the
-#: vocabulary does not contain, and keeps that value verbatim beside it.
 UNDECLARED = "UNDECLARED"
 
-#: `created` and `updated` carry the same grammar as the identifier: second resolution.
-#: A day-resolution stamp on a corpus with several transitions a day reports nothing — the
-#: rejected pass shipped TFW-60 with `created` and `updated` identical.
 STAMP = re.compile(r"^\d{8}-\d{6}$")
 
-#: What a legacy source that carried only a date migrates to. The zero time is DECLARED, not
-#: measured: it says "this day, time unknown" and must never be read as second-accurate.
 ZERO_TIME = "000000"
 
 
 def explain_yaml_error(block: str, exc: yaml.YAMLError) -> str:
-    """A parse failure named by the key it happened on, not by the exception's class name.
-
-    ``unparseable front matter: ScannerError`` is what this used to say, and a real person
-    hand-writing five state files had to find the cause by inspection. The cause was always
-    the same and always mechanical: a value containing ``": "`` ends a YAML plain scalar, so
-    ``title: Phase A: portable delivery`` is not a string, it is a syntax error.
-
-    PyYAML gives a line and a column, never a key. The key is recovered from the source
-    text at the marked line — which is the only place it exists.
-    """
     detail = getattr(exc, "problem", None) or exc.__class__.__name__
     mark = getattr(exc, "problem_mark", None) or getattr(exc, "context_mark", None)
     if mark is not None:
-        line_number = mark.line  # 0-based, into the front-matter block
+        line_number = mark.line
     elif hasattr(exc, "position"):
-        # ReaderError stops before tokenization and therefore has no mark. Its absolute
-        # character offset is still enough to recover the containing key.
         line_number = block.count("\n", 0, exc.position)
     else:
         return f"unparseable front matter: {detail}"
 
     lines = block.splitlines()
-    # The key is the nearest `key:` at or above the marked line: a broken value can push the
-    # reported mark onto the following line.
     key = None
     for index in range(min(line_number, len(lines) - 1), -1, -1):
         head = re.match(r"^([A-Za-z_][A-Za-z0-9_-]*):", lines[index])
@@ -182,30 +111,12 @@ def explain_yaml_error(block: str, exc: yaml.YAMLError) -> str:
     hint = ""
     value = lines[line_number] if line_number < len(lines) else ""
     if ": " in value.split(":", 1)[-1]:
-        # ASCII only. This reaches a terminal whose encoding nobody chose, and a hint that
-        # renders as replacement characters is worse than no hint.
         hint = (". A value containing \": \" ends a YAML plain scalar, so quote it: "
                 f"{key}: \"...\"")
     return f"unparseable front matter: key `{key}` ({where}): {detail}{hint}"
 
 
 def parse_identifier(text: str) -> tuple[str, str] | None:
-    """Classify a task identifier or directory name under one named grammar.
-
-    Accepts what a consumer actually holds — a directory name — and returns
-    ``(kind, identifier)``:
-
-    * ``("clock", "20260826-143000__query_redesign")`` — the identifier is the whole name.
-    * ``("current", "TFW_20260829-010832_CRSW")`` — project, moment and approved
-      abbreviation; the identifier is again the whole name.
-    * ``("legacy", "TFW-60")`` — the pre-2.0.0 grammar, where the slug is not part of it.
-    * ``None`` — not an identifier. **A bare ``YYYYMMDD-HHMMSS`` lands here on purpose**: it
-      is ambiguous between any two tasks created in that second, and no consumer may accept
-      one as if it named exactly one task.
-
-    One resolver, used by every consumer. Per-call-site regexes are how the previous board
-    parser drifted out of sync with the board it parsed.
-    """
     text = text.strip()
     if CURRENT_ID.fullmatch(text):
         return ("current", text)
@@ -218,12 +129,6 @@ def parse_identifier(text: str) -> tuple[str, str] | None:
 
 
 def sort_key(kind: str, identifier: str) -> tuple:
-    """Declared sort key: legacy, dirty-clock, then current; ascending within each.
-
-    Legacy identifiers sort numerically, so ``TFW-9`` precedes ``TFW-10``. Clock
-    identifiers sort by timestamp then slug — fixed-width, so lexical order on the stamp is
-    chronological, and the slug only breaks a same-second tie. The newest task is last.
-    """
     if kind == "legacy":
         m = LEGACY_ID.match(identifier)
         return (0, m.group("prefix"), int(m.group("seq")), "")
@@ -235,7 +140,6 @@ def sort_key(kind: str, identifier: str) -> tuple:
 
 
 def read_config(root: Path) -> dict:
-    """Read the TFW block from ``project_config.yaml``."""
     path = root / ".tfw" / "project_config.yaml"
     if not path.exists():
         return {}
@@ -244,7 +148,6 @@ def read_config(root: Path) -> dict:
 
 
 def task_containers(root: Path) -> list[str]:
-    """Active containers: creation uses the first; ordinary discovery searches these only."""
     value = read_config(root).get("task_containers") or DEFAULT_CONTAINERS
     if isinstance(value, str):
         value = [value]
@@ -252,7 +155,6 @@ def task_containers(root: Path) -> list[str]:
 
 
 def reference_containers(root: Path) -> list[str]:
-    """Ordered active/history union for exact reading and compilation, never gate discovery."""
     history = read_config(root).get("historical_containers", [])
     if not isinstance(history, list):
         raise ValueError("tfw.historical_containers must be a list of relative directory paths")
@@ -273,22 +175,6 @@ def reference_containers(root: Path) -> list[str]:
 
 def _walk_containers(root: Path, containers: list[str] | None = None
                      ) -> tuple[list[Path], list[Path]]:
-    """Every directory the containers hold, split into ``(matched, unmatched)``.
-
-    One walk, two answers. Previously there was one walk and one answer, and a directory
-    the identifier grammar did not match was ``continue``d — dropped before any consumer
-    could see it. That is how a real external corpus of four tasks was read as two, and how
-    two directories holding completed HL, TS and RF traces were then rendered under a
-    heading calling them *"ideas, not work in progress"*.
-
-    Dropping silently is bad. Confidently misdescribing is worse, because it reads as a
-    finding. So the rejects are returned rather than discarded, and the caller reports them
-    as unresolved input.
-
-    A container may hold task directories directly (the legacy layout) or nested under a
-    creation-year folder (2.0.0). Both are searched. Matched results are sorted by the
-    declared key rather than by whatever order the filesystem offered.
-    """
     if containers is None:
         containers = task_containers(root)
     found: list[tuple[tuple, Path]] = []
@@ -298,7 +184,6 @@ def _walk_containers(root: Path, containers: list[str] | None = None
         base = root / container
         if not base.is_dir():
             continue
-        # One level of year nesting is expanded; anything deeper is a task's own content.
         pending = sorted((p for p in base.iterdir() if p.is_dir()), key=lambda p: p.name)
         while pending:
             child = pending.pop(0)
@@ -339,39 +224,20 @@ def _walk_containers(root: Path, containers: list[str] | None = None
 
 
 def iter_task_dirs(root: Path, containers: list[str] | None = None) -> list[Path]:
-    """Every task directory whose name the identifier grammar matches, in declared order."""
     return _walk_containers(root, containers)[0]
 
 
 def iter_unmatched_task_dirs(root: Path, containers: list[str] | None = None) -> list[Path]:
-    """Every container directory the identifier grammar does **not** match.
-
-    An additive sibling rather than a changed return type, because ``iter_task_dirs`` is
-    called by ``gen_docs.py``, ``migrate_board.py`` and their tests.
-
-    These are never *matched* into the grammar. Widening ``LEGACY_ID`` to admit the
-    single-underscore form would edit an identifier rule, and the identifier rules are not
-    under revision. The tool reports; a person may rename the directory to the recognized
-    grammar if they want it picked up — the same shape as the ``UNDECLARED`` rule, where
-    migration never normalizes and an accountable owner may resolve.
-    """
     return _walk_containers(root, containers)[1]
 
 
 def declared_lifecycles(root: Path) -> list[str]:
-    """The lifecycle vocabulary this project declares."""
     entries = read_config(root).get("statuses") or []
     ids = [str(e.get("id")) for e in entries if isinstance(e, dict) and e.get("id")]
     return ids or list(DECLARED_LIFECYCLES)
 
 
 def read_status(task_dir: Path, declared: list[str] | None = None) -> dict | None:
-    """Parse ``status.md`` front matter. Returns ``None`` when the file is absent.
-
-    A file that exists but cannot be parsed, or that breaks any rule of the closed schema,
-    returns a dict carrying ``_error``: a malformed input is reported, never dropped and
-    never silently repaired.
-    """
     path = task_dir / "status.md"
     if not path.exists():
         return None
@@ -393,13 +259,6 @@ def read_status(task_dir: Path, declared: list[str] | None = None) -> dict | Non
 
 def validate_status(data: dict, task_dir: Path | None = None,
                     declared: list[str] | None = None) -> list[str]:
-    """Every rule the carrier declares, checked. Returns the problems found, in order.
-
-    The key set is closed, so an unknown key is an error rather than an extension: a field
-    nothing reads is exactly what the carrier exists to keep out. Conditional keys are
-    checked both ways — present when required, and absent when not applicable — because a
-    stray ``outcome`` on a live task is a claim that it finished.
-    """
     declared = declared or list(DECLARED_LIFECYCLES)
     problems: list[str] = []
 
@@ -418,7 +277,6 @@ def validate_status(data: dict, task_dir: Path | None = None,
             "an out-of-vocabulary value must be carried as "
             f"{UNDECLARED} plus lifecycle_verbatim, never normalized")
 
-    # Conditional keys, checked in both directions.
     if lifecycle == UNDECLARED and not data.get("lifecycle_verbatim"):
         problems.append(f"lifecycle is {UNDECLARED} but lifecycle_verbatim is absent, "
                         "so the value the source actually carried is lost")
@@ -488,8 +346,6 @@ def validate_status(data: dict, task_dir: Path | None = None,
                 r"\S(?:.*\S)? @ [0-9a-f]{40}", authority):
             problems.append(
                 "coordination_authority must contain an exact local reference and full Git epoch")
-        # Dialogue and owner-context topology are independent. The exact two-peer
-        # immutable grant is an authority check, not a gateway-shape inference.
 
     if selection_present == SELECTION_KEYS:
         if data.get("reporting") not in {"native-gates", "owner-transfer"}:
@@ -524,8 +380,6 @@ def validate_status(data: dict, task_dir: Path | None = None,
         if text != "unrecorded" and not STAMP.match(text):
             problems.append(f"{key} is not YYYYMMDD-HHMMSS or 'unrecorded': {text!r}")
 
-    # The identifier must be the one its own directory carries. A state file that names a
-    # different task is worse than a missing one: every consumer keys on `id`.
     if task_dir is not None:
         is_phase = PHASE_DIR.fullmatch(task_dir.name) is not None
         parsed = parse_identifier(task_dir.parent.name if is_phase else task_dir.name)
@@ -541,7 +395,6 @@ def validate_status(data: dict, task_dir: Path | None = None,
 
 def validate_new_status(data: dict, task_dir: Path | None = None,
                         declared: list[str] | None = None) -> list[str]:
-    """Strict pre-write gate: new statuses require the seven-field upstream route."""
     problems = validate_status(data, task_dir, declared)
     missing = sorted((COMMON_COORDINATION_KEYS | {"upstream_route"}) - set(data))
     if missing:
@@ -555,11 +408,6 @@ def validate_new_status(data: dict, task_dir: Path | None = None,
 
 
 def verify_baseline_source(data: dict, task_dir: Path) -> list[str]:
-    """Verify that a baseline selection names a real frozen authority object.
-
-    Human approval and the exact permitted operating choice still require inspection of the
-    governing HL and owner trace; an object existing is necessary, never sufficient.
-    """
     authority = data.get("coordination_authority")
     if not isinstance(authority, str) or " @ " not in authority:
         return ["baseline coordination_authority is missing"]
@@ -583,12 +431,6 @@ def verify_baseline_source(data: dict, task_dir: Path) -> list[str]:
 
 def verify_selection_source(data: dict, task_dir: Path, event_ref: str,
                             commit: str) -> list[str]:
-    """Check the immutable object and exact scoped event for a new status write.
-
-    This maintainer-side check does not authenticate the human's actual answer or decide whether
-    a conditional checkpoint has occurred. A receiving role can inspect the same task-local
-    carrier and supplied object by its available means; Python/Git are not workflow prerequisites.
-    """
     event_path = (task_dir / event_ref).resolve()
     if not event_path.is_file():
         return ["selection_ref event is missing"]
@@ -609,8 +451,6 @@ def verify_selection_source(data: dict, task_dir: Path, event_ref: str,
                                 capture_output=True, check=False)
     except OSError:
         return ["selection_ref event inspection is unavailable"]
-    # Git may materialize text with CRLF on Windows while the committed blob is LF.
-    # Normalize only that transport representation; all substantive bytes still match.
     committed_bytes = source.stdout.replace(b"\r\n", b"\n")
     current_bytes = event_path.read_bytes().replace(b"\r\n", b"\n")
     if source.returncode or committed_bytes != current_bytes:
@@ -640,22 +480,11 @@ PHASE_DIR = re.compile(r"^phase-(?P<letter>[a-z0-9]+)$")
 
 
 def iter_phase_dirs(task_dir: Path) -> list[Path]:
-    """Phase directories inside a task, in declared order.
-
-    A phase carries its own ``status.md`` on the same closed schema, written by that phase's
-    owner. Two phases running under two owners are two files, so they never contend.
-    """
     return sorted((p for p in task_dir.iterdir() if p.is_dir() and PHASE_DIR.match(p.name)),
                   key=lambda p: p.name)
 
 
 def read_phase_status(phase_dir: Path, declared: list[str] | None = None) -> dict | None:
-    """A phase's own state. Same schema as a task's, with parent identifier lineage.
-
-    The phase directory is named ``phase-a``, not an identifier, so the ``id`` field must
-    agree with its governing parent task directory. Its local or exact-ancestor selection
-    reference is checked against that phase lineage.
-    """
     path = phase_dir / "status.md"
     if not path.exists():
         return None
@@ -675,66 +504,25 @@ def read_phase_status(phase_dir: Path, declared: list[str] | None = None) -> dic
     return data
 
 
-# ---------------------------------------------------------------------------
-# Journal events
-# ---------------------------------------------------------------------------
-
-#: ``<YYYYMMDD-HHMMSS>__<kind>__<token>.md``.
-#:
-#: **The third component has exactly one job: two writes in one second cannot share a name.**
-#: It is not an identity. It names nobody, requires no profile, and is validated against
-#: nothing — there is nothing to validate it against, because uniqueness is the whole of what
-#: it does.
-#:
-#: It used to be the `actor` handle, and that is what went wrong: one component was given two
-#: unrelated jobs — say who wrote this, and make the name unique — and the two collided in the
-#: field. A distinct writer needs a distinct value; a declared handle needs a profile; so two
-#: external projects created a profile per session, and one of them later deleted those
-#: profiles and left its build gate permanently red. Events are immutable, profiles are not.
-#:
-#: A pre-`2.0.0-dirty.3` name carries a handle here and matches this pattern unchanged. That
-#: is deliberate and it is why the ruling costs no project any work: the two shapes are
-#: **syntactically identical**, so nothing has to tell them apart, and nothing does.
 EVENT_NAME = re.compile(
     r"^(?P<stamp>\d{8}-\d{6})__(?P<kind>[a-z_]+)__(?P<token>[a-z0-9][a-z0-9-]*)\.md$")
 
-#: The pre-2.0.0 event name, ``<stamp>__<kind>.md``. Events written under it are immutable
-#: like every other event: a correction is a new event, never an edit. They are reported as
-#: legacy rather than as defects, exactly as a legacy task identifier is.
 LEGACY_EVENT_NAME = re.compile(r"^(?P<stamp>\d{8}-\d{6})__(?P<kind>[a-z_]+)\.md$")
 
-#: Closed vocabulary. ``consolidation`` is reserved for Phases B and C and is not yet valid.
 EVENT_KINDS = ("created", "dispatch", "handoff", "transition", "ownership_changed",
                "amendment_escalated", "gate_answer", "coordination_selected")
 RESERVED_EVENT_KINDS = ("consolidation",)
 
-#: `actor` stays in the accepted set and is absent from the required one. Every event ever
-#: written carries it, and an event is never edited — so tolerating it is not a courtesy, it
-#: is the only reading that leaves existing corpora valid. It returns as a required field with
-#: TFW-54, which is the task that will finally have a writer worth naming.
 EVENT_KEYS = {
     "time", "kind", "writer", "actor", "on_behalf_of", "via", "from", "to", "refs", "summary",
 }
 EVENT_REQUIRED = ("time", "kind", "on_behalf_of", "refs")
-
-#: `PROVIDER_FAMILIES` was deleted here at `2.0.0-dirty.3`. Its only reader was the gate that
-#: refused a provider name in `actor`, and with `actor` no longer an identity the gate has no
-#: subject. Keeping the set would leave a list nothing reads — and it was never named in any
-#: payload prose, so a project met it only by being refused by it.
 
 ISO_TIME = re.compile(r"^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:[+-]\d{2}:\d{2}|Z)$")
 URI_SCHEME = re.compile(r"^[A-Za-z][A-Za-z0-9+.-]*:")
 
 
 def team_profiles(root: Path) -> dict[str, dict]:
-    """Every participant declared in ``team/``, **parsed**, keyed by handle.
-
-    Reading the filename was not enough. Accountability is a claim about a *person*, so the
-    rule needs the profile's declared ``type``, and only the file body carries it.
-
-    An empty dict means the project declares nobody — which is a reason to refuse a new
-    event, never a reason to skip the check.
-    """
     directory = root / "team"
     if not directory.is_dir():
         return {}
@@ -757,12 +545,10 @@ def team_profiles(root: Path) -> dict[str, dict]:
 
 
 def team_handles(root: Path) -> set[str]:
-    """Declared handles only. Kept for callers that do not need the profile body."""
     return set(team_profiles(root))
 
 
 def validate_profile(handle: str, profile: dict, profiles: dict[str, dict]) -> list[str]:
-    """Validate the durable principal shape used by current optional ``writer`` fields."""
     problems: list[str] = []
     for key in ("handle", "name", "type", "since"):
         if profile.get(key) in (None, ""):
@@ -790,38 +576,15 @@ def validate_profile(handle: str, profile: dict, profiles: dict[str, dict]) -> l
 
 
 def read_stamp() -> str:
-    """One reading of the system clock, at second resolution."""
     return datetime.now().strftime("%Y%m%d-%H%M%S")
 
 
 def event_token(entropy=os.urandom) -> str:
-    """A short opaque token whose only job is that two names in one second differ.
-
-    Four hex characters. Not an identity: it names nobody, needs no profile, is checked
-    against nothing, and carries no meaning a reader could act on. If it ever acquires a
-    second job, it is the wrong mechanism — that is the defect this replaced.
-
-    ``entropy`` is injectable so a test can pin the value.
-    """
     return entropy(2).hex()
 
 
 def event_filename(kind: str, token=event_token, taken=(), clock=read_stamp,
                    attempts: int = 64) -> str:
-    """The filename for one event: ``<stamp>__<kind>__<token>.md``.
-
-    **The clock is read once, and no second is ever invented.** The previous version read the
-    clock again on every collision and waited between readings, because the name's uniqueness
-    came from the second and the only thing that could change a second was time passing. It
-    is worth stating what that machinery was for, since it is now gone: uniqueness comes from
-    the token, so a collision is re-drawn rather than waited out.
-
-    The prohibition it was built to enforce survives intact and is stricter than before:
-    nothing here adds to, rounds or composes a stamp. There is one reading, and it is used as
-    it was read.
-
-    ``attempts`` bounds the draw so exhausted entropy fails visibly instead of looping.
-    """
     taken = set(taken)
     stamp = clock()
     drawn: list[str] = []
@@ -839,14 +602,6 @@ def event_filename(kind: str, token=event_token, taken=(), clock=read_stamp,
 
 def validate_event(data: dict, filename: str,
                    profiles: dict[str, dict] | None = None) -> list[str]:
-    """Every rule an event declares, checked against one file. Problems, in order.
-
-    ``profiles`` is ``team_profiles(root)`` — the parsed participants. **An empty dict is a
-    refusal, not a skip**: if the project declares nobody, a new event has nobody who answers
-    for it, and that is precisely the case the rule exists to catch. Passing ``None`` means
-    the caller is checking something else and has opted out; every production path supplies
-    the dict.
-    """
     problems: list[str] = []
 
     name = EVENT_NAME.match(filename)
@@ -859,8 +614,6 @@ def validate_event(data: dict, filename: str,
     if unknown:
         problems.append("unknown keys: " + ", ".join(unknown))
 
-    # A legacy event predates `on_behalf_of` and the three-part filename. Demanding either
-    # would demand an edit, and an event is never edited.
     required = EVENT_REQUIRED if not legacy else tuple(
         k for k in EVENT_REQUIRED if k != "on_behalf_of")
     for key in required:
@@ -878,21 +631,9 @@ def validate_event(data: dict, filename: str,
 
     if name and kind and name.group("kind") != kind:
         problems.append(f"filename says kind '{name.group('kind')}', body says '{kind}'")
-    # THE FILENAME IS NOT COMPARED TO `actor`, and there is nothing left to compare. The
-    # third component is a uniqueness token, not an identity, so it agrees with no field by
-    # design. The old check existed because the name carried a handle; the name no longer
-    # carries one, so the check has no subject rather than a relaxed one.
-    #
-    # `actor` ITSELF IS NOT VALIDATED AT ALL: not against `team/`, not against a provider
-    # list, not for shape. Every event in every existing corpus carries it, events are
-    # immutable, and profiles are not — so any rule about it would either demand an edit or
-    # go red when a project tidies `team/`. One consumer's gate is red today for exactly
-    # that reason. Tolerated, never required, never rewritten.
 
     on_behalf_of = data.get("on_behalf_of")
 
-    # The legacy escape is scoped to events identifiable as pre-rule by their own filename
-    # shape — a durable property of the event itself, not a convenience for the caller.
     if profiles is not None and not legacy:
         declared = set(profiles)
         if on_behalf_of:
@@ -938,11 +679,6 @@ def validate_event(data: dict, filename: str,
 def validate_new_event(data: dict, filename: str,
                        profiles: dict[str, dict] | None = None,
                        declared: list[str] | None = None) -> list[str]:
-    """Pre-write gate for a current immutable event.
-
-    ``validate_event`` deliberately tolerates historical forms. A writer calls this stricter gate
-    before installing new bytes, so a later compatibility rule never makes old events editable.
-    """
     problems = validate_event(data, filename, profiles)
     declared_set = set(declared or DECLARED_LIFECYCLES)
     name = EVENT_NAME.match(filename)
@@ -1053,13 +789,6 @@ def validate_new_event(data: dict, filename: str,
 
 
 def journal_dirs(task_dir: Path) -> list[Path]:
-    """Every journal a task holds: its own, and one per phase directory.
-
-    A phase carries its own `journal/` exactly as it carries its own `status.md` — the
-    symmetry an external project assumed, correctly, before it was implemented. Two of that
-    project's four malformed events sat in `phase-a/journal/` where nothing looked, so the
-    gate reported clean over them.
-    """
     found = [task_dir / "journal"]
     found += [phase / "journal" for phase in iter_phase_dirs(task_dir)]
     return [d for d in found if d.is_dir()]
@@ -1067,24 +796,12 @@ def journal_dirs(task_dir: Path) -> list[Path]:
 
 def read_journal(task_dir: Path, profiles: dict[str, dict] | None = None
                  ) -> tuple[list[dict], list[str]]:
-    """Every event in a task's journals, and every problem found. Nothing is dropped.
-
-    **Every journal**, task-level and per-phase. Reading only the task's own was how a
-    consumer's malformed phase events stayed invisible to a gate that reported success.
-
-    Events written before the 2.0.0 grammar are counted and reported once, not corrected:
-    the journal is immutable, so a rule introduced later can describe old entries but never
-    rewrite them.
-    """
     journals = journal_dirs(task_dir)
     if not journals:
         return [], []
     events, problems = [], []
     legacy = 0
     for journal in journals:
-        # A phase event is reported by `phase-a/journal/<name>.md`, not by `<name>.md` alone:
-        # two phases can hold the same event name, and a bare name would make one report
-        # answer for a file the reader cannot find.
         prefix = "" if journal.parent == task_dir else f"{journal.parent.name}/journal/"
         for path in sorted(journal.glob("*.md"), key=lambda p: p.name):
             label = prefix + path.name
@@ -1114,7 +831,6 @@ def read_journal(task_dir: Path, profiles: dict[str, dict] | None = None
 
 
 def read_project_config_block(root: Path, block: str) -> dict:
-    """Semantically read one top-level project configuration mapping."""
     path = root / ROOT_MARKER / "project_config.yaml"
     if not path.exists():
         return {}

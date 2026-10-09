@@ -88,23 +88,22 @@ admit a necessary constituent.
 
 7. Implement every authorized local action with production-ready content. For dependent ACs, pass
    the prerequisite first. Stop through `coordinator_route` if required work exceeds authority.
-8. Run TS-required targeted/full checks. Reuse evidence only when inputs/output, oracle/authority and
-   environment assumptions still apply; rerun changed or uncertain dependencies.
+8. Emit the EV from its template. Run TS-required targeted/full checks, raw output in working
+   material, each observation in its row when made. Reuse evidence only when inputs/output,
+   oracle/authority and environment assumptions still apply; rerun changed or uncertain dependencies.
 9. Pass the configured build/compile gate. Fix failures before RF.
 10. After all VALUE/ASSURANCE work and checks pass, commit the first tested implementation descendant;
     its full SHA is Candidate. Confirm all changed paths are approved VALUE+ASSURANCE or authorized
     task-local TRACE. Later TRACE/ASSURANCE/non-value DERIVED does not move Candidate; later VALUE
     does and requires recomputation. Keep Candidate reachable through review/landing.
     Record requested/effective launch settings, delivery and material rework separately; unobserved
-    effective settings stay unknown. Identify exact task-owned temporary resources and their current
-    owner/disposition for the Coordinator's later safe close.
-11. Open the EV template and emit `evidence/EV__{ID}.md` or
-    `evidence/EV__phase-{x}__{phase_slug}.md`; append on return. Use only VERIFIED, DEFERRED, BLOCKED,
-    N/A; each VERIFIED row resolves to evidence and every other row explains the gap. Add exactly one
-    accounting row: TS approval, full Baseline/Candidate, literal membership/actions/classes/reasons,
-    numeric additions/deletions/touched LOC, binary N/A, deviations, trigger disposition,
-    immutable-denominator authority/timing and the unchanged NUL-safe command. Missing/mutable/late
-    contract facts are BLOCKED; N/A means truly inapplicable. Summarize verdict counts.
+    effective settings stay unknown. Identify task-owned resources and owner/disposition for the
+    Coordinator's safe close; remove your working material before returning, or name what you keep
+    and why.
+11. Add Candidate to each EV row and exactly one accounting row: TS approval, full Baseline/Candidate,
+    literal membership/actions/classes/reasons, numeric additions/deletions/touched LOC, binary N/A,
+    deviations, trigger disposition, immutable-denominator authority/timing and the unchanged
+    NUL-safe command. Missing/mutable/late contract facts are BLOCKED; N/A means truly inapplicable.
 
 ## Step 3 — RF and stop
 

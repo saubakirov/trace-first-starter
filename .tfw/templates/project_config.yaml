@@ -8,7 +8,7 @@ project:                              # ← PROJECT: set during init
   branch: main
 
 tfw:
-  version: "3.8.1"                    # ← FRAMEWORK: updated by tfw-update
+  version: "3.9.0"                    # ← FRAMEWORK: updated by tfw-update
   upstream: "https://github.com/saubakirov/trace-first-starter"  # ← FRAMEWORK
   # Actual source: {upstream}@{verified-tag}, or {upstream}@{full-commit-sha} for an
   # explicitly authorized untagged source. `upstream` is the configured URL/symbolic name,
@@ -130,11 +130,5 @@ tfw:
 build:                                # ← PROJECT: set during init
   lint: echo "configure your lint command"
   test: echo "configure your test command"
-  # Optional upstream diagnostics are not receiver build gates. Selected-task workflows own
-  # their explicit pre-write and postcondition checks without a shipped helper.
 # Set lint and test to real commands during init. A placeholder means the executor's
 # build gate in handoff.md verifies nothing.
-#
-# `build.*` is a PROJECT section: an update PRESERVES it and never overwrites it. So if a
-# release retires a payload tool, a command here keeps naming the old path — silently,
-# forever. A major release migration therefore names this block for manual review.
