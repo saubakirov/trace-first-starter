@@ -5,6 +5,16 @@ Format: [Keep a Changelog](https://keepachangelog.com/). Versioning: [Semantic V
 
 ## [Unreleased]
 
+
+### Changed
+
+- The Claude Code Coordinator profile lets a Coordinator create full role chats itself at each ready
+  gate and activate them with a cross-session message carrying only `/tfw-* <task[/phase]>`. On
+  Claude Desktop a fixed task-free `claude -p` turn creates the session with its title, model, effort
+  and permission mode, and `claude --desktop --resume` (or the owner's `/resume` where the CLI
+  refuses `--desktop`) shows it. On a Remote Control machine a detached `tmux` session runs
+  `claude --remote-control` and the owner follows it at claude.ai/code, in the app or in Desktop. A
+  failed step returns that launch to the owner-click route.
 ## [3.9.0] — 2026-10-06
 
 This minor release keeps every TFW project to its result and its selected trace: working material
