@@ -10,7 +10,7 @@ Format: [Keep a Changelog](https://keepachangelog.com/). Versioning: [Semantic V
 - FLC (`TFW_20261011-192605_FLC`): independently reviewed, bounded diagnosis of
   workflow completion, coordination and knowledge continuity. Preserves observed
   violations, contract ambiguities and evidence limits; changes no framework code,
-  role rule or official operating mode. Final owner acceptance remains pending.
+  role rule or official operating mode. Owner accepted the diagnostic result for closure.
 
 ## [3.9.0] — 2026-10-06
 
