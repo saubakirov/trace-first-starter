@@ -1,0 +1,22 @@
+task_id: TFW_20261011-192605_FLC
+title: 'Workflow completion: episodes, effective rules and competing explanations'
+min_iterations: 2
+max_iterations: 3
+iterations:
+- number: 1
+  focus: Establish selected C1/C2/B1/B2 episode and effective-rule boundaries, first
+    supported divergence before review or after APPROVE, and competing explanations
+    for H1-H3. X1 is hypothesis-only, permanently unverified. Distinguish regressions,
+    pre-existing defects, noncompliance, installation drift, legitimate incomplete
+    work and evidence gaps; retain source epochs privately and public-safe mechanisms
+    only.
+  hypotheses:
+  - H1
+  - H2
+  - H3
+  status: pending
+  res_file: research/iter1/RES.md
+  agent: codex
+  sources:
+  - codebase
+  - external
