@@ -1,5 +1,5 @@
 task_id: TFW_20261011-192605_FLC
-title: 'Workflow completion: episodes, effective rules and competing explanations'
+title: Completion, operating modes and useful knowledge continuity
 min_iterations: 2
 max_iterations: 3
 iterations:
@@ -14,8 +14,32 @@ iterations:
   - H1
   - H2
   - H3
-  status: pending
+  status: complete
   res_file: research/iter1/RES.md
+  agent: codex
+  sources:
+  - codebase
+  - external
+- number: 2
+  focus: 'Test H4-H7: compare separate role chats, skill-guided subagents and the
+    proposed task/phase/subagent hybrid on meaningful completion, independent judgment,
+    inspectability, recovery, privacy, owner attention and resources. Reuse selected
+    historical epochs and include observable Claude practice; declare comparability
+    and economics coverage before drawing efficiency conclusions. Audit the old/current
+    knowledge lifecycle and actual human authority using a declared bounded sample
+    of source-to-handover-to-qualification/disposition-to-retrieval/correction/use
+    chains. Separate missing capture, legitimate retain-only/N/A, absence of observable
+    reuse and unsupported usefulness. Use the four selected cases and relevant public
+    framework records; additional completed Claude episodes only within HL section
+    8. X1 remains unavailable. Preserve iteration-1 causal qualifications; reopen
+    H1-H3 only for a named decision-changing gap, not another automatic sweep.'
+  hypotheses:
+  - H4
+  - H5
+  - H6
+  - H7
+  status: pending
+  res_file: research/iter2/RES.md
   agent: codex
   sources:
   - codebase
