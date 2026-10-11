@@ -38,8 +38,38 @@ iterations:
   - H5
   - H6
   - H7
-  status: pending
+  status: complete
   res_file: research/iter2/RES.md
+  agent: codex
+  sources:
+  - codebase
+  - external
+- number: 3
+  focus: Final cross-iteration falsification and integration. Test whether literal
+    workflow/role duties, templates/schema/helper interpretation and finite next acts
+    agree at (1) pre-artifact research gates, (2) unavailable economics binding/capture/return,
+    and (3) post-APPROVE routing, working-copy visibility and finite close. Distinguish
+    unknown binding from a failed attempted capture, missing measurement from missing
+    acceptance proof, and static defects from demonstrated causes of selected historical
+    behavior. Date any confirmed incompatibility with a bounded historical interval.
+    Use exact selected current/public rule surfaces, their relevant history and returned
+    FLC gate records; X1 is hypothesis-only. Permit one bounded history probe for
+    a prior committed RF/REVIEW chain explicitly tied to the same B1 task identity;
+    stop at one chain or a scoped unavailable outcome. Integrate accepted H1-H7 findings
+    without repeating mode/knowledge samples, recruiting unrelated cases, chasing
+    optional metrics, implementing fixes or launching live trials. The decision is
+    whether the final report should name a concrete rule/mental-model defect or instead
+    preserve a coherent route with observational limits.
+  hypotheses:
+  - H1
+  - H2
+  - H3
+  - H4
+  - H5
+  - H6
+  - H7
+  status: pending
+  res_file: research/iter3/RES.md
   agent: codex
   sources:
   - codebase
