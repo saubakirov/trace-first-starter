@@ -74,7 +74,7 @@ iterations:
   - H5
   - H6
   - H7
-  status: pending
+  status: complete
   res_file: research/iter3/RES.md
   agent: codex
   sources:
