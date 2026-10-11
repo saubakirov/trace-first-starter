@@ -291,3 +291,7 @@ Unknown models, tariff conditions, storage and tools are excluded.
 - Diagnostic: unproved successor overlap 6856725700f50eb646ef000e005b8e36f87a697b17755ba476e86e2e9698f0ea
 - Diagnostic: unproved successor overlap 5649e06fd8cb844d13f3531af4b9848e934e5075f876cc9fa2e4e30c754b25fa
 - Diagnostic: unproved successor overlap b7b4cdc640601f44cc86d3da89f50622d1dd53808c3d864aaf07eab54ba7ee94
+
+## Subsequent bounded check and presentation cut
+
+Independent affected-claim check **APPROVE**: `REVIEW__TFW_20261011-192605_FLC.md @ 13f398fa29fb8b5b86b1b31bbaa676e4b0ca3cf8`, received unchanged through local commit `2501c101`. It checked exactly the 38-file selection in this report at `577c2b5b172907a3e37a43890f26ead7f94f723d`; original report bytes remain in that commit. The later Reviewer r2 receipt is now received and validates (SHA-256 `92f9fdd9b69bdd9e636aca6c57a20efb0e92784b0033a024d22a666cd91a0ab9`), so 39 files are retained on disk. Its cumulative partial figures and cutoff are stated in REVIEW §6. They are outside this frozen presentation selection, not added to r1 and not an instruction to recursively recapture or rewrite already checked totals. All displayed totals above keep their declared bounds. Owner final acceptance remains pending; no DONE or actual complete lifetime-cost claim is made.
