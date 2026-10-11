@@ -45,7 +45,7 @@ iterations:
   - codebase
   - external
 - number: 3
-  focus: Final cross-iteration falsification and integration. Test whether literal
+  focus: 'Final cross-iteration falsification and integration. Test whether literal
     workflow/role duties, templates/schema/helper interpretation and finite next acts
     agree at (1) pre-artifact research gates, (2) unavailable economics binding/capture/return,
     and (3) post-APPROVE routing, working-copy visibility and finite close. Distinguish
@@ -59,7 +59,13 @@ iterations:
     without repeating mode/knowledge samples, recruiting unrelated cases, chasing
     optional metrics, implementing fixes or launching live trials. The decision is
     whether the final report should name a concrete rule/mental-model defect or instead
-    preserve a coherent route with observational limits.
+    preserve a coherent route with observational limits. Owner steering during the
+    Extract gate adds P5 within H1/H2: trace historical gate-only intent and changes
+    through FRATS/PCUX/ATC, and audit a bounded declared sample of FLC durable gates
+    and paired returns for actual trigger, recipient, necessary content and stop.
+    Do not equate command-only delivery or a gate label with compliant contents; do
+    not treat durable artifacts as complete chat transcripts. Complete this in the
+    current Challenge/integration, with no automatic extra iteration.'
   hypotheses:
   - H1
   - H2
