@@ -1,0 +1,43 @@
+{
+  "kind": "task_price_basis",
+  "observations": [
+    {
+      "checked_at": "2026-10-09T16:44:28.469063+00:00",
+      "conditions": {
+        "context_band": "long",
+        "modality": "text",
+        "region": "global",
+        "tier": "standard",
+        "valuation": "conditional_API_reference"
+      },
+      "currency": "USD",
+      "effective_from": null,
+      "model": "gpt-6-astra",
+      "notes": [
+        "Conditional Standard API equivalent, not subscription billing or observed request tier/region/context allocation. Short <=272K input per request; long >272K. Cache writes observed zero; duration-specific write price not established. Publication/effective date unknown."
+      ],
+      "provider": "openai",
+      "published_on": null,
+      "quote_id": "4552382e1bfa9608835f3e3a9311c835b50c3ea941b308fcaba0aed9c3836739",
+      "rates": {
+        "cache_write_1h": null,
+        "cache_write_5m": null,
+        "cached": "2",
+        "fresh": "20",
+        "output": "75"
+      },
+      "schema_version": 1,
+      "source_evidence": {
+        "https://developers.openai.com/api/docs/models/gpt-6-astra": "7f2f28cf1a8dfdf2557eb1a51f1540e41396397795fe6c39f1f419c922d896ca",
+        "https://developers.openai.com/api/docs/pricing": "1ef2e6dcbbc82635ac346714fc035b4d5c89a6d114072f2ca1c020b3e015f298"
+      },
+      "source_urls": [
+        "https://developers.openai.com/api/docs/pricing",
+        "https://developers.openai.com/api/docs/models/gpt-6-astra"
+      ],
+      "unit": "per_1M_text_tokens"
+    }
+  ],
+  "schema_version": 1,
+  "valuation_kind": "current_revaluation"
+}

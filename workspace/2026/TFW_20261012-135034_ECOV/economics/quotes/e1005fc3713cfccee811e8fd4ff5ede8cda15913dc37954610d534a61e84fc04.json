@@ -1,0 +1,42 @@
+{
+  "kind": "task_price_basis",
+  "observations": [
+    {
+      "checked_at": "2026-10-10T08:21:37+00:00",
+      "conditions": {
+        "context_band": "input_at_most_272000",
+        "regional_uplift": "excluded",
+        "service_tier": "Standard",
+        "valuation": "conditional_API_equivalent"
+      },
+      "currency": "USD",
+      "effective_from": null,
+      "model": "gpt-6-astra",
+      "notes": [
+        "Official model page fetched as Markdown; HTML model and pricing pages also inspected. Publication/effective dates are not established.",
+        "Standard short-context hypothetical reference only; actual request bands, account billing, regional conditions and subscription allocation are not inferred. Fast/long-context/tool charges excluded.",
+        "Public cache-write price does not distinguish duration; both duration categories share the published rate. Observed phase cache writes are zero."
+      ],
+      "provider": "openai",
+      "published_on": null,
+      "quote_id": "5c970c3ca9058c6eb801398500dae3363c161925d00d065373dc4cad029f2d85",
+      "rates": {
+        "cache_write_1h": "12.5",
+        "cache_write_5m": "12.5",
+        "cached": "1",
+        "fresh": "10",
+        "output": "50"
+      },
+      "schema_version": 1,
+      "source_evidence": {
+        "https://developers.openai.com/api/docs/models/gpt-6-astra.md": "b7c19b3bb89e87a392a0f3f8b732c5e7c9f0bf558cbe3022c491575a947fcef8"
+      },
+      "source_urls": [
+        "https://developers.openai.com/api/docs/models/gpt-6-astra.md"
+      ],
+      "unit": "per_1M_text_tokens"
+    }
+  ],
+  "schema_version": 1,
+  "valuation_kind": "current_revaluation"
+}
