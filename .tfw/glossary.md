@@ -128,7 +128,7 @@ referenced without requiring the sibling to reach DONE. **Authority:** [conventi
 **Meaning:** The TS per-criterion prescription of environment, action, and observable success. **Authority:** `.tfw/templates/TS.md` §5.
 
 ### Evidence Collection
-**Meaning:** The Executor activity after the build gate and before the Pre-RF Gate that records each AC using the evidence vocabulary. **Authority:** [.tfw/workflows/handoff.md](workflows/handoff.md#step-2--implement-and-prove), `Step 2 — Implement and prove`.
+**Meaning:** The Executor activity alongside implementation and the Build/compile check, before the Pre-RF template check that records each AC using the evidence vocabulary. **Authority:** [.tfw/workflows/handoff.md](workflows/handoff.md#step-2--implement-and-prove), `Step 2 — Implement and prove`.
 
 ### Evidence Audit
 **Meaning:** The Reviewer's independent check that EV claims resolve and agree with the delivered result. **Authority:** `.tfw/templates/review/verify.md`, `Evidence Verification`.
@@ -235,10 +235,10 @@ other items or move their Candidate. **Authority:** [conventions.md](conventions
 ### Execution Loop
 **Meaning:** The Executor implements and verifies each prerequisite AC before any annotated dependent AC proceeds. **Authority:** [.tfw/workflows/handoff.md](workflows/handoff.md#step-2--implement-and-prove), `Step 2 — Implement and prove`.
 
-### Pre-TS Gate
-**Meaning:** Planning must inspect the latest dependency RF before specifying a later phase. **Authority:** [.tfw/workflows/plan.md](workflows/plan.md#planning-steps), `Write TS — Executor Freedom Gate`.
+### Pre-TS dependency check
+**Meaning:** Planning must inspect the latest dependency RF before specifying a later phase. **Authority:** [.tfw/workflows/plan.md](workflows/plan.md#planning-steps), `Write TS — preserve Executor freedom; obtain approval`.
 
-### Pre-RF Gate
+### Pre-RF template check
 **Meaning:** Before writing RF, the Executor opens `.tfw/templates/RF.md` and reads every section heading. **Authority:** [.tfw/workflows/handoff.md](workflows/handoff.md#step-3--rf-and-stop), `Step 3 — RF and stop`.
 
 ### Session Naming
@@ -311,13 +311,35 @@ the owning Research or Review workflow.
 
 ## Gate
 
-**Meaning:** A condition that decides pass, stop, routing or authority before work continues. It is
-not a synonym for a step. **Authority:** the owning workflow and
-[conventions.md](conventions.md#design-rules), `Design Rules`.
+**Meaning:** A named condition governing continuation; it does not itself imply a message, owner
+approval or pause. **Authority:** [conventions.md](conventions.md#7-coordination), canonical Gate
+definition in `Coordination`; the owning workflow states its actual action.
+
+### Check / Self-check
+**Meaning:** The current role verifies a condition and continues on success or follows the specified
+repair/blocking route on failure. **Authority:** [Coordination](conventions.md#7-coordination).
+
+### Decision gate / WAIT
+**Meaning:** A missing required decision blocks its named act until valid durable authority resolves
+it. **Authority:** [Coordination](conventions.md#7-coordination).
+
+### Role return
+**Meaning:** Reachable owned result plus its required durable state/event, ending the current role
+act. **Authority:** [Coordination](conventions.md#7-coordination).
+
+### Signal / Command
+**Meaning:** A signal refers to a record; a command invokes a workflow subject to independent
+authority validation. Neither grants authority. **Authority:** the [closed message
+catalogue](conventions.md#closed-message-catalogue).
+
+### Mandatory Saint-Exupéry check
+**Meaning:** Before presenting HL/TS, remove unnecessary control while preserving named value,
+necessary proof and freedom; revise a material failure before presentation. **Authority:**
+[Plan](workflows/plan.md#planning-steps).
 
 ## Multi-phase Handoff
 
-**Meaning:** Each phase's Coordinator launches its authorized roles; dependent planning uses the preceding RF. **Authority:** [plan.md](workflows/plan.md#planning-steps), `Coordination Selection Gate` and `Write TS — Executor Freedom Gate`.
+**Meaning:** Each phase's Coordinator launches its authorized roles; dependent planning uses the preceding RF. **Authority:** [plan.md](workflows/plan.md#planning-steps), `Coordination Selection Gate` and `Write TS — preserve Executor freedom; obtain approval`.
 
 ## Worktree Protocol
 

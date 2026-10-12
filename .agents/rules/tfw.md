@@ -33,6 +33,12 @@ with their own Coordinator, never peers, owner. Record actual producer surface/a
 parent route, activation/dispatch source and immutable authority. Iterative dialogue requires an
 exact immutable two-peer grant independent of task/phase topology. Manual chat creation alone does
 not select `owner-transfer`; a new role's first message is only `/tfw-* <task[/phase]>`.
+Before sending on the selected strict edges, apply `.tfw/conventions.md` → `Closed message
+catalogue`: persist the owned record and required state/event, send only its permitted form, then
+read the referenced record/current authority before the dependent act. Research keeps its existing
+stage dialogue; owner–task Coordinator discussion stays substantive. The catalogue also owns the
+one-time status fallback, delivery/duplicate handling and unavailable route.
+
 Never open or resume another TFW role session, or inspect raw provider-wide state, session logs or
 unrelated task/chat history, to read its chat, reasoning, tool output, terminal or unreturned work.
 Monitor only through addressed TFW messages and exposed event/status/wait mechanisms. After an
@@ -52,11 +58,11 @@ preferred solution.
 
 Under `tfw-gates-only`, role units communicate vertically with their Coordinator via `send_message`:
 - Extract the target UUID from `coordinator_route` (strip `antigravity:thread:local:`).
-- Call `send_message(Recipient="<uuid>", Message="...")` to report every gate transition:
-  - **Researcher:** report completion of each research iteration and RES artifact delivery.
-  - **Executor:** report ONB start, blockers, and RF completion.
-  - **Reviewer:** report REV start and REVIEW verdict (APPROVE / REVISE / REJECT).
-- Cross-session addressed messaging between active Antigravity threads is fully supported; role units must send formal notifications directly upon completing gate work instead of delegating status delivery to the human owner.
+- When the current surface exposes addressed `send_message`, pass that UUID as `Recipient` and
+  the catalogue-selected form as `Message` on its strict edges. Research retains its own required
+  stage/RES reporting. Verdicts and findings stay in REVIEW.
+- Send the required native notifications after their durable records. A missing mechanism follows
+  the catalogue's unavailable route; a template or earlier receipt does not prove live capability.
 
 ## Rules
 

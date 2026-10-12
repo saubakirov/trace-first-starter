@@ -222,33 +222,32 @@ Routes are outputs, not invocations; evaluation writes nothing.
    stay `PROPOSED` and stop. Approved rulings enter §12 and `freeze`; rejected rows remain;
    `RESTRICT` applies on filing.
 
-9. **Write TS — Executor Freedom Gate.** From the TS template specify Goal, Value, outputs, ACs, DoF,
+9. **Write TS — preserve Executor freedom; obtain approval.** From the TS template specify Goal, Value, outputs, ACs, DoF,
    boundaries, evidence and authority. Guidance stays non-binding; prescribe mechanics only for
    genuine architecture, safety, compatibility or owner constraints. Bind VALUE, immutable
    accounting/authority and AC evidence. For multi-phase work the task Coordinator validates
    dependencies and activates one phase Coordinator per ready phase; that unit reads applicable
-   predecessor RFs and writes only its derived Phase HL/TS. Obtain exact TS+denominator approval,
+   predecessor RFs in the **Pre-TS dependency check** before writing its derived Phase HL/TS.
+   A missing or invalid dependency stops that specification until resolved. Obtain exact TS+denominator approval,
    launch `/tfw-handoff` within scope, and stop this Plan invocation. A ready next role or phase
    remains the responsible Coordinator's continuation action, not a routine owner command.
 
-Before presenting HL or TS for approval, apply the **Saint-Exupéry Gate**: every section, phase,
-requirement, constraint and AC protects named value or necessary proof. Remove duplication and
-speculative control; if removal loses purpose, boundary, evidence or necessary freedom, keep it.
+Before presenting HL or TS for approval, complete the Mandatory Saint-Exupéry check. Every section, phase, requirement, constraint and acceptance criterion must protect named value or necessary proof. Remove duplication and speculative control. Do not remove anything needed for purpose, value, correctness, architecture, modularity, inspectability, continuation, authority boundaries, evidence or necessary Executor freedom. If a material failure remains, revise before presenting the artifact for approval. Record a material tradeoff or unresolved authority question in the existing owning section and use its existing decision route; the check creates no extra form or owner approval.
 
 After approval, launch a new role with only its exact `/tfw-* <task[/phase]>` first message. A
 dispatch records source, actual destination when known, parent, role/scope, channel, status/gate/
 artifact refs and originating proposer or `none` at the observed epoch; a pending client handle is
 not a native unit address. Verify activation separately from destination. Reuse the same Executor
-and independent Reviewer. Before each send or continuation, apply `Coordination`'s gate-content
-boundary and `Protect the owner's context`, not only the address check. Under native-gates and
+and independent Reviewer. Before each send or continuation, apply `Coordination`'s closed message
+catalogue and `Protect the owner's context`, not only the address check. Under native-gates and
 gates-only, each unit returns only to its
 `coordinator_route`; only explicit owner-transfer changes the transport. The Coordinator never
 executes another role workflow. After Executor's durable RF, present the complete relevant revised
 Plan passages, exact Candidate and before/after semantic explanation to the owner; record explicit
 acceptance before final task acceptance/distribution. Material later changes return to that gate.
 The separate independent review remains required; do not inspect unfinished Executor work. At a
-phase result, validate authority, dependencies and receipt, then send a bounded durable return to
-the recorded task Coordinator. The task Coordinator starts every next ready authorized phase or
+phase result, validate authority, dependencies and receipt; save the phase-level result and required state/event, then send `PHASE_READY`
+under the catalogue to the recorded task Coordinator; end this phase invocation. The task Coordinator starts every next ready authorized phase or
 records the exact pending actor and condition. Parallel phases keep separate status and routes.
 
 ## REVISE and return

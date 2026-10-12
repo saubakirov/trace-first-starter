@@ -4,7 +4,7 @@
 
 > **Date**: YYYY-MM-DD
 > **Author**: {executor}
-> **Status**: 🟠 ONB — Awaiting answers
+> **Status**: 🟠 ONB — Onboarding recorded
 > **Parent HL**: [HL-{ID}](path-to-HL)
 > **TS**: [TS Phase {X}](path-to-TS)
 > **Producer unit**: {actual native Executor address}
@@ -34,6 +34,9 @@ and intended later disposition; do not create a separate inventory.
 
 The Executor owns this table. The answering authority appends `gate_answer`; no Coordinator or human
 edits the Executor-owned ONB.
+
+If empty, replace the table with `No blocking questions.` Handoff owns the notification/continue
+or decision-wait action; this header alone never requires an answer.
 
 ## 4. Recommendations (suggestions, not blocking)
 1. {suggestion and rationale}

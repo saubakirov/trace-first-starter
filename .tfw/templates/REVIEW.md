@@ -91,24 +91,18 @@ to its exact ruler. Non-material TRACE receives a visible observation or finite 
 and never restarts unchanged product execution. Highest authority sequences only the next act; it does
 not reclassify lower items or move unchanged VALUE.
 
-## 6. Traces Updated and Terminal Signal
+## 6. Traces Updated and Completion Signal
 
-Reviewer records the durable verdict and authorized state/event first. Under `tfw-gates-only`, it
-then preflights exact `coordinator_route` and immutable REVIEW ref and sends exactly one logical
-envelope with no findings prose:
-
-`REVIEW · <reviewer-unit> · <task-or-phase> · <verdict> · <review-artifact@ref>`
-
-The exact tuple is the logical identity. Duplicate receipt creates no second verdict, ruling or
-lifecycle act. Only a provider-confirmed non-applied failure may use one provider-specific bounded
-identical retry; ambiguous delivery is neither claimed nor blindly retried. Never route the signal to
-owner, Executor or peer under `tfw-gates-only`. The phase Coordinator returns only its phase-level
-verdict/result upward after receiving this local Reviewer signal.
+Record the verdict, proposed next act and addressee, proposal count on REVISE and applicable route
+on REJECT here or in §§4–5. Persist REVIEW and authorized state/event before the completion signal.
+Use `REVIEW_READY` at Review Step 6; the [closed message catalogue](../conventions.md#closed-message-catalogue)
+owns payload, routing, delivery, duplicate and unavailable behavior. Record the actual delivery
+outcome or pending transport limitation without treating a send receipt as acceptance.
 
 - [ ] durable REVIEW and applicability limits recorded at immutable ref
 - [ ] authorized lifecycle/status and journal effect recorded
 - [ ] exact Coordinator route and immutable REVIEW ref preflighted
-- [ ] one compact logical envelope sent to `coordinator_route`
+- [ ] completion signal delivery or precise pending limitation recorded for `coordinator_route`
 - [ ] every §5 item retains class, completion route, disposition and Candidate effect
 
 Coordinator appends separately attributed closing facts here under `conventions.md` → `Closing and

@@ -17,7 +17,7 @@ Root instructions are active. Read this workflow, then stage-local inputs in ord
 | 2 | Map | RF claims, TS ACs, changed-file list, referenced predecessors | material claims, risks, boundaries and evidence identities | governing artifacts |
 | 3 | Verify | actual changed files/evidence; `.tfw/glossary.md` → `Project Values (PV)`; independent P0–P4 and relevant P5–P7 | claim-selected proof and citations | files/PV sources |
 | 4 | Judge | master HL at contract baseline, Project North Star, Verify output | ordered value-assurance judgment | frozen contract/stage evidence |
-| 5 | Decide | stage files; `.tfw/conventions.md` headings `Task control files`, `Session identity`, `Artifact file naming`, `Task Statuses`, `The 🔄 REVISE route`, `Safety and Execution Honesty`, `Trace Discipline`, `Role Lock Protocol`; `.tfw/templates/REVIEW.md` | verdict, item routes, terminal signal | stage/shared rule/template |
+| 5 | Decide | stage files; `.tfw/conventions.md` headings `Task control files`, `Session identity`, `Artifact file naming`, `Task Statuses`, `The 🔄 REVISE route`, `Safety and Execution Honesty`, `Trace Discipline`, `Role Lock Protocol`; `.tfw/templates/REVIEW.md` | verdict, item routes, completion signal | stage/shared rule/template |
 
 Open each `.tfw/templates/review/{map,verify,judge}.md` only at its stage. Never reload root or full
 common libraries. Verify-PV and Judge-purpose reads are deliberately separate. Missing/duplicate
@@ -115,7 +115,7 @@ Read all stage files, open the REVIEW template, and emit `REVIEW__{ID}.md` or
 `REVIEW__phase-{x}__{phase_slug}.md`. A formal new round uses `…__rev{N}.md`; bounded
 post-acceptance follow-up appends to live REVIEW.
 
-Use one terminal verdict:
+Use one final verdict for this review round:
 
 - **APPROVE** when no open material VALUE, ASSURANCE or TRACE item changes acceptance or the next
   authorized act; visible observations and finite record-only correction remain item dispositions.
@@ -145,21 +145,18 @@ Use `The 🔄 REVISE route` for recipient, ruling site, governing artifact, life
 4. Before the orderly verdict return, validate and preserve this Reviewer's
    own compact economics JSONL or typed capture-failure receipt. Record its
    resolvable file/revision/hash in REVIEW for the Coordinator to read with
-   the ordinary result; this does not alter the exact compact verdict
-   envelope or postpone judgment for optional unavailable metrics.
+   the ordinary result; optional unavailable metrics do not postpone judgment.
 5. After durable REVIEW and the authorized status/journal effect exist, preflight the exact
-   `coordinator_route` and immutable REVIEW ref, then send exactly one logical envelope:
-   `REVIEW · <reviewer-unit> · <task-or-phase> · <verdict> · <review-artifact@ref>`.
-6. The envelope contains no findings prose and never routes to owner, Executor or peer under
-   `tfw-gates-only`. Its exact tuple is its logical identity; duplicate receipt creates no second
-   verdict, ruling or lifecycle act. Retry identical bytes only when the provider confirms
-   non-application and its own mechanism permits one bounded retry. Ambiguous delivery is not claimed
-   or blindly retried.
-   Under explicit owner-transfer, present the same exact durable verdict/ref through the selected
-   manual route; do not claim an inter-agent send.
+   `coordinator_route` and immutable REVIEW ref, then send `REVIEW_READY` under the
+   [closed message catalogue](../conventions.md#closed-message-catalogue). Keep the verdict,
+   findings, proposal count, proposed next act and applicable route in REVIEW.
+6. Apply the catalogue's delivery, duplicate and unavailable rules. Another required status change
+   uses `STATE_REF`; a completion signal already covering it needs no second signal.
+   Under explicit owner-transfer, present the durable record through the selected manual route;
+   do not claim an inter-agent send.
 
 Transport evidence stays provider-specific: accepted AGSK establishes Antigravity UUID extraction
-and native `send_message`; Codex exposes exact `send_message_to_thread`. The payload fits both without
+and native `send_message`; Codex exposes exact `send_message_to_thread`. The reference-only signal fits both without
 transport changes, but neither evidence nor analogy grants another provider automatic or exactly-once
 behavior. Otherwise report owner-assisted/unavailable.
 
@@ -168,5 +165,5 @@ affected result/evidence. Do not restart unchanged stages. A real new defect use
 
 ## Step 7 — Stop
 
-**STOP** after durable verdict, trace effect and compact signal. Never
+**End this Reviewer invocation** after durable verdict, trace effect and completion signal. Never
 capture knowledge, close DONE, repair implementation, or enter another role.

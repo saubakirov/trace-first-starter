@@ -80,6 +80,12 @@ every status change to the unit's `coordinator_route` under native-gates reporti
 role receives only `/tfw-* <task[/phase]>` as its first message; its files supply context. Its
 actual address may be recorded from the receipt or first normal gate, never invented in advance.
 
+Before sending on the selected strict edges, apply `.tfw/conventions.md` → `Closed message
+catalogue`: persist the owned record and required state/event, send only its permitted form, then
+read the referenced record/current authority before the dependent act. Research keeps its existing
+stage dialogue; owner–task Coordinator discussion stays substantive. The catalogue also owns the
+one-time status fallback, delivery/duplicate handling and unavailable route.
+
 For another TFW role task, use cursor-based, event-driven `wait_threads` only for readback or
 continuation; never call `read_thread`, request `includeOutputs`, or inspect raw global state,
 session logs or unrelated task/chat history. After an unchanged signal, back off; never poll on a
