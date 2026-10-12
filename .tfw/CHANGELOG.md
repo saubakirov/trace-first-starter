@@ -16,7 +16,7 @@ Format: [Keep a Changelog](https://keepachangelog.com/). Versioning: [Semantic V
 
 Gate and Signal Contract (`TFW_20261012-120804_GSC`) keeps substantive inter-role results
 in their owned files and makes the checkpoint action explicit. See
-[Updating to TFW 3.9.1](migrations/3.9.1.md) for the exact source and safe adoption order,
+[Updating to TFW 3.9.1](https://github.com/saubakirov/trace-first-starter/blob/v3.9.1/.tfw/migrations/3.9.1.md) for the exact source and safe adoption order,
 including the route from earlier supported versions.
 
 ### Changed
