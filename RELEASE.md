@@ -90,7 +90,7 @@ checks at the named §6 steps:
 
 ## 8. Git-Blob Publication Boundary
 
-New Git blobs must not exceed 10485760 bytes. `tools/git_blob_size_policy.json` contains
+New Git blobs must not exceed 5242880 bytes. `tools/git_blob_size_policy.json` contains
 exact pre-policy evidence exceptions with rationale and future owner-cleanup disposition,
 plus the two excluded attachment identities. No path pattern, renamed copy or changed
 object inherits an exception. The guard checks staged bytes and complete release ancestry;
