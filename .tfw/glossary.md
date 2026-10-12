@@ -128,7 +128,7 @@ referenced without requiring the sibling to reach DONE. **Authority:** [conventi
 **Meaning:** The TS per-criterion prescription of environment, action, and observable success. **Authority:** `.tfw/templates/TS.md` §5.
 
 ### Evidence Collection
-**Meaning:** The Executor activity alongside implementation and the Build/compile check, before the Pre-RF template check that records each AC using the evidence vocabulary. **Authority:** [.tfw/workflows/handoff.md](workflows/handoff.md#step-2--implement-and-prove), `Step 2 — Implement and prove`.
+**Meaning:** The Executor activity alongside implementation and the Build/compile check, before the Pre-RF template check that records each AC using the evidence vocabulary. **Authority:** [.tfw/workflows/handoff.md](workflows/handoff.md#step-2-implement-and-prove), `Step 2 — Implement and prove`.
 
 ### Evidence Audit
 **Meaning:** The Reviewer's independent check that EV claims resolve and agree with the delivered result. **Authority:** `.tfw/templates/review/verify.md`, `Evidence Verification`.
@@ -233,13 +233,13 @@ other items or move their Candidate. **Authority:** [conventions.md](conventions
 **Meaning:** `[depends: AC-X]` forbids starting a dependent criterion until its prerequisite is verified. **Authority:** `.tfw/templates/TS.md` §5 and `handoff.md` **Implement**.
 
 ### Execution Loop
-**Meaning:** The Executor implements and verifies each prerequisite AC before any annotated dependent AC proceeds. **Authority:** [.tfw/workflows/handoff.md](workflows/handoff.md#step-2--implement-and-prove), `Step 2 — Implement and prove`.
+**Meaning:** The Executor implements and verifies each prerequisite AC before any annotated dependent AC proceeds. **Authority:** [.tfw/workflows/handoff.md](workflows/handoff.md#step-2-implement-and-prove), `Step 2 — Implement and prove`.
 
 ### Pre-TS dependency check
 **Meaning:** Planning must inspect the latest dependency RF before specifying a later phase. **Authority:** [.tfw/workflows/plan.md](workflows/plan.md#planning-steps), `Write TS — preserve Executor freedom; obtain approval`.
 
 ### Pre-RF template check
-**Meaning:** Before writing RF, the Executor opens `.tfw/templates/RF.md` and reads every section heading. **Authority:** [.tfw/workflows/handoff.md](workflows/handoff.md#step-3--rf-and-stop), `Step 3 — RF and stop`.
+**Meaning:** Before writing RF, the Executor opens `.tfw/templates/RF.md` and reads every section heading. **Authority:** [.tfw/workflows/handoff.md](workflows/handoff.md#step-3-rf-and-stop), `Step 3 — RF and stop`.
 
 ### Session Naming
 **Meaning:** A non-authoritative navigation title bound to a resolved task/phase. **Authority:** [conventions.md](conventions.md#session-identity), `Session identity`; workflows own the application checkpoint.
