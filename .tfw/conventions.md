@@ -930,11 +930,22 @@ these acts implies another. A profile, binding, title, role prompt, briefing, st
 session, source artifact, trigger, provisioned task or wait result never activates work. Navigation,
 attribution and forwarding grant no authority.
 
-A **TFW gate** is a named workflow checkpoint whose question, status or correction affects whether
-the current role may continue. A **durable return** is the role-owned artifact plus task-local status
-or event reference that lets its own Coordinator reconstruct the result without transcript or hidden
-runtime state. Workflow autonomy is the unit's ability to complete authorized in-scope actions after
-valid activation; it is independent of dialogue policy.
+A gate is a named condition governing pass, stop, routing or authority before work continues. Its
+owning workflow states the condition, who may resolve it, the required record, and what happens
+when it is met or unmet. A gate does not by itself require a message, owner approval or a pause.
+
+| Action | Condition and consequence |
+|---|---|
+| Check / Self-check | The current role verifies a condition under existing authority. Success continues locally; failure follows the workflow's repair or blocking route. Mandatory checks remain mandatory. |
+| Decision gate | A required decision is absent from current authority. The owning artifact names the blocked action, deciding authority and required decision. |
+| WAIT for a decision | Do not perform the blocked act until its required durable decision validates. An empty ONB or successful check adds no wait or lifecycle state. |
+| Role return / durable return | The role-owned result and required status/event are durable, attributable and reachable by its Coordinator. A chat sentence alone is not a return. |
+| Signal | Fixed notification referring to a record; it conveys neither verdict nor substantive reasoning. READY means availability, not approval or sufficiency. |
+| Command | Exact workflow invocation whose receiver independently validates source, scope and authority; it cannot supply missing authority. |
+| End this role invocation | The current act ends; that unit cannot enter another role. Its Coordinator may continue the authorized chain and reuse the unit for corrections. |
+
+Workflow autonomy is the ability to complete authorized in-scope actions after valid activation;
+it is independent of dialogue policy and never removes a decision gate.
 
 Every activation supplies the exact `/tfw-*` skill, task and phase, and one lineage source. A new
 Coordinator, worker or admitted compact role receives only `/tfw-* <task[/phase]>` as its first
@@ -979,18 +990,38 @@ actual owner decision; it presents exact durable manual returns. Manual role cre
 selects owner-transfer. Autonomous gates-only advances ready authorized roles and corrections
 without another owner message, while reserved decisions still return to the owner.
 
-Under `tfw-gates-only`, before sending, identify the real workflow checkpoint and its permitted
-recipient. Carry only the required question, status, decision or result and necessary artifact
-references; include only facts needed to resolve that checkpoint. Calling advice a gate does not
-authorize it. Required role returns remain mandatory; unsolicited progress, solution hints and
-copied working discussion are not returns.
+#### Closed message catalogue
 
-A Reviewer terminal return is emitted only after the REVIEW and authorized status/journal are
-durable and an immediate preflight confirms the exact route and immutable artifact ref. Its complete
-payload is `REVIEW · <reviewer-unit> · <task-or-phase> · <verdict> · <review-artifact@ref>` with no
-narrative. The tuple is the semantic identity: a duplicate causes no second act. Retry once only
-when the provider can confirm non-application while preserving that identical tuple; an ambiguous
-outcome is reported through provider status/readback and is never blindly retried.
+This is the single semantic owner for messages on Coordinator–Executor, Coordinator–Reviewer and
+task–phase Coordinator edges under `tfw-gates-only`. On these edges send only one catalogue form;
+put questions, findings, verdicts, reasons and next-act proposals in the referenced owned artifact.
+The recipient reads that artifact and current authority before acting. A signal neither grants
+authority nor accepts a result. Do not append prose.
+
+Researcher's existing required stage dialogue is outside this revision: its workflow, route and
+authority restrictions remain. Owner–task Coordinator discussion stays substantive. `iterative`
+still requires its separate exact grant; it is no fallback for an inconvenient catalogue.
+
+`TASK` means the exact already selected task or task/phase identifier. `REF` is one repository-relative file path, `@`, and the full immutable commit SHA identifying its bytes; paths containing spaces are enclosed in double quotes. The file holds the relevant round/item and its related authority/state/evidence references. The recipient must be able to resolve those bytes: an unreturned working tree or an arbitrary branch name does not qualify. A signal can point at an existing valid commit; it does not require an extra commit solely to send a message.
+
+| Exact permitted form | Sender → recipient; condition | Required behavior |
+|---|---|---|
+| `/tfw-plan TASK`, `/tfw-handoff TASK`, `/tfw-review TASK` | Authorized parent/owner → selected role; first activation | Exactly the command, no briefing. The new role reads its own required inputs. Research still starts with its existing exact `/tfw-research TASK` command under its unchanged workflow. |
+| `/tfw-plan TASK REF`, `/tfw-handoff TASK REF`, `/tfw-review TASK REF` | Authorized parent/owner → same selected role; continuation/control input | REF identifies the actual ruling, approved revision, returned result or authority change. Revalidate; a continuation message cannot override a revocation or act as an approval. No separate `CONTINUE`, `FIX` or `APPROVE` chat command. |
+| `ONB_READY REF` | Executor → own Coordinator; ONB has no blocking question | Required ONB/state/event are durable. Notify and continue under approved TS without waiting for an acknowledgement. |
+| `RF_READY REF` | Executor → own Coordinator; RF complete | Preserve Candidate, evidence and limitations in RF; end Executor invocation. Coordinator reads and selects the next authorized act. |
+| `REVIEW_READY REF` | Reviewer → own Coordinator; review round complete | Preserve verdict, findings, proposed routes and trace effects in REVIEW; end Reviewer invocation. Send no verdict or finding count. |
+| `PHASE_READY REF` | Phase Coordinator → task Coordinator; phase-level return ready | REF identifies the existing phase-level return/status record with its result references, disposition and remaining conditions. Never forward the worker message as a phase decision. No new return artifact is introduced. |
+| `GATE_REQUIRED REF` | Child role → own Coordinator; a required decision is missing | Write the real question/blocking condition first in an existing role-owned artifact, then signal and wait. For blocked ONB this replaces ONB_READY; do not send both for the same checkpoint. |
+| `STATE_REF REF` | Child role → own Coordinator; another workflow-required status change, or reply to the permitted status request | Read state from the existing immutable status/event. Do not narrate progress or invent a transition to justify a message. A normal ready/gate signal already covering that change needs no second STATE_REF. |
+| `STATUS_REQUEST TASK` | Immediate Coordinator → its own child; the existing one-time suspected-stall fallback | Return STATE_REF for the latest durable state, or the unavailable form below. This neither authorizes work nor requests an unfinished summary. Native wait/readback remains primary; no periodic poll or second acknowledgement. |
+| `UNAVAILABLE TARGET` | Either end of an already permitted vertical edge; the necessary reference cannot be produced/resolved or the required mechanism is unavailable | TARGET is the exact known path, REF or native mechanism name. One technical failure notification; it supplies no workflow decision or result. If a durable blocker can be recorded, prefer GATE_REQUIRED with its reference. If sending itself is unavailable, preserve pending state and use the native failure/owner route; do not claim delivery. |
+
+This closes communication acts, not every analytical or implementation action a role may take. There is no open-ended “necessary detail” suffix. Transport metadata continues to identify sender, recipient and task; do not copy a roster into each body. Exact authority and attribution stay in current task records.
+
+**Persist → signal → read → act.** Save the owned artifact and every required state/event before signalling; ensure their references agree. The recipient validates the exact artifact, producer/route, current authority and current lineage. Missing, stale, contradictory or inaccessible inputs do not permit dependent work. A signal does not replace this read or compel re-reading unrelated history.
+
+**Repeated delivery.** Sender, signal kind and REF identify one logical notification; a duplicate causes no second review, ruling, transition or dispatch. Current lineage also prevents an older result from reopening work. Reuse existing status/journal disposition, with no separate receipt registry. Retry identical bytes at most once only when the provider confirms non-application and permits that retry; ambiguous delivery remains pending. There is no `ACK` exchange. A technical notification with the same target and unchanged failure receives no repeated response loop.
 
 **Transcript isolation.** Another active unit's transcript, reasoning, tool output, terminal and
 unreturned working tree are not coordination or evidence surfaces. No role reads, tails, resumes,
@@ -1086,8 +1117,8 @@ TFW cycle and strategic discussion apply in every mode. Its fields must together
    **Who starts agents** is a separate choice: owner, system, or system with an owner click, only
    where supported and authorized. Default to owner-started work until selected otherwise. Say what
    can advance automatically and what still waits for the owner. **Communication is on by default:**
-   brief required status, question and result returns at TFW gates, not silence, peer chatter,
-   solution hints or free dialogue. Only explicit owner-transfer makes the owner carry returns;
+   required reference-only signals on the catalogue edges; substantive questions/results stay in
+   files. Research keeps its existing stage dialogue; owner discussion remains substantive. Only explicit owner-transfer makes the owner carry returns;
    manual creation alone does not. Explain any separately granted dialogue and its exact boundary.
 4. Visible task titles and task-only grouping: use it when supported; name unavailable mechanics
    and remaining owner actions. Distinguish known titles from names to set later.
@@ -1147,10 +1178,10 @@ partial receipts:
 1. **P0 documentation:** identify the native address, send, readback, wait and title mechanisms.
 2. **P1 one operation:** demonstrate one bounded addressed operation and exact readback.
 3. **P2 readback:** reconstruct source, destination, role, task/phase and immutable authority.
-4. **P3 checkpoint series:** demonstrate activation, status/gate return, continuation and terminal
+4. **P3 checkpoint series:** demonstrate activation, status/gate return, continuation and role
    return without a relay or prohibited edge.
 5. **P4 end-to-end trial:** one native TFW trial proves all required edges, isolation, role ownership,
-   correction continuity and terminal reconstruction together.
+   correction continuity and final task-state reconstruction together.
 
 Missing a stage, translated documentation, provider switching, separate demonstrations or a partial
 receipt does not admit the provider. Resource limits may bound use but never prove reliability.
@@ -1424,7 +1455,7 @@ Uppercase remains reserved for project-root documents — `README.md`, `KNOWLEDG
 - **Token density:** workflow instructions ≤1400 words. A ceiling is not a target or permission to
   remove meaning; templates own format and workflows reference templates.
 - **Workflow vocabulary:** Phase = task unit; Step = ordered workflow action; Stage = cognitive
-  subprocedure; Gate = pass/stop, routing or authority boundary.
+  subprocedure; Gate follows the canonical definition in [Coordination](#7-coordination).
 - **Inline enforcement**: enforcement-critical values MUST be inline (Pattern A: defaults + config key). Pure refs (Pattern B) = broken
 - **DNA/Library**: Role Lock + Mindset = always inline. Reference data = via ref-inside-step. Step self-contained, ref adds precision
 - **Progressive Disclosure**: load only the current checkpoint's inputs in its workflow's read order.
@@ -1562,23 +1593,23 @@ work; it does not revoke an authorized Coordinator's launch mandate.
 | Completed checkpoint | Next route | Current unit must not |
 |---|---|---|
 | Coordinator: TS approved | `/tfw-handoff` | execute the TS |
-| Executor: RF complete | `/tfw-review` | write REVIEW |
+| Executor: RF complete | `RF_READY` to own Coordinator, which selects the authorized `/tfw-review` act | write REVIEW or dispatch Reviewer |
 | Researcher: RES complete | `/tfw-plan` | write HL or TS |
 
-When a Reviewer reaches a verdict, the correct action is to **name the next act** — a decision with
-no addressee is not a decision:
+When a Reviewer reaches a final verdict for this review round, **record the proposed next act
+and its addressee in REVIEW**, together with the applicable details below:
 1. On ✅ APPROVE — record the independent verdict and authorized KNW transition, then return to the
    Coordinator for `Closing and record recovery`. The Reviewer never runs project qualification or declares DONE;
    it remains available for independent assessment of affected final claims
-2. On 🔄 REVISE — state that the items are **proposals**, say how many, and return the work to the
-   Coordinator: "Start `/tfw-plan` to rule the round." Do not move lifecycle, rule a bound, or
+2. On 🔄 REVISE — record that the items are **proposals**, their count, and `/tfw-plan` as the
+   Coordinator act to rule the round. Do not move lifecycle, rule a bound, or
    dispatch an Executor; the Coordinator applies `The 🔄 REVISE route` in §5
-3. On ❌ REJECT — route by §5's three destinations and say **which**: (a) 📝 HL_DRAFT, (b) 🔬 RES, or
+3. On ❌ REJECT — record which of §5's three destinations applies: (a) 📝 HL_DRAFT, (b) 🔬 RES, or
    (c) 🟡 TS_DRAFT
 4. **Do NOT fix anything yourself** — a reviewer that repairs its own findings has reviewed nothing
 
 After the correct durable verdict/state write, the Reviewer preflights the exact `coordinator_route`
-and immutable REVIEW ref, then sends only the compact terminal envelope defined in §7. A wrong route,
+and immutable REVIEW ref, then sends `REVIEW_READY` using the [catalogue](#closed-message-catalogue). A wrong route,
 stale ref, narrative payload or unresolved send outcome is a hard stop; it is not repaired by sending
 a second semantic decision.
 

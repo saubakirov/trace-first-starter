@@ -70,12 +70,14 @@ producer unit, inspected scope, material or justified-none, uncertainty, recipie
 4. Commit ONB alone. Before every commit apply `Exact-path staging`: inspect full status and cached
    names, stage explicit full paths, and use `git commit --only -- <paths>`. Never use broad staging
    or commit foreign dirt.
-5. A blocker requires an authority-owned `gate_answer`; cite its operational effect. With no blocker,
-   valid activation and approved TS suffice—do not invent second permission. Report the state change
-   to `coordinator_route`.
-6. Set lifecycle `ONB` from `TS_DRAFT`, or from `RF` for rung 1, and append a phase/task-local
-   `handoff` event using one clock reading and a drawn four-hex token. No path outside this task/phase
-   changes.
+5. Set lifecycle `ONB` from `TS_DRAFT`, or from `RF` for rung 1, and append a phase/task-local
+   `handoff` event using one clock reading and a drawn four-hex token. Persist ONB and the required
+   state/event before signalling. No path outside this task/phase changes.
+6. Use the [closed message catalogue](../conventions.md#closed-message-catalogue). A blocking
+   question sends `GATE_REQUIRED` to `coordinator_route`; WAIT for a valid authority-owned
+   `gate_answer` or governing approved revision, then cite its operational effect on continuation.
+   With no blocker send `ONB_READY` and continue under valid activation/approved TS without waiting
+   for acknowledgement or a second permission.
 
 ## Step 2 — Implement and prove
 
@@ -91,7 +93,8 @@ admit a necessary constituent.
 8. Emit the EV from its template. Run TS-required targeted/full checks, raw output in working
    material, each observation in its row when made. Reuse evidence only when inputs/output,
    oracle/authority and environment assumptions still apply; rerun changed or uncertain dependencies.
-9. Pass the configured build/compile gate. Fix failures before RF.
+9. **Build/compile check.** Pass the configured checks. Repair failures inside approved scope;
+   a missing decision follows the blocking route. Do not proceed to RF with an unresolved failure.
 10. After all VALUE/ASSURANCE work and checks pass, commit the first tested implementation descendant;
     its full SHA is Candidate. Confirm all changed paths are approved VALUE+ASSURANCE or authorized
     task-local TRACE. Later TRACE/ASSURANCE/non-value DERIVED does not move Candidate; later VALUE
@@ -107,7 +110,8 @@ admit a necessary constituent.
 
 ## Step 3 — RF and stop
 
-12. Open the RF template and read every heading.
+12. **Pre-RF template check.** Open the RF template and read every heading before writing RF;
+    resolve missing required content before the role return.
 13. Emit `RF__{ID}.md` or `RF__phase-{x}__{phase_slug}.md`; append numbered touched sections on
     return. Fill all mandatory sections, bind Candidate/approval/accounting/authority, point §5 to EV
     with verdict counts, and write explicit empty §7–§9 declarations. Observations include only
@@ -116,8 +120,11 @@ admit a necessary constituent.
     capture-failure receipt at its finite cutoff. Record its exact file/revision/
     SHA-256 in RF and return actual resolvable bytes with the ordinary result.
     A failed capture never proves measured cost.
-15. Set lifecycle `RF` and append a valid `transition` event with one clock reading. Return the exact
-    Candidate, evidence, economics contribution and limitations to `coordinator_route`.
+15. Set lifecycle `RF` and append a valid `transition` event with one clock reading. Preserve the
+    exact Candidate, evidence, economics contribution and limitations in RF. After RF/state/event
+    are durable, send `RF_READY` to `coordinator_route` under the catalogue; the Coordinator reads
+    the records and selects the next authorized act. Explicit owner-transfer uses its selected
+    manual route without claiming a native send.
 
-**STOP.** Tell the user: “RF is complete. Start `/tfw-review` to review the results.” Never write
-REVIEW or continue into another role.
+**End this Executor invocation.** Never write REVIEW, dispatch/brief the Reviewer, or enter another
+role. The same Executor remains available for an authorized correction.

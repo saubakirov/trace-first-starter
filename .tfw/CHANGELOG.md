@@ -12,6 +12,32 @@ Format: [Keep a Changelog](https://keepachangelog.com/). Versioning: [Semantic V
   violations, contract ambiguities and evidence limits; changes no framework code,
   role rule or official operating mode. Owner accepted the diagnostic result for closure.
 
+## [3.9.1] — 2026-10-12
+
+Gate and Signal Contract (`TFW_20261012-120804_GSC`) keeps substantive inter-role results
+in their owned files and makes the checkpoint action explicit. See
+[Updating to TFW 3.9.1](https://github.com/saubakirov/trace-first-starter/blob/v3.9.1/.tfw/migrations/3.9.1.md) for the exact source and safe adoption order,
+including the route from earlier supported versions.
+
+### Changed
+
+- One closed message catalogue owns selected `tfw-gates-only` edges. Commands and completion
+  signals carry exact record references; findings, verdicts, questions and grounds remain in
+  those records. Native wait/readback and a bounded status fallback preserve continuation.
+- ONB without blocking questions notifies the Coordinator and continues without acknowledgement.
+  A real blocker waits for the responsible decision. RF and REVIEW return control to their
+  Coordinator and end the current role act, without declaring the whole task complete.
+- Gate, Check, Decision gate, WAIT and Role return have distinct actions. The Mandatory
+  Saint-Exupéry check still precedes presenting HL/TS; material failure requires revision and
+  necessary value, proof and Executor freedom must survive simplification.
+- Canonical workflows, templates and selected adapter copies agree. Research's required
+  human-facing stage interaction and substantive owner–Coordinator discussion retain their scope.
+
+### Fixed
+
+- Selected glossary links resolve to renamed check headings. The project release contract now
+  states the existing guard's 5 MiB Git-blob limit; executable policy is unchanged.
+
 ## [3.9.0] — 2026-10-06
 
 This minor release keeps every TFW project to its result and its selected trace: working material

@@ -57,6 +57,12 @@ report every status change to `coordinator_route` under native-gates reporting. 
 `tfw-gates-only`, role units communicate
 materially only with their own Coordinator, never peers, owner. Record actual producer
 session/address, parent route, activation/dispatch source and immutable authority in role artifacts.
+Before sending on the selected strict edges, apply `.tfw/conventions.md` → `Closed message
+catalogue`: persist the owned record and required state/event, send only its permitted form, then
+read the referenced record/current authority before the dependent act. Research keeps its existing
+stage dialogue; owner–task Coordinator discussion stays substantive. The catalogue also owns the
+one-time status fallback, delivery/duplicate handling and unavailable route.
+
 Never open or resume another TFW role session, or inspect raw provider-wide state, session logs or
 unrelated task/chat history, to read its chat, reasoning, tool output, terminal or unreturned work.
 Monitor only through addressed TFW messages and exposed event/status/wait mechanisms. After an
