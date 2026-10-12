@@ -7,16 +7,39 @@ Format: [Keep a Changelog](https://keepachangelog.com/). Versioning: [Semantic V
 
 ### Documentation
 
-- ECOV (`TFW_20261012-135034_ECOV`): independently reviewed economics guidance
-  connects achieved results and comparable work to management/product decisions and
-  retrospectives. Clarifies finite role outcomes, a common cycle checkpoint, material
-  coverage and practical approximation; keeps numeric records, collection machinery,
-  independent review and owner acceptance intact.
-
 - FLC (`TFW_20261011-192605_FLC`): independently reviewed, bounded diagnosis of
   workflow completion, coordination and knowledge continuity. Preserves observed
   violations, contract ambiguities and evidence limits; changes no framework code,
   role rule or official operating mode. Owner accepted the diagnostic result for closure.
+
+## [3.9.2] — 2026-10-12
+
+Decision-oriented economics (`TFW_20261012-135034_ECOV`) connects accepted results,
+comparable work and approximate resources to management/product decisions and retrospectives.
+See [Updating to TFW 3.9.2](https://github.com/saubakirov/trace-first-starter/blob/v3.9.2/.tfw/migrations/3.9.2.md)
+for compatible adoption and the route from earlier supported versions.
+
+### Changed
+
+- Full roles distinguish unavailable binding before extraction, actual extraction failure,
+  optional unavailable metrics and missing returns. An attributable nonmeasurement outcome
+  can finish ordinary collection accountability; required measurement and product-proof gates remain.
+- Final role returns and Coordinator integration define a common cycle checkpoint. Interim
+  estimates stay interim; a disclosed short delivery/cleanup tail does not trigger endless
+  recapture. Complete selected bytes do not imply a complete task or complete measured coverage.
+- Reports show expected/received units separately from selected measurements and relate resources
+  to actual output, scope, quality and uncertainty. Routine reports can be concise. Practical
+  approximation tolerance is not a guaranteed error band, a billing claim or a reason to hide gaps.
+
+### Fixed
+
+- Research no longer permits null for unavailable required source fields in numeric manifests;
+  pre-extraction gaps belong in the existing role artifact. Coordinator, Executor, Researcher and
+  Reviewer clauses now agree with the common Full outcomes and their installed command copies.
+
+Numeric v1 records, the collector/reconciliation helper, prior measurements, independent review,
+owner acceptance and the 3.9.1 communication contract are preserved. No measured saving or
+provider-wide accuracy claim is made.
 
 ## [3.9.1] — 2026-10-12
 
