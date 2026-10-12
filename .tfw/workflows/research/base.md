@@ -59,9 +59,9 @@ permission is phase-local even when its selection cites an explicitly scoped anc
 an actual owner-transfer choice replaces direct sends with exact durable manual returns.
 
 For task-bound work, bind this Researcher unit's exact native source and range
-on start/resume under `.tfw/economics/README.md`. Only its own numeric JSONL
-or typed failure receipt is writable as additional TRACE; stage and HL Role
-Locks remain unchanged.
+on start/resume under `.tfw/economics/README.md`. Its Full outcomes permit own numeric JSONL,
+an actual failure receipt or an attributable pre-extraction binding gap in the existing
+stage/RES artifact as TRACE; stage and HL Role Locks remain unchanged.
 
 ## Knowledge at use and return
 
@@ -123,10 +123,11 @@ Present findings and ≤3 questions; mark `Stage complete: YES`; recommend close
 5. **Findings Map** — visualize findings, or state "No findings map."
 6. **Iteration Status block** (mandatory) — see RES template
 7. Conclusion (1 paragraph)
-8. Before the durable RES return, validate this unit's bounded economics
-   contribution or typed capture-failure receipt; include its resolvable
-   file/revision/hash and finite cutoff in the normal return. A missing source
-   field remains null with reason; a failed attempt is not measured coverage.
+8. At this final durable role return apply the common Full outcomes: validate own numeric
+   contribution or actual failure receipt; return resolvable file/revision/hash, cutoff and
+   coverage. Unknown required binding belongs in RES as a pre-extraction gap with common
+   facts/reasons, never an invalid manifest. Null is allowed only for v1-permitted optional
+   fields with reasons. Nonmeasurement cannot satisfy an explicit measurement/product-proof gate.
 9. **STOP.** "Research iteration {N} complete. Continue with `/tfw-plan` to review iterations and decide next step."
 
 ## Trust Protocol

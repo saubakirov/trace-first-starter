@@ -34,9 +34,9 @@ delegation/dispatch; owner-direct work invents no principal. Record provenance i
 only to `coordinator_route`. Never write or self-answer `gate_answer`.
 
 At this task-bound activation/resumption, bind the Executor's exact native
-source, range and declared task/role identity under
-`.tfw/economics/README.md`. Own numeric JSONL or typed capture-failure
-TRACE is permitted without writing another role's artifact.
+source, range and declared task/role identity under `.tfw/economics/README.md`.
+Its Full outcomes permit own numeric JSONL, an actual capture-failure receipt or
+an attributable pre-extraction binding gap in ONB/RF as TRACE; no other role's artifact.
 
 Resolve current `reporting`/`selection_ref` with the existing five-field compatibility rule.
 Only effective owner-transfer changes return transport; manual creation does not. On a
@@ -116,10 +116,11 @@ admit a necessary constituent.
     return. Fill all mandatory sections, bind Candidate/approval/accounting/authority, point §5 to EV
     with verdict counts, and write explicit empty §7–§9 declarations. Observations include only
     consequential unmodified issues and an allowed type.
-14. Validate and preserve this Executor's own compact economics JSONL or typed
-    capture-failure receipt at its finite cutoff. Record its exact file/revision/
-    SHA-256 in RF and return actual resolvable bytes with the ordinary result.
-    A failed capture never proves measured cost.
+14. Apply the common Full outcomes at this final durable role return: validate and preserve
+    own numeric JSONL or an actual failure receipt with file/revision/SHA-256 and resolvable
+    bytes; a required pre-extraction binding gap belongs in RF with the common facts/reasons.
+    State the finite cutoff and coverage. Nonmeasurement is never measured zero and cannot
+    replace an explicit measurement deliverable or required product proof.
 15. Set lifecycle `RF` and append a valid `transition` event with one clock reading. Preserve the
     exact Candidate, evidence, economics contribution and limitations in RF. After RF/state/event
     are durable, send `RF_READY` to `coordinator_route` under the catalogue; the Coordinator reads

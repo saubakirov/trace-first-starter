@@ -52,8 +52,9 @@ owner-direct `/tfw-plan` creates its first status with the complete seven-field 
 
 For task-bound work, bind this Coordinator's exact native source range and
 select `.tfw/economics/README.md` at activation or resumption. The Coordinator may
-write only its own numeric economics TRACE; phase and worker sources belong to
-their producing units. A project-wide taskless action creates no economics task.
+write only its own numeric JSONL, actual failure receipt or attributable pre-extraction
+binding gap in its existing artifact as TRACE under the common Full outcomes; phase/worker
+sources belong to their producers. A project-wide taskless action creates no economics task.
 
 Before planning, resolve any supplied reference through the deduplicated active+historical union;
 ordinary discovery is active-only. Zero/multiple/history-only/invalid carrier yields
@@ -260,9 +261,12 @@ stop; never execute the round.
 Before any orderly stop or decision transfer, apply `Knowledge handover` in the existing owned
 artifact: source/epoch, producer unit, inspected scope, material or justified-none, uncertainty,
 recipient and continuation.
-At a task/phase Coordinator return or selected close, export and validate its
-own bounded economics JSONL or typed failure receipt, return resolvable bytes/
-revision/hash through the normal route, and reconcile actual received worker
-files against task-local dispatch/return lineage. A missing unit is a named
-gap, not zero spend. The approved REVIEW, owner acceptance and
+At a task/phase Coordinator return apply the common Full outcomes: own validated JSONL or
+actual failure receipt with resolvable bytes/revision/hash, or a required pre-extraction
+binding gap in the owned artifact with common facts/reasons. Reconcile received accountability
+separately from selected measurement against actual dispatch/return lineage. Planning/open-cycle
+estimates are interim; final integration/close capture follows required returns and relevant
+checks, before owner delivery. Disclose the short excluded tail; substantive reopening has its
+own bound. Missing coverage is not zero, and explicit measurement/product-proof gates remain.
+The approved REVIEW, owner acceptance and
 `Closing and record recovery` remain the governing close gates.

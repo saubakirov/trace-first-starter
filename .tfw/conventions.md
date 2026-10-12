@@ -707,11 +707,13 @@ Review verdicts:
 For participating new or continued task-bound Full units, apply the common
 `.tfw/economics/README.md` contract at activation/resumption and orderly return.
 Each Researcher, Executor, Reviewer and task/phase Coordinator may write only
-its own task-local numeric JSONL or typed capture-failure receipt as TRACE,
-without crossing its artifact Role Lock. The unit binds exact native source,
-task/phase, role, working-unit address, declared owner, source range and
-timezone; validates its own file; returns actual bytes/revision/hash through
-the normal vertical result route. A correction or resumed bound range is a new
+its own task-local numeric JSONL, typed capture-failure receipt or attributable
+pre-extraction binding-gap disposition in its existing artifact as TRACE under
+that common contract, without crossing its Role Lock. At activation the unit resolves
+native source, task/phase, role, working-unit address, declared owner, range and timezone;
+unavailable required binding uses the common prose disposition. With known binding it
+validates its own file and returns actual bytes/revision/hash through the normal vertical
+result route. A correction or resumed bound range is a new
 revision or disjoint contribution, never an overwrite of another producer.
 An ordinary intermediate chat reply needs no new file. Taskless adapter
 maintenance mints no fictional task. Already completed historical tasks are
@@ -719,8 +721,11 @@ not retrospectively noncompliant. The Coordinator checks expected units from
 actual dispatch/return lineage, reads received bytes, diagnoses missing,
 failure-only, overlapping and conflicting coverage, and counts unique
 underlying rows once. A remote path alone is not receipt. Missing/unreadable
-unit bytes keep reconciliation incomplete; optional unsupported metrics and
-the disclosed finite final-message/cleanup tail do not block acceptance.
+returns keep reconciliation incomplete. A readable binding-gap disposition or
+valid failure receipt completes ordinary collection accountability, not measurement;
+the Coordinator reads Full prose gaps separately from the helper's numeric receipts.
+Optional unsupported metrics and the disclosed short final tail do not block an otherwise
+accepted result. Explicit measurement deliverables and required product proof retain their gates.
 
 The existing authorized **Coordinator** owns closing a selected task or phase. Use this contract
 directly; Plan's selected-return route exposes it and stops. No new task, bootstrap, phase matrix or phase-choice
@@ -757,7 +762,9 @@ RF/evidence and actual capture or landing effects needed for the claim.
    contribution; prepare the task/phase economics.md basis and link its purpose/value to status/HL
    and accepted change to RF/REVIEW. Use one primary product area and 3–5 product keywords at
    close. Report distinct token, compatible time and dated API-reference money meanings, missing
-   coverage and a finite cutoff. Do not add a parent report to phase leaves or fabricate an
+   coverage beside the estimate. Apply the common semantic cycle endpoint: final role returns,
+   then Coordinator integration/close capture after relevant results/checks and before final
+   delivery. Label unfinished-cycle estimates interim. Do not add a parent report to phase leaves or fabricate an
    unavailable metric. Validate complete status/event carriers through `Task control files`.
    Only then write DONE with its actual outcome and append the real transition.
 6. After DONE, save and present the durable final economics.md and concise owner-facing
@@ -766,7 +773,8 @@ RF/evidence and actual capture or landing effects needed for the claim.
    work and source returns are preserved. Shared checkouts, persistent gateways, sole
    results and unrelated resources stay. Record completed, retained or pending cleanup
    truthfully; DONE never asserts deletion succeeded. Archive alone does not remove disk
-   state. Final report delivery and cleanup do not trigger recursive recapture. Closing
+   state. Final delivery, short later exchanges and safe cleanup are one disclosed excluded
+   tail; substantive reopening is separately bounded. No recursive recapture follows. Closing
    authorizes no external effect.
 
 Record the material grounds once in REVIEW §6: actual capture effects, final accepted output identity,
@@ -1559,8 +1567,9 @@ Reverting a result does not revert its trace. Preserve a rejected task's folder 
 Each workflow declares a **🔒 ROLE LOCK** at the top. The agent MUST refuse any action outside the locked role.
 
 These locks and separate-role artifacts apply to formal Full workflow work. Each listed
-role may additionally write only its own task-local numeric economics contribution or
-typed capture-failure TRACE under the common contract; this does not permit another
+role may additionally write only its own task-local numeric economics contribution,
+typed capture-failure receipt or pre-extraction binding-gap disposition in its existing
+artifact as TRACE under the common contract; this does not permit another
 role's artifact, product code or lifecycle decision. The optional Daily
 worker has only its bounded human-request authority outside that corpus; it must not cross an
 active formal task's lock or use a local record to waive Full duties.
