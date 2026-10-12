@@ -7,6 +7,12 @@ Format: [Keep a Changelog](https://keepachangelog.com/). Versioning: [Semantic V
 
 ### Documentation
 
+- ECOV (`TFW_20261012-135034_ECOV`): independently reviewed economics guidance
+  connects achieved results and comparable work to management/product decisions and
+  retrospectives. Clarifies finite role outcomes, a common cycle checkpoint, material
+  coverage and practical approximation; keeps numeric records, collection machinery,
+  independent review and owner acceptance intact.
+
 - FLC (`TFW_20261011-192605_FLC`): independently reviewed, bounded diagnosis of
   workflow completion, coordination and knowledge continuity. Preserves observed
   violations, contract ambiguities and evidence limits; changes no framework code,
