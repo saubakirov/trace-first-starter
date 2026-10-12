@@ -36,8 +36,9 @@ this independent Reviewer and prior valid activation. In a selected shared check
 the fixed reachable Candidate while Executor mutation is stopped.
 
 At task-bound activation/resumption bind this independent Reviewer's exact
-native source/range under `.tfw/economics/README.md`. Its own numeric JSONL
-or typed failure receipt is additional TRACE, never permission to alter RF,
+native source/range under `.tfw/economics/README.md`. Its Full outcomes permit own numeric JSONL,
+an actual failure receipt or an attributable pre-extraction binding gap in REVIEW as TRACE,
+never permission to alter RF,
 implementation, verdict authority or another unit's contribution.
 
 Treat RF as claims. Verify reasons, files, tests, AC/DoD/DoF, numbers and evidence; trust only
@@ -142,10 +143,11 @@ Use `The 🔄 REVISE route` for recipient, ruling site, governing artifact, life
 2. Every §5 item retains its class, completion route and Candidate effect. Pending material or owed
    record work keeps close open; it does not automatically change the product verdict.
 3. REVISE returns to the Coordinator for one ruling; Reviewer creates no bound or dispatch.
-4. Before the orderly verdict return, validate and preserve this Reviewer's
-   own compact economics JSONL or typed capture-failure receipt. Record its
-   resolvable file/revision/hash in REVIEW for the Coordinator to read with
-   the ordinary result; optional unavailable metrics do not postpone judgment.
+4. At this final durable role return apply the common Full outcomes: validate/preserve own
+   numeric JSONL or an actual failure receipt with resolvable file/revision/hash in REVIEW;
+   record required pre-extraction binding gaps there with the common facts/reasons. State
+   cutoff/coverage. Optional unavailable metrics do not postpone judgment; an explicit
+   measurement deliverable or required product proof retains its actual acceptance gate.
 5. After durable REVIEW and the authorized status/journal effect exist, preflight the exact
    `coordinator_route` and immutable REVIEW ref, then send `REVIEW_READY` under the
    [closed message catalogue](../conventions.md#closed-message-catalogue). Keep the verdict,

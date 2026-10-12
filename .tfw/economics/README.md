@@ -177,13 +177,38 @@ Never sum cumulative revisions. Capture the final snapshot and concise summary o
 retain prior revisions and precise failures. Interruptions are gaps; later reconstruction cannot
 prove a snapshot existed at its original return. Final-answer/cleanup tail is disclosed once.
 
-At the normal return gate, a role captures its own source, validates its file,
-records its SHA-256 and returns resolvable bytes/revision with RF, REVIEW, RES
-or Coordinator return. On resume it produces a new file for the new bound range
-or a verified successor; it does not overwrite the earlier return. An
-unsuccessful collection returns a failure receipt with the attempted source
-and precise cause. A missing interpreter permits a checked equivalent
-extractor or an explicit failure receipt. The Python helper is the approved
+### Full cycle and finite outcomes
+
+Each Full role captures its own bound source at its final durable RF, REVIEW, RES or
+Coordinator return. The Coordinator's final integration/close capture follows required role
+results and relevant checks, immediately before final owner delivery under the existing close
+order. This is a common semantic checkpoint, not a simultaneous timestamp or another acceptance
+gate. Planning and unfinished-cycle estimates are labeled interim and compared only as such.
+An ordinary intermediate chat reply needs no capture. Daily retains its separate cadence above.
+
+| Observed condition | Owned return and continuation |
+|---|---|
+| Required binding known; extraction succeeds | Validate numeric v1 JSONL; return resolvable bytes, revision, SHA-256, range and cutoff in the existing role artifact. |
+| Required binding unavailable before extraction | In that artifact record the actual producer and observed epoch, known binding facts, exact missing facts/reasons, extraction not attempted, and any last-good returned bytes/hash (or none). Emit no invalid JSONL, invented source/range, failed attempt or measured zero. |
+| Known binding; attempted extraction fails | Return the unchanged v1 failure receipt with the actual attempted source/range and precise cause; preserve any last-good measurement. |
+| Optional metric unavailable | Use null with its specific reason only where numeric v1 permits it. Valid measured categories remain usable. |
+| Expected return missing or unreadable | Reconciliation remains incomplete; name the missing producer/return and route the unresolved obligation. |
+
+A readable, attributable pre-extraction binding-gap disposition or valid failure receipt
+discharges ordinary collection accountability, while its coverage remains unmeasured. Full
+binding gaps are human-readable role evidence: the unchanged helper does not parse them or count
+them as numeric receipts. The authorized Coordinator/analyst reads them alongside numeric output.
+An explicit measurement deliverable or required product proof still follows its actual blocking
+route; accountable nonmeasurement cannot satisfy it. Available own-source capture remains owed.
+
+`complete: true` attests the entire selected source bound, with grounds; it does not assert a
+finished turn, role or task. For example, fully reading a source prefix while a role is active
+can establish selected-bound completeness; future activity remains outside it. On resume return
+a new disjoint contribution or verified covering successor, preserving earlier bytes. Never
+promote an actually incomplete successor to make a total look current.
+
+A missing interpreter permits a checked equivalent extractor or an actual failure receipt.
+The Python helper is the approved
 narrow D82 economics exception; ordinary status, coordination and Knowledge
 Gate operation require no Python, pip install or this helper.
 
@@ -209,12 +234,15 @@ selects only its own leaf. No parent report is added to child facts. Failed
 and retried measured work remains. Old tasks need no
 retroactive role file; an old partial export is labeled partial.
 
-The finite cutoff can omit the producer's final message and later cleanup.
-That tail is disclosed once and does not recursively trigger recapture.
-Missing/unreadable expected unit bytes keep reconciliation incomplete. A
-readable failure receipt satisfies the return obligation but proves no
-measurement. Optional unavailable metrics and a small finite tail do not
-block an otherwise accepted task.
+Show expected/received units separately from each selected source/revision/range and its
+excluded or missing coverage, next to the estimate. Receipt of every file does not establish a
+current whole-cycle total. Last-good measurement and a later nonmeasured outcome coexist.
+
+The finite cutoff excludes final delivery, short subsequent exchanges and safe cleanup.
+Disclose this tail once; it does not recursively trigger recapture. Substantive reopened work
+is a separately bounded continuation, never hidden in that tail. Optional unavailable metrics
+and a small finite tail do not block an otherwise accepted result; material missing evidence
+retains its existing gate.
 
 Nonmeasured failed attempts never arbitrate or supersede measured ranges. Retain their hashes,
 attempted bounds, precise code/detail and chronological latest outcome alongside usable prior
@@ -224,6 +252,16 @@ reason when the failed invocation was not timed; it does not assert zero handlin
 Collector operation, whole invocation/integration wall time and native duration are distinct.
 
 ## Commands, reports and prices
+
+Use cycle economics to answer a management, product or retrospective question about actual
+results and comparable work. The owner's practical 5–7% tolerance guides decisions, not billing
+or a guaranteed accuracy interval. Preserve exact observed facts; round only presentation.
+If error magnitude is unknown, say so. A material missing role, stale selected revision,
+incompatible metric or duplicate cannot be excused by this tolerance. A small difference that
+could be explained by uncertainty does not justify a confident ranking. Further collection
+needs a concrete decision it could change; routine reporting can be a concise estimate with
+coverage. The [analysis workflow](../workflows/economics.md) and [report model](../templates/economics.md)
+guide interpretation; the standalone helper produces its fixed numeric report, not that template.
 
 Run the helper with an available Python 3 standard-library interpreter:
 

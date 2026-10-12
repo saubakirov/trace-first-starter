@@ -29,10 +29,8 @@ analysis replies in chat. Read no other unit's native sessions or unreturned wor
 
 ## 1. Resolve the question and evidence
 
-Read the request and applicable receiving rules/preferences. Select only the necessary current
-task/phase status, HL and returned RF/REVIEW or the explicitly selected Daily record and product
-result. State source epochs, intended value, actual achieved/accepted state and their uncertainty.
-Accepted, prepared, checked and released are distinct. Do not infer success from resource totals.
+Read receiving rules/preferences and selected work records. State source epochs, intended value,
+actual result and uncertainty; prepared, checked, accepted and released are distinct.
 
 Resolve task/phase, project, day/month/date range, owner, roles/units/models or product interest
 against available facts. Give exact root/work membership and inclusion/exclusion reasons. A question
@@ -47,15 +45,16 @@ equivalent. Record exact returned file hashes and selected/excluded membership. 
 reports, cumulative snapshots, chart/CSV views or overlapping filtered subtotals to their facts.
 Unknown usage remains unknown; an empty accepted sum is not evidence of measured zero.
 
-For Daily, use its actual selected record through `--record`; retain compatible local forms.
-Unknown required binding is a nonmeasured record-local outcome, visible with actual producer,
-known facts, unavailable reasons, extraction-attempt state and last-good bytes. Bound extraction
-failures retain v1 failure receipts. Show the latest exact cause and unmeasured attempted interval
-even when a previous good snapshot exists; a failed attempt cannot erase useful measurement.
+Read Full binding gaps in owned artifacts; the helper does not parse them. Daily uses `--record`.
+Keep attributable nonmeasurement, actual v1 failures and last-good measurement distinct.
+Missing/unreadable returns remain unresolved; an explicit measurement/product-proof gate still blocks.
 
 The reporter consumes received authorized bytes, not an inaccessible producer pathname. Missing
-units and excluded measurements remain gaps. Explain complete selected bytes separately from
-complete work; preserve finite cutoff/tail and incompatible duration kinds. Dated local Standard
+units and excluded measurements remain gaps. Show expected/received units separately from selected
+source/revision/range beside the estimate. Apply the common final-return/integration checkpoint;
+planning/open-cycle estimates are interim. Complete selected bytes do not prove complete work.
+Disclose the short final-delivery/exchange/cleanup tail once; substantive reopening is a separate
+bound. Preserve incompatible duration kinds. Dated local Standard
 API equivalents use the pinned rate epoch, never subscription invoices or invented current prices.
 
 ## 2. Resolve public quotes and preserve the used basis
@@ -111,6 +110,14 @@ contributions and comparable tasks. Retain denominators, units, selections and c
 Use temporary checked calculations when the existing helper has no direct selector; explain an
 unavailable dimension rather than guessing. Task cohorts require separately cited event membership.
 
+For people/team/tool/process comparisons, cite actual work membership, not account names.
+Compare scope/complexity, accepted quality, rework, model/effort, coverage, valuation basis and
+sourced human effort. Unknowns stay unavailable; AI usage is not human time or competence.
+Apply the common 5–7% tolerance without invented error bands or hidden gaps. Small differences
+support no confident preference; stronger comparable evidence can justify a bounded pilot,
+not universal superiority. Name the practice and next check, or justified no-change outcome.
+The template illustrates people, teams, Claude Code, Codex and Antigravity comparisons.
+
 Separate an observed fact from interpretation, causal hypothesis and next check. A statistical
 outlier requires a named comparable baseline and method. A single-task unusual fact can be an
 observation. Observed concentration or expense does not prove waste, efficiency, quality or savings.
@@ -120,17 +127,11 @@ agent/model duration remain separate; never add internal collector time again to
 
 ## 4. Deliver an executive opening with inspectable detail
 
-Default is chat in the user's language. Use `.tfw/templates/economics.md` as the report mental model:
-
-1. **Executive summary:** question, achieved result, supported economic conclusion and decision.
-2. **Product map:** sourced domains/areas/features/scenarios and what their association means.
-3. **Numerical detail:** unique membership, token/money/time distributions and useful comparisons.
-4. **Material observations:** evidence, interpretation, causal uncertainty and next verification.
-5. **TFW improvements:** actionable proposals grounded in observed context, iteration, scope,
-   handoff, collection or checking costs. Name the affected mechanism and next authority/check.
-   Explicitly say when no grounded improvement is warranted.
-6. **Coverage and sources:** epochs/hashes, selected/excluded contributors, unpriced/undated/unknown
-   values, latest failures, limits and finite cutoff/tail.
+Use concise chat in the user's language and `.tfw/templates/economics.md`: question → result/
+comparison basis → approximate resources with material coverage → supported action/limit.
+Round display, preserving exact facts/epochs. Expand detail only for the decision, not six
+mandatory long sections. Further precision needs a decision it could change. The helper's
+fixed numeric report is an input; it does not render this template.
 
 Prose and Markdown tables carry the entire answer. Supplementary visuals are useful only when
 requested or they clarify a supported comparison and the selected host actually renders them.
