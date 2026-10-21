@@ -14,5 +14,24 @@ iterations:
       Do not implement or claim human trial results. The two-iteration ceiling is the
       initial scope; justify any proposed extension by a material unresolved decision.
     hypotheses: [H1, H2, H3, H4]
-    status: pending
+    status: complete
     res_file: research/iter1/RES.md
+  - number: 2
+    focus: >-
+      Apply iteration 1's bounded conclusions to one consequential TFW task change
+      from approved purpose to accepted reusable result, and the inspected documentation
+      generation/build path. Produce source-bound illustrative whole/change overviews
+      within research records and compare adequate C1* with C2* only for a named
+      relation difficulty. Resolve strategic divergence versus authorized adaptation
+      or uncertainty against current Purpose Check; prepare independent answer grounds,
+      equivalent content/help conditions and the later human-use comparison. Specify
+      semantic refresh versus nonmaterial-edit handling, existing production/refresh
+      owners, concrete integration candidates, preparation/use/update measurements and
+      simplify/omit conditions. Read the Coordinator's iteration-2 focused-mode and
+      resource ruling in HL section 10. Reuse prior evidence; seek new sources only for
+      a named material decision. Return an executable bounded implementation/pilot
+      proposal, its limits and remaining owner choices. No implementation, actual human
+      trial, deployment or final software-pilot selection is authorized by this entry.
+    hypotheses: [H1, H2, H3, H4]
+    status: pending
+    res_file: research/iter2/RES.md
