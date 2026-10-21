@@ -1,0 +1,18 @@
+task_id: TFW_20261021-150657_UTW
+title: Human understanding, strategic contribution and a proportionate implementation foundation
+min_iterations: 2
+max_iterations: 2
+iterations:
+  - number: 1
+    focus: >-
+      Establish decision-relevant primary evidence for the meaning and assessment of
+      human understanding, inspectable contribution to goals and strategy/North Star,
+      and source-bound representations produced through work. Challenge H1-H4 and
+      existing TFW Purpose Check sufficiency. Return the smallest defensible core/domain
+      boundary, concrete implementation forms and cost drivers, competing simpler
+      baselines, unresolved assumptions, and questions for the bounded second iteration.
+      Do not implement or claim human trial results. The two-iteration ceiling is the
+      initial scope; justify any proposed extension by a material unresolved decision.
+    hypotheses: [H1, H2, H3, H4]
+    status: pending
+    res_file: research/iter1/RES.md
