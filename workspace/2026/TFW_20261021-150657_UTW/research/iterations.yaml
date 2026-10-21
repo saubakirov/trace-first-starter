@@ -33,5 +33,5 @@ iterations:
       proposal, its limits and remaining owner choices. No implementation, actual human
       trial, deployment or final software-pilot selection is authorized by this entry.
     hypotheses: [H1, H2, H3, H4]
-    status: pending
+    status: complete
     res_file: research/iter2/RES.md
