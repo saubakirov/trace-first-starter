@@ -56,5 +56,5 @@ iterations:
       No product installation, implementation, human trial, third-party source copying,
       publication or fourth iteration is authorized.
     hypotheses: [H5, H6, H7]
-    status: pending
+    status: complete
     res_file: research/iter3/RES.md
