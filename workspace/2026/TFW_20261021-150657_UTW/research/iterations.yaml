@@ -1,7 +1,7 @@
 task_id: TFW_20261021-150657_UTW
 title: Human understanding, strategic contribution and a proportionate implementation foundation
 min_iterations: 2
-max_iterations: 2
+max_iterations: 3
 iterations:
   - number: 1
     focus: >-
@@ -35,3 +35,26 @@ iterations:
     hypotheses: [H1, H2, H3, H4]
     status: complete
     res_file: research/iter2/RES.md
+  - number: 3
+    focus: >-
+      Owner-requested comparison of Karpathy's original LLM Wiki pattern, actual current
+      TFW knowledge/trace capabilities, current Structurizr, and their combinations.
+      Test H5-H7 using primary sources and exact local implementation/ownership evidence.
+      Distinguish an original pattern from community products, source text from qualified
+      knowledge, semantic architecture models from extracted/runtime facts, and configured
+      instructions from observed behavior. Compare current TFW, TFW plus Structurizr,
+      TFW plus selected wiki practices, and the combination, with conditions under which
+      each is preferable or unnecessary. Use small research-only source-ingestion and
+      dependency-change specimens to expose storage, authority, updates, contradictions,
+      stale meaning, strategic contribution and human navigation limits. Verify present
+      Structurizr delivery/licensing and end-of-life changes. Return a concise options
+      report with sourced capability differences, compatibility conditions, actual gaps,
+      initial/recurring cost drivers and the smallest justified next experiment. Read
+      the owner-requested iteration-3 ruling in HL section 10: focused, medium, same
+      Researcher, Coordinator-resolved gates, no additional owner questions. Existing TS
+      remains unapproved at TS_DRAFT during this supplemental pipeline investigation.
+      No product installation, implementation, human trial, third-party source copying,
+      publication or fourth iteration is authorized.
+    hypotheses: [H5, H6, H7]
+    status: pending
+    res_file: research/iter3/RES.md
