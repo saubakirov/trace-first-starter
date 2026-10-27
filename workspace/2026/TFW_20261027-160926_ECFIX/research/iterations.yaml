@@ -1,0 +1,12 @@
+task_id: TFW_20261027-160926_ECFIX
+title: Native economics source discovery, attribution and minimal provider guidance
+min_iterations: 2
+max_iterations: 3
+iterations:
+  - number: 1
+    focus: "Establish actual installed Claude/Antigravity source and instruction discovery; reproduce ordinary, child/helper and copied-history accounting failures against current code. Verify native claims before recommending the smallest sufficient correction."
+    hypotheses: [H1, H2, H3]
+    status: pending
+    res_file: research/iter1/RES.md
+    agent: codex
+    sources: [native_experiments, official_documentation, codebase]
