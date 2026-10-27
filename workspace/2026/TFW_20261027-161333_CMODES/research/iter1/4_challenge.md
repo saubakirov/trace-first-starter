@@ -105,4 +105,4 @@ Iteration 2 should attack the selected C2/C1 representation with the final plann
 Material handover: this exact Researcher returns source-based analysis and its own bounded Git observations at the stated epochs. Current knowledge is applied only in its surviving scope; no history is rewritten and no new authority or provider guarantee is asserted. Recommend closing Challenge and authoring iteration-1 RES with C2 preferred, C1 fallback and all unproved native checks retained. Question: accept the stage for synthesis under those limits?
 
 Stage complete: YES
-→ Coordinator decision: pending; stop before synthesis.
+→ Coordinator decision: `/root` accepted Challenge `2a3e2ee41d8692db6ba3e514c5973bbe435b441b` for synthesis on 2026-10-27. RES must retain C2 as a recommendation and C1 as viable, H1 partial and H2 coherent-but-unimplemented, missing native checks and the ECFIX boundary. Own numeric accountability is required before the final immutable return; iteration 2 remains Coordinator-prepared.
