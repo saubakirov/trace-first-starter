@@ -1,0 +1,22 @@
+[
+  {
+    "native_record_relative_path": "20261027-192856_ready-check/economics/roles/293c62cec3c5d9bc4da6e9fd24d2a8af519e451f49fdf772d17c74bffff13ead.jsonl",
+    "preserved_bytes": "bytes/293c62cec3c5d9bc4da6e9fd24d2a8af519e451f49fdf772d17c74bffff13ead.jsonl",
+    "sha256": "293c62cec3c5d9bc4da6e9fd24d2a8af519e451f49fdf772d17c74bffff13ead"
+  },
+  {
+    "native_record_relative_path": "20261027-192856_ready-check/economics/roles/4bd0d2d8acacfef5caa8e0489ec3ba3b0b55e896afaa3f4f6e2cb0b5053340f8.jsonl",
+    "preserved_bytes": "bytes/4bd0d2d8acacfef5caa8e0489ec3ba3b0b55e896afaa3f4f6e2cb0b5053340f8.jsonl",
+    "sha256": "4bd0d2d8acacfef5caa8e0489ec3ba3b0b55e896afaa3f4f6e2cb0b5053340f8"
+  },
+  {
+    "native_record_relative_path": "20261027-192856_ready-check/economics/roles/ecced12e7690984a5521c029f0729e82b0c8564a64062777717be07be6b58190.jsonl",
+    "preserved_bytes": "bytes/ecced12e7690984a5521c029f0729e82b0c8564a64062777717be07be6b58190.jsonl",
+    "sha256": "ecced12e7690984a5521c029f0729e82b0c8564a64062777717be07be6b58190"
+  },
+  {
+    "native_record_relative_path": "PROBE_20261027-194230_CLAUDE/economics/roles/bd6e9252991c17e4e8433e1800d05e419952fb502d7c605fa13a9df052cbe131.jsonl",
+    "preserved_bytes": "bytes/bd6e9252991c17e4e8433e1800d05e419952fb502d7c605fa13a9df052cbe131.jsonl",
+    "sha256": "bd6e9252991c17e4e8433e1800d05e419952fb502d7c605fa13a9df052cbe131"
+  }
+]
