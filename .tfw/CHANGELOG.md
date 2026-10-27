@@ -5,6 +5,18 @@ Format: [Keep a Changelog](https://keepachangelog.com/). Versioning: [Semantic V
 
 ## [Unreleased]
 
+### Fixed
+
+- ECFIX (`TFW_20261027-160926_ECFIX`): Daily and Full economics route to the selected
+  Claude Code or Antigravity guide, with explicit native setup and finite capture bounds.
+  Claude instructions locate child/background JSONL under `subagents/` and bind
+  continued/forked sessions without counting inherited responses as new consumption.
+  Missing-source dispositions require checked locators and causes; closing reconciliation
+  includes authorized helpers outside formal roles. Antigravity instructions identify
+  the exact CLI session and SQLite source for observed agy 1.2.16/1.4.8.
+  `collect --prior` checks prior groups and event membership in one read-only snapshot,
+  emits only disjoint new facts, and preserves earlier receipt bytes and digest meanings.
+
 ### Documentation
 
 - FLC (`TFW_20261011-192605_FLC`): independently reviewed, bounded diagnosis of

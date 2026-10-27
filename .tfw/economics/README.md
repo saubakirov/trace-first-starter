@@ -21,11 +21,11 @@ project-wide history scan or a shared account's most recent session. A reused
 source splits at proven bound ranges. The source ID names the stream the unit
 writes itself — its own file, rollout or database — not an ID it merely inherits
 from a parent or a shared session, so each child agent is its own source whose
-totals add to its parent's. If a parent total is known to include a child,
+totals add separately when observed parent counters exclude it. If a parent total is known to include a child,
 declare each exact namespace:source-id with --includes-source; the receiver
 excludes that inclusive parent while a named child is present.
 
-The three recipes below are selected independently. All produce the same version 1
+The provider recipes are selected independently. All produce the same version 1
 JSONL, pass the same validation and return through the existing role artifact
 route. The producer keeps its source locally; the receiver needs the returned
 JSONL bytes and SHA-256, not access to the producer's computer.
@@ -63,44 +63,12 @@ and their observed tokens still count. Source event timestamps support local
 consumption dates with an explicit offset. A bounded source prefix is hashed and
 the finite cutoff is recorded.
 
-### Claude Code JSONL recipe
+### Claude Code and Antigravity
 
-Source: the exact session's Claude Code JSONL (including the Code tab/CLI source
-actually observed). A subagent in the same chat writes its own
-`<sessionId>/subagents/agent-<agentId>.jsonl` and repeats the parent sessionId on
-every line, so its source ID is `<sessionId>/<agentId>`; the session's own stays
-`<sessionId>`. Only lines of the selected unit count, and a file whose lines belong
-to another unit is refused with that unit's ID. In one observed Claude Code
-2.1.281–2.1.284 session, the session file held no subagent lines and shared no
-message ID with its subagents. Each assistant message ID is one response. Repeated blocks
-for that ID retain the largest reported output after input/cache consistency
-checks. Fresh input, cache read, five-minute and one-hour cache writes, and
-output are preserved separately. Thinking is a diagnostic subset only when the
-source exposes it; it is never added to output twice. Native agent execution
-duration is unavailable in this JSONL; a five-minute-gap heuristic is neither
-native duration nor a substitute. A Code-tab/CLI observation does not establish
-the ordinary Claude Desktop chat surface. If a repeated response changes
-input categories, refuse the measured result.
-
-### Antigravity IDE numeric database recipe
-
-Source: one exact Antigravity IDE 2.17.0 conversation database. The collector
-opens SQLite read-only and takes a consistent in-memory backup; it reads only
-gen_metadata.idx and gen_metadata.data. The bounded, observed protobuf mapping
-is outer field 1 / nested field 4: fresh input field 2, cached input field 5,
-candidate output field 3, thinking field 9, content field 10 and generation
-duration field 11 (seconds/nanoseconds). Model is outer field 19. An absent
-counter beside reported ones is zero, because proto3 omits zero-valued scalars.
-A usage message that reports no counter at all, as observed for failed API calls,
-measures nothing: the row is not counted and the source diagnostics give how many
-were left out. A missing usage message is refused. A subagent writes its own
-conversation database under its own UUID. The observed
-invariant candidate = thinking + content is checked per row. Candidate already
-includes thinking. Generation duration is model time, not full agent time.
-gen_metadata alone does not prove a calendar date; rows remain undated until a
-separately verified index/time join exists. A changed table, model encoding or
-numeric relation yields an unsupported-source result, not a guessed report.
-The private mapping is version-specific, not a provider guarantee.
+Read only the active surface's procedure: [Claude Code](claude-code.md) or
+[Antigravity CLI / IDE / Desktop](antigravity.md). These own runtime-root discovery,
+exact source binding, supported formats and collection limits. The common contract
+below owns identity, receipt semantics and failure/accountability for every provider.
 
 ## JSONL format and field map
 
@@ -168,6 +136,27 @@ unknown historical ownership needs an explicit independent selection, never auto
 The report displays record-local gaps even with no numeric rows. A last_good digest requires
 resolvable received bytes; a path alone proves no receipt.
 
+Minimal valid binding-gap shape, illustrated by a hypothetical unavailable native ID
+(the example is not evidence of any actual failure):
+
+```json
+{"kind":"binding_unavailable","producer":"declared-worker","observed_at":"2026-10-27T12:00:00+05:00","code":"native_id_unavailable","detail":"Current invocation exposes no verifiable source ID after the recorded bounded checks.","known":{"role":"executor"},"unavailable":{"source_id":"No own ID in the inspected runtime metadata"},"attempted_extraction":false,"last_good":null}
+```
+
+Use the exact keys `known` and `unavailable`; record actual values and checked grounds.
+For Daily this object belongs in `binding_outcomes`; `report --record` validates the
+selected record. Full records the same facts in its owned role artifact. A valid
+shape does not prove the cause. Known identity/path plus denied access or an
+unsupported decoder is an attempted extraction failure when actually attempted,
+not missing binding. Use `failure` with that known bound and actual cause; never
+invent an end solely to fit the format. Record a genuinely unknown bound as a gap.
+If access denial prevents discovering the end, retain the known source ID/path
+under `known` and explain the missing `range_end` under `unavailable`; do not label
+a known source ID unavailable. If the full bound is known, return an actual
+failure receipt instead of a `binding_unavailable` object.
+Optional unknown duration does not erase measured tokens; a native process's SUCCESS
+with a denied action does not establish successful collection.
+
 Before each Daily return, bind the current physical source end, validate a cumulative capture
 and return its actual numbers plus hash/range/revision/cutoff. `--complete` asserts completeness
 of the selected bound only, with grounds; open turns and later consumption remain unknown tails.
@@ -212,8 +201,14 @@ The Python helper is the approved
 narrow D82 economics exception; ordinary status, coordination and Knowledge
 Gate operation require no Python, pip install or this helper.
 
-The Coordinator compares the expected units from actual task-local
-dispatch/return lineage with the actual returned bytes. receive checks task,
+The Coordinator compares expected invocations from actual task-local dispatch,
+helper/child launch and return lineage with returned bytes and checked gaps. Include
+failed/retried and auxiliary work even when it has no formal role label; accounting
+membership grants no role authority. Check the returned bounded search, surface,
+identity and cause against the selected provider procedure; return unsupported
+claims for correction without reading another unit's private transcript. Distinguish
+unperformed search, missing binding, denied access and unsupported extraction.
+receive checks task,
 project and unit against the selected task root and copies the exact file into
 economics/roles/ under its content hash. Repeating the same bytes is a no-op;
 a remote pathname without readable bytes is not receipt. All revisions stay
@@ -268,7 +263,9 @@ Run the helper with an available Python 3 standard-library interpreter:
 - collect: exact --provider, --source, --source-id, --source-version,
   --project, --task, --owner, --role, --unit, --timezone, --start,
   --revision and --out. Use --phase and --end for a bounded phase/range.
-  Use --predecessor for a successor, --includes-source for a known inclusive
+  For supported AG continuation, repeat --prior for the selected immutable facts;
+  the provider guide explains its checked cumulative view and refusal boundaries.
+  Use --predecessor for a raw-prefix successor, --includes-source for a known inclusive
   parent and --complete only when coverage is actually complete.
 - failure: the same identity/source/range flags plus --code and --detail.
 - validate followed by one or more returned files.

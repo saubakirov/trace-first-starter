@@ -27,7 +27,7 @@ from pathlib import Path
 from urllib.parse import urlsplit
 
 VERSION = 1
-COLLECTOR = "tfw-economics/1.3"
+COLLECTOR = "tfw-economics/1.4"
 TOKEN_KEYS = ("fresh", "cached", "cache_write", "cache_write_5m",
               "cache_write_1h", "input", "output", "reasoning", "total")
 KINDS = {"manifest", "usage", "failure"}
@@ -496,6 +496,7 @@ def claude_rows(raw, args):
     seen_sessions = set()
     others = set()
     earlier_ids = set()
+    failed = 0
     for line_no, line in enumerate(raw.splitlines()):
         if args.end is not None and line_no >= args.end:
             continue
@@ -518,6 +519,12 @@ def claude_rows(raw, args):
         identity(mid, "Claude message id")
         if line_no < args.start:
             earlier_ids.add(mid)
+            continue
+        if event.get("isApiErrorMessage") or message.get("model") == "<synthetic>":
+            require(all(u.get(k, 0) == 0 for k in ("input_tokens", "output_tokens",
+                        "cache_read_input_tokens", "cache_creation_input_tokens")),
+                    "Claude API error message carries usage; cannot classify as unmeasured")
+            failed += 1
             continue
         require(mid not in earlier_ids,
                 "Claude message spans selected range boundary; include its earlier blocks")
@@ -554,6 +561,8 @@ def claude_rows(raw, args):
     owners = ", ".join(session + "/" + a if a else session for a in sorted(others, key=str))
     require(best or not others,
             "Claude usage in this file belongs to " + owners + ", not " + args.source_id)
+    require(best or not failed,
+            "Claude selected source contains only API error messages; no measured inference")
     result = []
     for mid, rec in best.items():
         result.append(usage("message:" + mid, rec["index"], rec["at"],
@@ -563,6 +572,8 @@ def claude_rows(raw, args):
              "gap-based active time excluded from native duration"]
     if others:
         notes.append("usage of other Claude units left to their own sources: " + owners)
+    if failed:
+        notes.append(str(failed) + " API error messages have no measured inference; not counted")
     return sorted(result, key=lambda r: r["source_index"]), notes
 
 
@@ -611,32 +622,38 @@ def one(fields, key, typ, default=None):
     return value
 
 
-def antigravity_rows(source, args):
-    require(args.source_version == "Antigravity-IDE-2.17.0",
-            "unsupported Antigravity private source version")
+def antigravity_snapshot(source, args):
+    supported = {"antigravity.ide": ("Antigravity-IDE-2.17.0",),
+                 "antigravity.cli": ("Antigravity-CLI-1.2.16", "Antigravity-CLI-1.4.8")}
+    require(args.source_version in supported.get(args.provider, ()),
+            "unsupported Antigravity surface/version; retain the actual identity")
     require(Path(source).stem == args.source_id, "conversation DB filename differs from exact ID")
     uri = Path(source).resolve().as_uri() + "?mode=ro"
     con = sqlite3.connect(uri, uri=True)
     copy = sqlite3.connect(":memory:")
     try:
         con.backup(copy)
+        columns = [r[1] for r in copy.execute("pragma table_info(gen_metadata)")]
+        require(columns == ["idx", "data", "size"], "unsupported gen_metadata layout")
+        return copy.execute("select idx, data from gen_metadata order by idx").fetchall()
     finally:
         con.close()
-    columns = [r[1] for r in copy.execute("pragma table_info(gen_metadata)")]
-    require(columns == ["idx", "data", "size"], "unsupported gen_metadata layout")
+        copy.close()
+
+
+def antigravity_rows(source, args, snapshot=None):
+    if snapshot is None:
+        snapshot = antigravity_snapshot(source, args)
     raw_digest = hashlib.sha256()
     total_size = 0
     result = []
     unmeasured = 0
     last = None
-    query = "select idx, data from gen_metadata where idx >= ?"
-    params = [args.start]
-    if args.end is not None:
-        query += " and idx < ?"
-        params.append(args.end)
-    query += " order by idx"
-    for idx, blob in copy.execute(query, params):
+    for idx, blob in snapshot:
         require(type(idx) is int and isinstance(blob, bytes), "invalid numeric DB row")
+        require(idx >= 0, "negative numeric DB index")
+        if idx < args.start or (args.end is not None and idx >= args.end):
+            continue
         raw_digest.update(idx.to_bytes(8, "big", signed=False))
         raw_digest.update(len(blob).to_bytes(8, "big"))
         raw_digest.update(blob)
@@ -672,7 +689,6 @@ def antigravity_rows(source, args):
                     duration_kind="model_generation" if timing is not None else None,
                     extensions={"antigravity.content_tokens": content})
         result.append(row)
-    copy.close()
     require(result, "selected Antigravity range has no numeric rows")
     notes = ["Antigravity DB copied through SQLite read-only backup",
              "daily date omitted: no proved gen_metadata to timestamp join",
@@ -680,6 +696,38 @@ def antigravity_rows(source, args):
     if unmeasured:
         notes.append(str(unmeasured) + " generation rows report no usage counter; not counted")
     return result, raw_digest.hexdigest(), total_size, last + 1, notes
+
+
+def checked_ag_prior(args, snapshot):
+    """Prove a dense, positive measured union without changing raw receipt hashes."""
+    require(not args.predecessor, "--prior and --predecessor are different collection modes")
+    require(args.complete, "checked continuation needs complete selected bounds")
+    prior = [validate_file(path) for path in args.prior]
+    prior.sort(key=lambda f: f["manifest"]["range_start"])
+    edge, all_rows = args.start, []
+    for item in prior:
+        p = item["manifest"]
+        for key, current in (("source_namespace", args.provider), ("source_id", args.source_id),
+                             ("source_version", args.source_version), ("project", args.project),
+                             ("task", args.task), ("phase", args.phase), ("owner", args.owner),
+                             ("role", args.role), ("unit", args.unit), ("timezone", args.timezone)):
+            require(p[key] == current, "prior binding differs: " + key)
+        require(p["complete"] and p["range_start"] == edge,
+                "prior ranges must be complete, contiguous and nonoverlapping from --start")
+        require(p["extensions"].get("tfw.includes_sources", []) == args.includes_source,
+                "prior source inclusion changed")
+        require(args.revision > p["revision"], "revision must exceed every selected prior revision")
+        bound = argparse.Namespace(**vars(args))
+        bound.start, bound.end = p["range_start"], p["range_end"]
+        rows, _, _, _, _ = antigravity_rows(args.source, bound, snapshot)
+        require([r["source_index"] for r in rows] == list(range(bound.start, bound.end))
+                and all(r["tokens"]["total"] > 0 for r in rows),
+                "prior membership/dispositions unproved: need contiguous positive measured events; retain last-good")
+        require(compact_rows(rows) == item["rows"],
+                "prior exported groups/membership/dispositions changed; retain last-good " + item["sha256"])
+        all_rows.extend(rows)
+        edge = bound.end
+    return prior, edge, all_rows
 
 
 def compact_rows(rows):
@@ -758,18 +806,44 @@ def collect(args):
     require(source.is_file(), "exact source file missing")
     prefix_hash = None
     predecessor = validate_file(args.predecessor) if args.predecessor else None
+    prior_paths = getattr(args, "prior", [])
+    require(not prior_paths or args.provider in ("antigravity.ide", "antigravity.cli"),
+            "checked --prior continuation supports only the named Antigravity DB surfaces")
     if predecessor:
         p = predecessor["manifest"]
         require(p["source_namespace"] == args.provider and p["source_id"] == args.source_id
                 and p["unit"] == args.unit, "predecessor source/unit mismatch")
-    if args.provider == "antigravity.ide":
-        rows, source_hash, source_size, read_end, diagnostics = antigravity_rows(source, args)
+    current_rows, selected_prior = [], []
+    if args.provider in ("antigravity.ide", "antigravity.cli"):
+        snapshot = antigravity_snapshot(source, args)
+        if prior_paths:
+            selected_prior, edge, current_rows = checked_ag_prior(args, snapshot)
+            actual_end = max((idx for idx, _ in snapshot), default=-1) + 1
+            end = actual_end if args.end is None else args.end
+            require(edge <= end <= actual_end, "current bound precedes prior coverage or exceeds snapshot")
+            if edge == end:
+                print(json.dumps(dict(file=None, cutoff=dt.datetime.now(dt.timezone.utc).isoformat(),
+                                      selected=[f["sha256"] for f in selected_prior],
+                                      current=compact_rows(current_rows)), sort_keys=True))
+                return
+            args = argparse.Namespace(**vars(args))
+            args.start, args.end = edge, end
+        rows, source_hash, source_size, read_end, diagnostics = antigravity_rows(source, args, snapshot)
         end = read_end if args.end is None else args.end
+        require(0 <= args.start < end <= max(idx for idx, _ in snapshot) + 1,
+                "selected DB range exceeds snapshot")
+        if prior_paths:
+            require([r["source_index"] for r in rows] == list(range(args.start, end))
+                    and all(r["tokens"]["total"] > 0 for r in rows),
+                    "new membership/dispositions unproved: need contiguous positive measured events; retain last-good")
+            current_rows.extend(rows)
+            diagnostics.append("prior compact groups and dense positive membership checked in this snapshot; "
+                               "raw prior files unchanged; new facts disjoint")
         if predecessor and args.start <= predecessor["manifest"]["range_start"]:
             prior_end = predecessor["manifest"]["range_end"]
             prior_args = argparse.Namespace(**vars(args))
             prior_args.start, prior_args.end = predecessor["manifest"]["range_start"], prior_end
-            _, prefix_hash, _, _, _ = antigravity_rows(source, prior_args)
+            _, prefix_hash, _, _, _ = antigravity_rows(source, prior_args, snapshot)
     else:
         raw, lines = source_lines(source)
         end = len(lines) if args.end is None else args.end
@@ -794,10 +868,16 @@ def collect(args):
                 "source bytes changed in predecessor range")
     m = manifest(args, source_hash, source_size, end, time.monotonic() - started,
                  diagnostics, prefix_hash)
+    validate_manifest(m)
+    for row in rows:
+        validate_row(row, m)
     digest = write_jsonl(args.out, [m] + rows)
     validate_file(args.out)
-    print(json.dumps({"file": str(args.out), "sha256": digest, "rows": len(rows),
-                      "cutoff": m["cutoff"]}, sort_keys=True))
+    result = dict(file=str(args.out), sha256=digest, rows=len(rows), cutoff=m["cutoff"])
+    if prior_paths:
+        result.update(selected=[f["sha256"] for f in selected_prior] + [digest],
+                      current=compact_rows(current_rows))
+    print(json.dumps(result, sort_keys=True))
 
 
 def failure_receipt(args):
@@ -1703,10 +1783,12 @@ def parser():
                         help="exact namespace:source-id already included by parent counters")
     c = sub.add_parser("collect", parents=[common], help="collect one exact bound native source")
     c.add_argument("--provider", required=True,
-                   choices=("codex.rollout", "claude.code-jsonl", "antigravity.ide"))
+                   choices=("codex.rollout", "claude.code-jsonl", "antigravity.ide", "antigravity.cli"))
+    c.add_argument("--prior", action="append", default=[],
+                   help="selected immutable AG facts; check current groups/membership and capture disjoint continuation")
     f = sub.add_parser("failure", parents=[common], help="write typed unsuccessful capture receipt")
     f.add_argument("--provider", required=True,
-                   choices=("codex.rollout", "claude.code-jsonl", "antigravity.ide"))
+                   choices=("codex.rollout", "claude.code-jsonl", "antigravity.ide", "antigravity.cli"))
     f.add_argument("--code", required=True)
     f.add_argument("--detail", required=True)
     v = sub.add_parser("validate", help="validate portable contribution files")
