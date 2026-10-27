@@ -66,7 +66,7 @@ The immutable dispatch continues focused mode and the same Researcher, with ordi
 
 Observed model/effort remains `gpt-6-astra/high`; native follow-up supplies no mutator. The dispatch compares a fresh `gpt-6.1-sol/high` unit for chronology alone but selects existing-role continuation to retain approved context for the cross-contract investigation. Future launch selection remains the Coordinator's supported-control judgment under the owner's quality/Lean policy. Requested settings, effective observations and proof of quality remain distinct.
 
-Briefing awaits the Coordinator's stage acceptance before Gather.
+Briefing accepted by `/root` after `d6409914b0023ea96e00790ef711d949367d4013`. Continue focused Gather; preserve C2/W2/S1 and N1–N6. Separate historical publication from current text, mechanism from chronology, independence from phase freshness and per-round reset cost. Accepted ECFIX interface and the bounded checkout-recovery observation require no repeated probes.
 
 ## Receiving-Context Observation and Recovery
 
