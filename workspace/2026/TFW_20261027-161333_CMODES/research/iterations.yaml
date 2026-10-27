@@ -1,7 +1,7 @@
 task_id: TFW_20261027-161333_CMODES
 title: "Three coordination modes with one Coordinator across phases"
 min_iterations: 2
-max_iterations: 2
+max_iterations: 3
 iterations:
   - number: 1
     focus: >-
@@ -45,3 +45,34 @@ iterations:
     res_file: research/iter2/RES.md
     agent: codex
     sources: [codebase, external]
+  - number: 3
+    focus: >-
+      Owner-requested new research, not repetition of iterations 1/2. H4: verify
+      Ralph Loop's creator, origin and dated development through primary author,
+      original repository and official adaptation sources; distinguish the
+      original mechanism from later plugins, fresh-context loops and current
+      variants as of the actual retrieval date. Compare their completion signals,
+      durable state, feedback, interruption, limits and failure modes with TFW.
+      Recommend a minimal useful application here or a reasoned rejection of
+      unnecessary machinery; preserve TFW as the sole lifecycle/authority owner.
+      H5: establish current REVISE rungs versus round/iteration limits and compare
+      fresh Reviewer per phase, fresh every round and conditional reuse. The
+      owner's working concern is freshness for a new phase while retaining valid
+      same-role correction continuity; do not treat earlier cross-phase reuse as
+      settled. Distinguish active concurrency from an unproved retained-ID cap.
+      Preserve Coordinator choice of available model and effort, quality floor,
+      progress-based escalation and Lean cost without a mandatory weakest model
+      or automatic maximum. H3: map ordinary invocation/task/phase/role/parent/
+      actual unit/source/return lineage to accepted ECFIX Candidate
+      1d1c7846bd9e97e3dcfa2d918300f424d5fc6976, already in base
+      7e6daa42f3e544bab7b67f00cef80f25689793de; consume its RF/REVIEW and common
+      economics contract, not private logs or duplicated native experiments.
+      Return evidence-backed decisions for TS and the state/activity/sequence/C4
+      views, plus affected current consumer families and any actual frozen-change
+      proposal. Do not write HL/TS, product code or control files; install no
+      Ralph plugin/hook, launch no extra roles and add no permanent tests.
+    hypotheses: [H3, H4, H5]
+    status: pending
+    res_file: research/iter3/RES.md
+    agent: codex
+    sources: [external, codebase]
