@@ -150,6 +150,10 @@ shape does not prove the cause. Known identity/path plus denied access or an
 unsupported decoder is an attempted extraction failure when actually attempted,
 not missing binding. Use `failure` with that known bound and actual cause; never
 invent an end solely to fit the format. Record a genuinely unknown bound as a gap.
+If access denial prevents discovering the end, retain the known source ID/path
+under `known` and explain the missing `range_end` under `unavailable`; do not label
+a known source ID unavailable. If the full bound is known, return an actual
+failure receipt instead of a `binding_unavailable` object.
 Optional unknown duration does not erase measured tokens; a native process's SUCCESS
 with a denied action does not establish successful collection.
 

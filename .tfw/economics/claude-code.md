@@ -61,7 +61,7 @@ categories refuse collection. Native agent duration is unavailable, not a
 five-minute-gap estimate. API error/synthetic messages are not measured inference;
 an error-only bound refuses with that cause, preserving any valid prior capture.
 
-One observed 2.1.281â€“2.1.284 parent shared no message ID with its separate children;
+One observed 2.1.281–2.1.284 parent shared no message ID with its separate children;
 verify actual inclusion for the selected invocation, then use the common
 `--includes-source` rule where necessary. This is not universal provider behavior.
 

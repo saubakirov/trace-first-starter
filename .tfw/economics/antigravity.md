@@ -11,7 +11,10 @@ and failures. First identify the running surface; the following are distinct.
 
 A model can know its own UUID from runtime context before an outer result exists.
 Verify that binding rather than reading another conversation or selecting the latest
-DB. Child launch/return metadata supplies its own UUID and separate DB; bind that
+DB. Set `--unit` to the whitespace-free native address: `antigravity:cli:` followed
+by that actual UUID, not a model/version display name. The observed CLI has no
+`--version` flag; retain its actual startup version instead of guessing from this guide.
+Child launch/return metadata supplies its own UUID and separate DB; bind that
 child's actual unit. In one CLI 1.2.16 experiment the parent excluded its child;
 declare actual inclusion and count each attributable invocation once. No formal
 role label is needed to preserve an authorized helper's economics.
@@ -37,8 +40,10 @@ task/unit identity, timezone, increasing revision and a new `--out` path.
 `--start`/`--end` select `[idx,idx)` bounds; omitting end binds the snapshot's last
 index plus one. `--complete` needs grounds for the selected range.
 
-At the first capture, return validated JSONL and its hash/bounds/cutoff. On each
-continuation, repeat `--prior` for every selected immutable disjoint fact, keep
+Return validated JSONL and its hash/bounds/cutoff. At each capture, use common
+`receive` to preserve those bytes in the selected record's
+`economics/roles/`; Daily requires its explicit `--record` for receive and summary.
+At each continuation, repeat `--prior` for every selected immutable disjoint fact, keep
 `--start` at the original task boundary and use `--complete`. The helper checks
 prior source/unit/task/version/offset/inclusion, every exported aggregate group
 and event membership against the same snapshot, then writes only the new interval.
@@ -68,3 +73,8 @@ self-capture. Observer extraction can preserve numeric evidence but cannot prove
 the agent executed its own Daily/Full return. Use only granted command/file access;
 do not loop denied actions or change persistent permissions. Unavailable Desktop
 interaction remains a separate dependency; CLI success cannot satisfy it.
+
+An isolated CLI receiver can require explicit folder trust and one-time command
+approval. A file-tool grant alone did not grant Python access through the optional
+terminal sandbox in observed 1.4.8. Record the actual execution policy and obtain
+the scoped source-access decision before retrying; trust is not proof of access.
