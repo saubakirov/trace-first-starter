@@ -94,4 +94,4 @@ Stage decision: close Gather and compare coherent configurations in Extract; do 
 Material handover: `/root/cmodes_research` inspected the scoped current consumers at the stated repository epoch and official pages on the observation date. Findings G1–G5 are the material return. Existing PCUX/ATC/GSC/TEQM meanings remain scoped as in Briefing; no successor knowledge or product authority is created. Coordinator may accept this stage under frozen H1/H2. Question: accept the dimensions and missing-proof table as the input for Extract?
 
 Stage complete: YES
-→ Coordinator decision: pending; stop before Extract.
+→ Coordinator decision: `/root` accepted this stage at `a09cc19b7d5793f2b1c1b020f4a0e6c6adc67a47` on 2026-10-27 and authorized Extract. D1–D3 and the missing-proof table are accepted; D3 may be an ordered recovery policy. Preserve all modes, historical state and independent review; documented capabilities remain distinct from full-cycle proof.
