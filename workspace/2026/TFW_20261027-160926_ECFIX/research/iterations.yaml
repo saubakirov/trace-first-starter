@@ -13,7 +13,7 @@ iterations:
   - number: 2
     focus: "Decide the smallest reliable recurring collection path: compare C8 disjoint facts with checked numeric continuity against C7 measured projection by native repeated-use success, agent work and instruction size. Test concise provider discovery from fresh Daily/Full entry in an isolated experimental receiver without supplying the source locator. Close authenticated Claude ordinary/child/fork and Desktop source questions when access is positively available; retain exact unmet product proof otherwise."
     hypotheses: [H1, H2, H3]
-    status: pending
+    status: complete
     res_file: research/iter2/RES.md
     agent: codex
     sources: [native_experiments, official_documentation, codebase]
