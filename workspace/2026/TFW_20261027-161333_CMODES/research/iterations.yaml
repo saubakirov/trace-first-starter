@@ -72,7 +72,7 @@ iterations:
       proposal. Do not write HL/TS, product code or control files; install no
       Ralph plugin/hook, launch no extra roles and add no permanent tests.
     hypotheses: [H3, H4, H5]
-    status: pending
+    status: complete
     res_file: research/iter3/RES.md
     agent: codex
     sources: [external, codebase]
