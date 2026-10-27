@@ -1,0 +1,40 @@
+{
+  "kind": "task_price_basis",
+  "observations": [
+    {
+      "checked_at": "2026-10-15T19:14:35.8815271+05:00",
+      "conditions": {
+        "context_band": "short",
+        "context_boundary": "272K input tokens",
+        "tier": "standard",
+        "valuation": "conditional API equivalent, not Codex subscription charge"
+      },
+      "currency": "USD",
+      "effective_from": null,
+      "model": "gpt-6-astra",
+      "notes": [
+        "Official fetched Standard pricing table. Short context <=272K input, long >272K. Actual Codex billing/tier not established. Published 30-minute cache writes do not map to 5m/1h schema buckets; neither bucket is invented. Child usage remains unmeasured."
+      ],
+      "provider": "openai",
+      "published_on": null,
+      "quote_id": "e83b6291f36d16739157e884ee02b9c4fe08c6209f9319d90f9787c6c315c6c1",
+      "rates": {
+        "cache_write_1h": null,
+        "cache_write_5m": null,
+        "cached": "1.00",
+        "fresh": "10.00",
+        "output": "50.00"
+      },
+      "schema_version": 1,
+      "source_evidence": {
+        "https://developers.openai.com/api/docs/pricing": "ffcc6656986cdb633e99398e1df49a258ef0cb850769197bba735812bf58e311"
+      },
+      "source_urls": [
+        "https://developers.openai.com/api/docs/pricing"
+      ],
+      "unit": "per_1M_text_tokens"
+    }
+  ],
+  "schema_version": 1,
+  "valuation_kind": "current_revaluation"
+}
