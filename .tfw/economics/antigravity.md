@@ -5,7 +5,7 @@ and failures. First identify the running surface; the following are distinct.
 
 | Surface | Binding and support boundary |
 |---|---|
-| CLI `agy` 1.2.16 | Supported as `antigravity.cli` / `Antigravity-CLI-1.2.16`. Its invocation result/stream supplies the exact conversation UUID; the own runtime log identifies the app-data root. Observed root is the runtime user's `.gemini/antigravity-cli`, with `conversations/<UUID>.db`. Verify the actual runtime root and only that exact file. |
+| CLI `agy` 1.2.16 or 1.4.8 | Supported as `antigravity.cli` with the matching `Antigravity-CLI-1.2.16` or `Antigravity-CLI-1.4.8` version. Read the actual CLI startup version; never infer it from this guide. Its invocation result/stream supplies the exact conversation UUID; the own runtime log identifies the app-data root. Observed root is the runtime user's `.gemini/antigravity-cli`, with `conversations/<UUID>.db`. Verify the actual runtime root and only that exact file. |
 | Legacy IDE | `antigravity --version` can report the VS Code base, not IDE product version. Resolve the executable's `resources/app/product.json` and actual native conversation identity/root. Only the previously observed `antigravity.ide` / `Antigravity-IDE-2.17.0` mapping is supported; observed IDE 1.23.2/base 1.107.0 is not silently relabelled. |
 | Desktop App | Installed package version 2.26.0 and outer runtime 44.4.3 are different axes. Desktop source location and decoding are not established by CLI/IDE data. Obtain exact own identity/store from this surface's runtime evidence; otherwise return the bounded missing facts. No generic Desktop decoder is claimed. |
 
@@ -20,7 +20,7 @@ role label is needed to preserve an authorized helper's economics.
 
 The helper opens only the exact filename matching `--source-id`, takes one
 read-only SQLite backup, and selects `gen_metadata.idx/data` (layout idx,data,size).
-For the two named formats, outer protobuf field 1 contains usage field 4, model
+For the named supported versions, outer protobuf field 1 contains usage field 4, model
 field 19 and generation duration field 11. Usage fields 2/5/3/9/10 are fresh/cache/
 output/thinking/content. Output must equal thinking + content. Missing proto3
 counters beside reported ones are zero; a row with no counters is unmeasured.

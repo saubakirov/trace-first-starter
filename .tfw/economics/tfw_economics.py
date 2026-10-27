@@ -623,9 +623,9 @@ def one(fields, key, typ, default=None):
 
 
 def antigravity_snapshot(source, args):
-    supported = {"antigravity.ide": "Antigravity-IDE-2.17.0",
-                 "antigravity.cli": "Antigravity-CLI-1.2.16"}
-    require(supported.get(args.provider) == args.source_version,
+    supported = {"antigravity.ide": ("Antigravity-IDE-2.17.0",),
+                 "antigravity.cli": ("Antigravity-CLI-1.2.16", "Antigravity-CLI-1.4.8")}
+    require(args.source_version in supported.get(args.provider, ()),
             "unsupported Antigravity surface/version; retain the actual identity")
     require(Path(source).stem == args.source_id, "conversation DB filename differs from exact ID")
     uri = Path(source).resolve().as_uri() + "?mode=ro"
