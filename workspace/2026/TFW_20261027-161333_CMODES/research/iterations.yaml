@@ -1,0 +1,22 @@
+task_id: TFW_20261027-161333_CMODES
+title: "Three coordination modes with one Coordinator across phases"
+min_iterations: 2
+max_iterations: 2
+iterations:
+  - number: 1
+    focus: >-
+      H1: establish the actual native mechanisms and limits for distinct subagent
+      role identity, parent returns, independent review context and continuation.
+      H2: compare coherent representations of one Coordinator owning several
+      phase-local states and identify the current consumers that reject them.
+      Produce decision-ready alternatives and exact evidence limits, not product
+      changes. Reuse the returned ECFIX HL at 61f23f77dd7d039c10f4bab3ecff4ead1c369d46
+      to preserve the ownership boundary; only record the orchestration provenance
+      its accounting will consume. Do not repeat ECFIX source-discovery,
+      copied-history, collector or cost-reconciliation experiments. The Coordinator
+      will supply later durable ECFIX results for the second iteration when available.
+    hypotheses: [H1, H2]
+    status: pending
+    res_file: research/iter1/RES.md
+    agent: codex
+    sources: [codebase, external]
