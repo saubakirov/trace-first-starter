@@ -59,7 +59,7 @@ The owner's task-specific subagent authorization in frozen HL §4.1 overrides th
 
 ## Provenance and evidence boundary
 
-Initial research checkout is `c852d40c63b9c1d601d55fcd0552d03a47e157b0`. Native worktree operation `f23b878b-4524-41ed-a88b-5d0574d77a05` completed and returned `E:/Users/c0rpa/.codex/worktrees/cmodes-research/steps-framework`; every mutation uses this isolated path. It is attached to the parent chat; the app cannot update this child cwd, so explicit workdir remains required. No product file is changed.
+Initial research checkout is `c852d40c63b9c1d601d55fcd0552d03a47e157b0`. Native worktree operation `f23b878b-4524-41ed-a88b-5d0574d77a05` completed and returned `${CODEX_HOME}/worktrees/cmodes-research/steps-framework`; every mutation uses this isolated path. It is attached to the parent chat; the app cannot update this child cwd, so explicit workdir remains required. No product file is changed.
 
 Navigation label is `RESEARCH · CMODES`. Child title write/readback is not exposed; the main chat is not renamed. Actual native child address supplies navigation without granting authority.
 
@@ -67,7 +67,7 @@ Knowledge used: PCUX preserves core/profile ownership; ATC supplies the current 
 
 External source inspected for Briefing: [OpenAI subagents documentation](https://learn.chatgpt.com/docs/agent-configuration/subagents), fetched 2026-10-27. It describes orchestration and separate agent threads but does not itself establish this task's restart, routing or independent-review behavior. Gather will test those distinctions. No additional native agent is launched merely to manufacture evidence.
 
-Own economics binding: project `my-project`; owner `saubakirov`; role Researcher; unit `/root/cmodes_research`; namespace `codex.rollout`; source ID `01a17db6-0f53-7603-878a-adaa590010e4`; version `0.164.0-alpha.11.1`; source `E:/Users/c0rpa/.codex/sessions/2026/10/27/rollout-2026-10-27T19-14-06-01a17db6-0f53-7603-878a-adaa590010e4.jsonl`; range starts at physical line 0; timezone `+05:00`. Own session metadata binds this source ID and `agent_path` to the child, while `session_id` and `parent_thread_id` identify the root; root ID is not used as the child's source ID. Numeric capture is owed at the final RES return. No parent or peer transcript is read.
+Own economics binding: project `my-project`; owner `saubakirov`; role Researcher; unit `/root/cmodes_research`; namespace `codex.rollout`; source ID `01a17db6-0f53-7603-878a-adaa590010e4`; version `0.164.0-alpha.11.1`; source `${CODEX_HOME}/sessions/2026/10/27/rollout-2026-10-27T19-14-06-01a17db6-0f53-7603-878a-adaa590010e4.jsonl`; range starts at physical line 0; timezone `+05:00`. Own session metadata binds this source ID and `agent_path` to the child, while `session_id` and `parent_thread_id` identify the root; root ID is not used as the child's source ID. Numeric capture is owed at the final RES return. No parent or peer transcript is read.
 
 Material handover: this Researcher inspected task status/journal/HL/iteration control, required shared ranges and named knowledge at the stated epoch. The selected result is an executable bounded research plan with valid source/route and actual mutation isolation. Remaining decisions: Coordinator's Briefing checkpoint, later stage conclusions and ECFIX's durable accepted interface. Next act after Briefing acceptance: Gather.
 
