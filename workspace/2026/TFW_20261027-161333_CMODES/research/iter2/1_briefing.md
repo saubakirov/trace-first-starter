@@ -68,7 +68,7 @@ Predecessor: [iteration-1 RES](../iter1/RES.md) at `b1394ceda2202448bc84d95930ae
 - The immutable dispatch explicitly continues focused mode in the same worktree and unit. Rationale: iteration 1 already established the alternatives and source map; this iteration resolves bounded contract and evidence gaps. No redundant mode-choice gate is needed.
 - The Coordinator preserves approved authority and reporting, accepts iteration 1 and its numeric receipt, and forbids new role units, product code and permanent tests in this continuation.
 - The effective observed model/effort remains `gpt-6-astra` / `high`; no setting override or new launch is requested. All stage returns go only to native `/root`.
-- Briefing checkpoint: awaiting the Coordinator's stage acceptance before Gather.
+- Briefing checkpoint: accepted by native `/root` in the continuation after `3faf1ef2245b1dce4ec9f477ce330146cb35a052`. Q1 yes: current-write/legacy/adoption and evidence boundaries cover the remaining H1/H2 decisions. Q2 yes: proceed independently with H3 pending; consume an accepted ECFIX interface only after its actual Coordinator return. No new launch or mode gate.
 
 ## Resume, Evidence and Accountability
 
