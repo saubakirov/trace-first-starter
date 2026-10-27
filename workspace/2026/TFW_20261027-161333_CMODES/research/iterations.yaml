@@ -16,7 +16,32 @@ iterations:
       copied-history, collector or cost-reconciliation experiments. The Coordinator
       will supply later durable ECFIX results for the second iteration when available.
     hypotheses: [H1, H2]
-    status: pending
+    status: complete
     res_file: research/iter1/RES.md
+    agent: codex
+    sources: [codebase, external]
+  - number: 2
+    focus: >-
+      Refine the accepted iteration-1 result at
+      b1394ceda2202448bc84d95930ae68b0bcb4e199. Challenge C2 as the working
+      design: explicit current coordination_mode; real human upward recipient
+      for the same actual task/phase Coordinator; local phase completion; worker
+      returns only to coordinator_route. Preserve C1 as a fallback, not a
+      duplicate investigation. Resolve concrete current-write versus complete
+      legacy/partial carriers, exact source/mode/parent checks, and safe mode
+      adoption across two dependent phases without implicit root permission.
+      Define the minimal evidence needed for independent fixed-Candidate Review,
+      same Executor/Reviewer correction, resume/replacement and scheduling with
+      retained idle units. Separate checks actually possible under this research
+      mandate from future approved implementation evidence; do not launch new
+      role units or simulate an unapproved implementation task. For H3 map only
+      orchestration lineage to an exact durable ECFIX accepted interface supplied
+      by the Coordinator. Until it is returned, preserve the explicit dependency
+      and complete independent H1/H2 work; absence is not evidence for H3. Do not
+      repeat source-discovery, copied-history, collector, usage-splitting or
+      reconciliation experiments, and do not implement a second accounting path.
+    hypotheses: [H1, H2, H3]
+    status: pending
+    res_file: research/iter2/RES.md
     agent: codex
     sources: [codebase, external]
