@@ -5,6 +5,12 @@ Format: [Keep a Changelog](https://keepachangelog.com/). Versioning: [Semantic V
 
 ## [Unreleased]
 
+### Fixed
+
+- ECFIX (`TFW_20261027-160926_ECFIX`): add selected Claude Code and Antigravity CLI
+  economics procedures for own/child/fork binding and explicit native setup; support
+  observed agy CLI 1.2.16/1.4.8 with checked disjoint continuation from one SQLite snapshot.
+
 ### Documentation
 
 - FLC (`TFW_20261011-192605_FLC`): independently reviewed, bounded diagnosis of
