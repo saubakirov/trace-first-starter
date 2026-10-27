@@ -94,4 +94,4 @@ CMODES supplies that lineage; ECFIX decides its accepted numeric source/range an
 Material handover: same Researcher and exact parent, at the stated epochs. This is a source-based design comparison, not a product change or accepted architecture. PCUX core/profile ownership, ATC historical semantics, GSC role-owned material and TEQM finite sources remain preserved. Recommend closing Extract and running the existing Challenge checkpoint against C1–C6, grouping shared D1/D2 properties to avoid repetition. Question: accept this comparison and proceed to Challenge?
 
 Stage complete: YES
-→ Coordinator decision: pending; stop before Challenge.
+→ Coordinator decision: `/root` accepted Extract at `b64c24171b8488cd207901eace3058929b53ef37` on 2026-10-27 and authorized Challenge across shared families. Required emphasis: two dependent phases, self-send/worker-to-owner avoidance, old complete/partial carriers, contradictory or stale selection, fixed Candidate with separate Reviewer, and actual path/base on resume/replacement. Architecture remains unapproved; ECFIX keeps numeric/source/reconciliation ownership.
