@@ -8,7 +8,8 @@ capture. It covers observed Code-tab/CLI JSONL, not ordinary Claude Desktop chat
 1. Record `claude --version` and this invocation's session ID, transcript location
    and task-start boundary from runtime metadata or its exact launch receipt.
    Existing hook metadata can expose `session_id`/`transcript_path`; child completion
-   metadata distinguishes `agent_id`/`agent_transcript_path`. No new hook is required.
+   metadata distinguishes `agent_id`/`agent_transcript_path`. Verify that this metadata
+   actually reaches the producer; headless 2.1.289 did not expose it by default.
 2. Resolve the process's configured root (`CLAUDE_CONFIG_DIR` when set, otherwise
    the runtime user's `.claude`); `claude auth status --json` reports config/projects
    directories on observed CLI 2.1.289 without reading credentials. Under `projects/`,
@@ -28,12 +29,28 @@ capture. It covers observed Code-tab/CLI JSONL, not ordinary Claude Desktop chat
    boundary. Preserve that refusal and last-good data when attribution is ambiguous;
    do not filter away foreign IDs or prescribe empty chats as a universal fix.
 
+If native identity is absent, an authorized launcher can supply an invocation-scoped
+`--settings` SessionStart hook. The hook reads native stdin and returns the actual
+`session_id`, `transcript_path`, `cwd` and `source` as plain stdout or
+`hookSpecificOutput.additionalContext` with `hookEventName: SessionStart`; it must
+not hardcode an observer's UUID/path. See the [native hook contract](https://code.claude.com/docs/en/hooks#sessionstart).
+This is an explicit setup prerequisite, not default exposure or a permanent TFW hook.
+Without it or equivalent verified metadata, retain a bounded binding gap.
+
 ## Capture and return
+
+Headless execution also needs scoped permission for the clock, local trace writes
+and collector command. The launcher can grant these through invocation-specific
+`--allowedTools`; inspect actual denials and do not use a blanket bypass. A working
+metadata hook does not grant source access or prove a capture occurred.
 
 Run common `collect` flags with `--provider claude.code-jsonl`, the exact file,
 source ID and observed version, task/unit identity, offset and proven line bounds.
 Use a new output path and increasing revision each time; `--predecessor` names the
-previous immutable file for a covering successor. Validate the bytes and return
+previous immutable file for a covering successor. Use `--complete` when every line
+of the selected finite prefix was read; the open turn and later tail do not make
+that prefix incomplete. Receive validated bytes into the selected record's
+`economics/roles/` with the common `receive` operation. Validate the bytes and return
 hash, revision, bounds and cutoff at the common Daily/Full checkpoint. Keep earlier
 files; overlapping snapshots are never added.
 
@@ -44,7 +61,7 @@ categories refuse collection. Native agent duration is unavailable, not a
 five-minute-gap estimate. API error/synthetic messages are not measured inference;
 an error-only bound refuses with that cause, preserving any valid prior capture.
 
-One observed 2.1.281â€“2.1.284 parent shared no message ID with its separate children;
+One observed 2.1.281–2.1.284 parent shared no message ID with its separate children;
 verify actual inclusion for the selected invocation, then use the common
 `--includes-source` rule where necessary. This is not universal provider behavior.
 
