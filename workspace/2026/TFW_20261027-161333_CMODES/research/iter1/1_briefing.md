@@ -55,6 +55,8 @@
 
 The Coordinator `/root` confirmed `focused` on 2026-10-27 in the same native unit: iteration 1 stays within approved H1/H2, economics remains an external ECFIX dependency, and Research checkpoints return to `/root`. Reason: one bounded primary-source/consumer comparison precedes a distinct second iteration for challenge and H3; deep mode would repeat discovery without a demonstrated decision benefit. One OODA pass per stage, at most five web searches and fifteen project files per stage are soft limits; at most three questions is hard.
 
+Checkpoint answer, 2026-10-27: `/root` accepted Briefing `b10be0ada27dd66679c610e6072fdad89283efe4`, answered both guiding questions yes, and authorized Gather. Restart/interruption and independent fixed-Candidate review remain explicitly unproved; return their missing checks for later validation. This is ordinary Research direction within frozen scope, not an amendment or TS approval.
+
 The owner's task-specific subagent authorization in frozen HL §4.1 overrides the generic Codex ban for this task only. The initial refusal searched the wrong container; the corrected exact task path and frozen grant now resolve. This is observed lookup/activation recovery, not proof of restart reliability.
 
 ## Provenance and evidence boundary
