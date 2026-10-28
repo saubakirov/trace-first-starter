@@ -2,7 +2,8 @@
 
 - Date: 2026-10-28.
 - Author / producer: `/root/cmodes_product_reviewer`, `codex:thread:local:01a1813d-7849-7890-8d76-609ba0c80190`, observed gpt-6-astra/high.
-- Verdict: **REVISE**.
+- Initial-round verdict: **REVISE** for `2dc78f61903be0fb1a740dd1edc85ff56733cfd7`; preserved below.
+- Current bounded follow-up verdict: **APPROVE** for `205c875726d1d3cf0b222ea4f56702712e1ad4a3`; see §8.
 - RF: [RF](RF__TFW_20261027-161333_CMODES.md) at `17b161e3b98814c67573cab380c94b943f517939`.
 - TS: [approved TS](TS__TFW_20261027-161333_CMODES.md) at `18ee39772950a3be9cf42de3d49ae7c0c13c2c5b`; approval/dispatch `2e8fa7a6ae494f77d8633078e182a6b13a8b4cf6`.
 - Stage files: [Map](review/map.md), [Verify](review/verify.md), [Judge](review/judge.md); Verify was committed before the separate frozen-purpose Judge read/write.
@@ -111,3 +112,64 @@ Exact retained path: `<system temp>/tfw/TFW_20261027-161333_CMODES/product-revie
 ## 7. Fact Candidates and Material Handover
 
 No fact candidates. Producer is this independent Reviewer, with frozen HL/approved TS and fixed product epoch above; inspected scope is the current semantic/consumer delta, affected baseline obligations, PV citations, actual readers, exact native returns and accounting. Material handover is F1/F2 with bounded completion conditions; O1 and retained-resource O2 remain nonmaterial proposals; cleanup still has a named actor/action. Uncertainties are the explicitly unproved provider/runtime and reserved downstream gates. Continuation is the existing Coordinator's one ruling, then same E/R if authorized; the unresolved decision owner is that Coordinator, with final human acceptance reserved to saubakirov. These records preserve rather than replace the original sources.
+
+## 8. Corrective round 1 — independent bounded follow-up, 2026-10-28
+
+Same actual Reviewer `/root/cmodes_product_reviewer`, native/source `01a1813d-7849-7890-8d76-609ba0c80190`, same parent `/root` and route `codex:thread:local:01a17d06-be29-7a31-afe4-bbd67c5cc3b7`; observed gpt-6-astra/high. Exact command-only continuation names RF at `7d0074a256314c1d0de4eb47fdb813608250123a`. Governing correction is the Coordinator's §5 ruling at `4f8047574bcf46815bfc5f435935611d445257dd`, under unchanged approved TS `18ee39772950a3be9cf42de3d49ae7c0c13c2c5b` and frozen HL `28af8624b5a42f5078e6303ca844dabd1fbbcab6`. No originating proposer or new role/phase/selection is invented. Clean retained own worktree was fast-forwarded to the returned lineage. Explicit workdir preserves isolation despite original native session cwd metadata.
+
+New fixed reachable Candidate is `205c875726d1d3cf0b222ea4f56702712e1ad4a3`; Baseline remains `7e6daa42f3e544bab7b67f00cef80f25689793de`. The same Executor returned/ended before this independent affected judgment. The actual correction sequence now supplies a genuine same-E/same-independent-R continuation in addition to the earlier permitted synthetic case. Original round facts and verdict remain historical; this section is the current independent result, without restarting unchanged verification.
+
+### 8.1 Affected evidence and independent accounting
+
+Appended Map, Verify and Judge record the ordered bounded continuation. Verify was saved before separately reopening frozen master §1/§3/§7 and Project North Star NS1 for Judge. Prior full PV/citation work and unchanged native A/B proof retain applicability; no peer transcript or unreturned tree was inspected.
+
+| Subject | Independent result | Scope / limit |
+|---|---|---|
+| F1 — semantic current/history boundary | COMPLETE | 25 temporary assertions: plain/double-/single-quoted current keys and removal before/after commit; old module reproduces four quoted-key failures while new module refuses; three genuine historical forms continue/read and refuse new issuance; adoption/removal and copied-old boundaries hold. Actual modules and committed Git objects, no permanent test; structure is not human consent |
+| F2 — ordinary receiver adoption | COMPLETE | Complete five-step direct file/history/authority route, optional maintainer APIs explicitly outside distributed payload, connected guide/template/core/init/update consistency. No tools/Python/PyYAML install requirement; actual `.tfw` tree still contains no tfw_state.py. Applicable Executor synthetic direct-read receiver evidence is reused at its honest limit |
+| Additional exact table bound | COMPLETE | Task/same-holder phase upward route names human owner; distinct-holder phase names actual task Coordinator. Field table, prose/common contract and existing reader meaning agree |
+| Required retained tests | PASS | Exact TS pytest command, 14 passed in 5.08 s; generated adoption HTML has the ordinary route; six canonical/Claude byte comparisons match; no new guard |
+| Safety/authority/result identity | HOLDS | Ruling precedes new C and returned RF; original human/frozen/TS bounds and complete routing intact. No product mutation by Reviewer, service/secret/external action, new runtime, release or owner acceptance claim |
+| Unchanged evidence and finite resources | REUSED / EXPLICIT | Native A/B outputs/dependencies/context proof unchanged; later failed-probe accountability already established and now reflected in RF/EV. O1/O2 actual rulings retained; no cleanup retry, disposed-slot/title or other-provider/full-restart inference |
+
+Accounting **VERIFIED**: independently re-extracted the approved TS's literal 38-path selector and replayed `git diff --name-status --find-renames=50% -z B C -- <literal paths>` plus `git diff --numstat --find-renames=50% -z B C -- <literal paths>` with the full B/C above. Actual delivery is **36 VALUE files, 35 M + 1 A; 775 additions + 371 deletions = 1,146 touched text LOC**, no rename/binary. Name/action membership is byte-identical to the first round; RF §1.1 records the eight bounded correction reasons. Those paths are the reader, conventions, guide, status template, init/update and two corresponding installed Claude copies. No additional VALUE member or phase ambiguity.
+
+The 38-file/2,400-LOC approved denominator remains immutable. No planned-zero growth, protected edit, 50/5,000 prompt or 2×76/4,800 ceiling is triggered. Original command-entry fixture stays ASSURANCE, role controls/receipts stay TRACE; two approved post-APPROVE reference paths remain reserved. Four ECFIX files, config/version/manifest unchanged; full whitespace check passes. Review HEAD VALUE equals new C, so its enclosing trace commit does not move product identity. Later reference VALUE effects still require replacement Candidate, full recomputation and this same independent Reviewer's affected judgment.
+
+### 8.2 VALUE → ASSURANCE → TRACE judgment and verdict
+
+**APPROVE for Candidate `205c875726d1d3cf0b222ea4f56702712e1ad4a3`.** No open material item now changes product acceptance or the next authorized act. F1/F2 completion is independently demonstrated, not waived; the separately bounded status-table correction is coherent. There are no new material proposals. The prior REVISE remains valid for its original Candidate.
+
+VALUE: frozen HL §1's portable semantic contract and §3's separation of mode/authority are served, including NS1's inspectable authorized continuation. Semantic history prevents losing an established explicit mode; the ordinary receiver can complete semantic checks without importing maintainer runtime. The repair preserves minimal structure, historical meaning, independent roles and human reservations. No fundamental purpose defect exists. ASSURANCE: actual current fixed subject, relevant counterfactuals, required guards and applicable returned evidence establish affected claims within their stated environments. No new permanent guard is applicable. TRACE: prospective authority, same E/R, exact identities/accounting and finite resource/source obligations are attributable and continuable.
+
+| Existing item | Current independent completion assessment | Owner's remaining action / effect |
+|---|---|---|
+| F1, VALUE | Technical completion established by R1-V1; material defect removed | Coordinator records paid completion in this existing carrier. Repair already moved C; no further implementation requested |
+| F2, VALUE | Technical completion established by R1-V2; complete no-runtime receiver path | Coordinator records paid completion in this existing carrier. Repair already moved C; no further implementation requested |
+| Additional Coordinator table bound | Completion independently established | Coordinator records closure of its exact bounded consistency item; no new scope |
+| O1, TRACE | Existing nonmaterial ruling remains applicable; grammar now observed | Preserve history and prospective convention; no Candidate effect |
+| O2, finite resource TRACE | Existing specific retention/owner-assisted action remains applicable | saubakirov removes only this Reviewer's exact private temp subtree after durable returns when possible; Coordinator records resource disposition. No retry/bypass or product replay |
+
+This table supplies independent completion facts, not a Reviewer-authored acceptance disposition. The existing Coordinator remains the ruler of §5 terminal dispositions and final closure.
+
+### 8.3 State, delivery and next act
+
+The RF→REV continuation is durable in `journal/20261028-123358__transition__9fde.md` at `d672c7943db35ad93bff730d66d21c7656b54588` and was sent by STATE_REF. This APPROVE authorizes REV→KNW with paired current event before the completion signal; it does not authorize DONE. The exact native recipient remains `/root`. After durable final sealing, send only REVIEW_READY with this live REVIEW's full immutable ref; delivery is pending at the recorded cutoff and actual native receipt supplies transport evidence, never human acceptance.
+
+Next act is the existing Coordinator's Closing and record recovery: record completion dispositions, perform already-reserved reference/docs effects and owner actual-passage/final acceptance, reconcile resource contributions, and satisfy selected landing/close gates. Do not restart unchanged native proof or accept the Coordinator's own changed material output without this same independent follow-up. No release, push, whole-task economics or final close is asserted here.
+
+Own managed review worktree and context are intentionally retained for those same-phase final affected checks/landing. Original temp deletion denial remains operative; no retry or bypass occurred. New working material is confined to `product-review/correction-r1/` within the already named `<system temp>/tfw/TFW_20261027-161333_CMODES/product-review`: synthetic Git fixtures, temporary old-reader module, compact diagnostic result, generated site/bytecode and own numeric transfer copy. O2's actual owner-assisted removal by saubakirov covers it. No new process/service/container/branch or permanent helper.
+
+### 8.4 Material handover
+
+No new human fact candidates. This same Reviewer's material result is affected independent APPROVE with exact C/evidence, F1/F2/table completion and unchanged limits. Original sources and prior verdict are preserved. The unresolved owner effects are final reference publication, human passage/result acceptance, selected landing and resource close; the existing Coordinator owns their sequencing and saubakirov retains human decisions.
+
+### 8.5 Current own numeric return and state seal
+
+Validated/received covering r2 [numeric bytes](economics/roles/6ac9fe98bbcaafc16b9285b7e8f3c1a3e0ca3bdd203de3ca4958b8fd6b7ab2c4.jsonl), SHA-256 `6ac9fe98bbcaafc16b9285b7e8f3c1a3e0ca3bdd203de3ca4958b8fd6b7ab2c4`. Same exact source/unit/role/project/owner/task binding as §6; codex.rollout version 0.164.0-alpha.11.1, timezone +05:00, phase null. Fully read physical bound `[0,548)`, cutoff `2026-10-28T07:37:27.559677+00:00` (12:37:27.559677 +05:00), source prefix 3,863,527 bytes / SHA-256 `da7d1667528860a20be3c4185ba6c273d657f91b6e9039c95861e4ae69d0dcc8`. Collector verified unchanged predecessor prefix `a7351f0a22a4a12ea6f2dba067ccafee9415ce8aa9571b18dea851c2ec9475d1` and exact r1 hash `1614c7892e5d854980e413cc44915dc7df53f9a09fad4c8a8e380a824b31b61f`. r2 covers/replaces r1 for totals; both bytes remain immutable, never add cumulative contributions.
+
+Cumulative observed gpt-6-astra/high tokens: 8,383,496 total = 8,333,362 input + 50,134 output; input is 365,234 fresh + 7,968,128 cached; reasoning 6,968 is inside output and cache writes are observed zero. Seventy-five unique response rows reconcile to native thread total; disagreeing older token_count 8,000,954 remains diagnosed, not summed. One completed prior turn measures 1,655.484 s; current unmatched/open turn duration remains unknown. Collector operation 0.082356 s is separate. TFW version remains unbound/null, no binding/extraction failure in this resumption, no pricing or whole-task total.
+
+`complete: true` covers only the selected prefix. Record annotation, state/event sealing and delivery are the disclosed finite unmeasured tail; substantive reopened work needs a new proven bound. This Reviewer has read only its own numeric source. Own transfer copy remains in the already specifically retained temporary subtree under O2; no cleanup retry.
+
+APPROVE state effect is now recorded as REV→KNW in [`20261028-123752__transition__87f4.md`](journal/20261028-123752__transition__87f4.md); complete status, exact parent route, event envelope/references and numeric digest validated before exact-path commit. Next recipient remains `/root`, exact coordinator_route above. Actual final immutable ref is supplied by REVIEW_READY after sealing. No additional STATE_REF duplicates this completed return.
