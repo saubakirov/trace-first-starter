@@ -68,3 +68,22 @@ F2 conflicts with D82's ordinary runtime independence, surviving TEQM's explicit
 - [x] Exactly one verdict based on material consequence, not counts.
 
 Stage complete: YES.
+
+## Corrective round 1 — independent affected judgment
+
+Subject `205c875726d1d3cf0b222ea4f56702712e1ad4a3`, returned RF/EV `7d0074a256314c1d0de4eb47fdb813608250123a`. After saving Verify, separately reopened frozen master HL §1/§3/§7 at `28af8624b5a42f5078e6303ca844dabd1fbbcab6` and Project North Star NS1. Unchanged approval and actual Coordinator ruling preserve the original purpose/boundaries.
+
+| Layer / subject | Judgment | Evidence / consequence |
+|---|---|---|
+| VALUE / purpose | Holds | Frozen portable semantic contract and NS1's inspectable authorized continuation are now supported at the affected boundary; no unrelated mechanism/runtime added |
+| VALUE / domain behavior | F1 completion independently established | R1-V1: exact original quoted-key counterexample remains false in old module and is correctly refused by new module before/after commit; old continuation/new issuance preserved |
+| VALUE / architecture/consumer consistency | F2 and exact additional table completion established | R1-V2: complete no-runtime ordinary path, optional scoped APIs, actual payload exclusion and connected source/copy coherence; human-owner/distinct-holder table matches approved topology |
+| VALUE / safety and owner authority | Holds within existing limits | Original human/frozen/TS bounds unchanged; no secrets/services/external effects or final acceptance/release claim |
+| ASSURANCE / evidence existence/applicability/sufficiency | Holds for affected acceptance | Fixed C, 25 selected assertions including four failing-old controls, 14 required checks, exact parity/accounting and applicable returned native evidence; scopes distinguish structure from consent |
+| ASSURANCE / new permanent guard | N/A | None added or demanded; retained documentation/blob guards and temporary diagnostics are classified by actual claim |
+| TRACE / authority/subject | Holds | Prospective ruling→same E→new C→returned RF→same independent R, full B/C/selector recomputation; actual source/role/route retained |
+| TRACE / completion/resource routing | Holds, finite owed close remains | F1/F2 verified complete for Coordinator disposition; O1 already ruled nonmaterial; O2 specifically retained with owner-assisted actor/action; downstream references/owner final acceptance remain reserved |
+
+**APPROVE for the corrected product Candidate.** No open material finding changes product acceptance or the next authorized act. F1/F2 are technically satisfied, not waived; prior REVISE remains the historical judgment of original Candidate. Reviewer does not author the Coordinator's terminal dispositions. No new proposal or product defect is introduced. Current purpose serves portable lawful continuation without removing the independent roles, human permissions or complete semantic checks.
+
+Proposal for exact next act: return to the existing Coordinator under Closing and record recovery, record its completion dispositions and perform already-reserved final reference/owner effects; any later VALUE moves Candidate and receives this same Reviewer's bounded affected judgment. APPROVE permits REV→KNW, not DONE. Native proof, context/capability limits and finite accounting/cleanup remain explicit. No new fact candidates. Affected stage checkpoint complete.
