@@ -5,7 +5,7 @@ goal: Exercise the approved real native two-phase coordination in an isolated as
   receiver.
 value: Bounded evidence of one Coordinator, independent roles and accepted dependency
   use.
-lifecycle: RF
+lifecycle: REV
 owner: saubakirov
 authority: HL__phase-b__dependency_receipt.md
 coordination_mode: subagents
@@ -17,7 +17,7 @@ coordination_authority: HL__phase-b__dependency_receipt.md @ eb4d85e951fe9582b3a
 reporting: native-gates
 selection_ref: baseline
 created: 20261028-102010
-updated: 20261028-110821
+updated: 20261028-111149
 ---
 
 **Task state.** This file is the only authority for this phase's live state. The task-level `status.md` never summarizes it.
