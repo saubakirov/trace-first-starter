@@ -11,8 +11,8 @@ tfw:
 
   # Current work uses workspace. The owner-retained pre-2.0.0 corpus stays readable
   # at its original paths through the reference union, outside ordinary discovery/gates.
-  task_containers: [workspace]
-  historical_containers: [tasks]
+  task_containers: [native-proof] # isolated CMODES assurance receiver only
+  historical_containers: []
 
   # Current identifier grammar. PREFIX and owner-approved ABBR are uppercase alphanumeric;
   # neither may contain `_`, so the separators are unambiguous. The stamp comes from the
