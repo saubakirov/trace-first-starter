@@ -5,19 +5,19 @@ goal: Exercise the approved real native two-phase coordination in an isolated as
   receiver.
 value: Bounded evidence of one Coordinator, independent roles and accepted dependency
   use.
-lifecycle: HL_DRAFT
+lifecycle: TS_DRAFT
 owner: saubakirov
-authority: ../HL-TFW_20261027-161333_CMODES.md
+authority: HL__phase-b__dependency_receipt.md
 coordination_mode: subagents
 coordinator_route: codex:thread:local:01a17d06-be29-7a31-afe4-bbd67c5cc3b7
 upstream_route: owner:saubakirov
 dialogue: tfw-gates-only
-activation: delegated:../HL-TFW_20261027-161333_CMODES.md @ e7042acd5ad0df180ceba92470e7c405534380e8
-coordination_authority: ../HL-TFW_20261027-161333_CMODES.md @ e7042acd5ad0df180ceba92470e7c405534380e8
+activation: delegated:HL__phase-b__dependency_receipt.md @ eb4d85e951fe9582b3a4e6a97d67f3a2a760f45d
+coordination_authority: HL__phase-b__dependency_receipt.md @ eb4d85e951fe9582b3a4e6a97d67f3a2a760f45d
 reporting: native-gates
 selection_ref: baseline
 created: 20261028-102010
-updated: 20261028-110134
+updated: 20261028-110224
 ---
 
 **Task state.** This file owns only this phase live state.
