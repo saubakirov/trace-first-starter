@@ -135,3 +135,37 @@ The Judge/REVIEW templates were inadvertently opened together during the final V
 - [x] RF/EV claims, citations, authority and NUL-safe accounting verified against actual sources.
 
 Stage complete: YES.
+
+## Corrective round 1 — affected verification
+
+Subject `205c875726d1d3cf0b222ea4f56702712e1ad4a3`; original Baseline `7e6daa42f3e544bab7b67f00cef80f25689793de`; RF/EV returned at `7d0074a256314c1d0de4eb47fdb813608250123a`; prospective live REVIEW ruling `4f8047574bcf46815bfc5f435935611d445257dd`. Approved TS and frozen master are unchanged. The complete returned eight-path VALUE correction was inspected, plus the relevant surrounding contracts. Exact current routing and original human/native mandate still validate; own context remains distinct from the Executor. Product bytes equal the new fixed Candidate.
+
+### R1-V1 — F1 actual semantic history boundary
+
+Independent temporary Git fixtures use actual corrected read_status/validate_new_status, real committed synthetic HL/carrier objects and no permanent tests. Twenty-five assertions pass: plain/double-/single-quoted current keys read; each removed key refuses before/after commit (9); original Candidate module still wrongly accepts each quoted-key removal before/after commit (4 counterfactual controls); genuine pre-mode seven-field and five-field with/without selection pair read, refuse new issuance and continue lifecycle-only updates (9); unchanged-source adoption structurally accepts and subsequent removal refuses (2); uncommitted copied-old refuses (1). This is the exact prior defect becoming detectable, not only positive examples of new implementation.
+
+The corrected code enumerates committed snapshots of this exact status path and parses their YAML front matter by meaning; any established coordination_mode blocks a pre-mode downgrade. No raw-key spelling predicate remains. Normal older forms and new issuance retain their original boundary. Actual human consent is not inferred from fixture success. **F1 completion established.**
+
+### R1-V2 — F2 ordinary receiver route and added table bound
+
+Read complete updated guide, status template and affected conventions/init/update gates. Guide now explicitly supplies five direct checks: scoped carrier/journal and immutable authority resolution; semantic whole YAML/body/lifecycle/history; classification/new issuance/refusals; actual human scope, owner/parent/phase/dependency permission; and exact disposition without silent skip. The route operates through direct files/repository objects and needs no Python/PyYAML/upstream APIs. Optional existing maintainer APIs are supplemental, explicitly outside shipped `.tfw`, and do not establish human consent. The upstream APIs remain exercised here under TS. The complete retained no-runtime architecture and D82 remain intact.
+
+Independently listed fixed Candidate `.tfw` payload: no tfw_state.py. No executable/payload/manifest addition. Canonical and installed gates point to the same complete semantic route. Executor's returned `.tfw`-only synthetic receiver direct-read exercise is applicable to these exact unchanged bytes and retains its no-real-human-authority limit; no peer fixture or transcript was inspected. Generated adoption HTML from this independent build contains the ordinary-receiver route/anchor. Other `compatible readers` expressions in update are unchanged pinned knowledge/container migration scopes, not this current coordination prerequisite. **F2 completion established.**
+
+The separately ruled status-table row now explicitly maps task/same-holder phase to the human owner and distinct-holder phase to actual task Coordinator, agreeing with surrounding prose/common rules and existing contextual reader semantics. **Additional table consistency established**, without new topology/authority.
+
+### R1-V3 — required checks, immutable accounting and preservation
+
+Exact required retained command `python -m pytest docs/scripts/test_gen_docs.py docs/scripts/test_integration.py tools/tests/test_git_blob_sizes.py -q -p no:cacheprovider`: **14 passed in 5.08 s**. Site and bytecode are in the own retained system-temp subtree `product-review/correction-r1/`; six canonical/Claude byte pairs match. Full Baseline/Candidate `git diff --check` passes. These remain bounded documentation/deployment/blob guards, not universal native assurance; no new permanent tests.
+
+Re-extracted the immutable approved TS's literal `$valuePaths` (38 unique paths), then ran both exact NUL-safe `git diff --name-status --find-renames=50% -z B C -- <literal paths>` and `git diff --numstat --find-renames=50% -z B C -- <literal paths>` with the full B/C above. Actual full delivery is **36 VALUE members, 35 M + 1 A, 775 adds + 371 deletes = 1,146 touched text LOC; no binary/rename**. Name/action bytes equal initial Candidate's exact list. Corrective VALUE is exactly eight already-approved paths: reader, conventions, guide, status template, init/update and their two full Claude copies. RF §1.1 membership/classes/reasons and arithmetic match. One pre-existing ASSURANCE change and TRACE are excluded; two planned post-APPROVE knowledge VALUE effects stay downstream.
+
+No protected ECFIX (four exact files), config/version/manifest change; no new product member or planned-zero growth. Unchanged 38-file/2,400-LOC denominator, 50/5,000 prompts and 2×76/4,800 ceilings are not triggered. Ruling precedes corrective Candidate and RF; Candidate is reachable. C→review-HEAD VALUE diff is empty. **Accounting VERIFIED.**
+
+### R1-V4 — continuity and preserved evidence
+
+Same actual E/source accepted the prospective ruling and returned RF/ONB/EV; native addressed command returned the exact RF to this same independent R/source. The actual real correction cycle now complements the earlier correctly labelled synthetic E9. Native A/B product blobs/authority/lineage were not changed by these eight paths, so prior independent evidence remains applicable and is reused without rerun. Final failed-probe receipt and root DONE at their previously checked epoch remain reconciled; RF/EV now append that current coverage while retaining earlier historical rows. Executor covering r3 is a returned numeric claim, not this Reviewer's source; no competing cumulative totals are added here.
+
+O1/O2 have actual Coordinator rulings. Required grammar is now used; own temp is expressly retained for same-phase work then owner-assisted removal, no deletion retry. Same review worktree/context remains for final affected reference judgment/landing. No public release, owner final acceptance, final reference publication, host restart, other-provider runtime or disposal/slot-release claim follows from these checks. No new material finding or human-sourced fact candidate.
+
+Affected PV/currentness: initial full PV scan remains applicable because correction changes no cited P0/P1/P2/P3/P5/P6 source. Inspected changed P4 status/coordination rules and unchanged Discovery/D82 boundary; meaning and links still agree with frozen purpose. Guard classification, safety/human-authority/subject floors and all bounded continuation limits remain explicit. Verify checkpoint complete; save before separate Judge-purpose read.
