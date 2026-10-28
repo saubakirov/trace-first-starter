@@ -1,0 +1,10 @@
+{
+  "phase": "phase-b",
+  "dependency_candidate": "042721986eb5c0ee0d5fc75e74aedac7d2959bb3",
+  "dependency_sha256": "6c07b5efb51e51ddec911514917f26130d0990b498d019be504501b42454fef4",
+  "modes": [
+    "manual",
+    "visible-agents",
+    "subagents"
+  ]
+}
