@@ -215,14 +215,14 @@ correcting that invocation validates the unchanged carrier and grants no new aut
 
 Five completed fixture checkouts now have managed archived attachments. For native-proof, Git
 worktree registration is removed and proof/receipt commits remain reachable from the candidate;
-the physical `E:/Users/c0rpa/.codex/worktrees/cmodes-native-proof/steps-framework` directory remains
+the physical `<active CODEX_HOME>/worktrees/cmodes-native-proof/steps-framework` directory remains
 empty. One guarded nonrecursive removal was rejected before execution by automatic approval review
 with `blocked by policy`; it was not retried or bypassed. saubakirov may remove that exact empty
 directory when available. The four earlier fixture checkout directories were verified absent.
 Existing denied worker-private temp cleanup remains owner-assisted: exact task-temp subtrees
 `executor/`, `product-review/`, `cmodes_phase_executor/`, `cmodes_phase_executor_b/` and
 `cmodes_phase_b_reviewer/`, with their actual paths/files recorded in their returned artifacts.
-This Coordinator's `E:/TEMP/tfw/TFW_20261027-161333_CMODES/coordinator/` holds only its own capture
+This Coordinator's `<system temp>/tfw/TFW_20261027-161333_CMODES/coordinator/` holds only its own capture
 transfer copies and current docs/check/report working material; it is retained through the pending
 owner decision for any affected correction, with safe disposal owned by this Coordinator afterward.
 No worker's raw source or private temp contents were inspected. Main E/R/candidate checkouts and
