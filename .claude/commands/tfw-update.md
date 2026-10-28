@@ -99,6 +99,18 @@ project-purpose or frozen-citation bytes first at
 never inject starter quotation. Reuse identical attachment; different-byte collision stops. If
 purpose remains ambiguous, ask one material question.
 
+### Coordination-mode adoption gate
+
+Read the pinned `migrations/coordination-modes.md` before connected coordination reader/rule/
+template/profile/adapter writes, including equal-version repair or incomplete adoption. Install
+compatible consumers together; preserve historical task/phase status, selection events and authority.
+New issuance uses explicit mode plus the complete current form. An unchanged original verified
+human choice may support deliberate format adoption at a safe checkpoint; an actual choice change
+needs its own selection/approval. No automatic task migration or inferred mode. Classify custom/
+ambiguous receivers before writes, preserve/refuse dependent conflicting rows, and verify parity,
+repeat/no-diff and unrelated content. Record exact source/actions/limitations in the existing result
+or update receipt; copying a profile proves no native provider trial.
+
 ### Daily prewrite gate
 
 Exclude `extensions/daily-task/` and both Daily discovery targets from every generic payload/adapter

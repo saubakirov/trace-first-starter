@@ -32,7 +32,7 @@ purpose collision that evidence cannot settle are hard stops.
 
 Apply the active root activation/routing contract before discovery or repair and require exact
 owner-direct `/tfw-init` activation. Full init has no prior status: the first status records this
-Coordinator's complete routing spine and paired `reporting: native-gates` / `selection_ref: baseline`.
+Coordinator's explicitly selected mode, complete routing spine and paired `reporting: native-gates` / `selection_ref: baseline`.
 Attach/repair validates existing task routing when task-bound and adds the pair only after verifying
 the actual initial human source and frozen ceiling; it never guesses delegation, owner-transfer,
 legacy or partial fields.
@@ -60,6 +60,18 @@ fictional economics task; the optional helper never gates setup.
 
 Never reset an existing project or guess its adapter. Contradictory source/receiver ownership stops
 before config/state writes. An existing root or `.tfw/README.md` is not a blank starter surface.
+
+### Coordination-mode adoption gate
+
+Read the pinned `migrations/coordination-modes.md` before connected coordination reader/rule/
+template/profile/adapter writes, including equal-version repair or incomplete adoption. Install
+compatible consumers together; preserve historical task/phase status, selection events and authority.
+New issuance uses explicit mode plus the complete current form. An unchanged original verified
+human choice may support deliberate format adoption at a safe checkpoint; an actual choice change
+needs its own selection/approval. No automatic task migration or inferred mode. Classify custom/
+ambiguous receivers before writes, preserve/refuse dependent conflicting rows, and verify parity,
+repeat/no-diff and unrelated content. Record exact source/actions/limitations in the existing result
+or update receipt; copying a profile proves no native provider trial.
 
 ### Daily prewrite gate
 

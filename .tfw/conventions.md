@@ -622,41 +622,43 @@ For multi-phase tasks, master HL and `research/` stay at task root. Each phase g
 Status lives only in the task's own `status.md`. Its lifecycle is one of the ids above or
 `UNDECLARED` carrying the source value verbatim (→ glossary.md).
 
-New statuses carry seven routing/selection fields: four shared fields, one upward route, and the selection pair.
+New task/phase issuance carries `coordination_mode: manual | visible-agents | subagents` and
+the complete seven-field routing/selection form below. No mode is an implicit default.
 
-- `coordinator_route`: one quoted, non-empty native address for the unit that receives every
-  workflow status change, question, gate and durable return;
-- `upstream_route`: `owner:{human-handle}` for a task Coordinator or `coordinator:{native-address}` for a phase Coordinator;
+- `coordinator_route`: quoted non-empty actual native unit address receiving local worker gates;
+- `upstream_route`: task `owner:{human-handle}`; phase `owner:{human-handle}` when its actual
+  Coordinator is the task Coordinator, otherwise `coordinator:{task-Coordinator-native-address}`;
 - `dialogue`: `tfw-gates-only` or `iterative`;
 - `activation`: `owner-only` or `delegated:{immutable-mandate-ref}`;
-- `coordination_authority`: one quoted exact local authority reference plus immutable epoch.
+- `coordination_authority`: quoted exact local authority reference plus full immutable epoch;
+- `reporting`: `native-gates` or explicitly selected `owner-transfer`;
+- `selection_ref`: `baseline` for the verified initial human choice under that frozen authority,
+  or `journal/<coordination_selected event>.md @ <full commit>` for an effective subsequent choice.
+  A phase may cite only its governing ancestor's `../journal/` event explicitly covering it.
 
-The shared fields are `coordinator_route`, `dialogue`, `activation` and
-`coordination_authority`. Exactly one upward-route name is allowed: `upstream_route` for new
-writes or historical `owner_gateway` for existing carriers. The field set is closed. Total absence
-is legacy-readable but cannot activate new work; missing, partial or both-name spines refuse.
-New writers emit all seven current fields. `coordinator_route` receives lower-role returns;
-`upstream_route` carries only the Coordinator's upward decisions and phase-level return. For a
-task, its `owner:` handle must match `owner`; for a phase, the `coordinator:` address must match
-the actual governing task Coordinator and differ from its local `coordinator_route`. A missing,
-unknown or wrong parent refuses. Concurrent phases keep separate local routes.
+The field set is closed. Current mode requires all seven fields and `upstream_route`; mixed
+`owner_gateway`/current forms refuse. `coordinator_route` always receives worker returns. The upward
+route belongs only to the Coordinator. For a same-holder phase, its owner must equal the task owner,
+its local route equals the actual task Coordinator, and its upward route is that human owner. For a
+distinct phase holder the upward address equals the actual task Coordinator and differs from its
+local route. Validate contextual parent agreement; inspect governing scope and permission separately.
+A mode value alone grants neither topology nor authority. Concurrent phases retain local state.
 
-Two current-selection fields extend a complete spine on every new write:
+Complete historical five-field `owner_gateway` carriers, with or without the selection pair, and
+complete pre-mode seven-field `upstream_route` carriers remain readable and continuable under
+unchanged valid authority. Total absence is read-only; partial, mixed, downgraded-current and
+copied-old-as-new carriers cannot activate work. `validate_new_status` applies at new issuance;
+the actual reader checks missing current form on uncommitted new carriers and mode removal against
+committed history. A parser checks structure and immutable sources, never human consent.
 
-- `reporting`: `native-gates` (required vertical sends and durable returns) or `owner-transfer`
-  (an explicitly selected fully manual transfer; role artifacts and reserved decisions remain);
-- `selection_ref`: `baseline` for the validated initial human choice under the exact frozen
-  `coordination_authority`, or `journal/<coordination_selected event>.md @ <full commit>` for an
-  effective subsequent owner choice. A phase may use only its exact governing ancestor task's
-  `../journal/` event when that immutable event explicitly covers the phase and roles.
-
-The pair is all-or-none. A complete old five-field `owner_gateway` carrier, with or without the
-selection pair, remains readable under its actual authority; it is never silently rewritten or
-reparented. Before a live migration, verify a safe checkpoint, exact new recipient and immutable
-selection source, then change the carrier truthfully without inventing a same-state event. No
-coordination fields means legacy read-only. Missing or unverifiable source blocks dependent new
-authority, not historical readability. Phase permission comes from phase status, not continuous
-root live-state consultation.
+At a safe checkpoint, deliberate format adoption may reuse a verified unchanged original human
+choice: inspect its source, exact scope/roles, holder/parent, effect condition, reservations and
+frozen ceiling; emit the complete current form with the truthful mode and original authority epoch.
+An actual mode, route, scope, reporting or dialogue change uses its proper human selection and
+approval. Commit a selection event before its SHA enters status. Ordinary lifecycle/timestamp or
+TRACE updates preserve a valid historical carrier; they do not silently adopt format, reparent it,
+or create a new consent epoch. Missing source blocks dependent authority, not historical reading.
+Phase permission remains phase-local, without continuous root live-state consultation.
 
 `coordination_selected` is one append-only, task-local event for an actual human operating choice.
 Its body preserves the answer source, prior and selected values, exact scope/roles, reservations,
@@ -930,6 +932,57 @@ retires the other old keys, and adds multiplier `2`.
 
 ## 7) Coordination
 
+### Coordination modes
+
+| Mode | Who starts roles / where they work | Owner experience |
+|---|---|---|
+| `manual` | Owner starts distinct role sessions; native returns stay available | Owner controls launches; fully manual return transfer is a separate explicit choice |
+| `visible-agents` | Authorized Coordinator starts directly addressable user-visible role chats | Visible roles; readiness advances within authority; unavailable creation needs an exact owner action |
+| `subagents` | One owner-facing Coordinator starts distinct native role subagents | One main conversation for the whole task; no extra user-owned role or phase chats required |
+
+All three admit one or several phases. Mode, activation authority, dialogue, reporting and phase
+topology are separate. Selecting visible agents covers its role-chat launches; selecting subagents
+does not authorize user-owned chat creation. Missing native mechanics leave an exact pending act
+or an owner-selected alternative; never silently switch mode/provider or merge roles. Titles and
+grouping are navigation; missing child-title controls do not require a visible chat.
+
+One Coordinator may own task and phase cycles where governing authority permits, especially in
+subagent mode. Each phase still owns status, journal, bounded scope, approved TS and dependency
+acceptance. The existing distinct phase-Coordinator arrangement remains available. A same-holder
+phase completion is a durable local result followed by readiness inspection, without self-send;
+a distinct phase holder returns the existing bounded phase result to its actual task Coordinator.
+Root `PHASES` is never a second rollup of phase state. Neither phase count nor a mode grants scope.
+
+Distinct Researcher, Executor and independent Reviewer contexts preserve Role Locks. Default to a
+fresh independent Reviewer for each new phase, without the previous phase's review conversation;
+accepted dependency artifacts remain admissible. Keep the same Executor and independent Reviewer
+within that phase's authorized corrections. New TS revisions/round numbers do not create phases.
+Cross-phase Executor reuse requires a safe return and new bounded phase activation, current
+dependencies/authority, actual receiving-context verification and one active phase act per unit.
+Cross-phase Reviewer reuse needs explicit exception discretion granted to the actual responsible
+Coordinator by governing authority; record concrete benefit and receiving checks in ordinary
+planning/dispatch. Unclear or absent discretion means fresh review. Hard freshness and independence
+cannot be waived; workers cannot approve their own exception.
+
+Before resumed/replacement material work verify actual unit/parent, role/task/phase, cwd, reachable
+base/Candidate, immutable authority, pending gates and return recipient. Save partial work and the
+exact pending act at interruption; cancellation stops affected work. Replacement reconstructs files
+and records its real identity. Retained ID/attachment is insufficient. Distinguish active concurrency,
+retained idle IDs and observed disposal/release. Serialize ready work within actual capacity. If
+fresh independent Review is required but unavailable, preserve nonterminal review and the exact
+pending authorized provision/address mechanism, fresh-context receipt, phase binding and Candidate
+access; the existing Coordinator resolves that capability or routes its precise missing decision.
+
+The existing REVISE rungs classify implementation, TS and frozen-HL authority, not retry counts.
+There is no general numeric execution/review-round cap; research stage/iteration bounds remain
+separate. A complete material finding and Coordinator ruling bound corrections. On a recurring
+impediment record observed failure, remedy, changed evidence or next discriminating act in the
+existing owned artifact/ruling. Repeating unchanged failure adds no progress. The responsible
+Coordinator diagnoses context, tools, scope, model/effort or authority and selects a justified
+supported next act or routes the missing decision. Ordinary edits/transient retries need no extra
+form or gate. Tool success, child completion and passing checks do not establish independent
+approval or owner acceptance. No completion token or retry counter supplies that judgment.
+
 ### Workflow activation and routing
 
 Provisioning creates or selects a callable unit. Activation authorizes one exact workflow run.
@@ -991,8 +1044,8 @@ or ambiguous destinations.
 
 With `reporting: native-gates`, `dialogue: tfw-gates-only` creates only vertical edges: every role
 unit sends status changes, questions, gates and durable returns to its own `coordinator_route`;
-the phase Coordinator sends only phase-level gates and returns to its `upstream_route`, and the task
-Coordinator uses its owner route. Peer-role and worker-to-owner material communication are
+a distinct phase holder sends only phase-level gates and returns to its `upstream_route`;
+same-holder phase completion stays local, and the task Coordinator uses its owner route. Peer-role and worker-to-owner material communication are
 prohibited. `owner-transfer` disables inter-agent sends only when selected by an
 actual owner decision; it presents exact durable manual returns. Manual role creation alone never
 selects owner-transfer. Autonomous gates-only advances ready authorized roles and corrections
@@ -1000,28 +1053,29 @@ without another owner message, while reserved decisions still return to the owne
 
 #### Closed message catalogue
 
-This is the single semantic owner for messages on Coordinator–Executor, Coordinator–Reviewer and
-task–phase Coordinator edges under `tfw-gates-only`. On these edges send only one catalogue form;
+This is the single semantic owner for messages on Coordinator–Researcher, Coordinator–Executor, Coordinator–Reviewer and
+distinct task–phase Coordinator edges under `tfw-gates-only`. On these edges send only one catalogue form;
 put questions, findings, verdicts, reasons and next-act proposals in the referenced owned artifact.
 The recipient reads that artifact and current authority before acting. A signal neither grants
 authority nor accepts a result. Do not append prose.
 
-Researcher's existing required stage dialogue is outside this revision: its workflow, route and
-authority restrictions remain. Owner–task Coordinator discussion stays substantive. `iterative`
+Research retains its required mode/stage checkpoints, questions and decisions in owned stage/RES
+files, with reference-only vertical returns under this same catalogue. Owner–task Coordinator
+discussion stays substantive. `iterative`
 still requires its separate exact grant; it is no fallback for an inconvenient catalogue.
 
 `TASK` means the exact already selected task or task/phase identifier. `REF` is one repository-relative file path, `@`, and the full immutable commit SHA identifying its bytes; paths containing spaces are enclosed in double quotes. The file holds the relevant round/item and its related authority/state/evidence references. The recipient must be able to resolve those bytes: an unreturned working tree or an arbitrary branch name does not qualify. A signal can point at an existing valid commit; it does not require an extra commit solely to send a message.
 
 | Exact permitted form | Sender → recipient; condition | Required behavior |
 |---|---|---|
-| `/tfw-plan TASK`, `/tfw-handoff TASK`, `/tfw-review TASK` | Authorized parent/owner → selected role; first activation | Exactly the command, no briefing. The new role reads its own required inputs. Research still starts with its existing exact `/tfw-research TASK` command under its unchanged workflow. |
-| `/tfw-plan TASK REF`, `/tfw-handoff TASK REF`, `/tfw-review TASK REF` | Authorized parent/owner → same selected role; continuation/control input | REF identifies the actual ruling, approved revision, returned result or authority change. Revalidate; a continuation message cannot override a revocation or act as an approval. No separate `CONTINUE`, `FIX` or `APPROVE` chat command. |
+| `/tfw-plan TASK`, `/tfw-research TASK`, `/tfw-handoff TASK`, `/tfw-review TASK` | Authorized parent/owner → selected role; first activation | Exactly the command, no briefing. The new role reads its own required inputs. Research uses its own required checkpoint sequence. |
+| `/tfw-plan TASK REF`, `/tfw-research TASK REF`, `/tfw-handoff TASK REF`, `/tfw-review TASK REF` | Authorized parent/owner → same selected role; continuation/control input | REF identifies the actual ruling, approved revision, returned result or authority change. Revalidate; a continuation message cannot override a revocation or act as an approval. No separate `CONTINUE`, `FIX` or `APPROVE` chat command. |
 | `ONB_READY REF` | Executor → own Coordinator; ONB has no blocking question | Required ONB/state/event are durable. Notify and continue under approved TS without waiting for an acknowledgement. |
 | `RF_READY REF` | Executor → own Coordinator; RF complete | Preserve Candidate, evidence and limitations in RF; end Executor invocation. Coordinator reads and selects the next authorized act. |
 | `REVIEW_READY REF` | Reviewer → own Coordinator; review round complete | Preserve verdict, findings, proposed routes and trace effects in REVIEW; end Reviewer invocation. Send no verdict or finding count. |
 | `PHASE_READY REF` | Phase Coordinator → task Coordinator; phase-level return ready | REF identifies the existing phase-level return/status record with its result references, disposition and remaining conditions. Never forward the worker message as a phase decision. No new return artifact is introduced. |
 | `GATE_REQUIRED REF` | Child role → own Coordinator; a required decision is missing | Write the real question/blocking condition first in an existing role-owned artifact, then signal and wait. For blocked ONB this replaces ONB_READY; do not send both for the same checkpoint. |
-| `STATE_REF REF` | Child role → own Coordinator; another workflow-required status change, or reply to the permitted status request | Read state from the existing immutable status/event. Do not narrate progress or invent a transition to justify a message. A normal ready/gate signal already covering that change needs no second STATE_REF. |
+| `STATE_REF REF` | Child role → own Coordinator; another workflow-required status/checkpoint return (including Research stages/RES), or reply to the permitted status request | Read state from the existing immutable status/event. Do not narrate progress or invent a transition to justify a message. A normal ready/gate signal already covering that change needs no second STATE_REF. |
 | `STATUS_REQUEST TASK` | Immediate Coordinator → its own child; the existing one-time suspected-stall fallback | Return STATE_REF for the latest durable state, or the unavailable form below. This neither authorizes work nor requests an unfinished summary. Native wait/readback remains primary; no periodic poll or second acknowledgement. |
 | `UNAVAILABLE TARGET` | Either end of an already permitted vertical edge; the necessary reference cannot be produced/resolved or the required mechanism is unavailable | TARGET is the exact known path, REF or native mechanism name. One technical failure notification; it supplies no workflow decision or result. If a durable blocker can be recorded, prefer GATE_REQUIRED with its reference. If sending itself is unavailable, preserve pending state and use the native failure/owner route; do not claim delivery. |
 
@@ -1047,19 +1101,20 @@ be either peer or consolidator.
 **Protect the owner's context.** The task Coordinator is the owner's strategic conversation and
 the single owner of cross-phase direction, dependencies, phase readiness, reserved decisions and
 successor selection. It plans a one-phase task directly; no extra phase Coordinator is issued for
-appearance. In long work it activates a separate, bounded phase Coordinator for each ready phase.
-That phase Coordinator owns its phase TS, worker gates, independent review route and durable phase
-return, not task strategy or another phase's authority. Concurrent phases have separate local
-routes. The task Coordinator receives only phase-level decisions, material blockers, completed
-results and requested status; worker ONB progress and intermediate checks stay with the phase
-Coordinator. The owner receives only decisions, material blockers, completed results and requested
+appearance. For long work the selected authority/topology determines whether it owns ready phases locally or
+activates distinct bounded phase Coordinators. Each phase responsibility includes its TS, worker
+gates, independent review route and durable result; a distinct holder owns no task strategy or
+sibling authority. Concurrent phases have separate local
+routes. A distinct task Coordinator receives only phase-level decisions, material blockers, completed
+results and requested status; its phase holder absorbs local operating detail. A same-holder
+Coordinator reads bounded worker returns directly and preserves phase-local files. The owner receives only decisions, material blockers, completed results and requested
 status, while strategic discussion remains available.
 
 | Unit | Purpose and value | Owned decisions / parent | Forbidden authority |
 |---|---|---|---|
 | Human owner | Holds the goal, values and strategic judgments | Approves frozen claims, exact TS/denominator, material overruns and final acceptance; root of every mandate | No role artifact is written on the owner's behalf without the actual ruling |
 | Task Coordinator | Preserves purpose and advances the whole task | Plans the task, owns dependencies, ready phases, owner route and safe successor; parent is the human owner | Cannot write RES, ONB, RF, REVIEW or implementation, or self-approve owner reservations |
-| Phase Coordinator | Bounds long-work context and returns one coherent phase | Plans its phase, directs its own workers and returns phase-level result; parent is the recorded task Coordinator | Cannot own task strategy, sibling phases or an ancestor's mandate |
+| Phase Coordinator | Coordinator responsibility for one bounded phase, held by the task unit or a distinct delegated unit | Plans its phase, directs its own workers and returns phase-level result; parent is the recorded task Coordinator | Cannot own task strategy, sibling phases or an ancestor's mandate |
 | Researcher | Tests decision-changing uncertainty | Owns RES and research-stage traces; parent is its local Coordinator | Cannot approve architecture, TS or implementation |
 | Executor | Delivers the approved order and proof | Owns ONB, implementation, EV and RF; parent is its local Coordinator | Cannot change HL/TS, rule its own gate or judge its result |
 | Reviewer | Gives independent judgment of fixed output and purpose | Owns REVIEW and its verdict; parent is its local Coordinator | Cannot repair implementation, rule authority or replace the owner verdict |
@@ -1116,17 +1171,19 @@ TFW cycle and strategic discussion apply in every mode. Its fields must together
    or cannot do. Ground this in current `provision / addressed send / wait/readback / title/readback`
    classification (`native`, `owner-assisted`, `unavailable`); name unknowns, not a capability promise.
 2. **Who you talk to:** identify the actual task Coordinator and any proposed phase Coordinator
-   separately. The task Coordinator carries purpose, owner decisions and cross-phase strategy. For
-   one phase it also receives the role returns. For long work a phase Coordinator absorbs local
-   operating detail and returns a bounded phase result; name the resulting context cost and limits.
-3. The role sequence and return route: Coordinator plans; distinct Researcher, Executor and
+   separately. The task Coordinator carries purpose, owner decisions and cross-phase strategy. It receives local role returns in a one-phase or selected same-holder multi-phase arrangement.
+   A distinct phase Coordinator, when selected, absorbs operating detail and returns a bounded
+   phase result; name context cost and actual limits for the chosen topology.
+3. **Mode:** explain all three `Coordination modes`, who launches roles, where they live and owner
+   actions; all admit one/several phases. Map the actual answer to `coordination_mode`.
+   The role sequence and return route: Coordinator plans; distinct Researcher, Executor and
    independent Reviewer work only after their gates; roles return vertically to their own
    Coordinator, which presents only bounded owner gates/results upward.
    **Who starts agents** is a separate choice: owner, system, or system with an owner click, only
    where supported and authorized. Default to owner-started work until selected otherwise. Say what
    can advance automatically and what still waits for the owner. **Communication is on by default:**
    required reference-only signals on the catalogue edges; substantive questions/results stay in
-   files. Research keeps its existing stage dialogue; owner discussion remains substantive. Only explicit owner-transfer makes the owner carry returns;
+   files. Research keeps its stage checkpoints in files and reference returns; owner discussion remains substantive. Only explicit owner-transfer makes the owner carry returns;
    manual creation alone does not. Explain any separately granted dialogue and its exact boundary.
 4. Visible task titles and task-only grouping: use it when supported; name unavailable mechanics
    and remaining owner actions. Distinguish known titles from names to set later.

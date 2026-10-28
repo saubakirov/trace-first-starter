@@ -23,6 +23,13 @@ Open each `.tfw/templates/review/{map,verify,judge}.md` only at its stage. Never
 common libraries. Verify-PV and Judge-purpose reads are deliberately separate. Missing/duplicate
 headings stop under `Context Selection`.
 
+Before material activation/continuation apply `conventions.md` → `Coordination modes`: inspect
+the effective mode or valid historical selection, real receiving context, phase authority and exact
+return route. New-phase permission never follows from a retained unit ID. Reviewer freshness,
+independence and fixed Candidate remain mandatory under the governing phase context policy.
+Every new role receives only its skill command, without inherited conversation or solution hints;
+continuations add only the required immutable reference. Returned substance stays in owned files.
+
 ## Identity, activation, and trust
 
 After Bootstrap resolves the task, apply `Session identity` with `WORK=REVIEW`. Apply root

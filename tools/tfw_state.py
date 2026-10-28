@@ -56,11 +56,12 @@ UPWARD_ROUTE_KEYS = {"upstream_route", "owner_gateway"}
 COORDINATION_KEYS = COMMON_COORDINATION_KEYS | UPWARD_ROUTE_KEYS
 
 SELECTION_KEYS = {"reporting", "selection_ref"}
+COORDINATION_MODES = {"manual", "visible-agents", "subagents"}
 
 STATUS_KEYS = {
     "id", "title", "goal", "value", "lifecycle", "lifecycle_verbatim",
     "owner", "authority", "outcome", "created", "updated", *COORDINATION_KEYS,
-    *SELECTION_KEYS,
+    *SELECTION_KEYS, "coordination_mode",
 }
 
 REQUIRED_KEYS = ("id", "title", "goal", "value", "lifecycle", "owner", "authority",
@@ -291,6 +292,15 @@ def validate_status(data: dict, task_dir: Path | None = None,
 
     coordination_present = COORDINATION_KEYS.intersection(data)
     selection_present = SELECTION_KEYS.intersection(data)
+    mode_present = "coordination_mode" in data
+    if mode_present:
+        if data.get("coordination_mode") not in COORDINATION_MODES:
+            problems.append("coordination_mode must be manual, visible-agents or subagents")
+        current_keys = COMMON_COORDINATION_KEYS | {"upstream_route"} | SELECTION_KEYS
+        if not current_keys.issubset(data) or "owner_gateway" in data:
+            problems.append("current coordination_mode requires the complete upstream_route selection form")
+    elif task_dir is not None:
+        problems.extend(verify_historical_carrier(task_dir, bool(coordination_present or selection_present)))
     if selection_present and selection_present != SELECTION_KEYS:
         problems.append("partial current selection; reporting and selection_ref must occur together")
     route_names = coordination_present & UPWARD_ROUTE_KEYS
@@ -323,14 +333,22 @@ def validate_status(data: dict, task_dir: Path | None = None,
                 problems.append("upstream_route must be a string")
             elif is_phase:
                 parent = read_status(task_dir.parent, declared)
-                if not upward.startswith("coordinator:") or not upward[len("coordinator:"):].strip():
-                    problems.append("phase upstream_route must be coordinator:{native address}")
-                elif not parent or parent.get("_error") or not parent.get("coordinator_route"):
+                if not parent or parent.get("_error") or not parent.get("coordinator_route"):
                     problems.append("phase upstream_route has no valid governing task Coordinator")
-                elif upward[len("coordinator:"):] != parent["coordinator_route"]:
-                    problems.append("phase upstream_route disagrees with governing task Coordinator")
-                if isinstance(route, str) and upward == "coordinator:" + route:
-                    problems.append("phase upward route cannot name its own Coordinator")
+                elif mode_present and route == parent["coordinator_route"]:
+                    if data.get("owner") != parent.get("owner"):
+                        problems.append("same-holder phase owner disagrees with governing task owner")
+                    if upward != "owner:" + str(parent.get("owner")):
+                        problems.append("same-holder phase upstream_route must name the human task owner")
+                else:
+                    if not upward.startswith("coordinator:") or not upward[len("coordinator:"):].strip():
+                        problems.append("phase upstream_route must be coordinator:{native address}")
+                    elif upward[len("coordinator:"):] != parent["coordinator_route"]:
+                        problems.append("phase upstream_route disagrees with governing task Coordinator")
+                    if isinstance(route, str) and upward == "coordinator:" + route:
+                        problems.append("phase upward route cannot name its own Coordinator")
+                    if mode_present and data.get("owner") != parent.get("owner"):
+                        problems.append("phase owner disagrees with governing task owner")
             elif not re.fullmatch(r"owner:[a-z0-9][a-z0-9-]*", upward) or upward != "owner:" + str(data.get("owner")):
                 problems.append("task upstream_route must name its human owner")
         dialogue = data.get("dialogue")
@@ -404,7 +422,34 @@ def validate_new_status(data: dict, task_dir: Path | None = None,
     missing_selection = sorted(SELECTION_KEYS - set(data))
     if missing_selection:
         problems.append("new status is missing current selection fields: " + ", ".join(missing_selection))
+    if "coordination_mode" not in data:
+        problems.append("new status requires explicit coordination_mode")
     return problems
+
+
+def verify_historical_carrier(task_dir: Path, require_established: bool = True) -> list[str]:
+    """Keep established pre-mode carriers readable without accepting new or downgraded ones."""
+    try:
+        root = find_project_root(task_dir)
+        relative = (task_dir / "status.md").resolve().relative_to(root).as_posix()
+        committed = subprocess.run(["git", "show", f"HEAD:{relative}"], cwd=root,
+                                   capture_output=True, check=False)
+        current_history = subprocess.run(
+            ["git", "log", "-1", "--format=%H", "-G", "^coordination_mode:", "--", relative],
+            cwd=root, capture_output=True, check=False)
+    except (OSError, SystemExit, ValueError):
+        if not require_established:
+            return []
+        return ["historical coordination carrier provenance is unavailable; new issuance needs coordination_mode"]
+    if current_history.returncode:
+        if not require_established:
+            return []
+        return ["historical coordination carrier history cannot be inspected"]
+    if current_history.stdout.strip():
+        return ["current coordination_mode cannot be removed from an established carrier"]
+    if committed.returncode and require_established:
+        return ["new coordination carrier requires explicit coordination_mode; historical form is continuation-only"]
+    return []
 
 
 def verify_baseline_source(data: dict, task_dir: Path) -> list[str]:

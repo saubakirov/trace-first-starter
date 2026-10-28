@@ -44,6 +44,13 @@ After task and iteration resolution, apply `Session identity` with `WORK=RESEARC
 research write, question, wait, or stage work. Iteration never supplies `PHASE`; only governing
 task/phase state may do so.
 
+Before material activation/continuation apply `conventions.md` → `Coordination modes`: inspect
+the effective mode or valid historical selection, real receiving context, phase authority and exact
+return route. New-phase permission never follows from a retained unit ID. Reviewer freshness,
+independence and fixed Candidate remain mandatory under the governing phase context policy.
+Every new role receives only its skill command, without inherited conversation or solution hints;
+continuations add only the required immutable reference. Returned substance stays in owned files.
+
 ## Activation and routing checkpoint
 
 Apply the active root activation/routing contract before Step 1. Task-bound current work requires a
@@ -77,8 +84,11 @@ question or stage requires them.
 ## Step 2 — Select Mode
 
 Read `project_config.yaml` → `tfw.research.default_mode`.
-Present: "Recommend [{mode}]. Reason: {specific}. Switch? [focused/deep]"
-🛑 WAIT — then load `research/{mode}.md`.
+Open the Briefing template and ensure `research/iterN/` exists; record the recommended mode, reason
+and switching question in `1_briefing.md` before loading the selected mode. Preserve this choice
+when completing Briefing at Step 4.
+Return its immutable reference with `STATE_REF` to the Coordinator under the common catalogue;
+owner-direct discussion stays substantive. 🛑 WAIT for the authorized file-owned decision, then load `research/{mode}.md`.
 
 **Entry:** Pipeline uses its task; Standalone creates a first-container task at `RES`.
 
@@ -101,7 +111,7 @@ Fill Briefing:
 
 Gather sets dimensions; Extract maps configurations; Challenge tests survivors. Feed forward; below three dimensions use a matrix.
 
-For each stage, copy its numbered template (`2_gather.md`, `3_extract.md`, or `4_challenge.md`), adopt Mindset, run OODA, complete the stage-file checkpoint, present findings, then STOP and wait before next stage.
+For each stage, copy its numbered template (`2_gather.md`, `3_extract.md`, or `4_challenge.md`), adopt Mindset, run OODA, complete the file-owned checkpoint and reference return, then STOP and wait before next stage.
 
 ### OODA Stage Loop
 
@@ -109,7 +119,9 @@ Repeat up to YAML `loops_per_stage`: **OBSERVE** via web/files/code/user; **ORIE
 
 ### Stage Checkpoint
 
-Present findings and ≤3 questions; mark `Stage complete: YES`; recommend close/deeper; 🛑 WAIT.
+Save findings and ≤3 questions in the stage file; mark `Stage complete: YES`; recommend close/deeper
+in that file. Commit the checkpoint, return `STATE_REF` with its immutable reference to the own
+Coordinator and 🛑 WAIT for its file-owned decision/continuation. No substantive agent chat payload.
 
 ## Step 6 — Synthesis
 
@@ -128,7 +140,8 @@ Present findings and ≤3 questions; mark `Stage complete: YES`; recommend close
    coverage. Unknown required binding belongs in RES as a pre-extraction gap with common
    facts/reasons, never an invalid manifest. Null is allowed only for v1-permitted optional
    fields with reasons. Nonmeasurement cannot satisfy an explicit measurement/product-proof gate.
-9. **STOP.** "Research iteration {N} complete. Continue with `/tfw-plan` to review iterations and decide next step."
+9. Return `STATE_REF` for the durable RES under the common catalogue and **STOP**. The Coordinator
+   reads it and continues `/tfw-plan` to decide the next act. This adds no second Research protocol.
 
 ## Trust Protocol
 

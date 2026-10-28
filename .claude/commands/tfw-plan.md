@@ -48,7 +48,7 @@ Coordinator titles describe scope only; neither grants role authority.
 Apply the root activation/routing contract. Current task work requires a complete matching spine.
 Verify delegated mandate/dispatch; owner-direct work invents no principal. This unit must be the
 actual Coordinator and alone uses its status `upstream_route`; record authority answers as `gate_answer`. A new
-owner-direct `/tfw-plan` creates its first status with the complete seven-field current form.
+owner-direct `/tfw-plan` creates its first status with the complete current mode plus seven-field form.
 
 For task-bound work, bind this Coordinator's exact native source range and
 select `.tfw/economics/README.md` at activation or resumption. The Coordinator may
@@ -90,8 +90,8 @@ Routes are outputs, not invocations; evaluation writes nothing.
    or changed by the owner.
 
    **Protect the owner's context.** For one phase use the task Coordinator directly. For long work
-   the task Coordinator retains strategy and owner decisions while distinct phase Coordinators
-   absorb bounded operating detail. A successor requires the safe handover in `Coordination`;
+   the selected mode and authority admit one Coordinator owning several phase-local cycles or
+   distinct bounded phase Coordinators; both preserve local state and bounded returns. A successor requires the safe handover in `Coordination`;
    preserve active work and never infer a mandate from inherited chat.
 
    | Every invocation | New task only | Existing task/phase |
@@ -108,10 +108,9 @@ Routes are outputs, not invocations; evaluation writes nothing.
    child addresses, worktree paths, titles or effective settings. Present the choice through owner
    actions and benefits: who creates/starts agents, what advances automatically, what still needs
    the owner, and whether this unit is the task Coordinator or a bounded phase Coordinator. Explain
-   how phase separation protects the owner's context; brief vertical TFW gates preserve independent judgment
-   without chatter. Never oppose discussing intent with the owner to using TFW roles: both remain
-   required in either mode. Ask for the initial operating mode; map the answer to activation,
-   dialogue, reporting and owner-context topology, then briefly restate the selected arrangement
+   the context cost of the chosen topology; bounded file returns preserve independent judgment. Never oppose discussing intent with the owner to using TFW roles: both remain
+   required in either mode. Ask for the initial operating mode; map the answer to `coordination_mode`, activation,
+   dialogue, reporting and authorized topology, then briefly restate the selected arrangement
    in the same card, including pending handover or owner actions. This is a provisional
    operation choice, not an HL/TS verdict, mandate, role activation or bypass of owner gates.
    Preserve the owner's answer for Step 5; if unresolved, return to that choice before first
@@ -119,11 +118,11 @@ Routes are outputs, not invocations; evaluation writes nothing.
 
    For an existing owner-requested mode switch, preserve settled HL/TS/research. Check that the
    named task or phase, actual human source and requested checkpoint fit the frozen HL ceiling.
-   Write one `coordination_selected` event with old/new activation, topology, dialogue, reporting,
+   Write one `coordination_selected` event with old/new mode, activation, topology, dialogue, reporting,
    exact role/phase scope, reservations and continuation/revocation effect; commit it without a
    self-referential SHA. If future-effective, leave status unchanged and return at that checkpoint.
    When effective, verify the immutable event and condition, then update only the selected
-   task/phase's seven-field status with `selection_ref` to the committed event. Do not replay prior
+   task/phase's complete current status with `selection_ref` to the committed event. Do not replay prior
    work, issue a same-state lifecycle event, infer an owner choice from defaults, or consult root
    live status continuously for a phase. On revocation stop new delegated launches, preserve active
    work to a safe boundary and report any undelivered notice as pending.
@@ -182,18 +181,19 @@ Routes are outputs, not invocations; evaluation writes nothing.
    confirm `provision / addressed send / wait/readback / title/readback` as `native`,
    `owner-assisted` or `unavailable`. Ask for an operating-mode answer again only when the initial
    choice is unresolved or a material boundary changed; confirm the owner's explicit
-   `activation`, `dialogue`, `upstream_route`, optional
+   `coordination_mode`, `activation`, `dialogue`, `upstream_route`, optional
    stable principal and, when delegated, exact Coordinator plus scope/roles, reservations,
    amendment authority, effects and expiry. Default to owner-only, gates-only,
    `upstream_route: owner:{human}`, `native-gates` reporting and no principal unless a valid grant
    changes them. Manual provisioning does not select owner-transfer. Iterative dialogue needs an
    exact immutable two-peer grant independent of task/phase topology. A one-phase task uses its
-   task Coordinator for the whole local cycle; a multi-phase task gives the task Coordinator
-   cross-phase readiness and owner decisions, and each ready phase a separate Coordinator with
-   `upstream_route: coordinator:{task-Coordinator-address}`. Neither watches unreturned workers.
+   task Coordinator for the local cycle. A multi-phase task retains task strategy/readiness with
+   that Coordinator; selected authority admits the same unit across phases or distinct bounded
+   phase holders. Same-holder phase `upstream_route` names the real human owner; a distinct
+   holder routes to `coordinator:{task-Coordinator-address}`. No unit watches unreturned work.
    Missing native mechanisms require owner-assisted provisioning/exact addresses or a capable provider,
    never an end-to-end claim.
-   Record HL §4.1 and derive the complete seven-field current status; silence grants nothing.
+   Record HL §4.1 and derive the complete current mode plus seven-field status; silence grants nothing.
 
    **Model and reasoning gate — fit the capability to the work.** Before each new role launch,
    choose and justify a concrete model, or honor the owner's explicit model policy, and separately
@@ -227,8 +227,8 @@ Routes are outputs, not invocations; evaluation writes nothing.
    boundaries, evidence and authority. Guidance stays non-binding; prescribe mechanics only for
    genuine architecture, safety, compatibility or owner constraints. Bind VALUE, immutable
    accounting/authority and AC evidence. For multi-phase work the task Coordinator validates
-   dependencies and activates one phase Coordinator per ready phase; that unit reads applicable
-   predecessor RFs in the **Pre-TS dependency check** before writing its derived Phase HL/TS.
+   dependencies and identifies the authorized responsible Coordinator for each ready phase;
+   whether the same or a distinct unit, it reads applicable predecessor RFs in the **Pre-TS dependency check** before writing its derived Phase HL/TS.
    A missing or invalid dependency stops that specification until resolved. Obtain exact TS+denominator approval,
    launch `/tfw-handoff` within scope, and stop this Plan invocation. A ready next role or phase
    remains the responsible Coordinator's continuation action, not a routine owner command.
@@ -238,8 +238,9 @@ Before presenting HL or TS for approval, complete the Mandatory Saint-Exupéry c
 After approval, launch a new role with only its exact `/tfw-* <task[/phase]>` first message. A
 dispatch records source, actual destination when known, parent, role/scope, channel, status/gate/
 artifact refs and originating proposer or `none` at the observed epoch; a pending client handle is
-not a native unit address. Verify activation separately from destination. Reuse the same Executor
-and independent Reviewer. Before each send or continuation, apply `Coordination`'s closed message
+not a native unit address. Verify activation separately from destination. Apply `Coordination modes` context policy: same Executor/independent Reviewer for authorized
+same-phase corrections; fresh independent Reviewer by default for a new phase. Cross-phase reuse
+requires its exact authority and receiving checks, with Reviewer exception discretion explicit. Before each send or continuation, apply `Coordination`'s closed message
 catalogue and `Protect the owner's context`, not only the address check. Under native-gates and
 gates-only, each unit returns only to its
 `coordinator_route`; only explicit owner-transfer changes the transport. The Coordinator never
@@ -248,7 +249,8 @@ Plan passages, exact Candidate and before/after semantic explanation to the owne
 acceptance before final task acceptance/distribution. Material later changes return to that gate.
 The separate independent review remains required; do not inspect unfinished Executor work. At a
 phase result, validate authority, dependencies and receipt; save the phase-level result and required state/event, then send `PHASE_READY`
-under the catalogue to the recorded task Coordinator; end this phase invocation. The task Coordinator starts every next ready authorized phase or
+only when the task Coordinator is a distinct unit. Same-holder completion is local with no self-send;
+end the bounded phase act before selecting the next ready phase. The task Coordinator starts every next ready authorized phase or
 records the exact pending actor and condition. Parallel phases keep separate status and routes.
 
 ## REVISE and return

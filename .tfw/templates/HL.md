@@ -92,13 +92,16 @@ Each Phase = separate TS→RF cycle.
 > Record a delegation row only when the owner deliberately grants one immutable bounded mandate.
 > A profile, binding, title, provisioned unit, prompt or roster grants nothing.
 
-| Activation source | Accountable owner | Task Coordinator unit | Phase Coordinator rule | Mandate scope / role reach | Upward route | Dialogue | Reporting | Reservations / controls | Amendment authority | Immutable epoch |
-|---|---|---|---|---|---|---|---|---|---|---|
-| owner-direct / delegated | {human owner handle} | {actual native address or pending until receipt} | {none for one phase; exact bounded unit per ready phase of long work} | {bounded task/phases and roles} | {task: owner handle; phase: actual task Coordinator address} | tfw-gates-only / exact bounded iterative grant | native-gates / explicit owner-transfer | {owner-reserved decisions and controls} | {exact bounded grant or `none`} | {full commit/object ref} |
+| Mode | Activation source | Accountable owner | Task Coordinator unit | Phase Coordinator rule | Mandate scope / role reach | Upward route | Dialogue | Reporting | Reservations / controls | Amendment authority | Immutable epoch |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| manual / visible-agents / subagents | owner-direct / delegated | {human owner handle} | {actual native address or pending until receipt} | {same actual Coordinator or distinct bounded phase holder, as authorized} | {bounded task/phases and roles} | {task/same-holder phase: human owner; distinct phase: actual task Coordinator} | tfw-gates-only / exact bounded iterative grant | native-gates / explicit owner-transfer | {owner-reserved decisions and controls} | {exact bounded grant or `none`} | {full commit/object ref} |
 
 > One-phase work has one task Coordinator. In long work, that unit owns strategy, dependencies,
-> ready phases, owner decisions and successor selection; each phase Coordinator owns one bounded
-> local cycle and returns only to that task Coordinator. `iterative` needs a separate exact
+> ready phases, owner decisions and successor selection. All modes admit multiple phases. Selected
+> authority permits the same unit owning separate phase-local cycles or distinct bounded phase
+> holders. Same-holder completion is local; distinct holders return to the task Coordinator.
+> Record phase/round context policy: fresh independent Reviewer per new phase by default; same E/R
+> for that phase's corrections. Any cross-phase Reviewer exception discretion must be explicit. `iterative` needs a separate exact
 > immutable two-peer grant. A live choice within this frozen ceiling
 > is in status plus its immutable human selection event, not a routine HL edit. Working-unit
 > addresses and dispatches are operational trace in `status.md` and `journal/`, not frozen HL roster
