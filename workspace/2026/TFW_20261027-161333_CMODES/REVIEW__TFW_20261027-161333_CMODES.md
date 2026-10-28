@@ -109,6 +109,96 @@ The selected bound is complete, not the ongoing invocation. Subsequent record se
 
 Exact retained path: `<system temp>/tfw/TFW_20261027-161333_CMODES/product-review`, containing own temporary reader fixture, generated site/bytecode, diagnostic summary and staging copy of the already-received JSONL. Automatic approval review rejected the guarded native PowerShell recursive removal before execution with `blocked by policy`. No bypass was attempted. This REVIEW and received JSONL preserve the necessary result/evidence summary; the existing Coordinator owns the explicit pending owner-assisted deletion of this exact subtree. The retained review worktree is a separate intentional resource for same-phase correction/landing, not subject to this deletion.
 
+
+### Coordinator closing disposition and selected docs effect — 2026-10-28
+
+Actual ruler remains `/root`, `codex:thread:local:01a17d06-be29-7a31-afe4-bbd67c5cc3b7`.
+Independent corrective APPROVE was received at `83f43621d966b94ffe10438bf798ed68509e2566`;
+complete KNW state, immutable authority, RF, returned evidence and producer/source lineage were
+inspected. Under the existing §5 ruling, F1 and F2 are **PAID** and the additional exact status-table
+bound is **COMPLETE**, on §8's independent facts. O1 remains ruled nonmaterial; O2 retains its exact
+owner-assisted action. No fresh implementation order or TS revision follows from these dispositions.
+
+`tfw-docs: Applied` under approved TS `18ee39772950a3be9cf42de3d49ae7c0c13c2c5b` AC-10 and its two
+reserved VALUE paths. `KNOWLEDGE.md` changes only Architecture Map rows Coordinator UX & Current
+Selection, Task State & Coordination, and Inter-role Communication. One new technical decision,
+`knowledge/records/TKL-20261027-CMODES.md`, binds approved sources and scoped ATC/GSC/PCUX relations.
+It replaces no historical source or human-knowledge record; old D rows remain byte-preserved.
+The existing authority permits this Auto effect; no new owner preference or acceptance is inferred.
+`tfw-knowledge: N/A`: Research RES iteration 3 Fact Candidates, cumulative RF §7/§7.1 and REVIEW
+§7/§8.4 contain justified no-new-human-candidate returns. Their technical observations and owner
+instructions already remain in their actual research/HL/dispatch sources. The selected publication
+is technical, not a new human-domain promotion or an empty pending-inventory claim.
+
+New fixed Candidate is `c6dd3155d5f4e42d2ef1d1ff3bdc4c5b1db8e5ee`; prior implementation Candidate
+`205c875726d1d3cf0b222ea4f56702712e1ad4a3` and its independent APPROVE remain preserved. Exact final
+accounting re-extracts `$valuePaths` from the immutable approved TS and uses the same NUL-safe
+`git diff --name-status --find-renames=50% -z` / `git diff --numstat --find-renames=50% -z` between
+Baseline `7e6daa42f3e544bab7b67f00cef80f25689793de` and new Candidate with all 38 literal paths:
+**38 VALUE files, 36 M + 2 A; 826 additions + 374 deletions = 1,200 touched text LOC**. No binary,
+rename, extra VALUE member or phase ambiguity. The two final effects add 51 lines/remove 3 relative
+to the approved implementation; their purpose is current reference consistency and traceable scoped
+replacement. The immutable plan stays 38/2,400; no 50/5,000 prompt or 2×76/4,800 ceiling is triggered.
+One original command-entry fixture remains ASSURANCE; task records/accountability remain TRACE.
+
+Affected check: exact TS generator/integration/blob suite **14 passed in 5.77 s**, with generated
+site/pytest material only in this Coordinator's system-temp subtree. New record local links and six
+cited immutable commit objects resolve. Full Baseline/Candidate `git diff --check` passes; all four
+accepted ECFIX paths and config/version/manifest are byte-unchanged. No other product write follows
+this tested Candidate. Existing reviewed reader/native/receiver claims retain their unchanged inputs;
+no later enclosing TRACE commit moves Candidate. The same independent Reviewer must assess the two
+changed final outputs, source fidelity, current-use relations, evidence and exact final accounting.
+This is the bounded final-effect follow-up under Closing and record recovery, not a full review
+restart or a new phase. A real material finding still uses the existing ruling route.
+
+Resources: the four clean completed fixture checkouts `cmodes-phase-a-exec`, `cmodes-phase-a-review`,
+`cmodes-phase-b-review` and `cmodes-probe-accounting` were archived through the managed tool;
+`archived_worktree` attachments and physical checkout absence were verified. Their exact heads are
+ancestors of final proof `31a7997dbae8ec0843afffe465a03eaefa19b889`, already reachable in this branch's
+history; no accepted source/receipt was lost. Main Executor/Reviewer and candidate checkouts remain
+for final affected judgment, owner acceptance and possible authorized correction/landing. The proof
+root remains for final leaf-source reconciliation, then is disposable. Named private worker temp
+subtrees retain their denied-cleanup owner/action; archival is not claimed to remove them or release
+native agent identities. This Coordinator's own docs-site/pytest material is temporary, to be removed
+after final checks. No service/process/container was created.
+
+Observed continuation limit: native Executor turn failure reported selected-model capacity. One
+identical same-holder continuation resumed the existing bound; its returned ONB treats the duplicate
+as one ruling, without a second activation/replay. Requested/observed model stayed Sol/high; no
+unsupported follow-up setting mutation or provider switch is claimed. The substantive correction's
+own covering r3 remains the actual numeric source, not an invented zero-cost failed attempt.
+
+Status stays **KNW**, with final changed-result independent judgment and actual owner passage/result
+acceptance owed. The owner explicitly placed 3.9.3 preparation, including accepted ECFIX, after
+acceptance of actual changes. No version, tag, release, push or primary-checkout landing is selected
+by this record. Coordinator source capture and reference return follow these completed effects.
+
+
+#### Coordinator own docs-return accountability and handover
+
+Validated/received own covering r10 [numeric bytes](economics/roles/4219b0aa12e2198e01128d9239b9db85f5f95598fa2185e3c370bf5adad6a9f5.jsonl),
+SHA-256 `4219b0aa12e2198e01128d9239b9db85f5f95598fa2185e3c370bf5adad6a9f5`. Same actual root
+source `codex.rollout:01a17d06-be29-7a31-afe4-bbd67c5cc3b7`, source version 0.164.0-alpha.11.1,
+unit above, role Coordinator, phase null, project my-project, owner saubakirov, timezone +05:00.
+Complete selected prefix `[0,3906)` at cutoff `2026-10-28T07:41:59.343001+00:00` is 15,962,511
+bytes, source SHA-256 `e767c7cf4cba4aae76a4a394e43de4eab48c176216a04218d41def28765dae70`.
+Verified covering successor of preserved r9 `cf3e1de8c90b08b9eafee41de0c8285194b561e5df7cc1165ce9be663f9b0699`;
+select r10 once, never add cumulative versions. Own totals are 1,090,502 fresh input + 66,609,536
+cached input + 403,858 output = 68,103,896 tokens; reasoning 180,942 is already inside output.
+This follows actual corrective E/R returns, docs effects and relevant checks. Final affected
+Review is still owed, so whole-task collection remains interim; no cost/time completeness is claimed.
+Record sealing/reference delivery is a short excluded tail. Final integration after the required
+Reviewer return will use a covering successor. Only this unit's own numeric source was inspected.
+
+Producer/qualifier is the actual Coordinator above; inspected sources are exact approved TS/frozen
+HL, received RF/REVIEW and selected architecture/record relations at their stated epochs. Material
+handover is the two completed reference effects and new fixed Candidate/accounting, not a new
+human fact. Recipient is the same independent Reviewer, native `01a1813d-7849-7890-8d76-609ba0c80190`,
+for the bounded changed-final-claim judgment under the existing close contract. Original scope,
+model/effort and fixed-output isolation remain. Lifecycle stays KNW; owner acceptance and release
+sequencing remain reserved. This ends the selected docs act; the exact immutable reference will
+carry its continuation through the existing catalogue.
+
 ## 7. Fact Candidates and Material Handover
 
 No fact candidates. Producer is this independent Reviewer, with frozen HL/approved TS and fixed product epoch above; inspected scope is the current semantic/consumer delta, affected baseline obligations, PV citations, actual readers, exact native returns and accounting. Material handover is F1/F2 with bounded completion conditions; O1 and retained-resource O2 remain nonmaterial proposals; cleanup still has a named actor/action. Uncertainties are the explicitly unproved provider/runtime and reserved downstream gates. Continuation is the existing Coordinator's one ruling, then same E/R if authorized; the unresolved decision owner is that Coordinator, with final human acceptance reserved to saubakirov. These records preserve rather than replace the original sources.
