@@ -1,0 +1,5 @@
+{
+  "phase": "phase-a",
+  "modes": ["manual", "visible-agents", "subagents"],
+  "coordinator": "codex:thread:local:01a17d06-be29-7a31-afe4-bbd67c5cc3b7"
+}
