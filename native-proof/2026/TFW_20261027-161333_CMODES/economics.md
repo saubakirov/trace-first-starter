@@ -1,5 +1,7 @@
 # CMODES native verification — bounded resource basis
 
+The paragraphs below preserve the first accepted worker checkpoint. The final resolution is at the end; current root state is DONE after all expected producer returns.
+
 Purpose/value: [HL](HL-TFW_20261027-161333_CMODES.md), actual same-Coordinator A→B continuation with distinct independent Review and accepted dependency use. Result: accepted [A](phase-a/REVIEW__phase-a__mode_receipt.md) and [B](phase-b/REVIEW__phase-b__dependency_receipt.md); root [state](status.md) remains KNW for missing pre-work probe accountability, not missing phase-output acceptance. Primary area coordination; keywords subagents, phases, assurance, context.
 
 The unchanged ECFIX `reconcile` read the four phase-leaf JSONL files, checked their hashes/schema and selected four distinct range records across three physical sources with no excluded overlap, missing selected unit or omission. A E/R subtotal is 6,359,937 tokens; B E/R subtotal 4,820,069; unique worker total **11,180,006**. Parent reports are not added to leaf reports; this total is the raw-record union. B Executor [264,367) is disjoint from its A [0,212); [212,264) stays the disclosed unmeasured A sealing tail.
@@ -9,3 +11,9 @@ The continuous actual Coordinator has no invented phase split. Its root r8 [nume
 Coverage is partial: two failed pre-work invocations of /root/cmodes_probe_executor have no returned own binding/measurement or qualifying gap record. Expected producer and pending route are preserved in HL; unknown cost is not zero. Native invocation tails are excluded at each stated cutoff. Source-wide diagnostic counters are not added to selected token rows. Agent duration and money are unavailable at a compatible proven basis; no API-price or subscription-charge estimate is made. Record sealing, delivery and safe cleanup form the finite final tail; substantive reopening requires a new bound.
 
 Sources: exact four phase numeric hashes and producer bounds in their RF/REVIEW, own Coordinator r8 above, actual dispatch/return lineage and Coordinator's closing dispositions. Phase scratch remains owner-assisted after automatic approval-review rejection; fixed Candidates and managed worktrees remain specifically retained for parent proof/review and source reconciliation.
+
+## Final bounded result
+
+The late own probe receipt 99548a482f8eb274eb992d0adb0a7d5005dc76fc4d516545ad8d4c9f9618c636 adds 877,291 tokens once. The final five-file raw union is 12,057,297 tokens across four physical worker/attempted-worker sources, with no expected missing unit, excluded overlap or omission. Later reconstruction is labelled as such and never asserts earlier capture existed. Optional time/money and finite tails retain their prior limits. Source: phase-a/ONB__phase-a__probe_accountability.md @ b544aa1a25b019da18981bf021d25bfc2e55b4b2; own transfer copy removed, return worktree retained for integration.
+
+Coordinator r9 cf3e1de8c90b08b9eafee41de0c8285194b561e5df7cc1165ce9be663f9b0699, [0,3295), cutoff 2026-10-28T06:37:28.930995+00:00, follows required returns/checks. It covers 56,720,757 cumulative product-source tokens, not fixture-only cost; it replaces r8 only in the main product aggregate with the preserved chain and is not added to the worker subtotal here. Root HL final resolution supplies acceptance and exact resource dispositions; current lifecycle may now close this fixture only.
