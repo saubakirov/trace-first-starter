@@ -71,6 +71,18 @@ Producer is this independent Reviewer; source/epoch is own activation/metadata a
 
 Own source is bound in Map; final numeric snapshot is sealed below before durable return. Own review worktree is retained, with fixed Candidate and role artifacts reachable, for Coordinator landing/disposition and legitimate same-phase corrections. Native child title/disposal control is unavailable; no released slot or archived child is claimed. No service, process or permanent helper was created. Own scratch is limited to the temporary numeric transfer file, to be removed after byte-verified receipt or disclosed precisely if cleanup fails.
 
+### Coordinator disposition at the selected phase close
+
+Actual Coordinator `/root` accepts the independently approved assurance Candidate `042721986eb5c0ee0d5fc75e74aedac7d2959bb3` within the product TS's native verification mandate. RF `0c21204a29f28d00ba01e84e2c585bcb872aaa3f` and independent REVIEW `fdb1358cbaa8b3083cf8feba428061b15e5c6e2d` are inspected; accepted work and returned records are landed at `e8cd4e45b1e3ca2b2abc1632919ce36ddea623e6`. Exact receipt hash and checked Candidate remain unchanged. This is fixture acceptance only, not the product owner's reserved acceptance.
+
+O1 ruling: retain the four exact private scratch files named in RF, after the producer's automatic approval-review rejection, for owner-assisted deletion. Actor saubakirov; action remove only those four files from the named private temporary directory after handover. Coordinator checked their existence and did not bypass the denial. No accepted claim depends on these disposable copies; evidence and numeric bytes are already durable. Native E/R identities and their managed worktrees remain available until the parent proof and any legitimate corrections are complete; the Coordinator will then archive eligible worktrees. Native child disposal is unavailable and unclaimed.
+
+Docs: N/A for this nonshipping fixture; it creates no public reference fact or changed framework output. Knowledge: N/A, grounded in both role handovers' justified-none; product-level qualification remains with CMODES. Changelog: N/A for a disposable assurance-only phase, whose actual verification is reported under the parent CMODES change instead of inventing a second shipped feature. No new material final claim requires a repeated independent review.
+
+Both returned numeric files were read and validated: Executor `5276e8b84cb3d796f116476b380b19cbeb948a304aa98821669fb9467dc931a9`, Reviewer `f0292504a8d335245425dfa2bb9fab7d73749703f7a722656aa3e36e38d17809`; two distinct physical sources total 6,359,937 tokens, including 6,067,072 cached input. No inclusive-parent overlap is claimed. The same Coordinator is one continuous product source, not a separately invented phase unit. Its covering r7 is received at the fixture root, SHA-256 `66a5a2770d125d0f8e274181b52489b870ae6c7b3c1fb7f642c9ebde1aa0010c`, range [0,2886), cutoff 2026-10-28T05:59:00.218318+00:00, following accepted A returns/checks. It replaces r6 in the eventual product aggregate and is not allocated or added to this phase subtotal. The two failed pre-work probe invocations returned no source binding or measurement; their coverage remains missing, never zero, in the parent reconciliation. Phase economics states these limits; the phase's ordinary role returns do not establish full product cost.
+
+Phase A's accepted dependency is ready. Close is local under the same task/phase holder; no PHASE_READY self-send. Only after this disposition may the Coordinator prepare B from the actual accepted RF/Review/bytes. Record sealing, transition and safe cleanup are the excluded finite tail; subsequent substantive work has a new capture bound.
+
 ## 7. Fact Candidates
 
 No fact candidates.
