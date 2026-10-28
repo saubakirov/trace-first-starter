@@ -45,3 +45,13 @@ Two approved VALUE reference paths are intentionally post-APPROVE; owner actual-
 - [x] No verdict based on file/discrepancy volume.
 
 Stage complete: YES.
+
+## Corrective round 1 — bounded independent continuation
+
+Same Reviewer `/root/cmodes_product_reviewer`, native/source `01a1813d-7849-7890-8d76-609ba0c80190`, same parent/role and observed gpt-6-astra/high. Exact native command names returned RF at `7d0074a256314c1d0de4eb47fdb813608250123a`; current live REVIEW ruling `4f8047574bcf46815bfc5f435935611d445257dd` is prospective and within unchanged approved TS. Clean own retained worktree fast-forwarded to the exact return; original session cwd metadata still names the original candidate checkout, so every operation explicitly uses the isolated `cmodes-product-review` worktree. Actual own-source metadata confirms id, parent and agent path. No new phase, role, dialogue or selection is implied.
+
+Complete current RF state and journal/authority/selection fields validate; approved TS, frozen HL and native mandate remain unchanged. New fixed reachable product Candidate `205c875726d1d3cf0b222ea4f56702712e1ad4a3`; original Baseline unchanged. Executor has returned/ended. Scope is F1 semantic committed YAML history, F2 complete ordinary receiver validation, the separately ruled upstream-route table consistency, affected copies, required retained tests, protected boundaries and full literal-selector accounting. All eight changed VALUE paths are already approved. Unchanged native A/B proof and previously established PV/purpose/citation facts remain reusable at their stated limits.
+
+Verify will exercise plain/double-/single-quoted current history removal before/after commit, true pre-mode continuation/new-issuance refusal and adopted-current history; inspect the whole no-runtime receiver procedure and connected consumers; check exact table meaning, copy parity, mandatory authority/safety/result floors and full 38-path accounting. No new permanent tests or peer transcript access. Same native source is cumulatively bound from 0 for a verified r2 successor of receipt `1614c7892e5d854980e413cc44915dc7df53f9a09fad4c8a8e380a824b31b61f`; prior prefix/bytes must verify unchanged.
+
+O1/O2 rulings are preserved. Own temporary subtree is retained for this affected check and owner-assisted removal by saubakirov afterward; no deletion retry/bypass. Final references and owner acceptance remain downstream. Map checkpoint complete; no new material scope is assumed.
