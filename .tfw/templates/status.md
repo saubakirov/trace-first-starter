@@ -71,7 +71,7 @@ The key set is closed. Concision guides, never validates; never truncate.
 | `authority` | path relative to this file | always | resume, authority checks |
 | `coordination_mode` | `manual`, `visible-agents`, `subagents`; actual explicit choice | current new issuance/adoption | all workflows |
 | `coordinator_route` | quoted non-empty native unit address | current statuses | all workflows |
-| `upstream_route` | task: `owner:{human-handle}`; phase: `coordinator:{native-address}` | new statuses | Coordinator only |
+| `upstream_route` | task/same-holder phase: `owner:{human-handle}`; distinct phase holder: `coordinator:{task-Coordinator-native-address}` | new statuses | Coordinator only |
 | `owner_gateway` | `owner:{human-handle}` or `gateway:{native-address}` | historical carriers only | legacy readers |
 | `dialogue` | `tfw-gates-only` or `iterative` | current statuses | all workflows |
 | `activation` | `owner-only` or `delegated:{immutable-mandate-ref}` | current statuses | activation checks |
@@ -99,7 +99,10 @@ Coordinator, never itself. Workers always return to their local `coordinator_rou
 Complete historical five-field `owner_gateway` forms with/without selection pair and pre-mode
 seven-field `upstream_route` forms remain readable and continuable under unchanged valid authority.
 Absence is read-only; partial/mixed, downgraded-current and copied-old-as-new forms cannot activate
-new work. At new issuance call `validate_new_status`; contextual reader checks are also required.
+new work. Validate this complete carrier directly under the ordinary-receiver procedure in
+`migrations/coordination-modes.md`; no Python/PyYAML or upstream tool is required. Where optional
+maintainer APIs are present, `validate_new_status` checks new issuance and contextual readers check
+their structural cases; success does not replace the receiving role's authority/history judgment.
 Ordinary lifecycle/timestamp/TRACE updates preserve valid history without silent format adoption.
 At a safe deliberate adoption checkpoint inspect the actual original human choice, scope/roles,
 holder/parent, effect, reservations and frozen ceiling. Unchanged verified choice may populate the

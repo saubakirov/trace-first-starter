@@ -63,9 +63,12 @@ before config/state writes. An existing root or `.tfw/README.md` is not a blank 
 
 ### Coordination-mode adoption gate
 
-Read the pinned `migrations/coordination-modes.md` before connected coordination reader/rule/
-template/profile/adapter writes, including equal-version repair or incomplete adoption. Install
-compatible consumers together; preserve historical task/phase status, selection events and authority.
+Read the pinned `migrations/coordination-modes.md` before connected coordination rule/template/
+profile/adapter writes, including equal-version repair or incomplete adoption. Install compatible
+consumers together; preserve historical task/phase status, selection events and authority. Apply
+the guide's complete direct file/authority validation; ordinary receivers need no upstream tools,
+Python or PyYAML. Actual API checks supplement it only where compatible maintainer tools exist;
+they are not distributed or installed as prerequisites.
 New issuance uses explicit mode plus the complete current form. An unchanged original verified
 human choice may support deliberate format adoption at a safe checkpoint; an actual choice change
 needs its own selection/approval. No automatic task migration or inferred mode. Classify custom/

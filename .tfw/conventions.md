@@ -647,9 +647,13 @@ A mode value alone grants neither topology nor authority. Concurrent phases reta
 Complete historical five-field `owner_gateway` carriers, with or without the selection pair, and
 complete pre-mode seven-field `upstream_route` carriers remain readable and continuable under
 unchanged valid authority. Total absence is read-only; partial, mixed, downgraded-current and
-copied-old-as-new carriers cannot activate work. `validate_new_status` applies at new issuance;
-the actual reader checks missing current form on uncommitted new carriers and mode removal against
-committed history. A parser checks structure and immutable sources, never human consent.
+copied-old-as-new carriers cannot activate work. Apply the complete status-template validation at
+new issuance and continuation: inspect fields/body, lifecycle, contextual routes, immutable sources
+and semantic carrier history regardless of YAML key spelling. Ordinary receivers perform these
+checks directly from files and available repository-object inspection, without Python/PyYAML or
+upstream tools. Optional maintainer APIs `validate_new_status`, `read_status` and `read_phase_status`
+check their respective structural cases when available; they are not shipped requirements or human
+consent. The adoption guide supplies the complete ordinary-receiver route.
 
 At a safe checkpoint, deliberate format adoption may reuse a verified unchanged original human
 choice: inspect its source, exact scope/roles, holder/parent, effect condition, reservations and

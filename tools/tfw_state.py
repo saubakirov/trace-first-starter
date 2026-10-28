@@ -435,7 +435,7 @@ def verify_historical_carrier(task_dir: Path, require_established: bool = True) 
         committed = subprocess.run(["git", "show", f"HEAD:{relative}"], cwd=root,
                                    capture_output=True, check=False)
         current_history = subprocess.run(
-            ["git", "log", "-1", "--format=%H", "-G", "^coordination_mode:", "--", relative],
+            ["git", "log", "--format=%H", "--", relative],
             cwd=root, capture_output=True, check=False)
     except (OSError, SystemExit, ValueError):
         if not require_established:
@@ -445,8 +445,18 @@ def verify_historical_carrier(task_dir: Path, require_established: bool = True) 
         if not require_established:
             return []
         return ["historical coordination carrier history cannot be inspected"]
-    if current_history.stdout.strip():
-        return ["current coordination_mode cannot be removed from an established carrier"]
+    for commit in current_history.stdout.decode("ascii").splitlines():
+        try:
+            snapshot = subprocess.run(["git", "show", f"{commit}:{relative}"], cwd=root,
+                                      capture_output=True, check=False)
+            if snapshot.returncode:
+                continue
+            match = FRONT_MATTER.match(snapshot.stdout.decode("utf-8"))
+            historical = yaml.safe_load(match.group(1)) if match else None
+        except (OSError, UnicodeDecodeError, yaml.YAMLError):
+            return ["historical coordination carrier semantics cannot be inspected"]
+        if isinstance(historical, dict) and "coordination_mode" in historical:
+            return ["current coordination_mode cannot be removed from an established carrier"]
     if committed.returncode and require_established:
         return ["new coordination carrier requires explicit coordination_mode; historical form is continuation-only"]
     return []
