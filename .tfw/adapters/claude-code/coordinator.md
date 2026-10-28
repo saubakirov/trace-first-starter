@@ -1,56 +1,66 @@
 # Claude Code Coordinator profile
 
-Selected by `CLAUDE.md` at new-task entry and Plan Step 5 or a changed capability gate. Read this one profile, not every provider profile or the tooling manifest. Canonical TFW rules govern authority, role locks, gates and acceptance; this file gives the Claude route and its evidence limits.
+Selected by `CLAUDE.md` at new-task entry and Plan Step 5 or a material capability change.
+Canonical workflow, current task state, frozen HL and actual owner choice govern authority.
+Read this selected profile only at its checkpoint, without other profiles/tooling manifest.
 
-## Startup card values on Claude Code
+## Startup card values
 
-At new-task entry, render one shared startup card from mechanisms actually exposed in this
-Claude surface.
-Offer the visible full-chat route: the owner may need to click-create each separate Coordinator,
-Researcher, Executor and independent Reviewer chat, with native addressed gates where current
-tools support them. For a really small one-phase task, also offer the single-phase agent mode below.
-Owner-only or bounded delegated activation with `tfw-gates-only` dialogue and native-gates
-reporting is the initial operating choice;
-owner-transfer requires explicit selection. One-phase work has one task Coordinator and distinct
-worker roles. Long work keeps that task Coordinator for strategy, owner decisions and ready-phase
-launch while each ready phase has a separate bounded Coordinator, with owner creation clicks when
-required. Roles return vertically to their own Coordinator; phase-level results return to the task
-Coordinator. Outside the single-phase agent mode below, no subagent substitutes for a visible, directly addressable TFW role unit.
+Offer the three common modes for one or multiple phases: manual owner-started roles, visible-agent
+role chats, or one owner-facing Coordinator operating distinct native subagents. Explain launcher,
+role location, actual owner actions and reservations. No small-task or one-phase admission limit.
+The selected native surface must actually support command-only role activation, independent context,
+addressed reference returns and required tools; a documented mode alone proves none of them.
+Inspect `provision · addressed send · wait/readback · title/readback` independently, classifying
+native, owner-assisted or unavailable from current tools/results. Missing title/grouping is a
+navigation limit. Missing launch/address/independence leaves an exact pending act or owner-selected
+alternative, without silently switching mode or creating extra role/phase chats.
 
-Show role-specific visible titles when the surface can set and read them. Use task-only grouping
-when supported; report an unavailable mechanism or required owner action. Do not assume a Codex
-Section exists here. On Claude Desktop, use the owner-selected local
-checkout, serialize mutation and hold the Executor while an independent Reviewer examines a fixed
-reachable Candidate; do not invent a path. The Coordinator selects model and effort separately at
-each launch from actual available choices and records rationale outside the first message; report
-unobserved effective settings as unknown. Every new role begins with exactly
-`/tfw-* <task[/phase]>` after the ID/phase is known, with no briefing or startup card appended.
-Name owner clicks, HL/TS and reserved verdicts still owed. Close only after durable vertical
-returns, independent acceptance, selected docs/knowledge/changelog effects and safe chat/archive
-and checkout disposition. Archive is not disk cleanup.
+## Native route and workspace
 
-## Visible full-chat route
+On Claude Desktop the owner-selected shared local checkout may be required: one active mutation
+owner, exact-path commits, and held Executor writes during fixed-Candidate independent review.
+On a Claude Code surface with native subagent/worktree controls, inspect actual support before
+choosing isolated role trees; do not move a running chain onto a stale base. No CLI mechanism is
+assumed present in Desktop.
 
-At each ready role gate, request the owner click if full-chat creation is owner-assisted. The nonempty initial prompt is exactly `/tfw-* <task[/phase]>`; do not create an empty waiting pool or attach a briefing. A pool is conditional only on a surface that actually permits command-only later activation. A creation receipt or first normal gate may supply transport readiness/address without a compulsory second handshake. Existing chats can use exact addressed sends when exposed; manual creation alone does not select fully manual reporting. Active Researcher, Executor and Reviewer still return native vertical gates to their own Coordinator unless the owner explicitly selected `owner-transfer`. This route cannot claim unattended completion while future owner clicks or reserved decisions remain.
+When a role chat requires an owner click, keep that exact action pending; its first prompt remains
+only `/tfw-* <task[/phase]>`. Native subagents likewise receive fresh role context and only that
+command, with current files supplying authority. Continue the same role only with its required
+immutable reference. No briefing, inherited conversation, solution hint or copied reasoning.
+Observe actual child address/parent from receipt or first gate; later sends require that exact
+address. A created unit/title/source does not activate work. The common closed catalogue carries
+reference-only vertical signals, including Research stage/RES substance preserved in files.
+Manual creation alone leaves native returns active; only explicit owner-transfer changes transport.
 
-Use one owner-selected local checkout/worktree for visible full chats on Claude Desktop. Serialize repository mutation with one active owner and exact-path commits; preserve foreign work. Hold Executor mutation while the independent Reviewer examines a fixed reachable Candidate. Sequence conflicting phase work in that same checkout. Do not silently move the chain to provider-created isolated trees with a stale base. Archive is recoverable conversation disposition, not disk cleanup; preserve its restoration dependencies or expose the remaining disposal decision.
+One Coordinator may own multiple separate phase-local cycles within governing authority. Distinct
+bounded phase holders remain available; same-holder completion is local without self-send. Check
+dependencies and phase-local scope/TS/state before each ready act. New phases default to fresh
+independent Review; same-phase corrections retain the same Executor and independent Reviewer.
+Apply common cross-phase reuse discretion, hard freshness and receiving checks. Keep a reachable
+fixed Candidate with isolated or serialized mutation as this surface actually supports.
 
-## Single-phase agent mode
+Use exposed event-driven wait/status on exact units; after unchanged state back off. One catalogue
+status request handles suspected stall. Never inspect peer transcripts, raw global state or
+unreturned trees. Duplicate delivery or distrust alone does not justify repeating accepted work.
+At interruption preserve partial work and exact pending act; on resume/replacement verify actual
+unit/parent, role/task/phase, cwd/base/Candidate, authority, gates and recipient. Distinguish active
+capacity, retained idle identities and proven disposal. If fresh Review is unavailable, acceptance
+stays nonterminal pending authorized provision/address, actual fresh context, phase binding and
+fixed Candidate access; the existing Coordinator resolves the specific missing condition.
 
-For a really small one-phase task, such as a small fix or debt item, the owner may choose this mode
-instead of full role chats. Offer it only where the current surface can start an agent with exactly
-`/tfw-* <task>` and receive its return. The task Coordinator stays the owner's only conversation and
-launches each needed role (Researcher, Executor, independent Reviewer) as a distinct agent. Each
-agent reads its context from task files, owns its artifact and returns only its TFW gates to the
-Coordinator, which does none of their work. The Reviewer is a new agent, never the continued
-Executor, and examines a fixed Candidate. This saves owner clicks, not Coordinator context. If the
-task outgrows one phase or an agent cannot load its workflow or a required tool, stop that
-delegation, name the limit and offer full role chats; never switch modes silently.
+## Model choice and close
 
-## One-phase and successor limits
+The actual launcher selects available model and reasoning separately under the owner's scoped
+policy, a justified quality floor and a plausible lower-resource comparison. Apply supported
+authorized controls before launch; rationale stays in dispatch, never in the first message.
+Do not ask again for covered routine choices, assume maximum effort, or invent a follow-up mutator.
+Separate requested settings from observed effective settings, delivery, outcome and rework.
+Unsupported settings remain unavailable; a model change grants no authority or review independence.
 
-A one-phase task needs no extra phase Coordinator, but Researcher, Executor and Reviewer still need
-distinct full role chats, or distinct agents in the single-phase agent mode, and independent judgment. If a needed chat must be created by the owner,
-name that pending action and do not promise unattended completion. A successor task Coordinator
-requires a safe checkpoint, exact address and dispatch, reconstruction from current task files,
-acknowledgement, then an authorized route switch; the old route remains effective meanwhile.
+Close after durable returns, independent verdict, applicable docs/knowledge/changelog effects,
+owner passage/result acceptance and truthful resource coverage. Dispose only task-owned resources
+after safe return/landing and correction availability; chat archive does not prove disk cleanup or
+slot release. A successor reconstructs files and keeps the previous route until acknowledgement
+and authorized switch. Report actual P0–P4 level per surface; these instructions and another
+provider's trial prove no live Claude Code operation or end-to-end reliability.

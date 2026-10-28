@@ -6,6 +6,7 @@ value: "what shipping it gives the project, one line"
 lifecycle: TODO
 owner: unassigned
 authority: HL-PREFIX_YYYYMMDD-HHMMSS_ABBR.md
+coordination_mode: manual
 coordinator_route: "native:coordinator-address"
 upstream_route: owner:human-handle
 dialogue: tfw-gates-only
@@ -37,6 +38,7 @@ A COMPLETE, VALID EXAMPLE:
     lifecycle: TS_DRAFT
     owner: saubakirov
     authority: HL-20260827-091500__query_redesign.md
+    coordination_mode: manual
     coordinator_route: "codex:thread:local:01example"
     upstream_route: owner:saubakirov
     dialogue: tfw-gates-only
@@ -48,13 +50,12 @@ A COMPLETE, VALID EXAMPLE:
     updated: 20260827-114210
     ---
 
-For a new phase, the same seven fields use its own worker recipient and the task Coordinator's
-observed address as the upward route. For example, if the governing task status has
-`coordinator_route: "codex:thread:local:01task"`, its `phase-a/status.md` may carry
-`coordinator_route: "codex:thread:local:01phase"` and
-`upstream_route: "coordinator:codex:thread:local:01task"`. The phase must have its own
-bounded dispatch; this example grants none. A one-phase task uses the task form and no phase
-Coordinator.
+Current new issuance requires an explicitly selected `coordination_mode` plus all seven routing/
+selection fields; `manual` in this example is illustrative, never a default choice. For a same-holder
+phase, `coordinator_route` equals the task Coordinator and `upstream_route` names the human task
+owner. A distinct phase holder has its own `coordinator_route` and upward `coordinator:{actual-task-
+Coordinator-address}`. Verify parent/owner agreement and governing phase permission independently.
+Same-holder completion is local without self-send; distinct holders send bounded phase returns.
 
 The key set is closed. Concision guides, never validates; never truncate.
 
@@ -68,6 +69,7 @@ The key set is closed. Concision guides, never validates; never truncate.
 | `lifecycle_verbatim` | complete source value | iff `UNDECLARED` | migration diagnostics |
 | `owner` | human `team/` handle or `unassigned` | always | resume, authority checks |
 | `authority` | path relative to this file | always | resume, authority checks |
+| `coordination_mode` | `manual`, `visible-agents`, `subagents`; actual explicit choice | current new issuance/adoption | all workflows |
 | `coordinator_route` | quoted non-empty native unit address | current statuses | all workflows |
 | `upstream_route` | task: `owner:{human-handle}`; phase: `coordinator:{native-address}` | new statuses | Coordinator only |
 | `owner_gateway` | `owner:{human-handle}` or `gateway:{native-address}` | historical carriers only | legacy readers |
@@ -87,21 +89,24 @@ phase state. Terminal `DONE`/`REJECTED` require `outcome`; nonterminal states fo
 Migration-only `UNDECLARED` requires the verbatim source value. Tools never normalize it; an
 accountable owner resolves it with a paired `transition` event from `UNDECLARED`.
 
-The four shared coordination fields (`coordinator_route`, `dialogue`, `activation`,
-`coordination_authority`) and exactly one upward-route name form a complete spine. New writes use
-`upstream_route` plus `reporting` and `selection_ref`; they never emit `owner_gateway`. A task
-`upstream_route` names its own human `owner`; a phase names the actual governing task Coordinator's
-native address, verified against its parent status, and differs from its local
-`coordinator_route`. A missing, double, malformed or wrong-ancestor route refuses. A phase's
-worker gates still reach its local `coordinator_route`; the upward route carries only phase-level
-returns. Total absence is legacy read-only and cannot activate new work.
+The four shared coordination fields and exactly one upward-route name form a complete spine.
+Current mode requires `upstream_route`, `reporting` and `selection_ref`; mixed historical/current
+forms refuse. All modes admit one/multiple phases but grant no phase permission by themselves.
+For task and same-holder phase, the upward owner matches `owner`; a same-holder phase also matches
+the governing task owner and actual Coordinator. A distinct phase routes upward to the actual task
+Coordinator, never itself. Workers always return to their local `coordinator_route`.
 
-An existing complete five-field `owner_gateway` carrier, with or without the selection pair,
-remains readable with its actual authority. Do not silently rewrite it or infer a new parent.
-Migrate a live carrier only at a safe checkpoint with an observed recipient and verified owner
-choice, preserving the original event bytes and authority epoch. `baseline` means the verified
-original human choice and frozen ceiling in `coordination_authority`, never a template default.
-If that object cannot be verified, only dependent new authority is blocked.
+Complete historical five-field `owner_gateway` forms with/without selection pair and pre-mode
+seven-field `upstream_route` forms remain readable and continuable under unchanged valid authority.
+Absence is read-only; partial/mixed, downgraded-current and copied-old-as-new forms cannot activate
+new work. At new issuance call `validate_new_status`; contextual reader checks are also required.
+Ordinary lifecycle/timestamp/TRACE updates preserve valid history without silent format adoption.
+At a safe deliberate adoption checkpoint inspect the actual original human choice, scope/roles,
+holder/parent, effect, reservations and frozen ceiling. Unchanged verified choice may populate the
+current form using its original epoch; real mode/route/scope/reporting/dialogue changes require their
+proper human selection/approval. Preserve old events; create no same-state transition or guessed
+mode. `baseline` is the verified original choice, never a template default. Parser success proves
+neither consent nor readiness; missing source blocks dependent new authority.
 
 The selection pair is independent of `activation`, `dialogue` and routes. Iterative dialogue
 always needs an exact immutable grant naming two peers,

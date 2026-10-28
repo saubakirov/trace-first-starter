@@ -41,13 +41,14 @@ validated under current principal rules, removed, or rewritten.
 
 For `kind: dispatch`, `writer` remains optional principal attribution and never stands for a unit
 edge. The body/summary plus refs must preserve the actual source, destination and parent units,
-workflow role and bounded scope, direct address/channel, governing artifacts, and originating
+workflow role and bounded scope, selected mode, actual invocation/native unit/source and parent,
+requested/effective settings when observed, direct address/channel, governing artifacts, and originating
 proposer `{principal, unit}` or explicit `none`. Identical writers never merge units; forwarding,
 restart or continuation never changes the recorded origin. Add no frontmatter key for these facts.
 
 For `kind: coordination_selected`, omit `from` and `to`. This is an actual human operating
 choice, not a role proposal. Cite task-local status and governing HL; preserve the human's exact
-answer source and immutable authority epoch. The body states previous and selected activation,
+answer source and immutable authority epoch. The body states previous and selected mode, activation,
 dialogue, topology and reporting values; exact task/phase/role scope; reservations; `now` or a
 named future checkpoint; and revocation/continuation consequences. A pending event does not
 change status. Commit this immutable event before writing its full SHA in an effective

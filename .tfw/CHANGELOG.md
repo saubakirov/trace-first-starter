@@ -5,6 +5,16 @@ Format: [Keep a Changelog](https://keepachangelog.com/). Versioning: [Semantic V
 
 ## [Unreleased]
 
+### Changed
+
+- CMODES (`TFW_20261027-161333_CMODES`): manual, visible-agent and native-subagent
+  coordination all admit one or multiple phases, including one owner-facing Coordinator
+  with separate phase state. Explicit current mode, compatible historical continuation,
+  independent phase Review, file-owned reference returns and receiving-context checks
+  replace conflicting topology restrictions. See [receiver adoption](migrations/coordination-modes.md).
+  Native evidence remains scoped to each observed provider/surface; release and final
+  acceptance are separate.
+
 ### Fixed
 
 - ECFIX (`TFW_20261027-160926_ECFIX`): Daily and Full economics route to the selected

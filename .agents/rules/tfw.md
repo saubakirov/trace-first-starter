@@ -13,8 +13,10 @@ At Plan Step 5 validate that choice and current capability; re-read this selecte
 when the active surface or relevant capability materially changes. The task Coordinator uses the selected profile for new work. Do not preload other profiles or the tooling
 manifest, and do not load this profile for every role command. A missing or ambiguous selected
 pointer refuses a provider-specific offer and is reported without guessing.
-For new work, one task Coordinator handles a one-phase task; long work uses distinct phase
-Coordinators with bounded upward returns. Historical GATEWAY/LEAD carriers remain readable,
+For new work, explicitly select `manual`, `visible-agents` or `subagents`; all admit one or
+several phases. One owner-facing Coordinator may own phase-local cycles under governing authority;
+distinct bounded phase Coordinators remain available. Apply `conventions.md` → `Coordination modes`
+for phase routes, independent context, continuation and actual capability limits. Historical GATEWAY/LEAD carriers remain readable,
 but a principal, title or host never supplies a route or mandate.
 
 At new-task entry, report `provision · addressed send · wait/readback · title/readback` from the
@@ -35,8 +37,7 @@ exact immutable two-peer grant independent of task/phase topology. Manual chat c
 not select `owner-transfer`; a new role's first message is only `/tfw-* <task[/phase]>`.
 Before sending on the selected strict edges, apply `.tfw/conventions.md` → `Closed message
 catalogue`: persist the owned record and required state/event, send only its permitted form, then
-read the referenced record/current authority before the dependent act. Research keeps its existing
-stage dialogue; owner–task Coordinator discussion stays substantive. The catalogue also owns the
+read the referenced record/current authority before the dependent act. Research keeps file-owned stage checkpoints and reference returns; owner–task Coordinator discussion stays substantive. The catalogue also owns the
 one-time status fallback, delivery/duplicate handling and unavailable route.
 
 Never open or resume another TFW role session, or inspect raw provider-wide state, session logs or

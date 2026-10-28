@@ -12,7 +12,9 @@
 > **Activation / dispatch source**: {owner-direct activation or immutable dispatch ref}
 > **Coordination authority**: {exact status.md coordination_authority}
 > **Originating proposer**: {principal and unit, or `none`}
-> **Current selection**: {effective reporting and selection_ref, or verified complete-five-field compatibility}
+> **Current selection**: {effective coordination_mode/reporting/selection_ref, or exact verified historical form}
+> **Receiving context / lineage**: {actual invocation, task/phase, role, parent/unit/source bounds, workdir/base and return route; interruption/replacement and any next phase permission}
+> **Native evidence limit**: {provider/surface, observed operation/series/trial level, unavailable capability and exact pending act}
 > **Launch observation**: {requested model/effort, effective settings if observed, delivery, outcome and material rework; unknown where unobserved}
 
 ---

@@ -5,6 +5,9 @@ and incident histories live at the linked authority or durable history source.
 
 ## Coordination
 
+### Coordination mode
+**Meaning:** Explicit `manual`, `visible-agents` or `subagents` choice of launcher and role-hosting arrangement, admitting one or multiple phases. It does not grant authority, dialogue, reporting or topology. **Authority:** [conventions.md](conventions.md#coordination-modes), `Coordination modes`.
+
 ### Activation
 **Meaning:** Authorization for one exact `/tfw-*` workflow, task/phase, role unit and lineage source. Provisioning, a role prompt, a title or a wait result is not activation. **Authority:** [conventions.md](conventions.md#7-coordination), `Coordination`.
 
@@ -12,7 +15,7 @@ and incident histories live at the linked authority or durable history source.
 **Meaning:** Resumption by the same working unit under the same immutable authority and routing spine. **Authority:** [conventions.md](conventions.md#7-coordination), `Coordination`.
 
 ### Routing spine
-**Meaning:** The seven status fields binding lower-role recipient, upward route, authority and operating selection. Validation belongs to the status contract. **Authority:** [conventions.md](conventions.md#5-task-statuses), `Task Statuses`, and `.tfw/templates/status.md`.
+**Meaning:** The current mode plus seven routing/selection fields binding local recipient, upward route, authority and operating selection. Complete historical forms retain their original meaning. Validation belongs to the status contract. **Authority:** [conventions.md](conventions.md#5-task-statuses), `Task Statuses`, and `.tfw/templates/status.md`.
 
 ### Current selection
 **Meaning:** Status alone carries the effective launch, dialogue, owner-context topology and reporting choice. `selection_ref` binds an immutable actual human `coordination_selected` event or the verified baseline; pending events grant nothing. **Authority:** [conventions.md](conventions.md#5-task-statuses), `Task Statuses`, and `.tfw/templates/journal/event.md`.
@@ -21,7 +24,7 @@ and incident histories live at the linked authority or durable history source.
 **Meaning:** The actual Coordinator unit that carries task purpose, owner decisions, dependencies, ready-phase launch and safe successor selection. In a one-phase task it runs the local cycle directly. It owns the owner upward route, never another Role Lock's artifact. **Authority:** [conventions.md](conventions.md#7-coordination), `Coordination`.
 
 ### Phase Coordinator
-**Meaning:** A distinct Coordinator unit bounded to one phase of long work. It owns that phase's TS, worker gates, independent review route and durable phase return to the task Coordinator named in `upstream_route`; it does not own task strategy or sibling phases. **Authority:** [conventions.md](conventions.md#7-coordination), `Coordination`.
+**Meaning:** The Coordinator responsibility bounded to one phase, held by the task Coordinator or a distinct delegated unit as authorized. It owns phase TS, worker gates, independent review and durable result. Same-holder completion is local; a distinct holder returns upward and owns no task strategy or sibling phase. **Authority:** [conventions.md](conventions.md#7-coordination), `Coordination`.
 
 ### Successor Coordinator
 **Meaning:** An exact replacement unit activated at a safe checkpoint, after reconstructing task authority and open work from durable files. The old route remains effective until acknowledgement and an authorized route switch. **Authority:** [conventions.md](conventions.md#7-coordination), `Coordination`.

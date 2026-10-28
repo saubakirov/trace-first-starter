@@ -26,6 +26,13 @@ headings.
 Never reload root or full common libraries. On REVISE, add only highest TS, live REVIEW and changed
 lineage; do not reread unchanged authority in the same session. Missing/duplicate headings stop.
 
+Before material activation/continuation apply `conventions.md` → `Coordination modes`: inspect
+the effective mode or valid historical selection, real receiving context, phase authority and exact
+return route. New-phase permission never follows from a retained unit ID. Reviewer freshness,
+independence and fixed Candidate remain mandatory under the governing phase context policy.
+Every new role receives only its skill command, without inherited conversation or solution hints;
+continuations add only the required immutable reference. Returned substance stays in owned files.
+
 ## Identity, activation, and returned work
 
 After state resolves, apply `Session identity` with `WORK=EXEC`. Apply root activation/routing before

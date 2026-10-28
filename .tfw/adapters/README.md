@@ -29,6 +29,17 @@ manifest lookup, registry or generated loader is added.
 and `config.md` verifies affected generated copies. Missing sources, targets, roles, extra or
 missing commands, duplicate managed blocks, and receiver-path mismatches are hard failures.
 
+## Coordination modes and evidence
+
+All adapters consume the common `manual`, `visible-agents`, `subagents` semantics for one or
+multiple phases. One owner-facing Coordinator can govern phase-local cycles through native roles;
+distinct phase holders remain available under authority. Selected profiles map actual surface
+mechanics, not provider-wide permissions. Cursor is common-only and makes no tailored native offer.
+Distinguish P0 documentation, P1 operation, P2 source reconstruction, P3 checkpoint series and P4
+complete native trial. Installation/parity and Codex observations cannot establish another surface.
+Unavailable provision/address/fresh-review controls retain their exact pending act. Adopt via the
+pinned [coordination guide](../migrations/coordination-modes.md), preserving historical carriers.
+
 ## Adapter Requirements
 
 1. The persistent root recognizes `/tfw-*` but does not preload common files or duplicate a
