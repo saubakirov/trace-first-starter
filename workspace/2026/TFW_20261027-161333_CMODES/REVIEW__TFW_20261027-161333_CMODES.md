@@ -87,7 +87,7 @@ The selected bound is complete, not the ongoing invocation. Subsequent record se
 
 ### Temporary-resource disposition
 
-Exact retained path: `E:/TEMP/tfw/TFW_20261027-161333_CMODES/product-review`, containing own temporary reader fixture, generated site/bytecode, diagnostic summary and staging copy of the already-received JSONL. Automatic approval review rejected the guarded native PowerShell recursive removal before execution with `blocked by policy`. No bypass was attempted. This REVIEW and received JSONL preserve the necessary result/evidence summary; the existing Coordinator owns the explicit pending owner-assisted deletion of this exact subtree. The retained review worktree is a separate intentional resource for same-phase correction/landing, not subject to this deletion.
+Exact retained path: `<system temp>/tfw/TFW_20261027-161333_CMODES/product-review`, containing own temporary reader fixture, generated site/bytecode, diagnostic summary and staging copy of the already-received JSONL. Automatic approval review rejected the guarded native PowerShell recursive removal before execution with `blocked by policy`. No bypass was attempted. This REVIEW and received JSONL preserve the necessary result/evidence summary; the existing Coordinator owns the explicit pending owner-assisted deletion of this exact subtree. The retained review worktree is a separate intentional resource for same-phase correction/landing, not subject to this deletion.
 
 ## 7. Fact Candidates and Material Handover
 
