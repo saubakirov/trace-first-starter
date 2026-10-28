@@ -5,7 +5,7 @@ goal: Exercise the approved real native two-phase coordination in an isolated as
   receiver.
 value: Bounded evidence of one Coordinator, independent roles and accepted dependency
   use.
-lifecycle: KNW
+lifecycle: DONE
 owner: saubakirov
 authority: HL__phase-b__dependency_receipt.md
 coordination_mode: subagents
@@ -17,7 +17,9 @@ coordination_authority: HL__phase-b__dependency_receipt.md @ eb4d85e951fe9582b3a
 reporting: native-gates
 selection_ref: baseline
 created: 20261028-102010
-updated: 20261028-111750
+updated: 20261028-112239
+outcome: Accepted assurance Candidate edeef46cf25f66866a28bda58f9e6cd5c49b8e8b from
+  accepted A; product acceptance remains reserved.
 ---
 
-**Task state.** This file is the only authority for this phase's live state. The task-level `status.md` never summarizes it.
+**Task state.** This file owns only its selected scope.

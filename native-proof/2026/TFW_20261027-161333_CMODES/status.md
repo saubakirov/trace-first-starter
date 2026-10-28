@@ -5,7 +5,7 @@ goal: Exercise the approved real native two-phase coordination in an isolated as
   receiver.
 value: Bounded evidence of one Coordinator, independent roles and accepted dependency
   use.
-lifecycle: PHASES
+lifecycle: KNW
 owner: saubakirov
 authority: HL-TFW_20261027-161333_CMODES.md
 coordination_mode: subagents
@@ -17,7 +17,7 @@ coordination_authority: HL-TFW_20261027-161333_CMODES.md @ e7042acd5ad0df180ceba
 reporting: native-gates
 selection_ref: baseline
 created: 20261028-102010
-updated: 20261028-102010
+updated: 20261028-112239
 ---
 
-**Task state.** This file is the only authority for this task's live state. Any downstream projection is disposable and never outranks it.
+**Task state.** This file owns only its selected scope.
