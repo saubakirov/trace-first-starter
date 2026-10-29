@@ -5,6 +5,20 @@ Format: [Keep a Changelog](https://keepachangelog.com/). Versioning: [Semantic V
 
 ## [Unreleased]
 
+### Documentation
+
+- FLC (`TFW_20261011-192605_FLC`): independently reviewed, bounded diagnosis of
+  workflow completion, coordination and knowledge continuity. Preserves observed
+  violations, contract ambiguities and evidence limits; changes no framework code,
+  role rule or official operating mode. Owner accepted the diagnostic result for closure.
+
+## [3.9.3] — 2026-10-29
+
+CMODES makes the three coordination modes explicit for single-phase and multi-phase work;
+ECFIX repairs native economics capture and continuation accounting. Both results have independent
+approval and owner acceptance. See [Updating to TFW 3.9.3](https://github.com/saubakirov/trace-first-starter/blob/v3.9.3/.tfw/migrations/3.9.3.md)
+for the ordered route from earlier supported versions and preservation of active work.
+
 ### Changed
 
 - CMODES (`TFW_20261027-161333_CMODES`): manual, visible-agent and native-subagent
@@ -26,13 +40,6 @@ Format: [Keep a Changelog](https://keepachangelog.com/). Versioning: [Semantic V
   the exact CLI session and SQLite source for observed agy 1.2.16/1.4.8.
   `collect --prior` checks prior groups and event membership in one read-only snapshot,
   emits only disjoint new facts, and preserves earlier receipt bytes and digest meanings.
-
-### Documentation
-
-- FLC (`TFW_20261011-192605_FLC`): independently reviewed, bounded diagnosis of
-  workflow completion, coordination and knowledge continuity. Preserves observed
-  violations, contract ambiguities and evidence limits; changes no framework code,
-  role rule or official operating mode. Owner accepted the diagnostic result for closure.
 
 ## [3.9.2] — 2026-10-12
 
