@@ -296,6 +296,36 @@ directory cleanup keep their exact owner-assisted actors/actions; no bypass or d
 Candidate checkout remains needed for the separately authorized isolated 3.9.3 preparation. This
 closure performs no tag, push, publication or deployment.
 
+
+### Final resource disposition and release handoff — 2026-10-29
+
+Coordinator-owned post-DONE record; no independent verdict or product finding is changed.
+Shared `master` contains the accepted CMODES/ECFIX lineage and actual closure at
+`ba24a9a9d41ee5dd4696fc34a9b39ace087d2f5a`. Release preparation is separately preserved on
+`codex/release-3.9.3`: five metadata/guide files at `2fe4e284b0dfc4c5ccff1aeb46121c10dfccba74`,
+with configured tests, exact copies, complete-history blob guard and archive checks recorded in
+[economics.md](economics.md#release-preparation-checkpoint). Owner-directed solo continuation
+launched no further role contexts. Tag/push/publication/deployment remain separate effects.
+
+The covering Coordinator r13 receipt is
+[economics/roles/c28a610f07b3ba9875e93ec59eaa157617e156d31eaef5af5b081f330be362c8.jsonl](economics/roles/c28a610f07b3ba9875e93ec59eaa157617e156d31eaef5af5b081f330be362c8.jsonl).
+It is validated and reconciled after final release checks: 8 expected/received/measured units,
+27 received files, 9 selected files / 18 rows, 18 covered predecessors, no missing/failure-only/
+omitted units or reconciliation diagnostics. Original closing r12 is preserved unchanged.
+Final sealing, delivery and safe disposal remain the finite excluded tail.
+
+The managed main Executor and Product Reviewer worktrees are now archived; archive attachments
+and absence of both checkout paths were verified. Their durable returned commits and the accepted
+Candidate remain reachable. Research checkout paths are also absent. The candidate worktree and
+`codex/cmodes` / release branch references are retained to make the accepted result and prepared
+release reviewable. Existing fixture archive/disposal records remain in force.
+
+Automatic approval review rejected guarded native-PowerShell deletion of this Coordinator's
+`<system temp>/tfw/TFW_20261027-161333_CMODES/coordinator/` subtree with `blocked by policy`.
+The subtree remains; owner saubakirov owns its later owner-assisted removal after checking durable
+receipts/source. Prior denied worker-temp and empty-proof-directory dispositions remain assigned
+as recorded above. No retry through another tool, successful deletion or new approval is inferred.
+
 ## 7. Fact Candidates and Material Handover
 
 No fact candidates. Producer is this independent Reviewer, with frozen HL/approved TS and fixed product epoch above; inspected scope is the current semantic/consumer delta, affected baseline obligations, PV citations, actual readers, exact native returns and accounting. Material handover is F1/F2 with bounded completion conditions; O1 and retained-resource O2 remain nonmaterial proposals; cleanup still has a named actor/action. Uncertainties are the explicitly unproved provider/runtime and reserved downstream gates. Continuation is the existing Coordinator's one ruling, then same E/R if authorized; the unresolved decision owner is that Coordinator, with final human acceptance reserved to saubakirov. These records preserve rather than replace the original sources.
