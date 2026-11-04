@@ -13,6 +13,7 @@ common rule, terminology, or project-knowledge libraries here.
 ## Conduct
 - **Language:** reply in the user's latest message language.
 - **Personal preferences:** if `.user_preferences.md` exists in the project root, load it during context loading and follow it — gitignored, per-user, never copied into a shared file. It governs how approvals, gates and verdict requests are presented.
+- In a linked worktree of this repository without its own preferences file, read the one in the primary checkout (the first worktree in `git worktree list --porcelain`), if present.
 - Be direct, precise, concrete. **Don't be sycophantic.**
 - **No placeholders** — provide complete, usable output.
 - Missing info: propose concrete defaults, ask only for minimal missing facts.
