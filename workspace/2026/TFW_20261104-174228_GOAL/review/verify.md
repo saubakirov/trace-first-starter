@@ -166,3 +166,112 @@ P0–P4 scanned in their separate meanings: root README How It Works and `.tfw/R
 Prior F1 oracle passes; no other new material item. Resource cleanup remains a finite disclosed Coordinator closing obligation separate from product verdict. No value judgment follows merely from the number of artifacts, controls or discrepancies.
 
 Checkpoint: all selected claims and mandatory floors checked; tuples/dependency changes and evidence limits stated; checks classified; all RF/EV claims/citations and accounting audited; F2 complete contract and material consequence established. Stage complete: YES.
+
+
+# Round 3 — independent Verify of complete final Candidate
+
+Producer/activation/source binding: Map Round3. Fixed subject `25a26a98388c2c9f4b840ae8dd6c725b19c13c77`; original Baseline `50f6b77e33e4ba7fc71e28fbce654762f285e2b5`; governing HL `c4ca85fc7c06aabb69a016ef3975ccc1de04e6b7`. Latest durable RF/EV at `e27133683d0e0dc86b146acfd681e3aba9c1d652`. Local Windows/Python3.13/Codex0.166.0-alpha.6; effective own gpt-6.1-sol/high. Complete Candidate product bytes (29 VALUE and nine DERIVED) independently compared equal to HEAD; later commits contain task records only.
+
+## Selection argument
+
+C1–C3: inspect explicit mode branching, immutable authority, owner reservations, direct no-TS route, charged cap and recovery; faulty activation risks unauthorized work. C4: use actual final returned task snapshots and hostile history/tag inputs because misleading or unavailable loop economics was the material failure. C5: verify canonical/install mirrors, current build and existing guards because receivers must enter the same workflow. C6/C7: mandatory full lineage, fixed identity, accounting, numeric-only source access and human-acceptance checks. Prior A1/A2 evidence reused only where inputs/oracles/dependencies remain unchanged, with fresh direct checks below; no acceptance inferred from prior test counts.
+
+## R3-V1 — Full workflow, authority and mandatory boundaries: HOLDS
+
+Read the whole VALUE diff and GOAL guide, role-entry branches, four adapter roots/profiles, templates, migration and public launch examples. GOAL is explicit; the early GOAL branch overrides ordinary TS tables without changing their three-mode applicability. One owner-facing Coordinator can sequentially execute first attempt only by mandate; retries use fresh Executor and Reviewer; positive cap, repeated failure, compact checkpoints, missing mechanism, scope amendment and exhausted cap have named routes. Goal sentence/native wakeup/Daily do not select it. No global installation, deployment, merge or owner acceptance is created. C4/UML cover context, waiting, correction, rejection and close. Ordinary lifecycle still works from files without the optional upstream validator.
+
+Actual status and human profile validate; frozen HL is reachable, task-correct, uniquely owner-frozen, limit3, prior to first implementation. Direct optional-validator negatives refuse absent goal_ref, unreachable ref, wrong-task ref, epoch without the task HL, wrong owner, attempt4, zero active attempt, TS_DRAFT and PHASES. Each ordinary mode refuses retained GOAL-only fields. Direct HL_DRAFT→ONB transition validates for GOAL and refuses for manual. Prior draft-HL refusal evidence is reused only for unchanged validate_goal_status bytes. The actual command-only source/parent matches review dispatch; receiving checkout is separate and product fixed. No private producer transcript was opened.
+
+## R3-V2 — F2 actual final-return and prose compatibility: HOLDS / resolved
+
+Reconstructed only task-owned durable files with `git ls-tree/show` from A2 RF epoch `c8bb2d20e46df2e5996200e22f297ff14aca72bb` and A3 RF epoch `e27133683d0e0dc86b146acfd681e3aba9c1d652`. Ran Candidate public `report --task-root <exact snapshot task> --project steps-framework --out <private temp output>` without flattening/normalizing any historical input.
+
+A2 exit0:11,423,525 tokens,2 charged starts,4 checks,2 RFs,1 verdict; three received/measured producer units, no missing/omitted/excluded/incomplete returned source. A3 exit0:17,074,876 tokens,3 starts,6 checks (one failed),3 RFs,2 verdicts; five received/measured producers and seven source receipts, no missing/omitted/excluded/incomplete among these inspected returns. Distinct receipts from the same Coordinator are not distinct producer units. Neither interim total includes this Reviewer or final Coordinator return. Price defaults leave11,975,075 A3 tokens unpriced; no complete task price is asserted.
+
+On a separate exact-history fixture carrying only a22-token controlled source, replace unrelated event summary with continued plain, continued double-quoted, continued single-quoted, folded block and literal block prose. Every form exits0 with byte-identical input and exactly equal progress/cost groupings; apparent `goal_attempt:99` inside block prose never becomes a charge. Original actual continued summaries remain unchanged. This establishes the ruled F2 oracle and normal supported representations, not arbitrary YAML support; unsupported constructs explicitly refuse.
+
+## R3-V3 — F1 and preservation controls: HOLDS / remains resolved
+
+Actual public reports exit2 for no journal, missing charge, owner disagreement, status/count disagreement, duplicate ordinal, duplicate key, multiline charge control, escaping ref, receipt attempt99 and receipt step99. Attempt99 reason explicitly names uncharged attempt; step99 names unrecorded check. Every refusal hashes all task files before/after and preserves a pre-existing sentinel report byte for byte. These controls retain genuine history and receipts; no cost is discarded to manufacture validity. Positive control uses real3-start history and controlled22-token bound. Ordinary manual/visible-agents/subagents reports of the same numeric fixture (without GOAL tags) succeed and omit GOAL-only counts. Incomplete/shared/preparation/failed/overlap bookkeeping from A2 is reused for identical untouched decoder/reconciliation dependencies; no universal reliability is inferred.
+
+## R3-V4 — Provider and real-source evidence: HOLDS within limits
+
+Actual CLI collect on controlled Claude Code2.1.311 child `fixture-session/child`: parent usage excluded, repeated child message keeps max output3→5; fresh8+cached9+output5=22. Controlled AG CLI1.4.8 read-only SQLite gen_metadata(idx,data,size), protobuf outer1/usage4/model19, fields2/5/3/9/10=5/8/6/2/4 gives19 (thinking included once). Reconcile Claude+AG+duplicate Claude gives41. Unsupported Desktop2.26.0 supplied to IDE reader exits2. Source bytes and declared provider boundaries were inspected using their exact recipes. These are collector/fixture checks, not live full-task Claude/AG or native autonomous operation. Returned real Codex receipts validate/reconcile through actual A2/A3 reports; native stream discrepancies remain visible and streams are not added.
+
+## R3-V5 — Distribution, required checks and comment admission: HOLDS
+
+Eleven installed Codex skills and eleven Claude commands equal their canonical bytes. Both managed root blocks equal source blocks. Existing configured lint collected14; configured tests passed14 including actual MkDocs build with TFW_ASSURANCE_SITE_DIR in this Reviewer's private system TEMP. No permanent tests added. `python -B tools/check_git_blob_sizes.py release --base v3.9.3 --candidate 25a26a98388c2c9f4b840ae8dd6c725b19c13c77`: PASS94 checked occurrences,zero violations. `git diff --check` clean. Whole Candidate was checked before final record-only writes; any later final VALUE change needs affected independent review.
+
+New executable diff contains the reader-facing goal_progress docstring (product events independent of usage); it explains observable behavior. No new code comment carries agent chatter/deferred work. Program-read event/managed markers are semantic structure. Template prose directs the filling reader. `attempt`/unknown/shared strings are product terms, not channel notes.
+
+Guard admission: existing documentation/integration/blob guards protect rendered navigation/frontmatter and blob boundary; existing boundary test detects an over-limit blob. Provider fixtures are finite decoder/dedup controls; state/history mutations are temporary refusal controls; actual RF report is the operational end-to-end oracle for F2. Copy equality/scope counts are identity/governance checks, never product-quality proof by quantity. No new permanent guard is proposed.
+
+## R3-V6 — Independent accounting replay: VERIFIED
+
+Frozen HL §5 at c4ca85fc7c06aabb69a016ef3975ccc1de04e6b7 precedes implementation. Exact owner-approved NUL-safe method:
+
+`git diff --numstat -z --no-renames 50f6b77e33e4ba7fc71e28fbce654762f285e2b5 25a26a98388c2c9f4b840ae8dd6c725b19c13c77 -- .tfw tools/tfw_state.py README.md README.ru.md README.kk.md`
+
+29 logical VALUE paths,+464/−41=505 touched text LOC; binary/non-text N/A, no rename. Below frozen40/1500 and config50/5000; multiplier ceiling not reached. No deviation, phase attribution, protected boundary or late authority. Literal membership/actions/classes/reasons independently reconstructed below; new goal workflow A, other28 M.
+
+| Literal path | Action/class | Adds/deletes | Semantic reason |
+|---|---|---|---|
+| `.tfw/adapters/README.md` | M/VALUE | +3/−1 | explicit four-mode contract/entry with existing obligations preserved |
+| `.tfw/adapters/antigravity/coordinator.md` | M/VALUE | +2/−2 | explicit four-mode contract/entry with existing obligations preserved |
+| `.tfw/adapters/antigravity/tfw-rules.md.template` | M/VALUE | +3/−2 | explicit four-mode contract/entry with existing obligations preserved |
+| `.tfw/adapters/claude-code/CLAUDE.md.template` | M/VALUE | +3/−2 | explicit four-mode contract/entry with existing obligations preserved |
+| `.tfw/adapters/claude-code/coordinator.md` | M/VALUE | +2/−2 | explicit four-mode contract/entry with existing obligations preserved |
+| `.tfw/adapters/codex/AGENTS.md.template` | M/VALUE | +4/−3 | explicit four-mode contract/entry with existing obligations preserved |
+| `.tfw/adapters/codex/coordinator.md` | M/VALUE | +2/−3 | explicit four-mode contract/entry with existing obligations preserved |
+| `.tfw/adapters/codex/skills/tfw-handoff/SKILL.md` | M/VALUE | +2/−2 | explicit four-mode contract/entry with existing obligations preserved |
+| `.tfw/adapters/codex/skills/tfw-plan/SKILL.md` | M/VALUE | +1/−1 | explicit four-mode contract/entry with existing obligations preserved |
+| `.tfw/adapters/codex/skills/tfw-review/SKILL.md` | M/VALUE | +1/−1 | explicit four-mode contract/entry with existing obligations preserved |
+| `.tfw/adapters/cursor/tfw.mdc.template` | M/VALUE | +3/−2 | explicit four-mode contract/entry with existing obligations preserved |
+| `.tfw/conventions.md` | M/VALUE | +14/−5 | explicit four-mode contract/entry with existing obligations preserved |
+| `.tfw/economics/README.md` | M/VALUE | +10/−0 | GOAL history/attribution and supported carrier behavior |
+| `.tfw/economics/tfw_economics.py` | M/VALUE | +227/−2 | GOAL history/attribution and supported carrier behavior |
+| `.tfw/glossary.md` | M/VALUE | +1/−1 | explicit four-mode contract/entry with existing obligations preserved |
+| `.tfw/migrations/coordination-modes.md` | M/VALUE | +2/−3 | explicit four-mode contract/entry with existing obligations preserved |
+| `.tfw/quickstart.md` | M/VALUE | +2/−0 | explicit four-mode contract/entry with existing obligations preserved |
+| `.tfw/templates/HL.md` | M/VALUE | +3/−1 | explicit four-mode contract/entry with existing obligations preserved |
+| `.tfw/templates/journal/event.md` | M/VALUE | +1/−0 | explicit four-mode contract/entry with existing obligations preserved |
+| `.tfw/templates/status.md` | M/VALUE | +3/−2 | explicit four-mode contract/entry with existing obligations preserved |
+| `.tfw/workflows/goal.md` | A/VALUE | +80/−0 | explicit four-mode contract/entry with existing obligations preserved |
+| `.tfw/workflows/handoff.md` | M/VALUE | +2/−0 | explicit four-mode contract/entry with existing obligations preserved |
+| `.tfw/workflows/plan.md` | M/VALUE | +2/−0 | explicit four-mode contract/entry with existing obligations preserved |
+| `.tfw/workflows/research/base.md` | M/VALUE | +2/−0 | explicit four-mode contract/entry with existing obligations preserved |
+| `.tfw/workflows/review.md` | M/VALUE | +2/−0 | explicit four-mode contract/entry with existing obligations preserved |
+| `README.kk.md` | M/VALUE | +2/−0 | explicit four-mode contract/entry with existing obligations preserved |
+| `README.md` | M/VALUE | +2/−0 | explicit four-mode contract/entry with existing obligations preserved |
+| `README.ru.md` | M/VALUE | +2/−0 | explicit four-mode contract/entry with existing obligations preserved |
+| `tools/tfw_state.py` | M/VALUE | +81/−6 | optional immutable-HL/cap/state validation |
+
+Complement: nine DERIVED paths are `.agents/skills/tfw-{handoff,plan,review}/SKILL.md`, `.claude/commands/tfw-{handoff,plan,research,review}.md`, AGENTS.md, CLAUDE.md, verified source-identical or managed-block-identical. All remaining changed paths are this exact task's authority/TRACE/ASSURANCE/quotes/receipts. No foreign path or new permanent test. Candidate first tested implementation commit precedes latest RF/EV/state; later excluded task records preserve it. Full status/cached names inspected before each own commit, explicit full pathspecs and commit --only. No inseparable foreign hunk.
+
+## Evidence and citation audit
+
+A3-E1/E5: actual A2/A3 returned snapshots independently render correct numbers in R3-V2. A3-E2: changed parser/attribution controls repeated in R3-V2/V3. A3-E3: ordinary modes/current existing checks/copy parity/blob repeated in V3/V5. A3-E4: full unchanged workflow/authority/provider boundaries inspected and replayed within declared scope V1/V4. A3-accounting: independent exact replay V6. EV final6/6 VERIFIED has no hidden deferred/blocking/N/A row; this is claim coverage, not a quality score. Raw scratch is not evidence supplied to another role.
+
+PV index0–4 scanned; relevant5–7 checked. Every HL §7.2 and ONB §7 source resolves and semantically applies:
+
+| Priority/citation | Actual item and application | Currentness |
+|---|---|---|
+| P0 README How It Works; North Star .tfw/README NS1–NS3 | Inspectable continuation; people retain authority/acceptance; no process-for-process claim | complete purpose read separately from P1; no changed purpose |
+| P1 .tfw/README Methodology values/Success Criteria | Candor, structural enforcement, provider-independent durable memory, result ready for acceptance | exact anchors/items exist and meaning matches |
+| P2 philosophy F3/F35–37/F42/F45 | Challenge, frozen contract, purpose distinct from quality, bounded mandate, materiality and subtraction | full topic scan; relevant incoming clarification references inspected; no conflicting replacement |
+| P3 KNOWLEDGE §1 architecture/D63/D64/D68/D81/D82/D86 | File-owned truth, immutable human authority, independent purpose judgment and finite closing | architecture decision scan; relevant rows read; TKL/TEQM scoped successors preserve ordinary no-runtime and closing authority |
+| P4 conventions HL Contract/Design Rules/Anti-patterns | Freeze, bounded roles, exact staging, no fabricated evidence or broad authority | relevant complete ranges inspected; new GOAL exception is explicit |
+| Relevant P5–7 CMODES technical record | Existing three modes, file-owned command contexts and independent review retain scope | record's sources/disposition/producer read; incoming exact-identity search finds only self; GOAL exception is selected through actual HL |
+
+Selected source lineages: actual task dispatches→ONB/RF/EV and prior REVIEWs/rulings; A1/A2 receipts retain producer source/bound/hash in their immutable returns. No other unit's private source substituted. CMODES, TKL and TEQM records inspected for scoped successor/compatibility, not as new authority. Current source is usable for this bounded judgment; human acceptance/qualification and final economics remain Coordinator-owned. No human fact candidate to publish in this command-only context.
+
+## Candidate findings and checkpoint
+
+No new findings. F1 independently remains resolved on its original refusal oracle; F2 independently resolved on actual unmodified final-return dependency states. No material VALUE/ASSURANCE/TRACE gap changes acceptance or next authorized act. Provider support and finite measurement coverage remain explicit limits, not silent zero or universal capability. Existing prior producers' retained scratch is a known Coordinator closing obligation, not a product restart.
+
+Temporary harness setup: initial architecture-heading diagnostic hit the host's non-UTF8 stdout; reran with explicit UTF8. This affected only private display, not product behavior or deciding reports. Initial local path in Map was replaced with runtime-relative source locator; exact unit/source binding remains resolvable locally. All implementation bytes stayed fixed.
+
+Self-check: [x] mandatory floors; [x] subject/dependency applicability and required checks; [x] explicit limits; [x] guard/control admission; [x] no incomplete material finding; [x] RF/EV/citations/accounting independently verified. Stage complete: YES.
+
+
+Final current dependency-state check: after own numeric return, A3 APPROVE marker and REV-to-KNW event, actual public report exits0 with20,295,446 tokens,3 starts/6 checks/3 RFs/3 verdicts; six received/measured units/eight receipts, no missing/omitted/excluded among returned bounds. Final Coordinator costs/acceptance remain outstanding. No product bytes changed. Automatic approval review rejected own TEMP cleanup before execution; precise retained-resource disposition in REVIEW rev3, no alternate deletion attempted.

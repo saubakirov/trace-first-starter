@@ -101,3 +101,40 @@ Prior F1: independently passes its exact oracle; no renewed proposal. **One prop
 **Verdict: REVISE.** A correctable reporting behavior prevents the promised usable result. VALUE first supplies the consequence; ASSURANCE directly proves it; TRACE preserves the fixed evidence and responsible route. No independent REJECT or acceptance-authority defect; no new attempt charged by review. No applicable knowledge contradiction beyond the explicit GOAL scope exception.
 
 Checkpoint: ordered judgment and all mandatory floors complete; purpose baseline/North Star separately cited with harm; evidence scope/limits distinguished; one complete classified proposal/route/Candidate effect; no artifact/test count dictates verdict. Stage complete: YES.
+
+
+# Round 3 — Judge the complete final Candidate
+
+Subject `25a26a98388c2c9f4b840ae8dd6c725b19c13c77`; authority frozen master HL at `c4ca85fc7c06aabb69a016ef3975ccc1de04e6b7`. Independent Reviewer/parent and exact measured source are in Map Round3. Verify Round3 completed first; purpose re-read separately from the Verify PV scan.
+
+## VALUE
+
+Purpose check: master HL §1 promises “an independently assessed result, attributable expenditure and a reviewable diff.” North Star NS1 protects “purposeful, human-governed continuity” and the ability to “continue without rebuilding the original conversation.” These clauses protect against lost context, invented authority and misleading/absent expenditure. Explicit frozen-HL activation, bounded real attempts, fresh independent review and reportable final history serve that exact value (R3-V1–V3/V6). NS3 excludes replacement of human acceptance and unsupported autonomy claims; these remain explicit boundaries (V1/V4).
+
+Excess/adjacency: none material; no new runtime service, edition dependency, global installation or vendor authority. Deferral: documentation/knowledge/closing and final human acceptance are existing subsequent effects rather than unimplemented parts of this mode. Materiality: no new observed harm requiring correction; original F1 and F2 now meet their deciding oracles. Surface wording/template inheritance alone supplies no contract defect. No internally inconsistent frozen promise found.
+
+| Subject | Status | Evidence |
+|---|---|---|
+| Purpose/approved value | holds | clause/harm comparison above; V1–V3 |
+| Domain behavior/G1–G5 | holds in stated scope | V1–V5; unmodified final returns and refusal controls |
+| Architecture/HL principles | holds | one semantic GOAL owner, explicit early branches; optional maintained tooling; V1/V4/V6 |
+| Safety/security | holds | source-specific numeric collection and history preservation, fixed subject and isolated role; V1/V3/V4 |
+| Human authority/reserved effects | holds | frozen owner/cap, no self-amendment, verdict separate from owner acceptance/merge; V1/V6 |
+
+## ASSURANCE
+
+Evidence exists in durable RF/EV/receipts at named epochs. It applies to the exact Candidate/product bytes and actual final A2/A3 history; fresh CLI replay confirms dependency-state applicability (V2). Full material claim coverage is sufficient for this bounded deliverable: workflow/negative authority checks, provider decoding controls, real Codex reconciliation, ordinary-mode behavior, actual final task report, copies/build/blob and immutable accounting (V1–V6). No material unknown is disguised by a test count.
+
+No new permanent test guard is introduced. Existing documentation/integration/blob guards retain their proven limited subjects. Temporary faults demonstrate state/history/tag refusal, provider fixtures decode finite native shapes, actual returned-snapshot reports establish real consumer usability. Fixture success does not establish live Claude/AG full-task or provider-wide autonomy. Those excluded claims are not acceptance gaps against frozen G4.
+
+## TRACE
+
+Human-rooted mandate/current routing and fresh independently addressable Reviewer hold. Candidate fixed/reachable; frozen denominator predates work;29 VALUE,+464/−41=505 under40/1500 (V6). References and required carriers remain reproducible. Prior commit attribution wording/own initial Map path disclosure are record observations, with no accepted-result, authority or continuation consequence; current Map now uses the runtime-relative source. No product Candidate move.
+
+No new finding or proposal. Original F1 resolved by V3 and F2 by V2, retaining their prior returns/costs. Existing Coordinator owns actual docs/knowledge/changelog, prior scratch cleanup and final integration/capture/owner acceptance; this Reviewer neither supplies those effects nor declares DONE. Authorized next act is KNW and a reference-only REVIEW return, then stop. Any later material final change needs bounded independent follow-up by this Reviewer.
+
+## Aggregate verdict
+
+**APPROVE.** No open material VALUE, ASSURANCE or TRACE item changes acceptance or the next authorized act. This is independent product judgment, not human result acceptance or permission to merge/publish. No applicable knowledge contradiction: CMODES's first three modes retain their scope; frozen HL explicitly selects the new GOAL exception; TKL/TEQM preserve source and closing obligations.
+
+Self-check: [x] VALUE→ASSURANCE→TRACE; [x] mandatory floors/evidence limits; [x] quoted purpose plus concrete harm; [x] existence/applicability/sufficiency distinct; [x] no unresolved material finding contract; [x] unchanged Candidate and exact next owner/route; [x] one verdict, no count-based judgment. Stage complete: YES.

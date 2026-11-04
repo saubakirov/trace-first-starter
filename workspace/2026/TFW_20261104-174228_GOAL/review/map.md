@@ -71,7 +71,7 @@ Producer `codex:thread:local:01a1a6d8-72c6-7200-b5fe-01a0f5c78dd1`; parent/retur
 
 RF Round3 @ `e27133683d0e0dc86b146acfd681e3aba9c1d652`; complete fixed Candidate `25a26a98388c2c9f4b840ae8dd6c725b19c13c77`; Baseline `50f6b77e33e4ba7fc71e28fbce654762f285e2b5`; frozen HL read from its Git object. Prior F1/F2/rulings and returns are artifact inputs, not verdict instructions. No TS or fourth attempt. Reviewer mutates only review records, authorized state/journal and own economics.
 
-Own source bound before verification: `E:/Users/c0rpa/.codex/sessions/2026/11/04/rollout-2026-11-04T18-56-05-01a1a6d8-72c6-7200-b5fe-01a0f5c78dd1.jsonl`, session_meta.id verified equal to actual unit, physical start0; timezone+05:00, role reviewer, project steps-framework, owner saubakirov, attempt3/activity review. End frozen at final capture; no invented step allocation. Only own permitted metadata/numeric records read. Scratch confined to system TEMP/tfw/TFW_20261104-174228_GOAL/review-a3-01a1a6d8.
+Own source bound before verification: `sessions/2026/11/04/rollout-2026-11-04T18-56-05-01a1a6d8-72c6-7200-b5fe-01a0f5c78dd1.jsonl`, session_meta.id verified equal to actual unit, physical start0; timezone+05:00, role reviewer, project steps-framework, owner saubakirov, attempt3/activity review. End frozen at final capture; no invented step allocation. Only own permitted metadata/numeric records read. Scratch confined to system TEMP/tfw/TFW_20261104-174228_GOAL/review-a3-01a1a6d8.
 
 ## Understanding and claims
 
