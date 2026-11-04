@@ -5,6 +5,10 @@ Format: [Keep a Changelog](https://keepachangelog.com/). Versioning: [Semantic V
 
 ## [Unreleased]
 
+### Added
+
+- GOAL (`TFW_20261104-174228_GOAL`): an explicitly selected fourth Full mode runs and reviews a frozen HL without a separate TS. Attempts, internal checks, returns and measured usage are reported separately. The local candidate passed independent review; owner acceptance and release are pending.
+
 ### Documentation
 
 - FLC (`TFW_20261011-192605_FLC`): independently reviewed, bounded diagnosis of

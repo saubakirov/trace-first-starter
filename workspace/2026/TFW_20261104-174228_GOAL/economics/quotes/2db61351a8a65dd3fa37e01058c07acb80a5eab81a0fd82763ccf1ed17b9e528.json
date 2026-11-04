@@ -1,0 +1,42 @@
+{
+  "kind": "task_price_basis",
+  "observations": [
+    {
+      "checked_at": "2026-11-04T11:22:37.583834+00:00",
+      "conditions": {
+        "context_band": "input_over_272000",
+        "region": "default",
+        "tier": "standard"
+      },
+      "currency": "USD",
+      "effective_from": null,
+      "model": "gpt-6.1-sol",
+      "notes": [
+        "Conditional Standard API equivalent, default region; actual subscription charge and API service tier not observed.",
+        "Long input band >272K, rates read from the same fetched official pricing table at the retained checked_at. Positive cache writes remain unpriced unless corresponding durations are supported."
+      ],
+      "provider": "openai",
+      "published_on": null,
+      "quote_id": "7f519e95a9dd8d3fe3f5579a176d079fe6be749f0a62fcc8b37e35eec4ec9f43",
+      "rates": {
+        "cache_write_1h": null,
+        "cache_write_5m": null,
+        "cached": "0.20",
+        "fresh": "4.00",
+        "output": "15.00"
+      },
+      "schema_version": 1,
+      "source_evidence": {
+        "https://developers.openai.com/api/docs/models/gpt-6.1-sol": "a128083565678e6a47a74a737a891a7df050309df19925db6902535fcb1f5f23",
+        "https://developers.openai.com/api/docs/pricing": "29c2c1bc9a0611b2d0eb39787b72a58d1290777c1c7c8fbccf28da0efeebbfd4"
+      },
+      "source_urls": [
+        "https://developers.openai.com/api/docs/pricing",
+        "https://developers.openai.com/api/docs/models/gpt-6.1-sol"
+      ],
+      "unit": "per_1M_text_tokens"
+    }
+  ],
+  "schema_version": 1,
+  "valuation_kind": "current_revaluation"
+}

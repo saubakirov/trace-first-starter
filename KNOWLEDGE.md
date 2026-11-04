@@ -53,6 +53,8 @@ publication, amendment or execution. P0–P4 and relevant P5–P7 remain require
 | Deploy | GitHub Pages at `tfw.saubakirov.kz`, auto-deploy on push to master | `.github/workflows/docs.yml` |
 | Editions | Light and Assisted ship; Assisted hooks are blocked, so only its manual order is proven. Full remains `.tfw/` | `editions/README.md`, `editions/01-light/`, `editions/02-assisted/`, `.tfw/` |
 
+Full has a fourth, explicitly selected [GOAL mode](.tfw/workflows/goal.md). Its immutable HL replaces the TS for that mode alone; see the [decision and pilot evidence](knowledge/records/TKL-20261104-GOAL.md). The three CMODES routes above keep their existing contracts.
+
 ### Architecture Decisions
 
 | # | Decision | Rationale | Source |
