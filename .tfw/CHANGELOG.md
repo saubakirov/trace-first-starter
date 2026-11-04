@@ -5,16 +5,21 @@ Format: [Keep a Changelog](https://keepachangelog.com/). Versioning: [Semantic V
 
 ## [Unreleased]
 
-### Added
-
-- GOAL (`TFW_20261104-174228_GOAL`): an explicitly selected fourth Full mode runs and reviews a frozen HL without a separate TS. Attempts, internal checks, returns and measured usage are reported separately. The pilot and subsequent owner-control clarification passed independent review and were accepted by the owner for task closure.
-
 ### Documentation
 
 - FLC (`TFW_20261011-192605_FLC`): independently reviewed, bounded diagnosis of
   workflow completion, coordination and knowledge continuity. Preserves observed
   violations, contract ambiguities and evidence limits; changes no framework code,
   role rule or official operating mode. Owner accepted the diagnostic result for closure.
+
+## [3.10.0] — 2026-11-04
+
+### Added
+
+- GOAL (`TFW_20261104-174228_GOAL`): select **GOAL** in Full Plan when the approved outcome is the execution order. The task uses the ordinary, frozen HL instead of a TS. One executor works through internal checks; independent review assesses the entire fixed result. A ruled retry receives fresh execution and review contexts and consumes another bounded attempt. Existing modes and Daily keep their previous contracts.
+- GOAL economics report started attempts, inner checks, RF submissions and returned verdicts separately. They keep costs and coverage for disjoint producer ranges and refuse allocations to nonexistent attempts or steps. The live pilot ran in Codex; Claude Code and Antigravity coverage is limited to the tested collectors and native-format control inputs.
+
+Update from 3.9.3 or an earlier supported installation using the [3.10.0 migration guide](migrations/3.10.0.md).
 
 ## [3.9.3] — 2026-10-29
 
