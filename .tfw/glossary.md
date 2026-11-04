@@ -6,7 +6,7 @@ and incident histories live at the linked authority or durable history source.
 ## Coordination
 
 ### Coordination mode
-**Meaning:** Explicit `manual`, `visible-agents` or `subagents` choice of launcher and role-hosting arrangement, admitting one or multiple phases. It does not grant authority, dialogue, reporting or topology. **Authority:** [conventions.md](conventions.md#coordination-modes), `Coordination modes`.
+**Meaning:** Explicit `manual`, `visible-agents` or `subagents` choice of launcher/role hosting (one or multiple phases), or the fourth [GOAL](workflows/goal.md) contract: one task, its frozen HL and a bounded independent-review loop. It does not grant authority, dialogue, reporting or topology. **Authority:** [conventions.md](conventions.md#coordination-modes), `Coordination modes`.
 
 ### Activation
 **Meaning:** Authorization for one exact `/tfw-*` workflow, task/phase, role unit and lineage source. Provisioning, a role prompt, a title or a wait result is not activation. **Authority:** [conventions.md](conventions.md#7-coordination), `Coordination`.

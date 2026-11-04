@@ -30,8 +30,9 @@ At Plan Step 5 validate that choice and current capability; re-read this selecte
 when the active surface or relevant capability materially changes. The task Coordinator uses the selected profile for new work. Do not preload other profiles or the tooling
 manifest, and do not load this profile for every role command. A missing or ambiguous selected
 pointer refuses a provider-specific offer and is reported without guessing.
-For new work, explicitly select `manual`, `visible-agents` or `subagents`; all admit one or
-several phases. One owner-facing Coordinator may own phase-local cycles under governing authority;
+For new Full work select `manual`, `visible-agents`, `subagents`, or `goal` explicitly. Only GOAL uses
+`.tfw/workflows/goal.md`: one task, approved HL instead of TS, bounded attempts and fresh independent review.
+The other three modes admit one or several phases. One Coordinator may own phase-local cycles under authority;
 distinct bounded phase Coordinators remain available. Apply `conventions.md` → `Coordination modes`
 for phase routes, independent context, continuation and actual capability limits. Historical GATEWAY/LEAD carriers remain readable,
 but a principal, title or host never supplies a route or mandate.
@@ -73,7 +74,7 @@ sessions for manual. Record actual addresses/parents from receipts. For subagent
 (`fork_turns: none`), exact command-only activation, native collaboration addressed send/follow-up and
 event-driven status/wait; no inherited owner/worker conversation or solution hints. Native completion
 is no verdict. Apply the same closed reference catalogue on both transports. Mutating roles own
-separate worktrees; independent review holds a reachable fixed Candidate. Preserve same-phase E/R
+separate worktrees; independent review holds a reachable fixed Candidate. Outside GOAL preserve same-phase E/R
 on corrections and apply the common new-phase context policy. A missing title/disposal control is
 reported as that precise limit, never a reason to silently create another visible chat. Forked
 history, relays and hidden helpers cannot supply role authority or independence.

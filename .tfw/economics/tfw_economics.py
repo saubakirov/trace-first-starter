@@ -162,6 +162,25 @@ def validate_tokens(tokens, unavailable):
             "cached input exceeds input")
 
 
+GOAL_ACTIVITIES = ("preparation", "execution", "review", "correction", "wait", "closure", "shared")
+
+
+def validate_goal_scope(scope, mode):
+    require(mode == "goal", "goal attribution requires explicit goal mode")
+    exact_keys(scope, ("attempt", "step", "activity"), where="tfw.goal")
+    attempt, step, activity = scope["attempt"], scope["step"], scope["activity"]
+    require(activity in GOAL_ACTIVITIES, "unknown goal activity")
+    require(attempt is None or type(attempt) is int and attempt >= 0, "invalid goal attempt")
+    require(attempt is not None or activity == "shared", "unknown attempt must remain shared")
+    if activity == "preparation":
+        require(attempt == 0, "preparation precedes attempt 1")
+    if activity in ("execution", "review", "correction", "closure"):
+        require(attempt is not None and attempt > 0, "this activity needs a started goal attempt")
+    if step is not None:
+        require(type(step) is int and step > 0 and activity in ("execution", "correction"),
+                "only an execution/correction bound can name a positive inner step")
+
+
 def validate_manifest(m):
     keys = ("kind", "schema_version", "project", "task", "phase", "owner",
             "role", "unit", "source_namespace", "source_id", "source_version",
@@ -207,6 +226,8 @@ def validate_manifest(m):
         else:
             nonempty(m[key], key)
     validate_extensions(m["extensions"])
+    if "tfw.goal" in m["extensions"]:
+        validate_goal_scope(m["extensions"]["tfw.goal"], m["coordination_mode"])
     included = m["extensions"].get("tfw.includes_sources", [])
     require(isinstance(included, list) and all(isinstance(x, str) and ID.fullmatch(x)
             for x in included), "includes_sources must list exact native source identities")
@@ -776,6 +797,12 @@ def compact_rows(rows):
 def manifest(args, source_hash, source_size, end, operation_seconds, diagnostics,
              source_prefix_sha256=None):
     now = dt.datetime.now(dt.timezone.utc).isoformat()
+    tags = {}
+    if args.coordination_mode == "goal" or any(v is not None for v in
+            (args.goal_attempt, args.goal_step, args.goal_activity)):
+        scope = dict(attempt=args.goal_attempt, step=args.goal_step, activity=args.goal_activity)
+        validate_goal_scope(scope, args.coordination_mode)
+        tags["tfw.goal"] = scope
     predecessor = None
     if args.predecessor:
         predecessor = validate_file(args.predecessor)["sha256"]
@@ -791,7 +818,7 @@ def manifest(args, source_hash, source_size, end, operation_seconds, diagnostics
                 tfw_version=args.tfw_version, coordination_mode=args.coordination_mode,
                 unavailable={k: "not present in a bound task source" for k in
                              ("tfw_version", "coordination_mode") if getattr(args, k) is None},
-                extensions={"tfw.diagnostics": diagnostics,
+                extensions={**tags, "tfw.diagnostics": diagnostics,
                             "tfw.includes_sources": args.includes_source,
                             "tfw.predecessor_source_prefix_sha256": source_prefix_sha256})
 
@@ -1002,7 +1029,8 @@ def reconcile(paths, expected_units=()):
                                  revision=m["revision"], cutoff=m["cutoff"],
                                  range_start=m["range_start"], range_end=m["range_end"],
                                  sha256=f["sha256"], code=failed[0]["code"],
-                                 detail=failed[0]["detail"]))
+                                 detail=failed[0]["detail"],
+                                 **({"goal": m["extensions"]["tfw.goal"]} if "tfw.goal" in m["extensions"] else {})))
             diagnostics.append("nonmeasured failed attempt retained: " + f["sha256"])
             continue
         groups[(m["source_namespace"], m["source_id"])].append(f)
@@ -1026,6 +1054,10 @@ def reconcile(paths, expected_units=()):
                     diagnostics.append("invalid successor identity/revision " + f["sha256"])
                     continue
                 if m["range_start"] <= p["range_start"] and m["range_end"] >= p["range_end"] and m["complete"]:
+                    if m["extensions"].get("tfw.goal") != p["extensions"].get("tfw.goal"):
+                        excluded.add(f["sha256"])
+                        diagnostics.append("covering successor changed goal attribution " + f["sha256"])
+                        continue
                     if m["extensions"].get("tfw.predecessor_source_prefix_sha256") != p["source_sha256"]:
                         excluded.add(f["sha256"])
                         diagnostics.append("unproved successor source prefix " + f["sha256"])
@@ -1442,6 +1474,51 @@ def metadata_block(path):
     return json.loads(match.group(1)) if match else None
 
 
+def goal_progress(task, state):
+    """Count product events at their owning artifacts, independently of measured usage."""
+    started = str(state.get("goal_attempt", ""))
+    require(re.fullmatch(r"0|[1-9][0-9]*", started), "GOAL status needs its charged goal_attempt")
+    started = int(started)
+    checks, presentations, verdicts, gaps = {}, {}, {}, []
+    for pattern, kind in (("ONB__*.md", "check"), ("evidence/EV*.md", "check"),
+                          ("RF__*.md", "rf"), ("REVIEW__*.md", "review")):
+        for path in sorted(task.glob(pattern)):
+            lines = [s for s in path.read_text(encoding="utf-8").splitlines()
+                     if s.startswith("<!-- tfw-goal-event ")]
+            if kind in ("rf", "review") and not lines:
+                gaps.append(path.name + ": no attributable " + kind)
+            for line in lines:
+                require(line.endswith(" -->"), "malformed goal event in " + path.name)
+                event = json.loads(line[len("<!-- tfw-goal-event "):-4])
+                keys = {"check": ("step", "outcome"), "rf": ("candidate",),
+                        "review": ("candidate", "verdict")}[kind]
+                exact_keys(event, ("kind", "attempt", *keys), where="goal " + kind)
+                n = event["attempt"]
+                require(event["kind"] == kind and type(n) is int and 0 < n <= started,
+                        "goal event has wrong owner or uncharged attempt in " + path.name)
+                if kind == "check":
+                    step = event["step"]
+                    require(type(step) is int and step > 0 and event["outcome"] in ("pass", "fail", "blocked"),
+                            "invalid goal check")
+                    table, key = checks, (n, step)
+                else:
+                    require(isinstance(event["candidate"], str) and
+                            re.fullmatch(r"(?:[a-f0-9]{40}|[a-f0-9]{64})", event["candidate"]),
+                            "goal return needs an immutable candidate")
+                    if kind == "review":
+                        require(event["verdict"] in ("APPROVE", "REVISE", "REJECT"), "invalid goal verdict")
+                    table, key = (presentations if kind == "rf" else verdicts), n
+                require(key not in table or table[key] == event, "conflicting goal event " + str(key))
+                table[key] = event
+    for n, event in verdicts.items():
+        require(n in presentations and event["candidate"] == presentations[n]["candidate"],
+                "goal verdict does not match its presented candidate")
+    return dict(started=started, recorded_checks=len(checks), failed_checks=sum(
+        x["outcome"] == "fail" for x in checks.values()), presentations=len(presentations),
+        verdicts=[dict(attempt=n, verdict=x["verdict"]) for n, x in sorted(verdicts.items())],
+        attribution_gaps=gaps)
+
+
 def render_report(args):
     task = Path(args.task_root)
     state = status_fields(task, args.record)
@@ -1511,6 +1588,22 @@ def render_report(args):
                  source_diagnostics=source_diagnostics, failed_attempts=data["failures"],
                  binding_outcomes=state.get("binding_outcomes", []),
                  phase_roots=phases, phase_coverage_gaps=phase_gaps)
+    goal_rows = []
+    if state.get("coordination_mode") == "goal" or any(
+            f["manifest"]["coordination_mode"] == "goal" for f in data["files"]):
+        groups = defaultdict(list)
+        for manifest_row, record, digest in data["records"]:
+            tag = manifest_row["extensions"].get("tfw.goal") or {}
+            groups[(tag.get("attempt"), tag.get("step"), tag.get("activity", "unattributed"))].append(
+                (manifest_row, record, digest))
+        for (attempt, step, activity), records in sorted(groups.items(), key=lambda pair:
+                (pair[0][0] if pair[0][0] is not None else -1, pair[0][1] or 0, pair[0][2])):
+            observed, _ = summarize(records, rates)
+            goal_rows.append(dict(attempt=attempt, step=step, activity=activity, tokens=observed["tokens"],
+                                  priced_usd=str(observed["priced_usd"]), unpriced_tokens=observed["unpriced_tokens"]))
+        block["goal_bounds"] = goal_rows
+        if state.get("coordination_mode") == "goal":
+            block["goal_progress"] = goal_progress(task, state)
     lines = ["# Task economics — " + state["id"], "",
              "<!-- tfw-economics-v1 " + json.dumps(block, ensure_ascii=False,
                                                   sort_keys=True, separators=(",", ":")) + " -->",
@@ -1543,6 +1636,24 @@ def render_report(args):
              "Time kinds remain separate; task calendar elapsed is read from task control,",
              "not inferred from summed roles. Parallel role times can overlap.",
              ""]
+    if "goal_bounds" in block:
+        if "goal_progress" in block:
+            g = block["goal_progress"]
+            lines += ["## GOAL: recorded progress", "",
+                      f"Started attempts: {g['started']}; recorded inner checks: {g['recorded_checks']} "
+                      f"({g['failed_checks']} failed); presented candidates: {g['presentations']}; "
+                      f"returned verdicts: {len(g['verdicts'])}.",
+                      "Verdicts: " + (", ".join(f"A{v['attempt']} {v['verdict']}" for v in g["verdicts"]) or "none recorded"),
+                      "Attribution gaps: " + ("; ".join(g["attribution_gaps"]) or "none in inspected returns"), ""]
+        lines += ["## GOAL: measured work by source bound", "",
+                  "| Attempt | Inner step | Activity | Tokens | Priced USD | Unpriced tokens |",
+                  "|---:|---:|---|---:|---:|---:|"]
+        for b in goal_rows:
+            lines.append("| {} | {} | {} | {:,} | {} | {:,} |".format(
+                b["attempt"] if b["attempt"] is not None else "shared", b["step"] or "—",
+                b["activity"], b["tokens"], b["priced_usd"], b["unpriced_tokens"]))
+        lines += ["", "Only measured, reconciled bounds are summed. Failed/missing returns are unknown.",
+                  "Count starts from charged dispatches, checks from ONB/EV, presentations from RF and verdicts from REVIEW; never from receipt rows.", ""]
     for kind, seconds in sorted(total["duration"].items()):
         lines.append("- {}: {:.3f} observed seconds".format(kind, seconds))
     lines += ["", "Money is a dated Standard API token equivalent, not a subscription bill.",
@@ -1779,6 +1890,10 @@ def parser():
     common.add_argument("--complete", action="store_true")
     common.add_argument("--tfw-version")
     common.add_argument("--coordination-mode")
+    common.add_argument("--goal-attempt", type=int, help="charged outer attempt; 0 before execution")
+    common.add_argument("--goal-step", type=int, help="inner check only when the range is attributable to it")
+    common.add_argument("--goal-activity", choices=GOAL_ACTIVITIES,
+                        help="required for new goal receipts; use shared for an inseparable range")
     common.add_argument("--includes-source", action="append", default=[],
                         help="exact namespace:source-id already included by parent counters")
     c = sub.add_parser("collect", parents=[common], help="collect one exact bound native source")

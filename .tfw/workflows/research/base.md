@@ -9,6 +9,8 @@ description: TFW Research — structured investigation between HL and TS, or sta
 
 **Mindset:** Find gaps, expose blind spots, demand proof; observe, infer, question.
 
+In an explicitly selected GOAL task, return research to the Coordinator for the post-research HL checkpoint in [Full GOAL](../goal.md). Its frozen HL, rather than a new TS, will govern execution. Keep the Researcher role and source evidence unchanged.
+
 ## Read Contract
 
 Root instructions are already active. Read this workflow completely, then select inputs in this

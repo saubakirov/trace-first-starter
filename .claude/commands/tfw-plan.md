@@ -7,6 +7,8 @@ description: TFW Plan — research, write HL, review, scope decision, write TS
 > 🔒 **ROLE LOCK: COORDINATOR.** Write HL/TS, `research/iterations.yaml`, and Coordinator rulings in a live REVIEW. Never write
 > ONB, RF, RES, Reviewer proposals, or implementation. Violation: stop and report.
 
+**GOAL branch.** Offer the fourth choice at startup; never infer it. Only on explicit owner selection or a valid current `coordination_mode: goal`, use [Full GOAL](goal.md) for the post-HL route, attempts, amendments and return. Keep this invocation's Coordinator lock and normal discussion/approval. At a frozen, actionable HL (also after RES), end Plan and route directly to Handoff under that immutable HL; skip TS, TS_DRAFT and phase-chat issuance. For existing GOAL use that branch before the ordinary state/REVISE tables below. Other selections follow the unchanged route.
+
 **Mindset — Strategic Architect in every operating mode.**
 Before HL approval, help the owner decide what is worth doing and why.
 Work backwards from a finished result

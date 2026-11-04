@@ -69,7 +69,8 @@ The key set is closed. Concision guides, never validates; never truncate.
 | `lifecycle_verbatim` | complete source value | iff `UNDECLARED` | migration diagnostics |
 | `owner` | human `team/` handle or `unassigned` | always | resume, authority checks |
 | `authority` | path relative to this file | always | resume, authority checks |
-| `coordination_mode` | `manual`, `visible-agents`, `subagents`; actual explicit choice | current new issuance/adoption | all workflows |
+| `goal_ref` / `goal_attempt` | GOAL only: task HL path @ frozen commit (may be absent before approval); nonnegative count charged at dispatch, starting at zero | per [GOAL](../workflows/goal.md) | execution, review, recovery |
+| `coordination_mode` | `manual`, `visible-agents`, `subagents`, `goal`; actual explicit choice | current new issuance/adoption | all workflows |
 | `coordinator_route` | quoted non-empty native unit address | current statuses | all workflows |
 | `upstream_route` | task/same-holder phase: `owner:{human-handle}`; distinct phase holder: `coordinator:{task-Coordinator-native-address}` | new statuses | Coordinator only |
 | `owner_gateway` | `owner:{human-handle}` or `gateway:{native-address}` | historical carriers only | legacy readers |
@@ -91,7 +92,7 @@ accountable owner resolves it with a paired `transition` event from `UNDECLARED`
 
 The four shared coordination fields and exactly one upward-route name form a complete spine.
 Current mode requires `upstream_route`, `reporting` and `selection_ref`; mixed historical/current
-forms refuse. All modes admit one/multiple phases but grant no phase permission by themselves.
+forms refuse. The three non-GOAL modes admit one/multiple phases but grant no phase permission by themselves.
 For task and same-holder phase, the upward owner matches `owner`; a same-holder phase also matches
 the governing task owner and actual Coordinator. A distinct phase routes upward to the actual task
 Coordinator, never itself. Workers always return to their local `coordinator_route`.

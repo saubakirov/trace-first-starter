@@ -28,6 +28,8 @@
 
 ---
 
+Only when the owner selects [GOAL](../workflows/goal.md), record the positive **Goal attempt limit** beside the Contract line; include the acceptance checks, freedoms, immutable accounting baseline and reserved decisions here. This HL is the order for execution and review. Do not issue a TS.
+
 ## 1. Vision 🔒 FROZEN
 {Strategic narrative: what we want and why — 2-3 sentences. Write as if it's already done.}
 
@@ -94,7 +96,7 @@ Each Phase = separate TS→RF cycle.
 
 | Mode | Activation source | Accountable owner | Task Coordinator unit | Phase Coordinator rule | Mandate scope / role reach | Upward route | Dialogue | Reporting | Reservations / controls | Amendment authority | Immutable epoch |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| manual / visible-agents / subagents | owner-direct / delegated | {human owner handle} | {actual native address or pending until receipt} | {same actual Coordinator or distinct bounded phase holder, as authorized} | {bounded task/phases and roles} | {task/same-holder phase: human owner; distinct phase: actual task Coordinator} | tfw-gates-only / exact bounded iterative grant | native-gates / explicit owner-transfer | {owner-reserved decisions and controls} | {exact bounded grant or `none`} | {full commit/object ref} |
+| manual / visible-agents / subagents / goal | owner-direct / delegated | {human owner handle} | {actual native address or pending until receipt} | {same actual Coordinator or distinct bounded phase holder, as authorized} | {bounded task/phases and roles} | {task/same-holder phase: human owner; distinct phase: actual task Coordinator} | tfw-gates-only / exact bounded iterative grant | native-gates / explicit owner-transfer | {owner-reserved decisions and controls} | {exact bounded grant or `none`} | {full commit/object ref} |
 
 > One-phase work has one task Coordinator. In long work, that unit owns strategy, dependencies,
 > ready phases, owner decisions and successor selection. All modes admit multiple phases. Selected

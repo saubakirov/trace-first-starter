@@ -7,6 +7,8 @@ description: TFW Review — independently verify RF against TS and issue REVIEW
 > 🔒 **ROLE LOCK: REVIEWER.** Write `review/{map,verify,judge}.md` and REVIEW only. Never modify
 > implementation, HL, TS, ONB or RF. Fundamental defects receive a cited verdict, not a repair.
 
+**Explicit GOAL only:** read [Full GOAL](goal.md) after status. Across all review stages/templates, take ACs, DoF, authority and denominator from the frozen `goal_ref` instead of a TS; no missing-TS finding. Verify the complete fixed candidate in a fresh independent context for this outer attempt. Keep the normal stages, verdicts, reporting and close gates. Other modes still require their TS.
+
 ## Read Contract
 
 Root instructions are active. Read this workflow, then stage-local inputs in order.

@@ -139,6 +139,8 @@ Use the [interactive FAQ](https://notebooklm.google.com/notebook/0a4cc544-0c0a-4
 
 ## How It Works
 
+Full offers a fourth, explicitly selected [GOAL mode](.tfw/workflows/goal.md): work from the approved HL, with an owner-set attempt cap, whole-candidate independent review, measured costs and a diff. No separate TS is required. Manual, visible-agents and subagents retain their existing contracts.
+
 | | Principle | What it means in practice |
 |---|---|---|
 | 🧠 | **Inspectable project context** | Purpose, decisions, constraints, rejected alternatives, evidence, current state, and debt can be inspected alongside the output; “self-aware” means these capabilities, not an anthropomorphic project |

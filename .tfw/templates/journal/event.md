@@ -24,6 +24,7 @@ identity; the token means only uniqueness.
 | `writer` | declared human or valid agent principal handle | optional |
 | `on_behalf_of` | declared human `team/` handle | always |
 | `via` | non-empty free-form provider/tool text | when a tool writes |
+| `goal_attempt` | only the charged GOAL execution dispatch, positive consecutive number; ordinary role dispatches omit it | iff starting an outer attempt |
 | `from` / `to` | declared lifecycle IDs and a permitted pair | both or neither |
 | `refs` | non-empty paths relative to the task directory | always |
 | `summary` | one line; brief, normally no more than 120 code points (authoring advice, never validity) | optional, at most one |

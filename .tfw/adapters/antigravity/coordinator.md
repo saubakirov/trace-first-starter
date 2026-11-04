@@ -6,7 +6,7 @@ Read this selected profile only at its checkpoint, without other profiles/toolin
 
 ## Startup card values
 
-Offer the three common modes for one or multiple phases: manual owner-started roles, visible-agent
+Offer GOAL as the fourth explicit choice (see the common GOAL workflow); verify continuation, independent review and own usage on this exact surface. The three other modes for one or multiple phases are: manual owner-started roles, visible-agent
 role chats, or one owner-facing Coordinator operating distinct native subagents. Explain launcher,
 role location, actual owner actions and reservations. No small-task or one-phase admission limit.
 The selected native surface must actually support command-only role activation, independent context,
@@ -35,7 +35,7 @@ Manual creation alone leaves native returns active; only explicit owner-transfer
 One Coordinator may own multiple separate phase-local cycles within governing authority. Distinct
 bounded phase holders remain available; same-holder completion is local without self-send. Check
 dependencies and phase-local scope/TS/state before each ready act. New phases default to fresh
-independent Review; same-phase corrections retain the same Executor and independent Reviewer.
+independent Review; outside GOAL, same-phase corrections retain the same Executor and independent Reviewer.
 Apply common cross-phase reuse discretion, hard freshness and receiving checks. Keep a reachable
 fixed Candidate with isolated or serialized mutation as this surface actually supports.
 

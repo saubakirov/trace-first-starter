@@ -6,8 +6,7 @@ Read this selected profile only at its checkpoint; runtime does not load the too
 
 ## Startup card values on Codex
 
-Render the shared startup card from currently exposed mechanisms. Offer all three common modes
-for one or multiple phases: manual owner-started roles, visible-agent role tasks, and one
+Render the shared startup card from currently exposed mechanisms. Offer GOAL as the fourth explicit choice (see the common GOAL workflow); verify native goal, independent review and own usage separately. The three existing arrangements for one or multiple phases are: manual owner-started roles, visible-agent role tasks, and one
 owner-facing Coordinator using distinct native subagents throughout the authorized task. Mode,
 delegation, reporting, dialogue and phase topology remain separate. Visible selection covers its
 role-chat launches; subagent selection creates no user-owned role/phase chat. Explain remaining
@@ -42,7 +41,7 @@ check or a concrete changed input, contradiction or evidence gap.
 One actual Coordinator may own multiple phase-local cycles within governing authority; distinct
 phase holders remain available. Validate dependencies, separate phase state and bounded activation.
 Same-holder completion is local without self-send. New-phase Review defaults to a fresh independent
-context; same-phase corrections retain the same Executor and independent Reviewer. Apply the common
+context; outside GOAL, same-phase corrections retain the same Executor and independent Reviewer. Apply the common
 explicit exception/receiving checks before any cross-phase reuse. Mutating Codex roles own separate
 worktrees; Reviewer inspects a full reachable immutable Candidate while Executor writes are held.
 

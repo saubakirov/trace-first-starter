@@ -8,6 +8,8 @@ description: TFW Handoff — executor onboarding, implementation, RF
 > HL, TS, RES or REVIEW, rule scope, or review your result. A scope defect is recorded in ONB and
 > stops execution.
 
+**Explicit GOAL only:** after reading task status, follow [Full GOAL](goal.md) for activation, attempt charging, compact, corrections and the direct HL → ONB route. In all checks/forms below, the pinned approved HL supplies the order, criteria, freedoms and accounting baseline in place of TS. Do not create or require a TS; the current Executor lock still applies. Other modes require the approved TS as before.
+
 ## Read Contract
 
 Root instructions are active. Read this workflow, then inputs in order; shared ranges use unique

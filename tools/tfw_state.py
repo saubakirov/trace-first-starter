@@ -56,12 +56,13 @@ UPWARD_ROUTE_KEYS = {"upstream_route", "owner_gateway"}
 COORDINATION_KEYS = COMMON_COORDINATION_KEYS | UPWARD_ROUTE_KEYS
 
 SELECTION_KEYS = {"reporting", "selection_ref"}
-COORDINATION_MODES = {"manual", "visible-agents", "subagents"}
+COORDINATION_MODES = {"manual", "visible-agents", "subagents", "goal"}
+GOAL_KEYS = {"goal_ref", "goal_attempt"}
 
 STATUS_KEYS = {
     "id", "title", "goal", "value", "lifecycle", "lifecycle_verbatim",
     "owner", "authority", "outcome", "created", "updated", *COORDINATION_KEYS,
-    *SELECTION_KEYS, "coordination_mode",
+    *SELECTION_KEYS, "coordination_mode", *GOAL_KEYS,
 }
 
 REQUIRED_KEYS = ("id", "title", "goal", "value", "lifecycle", "owner", "authority",
@@ -295,12 +296,16 @@ def validate_status(data: dict, task_dir: Path | None = None,
     mode_present = "coordination_mode" in data
     if mode_present:
         if data.get("coordination_mode") not in COORDINATION_MODES:
-            problems.append("coordination_mode must be manual, visible-agents or subagents")
+            problems.append("coordination_mode must be manual, visible-agents, subagents or goal")
         current_keys = COMMON_COORDINATION_KEYS | {"upstream_route"} | SELECTION_KEYS
         if not current_keys.issubset(data) or "owner_gateway" in data:
             problems.append("current coordination_mode requires the complete upstream_route selection form")
     elif task_dir is not None:
         problems.extend(verify_historical_carrier(task_dir, bool(coordination_present or selection_present)))
+    if data.get("coordination_mode") == "goal":
+        problems.extend(validate_goal_status(data, task_dir))
+    elif GOAL_KEYS.intersection(data):
+        problems.append("goal fields require explicit coordination_mode: goal")
     if selection_present and selection_present != SELECTION_KEYS:
         problems.append("partial current selection; reporting and selection_ref must occur together")
     route_names = coordination_present & UPWARD_ROUTE_KEYS
@@ -409,6 +414,67 @@ def validate_status(data: dict, task_dir: Path | None = None,
                 f"{parsed[1]!r}")
 
     return problems
+
+
+def validate_goal_status(data: dict, task_dir: Path | None) -> list[str]:
+    lifecycle = data.get("lifecycle")
+    if lifecycle in {"PHASES", "TS_DRAFT"} or (task_dir and PHASE_DIR.fullmatch(task_dir.name)):
+        return ["goal uses one task-level HL, never phase dispatch or a TS lifecycle"]
+    attempt = data.get("goal_attempt")
+    if type(attempt) is not int or attempt < 0:
+        return ["goal_attempt must count started attempts from zero"]
+    if lifecycle in {"ONB", "RF", "REV", "KNW", "DONE"} and not attempt:
+        return ["active goal execution/review requires a started attempt"]
+    filename = "HL-" + str(data.get("id")) + ".md"
+    if data.get("authority") != filename:
+        return ["goal authority must name the task's HL"]
+    ref = data.get("goal_ref")
+    if ref is None:
+        if attempt or lifecycle not in {"TODO", "HL_DRAFT", "RES", "BLOCKED", "REJECTED"}:
+            return ["execution requires the approved immutable goal_ref"]
+    elif not isinstance(ref, str) or not re.fullmatch(re.escape(filename) + r" @ [0-9a-f]{40}", ref):
+        return ["goal_ref must be the task's HL path @ full commit"]
+    if task_dir is None:
+        return []
+    if ref:
+        try:
+            root = find_project_root(task_dir)
+            path = (task_dir / filename).resolve().relative_to(root).as_posix()
+            commit = ref.rsplit(" @ ", 1)[1]
+            reachable = subprocess.run(["git", "merge-base", "--is-ancestor", commit, "HEAD"],
+                                       cwd=root, capture_output=True)
+            frozen = subprocess.run(["git", "show", f"{commit}:{path}"], cwd=root, capture_output=True)
+            content = frozen.stdout.decode("utf-8")
+        except (OSError, ValueError, SystemExit):
+            return ["goal_ref cannot be inspected at its named project epoch"]
+        owner = re.escape(str(data.get("owner")))
+        approved = re.findall(r"^> \*\*Contract\*\*: 🔒 FROZEN — approved by " + owner +
+                              r" \d{4}-\d{2}-\d{2}\s*$", content, re.M)
+        limits = re.findall(r"^> \*\*Goal attempt limit\*\*: ([1-9][0-9]*)\s*$", content, re.M)
+        if (reachable.returncode or frozen.returncode or len(approved) != 1 or len(limits) != 1 or
+                not re.match(r"^# HL\s+—\s+" + re.escape(str(data["id"])) + r"(?::|\s*$)", content, re.M) or
+                len(re.findall(r"^> \*\*Contract\*\*:", content, re.M)) != 1 or
+                len(re.findall(r"^> \*\*Goal attempt limit\*\*:", content, re.M)) != 1):
+            return ["goal_ref needs a reachable owner-frozen HL with one positive attempt limit"]
+        if attempt > int(limits[0]):
+            return ["goal_attempt exceeds the limit in the frozen HL"]
+    recorded = []
+    for event in (task_dir / "journal").glob("*__dispatch__*.md"):
+        try:
+            match = FRONT_MATTER.match(event.read_text(encoding="utf-8"))
+            row = yaml.safe_load(match.group(1)) if match else None
+        except (OSError, ValueError, yaml.YAMLError):
+            return ["goal dispatch journal cannot be inspected"]
+        if not isinstance(row, dict):
+            return ["goal dispatch has no readable envelope"]
+        if "goal_attempt" in row:
+            n = row["goal_attempt"]
+            if row.get("kind") != "dispatch" or type(n) is not int or n <= 0:
+                return ["invalid charged goal dispatch"]
+            recorded.append(n)
+    if len(recorded) != attempt or sorted(recorded) != list(range(1, len(recorded) + 1)):
+        return ["goal_attempt disagrees with the sequential charged dispatches"]
+    return []
 
 
 def validate_new_status(data: dict, task_dir: Path | None = None,
@@ -569,7 +635,7 @@ EVENT_KINDS = ("created", "dispatch", "handoff", "transition", "ownership_change
 RESERVED_EVENT_KINDS = ("consolidation",)
 
 EVENT_KEYS = {
-    "time", "kind", "writer", "actor", "on_behalf_of", "via", "from", "to", "refs", "summary",
+    "time", "kind", "writer", "actor", "on_behalf_of", "via", "from", "to", "refs", "summary", "goal_attempt",
 }
 EVENT_REQUIRED = ("time", "kind", "on_behalf_of", "refs")
 
@@ -687,6 +753,10 @@ def validate_event(data: dict, filename: str,
     if name and kind and name.group("kind") != kind:
         problems.append(f"filename says kind '{name.group('kind')}', body says '{kind}'")
 
+    if "goal_attempt" in data and (kind != "dispatch" or type(data["goal_attempt"]) is not int
+                                   or data["goal_attempt"] <= 0):
+        problems.append("only an execution dispatch can charge a positive goal_attempt")
+
     on_behalf_of = data.get("on_behalf_of")
 
     if profiles is not None and not legacy:
@@ -733,8 +803,10 @@ def validate_event(data: dict, filename: str,
 
 def validate_new_event(data: dict, filename: str,
                        profiles: dict[str, dict] | None = None,
-                       declared: list[str] | None = None) -> list[str]:
+                       declared: list[str] | None = None, *, coordination_mode: str | None = None) -> list[str]:
     problems = validate_event(data, filename, profiles)
+    if "goal_attempt" in data and coordination_mode != "goal":
+        problems.append("a charged dispatch requires a verified goal selection")
     declared_set = set(declared or DECLARED_LIFECYCLES)
     name = EVENT_NAME.match(filename)
     if name and not re.fullmatch(r"[0-9a-f]{4}", name.group("token")):
@@ -811,6 +883,8 @@ def validate_new_event(data: dict, filename: str,
             problems.append(f"transition target '{target}' is not declared")
         elif source in TERMINAL:
             problems.append(f"terminal lifecycle '{source}' has no outgoing transition")
+        elif coordination_mode == "goal" and (source in {"TS_DRAFT", "PHASES"} or target in {"TS_DRAFT", "PHASES"}):
+            problems.append(f"goal does not route through {source} -> {target}")
         elif target == "REJECTED":
             pass
         elif target == "BLOCKED" or source == "BLOCKED":
@@ -819,7 +893,8 @@ def validate_new_event(data: dict, filename: str,
         elif source == UNDECLARED:
             if target in TERMINAL:
                 problems.append(f"illegal transition pair: {source} -> {target}")
-        elif (source, target) not in FORWARD_TRANSITIONS:
+        elif (source, target) not in FORWARD_TRANSITIONS and not (
+                coordination_mode == "goal" and source in {"HL_DRAFT", "RES"} and target == "ONB"):
             problems.append(f"illegal transition pair: {source} -> {target}")
     elif source is not None or target is not None:
         problems.append("only a transition event may carry 'from' and 'to'")

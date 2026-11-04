@@ -14,7 +14,7 @@ This repository skill implements the `/tfw-plan` command.
 - Enforce the Coordinator role lock: permit HL and TS; forbid ONB, RF, RES, REVIEW, and code.
 - Read `.tfw/workflows/plan.md` completely and follow its Read Contract and gates. Root instructions
   are already active; do not independently preload `AGENTS.md` or any full common library.
-- Open `.tfw/templates/HL.md` and `.tfw/templates/TS.md` only at their workflow gates.
+- Open `.tfw/templates/HL.md` and `.tfw/templates/TS.md` only at their workflow gates. Explicit GOAL has no TS gate; route on its frozen HL.
 - Stop when the workflow routes to research, handoff, execution, or review.
 
 When the workflow routes onward, name the exact next command, such as `/tfw-research` or `/tfw-handoff`.

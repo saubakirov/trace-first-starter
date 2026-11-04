@@ -1,6 +1,6 @@
 ---
 name: tfw-review
-description: Command /tfw-review reviews a completed Trace-First Workflow RF against its TS, implementation, and evidence. Use for /tfw-review, a TFW verdict, RF verification, or a REVIEW artifact.
+description: Command /tfw-review reviews a completed Trace-First Workflow RF against its governing order (TS, or pinned HL in explicit GOAL), implementation, and evidence. Use for /tfw-review, a TFW verdict, RF verification, or a REVIEW artifact.
 ---
 
 # /tfw-review

@@ -246,6 +246,14 @@ it never suppresses failure readback. A failure receipt leaves operation_seconds
 reason when the failed invocation was not timed; it does not assert zero handling cost.
 Collector operation, whole invocation/integration wall time and native duration are distinct.
 
+## GOAL attribution
+
+Only the explicitly selected fourth Full mode uses these fields. At each meaningful change of bound, use the active surface's own collection/return recipe above. Pass `--coordination-mode goal --goal-attempt N --goal-activity execution --goal-step K` for a measured inner check; e.g. attempt 1, step 2. Preparation uses attempt 0 and activity `preparation`. For `review`, `correction`, `wait` and `closure` use the real attempt; omit the step when it is not attributable. For an inseparable range use `--goal-activity shared` and omit unknown attempt/step. A capture failure uses the same tags with `failure`. A pre-binding gap stays in its owning artifact. No inferred allocation.
+
+The optional v1 manifest extension `tfw.goal` preserves attempt/step/activity. It does not change extraction: Codex deduplicates response usage; Claude binds the exact parent/child stream; Antigravity binds only a supported surface/version. Disjoint slices add; a covering successor must keep its predecessor's attribution. A report groups only reconciled measured rows, prints their priced and unpriced portions and retains failed receipts. Historic untagged data remain readable and unattributed. A GOAL record needs started attempts from charged journal dispatches, actual presentations/verdicts from RF/REVIEW and internal checks from ONB/EV alongside the economic report. These are product events, not numbers of JSONL files. A bound without measured evidence never proves zero use.
+
+Mark real observations in the artifact that owns them, one full line per event. In ONB/EV use e.g. `<!-- tfw-goal-event {"kind":"check","attempt":1,"step":2,"outcome":"pass"} -->` (pass/fail/blocked); the nearby text names the oracle, outcome and source bound. RF writes the same marker with `kind: rf`, attempt and the actual full `candidate` hash; REVIEW writes `kind: review`, attempt, the same candidate and its actual `verdict`. New attempts get distinct RF/REVIEW files. No copied history or marker for a mere wakeup. The report deduplicates identical observations, refuses conflicting/unpresented verdicts and displays missing return attribution. Starts come from validated task status and its charged dispatches, independently of how many receipts were measurable.
+
 ## Commands, reports and prices
 
 Use cycle economics to answer a management, product or retrospective question about actual

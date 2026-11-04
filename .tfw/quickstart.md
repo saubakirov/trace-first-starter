@@ -65,6 +65,8 @@ After reading, you should understand:
   once. Full has no shared task cache or freshness duty; resolve the selected whole ID and
   read its task-local trace directly.
 
+For a prepared Full task the owner can say: **“Use GOAL: execute this agreed HL, up to three external attempts, independently review the whole candidate, then show me cost and diff.”** See [the four-mode choice and GOAL lifecycle](workflows/goal.md). No TS is created for this choice.
+
 ## Step 3: Recommend to the human
 
 Tell the user:

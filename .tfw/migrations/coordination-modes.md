@@ -22,8 +22,7 @@ existing update authority; independent groups may proceed. Do not rewrite active
 | Deliberate format adoption, unchanged actual choice | At safe checkpoint inspect original human source, scope/roles, holder/parent, effect, reservations and frozen ceiling; populate truthful current fields with the same epoch |
 | Actual mode/route/scope/reporting/dialogue change | Proper human selection/handoff/TS or HL approval; immutable selection event before effective `selection_ref` |
 
-Mode is `manual`, `visible-agents` or `subagents`, independent of delegation/reporting/dialogue and
-topology. All admit multiple phases. The receiver checks human permission, not just parser success.
+The existing `manual`, `visible-agents` and `subagents` modes are independent of delegation/reporting/dialogue and topology and admit multiple phases. The fourth [GOAL](../workflows/goal.md) mode is explicitly selected at a safe boundary; its pinned HL is its order. Installing this version never migrates an existing selection. The receiver checks human permission, not just parser success.
 For a same-holder phase use the task Coordinator as local worker recipient and the real human owner
 as upward recipient; owner/parent/authority must agree. Finish locally without self-send. A distinct
 phase holder returns to the actual task Coordinator. Keep phase scope, TS, journal, dependency result
@@ -45,7 +44,7 @@ Use direct file reads and available repository-object inspection; ordinary lifec
 require no Python, PyYAML or `tools/tfw_state.py`. Apply every check below before dependent work:
 
 1. Resolve the exact task/phase in its configured container. Read its own status and journal, then
-   the governing HL/approved TS and exact selection source at their immutable epochs. Check that
+   the governing HL/approved TS (the frozen HL alone for GOAL) and exact selection source at their immutable epochs. Check that
    references resolve inside their permitted scope and that the claimed objects/bytes exist.
 2. Interpret the complete YAML fields by meaning, including quoted keys; apply the closed key set,
    required values, fixed body, lifecycle/outcome relation and transition rules in the status/event

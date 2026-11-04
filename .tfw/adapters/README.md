@@ -31,7 +31,9 @@ missing commands, duplicate managed blocks, and receiver-path mismatches are har
 
 ## Coordination modes and evidence
 
-All adapters consume the common `manual`, `visible-agents`, `subagents` semantics for one or
+All adapters expose the fourth explicit [GOAL](../workflows/goal.md) contract. Its native continuation,
+review and accounting capabilities must be verified separately on the selected surface.
+All adapters retain the `manual`, `visible-agents`, `subagents` semantics for one or
 multiple phases. One owner-facing Coordinator can govern phase-local cycles through native roles;
 distinct phase holders remain available under authority. Selected profiles map actual surface
 mechanics, not provider-wide permissions. Cursor is common-only and makes no tailored native offer.
