@@ -7,7 +7,7 @@ Format: [Keep a Changelog](https://keepachangelog.com/). Versioning: [Semantic V
 
 ### Added
 
-- GOAL (`TFW_20261104-174228_GOAL`): an explicitly selected fourth Full mode runs and reviews a frozen HL without a separate TS. Attempts, internal checks, returns and measured usage are reported separately. The local candidate passed independent review; owner acceptance and release are pending.
+- GOAL (`TFW_20261104-174228_GOAL`): an explicitly selected fourth Full mode runs and reviews a frozen HL without a separate TS. Attempts, internal checks, returns and measured usage are reported separately. The pilot and subsequent owner-control clarification passed independent review and were accepted by the owner for task closure.
 
 ### Documentation
 
