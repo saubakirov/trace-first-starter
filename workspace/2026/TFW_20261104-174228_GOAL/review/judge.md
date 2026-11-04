@@ -64,3 +64,40 @@ No applicable contract contradiction. CMODES continues to govern the three prior
 - [x] One verdict; no artifact/test-count objective or self-ruling.
 
 Stage complete: YES.
+
+
+# Round 2 — ordered independent Judge
+
+Subject/authority: Map Round2 and Verify Round2; complete Candidate `fbc6a401895b9332ed3dc65cf29e0977eb61b62a` against frozen master HL `c4ca85fc7c06aabb69a016ef3975ccc1de04e6b7`. Fresh context does not inherit prior author's intent or verdict.
+
+## VALUE
+
+| Subject | Judgment | Grounds |
+|---|---|---|
+| Purpose/approved value | aligned | Purpose check below; no contract inconsistency or adjacent product |
+| Domain behavior/G1–G5 | finding F2 | R2-V1/V2/V4 hold within limits; R2-V3 proves final report unavailable on ordinary valid history |
+| Architecture | holds except F2 compatibility boundary | One explicit branch reuses normal sources, state, evidence, accounting and authority; no parallel service/runtime. Narrow reader incompatibility remains correctable |
+| Safety/security | holds | R2-V1: numeric-only own-source receipt capture, no secret/global/deployment action |
+| Human authority/reserved effects | holds | Frozen HL §4 and role workflow preserve owner acceptance, cap/amendment/merge decisions |
+
+### Purpose check
+
+Master HL §1 promises “an independently assessed result, attributable expenditure and a reviewable diff.” `.tfw/README.md` NS1 protects “purposeful, human-governed continuity”; NS3 excludes “a maximum-documentation bureaucracy” and replacing human acceptance. Complete clauses re-read separately from Verify-PV. The selected fourth route serves that purpose by reducing routine owner shuttling while preserving bounded roles and fixed inspection. Concrete harm protected: losing cost/continuation visibility or letting a native loop decide acceptance. F2 prevents the report on the actual returned task; it is material domain behavior, not a purpose rejection or permission to change the promise.
+
+Excess/adjacency: no unrelated work. Deferral confession: actual doc/knowledge/owner closing gates appropriately remain with the Coordinator; none is claimed paid. Materiality: ordinary history breaks the promised expenditure output, so F2 exceeds wording/format polish. No internally inconsistent reference set found.
+
+## ASSURANCE
+
+Evidence exists in the returned EV/RF and numeric bytes; independently applicable proof is in R2-V1–V5. It establishes accepted unchanged behavior, original F1 correction and F2's actual operational failure. Current dependency state matters: pre-final-event positive report cannot establish final report readiness. No additional assurance-only return is needed to prove an already observed product defect. Existing guards retain their rendering/blob scopes; temporary controls and governance counts do not become general GOAL proof. Cross-provider source fixtures prove finite decoding, not unattended operation.
+
+## TRACE
+
+Immutable goal, charged starts, direct parent route, fresh independent reviewer and fixed result identity hold (R2-V1/V5). Accounting independently VERIFIED29/+447/−41=488, within approved budget. F2's failing journal is a valid ordinary event and remains immutable: record-only rewriting is not the proposed completion. Generated test site initially used its default ignored repo path; moved to this Reviewer's own TEMP after discovery, without changing product. This corrected working-material lapse has no result/authority consequence and does not create a product proposal. Prior producer cleanup limitations remain their disclosed closing obligations.
+
+## Findings and verdict
+
+Prior F1: independently passes its exact oracle; no renewed proposal. **One proposal F2 (VALUE)**, full contract in Verify R2-V3/final findings and REVIEW revision2 §5. Existing Coordinator rules once under frozen G4/G5; completion must render the unmodified actual returned snapshot/normal future event serialization while preserving negative history/tag refusals and costs. Route HL-preserving GOAL rung1, cap checked before fresh E/R. Candidate moves on product change. No HL amendment requested.
+
+**Verdict: REVISE.** A correctable reporting behavior prevents the promised usable result. VALUE first supplies the consequence; ASSURANCE directly proves it; TRACE preserves the fixed evidence and responsible route. No independent REJECT or acceptance-authority defect; no new attempt charged by review. No applicable knowledge contradiction beyond the explicit GOAL scope exception.
+
+Checkpoint: ordered judgment and all mandatory floors complete; purpose baseline/North Star separately cited with harm; evidence scope/limits distinguished; one complete classified proposal/route/Candidate effect; no artifact/test count dictates verdict. Stage complete: YES.
