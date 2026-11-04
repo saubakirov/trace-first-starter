@@ -1463,6 +1463,8 @@ def status_fields(task_root, record=None):
             fields[match.group(1)] = json.loads(value) if value.startswith('"') else value
     for key in ("id", "goal", "value", "lifecycle", "owner", "created"):
         require(fields.get(key), "status missing " + key)
+    if fields.get("coordination_mode") == "goal":
+        fields = goal_control_fields(path)
     return fields
 
 
@@ -1474,11 +1476,89 @@ def metadata_block(path):
     return json.loads(match.group(1)) if match else None
 
 
+def goal_control_fields(path):
+    content = path.read_text(encoding="utf-8")
+    envelope = re.match(r"\A---\r?\n(.*?)\r?\n---(?:\r?\n|$)", content, re.S)
+    require(envelope, "GOAL control needs front matter: " + path.name)
+    fields, list_key = {}, None
+    for line in envelope[1].splitlines():
+        if not line.strip() or line.lstrip().startswith("#"):
+            continue
+        item = re.fullmatch(r"\s*-\s+(.+)", line)
+        if item:
+            require(list_key is not None, "GOAL control has an unexpected list: " + path.name)
+            fields[list_key].append(goal_control_scalar(item[1]))
+            continue
+        entry = re.fullmatch(r"([a-z_]+):(?:\s+(.*))?", line)
+        require(entry and entry[1] not in fields,
+                "GOAL control has an unsupported or duplicate field: " + path.name)
+        key, value = entry.groups()
+        list_key = key if value is None else None
+        fields[key] = [] if value is None else goal_control_scalar(value)
+    return fields
+
+
+def goal_control_scalar(value):
+    if value.startswith('"'):
+        parsed = json.loads(value)
+        require(isinstance(parsed, str), "GOAL control scalar must be text")
+        return parsed
+    if value.startswith("'"):
+        require(re.fullmatch(r"'(?:[^']|'')*'", value), "invalid GOAL quoted scalar")
+        return value[1:-1].replace("''", "'")
+    require(not value.startswith(("&", "*", "|", ">", "[", "{")) and ": " not in value,
+            "unsupported GOAL control scalar; use a quoted one-line value")
+    return value
+
+
+def goal_starts(task, state):
+    checked = goal_control_fields(task / "status.md")
+    require(checked == state, "GOAL status fields disagree with its front matter")
+    require(state.get("coordination_mode") == "goal" and state.get("id") == task.name,
+            "GOAL history needs its selected task status")
+    count = state.get("goal_attempt", "")
+    require(isinstance(count, str) and re.fullmatch(r"0|[1-9][0-9]*", count),
+            "GOAL status needs its charged goal_attempt")
+    count = int(count)
+    require(state.get("lifecycle") not in ("PHASES", "TS_DRAFT") and
+            (count > 0 or state.get("lifecycle") not in ("ONB", "RF", "REV", "KNW", "DONE")),
+            "GOAL count contradicts its lifecycle")
+    authority = "HL-" + task.name + ".md"
+    ref = state.get("goal_ref")
+    require(state.get("authority") == authority and (ref is None and count == 0 or
+            isinstance(ref, str) and re.fullmatch(re.escape(authority) + r" @ [a-f0-9]{40}", ref)),
+            "GOAL count needs its task-local immutable HL reference")
+    recorded = []
+    for path in sorted((task / "journal").glob("*.md")):
+        event = goal_control_fields(path)
+        if "goal_attempt" not in event:
+            require("__dispatch__" not in path.name or event.get("kind") == "dispatch",
+                    "GOAL dispatch filename/kind disagree: " + path.name)
+            continue
+        name = re.fullmatch(r"(\d{8}-\d{6})__dispatch__[a-f0-9]{4}\.md", path.name)
+        n = event["goal_attempt"]
+        require(name and event.get("kind") == "dispatch" and isinstance(n, str) and
+                re.fullmatch(r"[1-9][0-9]*", n), "invalid charged GOAL dispatch: " + path.name)
+        clock = timestamp(event.get("time"), "GOAL dispatch time")
+        require(clock.strftime("%Y%m%d-%H%M%S") == name[1] and
+                event.get("on_behalf_of") == state["owner"],
+                "GOAL dispatch clock/owner disagrees: " + path.name)
+        refs = event.get("refs")
+        require(isinstance(refs, list) and authority in refs, "GOAL dispatch needs its authority ref")
+        for target in refs:
+            resolved = (task / target).resolve()
+            require(not Path(target).is_absolute() and resolved.is_relative_to(task.resolve()) and
+                    resolved.is_file(), "GOAL dispatch has a missing or escaping ref: " + path.name)
+        recorded.append((clock, int(n)))
+    charged = [n for _, n in sorted(recorded)]
+    require(len(charged) == count and charged == list(range(1, len(charged) + 1)),
+            "GOAL status disagrees with sequential charged dispatches; retain receipts and repair history before reporting")
+    return len(charged)
+
+
 def goal_progress(task, state):
     """Count product events at their owning artifacts, independently of measured usage."""
-    started = str(state.get("goal_attempt", ""))
-    require(re.fullmatch(r"0|[1-9][0-9]*", started), "GOAL status needs its charged goal_attempt")
-    started = int(started)
+    started = goal_starts(task, state)
     checks, presentations, verdicts, gaps = {}, {}, {}, []
     for pattern, kind in (("ONB__*.md", "check"), ("evidence/EV*.md", "check"),
                           ("RF__*.md", "rf"), ("REVIEW__*.md", "review")):
@@ -1516,7 +1596,7 @@ def goal_progress(task, state):
     return dict(started=started, recorded_checks=len(checks), failed_checks=sum(
         x["outcome"] == "fail" for x in checks.values()), presentations=len(presentations),
         verdicts=[dict(attempt=n, verdict=x["verdict"]) for n, x in sorted(verdicts.items())],
-        attribution_gaps=gaps)
+        attribution_gaps=gaps), checks
 
 
 def render_report(args):
@@ -1592,6 +1672,19 @@ def render_report(args):
     if state.get("coordination_mode") == "goal" or any(
             f["manifest"]["coordination_mode"] == "goal" for f in data["files"]):
         groups = defaultdict(list)
+        progress, checks = (goal_progress(task, state) if state.get("coordination_mode") == "goal"
+                            else (None, {}))
+        for file in data["files"]:
+            tag = file["manifest"]["extensions"].get("tfw.goal")
+            if not tag:
+                continue
+            attempt, step = tag["attempt"], tag["step"]
+            require(progress is not None, "GOAL attribution needs validated selected task history")
+            require(attempt is None or attempt == 0 and tag["activity"] == "preparation" or
+                    0 < attempt <= progress["started"],
+                    "GOAL receipt names an uncharged attempt; retained source " + file["sha256"])
+            require(step is None or (attempt, step) in checks,
+                    "GOAL receipt names an unrecorded inner check; retained source " + file["sha256"])
         for manifest_row, record, digest in data["records"]:
             tag = manifest_row["extensions"].get("tfw.goal") or {}
             groups[(tag.get("attempt"), tag.get("step"), tag.get("activity", "unattributed"))].append(
@@ -1602,8 +1695,8 @@ def render_report(args):
             goal_rows.append(dict(attempt=attempt, step=step, activity=activity, tokens=observed["tokens"],
                                   priced_usd=str(observed["priced_usd"]), unpriced_tokens=observed["unpriced_tokens"]))
         block["goal_bounds"] = goal_rows
-        if state.get("coordination_mode") == "goal":
-            block["goal_progress"] = goal_progress(task, state)
+        if progress is not None:
+            block["goal_progress"] = progress
     lines = ["# Task economics — " + state["id"], "",
              "<!-- tfw-economics-v1 " + json.dumps(block, ensure_ascii=False,
                                                   sort_keys=True, separators=(",", ":")) + " -->",
