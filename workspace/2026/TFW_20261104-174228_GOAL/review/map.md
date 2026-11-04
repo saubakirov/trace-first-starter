@@ -63,3 +63,22 @@ One explicit fourth Full mode uses the frozen approved HL, bounded starts, fresh
 | C6–C7 | Full reachable Git lineage, exact NUL-safe frozen membership/arithmetic, budget, staging; safety/security and reserved human acceptance inspected regardless of sampling | No merge/push/acceptance authority |
 
 Checkpoint: RF/EV/ONB, frozen HL, complete journal and prior verdict/ruling read; claims, risks, environment, evidence identity and oracle mapped; replayable checks and limits selected; counts not treated as quality. Stage complete: YES.
+
+
+# Round 3 — fresh independent whole-candidate Map
+
+Producer `codex:thread:local:01a1a6d8-72c6-7200-b5fe-01a0f5c78dd1`; parent/return `codex:thread:local:01a18671-e26b-7903-9c8f-096f510442c4`. Command-only native delegation and dispatch `journal/20261104-185556__dispatch__dfaf.md @ 32a24caaac25cc63d680284871497c314566f066` resolve to this Reviewer. Governing immutable HL/coordination authority `HL-TFW_20261104-174228_GOAL.md @ c4ca85fc7c06aabb69a016ef3975ccc1de04e6b7`; originating proposer saubakirov through the recorded Coordinator. Selected goal/native-gates/baseline/tfw-gates-only; owner upstream. Fresh separate clean detached checkout `db4a/steps-framework`, initial HEAD `32a24caaac25cc63d680284871497c314566f066`; no inherited producer conversation, private transcript, extra worker or solution briefing. Native provision, exact addressed send, event-driven wait/readback, title write/exact readback exposed. Title `REVIEW · TFW_20261104-174228_GOAL` matched. Configured default/high requested; effective model/effort from own metadata recorded at final capture.
+
+RF Round3 @ `e27133683d0e0dc86b146acfd681e3aba9c1d652`; complete fixed Candidate `25a26a98388c2c9f4b840ae8dd6c725b19c13c77`; Baseline `50f6b77e33e4ba7fc71e28fbce654762f285e2b5`; frozen HL read from its Git object. Prior F1/F2/rulings and returns are artifact inputs, not verdict instructions. No TS or fourth attempt. Reviewer mutates only review records, authorized state/journal and own economics.
+
+Own source bound before verification: `E:/Users/c0rpa/.codex/sessions/2026/11/04/rollout-2026-11-04T18-56-05-01a1a6d8-72c6-7200-b5fe-01a0f5c78dd1.jsonl`, session_meta.id verified equal to actual unit, physical start0; timezone+05:00, role reviewer, project steps-framework, owner saubakirov, attempt3/activity review. End frozen at final capture; no invented step allocation. Only own permitted metadata/numeric records read. Scratch confined to system TEMP/tfw/TFW_20261104-174228_GOAL/review-a3-01a1a6d8.
+
+## Understanding and claims
+
+The accepted result is a fourth explicit Full mode using frozen HL, one owner-facing Coordinator and bounded fresh execution/review, with honest loop economics. Re-evaluate the complete promise, preserving normal TS routes and owner acceptance. C1–C7 from the original Map remain the full claim/boundary mapping: explicit selection; immutable authority; retry/independence/recovery; attribution and provider measurement; distribution; fixed result/scope; safety/human authority. Same environment: local Windows/Python3.13/Codex0.166.0-alpha.6, wrapper-free file workflow and controlled provider inputs. Oracles remain frozen HL G1–G5/§§4–5 and the actual complete returned task state.
+
+## Selection and alignment
+
+G1–G5 each maps to latest RF §§1–5 and EV A3-E1–E5/accounting. C6/C7 are mandatory irrespective of sampling. Inspect all 29 VALUE paths and derived complement, replay exact NUL-safe accounting, frozen-HL/ref/cap negatives, provider fixtures, actual A2 and A3 final reports, and original F1 negatives. Because F2 concerns prose parsing, exercise normal serialization and distinguish prose from control values; verify input/output preservation on refusal. Existing tests/docs/blob and all source mirrors remain selected. Reuse prior finite provider proof only for unchanged decoder tuples; never infer live full-task Claude/AG autonomy. No contract deviation declared. Explicit unknowns: current review and Coordinator cost tails, final acceptance, retained prior scratch cleanup.
+
+Checkpoint: [x] RF/HL/ONB/EV/predecessors and current journal read; [x] all material and mandatory boundaries mapped; [x] subject/oracles/environments bound; [x] replayable checks and limits selected; [x] counts are not assurance. Stage complete: YES.
