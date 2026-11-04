@@ -3,7 +3,7 @@ id: TFW_20261104-174228_GOAL
 title: "TFW Full · До результата"
 goal: "Implement the fourth explicit Full mode with the frozen HL as the sole execution goal"
 value: "One owner-facing chat delivers a reviewable candidate and attributable loop economics"
-lifecycle: REV
+lifecycle: ONB
 owner: saubakirov
 authority: HL-TFW_20261104-174228_GOAL.md
 coordination_mode: goal
@@ -17,7 +17,7 @@ coordination_authority: "HL-TFW_20261104-174228_GOAL.md @ c4ca85fc7c06aabb69a016
 reporting: native-gates
 selection_ref: baseline
 created: 20261104-174228
-updated: 20261104-181732
+updated: 20261104-182132
 ---
 
 **Task state.** This file is the only authority for this task's live state. Any downstream projection is disposable and never outranks it.
