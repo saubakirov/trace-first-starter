@@ -39,3 +39,27 @@ Inspect the full product diff (small scope), all mode entry/recovery branches an
 - [x] No finding inferred from artifact count or filename.
 
 Stage complete: YES.
+
+
+# Round 2 — fresh independent whole-candidate Map
+
+Producer `codex:thread:local:01a1a6c3-c23a-79f3-8159-b7590c01e10b`; parent/return `codex:thread:local:01a18671-e26b-7903-9c8f-096f510442c4`. Command-only native delegation matches `journal/20261104-183316__dispatch__bd0e.md @ 19e226c22491daf25014e5fb02bb228031a04320`. Coordination authority/order: `HL-TFW_20261104-174228_GOAL.md @ c4ca85fc7c06aabb69a016ef3975ccc1de04e6b7`. Originating proposer `{principal: saubakirov, unit: codex:thread:local:01a18671-e26b-7903-9c8f-096f510442c4}`. All routing fields checked: goal/native-gates/baseline/tfw-gates-only, owner upstream. Separate clean `3ac6/steps-framework` checkout at review dispatch; no inherited author conversation or private producer transcript. Title `REVIEW · GOAL` written and read back. Provision/addressed send/wait/readback/title/readback native. Requested configured default/high; own observed settings recorded at capture.
+
+RF Round 2 @ `c8bb2d20e46df2e5996200e22f297ff14aca72bb`; complete fixed Candidate `fbc6a401895b9332ed3dc65cf29e0977eb61b62a`; original Baseline `50f6b77e33e4ba7fc71e28fbce654762f285e2b5`. Frozen HL and all predecessor returns reachable; no TS. Attempt 2 already charged, no new execution start. Prior F1 and Coordinator ruling establish the correction oracle, not a requested verdict.
+
+Own source bound before expensive verification: `sessions/2026/11/04/rollout-2026-11-04T18-33-29-01a1a6c3-c23a-79f3-8159-b7590c01e10b.jsonl` under actual local Codex runtime root, session_meta.id verified, physical start 0, timezone +05:00, attempt2/activity review, no invented inner allocation. Final receipt/cutoff in REVIEW revision2.
+
+## Understanding and alignment
+
+One explicit fourth Full mode uses the frozen approved HL, bounded starts, fresh whole-result review and attributable loop expenditure. Preserve the three existing modes and human authority. G1–G5 and mandatory boundaries retain C1–C7 from the original Map above; all are reviewed against the complete A2 candidate. RF Round2 claims each explicitly; only economics reader/contract changed after A1. No declared scope deviation.
+
+## Verification selection
+
+| Claims | Check and reason | Limits |
+|---|---|---|
+| C1–C3 | Read complete product/workflow diff; reuse A1 independent unchanged dependency evidence; run current contextual state and authority refusals | Host reliability remains unproved |
+| C4 | Independently exercise actual reporter and selected history/inner-tag counterexamples; reconcile actual returned bytes, provider controlled CLI fixtures. F1 changes exactly this dependency | No live Claude/AG full-task claim |
+| C5 | Inspect installed sources, compare mirrors, run existing configured checks/blob boundary; verify examples and diagrams | No deployment or installation |
+| C6–C7 | Full reachable Git lineage, exact NUL-safe frozen membership/arithmetic, budget, staging; safety/security and reserved human acceptance inspected regardless of sampling | No merge/push/acceptance authority |
+
+Checkpoint: RF/EV/ONB, frozen HL, complete journal and prior verdict/ruling read; claims, risks, environment, evidence identity and oracle mapped; replayable checks and limits selected; counts not treated as quality. Stage complete: YES.
