@@ -4,7 +4,7 @@ Producer: `codex:thread:local:01a1a6a8-075b-7bf0-b621-38a6926f27a0`; parent/retu
 
 RF: [attempt 1](../RF__TFW_20261104-174228_GOAL.md), committed at `572848435e65a7865e60e18c8f642dad3e983652`. Governing order: frozen HL above (no TS). Candidate `34b1416cfa587dcc18a8dfccf6e0db630ca43708`; Baseline `50f6b77e33e4ba7fc71e28fbce654762f285e2b5`. Both and frozen HL are reachable. Review does not change product bytes. Requested configured default/high; observed own `gpt-6.1-sol/high`, local Codex 0.166.0-alpha.6. Provision/addressed-send/wait-readback/title-readback: native; title set/read back `REVIEW · GOAL`.
 
-Economics binding before verification: own source `E:/Users/c0rpa/.codex/sessions/2026/11/04/rollout-2026-11-04T18-03-12-01a1a6a8-075b-7bf0-b621-38a6926f27a0.jsonl`, session_meta.id equals own unit UUID, zero-based line 0, timezone +05:00. One review bound, attempt 1; no inherited parent stream. Final numeric capture/precise gap belongs in REVIEW.
+Economics binding before verification: own source under the actual local Codex runtime root, `sessions/2026/11/04/rollout-2026-11-04T18-03-12-01a1a6a8-075b-7bf0-b621-38a6926f27a0.jsonl`; session_meta.id equals own unit UUID, zero-based line 0, timezone +05:00. One review bound, attempt 1; no inherited parent stream. Final numeric capture/precise gap belongs in REVIEW. Machine-specific root stays local.
 
 ## Understanding
 
