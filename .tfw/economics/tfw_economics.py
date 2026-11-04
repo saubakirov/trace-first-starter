@@ -1481,7 +1481,10 @@ def goal_control_fields(path):
     envelope = re.match(r"\A---\r?\n(.*?)\r?\n---(?:\r?\n|$)", content, re.S)
     require(envelope, "GOAL control needs front matter: " + path.name)
     fields, list_key = {}, None
-    for line in envelope[1].splitlines():
+    lines = iter(envelope[1].splitlines())
+    pending = next(lines, None)
+    while pending is not None:
+        line, pending = pending, next(lines, None)
         if not line.strip() or line.lstrip().startswith("#"):
             continue
         item = re.fullmatch(r"\s*-\s+(.+)", line)
@@ -1493,6 +1496,20 @@ def goal_control_fields(path):
         require(entry and entry[1] not in fields,
                 "GOAL control has an unsupported or duplicate field: " + path.name)
         key, value = entry.groups()
+        if key in ("summary", "via", "actor") and value is not None:
+            continuation = []
+            while pending is not None and (not pending.strip() or pending.startswith(" ")):
+                continuation.append(pending)
+                pending = next(lines, None)
+            if re.fullmatch(r"[|>][-+]?", value):
+                nonblank = [s for s in continuation if s.strip()]
+                require(nonblank, "empty GOAL prose block: " + path.name)
+                indent = min(len(s) - len(s.lstrip(" ")) for s in nonblank)
+                prose = [s[indent:] if s.strip() else "" for s in continuation]
+                fields[key] = ("\n" if value[0] == "|" else " ").join(prose)
+                list_key = None
+                continue
+            value = " ".join([value, *(s.strip() for s in continuation if s.strip())])
         list_key = key if value is None else None
         fields[key] = [] if value is None else goal_control_scalar(value)
     return fields
