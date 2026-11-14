@@ -1,136 +1,111 @@
 ---
 name: tfw-daily-task
-description: Complete a bounded everyday request after project and purpose checks, preserving selected Trace and a checked result without a second planning approval.
+description: Do one bounded everyday request in a TFW project (a fix, a document, an analysis, a small change) without the Full HL/TS/RF/REVIEW cycle - check that no formal task owns the object, keep a short record under daily/ with a checkpoint before the first product edit, run a focused check, and keep prepared, checked, accepted and released apart. Use when asked to "do it as a daily task", "/tfw-daily-task", "a quick task without a full cycle", "continue the daily record", or when the owner gives a clear bounded request outside an active formal task.
 ---
 
 # TFW Daily Task
 
-**Mindset:** Working backwards from the result the person needs. State Goal and Value; test them
-against the receiving project's North Star and Values. Challenge a weak premise with concrete
-reasons. Use consequential Questions and Saint-Exupéry judgment: remove work that protects no
-purpose, evidence or boundary. `Daily` names this bounded route, not a cadence or risk rating.
+Do one bounded request end to end. The human keeps the purpose, accountability and acceptance; you, one worker, do the work.
+Start from the result the person needs: state Goal and Value, test them against the project's North
+Star and Values, challenge a weak premise with concrete reasons, and drop work that protects no
+purpose, evidence or boundary. "Daily" names this route, not a cadence or a risk level.
 
-**Authority:** One actual worker performs the work the human's clear bounded request authorizes.
-The human retains purpose, accountability and acceptance. This optional route is outside formal
-Full task work; it grants no Coordinator, Executor or Reviewer authority in an active formal task.
-Title, model, profile, prior task and apparent urgency grant no permission.
+## When to use, when not
 
-## 1. Inspect before action
+Use it when a human gives a clear, bounded request and the project instructions or the request
+source establish that human's authority over the object.
 
-Read the applicable project instructions, personal preferences when present, existing Daily rules
-and actual request source. Follow local identity and record rules. Record the actual human and
-worker/source; disclose missing identity without inventing a handle. A missing profile alone does
-not block work when the actual request and authority are established. Missing request source or
-legitimate authority blocks the dependent action.
+Do not use it when the object belongs to an active formal Full task or phase, or to another
+mutation owner. Stop the dependent change, name the missing authority, and send it to that task's
+Coordinator. Do not edit its controls, invent a verdict or relabel it Daily: the formal route owns
+that object. Daily gives no Coordinator, Executor or Reviewer authority, and a title, model,
+profile, prior task or urgency gives no permission.
 
-Inspect the current object and its governing product/document sources before historical work.
-Make one bounded search using the object's path, name or intended result in relevant recent Daily
-records and current project knowledge. Read convincing matches only. Record inspected paths and
-commit, hash or observed state; an honest no-match is enough. Check older work's scope, currentness,
-source, producer and authority. Resolve material successor/conflict relations using the project's
-existing knowledge rules. History never overrides current product truth merely because it is related.
+## Fast path
 
-Before the first material product write, retain an observable checkpoint in the selected record:
-actual source, inspected rules/current object, prior-work lookup/result, Goal, Value, North Star fit,
-Boundaries and completion oracle. Do not retrospectively claim this gate ran. The checkpoint is a
-compact statement of observations and decisions, not private reasoning or a questionnaire.
+1. **Read the sources.** Read project instructions, `.user_preferences.md` if present, local Daily
+   rules and the actual request. Note the human and the worker; if an identity is unknown, say so
+   instead of inventing a handle, because the record must stay attributable. A missing profile does
+   not block; a missing request source or authority blocks the action that depends on it.
+2. **Inspect the object, then history.** Read the current object and its governing sources first.
+   Make one bounded search of recent Daily records and project knowledge by path, name or intended
+   result; read only convincing matches. Record what you inspected (paths and commit, hash or
+   state) or an honest no-match. Check old work's scope, currentness, source, producer and authority,
+   and resolve a material successor or conflict by the project's knowledge rules: history never
+   overrides the current product.
+3. **Select the record.** Keep the project's own form, such as a task/brief/messages split.
+   Otherwise create `daily/YYYY/YYYYMMDD-HHMMSS_slug/task.md` from `templates/task.md`: read the
+   clock once, use the whole folder name as the immutable ID, and add a suffix if it is taken, never
+   changing or moving the existing record. The template shapes new records only; never rewrite old
+   ones to match it. Continue an existing record only for the same deliverable under the same
+   authority, keeping the earlier request meaning, result and decisions through dated additions,
+   justified versions or file history; a different outcome, owner or boundary gets its own record. Where the host can set and read back a title, use
+   `DAILY · <folder ID>`; otherwise say once that it is unavailable and go on.
+4. **Write the checkpoint before the first product edit:** source, inspected rules and object,
+   prior-work result, Goal, Value, North Star fit, Boundaries and the completion check. A gate
+   written after the fact proves nothing, so never backfill it. Keep it to observations and
+   decisions, not private reasoning. In the same step, before the first product edit, add the
+   economics binding block ([references/economics.md](references/economics.md) §1).
+5. **Do the work** without a second plan approval. Resolve routine gaps from the sources. Ask only
+   for a missing consequential fact, choice or authority, and hold only the action that depends on
+   it. Put products at their ordinary project paths; give an output with no evident place an existing
+   suitable one, and ask only when none fits ("working material" is a valid answer). Quote material human words exactly with author and source; copy no
+   whole chat, secrets or private reasoning.
+6. **Check, record, return.** Run the check that tests the completion condition itself: run the
+   fixed function where it is used, open the finished document, view the design in its real
+   format. Preserve a previous result when the request protects it. Keep observation, inference and
+   uncertainty apart; a source read or a hash proves only that level, not the host's real behavior. If a check fails, fix it inside the boundary and recheck; if a required check is
+   unavailable, the claim stays open. Update the record, then return the result and any decision
+   left for the human.
 
-## 2. Bound and select the record
+## Stop and route
 
-Check whether the requested object belongs to an active formal task/phase or another mutation owner.
-For formal Full work, stop its dependent change and return to that task's existing Coordinator and
-approved role route; do not alter formal controls, invent a verdict or relabel it Daily. Explain the
-exact missing authority. Consequence and uncertainty determine checks and independent review.
-For a material goal/boundary change or reserved release, publication or communication, retain the
-prepared work and route the specific decision to its existing authority. Silence is never approval.
-Perform independent authorized preparation when a separate effect is blocked.
+- **Goal or boundary change, or a reserved release, publication or communication:** keep the
+  prepared work and route exactly that decision to its authority. Silence is not approval. Continue
+  independent authorized preparation.
+- **Owner-authorized Daily release:** follow `/tfw-release` and the project's release contract with
+  this record and its checks. No Full conversion and no fabricated TS, RF or REVIEW.
+- **Formal task owns the object:** stop and route as in "When to use, when not".
 
-An owner-authorized Daily release follows `/tfw-release` and the project's release contract using
-this selected record and its checks. No Full conversion or fabricated TS/RF/REVIEW is required;
-release, publication and other external effects still need their applicable authorization.
+Consequence and uncertainty decide how deep the checks and independent review go.
 
-Continue an existing record only when this request revises the same bounded deliverable under its
-still-governing authority. Preserve prior request meaning, result and material decisions through
-dated additions, justified versions or ordinary file history. A separately accepted outcome, owner
-or boundary gets a separate record. Add exact Related links only when they affect a decision;
-no mandatory category, shared journal, backlink maintenance or archive-wide sweep.
+## Record
 
-Honor the receiving project's established form, including a three-file task/brief/messages split.
-Otherwise create `daily/YYYY/YYYYMMDD-HHMMSS_slug/task.md` using the Daily-owned
-`.tfw/extensions/daily-task/templates/task.md`. Read the clock once; use the whole immutable folder
-name as ID. If occupied, add a distinguishing suffix without changing or moving the existing record.
-Keep products at their ordinary project paths, giving an output with no evident place an existing
-one; ask only when none suits, and 'working material' is a valid answer.
-No `daily/README.md`, formal HL/RF/status/journal,
-new lifecycle vocabulary or per-task knowledge file is required. Do not adopt a no-folder alternative
-by implication. Where title write and readback are supported, use `DAILY · <exact folder ID>`;
-otherwise disclose unavailable control once and continue authorized work. Navigation grants nothing.
+- Write which claim holds: prepared, checked, human-accepted or released. Never invent acceptance,
+  release or an unobserved effect, because only the human accepts. A checked result awaiting
+  acceptance says so.
+- Make source, Goal/Value, Boundaries, result, check and next authority readable without the chat.
+  Keep the record to about one screen plus links; analysis lives in the products.
+- At every turn return, not only at economics captures, the folder holds only the record and economics files, and the record
+  lists every product with its path. Keep working material in the system temporary
+  `tfw/<folder ID>/`; remove leftovers you see there, and remove it in the final turn.
+- Add no `daily/README.md`, HL, RF, status, journal, lifecycle words or per-task knowledge file,
+  and no folderless form by implication. Link related records only when they change a decision; no
+  mandatory category, shared journal, backlink upkeep or archive-wide sweep.
+- Keep a consequential reusable observation as a Fact Candidate with source, scope and uncertainty.
+  Stable rules go to product documentation or the project's knowledge route; repetition neither
+  proves a fact nor authorizes publication.
+- Do not leave authorized work unfinished just because a record exists.
 
-## 3. Execute and check
+## Economics
 
-At start/resume, before product writes, read `.tfw/economics/README.md` and bind the producer's exact
-own numeric source and proven Daily range. Preserve the receiving form; keep an explicit selected
-record binding as described there, never a fabricated Full status. Known owner/unit/source uses
-v1 capture; unknown required binding leaves a typed nonmeasured record-local outcome with actual
-producer, known facts, missing reasons, attempted_extraction false and last-good reference.
-Missing capture binding does not invent measurement or erase independently authorized useful work.
+Commands, binding block and failure forms: [references/economics.md](references/economics.md).
 
-After those internal checks, complete the bounded work without a second HL/brief approval or generic
-question sequence. Resolve routine gaps from inspected sources. Ask only for a missing consequential
-fact/choice/authority and hold only its dependent action. Record material human words as exact
-selected excerpts with author/source; do not copy every message, secrets or private reasoning.
+- Bind your own source at start or resume, before product edits (§1).
+- Capture a cumulative snapshot, receive it and write its line (§2–3; `scripts/daily_close.py
+  --write` does all three) when the record closes and
+  when the work is interrupted or passes to another worker. Skip other turn returns: each revision
+  covers the previous ones, so only the last one counts. Never add revisions.
+- If a record was left open, whoever returns to it or closes it captures the earlier sessions'
+  sources from their preserved journals; an inaccessible journal is a gap. The summary lists every
+  source.
+- A failed capture or an interruption is an explicit gap; keep the last good revision (§4). A
+  later capture never stands in for a missed one.
+- At close (actual acceptance, or the human ends the record), write one summary with the final
+  snapshot: tokens, supported money and
+  time, coverage and contributors. Disclose the uncounted tail after the cutoff once.
+- Capture failure never blocks or erases useful work, and missing binding never becomes an invented
+  measurement. Never reprice history or write a zero bill. Money, including the subscription
+  line: §5.
 
-Use the focused check that tests the actual completion condition: run the repaired function in its
-local application, open/read the finished document, or inspect the design in its real format.
-Preserve a previous result when the request protects it. Distinguish observation, inference and
-uncertainty. A source inspection or install hash proves only that level, not native host behavior.
-If a check fails, fix within the boundary and recheck affected claims; a required unavailable check
-keeps its claim open. Never invent acceptance, release or an unobserved effect.
-
-## 4. Leave the selected Trace and return
-
-Before **each orderly turn return**, capture and validate an actual cumulative snapshot through
-the current proven source end. Retain immutable previous revisions, receive resolvable bytes into
-the selected record's economics leaf, and reconcile a verified covering successor once. Complete
-means complete selected bytes, not completed work; a successor needs unchanged predecessor prefix
-and matching identity/revision. Alternatively a checked cumulative view may reference exact disjoint
-facts, but it must expose the actual cumulative numbers and membership before the return. Never
-sum cumulative snapshots. An interruption or failed capture remains an explicit gap.
-
-Link revision/hash/range/cutoff and compact cumulative numbers from the selected record; a full
-analytical report is unnecessary each turn. Preserve last successful measurement after capture
-failure and expose the latest exact code/detail and unmeasured attempted interval. At completion,
-update the final snapshot and add a concise economics summary: unique tokens, supported money/time,
-coverage and actual contributor/source membership. Disclose the finite final-answer/cleanup tail
-once, including unknown intervals/open-turn duration; no recursive capture. Historical after-return
-recollection cannot establish cadence. Use a checked equivalent or truthful typed failure if the
-helper/runtime/source is unavailable; retain the useful Daily result and exact missing prerequisite.
-
-Before each orderly turn return, the record folder holds only record and economics files and the
-record lists every product with its project path. Working material stays under the system
-temporary `tfw/<folder ID>/`; a continuing worker removes leftovers it sees there, and the final
-turn removes it.
-
-Update the selected local record with material decisions/revisions, actual checks and
-limits, and the authoritative next action or an actually accepted close. Prepared, checked,
-human-accepted and released are different claims. Make source, Goal/Value, Boundaries, current result,
-check and next authority recoverable without the original chat. A checked result awaiting its human
-acceptance must say so.
-
-Retain a consequential reusable observation as a Fact Candidate only with source, scope and
-uncertainty. Stable rules belong in existing product documentation or the project's authorized
-knowledge route; repetition alone neither proves a fact nor authorizes publication. Return the usable
-result and any specific remaining decision. Do not leave authorized work unfinished merely because
-a record exists.
-
-Installation/update is separately governed by `installation.md`; do not preload it for ordinary work.
-
-## Used price basis on current returns
-
-Follow the common economics README for the observed exact models/price profiles. Reuse a checked
-quote under 30 days old across month boundaries; counter changes alone trigger no lookup. A missing
-or expired exact quote/today-check requires bounded official acquisition with working tools.
-Retain shared public observations and copy the actually used quote basis into this selected Daily
-record root. Unknown request conditions produce explicit conditional scenarios; source failure
-shows last-known quote/date and current-valuation limits. Never reprice historical snapshots from
-changed home state, fabricate a zero bill or stop independent useful work merely for capture failure.
+Installation and update: [installation.md](installation.md); not needed for ordinary work.

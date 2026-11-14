@@ -5,6 +5,30 @@ Format: [Keep a Changelog](https://keepachangelog.com/). Versioning: [Semantic V
 
 ## [Unreleased]
 
+### Added
+
+- Daily close capture (`daily/2026/20261114-132119_daily-task-scripts`): optional, standard-library
+  `scripts/daily_close.py` finds the worker's own journal by session ID, collects with the right
+  revision and predecessor, receives, and prints or writes the revision line in one command; a
+  failed capture becomes a failure receipt or binding gap. The skill and its economics reference
+  call it; the Claude entry allows it through `allowed-tools`. Rules and the economics contract are
+  unchanged. A/B in a receiving project, 3+3 runs per arm against 6 without: complete captures 6 of
+  6 against 1 of 6; close time unchanged; the work turn is 15–20 s longer.
+- `tools/daily_ab.py`: reproducible A/B test of the Daily skill in a receiving project.
+
+### Changed
+
+- Daily Task (`daily/2026/20261114-120711_daily-task-faster`): the skill reads in one pass — when
+  to use it, a six-step path, stop conditions — with every gate kept. A new
+  `references/economics.md` replaces the mandatory read of the whole economics README; the
+  record template is a skeleton; the description names its triggers. On a subscription with no
+  money request, Daily writes one line instead of looking up prices.
+- Daily economics cadence: capture when the record closes and when work is interrupted or handed
+  over, not before every turn return; a record left open is captured later from the preserved
+  session journals. Each revision covers the previous ones, so intermediate
+  revisions never changed a total; one observed record carried five revisions and 4 KB of
+  accounting in 23 KB.
+
 ### Documentation
 
 - FLC (`TFW_20261011-192605_FLC`): independently reviewed, bounded diagnosis of

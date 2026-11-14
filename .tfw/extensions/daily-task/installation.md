@@ -1,7 +1,8 @@
 # Optional Daily Task installation and update
 
 This is an opt-in package for Full receivers, separate from the standard tooling manifest.
-No executable, service, registry or historical-record migration is required. Existing local Daily
+No service, registry or historical-record migration is required; the bundled `daily_close.py` is an
+optional standard-library Python helper that calls the economics helper. Existing local Daily
 skills/forms are project-owned until actual source/authority evidence proves otherwise.
 
 ## Source and receiver map
@@ -15,6 +16,8 @@ released Git payload. Accepted distribution uses the returned immutable Candidat
 |---|---|---|
 | `.tfw/extensions/daily-task/SKILL.md` | same path | canonical semantics |
 | `.tfw/extensions/daily-task/templates/task.md` | same path | new-record default; classify local form first |
+| `.tfw/extensions/daily-task/references/economics.md` | same path | Daily excerpt of the economics contract |
+| `.tfw/extensions/daily-task/scripts/daily_close.py` | same path | optional: one-command capture and receipt |
 | `.tfw/extensions/daily-task/installation.md` | same path | tooling-only contract |
 | `.tfw/extensions/daily-task/entries/codex/SKILL.md` | same path | Codex entry source |
 | `.tfw/extensions/daily-task/entries/claude-code/SKILL.md` | same path | Claude entry source |

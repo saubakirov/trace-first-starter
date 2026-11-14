@@ -105,8 +105,8 @@ Standard `/tfw-economics` connects intended and achieved product work to observe
 executive explanation, sourced product map, inspectable numbers, grounded improvements and
 coverage. [Its canonical workflow](workflows/economics.md) provides complete prose/table
 reports; visuals are supplementary and PDF is explicit-request-only outside the repository.
-[Daily](extensions/daily-task/SKILL.md) supplies cumulative own-source snapshots before each
-orderly return and a final economic summary, preserving its ordinary local form and authority.
+[Daily](extensions/daily-task/SKILL.md) supplies cumulative own-source snapshots at close
+and at interruption or handover, and a final economic summary, preserving its ordinary local form and authority.
 Economics follows default pinned manifest distribution; Daily discovery remains explicitly optional.
 Both preserve the existing formal roles and acceptance routes.
 
