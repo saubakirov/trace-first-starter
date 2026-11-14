@@ -5,6 +5,15 @@ Format: [Keep a Changelog](https://keepachangelog.com/). Versioning: [Semantic V
 
 ## [Unreleased]
 
+### Changed
+
+- Context growth (#4): a retained same-phase Executor or Reviewer may be replaced when its
+  accumulated context makes further continuations materially costlier than a fresh unit
+  reconstructing state from task files. A cost diagnosis recorded as an event, not a round cap.
+  Owner answers are batched into one continuation; the TS may require reading large working
+  files by section. The Claude Code profile names `subagent_tokens` as the size source and
+  gives a practical threshold.
+
 ### Documentation
 
 - FLC (`TFW_20261011-192605_FLC`): independently reviewed, bounded diagnosis of

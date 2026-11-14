@@ -40,6 +40,11 @@ independent Review; outside GOAL, same-phase corrections retain the same Executo
 Apply common cross-phase reuse discretion, hard freshness and receiving checks. Keep a reachable
 fixed Candidate with isolated or serialized mutation as this surface actually supports.
 
+A native subagent's context size is `subagent_tokens` in its stop notification; each continuation
+re-reads that whole context. Check it before every continuation of a retained Executor or Reviewer.
+Past a practical threshold (one observed project uses about 300k tokens) prefer replacement under
+the common context-growth ground.
+
 Use exposed event-driven wait/status on exact units; after unchanged state back off. One catalogue
 status request handles suspected stall. Never inspect peer transcripts, raw global state or
 unreturned trees. Duplicate delivery or distrust alone does not justify repeating accepted work.
