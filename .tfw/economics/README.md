@@ -8,8 +8,8 @@ charge, human time sheet or quality score.
 
 Standard product analysis lives in [TFW Economics](../workflows/economics.md).
 [Daily](../extensions/daily-task/SKILL.md) uses its own selected record and authority with the
-same numeric v1 contract; no Full status/profile is fabricated. Its routine obligation is a
-cumulative snapshot before every orderly turn return and a final snapshot/concise summary.
+same numeric v1 contract; no Full status/profile is fabricated. It captures a cumulative snapshot
+when the record closes, with a concise summary, and when work is interrupted or handed over.
 
 ## Choose a source recipe
 
@@ -157,14 +157,17 @@ failure receipt instead of a `binding_unavailable` object.
 Optional unknown duration does not erase measured tokens; a native process's SUCCESS
 with a denied action does not establish successful collection.
 
-Before each Daily return, bind the current physical source end, validate a cumulative capture
-and return its actual numbers plus hash/range/revision/cutoff. `--complete` asserts completeness
+When a Daily record closes, or its work is interrupted or handed to another worker, bind the
+current physical source end, validate a cumulative capture and record its actual numbers plus
+hash/range/revision/cutoff. Other turn returns need no capture: each revision covers the previous
+ones, so only the last one counts. A record left open is captured by whoever returns to it or
+closes it, from the earlier sources' preserved journals; an inaccessible journal is a gap. `--complete` asserts completeness
 of the selected bound only, with grounds; open turns and later consumption remain unknown tails.
 A verified covering successor checks predecessor identity, revision and unchanged source prefix.
-Alternatively retain exact disjoint facts and a checked cumulative view/membership before return.
+Alternatively retain exact disjoint facts and a checked cumulative view/membership at that capture.
 Never sum cumulative revisions. Capture the final snapshot and concise summary on completion;
-retain prior revisions and precise failures. Interruptions are gaps; later reconstruction cannot
-prove a snapshot existed at its original return. Final-answer/cleanup tail is disclosed once.
+retain prior revisions and precise failures. An interruption without a capture is a gap; later
+reconstruction cannot prove a snapshot existed at that point. Final-answer/cleanup tail is disclosed once.
 
 ### Full cycle and finite outcomes
 

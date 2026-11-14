@@ -92,11 +92,16 @@ Consequence and uncertainty decide how deep the checks and independent review go
 Commands, binding block and failure forms: [references/economics.md](references/economics.md).
 
 - Bind your own source at start or resume, before product edits (§1).
-- Before each orderly turn return, capture a cumulative snapshot, receive it and write its line
-  (§2–3). Each revision covers the previous ones; never add them.
+- Capture a cumulative snapshot, receive it and write its line (§2–3) when the record closes and
+  when the work is interrupted or passes to another worker. Skip other turn returns: each revision
+  covers the previous ones, so only the last one counts. Never add revisions.
+- If a record was left open, whoever returns to it or closes it captures the earlier sessions'
+  sources from their preserved journals; an inaccessible journal is a gap. The summary lists every
+  source.
 - A failed capture or an interruption is an explicit gap; keep the last good revision (§4). A
   later capture never stands in for a missed one.
-- At completion, capture the final snapshot and write one summary: tokens, supported money and
+- At close (actual acceptance, or the human ends the record), write one summary with the final
+  snapshot: tokens, supported money and
   time, coverage and contributors. Disclose the uncounted tail after the cutoff once.
 - Capture failure never blocks or erases useful work, and missing binding never becomes an invented
   measurement. Never reprice history or write a zero bill. Money, including the subscription

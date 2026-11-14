@@ -12,6 +12,11 @@ Format: [Keep a Changelog](https://keepachangelog.com/). Versioning: [Semantic V
   `references/economics.md` replaces the mandatory read of the whole economics README; the
   record template is a skeleton; the description names its triggers. On a subscription with no
   money request, Daily writes one line instead of looking up prices.
+- Daily economics cadence: capture when the record closes and when work is interrupted or handed
+  over, not before every turn return; a record left open is captured later from the preserved
+  session journals. Each revision covers the previous ones, so intermediate
+  revisions never changed a total; one observed record carried five revisions and 4 KB of
+  accounting in 23 KB.
 
 ### Documentation
 
