@@ -15,6 +15,7 @@ released Git payload. Accepted distribution uses the returned immutable Candidat
 |---|---|---|
 | `.tfw/extensions/daily-task/SKILL.md` | same path | canonical semantics |
 | `.tfw/extensions/daily-task/templates/task.md` | same path | new-record default; classify local form first |
+| `.tfw/extensions/daily-task/references/economics.md` | same path | Daily excerpt of the economics contract |
 | `.tfw/extensions/daily-task/installation.md` | same path | tooling-only contract |
 | `.tfw/extensions/daily-task/entries/codex/SKILL.md` | same path | Codex entry source |
 | `.tfw/extensions/daily-task/entries/claude-code/SKILL.md` | same path | Claude entry source |

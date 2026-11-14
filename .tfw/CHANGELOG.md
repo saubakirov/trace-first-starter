@@ -5,6 +5,14 @@ Format: [Keep a Changelog](https://keepachangelog.com/). Versioning: [Semantic V
 
 ## [Unreleased]
 
+### Changed
+
+- Daily Task (`daily/2026/20261114-120711_daily-task-faster`): the skill reads in one pass — when
+  to use it, a six-step path, stop conditions — with every gate kept. A new
+  `references/economics.md` replaces the mandatory read of the whole economics README; the
+  record template is a skeleton; the description names its triggers. On a subscription with no
+  money request, Daily writes one line instead of looking up prices.
+
 ### Documentation
 
 - FLC (`TFW_20261011-192605_FLC`): independently reviewed, bounded diagnosis of

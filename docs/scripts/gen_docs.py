@@ -30,6 +30,7 @@ STATIC_SOURCES = [
     (".tfw/extensions/daily-task/SKILL.md", "reference/extensions/daily-task/skill.md", True),
     (".tfw/extensions/daily-task/installation.md", "reference/extensions/daily-task/installation.md", True),
     (".tfw/extensions/daily-task/templates/task.md", "reference/extensions/daily-task/templates/task.md", True),
+    (".tfw/extensions/daily-task/references/economics.md", "reference/extensions/daily-task/references/economics.md", True),
 ]
 
 GLOB_SOURCES = [
