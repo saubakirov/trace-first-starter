@@ -14,6 +14,7 @@ Format: [Keep a Changelog](https://keepachangelog.com/). Versioning: [Semantic V
   call it; the Claude entry allows it through `allowed-tools`. Rules and the economics contract are
   unchanged. A/B in a receiving project, 3+3 runs per arm against 6 without: complete captures 6 of
   6 against 1 of 6; close time unchanged; the work turn is 15–20 s longer.
+- `tools/daily_ab.py`: reproducible A/B test of the Daily skill in a receiving project.
 
 ### Changed
 

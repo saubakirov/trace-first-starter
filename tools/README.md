@@ -7,6 +7,9 @@ Python, Git-history, pytest, or MkDocs requirements.
 - `tfw_doctor.py` provides optional read-only diagnostics and never repairs files.
 - `migrations/2.0.0/` is the pinned pre-2.0 board-conversion bundle.
 - `check_git_blob_sizes.py` is the CI/release guard for oversized Git objects.
+- `daily_ab.py` reruns the Daily Task A/B test: worktrees of a receiving project, the Daily package
+  of each variant laid over them, headless `claude -p` with two turns, and a summary of time, turns,
+  context per call and economics capture. It needs an authenticated Claude Code CLI and spends tokens.
 
 ## Retained verification
 
@@ -15,7 +18,8 @@ The permanent pytest surface is deliberately limited to:
 - `docs/scripts/test_gen_docs.py`: documentation-generator behavior;
 - `docs/scripts/test_integration.py`: one MkDocs build and checks of the rendered site;
 - `tools/tests/test_git_blob_sizes.py`: one cheap in-memory check of the 5 MiB boundary;
-- `tools/tests/test_daily_close.py`: the Daily `daily_close.py` on temporary records and synthetic journals.
+- `tools/tests/test_daily_close.py`: the Daily `daily_close.py` on temporary records and synthetic journals;
+- `tools/tests/test_daily_ab.py`: `daily_ab.py` helpers without launching Claude.
 
 Install and run it only when those surfaces changed:
 
