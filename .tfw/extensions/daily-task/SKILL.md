@@ -92,7 +92,8 @@ Consequence and uncertainty decide how deep the checks and independent review go
 Commands, binding block and failure forms: [references/economics.md](references/economics.md).
 
 - Bind your own source at start or resume, before product edits (§1).
-- Capture a cumulative snapshot, receive it and write its line (§2–3) when the record closes and
+- Capture a cumulative snapshot, receive it and write its line (§2–3; `scripts/daily_close.py
+  --write` does all three) when the record closes and
   when the work is interrupted or passes to another worker. Skip other turn returns: each revision
   covers the previous ones, so only the last one counts. Never add revisions.
 - If a record was left open, whoever returns to it or closes it captures the earlier sessions'

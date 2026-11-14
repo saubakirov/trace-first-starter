@@ -14,13 +14,14 @@ The permanent pytest surface is deliberately limited to:
 
 - `docs/scripts/test_gen_docs.py`: documentation-generator behavior;
 - `docs/scripts/test_integration.py`: one MkDocs build and checks of the rendered site;
-- `tools/tests/test_git_blob_sizes.py`: one cheap in-memory check of the 5 MiB boundary.
+- `tools/tests/test_git_blob_sizes.py`: one cheap in-memory check of the 5 MiB boundary;
+- `tools/tests/test_daily_close.py`: the Daily `daily_close.py` on temporary records and synthetic journals.
 
 Install and run it only when those surfaces changed:
 
 ```bash
 python -m pip install -r tools/requirements.txt -r docs/requirements.txt
-python -m pytest docs/scripts/test_gen_docs.py docs/scripts/test_integration.py tools/tests/test_git_blob_sizes.py -q
+python -m pytest docs/scripts/test_gen_docs.py docs/scripts/test_integration.py tools/tests/ -q
 ```
 
 GitHub Actions directly gates deployment with the blob guard and `mkdocs build`; it does not

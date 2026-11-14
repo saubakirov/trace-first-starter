@@ -22,6 +22,19 @@ nothing and record a binding gap (§4). `result_state` follows the record: prepa
 
 ## 2. Capture, receive, report
 
+Claude Code, one command: finds the journal by session ID, picks the revision and predecessor,
+collects, receives and prints the §3 line; `--write` adds it to the record, `--report` prints the
+report for the summary. `--start <line>` serves a session that began before this request;
+`--agent-id <id>` selects a
+subagent's own journal, and a subagent without its agent ID captures by hand.
+
+```
+python .tfw/extensions/daily-task/scripts/daily_close.py --record <record file> --write --report
+```
+
+Exit 0: captured. Exit 3: failure receipt or binding gap written (§4). Exit 2: nothing written;
+use the commands below. By hand, and for Codex or other sources:
+
 ```
 python .tfw/economics/tfw_economics.py collect --provider claude.code-jsonl \
   --source <journal> --source-id <sessionId> --source-version <version number, e.g. 2.1.302> \
@@ -45,6 +58,8 @@ One line per revision: revision, line range, cutoff, sha256, total tokens with i
 capture nothing for it.
 
 ## 4. When capture fails
+
+`daily_close.py` writes the failure receipt and the binding gap itself.
 
 - Source known, collection fails: run `failure` with the same flags plus `--code` and `--detail`,
   receive it, keep the last good revision and name the unmeasured attempted interval.
