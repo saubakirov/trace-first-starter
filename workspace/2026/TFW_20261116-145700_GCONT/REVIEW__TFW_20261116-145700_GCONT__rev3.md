@@ -55,6 +55,12 @@ Coordinator принимает предложенные dispositions §5 оди�
 
 ### Reviewer return
 
+### Selected closing follow-up, 2026-11-17 03:42 +05
+
+Existing Coordinator authorizes the same final Reviewer under Closing and record recovery to assess the affected closing claims only: four reference/changelog paths in commit3e7336669c43009b88099277ab9f9b0125a707fa and the delivered HTML/patch/report tuple identified in EV E20–E23. Read those exact objects and current authority. The final product Candidate and former verdict remain the subject already judged; a new material defect still follows the actual cited route. No new execution step, formal review ID, full-stage restart or owner acceptance is implied.
+
+Return the bounded independent judgment in this existing REVIEW§6, preserving Coordinator additions and prior source bytes; actual contribution/coverage follows the ordinary own-source rule. Do not use another role's TEMP scripts. The full browser file preview was refused by policy; do not bypass it via local server, alternate surface or browser. Own safe static/semantic checks are available; disclose any remaining limit. The final source capture/data refresh and safe disposal remain Coordinator acts after this return. This selection is not approval of its claims. Native title/model/parent and prior route remain those of review3; return only REVIEW_READY with the actual immutable record.
+
 APPROVE переводит REV → KNW с отдельным событием; дальнейшее закрытие принадлежит Coordinator. Immutable REVIEW передаётся только REVIEW_READY. Numeric receipt [7bd76ed9](economics/roles/7bd76ed9a052eb7faa824ced78f306525f720d0a07512c203ae5d56b9d5f1b11.jsonl), SHA-256 7bd76ed9a052eb7faa824ced78f306525f720d0a07512c203ae5d56b9d5f1b11, source собственный Codex 01a1e679-28f4-7412-a484-41bb1d03e44c, диапазон [0,150), cutoff 2026-11-16T22:29:34.198359Z, model gpt-6.1-terra/high. Измерено 1 082 537 токенов; response stream сверено с native thread total, альтернативный token_count 998 604 не суммируется. Complete=false; конечный хвост оформления и возврата не измерен, duration неизвестна. Title control субагента недоступен; отдельный чат не создавался.
 
 ## 7. Fact Candidates
