@@ -40,8 +40,8 @@ and step numbers. No TS, phase Coordinators or auxiliary executors are created.
 End Plan, then the main agent enters Handoff and does all implementation, tests and fixes itself.
 Only research and independent review use separate fresh contexts. End an Executor act before
 Coordinator routing or rulings; never self-send, self-review or approve an expanded promise.
-Choose a sufficient available model and reasoning effort before each permitted launch; record
-requested/effective settings, verification and rework. Absence of a mutator is an explicit limit.
+Before each permitted launch choose sufficient available model/effort; record requested/effective
+settings, verification, rework and missing mutators.
 
 First entry is HL_DRAFT/RES → ONB. Record a bound activation in the existing handoff journal,
 with the HL epoch and both limits. One **step** is a bounded hypothesis/change → action → oracle
@@ -65,10 +65,10 @@ Actual context loss is disclosed and reconstructed from files under authority, n
 
 ## Independent checkpoints
 
-Review at most the agreed number of completed steps apart, earlier for risk or readiness.
-An accepted review at step 7 with interval 10 makes the next deadline 17. Its launch, pending
-return or REJECT does not reset that deadline. At readiness request full final review immediately;
-one full final review also satisfies a coincident periodic checkpoint.
+Review no more than the agreed interval apart, earlier for risk/readiness. A completed independent
+CONTINUE or REVISE at step 7 with interval 10 makes the next deadline 17; pending or REJECT does not.
+REVISE counts the examination, never accepts the result or bypasses Coordinator ruling and blocking
+findings. At readiness request full final review; it also satisfies a coincident checkpoint.
 
 Pause execution at a fixed reachable Candidate. Append a numbered presentation to RF, naming
 review ID, interim/final purpose, completed step, HL epoch, claims, proof and open obligations.

@@ -154,7 +154,7 @@ def _events(task, state):
 
 
 def continuous_progress(task, state, limits=None):
-    """Check captured facts; Git authority and human judgment remain workflow gates."""
+    """Check recorded progress; can_start requires ONB but never supplies role authority."""
     task = Path(task)
     completed = validate_envelope(state)
     require(state.get("id") == task.name, "continuous GOAL task/root mismatch")
@@ -263,7 +263,8 @@ def continuous_progress(task, state, limits=None):
                 review_launches=[launches[n] for n in sorted(launches)],
                 reviews=[reviews[n] for n in sorted(reviews)],
                 pending_reviews=sorted(set(presentations) - set(reviews)),
-                can_start=bool(active and not pending and not (set(presentations) - set(reviews)) and
+                can_start=bool(state.get("lifecycle") == "ONB" and active and not pending and
+                               not (set(presentations) - set(reviews)) and
                                completed < due and
                                (not current or current["verdict"] != "REJECT" or
                                 current["goal_ref"] != state.get("goal_ref")))), checks

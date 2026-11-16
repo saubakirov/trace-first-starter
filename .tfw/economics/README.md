@@ -300,8 +300,11 @@ Commit activation before work and start before the action. Commit result plus go
 before advancing. One unresolved start holds the next action until its real effect is inspected;
 a proved result with stale status requires checked recovery, never a counter reset. At a checkpoint,
 commit the tested Candidate, then RF and its launch; stop mutation while review is pending.
-Coordinator verifies/rules the return before continuation. Unreturned or rejected review does not
-reset cadence; the review at 7 with interval 10 is due again by 17. Read the immutable HL at every
+Coordinator verifies/rules the return before continuation. A completed CONTINUE or REVISE counts
+the examination; it does not accept unfinished work or clear blocking findings. Unreturned or
+rejected review does not reset cadence; a review at 7 with interval 10 is due again by 17.
+The helper's can_start is false outside ONB and never supplies Coordinator authority.
+Read the immutable HL at every
 execution/review activation, including its actual owner authority; local parsers do not authenticate
 consent or establish the quality of an oracle.
 
