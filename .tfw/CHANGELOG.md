@@ -5,10 +5,19 @@ Format: [Keep a Changelog](https://keepachangelog.com/). Versioning: [Semantic V
 
 ## [Unreleased]
 
+### Documentation
+
+- FLC (`TFW_20261011-192605_FLC`): independently reviewed, bounded diagnosis of
+  workflow completion, coordination and knowledge continuity. Preserves observed
+  violations, contract ambiguities and evidence limits; changes no framework code,
+  role rule or official operating mode. Owner accepted the diagnostic result for closure.
+
+## [3.10.1] — 2026-11-17
+
 ### Changed
 
 - GCONT (`TFW_20261116-145700_GCONT`): new Full GOAL contracts keep the main agent through execution and corrections. Ordinary Plan and the approved HL remain the entry and order; research and fresh independent reviews use separate contexts. Defaults are 100 substantive steps and at most 10 between completed reviews, with earlier and full final checks. Historical attempts and the other three modes retain their contracts.
-- GCONT separates step/review identities and sourced activity costs, validates continuation and current final approval, and aligns Codex, Claude Code and Antigravity instructions. Codex is observed live; Claude/Antigravity proof is limited to instruction parity and synthetic source-format cases. The local candidate has independent approval; owner acceptance and release remain separate.
+- GCONT separates step/review identities and sourced activity costs, validates continuation and current final approval, and aligns Codex, Claude Code and Antigravity instructions. Codex is observed live; Claude/Antigravity proof is limited to instruction parity and synthetic source-format cases. The GCONT result has independent review and owner acceptance; provider proof remains limited as stated.
 - Daily Task (`daily/2026/20261114-120711_daily-task-faster`): the skill reads in one pass — when
   to use it, a six-step path, stop conditions — with every gate kept. A new
   `references/economics.md` replaces the mandatory read of the whole economics README; the
@@ -28,10 +37,7 @@ Format: [Keep a Changelog](https://keepachangelog.com/). Versioning: [Semantic V
   addresses, selected launch settings and existing return/review rules govern both routes.
   No core workflow, Codex behavior or provider admission claim changes.
 
-- FLC (`TFW_20261011-192605_FLC`): independently reviewed, bounded diagnosis of
-  workflow completion, coordination and knowledge continuity. Preserves observed
-  violations, contract ambiguities and evidence limits; changes no framework code,
-  role rule or official operating mode. Owner accepted the diagnostic result for closure.
+Update from 3.10.0 or an earlier supported installation using the [3.10.1 migration guide](https://github.com/saubakirov/trace-first-starter/blob/v3.10.1/.tfw/migrations/3.10.1.md). Existing frozen GOAL attempts retain their contracts.
 
 ## [3.10.0] — 2026-11-04
 
