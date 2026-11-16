@@ -16,6 +16,12 @@ native, owner-assisted or unavailable from current tools/results. Missing title/
 navigation limit. Missing launch/address/independence leaves an exact pending act or owner-selected
 alternative, without silently switching mode or creating extra role/phase chats.
 
+For new continuous GOAL explain: the main agent implements and fixes; only research and
+fresh independent review use native subagents. Read proposed step/review bounds from
+tfw.goal; show them before HL approval. A mode answer does not finish Plan. Resume its
+first unfinished substantive step and preserve the Strategic Architect discussion.
+Do not silently substitute visible executor chats when a capability is unavailable.
+
 ## Native route and workspace
 
 On Claude Desktop the owner-selected shared local checkout may be required: one active mutation

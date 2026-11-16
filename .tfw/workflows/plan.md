@@ -7,7 +7,7 @@ description: TFW Plan — research, write HL, review, scope decision, write TS
 > 🔒 **ROLE LOCK: COORDINATOR.** Write HL/TS, `research/iterations.yaml`, and Coordinator rulings in a live REVIEW. Never write
 > ONB, RF, RES, Reviewer proposals, or implementation. Violation: stop and report.
 
-**GOAL branch.** Offer the fourth choice at startup; never infer it. Only on explicit owner selection or a valid current `coordination_mode: goal`, use [Full GOAL](goal.md) for the post-HL route, attempts, amendments and return. Keep this invocation's Coordinator lock and normal discussion/approval. At a frozen, actionable HL (also after RES), end Plan and route directly to Handoff under that immutable HL; skip TS, TS_DRAFT and phase-chat issuance. For existing GOAL use that branch before the ordinary state/REVISE tables below. Other selections follow the unchanged route.
+**GOAL branch.** Offer the fourth choice at startup; never infer it. Only on explicit owner selection or a valid current `coordination_mode: goal`, use [Full GOAL](goal.md) for the post-HL route, steps, independent checkpoints, amendments and return. Keep this invocation's Coordinator lock and normal discussion/approval. At a frozen, actionable HL (also after RES), end Plan and route directly to Handoff under that immutable HL; skip TS, TS_DRAFT and phase-chat issuance. For existing GOAL use that branch before the ordinary state/REVISE tables below. Other selections follow the unchanged route.
 
 **Mindset — Strategic Architect in every operating mode.**
 Before HL approval, help the owner decide what is worth doing and why.
@@ -32,7 +32,7 @@ by unique heading.
 | Order | Input | Checkpoint purpose | Authority |
 |---|---|---|---|
 | 1 | selected task/phase `status.md` and `journal/` | state, routing, lineage | task-local |
-| 2 | `.tfw/project_config.yaml` → `tfw.task_prefix`, `tfw.task_containers`, `tfw.research`, `tfw.scope_budgets`, `tfw.templates` | configured gates | config |
+| 2 | `.tfw/project_config.yaml` → `tfw.task_prefix`, `tfw.task_containers`, `tfw.research`, `tfw.scope_budgets`, `tfw.templates`, `tfw.goal` for GOAL | configured gates | config |
 | 3 | `.tfw/conventions.md` headings `Task control files`, `Session identity`, `Artifact file naming`, `Research subfolder`, `Review subfolder`, `Evidence subfolder`, `Multi-phase folder structure`, `Task Statuses`, `A phase carries its own state`, `Semantic value-bearing classification`, `Value-bearing accounting contract`, `Decomposition, constraints, and change authority`, `Coordination`, `Role Lock Protocol` | governing rules | shared rule |
 | 4 | `.tfw/glossary.md` → `Project Values (PV)` | PV routing | index |
 | 5 | `.tfw/templates/HL.md`, `.tfw/templates/TS.md` | selected HL sections at Steps 2–4; full forms at their write gates | template |
@@ -115,7 +115,10 @@ Routes are outputs, not invocations; evaluation writes nothing.
    dialogue, reporting and authorized topology, then briefly restate the selected arrangement
    in the same card, including pending handover or owner actions. This is a provisional
    operation choice, not an HL/TS verdict, mandate, role activation or bypass of owner gates.
-   Preserve the owner's answer for Step 5; if unresolved, return to that choice before first
+   Preserve the owner's answer for Step 5. A mode-only answer resumes the first unfinished
+   substantive Plan step (2–4), not execution. Distinguish settled goal/criteria, actual rendered
+   result, chosen approach and decision-changing unknowns before HL approval. Reuse a proved HL;
+   do not manufacture questions or repeat completed planning. If the mode is unresolved, return before first
    status/HL write.
 
    For an existing owner-requested mode switch, preserve settled HL/TS/research. Check that the

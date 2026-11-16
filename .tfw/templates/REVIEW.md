@@ -13,6 +13,11 @@
 > **Coordination authority**: {exact status.md coordination_authority}
 > **Originating proposer**: {principal and unit, or `none`}
 
+In continuous GOAL replace TS with the pinned HL. Record the current completed/pending step,
+last review, next due, Candidate/base, open findings, next act and measured boundary in ONB;
+RF/REVIEW name review ID, interim/final purpose, step and fixed Candidate. Interim preserves
+planned remaining work and uses CONTINUE/REVISE/REJECT; only final can APPROVE the whole HL.
+
 ---
 
 ## 1. Map

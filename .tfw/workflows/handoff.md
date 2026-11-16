@@ -8,7 +8,7 @@ description: TFW Handoff — executor onboarding, implementation, RF
 > HL, TS, RES or REVIEW, rule scope, or review your result. A scope defect is recorded in ONB and
 > stops execution.
 
-**Explicit GOAL only:** after reading task status, follow [Full GOAL](goal.md) for activation, attempt charging, compact, corrections and the direct HL → ONB route. In all checks/forms below, the pinned approved HL supplies the order, criteria, freedoms and accounting baseline in place of TS. Do not create or require a TS; the current Executor lock still applies. Other modes require the approved TS as before.
+**Explicit GOAL only:** after reading task status, follow [Full GOAL](goal.md) for activation, step accounting, compact, corrections and the direct HL → ONB route. In all checks/forms below, the pinned approved HL supplies the order, criteria, freedoms and accounting baseline in place of TS. Do not create or require a TS; the current Executor lock still applies. Other modes require the approved TS as before.
 
 ## Read Contract
 
@@ -54,7 +54,13 @@ first message is only the exact command; its address may be learned from receipt
 gate. Current Codex mutation uses a separate worktree; an explicitly selected shared-local provider
 route serializes one mutation owner and holds Executor writes during fixed-Candidate review.
 
-For REVISE, accept exactly one ruled case:
+For continuous GOAL, a ruled REVISE or interim CONTINUE returns REV → ONB to this same main
+Executor under the pinned HL and remaining step budget; use the GOAL checkpoint/recovery rules,
+not the TS rungs below. Interim RF states delivered claims and planned remaining work; it does
+not claim completion. Final RF covers the entire HL. The next review ID/purpose/step/Candidate
+and accounting markers follow the common GOAL grammar.
+
+Outside continuous GOAL, accept exactly one ruled case:
 
 - **Rung 1:** lifecycle `RF`; unchanged approved TS plus the Coordinator's closed bound appended to
   live REVIEW. No TS sibling.

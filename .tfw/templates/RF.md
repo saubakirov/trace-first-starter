@@ -17,6 +17,11 @@
 > **Native evidence limit**: {provider/surface, observed operation/series/trial level, unavailable capability and exact pending act}
 > **Launch observation**: {requested model/effort, effective settings if observed, delivery, outcome and material rework; unknown where unobserved}
 
+In continuous GOAL replace TS with the pinned HL. Record the current completed/pending step,
+last review, next due, Candidate/base, open findings, next act and measured boundary in ONB;
+RF/REVIEW name review ID, interim/final purpose, step and fixed Candidate. Interim preserves
+planned remaining work and uses CONTINUE/REVISE/REJECT; only final can APPROVE the whole HL.
+
 ---
 
 ## 1. What Was Done

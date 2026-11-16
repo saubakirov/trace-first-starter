@@ -7,7 +7,11 @@ description: TFW Review — independently verify RF against TS and issue REVIEW
 > 🔒 **ROLE LOCK: REVIEWER.** Write `review/{map,verify,judge}.md` and REVIEW only. Never modify
 > implementation, HL, TS, ONB or RF. Fundamental defects receive a cited verdict, not a repair.
 
-**Explicit GOAL only:** read [Full GOAL](goal.md) after status. Across all review stages/templates, take ACs, DoF, authority and denominator from the frozen `goal_ref` instead of a TS; no missing-TS finding. Verify the complete fixed candidate in a fresh independent context for this outer attempt. Keep the normal stages, verdicts, reporting and close gates. Other modes still require their TS.
+**Explicit GOAL only:** read [Full GOAL](goal.md) after status. Across all review stages/templates, take ACs, DoF, authority and denominator from the frozen `goal_ref` instead of a TS; no missing-TS finding. Verify the fixed Candidate in a fresh independent context for this review ID. In continuous
+GOAL, read its interim/final purpose from RF and dispatch. Interim maps the whole goal's direction
+and remaining obligations but judges delivered claims and material risks; planned unfinished work
+alone is not a defect. Use CONTINUE, REVISE or REJECT, never whole-task APPROVE. Final retains the
+complete ordinary review. The normal stages, materiality, reporting and close gates remain. Other modes still require their TS.
 
 ## Read Contract
 
@@ -125,6 +129,11 @@ Read all stage files, open the REVIEW template, and emit `REVIEW__{ID}.md` or
 `REVIEW__phase-{x}__{phase_slug}.md`. A formal new round uses `…__rev{N}.md`; bounded
 post-acceptance follow-up appends to live REVIEW.
 
+For continuous GOAL interim, CONTINUE means the checked direction/delivered scope permits
+bounded continuation; it does not enter KNW. Otherwise use the ordinary final verdicts below.
+Record the review ID, purpose, step, HL epoch, Candidate and actual independent producer using the
+common GOAL event grammar. Every fresh launch produces its own REVIEW revision.
+
 Use one final verdict for this review round:
 
 - **APPROVE** when no open material VALUE, ASSURANCE or TRACE item changes acceptance or the next
@@ -171,7 +180,7 @@ and native `send_message`; Codex exposes exact `send_message_to_thread`. The ref
 transport changes, but neither evidence nor analogy grants another provider automatic or exactly-once
 behavior. Otherwise report owner-assisted/unavailable.
 
-If accepted output later changes, this same independent Reviewer appends a bounded judgment of the
+Outside continuous GOAL, if accepted output later changes, this same independent Reviewer appends a bounded judgment of the
 affected result/evidence. Do not restart unchanged stages. A real new defect uses normal REVISE.
 
 ## Step 7 — Stop

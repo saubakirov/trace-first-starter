@@ -16,6 +16,12 @@ native, owner-assisted or unavailable from current tools/results. Missing title/
 navigation limit. Missing launch/address/independence leaves an exact pending act or owner-selected
 alternative, without silently switching mode or creating extra role/phase chats.
 
+For new continuous GOAL explain: the main agent implements and fixes; only research and
+fresh independent review use native subagents. Read proposed step/review bounds from
+tfw.goal; show them before HL approval. A mode answer does not finish Plan. Resume its
+first unfinished substantive step and preserve the Strategic Architect discussion.
+Do not silently substitute visible executor chats when a capability is unavailable.
+
 ## Native route and workspace
 
 The owner's 2026-09-23 report described owner-created full chats and unavailable title changes

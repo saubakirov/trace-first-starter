@@ -27,6 +27,12 @@ task-only sidebar section where supported; verify only that task's membership. N
 and exact child addresses supply navigation where separate titles/sections are unsupported.
 Never rename the owner's chat from a child. Unknown future identity/path/settings remain unknown.
 
+For new continuous GOAL explain: the main agent implements and fixes; only research and
+fresh independent review use native subagents. Read proposed step/review bounds from
+tfw.goal; show them before HL approval. A mode answer does not finish Plan. Resume its
+first unfinished substantive step and preserve the Strategic Architect discussion.
+Do not silently substitute visible executor chats when a capability is unavailable.
+
 ## Launch, continuation and independent review
 
 Every new role receives only `/tfw-* <task[/phase]>`; files and native origin supply context.

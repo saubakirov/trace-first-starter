@@ -248,6 +248,74 @@ Collector operation, whole invocation/integration wall time and native duration 
 
 ## GOAL attribution
 
+New continuous contracts use the existing numeric v1 extension, with a distinct shape:
+
+    "tfw.goal": {"contract":"continuous-v1","step":null,"review":null,"activity":"execution"}
+
+Pass --coordination-mode goal --goal-contract continuous-v1 --goal-activity execution.
+Use preparation, research, execution, correction, interim-review, final-review, wait, closure
+or shared. A known execution/correction slice may name --goal-step N; a review slice must name
+--goal-review R and its actual purpose. A wait may name its review ID when actually bound.
+Omit unproved step attribution. No attempt is manufactured. Failure receipts keep the same
+actual binding; an unknown binding remains an owned gap. The grammar and extractors are identical
+on Codex, Claude Code and every supported Antigravity surface.
+
+Collection occurs at meaningful activity/return boundaries, not every tool call or step.
+A source spanning several steps stays one execution/correction interval without a fake per-step
+allocation; inseparable activities stay shared. Preparation/research, execution/fixes,
+interim/final review, waiting and closure are different costs. Measure each real producer's own
+stream; reconcile duplicates, overlaps, covering successors and inclusive parent/child sources
+under the unchanged common contract. Native counters, step counts, tokens, API equivalents,
+actual payments and human time are separate.
+
+### Continuous event grammar
+
+Status is current authority: goal_contract: continuous-v1, goal_step as completed substantive
+steps, and the pinned goal_ref after approval. Before a freeze, zero and no goal_ref allow
+planning/research only. The frozen HL has one positive Execution step limit and Review maximum
+interval, no Goal attempt limit. Mixed/partial forms refuse rather than fall back to history.
+
+Use one full-line HTML comment starting with `<!-- tfw-goal-event `, one JSON object and
+` -->` in the existing owning artifact. The table is the exact key set, including kind:
+
+| kind / owning artifact | Other JSON keys |
+|---|---|
+| activation / handoff or owner-ruled gate_answer journal | goal_ref, step_limit, review_interval |
+| start / ONB or EV | step, goal_ref |
+| check / ONB or EV | step, outcome |
+| rf / RF | review, purpose, step, candidate, goal_ref |
+| review_start / dispatch journal | review, purpose, step, candidate, goal_ref |
+| review / REVIEW | review, purpose, step, candidate, goal_ref, verdict, reviewer |
+
+Numbers are JSON integers. Step starts/checks are positive and consecutive; review.step is the
+nonnegative completed step at presentation. Each review is a positive consecutive launch ID,
+not a Candidate hash. purpose is interim or final; candidate is a full reachable 40-character
+Git commit. goal_ref is the exact task HL path @ full approved epoch. reviewer is the actual
+independent native unit; every launch is fresh. Outcome is pass, fail or blocked; it records the
+bounded action's result, not task acceptance. Interim verdicts are CONTINUE/REVISE/REJECT; final
+verdicts are APPROVE/REVISE/REJECT. A review's ID/purpose/step/Candidate/epoch must match its RF and
+launch. Repeated identical observations are no-ops; conflicting observations refuse.
+
+Commit activation before work and start before the action. Commit result plus goal_step together
+before advancing. One unresolved start holds the next action until its real effect is inspected;
+a proved result with stale status requires checked recovery, never a counter reset. At a checkpoint,
+commit the tested Candidate, then RF and its launch; stop mutation while review is pending.
+Coordinator verifies/rules the return before continuation. Unreturned or rejected review does not
+reset cadence; the review at 7 with interval 10 is due again by 17. Read the immutable HL at every
+execution/review activation, including its actual owner authority; local parsers do not authenticate
+consent or establish the quality of an oracle.
+
+The state helper and economics use the same read-only goal_contract.py grammar. Reports show
+started/completed/pending/failed steps, presentations, review launches and returned purposes/verdicts
+beside source coverage. Historical preparation/0 receipts may precede adoption of a new contract;
+they are preserved, and research producers are displayed as research using their recorded role.
+Other attempt receipts are not relabeled as steps. Untagged history remains unattributed.
+A portable economic snapshot includes the referenced status, journal and artifacts; its consistency
+check is distinct from Git-epoch/owner verification at activation. Shared sources and missing
+measurements are never made zero to satisfy the report.
+
+### Historical attempt attribution
+
 Only the explicitly selected fourth Full mode uses these fields. At each meaningful change of bound, use the active surface's own collection/return recipe above. Pass `--coordination-mode goal --goal-attempt N --goal-activity execution --goal-step K` for a measured inner check; e.g. attempt 1, step 2. Preparation uses attempt 0 and activity `preparation`. For `review`, `correction`, `wait` and `closure` use the real attempt; omit the step when it is not attributable. For an inseparable range use `--goal-activity shared` and omit unknown attempt/step. A capture failure uses the same tags with `failure`. A pre-binding gap stays in its owning artifact. No inferred allocation.
 
 The optional v1 manifest extension `tfw.goal` preserves attempt/step/activity. It does not change extraction: Codex deduplicates response usage; Claude binds the exact parent/child stream; Antigravity binds only a supported surface/version. Disjoint slices add; a covering successor must keep its predecessor's attribution. A report groups only reconciled measured rows, prints their priced and unpriced portions and retains failed receipts. Historic untagged data remain readable and unattributed. A GOAL record needs started attempts from charged journal dispatches, actual presentations/verdicts from RF/REVIEW and internal checks from ONB/EV alongside the economic report. These are product events, not numbers of JSONL files. A bound without measured evidence never proves zero use.

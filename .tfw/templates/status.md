@@ -69,7 +69,9 @@ The key set is closed. Concision guides, never validates; never truncate.
 | `lifecycle_verbatim` | complete source value | iff `UNDECLARED` | migration diagnostics |
 | `owner` | human `team/` handle or `unassigned` | always | resume, authority checks |
 | `authority` | path relative to this file | always | resume, authority checks |
-| `goal_ref` / `goal_attempt` | GOAL only: task HL path @ frozen commit (may be absent before approval); nonnegative count charged at dispatch, starting at zero | per [GOAL](../workflows/goal.md) | execution, review, recovery |
+| `goal_ref` | GOAL only: task HL path @ frozen commit; absent only before approval | per [GOAL](../workflows/goal.md) | execution, review, recovery |
+| `goal_contract` / `goal_step` | new GOAL: continuous-v1 and nonnegative count of completed substantive steps; both required, no goal_attempt | continuous GOAL | execution, review, recovery |
+| `goal_attempt` | historical attempt contract only: nonnegative charged dispatch count | historical GOAL | compatible reading/continuation |
 | `coordination_mode` | `manual`, `visible-agents`, `subagents`, `goal`; actual explicit choice | current new issuance/adoption | all workflows |
 | `coordinator_route` | quoted non-empty native unit address | current statuses | all workflows |
 | `upstream_route` | task/same-holder phase: `owner:{human-handle}`; distinct phase holder: `coordinator:{task-Coordinator-native-address}` | new statuses | Coordinator only |

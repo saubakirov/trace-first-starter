@@ -8,6 +8,14 @@ and incident histories live at the linked authority or durable history source.
 ### Coordination mode
 **Meaning:** Explicit `manual`, `visible-agents` or `subagents` choice of launcher/role hosting (one or multiple phases), or the fourth [GOAL](workflows/goal.md) contract: one task, its frozen HL and a bounded independent-review loop. It does not grant authority, dialogue, reporting or topology. **Authority:** [conventions.md](conventions.md#coordination-modes), `Coordination modes`.
 
+### GOAL execution step
+**Meaning:** One bounded hypothesis/change, action, observable check and outcome, including a
+substantive failure; not a tool call, wakeup or compact. **Authority:** [GOAL](workflows/goal.md#execute-and-recover).
+
+### GOAL checkpoint review
+**Meaning:** A fresh independent launch with its own ID, fixed Candidate and interim/final purpose.
+Interim judges direction and delivered scope; final judges the full HL. **Authority:** [GOAL](workflows/goal.md#independent-checkpoints).
+
 ### Activation
 **Meaning:** Authorization for one exact `/tfw-*` workflow, task/phase, role unit and lineage source. Provisioning, a role prompt, a title or a wait result is not activation. **Authority:** [conventions.md](conventions.md#7-coordination), `Coordination`.
 

@@ -525,6 +525,8 @@ def validate_new_status(data: dict, task_dir: Path | None = None,
         problems.append("new status is missing current selection fields: " + ", ".join(missing_selection))
     if "coordination_mode" not in data:
         problems.append("new status requires explicit coordination_mode")
+    if data.get("coordination_mode") == "goal" and data.get("goal_contract") != "continuous-v1":
+        problems.append("new GOAL issuance requires continuous-v1; historical attempts use continuation reads")
     return problems
 
 

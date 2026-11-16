@@ -90,7 +90,7 @@ project decisions or external effects.
 
 Never overwrite `.tfw/knowledge_state.yaml`, `knowledge/`, `KNOWLEDGE.md`, task history, profiles,
 grants, receipts, preservation attachments, root `README.md`, configured project checks or unrelated
-content. Merge project config key-by-key: preserve `build.*`, scope budgets, task containers and owner
+content. Merge project config key-by-key: preserve `build.*`, scope budgets, `tfw.goal`, task containers and owner
 answers; update framework-owned keys; remove only target-declared retired keys.
 
 Classify current `.tfw/README.md`: replace a verified framework-owned copy; preserve customized,

@@ -28,7 +28,8 @@
 
 ---
 
-Only when the owner selects [GOAL](../workflows/goal.md), record the positive **Goal attempt limit** beside the Contract line; include the acceptance checks, freedoms, immutable accounting baseline and reserved decisions here. This HL is the order for execution and review. Do not issue a TS.
+Only when the owner selects [GOAL](../workflows/goal.md), propose the positive **Execution step limit** and **Review maximum interval** from tfw.goal
+beside the Contract line, show them to the owner and freeze the chosen task values; include the acceptance checks, freedoms, immutable accounting baseline and reserved decisions here. This HL is the order for execution and review. Do not issue a TS.
 
 ## 1. Vision 🔒 FROZEN
 {Strategic narrative: what we want and why — 2-3 sentences. Write as if it's already done.}

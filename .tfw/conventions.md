@@ -591,7 +591,7 @@ For multi-phase tasks, master HL and `research/` stay at task root. Each phase g
 
 ## 5) Task Statuses
 
-GOAL alone goes from approved `HL_DRAFT` or `RES` straight to `ONB` with its charged attempt and pinned HL. Never enter `TS_DRAFT` or `PHASES` in GOAL; the diagram below is the existing TS route.
+GOAL alone goes from approved `HL_DRAFT` or `RES` straight to `ONB` with its pinned HL and selected continuous or historical accounting contract. Never enter `TS_DRAFT` or `PHASES` in GOAL; the diagram below is the existing TS route.
 
 ```
 ⬜ TODO → 📝 HL_DRAFT → 🔬 RES → 🟡 TS_DRAFT → 🟠 ONB → 🟢 RF → 🔍 REV → 📚 KNW → ✅ DONE
@@ -814,7 +814,7 @@ owner may resolve UNDECLARED. A genuine new defect uses its existing authority r
 
 #### The 🔄 REVISE route
 
-For an explicitly selected [GOAL](workflows/goal.md), keep classification, independent judgment and ruling authority; use its fresh-pair route and HL-amendment boundary instead of the TS revisions/retained pair below.
+For an explicitly selected [GOAL](workflows/goal.md), keep classification, independent judgment and ruling authority; use its continuous same-executor/fresh-review route (or the preserved historical attempt route) and HL-amendment boundary instead of the TS revisions/retained pair below.
 
 A finding, not an artifact, discrepancy or round, is the unit of review. Before routing, classify
 each item as VALUE, ASSURANCE or TRACE and record its affected accepted claim/authority, fact and
@@ -947,7 +947,7 @@ retires the other old keys, and adds multiplier `2`.
 | `manual` | Owner starts distinct role sessions; native returns stay available | Owner controls launches; fully manual return transfer is a separate explicit choice |
 | `visible-agents` | Authorized Coordinator starts directly addressable user-visible role chats | Visible roles; readiness advances within authority; unavailable creation needs an exact owner action |
 | `subagents` | One owner-facing Coordinator starts distinct native role subagents | One main conversation for the whole task; no extra user-owned role or phase chats required |
-| `goal` | One owner-facing Coordinator; agreed HL is the execution order. May execute attempt 1 sequentially; fresh full Reviewer per candidate, fresh Executor after return | Owner steers one conversation until independent result, cost and diff; a charged cap bounds retries |
+| `goal` | Main agent plans, executes and fixes under the frozen HL; only research and fresh independent reviews use subagents | Owner steers one conversation; bounded steps and interim/final checks, then ordinary close and economics. Historical contracts retain their prior route |
 
 Only an explicit `goal` selection uses [the GOAL contract](workflows/goal.md) in place of TS, phase topology and the correction-pair policy below. Other modes never acquire a goal loop implicitly.
 
@@ -964,7 +964,7 @@ phase completion is a durable local result followed by readiness inspection, wit
 a distinct phase holder returns the existing bounded phase result to its actual task Coordinator.
 Root `PHASES` is never a second rollup of phase state. Neither phase count nor a mode grants scope.
 
-Distinct Researcher, Executor and independent Reviewer contexts preserve Role Locks. Default to a
+Outside GOAL, distinct Researcher, Executor and independent Reviewer contexts preserve Role Locks. Default to a
 fresh independent Reviewer for each new phase, without the previous phase's review conversation;
 accepted dependency artifacts remain admissible. Keep the same Executor and independent Reviewer
 within that phase's authorized corrections. New TS revisions/round numbers do not create phases.
@@ -1186,7 +1186,7 @@ TFW cycle and strategic discussion apply in every mode. Its fields must together
    A distinct phase Coordinator, when selected, absorbs operating detail and returns a bounded
    phase result; name context cost and actual limits for the chosen topology.
 3. **Mode:** explain all four `Coordination modes` and the owner's actual work. GOAL uses one outcome,
-   bounded attempts and the frozen HL; the other three admit one/several phases. Map the actual selection.
+   bounded steps, periodic/final independent review and the frozen HL; historical attempt contracts keep their limits. The other three admit one/several phases. Map the actual selection.
    Outside GOAL the role sequence and return route: Coordinator plans; distinct Researcher, Executor and
    independent Reviewer work only after their gates; roles return vertically to their own
    Coordinator, which presents only bounded owner gates/results upward.
@@ -1632,7 +1632,7 @@ Reverting a result does not revert its trace. Preserve a rejected task's folder 
 
 ## 15) Role Lock Protocol
 
-Only under an explicitly selected [GOAL contract](workflows/goal.md), a holder may end Plan and later act as first Executor. Role locks remain sequential, a Reviewer is always independent, and the frozen HL replaces TS as the order.
+Only under an explicitly selected [GOAL contract](workflows/goal.md), the main holder ends Plan and executes/fixes sequentially; only research and independent reviews use separate contexts. Historical attempt contracts preserve their first-Executor and retry policy. Role locks remain sequential, a Reviewer is always independent, and the frozen HL replaces TS as the order.
 
 Each workflow declares a **🔒 ROLE LOCK** at the top. The agent MUST refuse any action outside the locked role.
 

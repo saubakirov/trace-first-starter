@@ -1,4 +1,8 @@
 # Judge — "Is the accepted result fit and sufficiently established?"
+
+For continuous GOAL interim, judge the declared delivered scope, direction and open obligations.
+Planned unfinished work alone is not a defect; CONTINUE permits bounded continuation, not final
+acceptance. Apply the GOAL purpose/verdict contract before the ordinary final-acceptance checks.
 > **Mindset:** Judge. Apply the evidence from Verify in `VALUE → ASSURANCE → TRACE` order.
 > **Test:** "Would I defend this acceptance decision for the named purpose, harm and authority?"
 > Verify findings: [verify.md](verify.md)

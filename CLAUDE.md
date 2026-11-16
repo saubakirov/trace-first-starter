@@ -25,7 +25,7 @@ when the active surface or relevant capability materially changes. The task Coor
 manifest, and do not load this profile for every role command. A missing or ambiguous selected
 pointer refuses a provider-specific offer and is reported without guessing.
 For new Full work select `manual`, `visible-agents`, `subagents`, or `goal` explicitly. Only GOAL uses
-`.tfw/workflows/goal.md`: one task, approved HL instead of TS, bounded attempts and fresh independent review.
+`.tfw/workflows/goal.md`: one task, approved HL instead of TS, main-agent execution/fixes, bounded steps and fresh interim/final review. Only research/review use subagents; frozen historical attempt contracts keep their route.
 The other three modes admit one or several phases. One Coordinator may own phase-local cycles under authority;
 distinct bounded phase Coordinators remain available. Apply `conventions.md` → `Coordination modes`
 for phase routes, independent context, continuation and actual capability limits. Historical GATEWAY/LEAD carriers remain readable,
