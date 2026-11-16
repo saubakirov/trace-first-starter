@@ -1,0 +1,79 @@
+{
+  "kind": "task_price_basis",
+  "observations": [
+    {
+      "checked_at": "2026-11-11T17:15:58.458727+00:00",
+      "conditions": {
+        "context_band": "input <=272K tokens per request",
+        "modality": "text",
+        "purpose": "conditional API-equivalent, not subscription billing",
+        "region": "no regional premium",
+        "service_tier": "Standard"
+      },
+      "currency": "USD",
+      "effective_from": null,
+      "model": "gpt-6-astra",
+      "notes": [
+        "Current revaluation of received measured tokens; actual request band/tier/region and subscription billing are not established.",
+        "Public page gives generic cache-write pricing without a 5m/1h tariff mapping. These duration categories remain unquoted; measured positive writes would remain unpriced.",
+        "Long-context, Fast/Ultrafast, regional premiums, tools and unknown contributor usage are excluded from this conditional scenario."
+      ],
+      "provider": "openai",
+      "published_on": null,
+      "quote_id": "3102f26187ae4afd54184d9de23c55b1370795a6a034ce1f05b229252a0c7885",
+      "rates": {
+        "cache_write_1h": null,
+        "cache_write_5m": null,
+        "cached": "1",
+        "fresh": "10",
+        "output": "50"
+      },
+      "schema_version": 1,
+      "source_evidence": {
+        "https://developers.openai.com/api/docs/models/gpt-6-astra.md": "a9b79d0f5988c879aea6f4f7adb19743c469ee538d8e19744bdaee13d0c50ae2"
+      },
+      "source_urls": [
+        "https://developers.openai.com/api/docs/models/gpt-6-astra.md"
+      ],
+      "unit": "per_1M_text_tokens"
+    },
+    {
+      "checked_at": "2026-11-16T17:08:27.8028500+00:00",
+      "conditions": {
+        "context_band": "input <=272K tokens per request",
+        "modality": "text",
+        "purpose": "conditional API-equivalent, not subscription billing",
+        "region": "no regional premium",
+        "service_tier": "Standard"
+      },
+      "currency": "USD",
+      "effective_from": null,
+      "model": "gpt-6.1-terra",
+      "notes": [
+        "Conditional Standard global text API equivalent; actual subscription billing and request tier are unobserved.",
+        "The page quotes 30m/12h cache writes; these do not map to v1 5m/1h buckets. Positive unsplit writes stay unpriced.",
+        "Long input >272K costs 2x input/cache and 1.5x output. Batch/Flex, Fast and regional adjustments are outside this conditional scenario."
+      ],
+      "provider": "openai",
+      "published_on": null,
+      "quote_id": "8b1fc7ac0996e6d62922deb31160557cd5979b32b7c4e39ab4dae78c5f244fdc",
+      "rates": {
+        "cache_write_1h": null,
+        "cache_write_5m": null,
+        "cached": "0.05",
+        "fresh": "1",
+        "output": "5"
+      },
+      "schema_version": 1,
+      "source_evidence": {
+        "https://developers.openai.com/api/docs/models/gpt-6.1-terra.md": "6a73b3e2e941fbe3813636d5bd2d653ff190e49cc3692eaf8daa3bb125c877f8"
+      },
+      "source_urls": [
+        "https://developers.openai.com/api/docs/models/gpt-6.1-terra.md"
+      ],
+      "unit": "per_1M_text_tokens"
+    }
+  ],
+  "schema_version": 1,
+  "valuation_kind": "current_revaluation"
+}
