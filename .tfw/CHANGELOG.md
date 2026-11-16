@@ -9,8 +9,24 @@ Format: [Keep a Changelog](https://keepachangelog.com/). Versioning: [Semantic V
 
 - GCONT (`TFW_20261116-145700_GCONT`): new Full GOAL contracts keep the main agent through execution and corrections. Ordinary Plan and the approved HL remain the entry and order; research and fresh independent reviews use separate contexts. Defaults are 100 substantive steps and at most 10 between completed reviews, with earlier and full final checks. Historical attempts and the other three modes retain their contracts.
 - GCONT separates step/review identities and sourced activity costs, validates continuation and current final approval, and aligns Codex, Claude Code and Antigravity instructions. Codex is observed live; Claude/Antigravity proof is limited to instruction parity and synthetic source-format cases. The local candidate has independent approval; owner acceptance and release remain separate.
+- Daily Task (`daily/2026/20261114-120711_daily-task-faster`): the skill reads in one pass — when
+  to use it, a six-step path, stop conditions — with every gate kept. A new
+  `references/economics.md` replaces the mandatory read of the whole economics README; the
+  record template is a skeleton; the description names its triggers. Existing API-equivalent
+  valuation stays the default; token-only accounting requires an explicit owner/project choice.
+- Daily economics cadence: capture before returning a deliverable or materially revised result,
+  before a planned pause or handover, and at close. Pure explanation/status replies need no new
+  snapshot. Verified covering successors replace earlier same-source facts; independent sources
+  still add. Handover uses received numeric files; substantive continuation is not an uncounted tail.
+  The installation guide names the retired per-turn rule and the adoption boundary.
 
 ### Documentation
+
+- PR #3: reconcile Claude visible-session provisioning with the current Coordinator profile.
+  Retain the contributor's Remote Control recipe and dated P1 limits; describe prompt-free Desktop
+  opening as P0, without the warm-up that conflicts with command-only activation. Exact native
+  addresses, selected launch settings and existing return/review rules govern both routes.
+  No core workflow, Codex behavior or provider admission claim changes.
 
 - FLC (`TFW_20261011-192605_FLC`): independently reviewed, bounded diagnosis of
   workflow completion, coordination and knowledge continuity. Preserves observed

@@ -15,6 +15,7 @@ released Git payload. Accepted distribution uses the returned immutable Candidat
 |---|---|---|
 | `.tfw/extensions/daily-task/SKILL.md` | same path | canonical semantics |
 | `.tfw/extensions/daily-task/templates/task.md` | same path | new-record default; classify local form first |
+| `.tfw/extensions/daily-task/references/economics.md` | same path | Daily excerpt of the economics contract |
 | `.tfw/extensions/daily-task/installation.md` | same path | tooling-only contract |
 | `.tfw/extensions/daily-task/entries/codex/SKILL.md` | same path | Codex entry source |
 | `.tfw/extensions/daily-task/entries/claude-code/SKILL.md` | same path | Claude entry source |
@@ -74,3 +75,16 @@ A live Claude host may be unavailable; do not promote a filesystem proof to Clau
 Record applied/preserved/refused paths, before/after hashes, source coherence, checks and next authority
 in the existing installation result or update receipt. Local finite evidence is not a second live
 state registry. Real field installation/distribution is a separate authorized action.
+
+
+## Adopting the revised Daily economics checkpoints
+
+This revision replaces "Before each orderly turn return" with capture before returning a
+deliverable or materially revised result, before a planned pause or handover, and at close.
+Pure explanation/status replies need no separate snapshot. This changes Daily cadence, not Full
+or GOAL, and does not remove already owed or received historical captures.
+
+Use the ordinary approved update route to adopt the canonical skill, its economics reference,
+the shared economics/conventions text and selected adapter copies together. Record the adoption
+point for an open Daily record; preserve its old revisions, numeric schema v1 and used quote bases.
+Keep API-equivalent valuation unless the owner/project explicitly selects token-only accounting.

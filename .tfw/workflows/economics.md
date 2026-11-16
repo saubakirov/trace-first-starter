@@ -91,8 +91,9 @@ Positive unknown tariff/token categories remain unpriced. Freshness is a chosen 
 not proof that a price never changed. API equivalent is distinct from subscription/credit invoices.
 
 Full producing units follow the common source/quote contract through their own-return routes;
-Daily remains optional and reuses the applicable checked quote across cumulative turns. Ordinary
-counter changes do not trigger lookup every turn. Capture failure does not stop independently
+Daily remains optional and reuses the applicable checked quote across cumulative captures. A subscription
+alone does not cancel API-equivalent valuation; token-only accounting needs an explicit owner/project
+choice. Ordinary counter changes do not trigger price lookup. Capture failure does not stop independently
 authorized useful work; leave the actual failure/gap and last-good result visible.
 
 ## 3. Connect product meaning and inspect useful comparisons

@@ -27,8 +27,9 @@ Coordinator scope; task-bound analysis preserves its active formal Role Lock and
 It adds no fifth role or lifecycle. Public provider/month quotes at `~/.tfw/rates` use exact-model/
 profile 30-day freshness and append-preserved history; each used basis is copied into the task.
 Prices/conditions/effective dates remain sourced; conditional API equivalents never invent bills.
-Daily remains optional and requires exact own-source binding, cumulative snapshots before each
-orderly return and final concise economics through `.tfw/economics/README.md`. Preserve selected
+Daily remains optional and requires exact own-source binding, snapshots before returning a deliverable
+or materially revised result, before a planned pause or handover, and at close; pure explanation/status
+replies need no separate capture. Final concise economics follows `.tfw/economics/README.md`. Preserve selected
 forms, truthful gaps and last-good measurement without fabricated Full state/history conversion.
 Bytes/parity never prove live use.
 
