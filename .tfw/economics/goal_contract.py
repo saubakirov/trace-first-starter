@@ -244,6 +244,7 @@ def continuous_progress(task, state, limits=None):
         require(not any(p["step"] < n and i not in reviews for i, p in presentations.items()),
                 "resolve pending review before execution")
     pending = completed + 1 if len(starts) > completed else None
+    pending_reviews = sorted(set(presentations) - set(reviews))
     current = max(reviews.values(), key=lambda r: r["review"], default=None)
     last_review = max((r["step"] for r in reviews.values() if r["verdict"] != "REJECT"), default=0)
     due = min(active["step_limit"], last_review + active["review_interval"]) if active else None
@@ -251,9 +252,10 @@ def continuous_progress(task, state, limits=None):
         require(not pending and presentations and last_step == completed,
                 "presentation lifecycle needs completed current work")
     if state.get("lifecycle") in ("KNW", "DONE"):
-        require(current and current["purpose"] == "final" and current["verdict"] == "APPROVE" and
+        require(not pending_reviews and current and current["purpose"] == "final" and
+                current["verdict"] == "APPROVE" and
                 current["step"] == completed and current["goal_ref"] == state.get("goal_ref"),
-                "closing needs final APPROVE of current step and HL")
+                "closing needs current final APPROVE of step/HL and no pending review")
     return dict(contract=CONTRACT, started_steps=len(starts), completed_steps=completed,
                 failed_steps=sum(x["outcome"] == "fail" for x in checks.values()),
                 pending_step=pending, step_limit=active["step_limit"] if active else None,
@@ -262,9 +264,9 @@ def continuous_progress(task, state, limits=None):
                 presentations=len(presentations), review_starts=len(launches),
                 review_launches=[launches[n] for n in sorted(launches)],
                 reviews=[reviews[n] for n in sorted(reviews)],
-                pending_reviews=sorted(set(presentations) - set(reviews)),
+                pending_reviews=pending_reviews,
                 can_start=bool(state.get("lifecycle") == "ONB" and active and not pending and
-                               not (set(presentations) - set(reviews)) and
+                               not pending_reviews and
                                completed < due and
                                (not current or current["verdict"] != "REJECT" or
                                 current["goal_ref"] != state.get("goal_ref")))), checks

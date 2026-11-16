@@ -89,7 +89,7 @@ revision for each launch. A changed Candidate requires a new independent judgmen
 | Interim CONTINUE | Record accepted scope/open obligations; REV → ONB, same executor and counter. No whole-task approval. |
 | REVISE within HL | Rule material findings once in live REVIEW; REV → ONB. Main executor fixes within remaining steps; fresh review checks the correction. Blocking findings hold dependent progress. |
 | REVISE changing promise or limits | Present the exact amendment to the owner; preserve work, cost and prior epoch. |
-| Final APPROVE | KNW: ordinary docs, knowledge/justified-none, trace, economics, cleanup and owner acceptance. |
+| Current final APPROVE, no pending review | KNW: ordinary docs, knowledge/justified-none, trace, economics, cleanup and owner acceptance. |
 | REJECT, cap or genuine blocker | Present Candidate, cause, coverage/cost and required decision. No unapproved next step or fabricated completion. |
 
 At a human gate hold dependent work and continue independently authorized work. Step 101 under

@@ -304,6 +304,8 @@ Coordinator verifies/rules the return before continuation. A completed CONTINUE 
 the examination; it does not accept unfinished work or clear blocking findings. Unreturned or
 rejected review does not reset cadence; a review at 7 with interval 10 is due again by 17.
 The helper's can_start is false outside ONB and never supplies Coordinator authority.
+KNW/DONE require the current final APPROVE with no pending presentation/review; an older
+APPROVE cannot cover a newly requested check even at the same step and Candidate.
 Read the immutable HL at every
 execution/review activation, including its actual owner authority; local parsers do not authenticate
 consent or establish the quality of an oracle.
