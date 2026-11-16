@@ -87,6 +87,10 @@ All5managed research/review worktrees are confirmed archived by native artifact 
 
 The accepted product selector is40files/1012touchedLOC at Candidate96cd5813. Including the closing changelog, the same literal selector through8c718469 is41files/1017LOC, within the prospective42/4500bound. KNOWLEDGE.md and the two source-bound records are explicit closing reference effects separately checked in the independent appendix above, not hidden product exclusions. Git blob guard on8c718469:202occurrences,5MiB,PASS. Last source-pointer repair changed neither accepted claim nor product behavior. Final artifact generation refreshes only this trace/economic data and fixed patch bytes; offline integrity checks are repeated before delivery. D8 owner acceptance and refused cleanup remain honestly incomplete; no DONE or native goal completion is asserted.
 
+### Owner acceptance and close — 2026-11-17T04:13:19+05:00
+
+Владелец явно принял предъявленный результат с раскрытыми ограничениями: «Принимаю результат, без слияния». Затем отдельно разрешил завершение, merge, changelog/релиз3.10.1 и конечный push. Точный источник, принятый snapshot и operational effect сохранены в [20261117-041319__gate_answer__091f.md](journal/20261117-041319__gate_answer__091f.md). Проверенные продукт и доказательства не изменены; administrative acceptance не требует нового Reviewer. KNW→DONE отражает состоявшуюся человеческую приёмку, а не успешное удаление TEMP. Остаток безопасной уборки остаётся явно pending; пять вспомогательных worktrees архивированы. Статус native goal ранее blocked относился к ожиданию этого решения; новая цель владельца теперь включает отдельно разрешённый выпуск.
+
 ## 7. Fact Candidates
 
 Нет новых человеческих фактов. Исходные требования остаются в frozen HL; результаты и пределы доказательств — в вышеуказанных файлах. Независимый Reviewer завершает работу; принятие, docs/knowledge и DONE принадлежат Coordinator и владельцу.
