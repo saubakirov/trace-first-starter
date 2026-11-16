@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import os
+import importlib.util
 import re
 import subprocess
 from datetime import datetime, timedelta
@@ -57,7 +58,7 @@ COORDINATION_KEYS = COMMON_COORDINATION_KEYS | UPWARD_ROUTE_KEYS
 
 SELECTION_KEYS = {"reporting", "selection_ref"}
 COORDINATION_MODES = {"manual", "visible-agents", "subagents", "goal"}
-GOAL_KEYS = {"goal_ref", "goal_attempt"}
+GOAL_KEYS = {"goal_ref", "goal_attempt", "goal_contract", "goal_step"}
 
 STATUS_KEYS = {
     "id", "title", "goal", "value", "lifecycle", "lifecycle_verbatim",
@@ -416,7 +417,37 @@ def validate_status(data: dict, task_dir: Path | None = None,
     return problems
 
 
+def goal_protocol():
+    path = Path(__file__).resolve().parents[1] / ".tfw/economics/goal_contract.py"
+    spec = importlib.util.spec_from_file_location("tfw_goal_contract", path)
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module
+
+
 def validate_goal_status(data: dict, task_dir: Path | None) -> list[str]:
+    continuous = "goal_contract" in data or "goal_step" in data
+    protocol = goal_protocol()
+    if continuous:
+        try:
+            protocol.validate_envelope(data)
+            if task_dir is None:
+                return []
+            limits = None
+            if data.get("goal_ref"):
+                root = find_project_root(task_dir)
+                path = (task_dir / data["authority"]).resolve().relative_to(root).as_posix()
+                commit = data["goal_ref"].rsplit(" @ ", 1)[1]
+                reachable = subprocess.run(["git", "merge-base", "--is-ancestor", commit, "HEAD"],
+                                           cwd=root, capture_output=True)
+                frozen = subprocess.run(["git", "show", f"{commit}:{path}"], cwd=root, capture_output=True)
+                if reachable.returncode or frozen.returncode:
+                    return ["goal_ref must name a reachable frozen HL"]
+                limits = protocol.hl_limits(frozen.stdout.decode("utf-8"), data)
+            protocol.continuous_progress(task_dir, data, limits)
+            return []
+        except (OSError, ValueError, SystemExit) as exc:
+            return [str(exc)]
     lifecycle = data.get("lifecycle")
     if lifecycle in {"PHASES", "TS_DRAFT"} or (task_dir and PHASE_DIR.fullmatch(task_dir.name)):
         return ["goal uses one task-level HL, never phase dispatch or a TS lifecycle"]
@@ -458,6 +489,10 @@ def validate_goal_status(data: dict, task_dir: Path | None) -> list[str]:
             return ["goal_ref needs a reachable owner-frozen HL with one positive attempt limit"]
         if attempt > int(limits[0]):
             return ["goal_attempt exceeds the limit in the frozen HL"]
+        try:
+            protocol.hl_limits(content, data)
+        except ValueError as exc:
+            return [str(exc)]
     recorded = []
     for event in (task_dir / "journal").glob("*__dispatch__*.md"):
         try:
