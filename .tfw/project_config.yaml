@@ -26,6 +26,10 @@ tfw:
     decomposition_trigger_loc: 5000
     owner_escalation_multiplier: 2
 
+  goal:
+    execution_step_limit: 100
+    review_max_interval: 10
+
   templates:
     hl: .tfw/templates/HL.md
     ts: .tfw/templates/TS.md

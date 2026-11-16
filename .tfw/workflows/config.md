@@ -72,6 +72,16 @@ ordinary Edit or Verify Mode: preserve `max_files_per_phase` as `decomposition_t
 the new semantics apply to a TS approved under the introducing release. A mixed old/new block is a mismatch
 to report, not a basis for guessing which value wins.
 
+### goal
+
+| Config Key | Target File | Section Header | Row Label |
+|---|---|---|---|
+| `goal.execution_step_limit` | `.tfw/workflows/goal.md` | Defaults | Execution step limit |
+| `goal.review_max_interval` | `.tfw/workflows/goal.md` | Defaults | Review maximum interval |
+
+These positive integers propose bounds for new continuous GOAL contracts only. Show them before
+HL approval. Explicit task values govern; preserve project settings and frozen contracts on update.
+
 ### research
 
 | Config Key | Target File | Section Header | Row Label |

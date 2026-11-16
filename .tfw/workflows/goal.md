@@ -6,6 +6,17 @@
 
 ## Agree the goal
 
+### Defaults
+
+| Config key | New-contract default |
+|---|---:|
+| Execution step limit | 100 |
+| Review maximum interval | 10 |
+
+Read tfw.goal from project_config.yaml. Show these proposed bounds when GOAL is selected;
+explicit owner-approved HL values govern that task. Preserve project choices on update and
+never rewrite a frozen historical contract with these defaults.
+
 The same Coordinator follows [Plan from entry through HL approval](plan.md#planning-steps) and uses the [ordinary master HL template](../templates/HL.md). Keep Plan's Strategic Architect discussion: compare real alternatives, challenge both the proposal and the recommendation, and apply Saint-Exupéry when considering what can be removed. Before asking for approval, show the owner the concrete before/after result, its value flow and the alternatives; preserve them in the HL. This page changes what happens **after** those gates. It supplies neither a shorter HL nor a second planning pass. One main conversation remains the owner's address throughout.
 
 Plan establishes the beneficiary and usable result, acceptance checks, exclusions, constraints, authority and reserved decisions in the master HL. Carry the ordinary scope/accounting baseline, VALUE selector, permitted budget and evidence there once. Use the same approval and amendment authority as Full. Contract enough to judge the outcome; leave implementation open. Reuse existing infrastructure and verified research. For material gaps group hypotheses by decision, use authorized separate researchers, challenge an assumption that could overturn the plan, and examine a comparable process, algorithm or UX in external primary sources. Cite fit and counterevidence or the actual access gap. Reuse recent evidence when it answers the question; only a decision-changing uncertainty justifies another iteration. Return to the owner when findings change the intended result.

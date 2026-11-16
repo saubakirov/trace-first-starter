@@ -38,6 +38,10 @@ tfw:
     # Bounds prospective Coordinator authority against the immutable owner-approved plan.
     owner_escalation_multiplier: 2
 
+  goal:                               # ← PROJECT: defaults for new HL; preserve on update
+    execution_step_limit: 100
+    review_max_interval: 10
+
   templates:                          # ← FRAMEWORK: updated by tfw-update
     hl: .tfw/templates/HL.md
     ts: .tfw/templates/TS.md
