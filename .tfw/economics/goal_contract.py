@@ -260,6 +260,7 @@ def continuous_progress(task, state, limits=None):
                 review_interval=active["review_interval"] if active else None,
                 last_review_step=last_review, next_review_due=due,
                 presentations=len(presentations), review_starts=len(launches),
+                review_launches=[launches[n] for n in sorted(launches)],
                 reviews=[reviews[n] for n in sorted(reviews)],
                 pending_reviews=sorted(set(presentations) - set(reviews)),
                 can_start=bool(active and not pending and not (set(presentations) - set(reviews)) and

@@ -11,6 +11,7 @@ import argparse
 import csv
 import datetime as dt
 import hashlib
+import importlib.util
 import json
 import math
 import os
@@ -25,6 +26,11 @@ from contextlib import contextmanager
 from decimal import Decimal
 from pathlib import Path
 from urllib.parse import urlsplit
+
+_goal_spec = importlib.util.spec_from_file_location(
+    "tfw_goal_contract", Path(__file__).with_name("goal_contract.py"))
+goal_protocol = importlib.util.module_from_spec(_goal_spec)
+_goal_spec.loader.exec_module(goal_protocol)
 
 VERSION = 1
 COLLECTOR = "tfw-economics/1.4"
@@ -162,14 +168,27 @@ def validate_tokens(tokens, unavailable):
             "cached input exceeds input")
 
 
-GOAL_ACTIVITIES = ("preparation", "execution", "review", "correction", "wait", "closure", "shared")
+LEGACY_GOAL_ACTIVITIES = ("preparation", "execution", "review", "correction", "wait", "closure", "shared")
+GOAL_ACTIVITIES = LEGACY_GOAL_ACTIVITIES + ("research", "interim-review", "final-review")
 
 
 def validate_goal_scope(scope, mode):
     require(mode == "goal", "goal attribution requires explicit goal mode")
+    if "contract" in scope:
+        exact_keys(scope, ("contract", "step", "review", "activity"), where="tfw.goal")
+        require(scope["contract"] == goal_protocol.CONTRACT, "unknown goal accounting contract")
+        activity, step, review = scope["activity"], scope["step"], scope["review"]
+        require(activity in GOAL_ACTIVITIES and activity != "review", "continuous review needs its purpose")
+        require(step is None or type(step) is int and step > 0 and
+                activity in ("execution", "correction"), "only execution/fix can name a step")
+        require(review is None or type(review) is int and review > 0 and
+                activity in ("interim-review", "final-review", "wait"), "invalid review attribution")
+        require(activity not in ("interim-review", "final-review") or review is not None,
+                "review activity needs its launch ID")
+        return
     exact_keys(scope, ("attempt", "step", "activity"), where="tfw.goal")
     attempt, step, activity = scope["attempt"], scope["step"], scope["activity"]
-    require(activity in GOAL_ACTIVITIES, "unknown goal activity")
+    require(activity in LEGACY_GOAL_ACTIVITIES, "unknown historical goal activity")
     require(attempt is None or type(attempt) is int and attempt >= 0, "invalid goal attempt")
     require(attempt is not None or activity == "shared", "unknown attempt must remain shared")
     if activity == "preparation":
@@ -799,8 +818,14 @@ def manifest(args, source_hash, source_size, end, operation_seconds, diagnostics
     now = dt.datetime.now(dt.timezone.utc).isoformat()
     tags = {}
     if args.coordination_mode == "goal" or any(v is not None for v in
-            (args.goal_attempt, args.goal_step, args.goal_activity)):
-        scope = dict(attempt=args.goal_attempt, step=args.goal_step, activity=args.goal_activity)
+            (args.goal_attempt, args.goal_step, args.goal_activity, args.goal_contract, args.goal_review)):
+        if args.goal_contract:
+            require(args.goal_attempt is None, "continuous attribution cannot carry an attempt")
+            scope = dict(contract=args.goal_contract, step=args.goal_step,
+                         review=args.goal_review, activity=args.goal_activity)
+        else:
+            require(args.goal_review is None, "review ID needs the continuous contract")
+            scope = dict(attempt=args.goal_attempt, step=args.goal_step, activity=args.goal_activity)
         validate_goal_scope(scope, args.coordination_mode)
         tags["tfw.goal"] = scope
     predecessor = None
@@ -1477,55 +1502,17 @@ def metadata_block(path):
 
 
 def goal_control_fields(path):
-    content = path.read_text(encoding="utf-8")
-    envelope = re.match(r"\A---\r?\n(.*?)\r?\n---(?:\r?\n|$)", content, re.S)
-    require(envelope, "GOAL control needs front matter: " + path.name)
-    fields, list_key = {}, None
-    lines = iter(envelope[1].splitlines())
-    pending = next(lines, None)
-    while pending is not None:
-        line, pending = pending, next(lines, None)
-        if not line.strip() or line.lstrip().startswith("#"):
-            continue
-        item = re.fullmatch(r"\s*-\s+(.+)", line)
-        if item:
-            require(list_key is not None, "GOAL control has an unexpected list: " + path.name)
-            fields[list_key].append(goal_control_scalar(item[1]))
-            continue
-        entry = re.fullmatch(r"([a-z_]+):(?:\s+(.*))?", line)
-        require(entry and entry[1] not in fields,
-                "GOAL control has an unsupported or duplicate field: " + path.name)
-        key, value = entry.groups()
-        if key in ("summary", "via", "actor") and value is not None:
-            continuation = []
-            while pending is not None and (not pending.strip() or pending.startswith(" ")):
-                continuation.append(pending)
-                pending = next(lines, None)
-            if re.fullmatch(r"[|>][-+]?", value):
-                nonblank = [s for s in continuation if s.strip()]
-                require(nonblank, "empty GOAL prose block: " + path.name)
-                indent = min(len(s) - len(s.lstrip(" ")) for s in nonblank)
-                prose = [s[indent:] if s.strip() else "" for s in continuation]
-                fields[key] = ("\n" if value[0] == "|" else " ").join(prose)
-                list_key = None
-                continue
-            value = " ".join([value, *(s.strip() for s in continuation if s.strip())])
-        list_key = key if value is None else None
-        fields[key] = [] if value is None else goal_control_scalar(value)
-    return fields
+    try:
+        return goal_protocol.control_fields(path)
+    except ValueError as exc:
+        raise EconomicsError(str(exc)) from exc
 
 
 def goal_control_scalar(value):
-    if value.startswith('"'):
-        parsed = json.loads(value)
-        require(isinstance(parsed, str), "GOAL control scalar must be text")
-        return parsed
-    if value.startswith("'"):
-        require(re.fullmatch(r"'(?:[^']|'')*'", value), "invalid GOAL quoted scalar")
-        return value[1:-1].replace("''", "'")
-    require(not value.startswith(("&", "*", "|", ">", "[", "{")) and ": " not in value,
-            "unsupported GOAL control scalar; use a quoted one-line value")
-    return value
+    try:
+        return goal_protocol.control_scalar(value)
+    except ValueError as exc:
+        raise EconomicsError(str(exc)) from exc
 
 
 def goal_starts(task, state):
@@ -1575,6 +1562,15 @@ def goal_starts(task, state):
 
 def goal_progress(task, state):
     """Count product events at their owning artifacts, independently of measured usage."""
+    if "goal_contract" in state or "goal_step" in state:
+        try:
+            require(goal_control_fields(task / "status.md") == state,
+                    "GOAL status fields disagree with its front matter")
+            limits = (goal_protocol.hl_limits((task / state["authority"]).read_text(encoding="utf-8"), state)
+                      if state.get("goal_ref") else None)
+            return goal_protocol.continuous_progress(task, state, limits)
+        except (ValueError, OSError) as exc:
+            raise EconomicsError(str(exc)) from exc
     started = goal_starts(task, state)
     checks, presentations, verdicts, gaps = {}, {}, {}, []
     for pattern, kind in (("ONB__*.md", "check"), ("evidence/EV*.md", "check"),
@@ -1691,26 +1687,52 @@ def render_report(args):
         groups = defaultdict(list)
         progress, checks = (goal_progress(task, state) if state.get("coordination_mode") == "goal"
                             else (None, {}))
+        continuous = progress is not None and progress.get("contract") == goal_protocol.CONTRACT
         for file in data["files"]:
             tag = file["manifest"]["extensions"].get("tfw.goal")
             if not tag:
                 continue
-            attempt, step = tag["attempt"], tag["step"]
             require(progress is not None, "GOAL attribution needs validated selected task history")
-            require(attempt is None or attempt == 0 and tag["activity"] == "preparation" or
-                    0 < attempt <= progress["started"],
-                    "GOAL receipt names an uncharged attempt; retained source " + file["sha256"])
-            require(step is None or (attempt, step) in checks,
-                    "GOAL receipt names an unrecorded inner check; retained source " + file["sha256"])
+            step = tag["step"]
+            if continuous:
+                if tag.get("contract") == goal_protocol.CONTRACT:
+                    require(step is None or step in checks or step == progress["pending_step"],
+                            "GOAL receipt names an unrecorded step")
+                    review = tag["review"]
+                    require(review is None or 0 < review <= progress["review_starts"],
+                            "GOAL receipt names an unlaunched review")
+                    if review is not None:
+                        launch = next(r for r in progress["review_launches"] if r["review"] == review)
+                        if tag["activity"] != "wait":
+                            require(tag["activity"] == launch["purpose"] + "-review",
+                                    "GOAL receipt purpose differs from launched review")
+                            returned = next((r for r in progress["reviews"] if r["review"] == review), None)
+                            require(returned is None or returned["reviewer"] == file["manifest"]["unit"],
+                                    "GOAL review receipt producer differs from returned reviewer")
+                else:
+                    require(tag.get("attempt") == 0 and tag["activity"] == "preparation" and step is None,
+                            "continuous task only admits legacy preparation/0, never reinterpreted attempts")
+            else:
+                require("contract" not in tag, "continuous receipt needs a continuous task contract")
+                attempt = tag["attempt"]
+                require(attempt is None or attempt == 0 and tag["activity"] == "preparation" or
+                        0 < attempt <= progress["started"],
+                        "GOAL receipt names an uncharged attempt; retained source " + file["sha256"])
+                require(step is None or (attempt, step) in checks,
+                        "GOAL receipt names an unrecorded inner check; retained source " + file["sha256"])
         for manifest_row, record, digest in data["records"]:
             tag = manifest_row["extensions"].get("tfw.goal") or {}
-            groups[(tag.get("attempt"), tag.get("step"), tag.get("activity", "unattributed"))].append(
+            activity = tag.get("activity", "unattributed")
+            if continuous and activity == "preparation" and manifest_row["role"] == "researcher":
+                activity = "research"
+            groups[(tag.get("attempt"), tag.get("step"), tag.get("review"), activity)].append(
                 (manifest_row, record, digest))
-        for (attempt, step, activity), records in sorted(groups.items(), key=lambda pair:
-                (pair[0][0] if pair[0][0] is not None else -1, pair[0][1] or 0, pair[0][2])):
+        for (attempt, step, review, activity), records in sorted(
+                groups.items(), key=lambda pair: tuple(-1 if v is None else v for v in pair[0][:3]) + (pair[0][3],)):
             observed, _ = summarize(records, rates)
-            goal_rows.append(dict(attempt=attempt, step=step, activity=activity, tokens=observed["tokens"],
-                                  priced_usd=str(observed["priced_usd"]), unpriced_tokens=observed["unpriced_tokens"]))
+            goal_rows.append(dict(attempt=attempt, step=step, review=review, activity=activity,
+                                  tokens=observed["tokens"], priced_usd=str(observed["priced_usd"]),
+                                  unpriced_tokens=observed["unpriced_tokens"]))
         block["goal_bounds"] = goal_rows
         if progress is not None:
             block["goal_progress"] = progress
@@ -1749,21 +1771,34 @@ def render_report(args):
     if "goal_bounds" in block:
         if "goal_progress" in block:
             g = block["goal_progress"]
-            lines += ["## GOAL: recorded progress", "",
-                      f"Started attempts: {g['started']}; recorded inner checks: {g['recorded_checks']} "
-                      f"({g['failed_checks']} failed); presented candidates: {g['presentations']}; "
-                      f"returned verdicts: {len(g['verdicts'])}.",
-                      "Verdicts: " + (", ".join(f"A{v['attempt']} {v['verdict']}" for v in g["verdicts"]) or "none recorded"),
-                      "Attribution gaps: " + ("; ".join(g["attribution_gaps"]) or "none in inspected returns"), ""]
+            lines += ["## GOAL: recorded progress", ""]
+            if g.get("contract") == goal_protocol.CONTRACT:
+                lines += [
+                    f"Started/completed steps: {g['started_steps']}/{g['completed_steps']}; "
+                    f"failed: {g['failed_steps']}; pending step: {g['pending_step']}; limit: {g['step_limit']}.",
+                    f"Last review step: {g['last_review_step']}; next due by: {g['next_review_due']}; "
+                    f"presentations: {g['presentations']}; review launches/returns: "
+                    f"{g['review_starts']}/{len(g['reviews'])}.",
+                    "Reviews: " + (", ".join(f"R{r['review']} {r['purpose']} {r['verdict']}"
+                                           for r in g["reviews"]) or "none returned"),
+                    "Pending reviews: " + str(g["pending_reviews"]),
+                    "Legacy preparation/0 from researcher units is displayed as research by its recorded role; source bytes are unchanged.", ""]
+            else:
+                lines += [f"Started attempts: {g['started']}; recorded inner checks: {g['recorded_checks']} "
+                          f"({g['failed_checks']} failed); presented candidates: {g['presentations']}; "
+                          f"returned verdicts: {len(g['verdicts'])}.",
+                          "Verdicts: " + (", ".join(f"A{v['attempt']} {v['verdict']}"
+                                                   for v in g["verdicts"]) or "none recorded"),
+                          "Attribution gaps: " + ("; ".join(g["attribution_gaps"]) or "none in inspected returns"), ""]
         lines += ["## GOAL: measured work by source bound", "",
-                  "| Attempt | Inner step | Activity | Tokens | Priced USD | Unpriced tokens |",
-                  "|---:|---:|---|---:|---:|---:|"]
+                  "| Historical attempt | Step | Review ID | Activity | Tokens | Priced USD | Unpriced tokens |",
+                  "|---:|---:|---:|---|---:|---:|---:|"]
         for b in goal_rows:
-            lines.append("| {} | {} | {} | {:,} | {} | {:,} |".format(
-                b["attempt"] if b["attempt"] is not None else "shared", b["step"] or "—",
+            lines.append("| {} | {} | {} | {} | {:,} | {} | {:,} |".format(
+                b["attempt"] if b["attempt"] is not None else "—", b["step"] or "—", b["review"] or "—",
                 b["activity"], b["tokens"], b["priced_usd"], b["unpriced_tokens"]))
         lines += ["", "Only measured, reconciled bounds are summed. Failed/missing returns are unknown.",
-                  "Count starts from charged dispatches, checks from ONB/EV, presentations from RF and verdicts from REVIEW; never from receipt rows.", ""]
+                  "Steps come from ONB/EV, presentations from RF, launches from journal and verdicts from REVIEW; never from receipts or native wakeups.", ""]
     for kind, seconds in sorted(total["duration"].items()):
         lines.append("- {}: {:.3f} observed seconds".format(kind, seconds))
     lines += ["", "Money is a dated Standard API token equivalent, not a subscription bill.",
@@ -2000,7 +2035,10 @@ def parser():
     common.add_argument("--complete", action="store_true")
     common.add_argument("--tfw-version")
     common.add_argument("--coordination-mode")
-    common.add_argument("--goal-attempt", type=int, help="charged outer attempt; 0 before execution")
+    common.add_argument("--goal-contract", choices=(goal_protocol.CONTRACT,),
+                        help="explicit continuous accounting; omit for historical attempts")
+    common.add_argument("--goal-review", type=int, help="actual independent review launch ID")
+    common.add_argument("--goal-attempt", type=int, help="historical charged attempt; 0 for earlier preparation")
     common.add_argument("--goal-step", type=int, help="inner check only when the range is attributable to it")
     common.add_argument("--goal-activity", choices=GOAL_ACTIVITIES,
                         help="required for new goal receipts; use shared for an inseparable range")
