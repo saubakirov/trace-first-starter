@@ -18,7 +18,7 @@ coordination_authority: "HL-TFW_20261116-145700_GCONT.md @ a058261302d1bca5a5d42
 reporting: native-gates
 selection_ref: baseline
 created: 20261116-145700
-updated: 20261117-033100
+updated: 20261117-034922
 ---
 
 **Task state.** This file is the only authority for this task's live state. Any downstream projection is disposable and never outranks it.
