@@ -63,6 +63,16 @@ hashes; their digest meaning is unchanged. Native continuation can rewrite old
 nonnumeric bytes, so a covering successor may correctly refuse while checked
 disjoint collection works. Never relabel or rewrite a historical receipt.
 
+## Continuous GOAL attribution
+
+For a new continuous contract add `--coordination-mode goal --goal-contract continuous-v1`
+and the actual `--goal-activity` from the [common grammar](README.md#goal-attribution).
+A fresh review producer binds its own source and actual `--goal-review`; record interim-review
+or final-review, never infer a review from a receipt count. At an activity change capture
+disjoint source bounds; a covering successor cannot reclassify its earlier work. Shared
+intervals remain shared. These tags change attribution, not the provider support boundary,
+native identity rules or measured counters above. A supported sample is not a live GOAL run.
+
 ## Failures and native execution
 
 Record surface/version, runtime-root/identity evidence, exact locator checked and

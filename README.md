@@ -39,7 +39,7 @@ TFW offers two Editions for project work: Assisted and Full. They provide differ
 | Edition | Choose it when | What you get | Start here |
 |---|---|---|---|
 | **Assisted** | Work repeats, two or three participants need separate ownership, or missed trace/status updates recur | Result-first planning, task traces, handoff and independent review; the documented manual path remains complete | [`editions/02-assisted/`](editions/02-assisted/) |
-| **Full** | Work is long-running, cross-functional, regulated, or expensive to get wrong; formal research, evidence, review, and knowledge gates are needed | The complete `HL → RES → TS → ONB → RF → REVIEW` lifecycle | [`.tfw/`](.tfw/) |
+| **Full** | Work is long-running, cross-functional, regulated, or expensive to get wrong; formal research, evidence, review, and knowledge gates are needed | The complete `HL → RES → TS → ONB → RF → REVIEW` lifecycle; GOAL executes HL directly | [`.tfw/`](.tfw/) |
 
 Offer only **Assisted or Full** for project setup, including education, research and learning requests. Recommend the smallest of these two that meets the work's needs. Copy the **contents** of the selected directory into the project root; do not work inside a nested edition directory. See the [Edition selection and migration guide](editions/README.md).
 
@@ -111,7 +111,7 @@ To adopt **Assisted** in an existing project, follow [`editions/02-assisted/MIGR
     For a new Full TFW task, start with: /tfw-plan
     Task: <describe the result you need>
 
-In Full TFW, use `/tfw-plan` to create or revise a task plan and to re-enter interrupted work, `/tfw-handoff` to execute an approved TS, and `/tfw-review` to independently verify completed work. Other repository workflows use `/tfw-research`, `/tfw-docs`, `/tfw-knowledge`, `/tfw-release`, `/tfw-update`, `/tfw-config`, and `/tfw-init`.
+In Full TFW, use `/tfw-plan` to create or revise a task plan and to re-enter interrupted work, `/tfw-handoff` to execute an approved TS (the approved HL in GOAL), and `/tfw-review` to independently verify completed work. Other repository workflows use `/tfw-research`, `/tfw-docs`, `/tfw-knowledge`, `/tfw-release`, `/tfw-update`, `/tfw-config`, and `/tfw-init`.
 
 **Codex users:** the same `/tfw-*` commands are implemented by repository-local skills, with root `AGENTS.md` as fallback routing; no Codex-specific wrapper is required. Installation and repair instructions are in [`.tfw/adapters/codex/`](.tfw/adapters/codex/README.md).
 
@@ -139,7 +139,9 @@ Use the [interactive FAQ](https://notebooklm.google.com/notebook/0a4cc544-0c0a-4
 
 ## How It Works
 
-Full offers a fourth, explicitly selected [GOAL mode](.tfw/workflows/goal.md): work from the approved HL, with an owner-set attempt cap, whole-candidate independent review, measured costs and a diff. No separate TS is required. Manual, visible-agents and subagents retain their existing contracts.
+Start with `/tfw-plan` and explicitly select the fourth Full **[GOAL mode](.tfw/workflows/goal.md)**. The same Coordinator helps establish the beneficiary, value, future result, alternatives and success criteria; choosing a mode does not approve an unfinished goal. Agreed answers and a proved HL are reused.
+
+The main agent implements and fixes the approved HL itself. Only research and independent review use fresh subagents. New contracts agree an execution-step limit and a maximum review interval from the [project defaults](.tfw/workflows/goal.md#defaults), with earlier checks when needed and a full final review. Compact preserves progress and cost boundaries. After review come documentation, knowledge, cleanup, economics and owner acceptance of the diff; merge remains a separate decision. No TS is required. Manual, visible-agents, subagents and historical frozen attempt contracts keep their rules.
 
 | | Principle | What it means in practice |
 |---|---|---|
@@ -212,14 +214,16 @@ The complete Full lifecycle is visible in each task's state, journal and trace f
 ⬜ TODO → 📝 HL_DRAFT → 🔬 RES → 🟡 TS_DRAFT → 🟠 ONB → 🟢 RF → 🔍 REV → 📚 KNW → ✅ DONE
 ```
 
+In GOAL, skip TS_DRAFT: the frozen HL governs ONB; interim CONTINUE or ruled REVISE returns REV → ONB. Only final APPROVE enters KNW.
+
 `RES` and `KNW` are conditional gates. `❌ REJECTED` preserves a failed attempt and its learning; `❌ BLOCKED` records an impasse without pretending the task is complete.
 
 | Concept | Practical meaning | Reference |
 |---|---|---|
 | Roles | Coordinator plans, Researcher investigates, Executor implements, Reviewer independently verifies | [glossary](.tfw/glossary.md) |
-| Coordination | Choose manual, visible agents or subagents for one or several phases. One owner-facing Coordinator can govern phase-local work through distinct native roles; authority, independent review and final acceptance remain explicit | [conventions](.tfw/conventions.md#coordination-modes), [adoption](.tfw/migrations/coordination-modes.md) |
+| Coordination | GOAL uses one main executor and independent research/review. Otherwise choose manual, visible agents or subagents for one or several phases. One owner-facing Coordinator can govern phase-local work through distinct native roles; authority, independent review and final acceptance remain explicit | [conventions](.tfw/conventions.md#coordination-modes), [adoption](.tfw/migrations/coordination-modes.md) |
 | Scope budgets | File, new-file, line, and modified-file ceilings are configured per project and checked before execution | [project config](.tfw/project_config.yaml) |
-| Evidence | A TS says what evidence is needed; the RF reports what was collected; REVIEW audits sufficiency | [conventions](.tfw/conventions.md) |
+| Evidence | A TS (HL in GOAL) says what evidence is needed; the RF reports what was collected; REVIEW audits sufficiency | [conventions](.tfw/conventions.md) |
 | Task memory | `HL`, `RES`, `TS`, `ONB`, `RF`, `REVIEW`, and knowledge traces serve different decisions; they are not raw chat logs | [templates](.tfw/templates/) |
 | Conduct | Work directly, concretely, and completely; do not flatter, leave placeholders, or request plaintext secrets | [conventions](.tfw/conventions.md) |
 | Versioning | The installed semantic version is in `.tfw/VERSION`; changes are recorded in the changelog | [changelog](.tfw/CHANGELOG.md) |

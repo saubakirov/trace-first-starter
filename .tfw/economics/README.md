@@ -257,8 +257,8 @@ Use preparation, research, execution, correction, interim-review, final-review, 
 or shared. A known execution/correction slice may name --goal-step N; a review slice must name
 --goal-review R and its actual purpose. A wait may name its review ID when actually bound.
 Omit unproved step attribution. No attempt is manufactured. Failure receipts keep the same
-actual binding; an unknown binding remains an owned gap. The grammar and extractors are identical
-on Codex, Claude Code and every supported Antigravity surface.
+actual binding; an unknown binding remains an owned gap. This attribution grammar is common;
+source extraction keeps each Codex, Claude Code and supported Antigravity surface's own contract.
 
 Collection occurs at meaningful activity/return boundaries, not every tool call or step.
 A source spanning several steps stays one execution/correction interval without a fake per-step

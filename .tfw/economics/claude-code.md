@@ -65,6 +65,16 @@ One observed 2.1.281–2.1.284 parent shared no message ID with its separate chi
 verify actual inclusion for the selected invocation, then use the common
 `--includes-source` rule where necessary. This is not universal provider behavior.
 
+## Continuous GOAL attribution
+
+For a new continuous contract add `--coordination-mode goal --goal-contract continuous-v1`
+and the actual `--goal-activity` from the [common grammar](README.md#goal-attribution).
+A fresh review producer binds its own source and actual `--goal-review`; record interim-review
+or final-review, never infer a review from a receipt count. At an activity change capture
+disjoint source bounds; a covering successor cannot reclassify its earlier work. Shared
+intervals remain shared. These tags change attribution, not the provider support boundary,
+native identity rules or measured counters above. A supported sample is not a live GOAL run.
+
 ## A bounded unsuccessful search
 
 Record actual surface/version, runtime root checked, native identity evidence,
