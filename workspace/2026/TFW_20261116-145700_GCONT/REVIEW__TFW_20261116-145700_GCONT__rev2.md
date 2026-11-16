@@ -60,6 +60,13 @@ F2 — исправимый дефект поведения читателя: п
 
 F2 имеет один предмет: актуальность финального возврата при закрытии. Исправление не требует менять лимиты 100/10, вводить TS, новые роли или владельческую поправку HL. Reviewer только предлагает маршрут; Coordinator сохраняет authority disposition ruling.
 
+
+### Coordinator ruling — F2
+
+Полностью принято по REVIEW @ 1214255316db8a368aa22d1286b44fbe89e306a4. Текущий pending final review должен удерживать KNW/DONE независимо от прежнего APPROVE на том же шаге или Candidate. Основной Executor добавляет эту границу в общий reader и проверяет positive close, новый незавершённый review ID с тем же/другим Candidate, повтор доставки и прежние CONTINUE/REVISE маршруты. Это исправление внутри frozen HL; лимиты и обещание не меняются, Candidate меняется. Завершение F2 — свежая независимая проверка исправления; остальная проверенная часть review2 переиспользуется по соответствию subject/revision/dependencies.
+
+F1 имеет независимое подтверждение paid в review2. O1/O2 приняты как нематериальные наблюдения, дополнительного изменения продукта не требуют. Уборка review2 передана Coordinator с точной фиксацией двух отказов удаления; её успешность пока не заявлена. Полученный numeric receipt проверен и сохранён неизменным. Последняя завершённая проверка7, due17; после ruling тот же Executor начинает correction step8. Native goal активен, человеческой приёмки ещё нет.
+
 ## 6. Traces, economics and completion signal
 
 REVISE сам по себе не меняет lifecycle: status остаётся REV. Отдельный transition event не выдумывается. После durable REVIEW и проверки immutable reference отправляется только REVIEW_READY через native collaboration в /root, соответствующий coordinator_route. Доставка означает наличие результата, не принятие замечания. Фактическая транспортная квитанция остаётся native; до отправки delivery pending.
