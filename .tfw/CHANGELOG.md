@@ -5,6 +5,19 @@ Format: [Keep a Changelog](https://keepachangelog.com/). Versioning: [Semantic V
 
 ## [Unreleased]
 
+### Changed
+
+- Daily Task (`daily/2026/20261114-120711_daily-task-faster`): the skill reads in one pass — when
+  to use it, a six-step path, stop conditions — with every gate kept. A new
+  `references/economics.md` replaces the mandatory read of the whole economics README; the
+  record template is a skeleton; the description names its triggers. Existing API-equivalent
+  valuation stays the default; token-only accounting requires an explicit owner/project choice.
+- Daily economics cadence: capture before returning a deliverable or materially revised result,
+  before a planned pause or handover, and at close. Pure explanation/status replies need no new
+  snapshot. Verified covering successors replace earlier same-source facts; independent sources
+  still add. Handover uses received numeric files; substantive continuation is not an uncounted tail.
+  The installation guide names the retired per-turn rule and the adoption boundary.
+
 ### Documentation
 
 - PR #3: reconcile Claude visible-session provisioning with the current Coordinator profile.
