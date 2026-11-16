@@ -8,8 +8,9 @@ charge, human time sheet or quality score.
 
 Standard product analysis lives in [TFW Economics](../workflows/economics.md).
 [Daily](../extensions/daily-task/SKILL.md) uses its own selected record and authority with the
-same numeric v1 contract; no Full status/profile is fabricated. Its routine obligation is a
-cumulative snapshot before every orderly turn return and a final snapshot/concise summary.
+same numeric v1 contract; no Full status/profile is fabricated. It captures before returning a
+deliverable or materially revised result, before a planned pause or handover, and at close with
+a concise summary. Pure explanation or status replies need no separate snapshot.
 
 ## Choose a source recipe
 
@@ -157,14 +158,26 @@ failure receipt instead of a `binding_unavailable` object.
 Optional unknown duration does not erase measured tokens; a native process's SUCCESS
 with a denied action does not establish successful collection.
 
-Before each Daily return, bind the current physical source end, validate a cumulative capture
-and return its actual numbers plus hash/range/revision/cutoff. `--complete` asserts completeness
+Before returning a Daily deliverable or materially revised result, before a planned pause or
+handover, and at close, bind the current own-source end, validate and receive a cumulative capture,
+and record numbers plus hash/range/revision/cutoff. Do not postpone a delivered result's snapshot
+until human acceptance. Pure explanation or status replies need no separate capture; their usage
+enters the next bound. Only a verified covering successor of the same source replaces earlier
+facts in totals; disjoint sources or ranges add. Reuse earlier workers' received numeric files,
+not their private journals, and keep their attribution. A missing return remains a gap.
+`--complete` asserts completeness
 of the selected bound only, with grounds; open turns and later consumption remain unknown tails.
 A verified covering successor checks predecessor identity, revision and unchanged source prefix.
-Alternatively retain exact disjoint facts and a checked cumulative view/membership before return.
+Alternatively retain exact disjoint facts and a checked cumulative view/membership at that capture.
 Never sum cumulative revisions. Capture the final snapshot and concise summary on completion;
-retain prior revisions and precise failures. Interruptions are gaps; later reconstruction cannot
-prove a snapshot existed at its original return. Final-answer/cleanup tail is disclosed once.
+retain prior revisions and precise failures. An interruption without a capture is a gap; later
+reconstruction cannot prove a snapshot existed at that point. Final-answer/cleanup tail is disclosed once.
+Substantive resumed work is a new measured bound, not part of that tail.
+
+Daily keeps the sourced conditional API-equivalent valuation by default. An explicit owner/project
+choice may select token-only accounting; record it without inventing zero money. A subscription
+alone changes no valuation rule. Routine capture needs no analytical report; any currency report
+uses the task-owned quote basis under the common freshness contract below.
 
 ### Full cycle and finite outcomes
 
