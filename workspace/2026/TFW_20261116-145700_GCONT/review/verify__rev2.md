@@ -27,7 +27,7 @@ Observed through actual file traversal (no monkeypatch): economics.goal_progress
 
 Cause: current=max(reviews) selects the latest returned review, while the KNW/DONE predicate checks only its purpose/verdict/step/epoch. It never establishes that current is the latest presentation/launch or that no review is pending. A legitimate fresh final recheck of changed acceptance evidence can use the same VALUE Candidate and step; this exposes premature close while the requested assurance is still unavailable. Existing expected next act is the pending Reviewer return, not old acceptance reuse.
 
-Temporary diagnostics were under system TEMP/tfw/TFW_20261116-145700_GCONT and are removed after this durable description. This reproduction specifies complete input relationships and observed output so it does not rely on retained scratch files.
+Temporary diagnostics were under system TEMP/tfw/TFW_20261116-145700_GCONT and cleanup remains pending after automatic policy refusal, recorded in REVIEW §6. This reproduction specifies complete input relationships and observed output so it does not rely on retained scratch files.
 
 ## Accounting replay
 
