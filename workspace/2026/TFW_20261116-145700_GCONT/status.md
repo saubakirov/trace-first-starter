@@ -3,7 +3,7 @@ id: TFW_20261116-145700_GCONT
 title: "Непрерывный GOAL: один исполнитель, полноценное планирование и независимые проверки"
 goal: "Пользователю приходится заново объяснять роли, ревью и сохранение планирования при каждом запуске GOAL"
 value: "Согласованный результат достигается основным агентом с независимым контролем и сопоставимой экономикой"
-lifecycle: RF
+lifecycle: REV
 owner: saubakirov
 authority: HL-TFW_20261116-145700_GCONT.md
 coordination_mode: goal
@@ -18,7 +18,7 @@ coordination_authority: "HL-TFW_20261116-145700_GCONT.md @ a058261302d1bca5a5d42
 reporting: native-gates
 selection_ref: baseline
 created: 20261116-145700
-updated: 20261117-023016
+updated: 20261117-024012
 ---
 
 **Task state.** This file is the only authority for this task's live state. Any downstream projection is disposable and never outranks it.
