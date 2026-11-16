@@ -7,6 +7,12 @@ Format: [Keep a Changelog](https://keepachangelog.com/). Versioning: [Semantic V
 
 ### Documentation
 
+- PR #3: reconcile Claude visible-session provisioning with the current Coordinator profile.
+  Retain the contributor's Remote Control recipe and dated P1 limits; describe prompt-free Desktop
+  opening as P0, without the warm-up that conflicts with command-only activation. Exact native
+  addresses, selected launch settings and existing return/review rules govern both routes.
+  No core workflow, Codex behavior or provider admission claim changes.
+
 - FLC (`TFW_20261011-192605_FLC`): independently reviewed, bounded diagnosis of
   workflow completion, coordination and knowledge continuity. Preserves observed
   violations, contract ambiguities and evidence limits; changes no framework code,
