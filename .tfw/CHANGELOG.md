@@ -5,6 +5,11 @@ Format: [Keep a Changelog](https://keepachangelog.com/). Versioning: [Semantic V
 
 ## [Unreleased]
 
+### Changed
+
+- GCONT (`TFW_20261116-145700_GCONT`): new Full GOAL contracts keep the main agent through execution and corrections. Ordinary Plan and the approved HL remain the entry and order; research and fresh independent reviews use separate contexts. Defaults are 100 substantive steps and at most 10 between completed reviews, with earlier and full final checks. Historical attempts and the other three modes retain their contracts.
+- GCONT separates step/review identities and sourced activity costs, validates continuation and current final approval, and aligns Codex, Claude Code and Antigravity instructions. Codex is observed live; Claude/Antigravity proof is limited to instruction parity and synthetic source-format cases. The local candidate has independent approval; owner acceptance and release remain separate.
+
 ### Documentation
 
 - FLC (`TFW_20261011-192605_FLC`): independently reviewed, bounded diagnosis of

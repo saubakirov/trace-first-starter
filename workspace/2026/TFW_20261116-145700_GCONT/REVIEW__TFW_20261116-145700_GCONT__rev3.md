@@ -45,6 +45,16 @@
 
 ## 6. Traces, economics and completion signal
 
+### Coordinator ruling and closing effects
+
+Coordinator принимает предложенные dispositions §5 один раз: F1/F2 paid по указанным независимым проверкам; O1–O3 not material с раскрытыми основаниями, без переписывания прежних фактов. Product Candidate остаётся 96cd5813acced4958d83ac921cc73ba72bf59aee. APPROVE не является владельческой приёмкой; KNW сохраняется до её получения. Native goal active, merge/push/release не разрешены.
+
+`tfw-docs: Applied` — KNOWLEDGE.md GOAL reference и knowledge/records/TKL-20261117-GCONT.md сохраняют устройство continuous-v1, историческую область и реальные пределы подтверждения. `tfw-knowledge: Applied` — knowledge/records/TKL-20261117-GCONT-INTENT.md квалифицирует подтверждённые владельцем HL§11 S1–S5; прежний GOAL-INTENT переиспользован в неизменённой области. Источники, отношения и реальная authority указаны в записях; человеческих кандидатов в обоих RES и трёх REVIEW нет, Executor сослался на исходный HL. Старые записи и markers не изменялись. `.tfw/CHANGELOG.md` получает одну задачно-атрибутированную группу Unreleased без номера версии или разрешения публикации.
+
+Материальные closing claims подлежат ограниченной независимой проверке этого Reviewer по common Closing and record recovery: четыре изменённых reference/changelog пути, их источники и итоговая owner delivery. Это не новый execution step или формальный review launch; продукт и актуальный final verdict не подменяются. Собственный экономический bound Coordinator для закрытия начинается на строке 8397 native source, предыдущий mixed диапазон [8195,8397) сохранён в economics/coordination-03.jsonl (6001aacb077c7458df86548a08bfef087e14878edeadb1a2163aba87d3458d7d). Конечный capture/report следует после проверок и возврата.
+
+### Reviewer return
+
 APPROVE переводит REV → KNW с отдельным событием; дальнейшее закрытие принадлежит Coordinator. Immutable REVIEW передаётся только REVIEW_READY. Numeric receipt [7bd76ed9](economics/roles/7bd76ed9a052eb7faa824ced78f306525f720d0a07512c203ae5d56b9d5f1b11.jsonl), SHA-256 7bd76ed9a052eb7faa824ced78f306525f720d0a07512c203ae5d56b9d5f1b11, source собственный Codex 01a1e679-28f4-7412-a484-41bb1d03e44c, диапазон [0,150), cutoff 2026-11-16T22:29:34.198359Z, model gpt-6.1-terra/high. Измерено 1 082 537 токенов; response stream сверено с native thread total, альтернативный token_count 998 604 не суммируется. Complete=false; конечный хвост оформления и возврата не измерен, duration неизвестна. Title control субагента недоступен; отдельный чат не создавался.
 
 ## 7. Fact Candidates

@@ -53,7 +53,7 @@ publication, amendment or execution. P0–P4 and relevant P5–P7 remain require
 | Deploy | GitHub Pages at `tfw.saubakirov.kz`, auto-deploy on push to master | `.github/workflows/docs.yml` |
 | Editions | Light and Assisted ship; Assisted hooks are blocked, so only its manual order is proven. Full remains `.tfw/` | `editions/README.md`, `editions/01-light/`, `editions/02-assisted/`, `.tfw/` |
 
-Full has a fourth, explicitly selected [GOAL mode](.tfw/workflows/goal.md). Its immutable HL replaces the TS for that mode alone; see the [decision and pilot evidence](knowledge/records/TKL-20261104-GOAL.md). The three CMODES routes above keep their existing contracts.
+Full has a fourth, explicitly selected [GOAL mode](.tfw/workflows/goal.md). Its immutable HL replaces the TS for that mode alone. New continuous contracts keep the main executor through corrections, with bounded steps and fresh interim/final reviews; [GCONT decision and proof limits](knowledge/records/TKL-20261117-GCONT.md) supersede only that scope of the [historical attempt pilot](knowledge/records/TKL-20261104-GOAL.md). The three CMODES routes and existing frozen attempt contracts retain their meaning.
 
 ### Architecture Decisions
 
