@@ -969,6 +969,14 @@ Outside GOAL, distinct Researcher, Executor and independent Reviewer contexts pr
 fresh independent Reviewer for each new phase, without the previous phase's review conversation;
 accepted dependency artifacts remain admissible. Keep the same Executor and independent Reviewer
 within that phase's authorized corrections. New TS revisions/round numbers do not create phases.
+Context growth is a valid ground to replace a retained Executor or Reviewer within its phase: when
+the unit's accumulated context makes each further continuation materially costlier than a fresh
+unit reconstructing state from task files, the Coordinator may provision a fresh unit of the same
+role. This is a cost diagnosis, not a round cap; independence rules are unchanged. Record the
+replacement as an event with the observed context size and reason; the replacement follows the
+resumed/replacement checks below. Where gates allow, batch owner answers into one continuation
+instead of one continuation per answer, and let the TS require reading large working files by
+section rather than whole.
 Cross-phase Executor reuse requires a safe return and new bounded phase activation, current
 dependencies/authority, actual receiving-context verification and one active phase act per unit.
 Cross-phase Reviewer reuse needs explicit exception discretion granted to the actual responsible
