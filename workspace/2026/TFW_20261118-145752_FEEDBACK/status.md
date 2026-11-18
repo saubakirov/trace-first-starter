@@ -1,8 +1,8 @@
 ---
 id: TFW_20261118-145752_FEEDBACK
 title: "Обратная связь от пользователей TFW"
-goal: "Make a field report actionable for a TFW maintainer."
-value: "Contributors can share a compact report and maintainers can decide from it."
+goal: "Use the affected agent's local access to diagnose a TFW failure and hand the finding to its maintainer."
+value: "A maintainer can choose a justified fix or decisive next check using evidence available only at the incident."
 lifecycle: HL_DRAFT
 owner: "saubakirov"
 authority: "HL-TFW_20261118-145752_FEEDBACK.md"
@@ -16,7 +16,7 @@ coordination_authority: "HL-TFW_20261118-145752_FEEDBACK.md @ db26dcdba284baaad3
 reporting: native-gates
 selection_ref: baseline
 created: 20261118-145752
-updated: 20261118-150014
+updated: 20261118-160322
 ---
 
 **Task state.** This file is the only authority for this task's live state. Any downstream projection is disposable and never outranks it.
