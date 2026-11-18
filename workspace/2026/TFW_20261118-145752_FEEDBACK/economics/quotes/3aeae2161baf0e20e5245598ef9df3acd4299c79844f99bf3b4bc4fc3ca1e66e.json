@@ -1,0 +1,43 @@
+{
+  "kind": "task_price_basis",
+  "observations": [
+    {
+      "checked_at": "2026-11-18T09:49:28.944260+00:00",
+      "conditions": {
+        "context_band": "input <=272K tokens per request",
+        "modality": "text",
+        "region": "no regional premium",
+        "service_tier": "Standard"
+      },
+      "currency": "USD",
+      "effective_from": null,
+      "model": "gpt-6.2-astra",
+      "notes": [
+        "Conditional Standard short-context text API equivalent. Evidence hashes cover the retrieved public tool responses.",
+        "Official retention bands are 30 minutes and 12 hours. The portable v1 cache-write buckets cannot be mapped to those prices."
+      ],
+      "provider": "openai",
+      "published_on": null,
+      "quote_id": "30c950795102a5c3e335b5f410bb8dc487f3f3045a8e0e8f4bb30d07081fea03",
+      "rates": {
+        "cache_write_1h": null,
+        "cache_write_5m": null,
+        "cached": "0.40",
+        "fresh": "8",
+        "output": "40"
+      },
+      "schema_version": 1,
+      "source_evidence": {
+        "https://developers.openai.com/api/docs/models/gpt-6.2-astra": "45bf8318adf4d72be1cbdb51c3b45d6039b1222b86d3bbbb4396ccd0428f7792",
+        "https://developers.openai.com/api/docs/pricing": "c85cabe9c715fd720f5afb3cdf937748ff100a140102673c2afa99d24e7f83ec"
+      },
+      "source_urls": [
+        "https://developers.openai.com/api/docs/models/gpt-6.2-astra",
+        "https://developers.openai.com/api/docs/pricing"
+      ],
+      "unit": "per_1M_text_tokens"
+    }
+  ],
+  "schema_version": 1,
+  "valuation_kind": "current_revaluation"
+}
