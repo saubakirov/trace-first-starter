@@ -127,6 +127,15 @@ groups may proceed. Absent/verified dormant source rows may update after classif
 discovery entry. Preview accepted/preserved/refused rows and hashes; only the separately accepted Daily
 group may write its mapped rows in Step 3. Never remove these exclusions during generic copying.
 
+### Feedback prewrite gate
+
+Before Step 3, read “Feedback prewrite and installation” in the same pinned target's
+`workflows/init.md`. Exclude its canonical path and both discovery paths from generic writes,
+adapter sync and retirement. Classify the canonical file and deduplicated entries for the verified
+selected adapters as one group. Use prior pinned bytes or a verified receipt for replacement of a
+differing receiver file. Preserve/refuse the whole group on an unresolved conflict. Preview the
+disposition and hashes separately from the manifest command set and the optional Daily group.
+
 For every non-mechanical choice record fact, authority/currentness, semantic effect, permitted action
 and resolving evidence. Preview groups, exclusions, preservation, migrations, checks, unresolved
 choices and exact target; do not demand per-file approval already supplied by update authority.
@@ -152,6 +161,7 @@ Inspect receiver bytes and ownership before replacement: identical repeat is
 stable; customized/conflicting economics files and existing task JSONL/report
 data are preserved for the existing update authority, not silently overwritten.
 Apply accepted Daily rows through its installation contract, honoring Step 2's preserved/refused paths.
+Apply accepted Feedback rows with the pinned init procedure, including rechecks and partial-failure recovery.
 Stop a whole group on dependency failure. Diagnostic staging/preservation is a disclosed write.
 Destructive cleanup follows verified preservation and replacement only. Re-entry observes current
 receiver; partial application, equal version or old receipt never closes checks/cleanup/reporting.
@@ -173,6 +183,8 @@ receiver; partial application, equal version or old receipt never closes checks/
 
 Verify Step 2/3 Daily actions and exact Full manifest records/selected optional rows separately; record Daily
 source/ref, hashes, applied/preserved/refused paths and limits in the existing immutable receipt.
+Verify Feedback source and selected entries against the pin and check repeat/no-write. Record its
+paths, digests, conflicts and evidence level in that receipt; leave unselected entries untouched.
 
 At adapter sync, if a persistent coordination block changes, read `Workflow activation and routing`;
 otherwise it is uncharged. Validate four adapters and all exact manifest commands plus the three selected
