@@ -3,7 +3,7 @@ id: "TFW_20261118-145752_FEEDBACK"
 title: "Обратная связь от пользователей TFW"
 goal: "Use the affected agent's local access to diagnose a TFW failure and hand the finding to its maintainer."
 value: "A maintainer can choose a justified fix or decisive next check using evidence available only at the incident."
-lifecycle: "RF"
+lifecycle: "KNW"
 owner: "saubakirov"
 authority: "HL-TFW_20261118-145752_FEEDBACK.md"
 goal_attempt: 1
@@ -16,7 +16,7 @@ coordination_authority: "HL-TFW_20261118-145752_FEEDBACK.md @ 58c575f79b4a517c4f
 reporting: "native-gates"
 selection_ref: "baseline"
 created: "20261118-145752"
-updated: "20261119-114641"
+updated: "20261119-115440"
 goal_ref: "HL-TFW_20261118-145752_FEEDBACK.md @ 58c575f79b4a517c4f7dc4a1327cbcf49f63ae63"
 ---
 
