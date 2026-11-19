@@ -54,12 +54,40 @@ fictional economics task; the optional helper never gates setup.
   Preserve all state; skip discovery, research,
   config creation, and init-task creation. Select the adapter explicitly when it cannot be inferred,
   read `Workflow activation and routing` only when repairing its persistent coordination block,
-  run the Core Economics and Daily prewrite gates below before any repair write, apply its persistent row and all manifest command rows, then apply/check
-  any accepted Daily group. Verify bytes/blocks, roles, paths, idempotence, foreign neighbors and unchanged
+  run the Core Economics, Daily and Feedback prewrite gates below before any repair write. Apply its persistent row and all manifest command rows, then apply/check
+  the accepted skill groups. Verify bytes/blocks, roles, paths, idempotence, foreign neighbors and unchanged
   configured state; report applied/preserved/refused paths, then stop. Never jump to discovery or research.
 
 Never reset an existing project or guess its adapter. Contradictory source/receiver ownership stops
 before config/state writes. An existing root or `.tfw/README.md` is not a blank starter surface.
+
+### Feedback prewrite and installation
+
+The on-demand Feedback skill travels with the framework. Classify it before any generic payload or
+adapter write during setup, repair or update. Reserve these three literal paths from generic writes
+and retirement. The group contains the canonical source and only the entries for selected adapters.
+
+| Receiver path | When to include |
+|---|---|
+| `.tfw/extensions/feedback/SKILL.md` | All receivers, including direct-file use in Cursor |
+| `.agents/skills/tfw-feedback/SKILL.md` | Codex or Antigravity, once even when both are selected |
+| `.claude/skills/tfw-feedback/SKILL.md` | Claude Code |
+
+1. Use the canonical file's bytes from the verified target revision. A target without the skill
+   supplies no install or deletion authority. Leave existing Feedback paths in place and report it.
+2. Inspect every included path before writing any. Absent → create. Equal target bytes → keep.
+   Equal verified prior framework bytes → replace. Establish prior ownership from a pinned prior
+   source or a verified prior receipt binding this path and digest. Preserve/refuse the whole group
+   if any differing file lacks that proof, or if a path or parent is a link, foreign object or
+   file/directory collision. Report the exact conflict. Leave unselected entries and neighbors alone.
+3. Recheck observed state before writing and stage exact target bytes. Create missing directories
+   safely and replace verified files atomically. On a conflict or write failure stop the group,
+   report completed and outstanding paths and reclassify all rows on retry. Independent groups may
+   proceed. Never mark a partial install complete.
+4. Verify the canonical file and every selected entry byte-for-byte against the pinned source,
+   and check that repeating the decision produces no writes. Record target ref, paths, hashes and
+   preserved/refused rows in the ordinary result or receipt. Check this skill separately from the
+   exact formal command set and Daily opt-in. Record native discovery only if observed.
 
 ### Coordination-mode adoption gate
 
@@ -183,6 +211,7 @@ one exists. Wait wherever the research workflow waits.
    `.tfw/economics/`, `.tfw/workflows/economics.md` and `.tfw/templates/economics.md`. A repeated
    install leaves identical bytes stable and preserves customized/conflicting
    receiver files and all prior task-local economics records.
+   Apply the Feedback group classified before Step 2 and verify its selected entries.
 4. Offer `.user_preferences.md`, add it to `.gitignore` when accepted, and never commit it.
 5. Finalize project config while preserving its selected active paths; do not re-copy source config.
    Set the init task lifecycle to `RF` with the required event.
