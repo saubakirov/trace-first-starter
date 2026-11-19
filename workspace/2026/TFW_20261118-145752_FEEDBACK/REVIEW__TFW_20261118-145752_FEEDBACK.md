@@ -61,6 +61,9 @@
 
 **Расход продолжения.** [Квитанция ревизии 2](economics/roles/2b0ffd6ca6678ba3e905bc58c51da5a1d8353daf8fee3a90ede84a8dc074195a.jsonl), SHA-256 2b0ffd6ca6678ba3e905bc58c51da5a1d8353daf8fee3a90ede84a8dc074195a. Отдельный интервал собственного rollout [229,296) от наблюдаемого начала продолжения, отсечка 12:26:55 +05:00; историческая попытка 1, closure. Всего 1 201 222 токена, в том числе 1 180 032 кешированного ввода, 16 491 свежего ввода и 4 699 вывода. Предыдущая квитанция [0,191) сохраняется отдельно. Финальные запись и передача следуют за отсечкой. Временные файлы pytest и локальная копия принятой квитанции остаются в подкаталоге review-closing для уборки Coordinator вместе с уже учтёнными временными материалами задачи.
 
+
+**GOAL closed.** The owner's decision is recorded in the journal. The [closing report](economics.md) reconciles the received numeric evidence. Coordinator [r7](economics/roles/3400fcfe4db08c6d0449e570ea0b717da4a3bf4f387681f812205266633df12f.jsonl), SHA-256 `3400fcfe4db08c6d0449e570ea0b717da4a3bf4f387681f812205266633df12f`, [2039,2288), cutoff 2026-11-19T07:28:26.482351+00:00. The previous delivery tail [2002,2039), the earlier gap [1616,1675) and the short final publication/verification tail are outside these bounds. Main source and original FEEDBACK commits are retained locally. The detached Reviewer tree is disposable after its verified return and integration.
+
 ## 7. Передача знаний
 
-Новых фактов от человека при рецензии не поступало. Для следующего действия остаются доступны договор, неизменный объект и воспроизводимые наблюдения с указанием среды. Решение владельца открыто.
+Новых фактов от человека при рецензии не поступало. Для следующего действия остаются доступны договор, неизменный объект и воспроизводимые наблюдения с указанием среды. Владелец принял результат и поручил выпуск.
