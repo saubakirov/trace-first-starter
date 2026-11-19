@@ -12,6 +12,15 @@ Format: [Keep a Changelog](https://keepachangelog.com/). Versioning: [Semantic V
   violations, contract ambiguities and evidence limits; changes no framework code,
   role rule or official operating mode. Owner accepted the diagnostic result for closure.
 
+## [3.11.0] — 2026-11-19
+
+### Added
+
+- FEEDBACK (`TFW_20261118-145752_FEEDBACK`) adds the on-demand `tfw-feedback` skill. In the affected chat, a contributor can ask their agent to check the installed TFW rule against local evidence and draft an issue with the cause, a targeted change and a way to verify it. The contributor approves any new paid run and decides what to publish. [Contributor guide](https://github.com/saubakirov/trace-first-starter/blob/v3.11.0/CONTRIBUTING.md)
+- Init, attach/repair and update install the skill for selected Codex, Antigravity and Claude Code adapters. Cursor users can read the canonical file directly. A customized copy preserves the connected group until ownership is resolved.
+
+Update from 3.10.1 or an earlier supported version using the [3.11.0 migration guide](https://github.com/saubakirov/trace-first-starter/blob/v3.11.0/.tfw/migrations/3.11.0.md).
+
 ## [3.10.1] — 2026-11-17
 
 ### Changed

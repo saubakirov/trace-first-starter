@@ -8,6 +8,7 @@
 /README.md -export-ignore
 /README.ru.md -export-ignore
 /README.kk.md -export-ignore
+/CONTRIBUTING.md -export-ignore
 /LICENSE -export-ignore
 /tools -export-ignore
 /tools/* export-ignore
