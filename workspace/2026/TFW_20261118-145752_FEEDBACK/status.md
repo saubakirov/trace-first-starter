@@ -21,3 +21,5 @@ goal_ref: "HL-TFW_20261118-145752_FEEDBACK.md @ 58c575f79b4a517c4f7dc4a1327cbcf4
 ---
 
 **Task state.** This file is the only authority for this task's live state. Any downstream projection is disposable and never outranks it.
+
+**Awaiting owner acceptance.** Independent [review](REVIEW__TFW_20261118-145752_FEEDBACK.md) approved Candidate `ef8a612dd62da7b712f19ad0d17adaf421f2bc53` on attempt 1 of 2. The checked [result](RF__TFW_20261118-145752_FEEDBACK.md) and [interim economics](economics.md) are ready. Owner decides local acceptance and completion, separately from merge and release.
