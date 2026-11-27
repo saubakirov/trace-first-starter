@@ -5,6 +5,18 @@ Format: [Keep a Changelog](https://keepachangelog.com/). Versioning: [Semantic V
 
 ## [Unreleased]
 
+### Added
+
+- OpenCode adapter (issue #8): `/tfw-init` in Full or Adapter Attach/Repair mode can select
+  `opencode`. It merges a `TFW:OPENCODE` block into root `AGENTS.md` and copies the 11 manifest
+  workflows to `.opencode/commands/tfw-*.md`. The adapter is common-only, like Cursor: no
+  Coordinator profile until OpenCode subagent and addressed-messaging capabilities are verified.
+  OpenCode skips `CLAUDE.md` next to `AGENTS.md`; init reports when project rules there need
+  `"instructions": ["CLAUDE.md"]` in `opencode.json`. Discovery facts come from OpenCode source and
+  documentation; no live OpenCode run is claimed.
+- Existing installations need no change. To adopt, update to a revision containing the adapter and
+  run `/tfw-init` in Adapter Attach/Repair mode with `opencode`; `/tfw-update` then keeps its copies.
+
 ### Documentation
 
 - FLC (`TFW_20261011-192605_FLC`): independently reviewed, bounded diagnosis of

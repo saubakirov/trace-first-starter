@@ -121,7 +121,7 @@ In Full TFW, use `/tfw-plan` to create or revise a task plan and to re-enter int
 No. A human can begin with this guide, choose an Edition, and let the agent follow the edition instructions. Reading the [Project North Star](.tfw/README.md) is recommended when you want the full purpose and philosophical boundary. Mechanics are in [`.tfw/conventions.md`](.tfw/conventions.md).
 
 **Which AI tools work with TFW?**
-Any tool that can read project files can follow the method. Adapter templates exist for Claude Code, Cursor, Antigravity, and Codex. Plain chat can work when you explicitly provide the relevant files and ask it to follow them.
+Any tool that can read project files can follow the method. Adapter templates exist for Claude Code, Cursor, Antigravity, Codex, and OpenCode. Plain chat can work when you explicitly provide the relevant files and ask it to follow them.
 
 **Can I use TFW for non-code work?**
 Yes. TFW structures decisions and continuity, not programming alone. The same principles apply to research, analytics, writing, teaching, design, and operations.
@@ -200,6 +200,7 @@ TFW is tool-agnostic. Adapters translate the same repository-local workflow into
 | Cursor | `.tfw/adapters/cursor/` | `.cursor/rules/tfw.mdc` |
 | Antigravity | `.tfw/adapters/antigravity/` | `.agents/rules/tfw.md` plus `.agents/skills/tfw-*/SKILL.md` |
 | Codex | `.tfw/adapters/codex/` | Root `AGENTS.md` plus `.agents/skills/tfw-*/SKILL.md` |
+| OpenCode | `.tfw/adapters/opencode/` | Root `AGENTS.md` plus `.opencode/commands/tfw-*.md` |
 | Plain chat | No installed adapter | Provide the relevant repository files explicitly |
 
 Start with [`.tfw/quickstart.md`](.tfw/quickstart.md); adapter-specific instructions live under [`.tfw/adapters/`](.tfw/adapters/).

@@ -1,7 +1,7 @@
 # TFW Adapters
 
 `.tfw/adapters/manifest.yaml` is the single tooling-only copy/check map. It declares the
-four vendor roots, the exact standard public commands, their canonical workflows and roles, and
+five vendor roots, the exact standard public commands, their canonical workflows and roles, and
 the source/target strategy. Runtime roles never read the manifest; installed vendor files
 route to canonical workflows, which remain authoritative.
 
@@ -12,8 +12,8 @@ substantive framing, for the mandatory owner-facing startup card and initial mod
 Step 5 validates/records that choice, and re-reads the profile only for a material surface or
 capability change. The task Coordinator uses the card for new work; a phase Coordinator receives
 its bounded dispatch and current phase status. Other
-role commands do not preload it. Cursor keeps common-only compatibility without a fourth product
-profile. Profiles own
+role commands do not preload it. Cursor and OpenCode keep common-only compatibility without a
+product profile. Profiles own
 mechanics and dated limitations, never authorization, Role Locks or a copied workflow algorithm.
 They are `.tfw/` payload files, so init/update distribute them with the framework; no runtime
 manifest lookup, registry or generated loader is added.
@@ -24,6 +24,10 @@ manifest lookup, registry or generated loader is added.
 | Claude Code | `CLAUDE.md` | `.claude/commands/tfw-*.md` |
 | Cursor | `.cursor/rules/tfw.mdc` | `.cursor/commands/tfw-*.md` |
 | Antigravity | `.agents/rules/tfw.md` | `.agents/skills/tfw-*/SKILL.md` |
+| OpenCode | `AGENTS.md` | `.opencode/commands/tfw-*.md` |
+
+Codex and OpenCode share root `AGENTS.md` through separate `TFW:CODEX` and `TFW:OPENCODE`
+blocks; each block names the surface it applies to.
 
 `init.md` installs the manifest's exact target set, `update.md` repairs those same copies,
 and `config.md` verifies affected generated copies. Missing sources, targets, roles, extra or
@@ -36,7 +40,7 @@ review and accounting capabilities must be verified separately on the selected s
 All adapters retain the `manual`, `visible-agents`, `subagents` semantics for one or
 multiple phases. One owner-facing Coordinator can govern phase-local cycles through native roles;
 distinct phase holders remain available under authority. Selected profiles map actual surface
-mechanics, not provider-wide permissions. Cursor is common-only and makes no tailored native offer.
+mechanics, not provider-wide permissions. Cursor and OpenCode are common-only and make no tailored native offer.
 Distinguish P0 documentation, P1 operation, P2 source reconstruction, P3 checkpoint series and P4
 complete native trial. Installation/parity and Codex observations cannot establish another surface.
 Unavailable provision/address/fresh-review controls retain their exact pending act. Adopt via the
@@ -68,7 +72,7 @@ package ownership or opt-in. Source, installed, reproduced and live-observed rem
 
 ## Command-entry contract
 
-All four adapters preserve the same boundary from `conventions.md` `Tool Adapter Pattern`:
+All five adapters preserve the same boundary from `conventions.md` `Tool Adapter Pattern`:
 discover the receiver, reach one canonical workflow, bind its Role Lock before task action,
 execute its Read Contract in order, obey its gates/stops, and name the canonical next
 `/tfw-*` route. Full-copy command receivers begin with byte-identical canonical workflow

@@ -187,7 +187,7 @@ Verify Feedback source and selected entries against the pin and check repeat/no-
 paths, digests, conflicts and evidence level in that receipt; leave unselected entries untouched.
 
 At adapter sync, if a persistent coordination block changes, read `Workflow activation and routing`;
-otherwise it is uncharged. Validate four adapters and all exact manifest commands plus the three selected
+otherwise it is uncharged. Validate the five manifest adapters and all exact manifest commands plus the three selected
 `coordinator.md` payload paths and persistent exact profile pointers. Apply exact copies or
 one marker-bounded block; preserve unmarked/foreign neighbors. Antigravity installs to plural
 `.agents`; singular `.agent/rules` remains compatible rule location, never inferred workflow support

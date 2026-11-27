@@ -1293,6 +1293,7 @@ CLAUDE.md + .claude/commands/tfw-*.md ──→ Claude `/tfw-*` command routing
 .agents/rules/tfw.md ──→ Antigravity persistent project rule
 .agents/skills/tfw-{command}/SKILL.md ──→ Antigravity `/tfw-*` command routing
 AGENTS.md + .agents/skills/tfw-*/SKILL.md ──→ Codex `/tfw-*` command routing
+AGENTS.md + .opencode/commands/tfw-*.md ──→ OpenCode `/tfw-*` command routing
 ```
 
 Adapters are chosen at project init. See `.tfw/quickstart.md` for setup.
@@ -1300,7 +1301,7 @@ Adapters are chosen at project init. See `.tfw/quickstart.md` for setup.
 **An adapter installs whole copies or marker-bounded blocks, and nothing of a third kind.** A
 whole copy — a command, a workflow, a rule file, a skill — is verified by `cmp` against its
 source. Where TFW content is merged into a **project-owned** file — the `TFW:CLAUDE` block in
-`CLAUDE.md`, the `TFW:CODEX` block in `AGENTS.md` — the managed text sits between
+`CLAUDE.md`, the `TFW:CODEX` and `TFW:OPENCODE` blocks in `AGENTS.md` — the managed text sits between
 `<!-- TFW:{NAME}:START -->` and `<!-- TFW:{NAME}:END -->` and is verified on that region alone.
 One rule governs every such block, in every adapter:
 
@@ -1312,7 +1313,9 @@ One rule governs every such block, in every adapter:
 
 Appending a block to a file that already carries an unmarked, hand-written TFW section produces
 two sections that disagree; no adapter guesses where the content "probably is". Exactly one
-managed block per file. `update.md` Step 4 names which row is a copy and which is a block.
+managed block per marker name per file; `AGENTS.md` may hold one `TFW:CODEX` and one
+`TFW:OPENCODE` block, and a file carrying only the other adapter's block counts as unmarked for
+this one. `update.md` Step 4 names which row is a copy and which is a block.
 
 For Codex, `/tfw-*` is the primary human-facing command contract. Root `AGENTS.md`
 provides always-on recognition and fallback routing; repository-local skills provide
