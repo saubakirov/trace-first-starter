@@ -70,7 +70,7 @@ and retirement. The group contains the canonical source and only the entries for
 | Receiver path | When to include |
 |---|---|
 | `.tfw/extensions/feedback/SKILL.md` | All receivers, including direct-file use in Cursor |
-| `.agents/skills/tfw-feedback/SKILL.md` | Codex or Antigravity, once even when both are selected |
+| `.agents/skills/tfw-feedback/SKILL.md` | Codex, Antigravity or OpenCode, once even when several are selected |
 | `.claude/skills/tfw-feedback/SKILL.md` | Claude Code |
 
 1. Use the canonical file's bytes from the verified target revision. A target without the skill
@@ -207,6 +207,8 @@ one exists. Wait wherever the research workflow waits.
    necessary fallback exists. Preserve human versus technical qualification and source authority.
 3. Install selected adapters from the manifest's persistent row and exact manifest command records. Preserve
    unrelated/unmarked content; reject missing/extra routes, duplicate blocks, drift, or second-run diff.
+   For OpenCode with project rules in `CLAUDE.md`, report whether `opencode.json` lists them in
+   `instructions`; change that project-owned file only with owner approval.
    Confirm the pinned Full economics group has the numeric files and core workflow under
    `.tfw/economics/`, `.tfw/workflows/economics.md` and `.tfw/templates/economics.md`. A repeated
    install leaves identical bytes stable and preserves customized/conflicting
@@ -225,7 +227,7 @@ verification. Check actual producing-role handovers and completed dispositions t
 for task-bound work also validate this Coordinator's own bounded economics
 JSONL or typed failure receipt and return its resolvable file/revision/hash.
 no unrelated history/count gate applies. Include the three selected `coordinator.md` payload paths
-and exact Plan-time discovery; Cursor remains common compatibility without a fourth profile. A
+and exact Plan-time discovery; Cursor and OpenCode remain common compatibility without a profile. A
 repeated install must produce no new diff and preserve unrelated marker-bounded root content.
 After independent review and applicable knowledge effects, close with `DONE` and a filled outcome;
 stop with `/tfw-plan`.

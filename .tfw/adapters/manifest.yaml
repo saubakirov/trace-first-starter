@@ -85,3 +85,12 @@ adapters:
       source: .tfw/adapters/codex/skills/tfw-{command}/SKILL.md
       target: .agents/skills/tfw-{command}/SKILL.md
       strategy: copy
+  opencode:
+    persistent:
+      source: .tfw/adapters/opencode/AGENTS.md.template
+      target: AGENTS.md
+      strategy: managed_block
+    commands:
+      source: "{workflow}"
+      target: .opencode/commands/tfw-{command}.md
+      strategy: copy

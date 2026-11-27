@@ -1,0 +1,72 @@
+<!-- TFW:OPENCODE:START -->
+## Trace-First Workflow Commands (OpenCode)
+
+`.tfw/` traces are truth/memory. This block applies when the active surface is OpenCode. Root
+instructions are already active; do not reload them. For `/tfw-*`, OpenCode loads
+`.opencode/commands/tfw-<command>.md`, a canonical workflow copy; follow its Read Contract
+completely. The workflow selects all further inputs and owns Role Lock, gates, templates,
+evidence, stop and route. Text OpenCode appends after the workflow is the command argument.
+
+**Working material and comments.** Keep raw output, logs, exports, screenshots and scratch
+scripts in the system temporary directory under `tfw/<task or record ID>/`, never in the project,
+and remove them when your work ends. A comment exists only when it carries value for its file's
+reader or a program reads it, never as a note to agents, deferred work, history or an excuse
+(`conventions.md` → `Working material`, `Comments`).
+
+**Project rules in `CLAUDE.md`.** OpenCode reads `CLAUDE.md` only in a directory without
+`AGENTS.md`. When this project keeps rules in `CLAUDE.md`, they load in OpenCode only if
+`opencode.json` lists them: `"instructions": ["CLAUDE.md"]`. Report a missing entry; do not
+assume those rules are active.
+
+**Shared `AGENTS.md`.** When a `TFW:CODEX` block is also present, its skill routing, Codex
+profile pointer and `Codex native coordination` section apply to Codex only. In OpenCode follow
+this block.
+
+| Commands | Roles |
+|---|---|
+| `/tfw-plan`, `/tfw-docs`, `/tfw-knowledge`, `/tfw-release`, `/tfw-update`, `/tfw-config`, `/tfw-init`, `/tfw-economics` | Coordinator |
+| `/tfw-research` | Researcher |
+| `/tfw-handoff` | Executor |
+| `/tfw-review` | Reviewer |
+
+At new-task Plan entry, before substantive framing or questions, report `provision · addressed send · wait/readback · title/readback` from the
+mechanisms exposed in the current OpenCode session, classifying each as `native`, `owner-assisted`, or
+`unavailable`. Loading one rule file does not provision distinct addressable TFW role units.
+Treat provision and addressed send as owner-assisted, and wait/readback or title/readback as
+unavailable, unless the current surface exposes the exact mechanism and observable result. Never
+borrow another provider's capability or old receipt.
+
+This is an explicitly common-only adapter with no provider Coordinator profile. At new-task entry
+show the shared startup card with current OpenCode classifications and unknowns, and ask the initial
+operating mode; make no provider-tailored offer. Plan Step 5 validates and records the choice,
+reopening it only for an unresolved choice or material boundary change. Existing-task continuation
+preserves its settled choice. The card never belongs in a role's command-only first message.
+
+A command activates work only when its exact command, task/phase and owner-direct,
+delegated or continuation source resolve. The command-only first message names the command and
+task/phase; native origin and task files supply the source. A session, role prompt, briefing, wait result or title is not
+activation. Read and validate the complete status routing spine before material work and report every
+status change to `coordinator_route`. Under `tfw-gates-only`, role units communicate materially only
+with their own Coordinator, never peers, owner. Record actual producer surface/address,
+parent route, activation/dispatch source and immutable authority. Iterative dialogue requires an
+exact immutable two-peer grant independent of task/phase topology. Report missing native
+mechanisms and exact owner action.
+For new Full work select `manual`, `visible-agents`, `subagents`, or `goal` explicitly. Only GOAL uses
+`.tfw/workflows/goal.md`: one task, approved HL instead of TS, main-agent execution/fixes, bounded steps and fresh interim/final review. Only research/review use subagents; frozen historical attempt contracts keep their route.
+The other three modes admit one or several phases. One Coordinator may own phase-local cycles under authority;
+distinct bounded phase Coordinators remain available. Apply `conventions.md` → `Coordination modes`
+for phase routes, independent context, continuation and actual capability limits. Historical GATEWAY/LEAD carriers remain readable,
+but a principal, title or host never supplies a route or mandate.
+Before sending on the selected strict edges, apply `.tfw/conventions.md` → `Closed message
+catalogue`: persist the owned record and required state/event, send only its permitted form, then
+read the referenced record/current authority before the dependent act. Research keeps file-owned stage checkpoints and reference returns; owner–task Coordinator discussion stays substantive. The catalogue also owns the
+one-time status fallback, delivery/duplicate handling and unavailable route.
+
+Never open or resume another TFW role session, or inspect raw provider-wide state, session logs or
+unrelated task/chat history, to read its chat, reasoning, tool output, terminal or unreturned work.
+Monitor only through addressed TFW messages and exposed event/status/wait mechanisms. After an
+unchanged signal, back off; never poll on a short fixed timer or narrate unchanged state. A suspected
+stall permits one addressed status request, then is reported as unavailable or blocked. Under
+`tfw-gates-only`, do not harvest or relay another unit's unreturned reasoning, suspicions, prose or
+preferred solution.
+<!-- TFW:OPENCODE:END -->
